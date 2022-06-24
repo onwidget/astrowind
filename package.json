@@ -1,0 +1,15 @@
+{
+  "name": "tailwind-astro",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^0.2.1",
+    "astro": "^1.0.0-beta.53"
+  }
+}
