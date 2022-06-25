@@ -1,6 +1,6 @@
 # AstroWind
 
-A basic template to make your website using Astro + Tailwind CSS.
+A template to make your website using Astro + Tailwind CSS.
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
