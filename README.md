@@ -1,1 +1,1 @@
-# Tailwind Astro
+# AstroWind
