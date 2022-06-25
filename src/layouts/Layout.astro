@@ -1,5 +1,10 @@
 ---
-  const { title = "", description = "" } = Astro.props;
+  import "~/styles/base.css"
+
+  import Header from "~/components/astro/headers/BasicHeader.astro"
+  import Footer from "~/components/astro/footers/BasicFooter.astro";
+
+  const { title = "", description = "", withHeader = true } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -11,10 +16,15 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <title>{title}</title>
   <meta name="description" content={description}>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="antialiased text-gray-900 dark:text-slate-400 tracking-tight bg-white dark:bg-slate-900">
+  <Header />
   <slot />
+  <Footer />
 </body>
 
 </html>
@@ -32,10 +42,8 @@
     --astro-gradient: linear-gradient(0deg, #4F39FA, #DA62C4);
   }
 
-  :global(main) {
-    margin: auto;
-    padding: 1em;
-    max-width: 60ch;
+  :global(body) {
+    font-family: 'IBM Plex Sans', sans-serif;
   }
 
   :global(.text-gradient) {
@@ -47,5 +55,25 @@
     background-position-y: 100%;
     border-radius: 0.4rem;
     animation: pulse 4s ease-in-out infinite;
+  }
+
+  :global(.btn, .btn-sm) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.25rem;
+    border-width: 1px;
+    border-color: transparent;
+    font-weight: 500;
+    line-height: 1.375;
+    transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+    transition-duration: .15s;
+    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    padding: 0.75rem 1.5rem;
+    --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, .04), 0 4px 6px -2px rgba(0, 0, 0, .02);
+    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -2px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 </style>

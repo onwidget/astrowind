@@ -18,3 +18,5 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+package-lock.json
