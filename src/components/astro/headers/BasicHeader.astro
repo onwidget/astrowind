@@ -19,13 +19,14 @@
           <IconSun />
         </button>
         <button
-          class="ml-1 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center">
+          class="ml-1 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+          onclick="toggleMenu()">
 
           <IconMenu />
         </button>
       </div>
     </div>
-    <div class="items-center w-full lg:w-auto hidden lg:flex text-gray-600 dark:text-slate-200">
+    <div class="items-center w-full lg:w-auto hidden lg:flex text-gray-600 dark:text-slate-200" id="menu">
       <ul class="flex flex-col py-2 lg:py-0 lg:flex-row lg:self-center collapse w-full lg:w-auto collapsed">
         <li>
           <a class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
