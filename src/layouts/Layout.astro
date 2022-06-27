@@ -21,7 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="antialiased text-gray-900 dark:text-slate-400 tracking-tight bg-white dark:bg-slate-900">
+<body class="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-900">
   <Header />
   <slot />
   <Footer />
@@ -30,31 +30,10 @@
 </html>
 
 <style>
-  :root {
-    --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-    --font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
-    --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
-
-    --color-text: hsl(12, 5%, 4%);
-    --color-bg: #fff;
-    --color-border: hsl(17, 24%, 90%);
-
-    --astro-gradient: linear-gradient(0deg, #4F39FA, #DA62C4);
-  }
+  :root {}
 
   :global(body) {
     font-family: 'IBM Plex Sans', sans-serif;
-  }
-
-  :global(.text-gradient) {
-    font-weight: 900;
-    background-image: var(--astro-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 100% 200%;
-    background-position-y: 100%;
-    border-radius: 0.4rem;
-    animation: pulse 4s ease-in-out infinite;
   }
 
   :global(.btn, .btn-sm) {
@@ -77,3 +56,17 @@
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 </style>
+
+<script is:inline>
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle("dark");
+    localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light"
+  }
+  window.toggleDarkMode = toggleDarkMode
+
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+</script>

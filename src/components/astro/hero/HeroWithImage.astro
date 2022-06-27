@@ -1,31 +1,38 @@
 ---
+  const { } = Astro.props;
 ---
 
 <section class="relative">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <div class="pt-32 pb-12 md:pt-40 md:pb-20">
       <div class="text-center pb-12 md:pb-16">
-        <h1 class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4  ">Your
-          website with <span
-            class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500">Astro</span> + <span
-            class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500">Tailwind</span>
+        <h1 class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4  ">
+          Your website with
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500">Astro</span> +
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500">Tailwind</span>
         </h1>
         <div class="max-w-3xl mx-auto">
-          <p class="text-xl text-gray-600 mb-8  ">Lorem ipsum dolor sit amet, consectetur
+          <p class="text-xl text-gray-600 mb-8 dark:text-slate-400">
+            Lorem ipsum dolor sit amet, consectetur
             adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
           <div class="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center  ">
-            <div><a class="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0" href="#0">Get
-                started</a></div>
-            <div><a class="btn text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4" href="#0">Learn
-                more</a></div>
+            <div>
+              <a class="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0" href="#0">Get
+                started</a>
+            </div>
+            <div>
+              <a class="btn text-white bg-gray-900 hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700 w-full sm:w-auto sm:ml-4"
+                href="#0">Learn more</a>
+            </div>
           </div>
         </div>
       </div>
       <div>
         <div class="relative flex justify-center mb-8  ">
-          <div class="flex flex-col justify-center"><img class="mx-auto rounded-md" src="/images/hero-astro.jpg"
-              width="768" height="432" alt="Hero">
+          <div class="flex flex-col justify-center">
+            <img class="mx-auto rounded-md" src="/images/hero-astro.jpg" width="768" height="432" alt="Hero">
           </div>
         </div>
       </div>
