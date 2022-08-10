@@ -8,9 +8,13 @@ import image from "@astrojs/image";
 export default defineConfig({
   // Astro uses this full URL to generate your sitemap and canonical URLs in your final build
   site: "https://astrowind.vercel.app/",
-  integrations: [tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), sitemap({}), image()]
+  integrations: [
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+    sitemap({}),
+    image(),
+  ],
 });

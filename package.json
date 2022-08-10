@@ -1,19 +1,22 @@
 {
   "name": "@onwidget/astrowind",
   "description": "A template to make your website using Astro + Tailwind CSS.",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "private": true,
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build && subfont -ir --no-fallbacks --root dist",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "pretty": "prettier --write ."
   },
   "devDependencies": {
     "@astrojs/image": "^0.3.3",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
     "astro": "^1.0.0",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.5.0",
     "subfont": "^6.9.0"
   }
 }
