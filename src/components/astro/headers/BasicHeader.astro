@@ -44,11 +44,13 @@ const { } = Astro.props;
         <div class="hidden items-center mr-3 lg:flex">
           <button type="button"
             class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+            aria-label="Toggle between Dark and Light mode" 
             onclick="window.toggleDarkMode()">
             <IconSun />
           </button>
           <a href="https://github.com/onwidget/astrowind"
-            class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1">
+            class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1"
+            aria-label="Astrowind Github">
             <IconGithub />
           </a>
 
