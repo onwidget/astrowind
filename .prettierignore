@@ -1,0 +1,5 @@
+# Ignore artifacts:
+dist
+
+# Ignore package-lock.json
+package-lock.json
