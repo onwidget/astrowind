@@ -1,5 +1,6 @@
 ---
-  const { } = Astro.props;
+import { Picture } from '@astrojs/image/components';
+const { } = Astro.props;
 ---
 
 <section>
@@ -30,9 +31,10 @@
         </div>
       </div>
       <div>
-        <div class="relative flex justify-center mb-8  ">
+        <div class="relative flex justify-center mb-8">
           <div class="flex flex-col justify-center">
-            <img class="mx-auto rounded-md" src="/images/hero-astro.jpg" width="768" height="432" alt="Hero">
+            <Picture src={import('~/assets/hero-astro.jpg')} class="mx-auto rounded-md" widths={[400, 768]}
+              sizes="(max-width: 768px) 100vw, 768px" alt="Hero Image" aspectRatio="16:9" />
           </div>
         </div>
       </div>
