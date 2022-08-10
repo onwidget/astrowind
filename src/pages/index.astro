@@ -1,17 +1,20 @@
 ---
-	import Layout from '~/layouts/Layout.astro';
+import Layout from '~/layouts/Layout.astro';
 
-	import BasicCTA from '~/components/astro/ctas/BasicCTA.astro';
-	import BasicFeatures from '~/components/astro/features/BasicFeatures.astro';
-	import StepsFeatures from '~/components/astro/features/StepsFeatures.astro';
-	import HeroWithImage from '~/components/astro/hero/HeroWithImage.astro';
+import BasicCTA from '~/components/astro/ctas/BasicCTA.astro';
+import BasicFeatures from '~/components/astro/features/BasicFeatures.astro';
+import StepsFeatures from '~/components/astro/features/StepsFeatures.astro';
+import HeroWithImage from '~/components/astro/hero/HeroWithImage.astro';
 ---
 
-<Layout title="AstroWind — Your website with Astro + Tailwind CSS">
-	<main>
-		<HeroWithImage />
-		<BasicFeatures />
-		<StepsFeatures />
-		<BasicCTA />
-	</main>
+<Layout
+  title="AstroWind — Your website with Astro + Tailwind CSS"
+  description="Performance and accessible template to make your website using Astro + Tailwind CSS."
+>
+  <main>
+	<HeroWithImage />
+	<BasicFeatures />
+	<StepsFeatures />
+	<BasicCTA />
+  </main>
 </Layout>
