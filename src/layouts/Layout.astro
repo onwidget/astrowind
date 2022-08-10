@@ -28,49 +28,11 @@ const { title = "", description = "", withHeader = true } = Astro.props;
   </head>
 
   <body
-    class="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-900"
+    class="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-900 font-ibm-plex-sans"
   >
     <Header />
     <slot />
     <Footer />
-    <style>
-      :root {
-      }
-
-      :global(body) {
-        font-family: "IBM Plex Sans", sans-serif;
-      }
-
-      :global(.btn, .btn-sm) {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 0.25rem;
-        border-width: 1px;
-        border-color: transparent;
-        font-weight: 500;
-        line-height: 1.375;
-        transition-property: color, background-color, border-color, fill, stroke,
-          opacity, box-shadow, transform, filter, -webkit-text-decoration-color,
-          -webkit-backdrop-filter;
-        transition-property: color, background-color, border-color,
-          text-decoration-color, fill, stroke, opacity, box-shadow, transform,
-          filter, backdrop-filter;
-        transition-property: color, background-color, border-color,
-          text-decoration-color, fill, stroke, opacity, box-shadow, transform,
-          filter, backdrop-filter, -webkit-text-decoration-color,
-          -webkit-backdrop-filter;
-        transition-duration: 0.15s;
-        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        padding: 0.75rem 1.5rem;
-        --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04),
-          0 4px 6px -2px rgba(0, 0, 0, 0.02);
-        --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
-          0 4px 6px -2px var(--tw-shadow-color);
-        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-          var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-      }
-    </style>
 
     <script is:inline>
       function toggleDarkMode() {
