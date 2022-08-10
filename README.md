@@ -12,12 +12,12 @@ A template to make your website using Astro + Tailwind CSS.
 - Image optimization using [@astrojs/images](https://docs.astro.build/en/guides/integrations-guide/image/)
 - Automatically generate the project sitemap with [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
 - Optimize the use of fonts from Google Fonts in post build using [subfont](https://www.npmjs.com/package/subfont) npm package
-- Excellent score in Google Chrome Lighthouse report (build code):
+- Excellent score in Chrome Lighthouse report (build code):
   - 100 Performance
   - 100 Accessibility
   - 100 Best Practices
   - 100 SEO
-- Production ready PageSpeed Insights: [Test pagespeed for Astrowind Demo](https://pagespeed.web.dev/report?url=https%3A%2F%2Fastrowind.vercel.app%2F)
+- Production ready Google PageSpeed Insights
 
 
 <br>
