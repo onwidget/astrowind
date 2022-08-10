@@ -6,6 +6,10 @@ A template to make your website using Astro + Tailwind CSS.
 
 <br>
 
+[Live demo](https://astrowind.vercel.app/)
+
+<br>
+
 ## 🚀 Features
 
 - Excellent integration with Tailwind CSS via [@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)
