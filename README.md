@@ -15,7 +15,7 @@ A template to make your website using Astro + Tailwind CSS.
 - Excellent integration with Tailwind CSS via [@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)
 - Image optimization using [@astrojs/images](https://docs.astro.build/en/guides/integrations-guide/image/)
 - Automatically generate the project sitemap with [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
-- Optimize the use of fonts from Google Fonts in post build using [subfont](https://www.npmjs.com/package/subfont) npm package
+- Optimize the use of fonts from Google Fonts in build time using [subfont](https://www.npmjs.com/package/subfont) npm package
 - Excellent score in Chrome Lighthouse report (build code):
   - 100 Performance
   - 100 Accessibility
