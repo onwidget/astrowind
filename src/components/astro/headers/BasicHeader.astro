@@ -1,58 +1,79 @@
 ---
 import { IconSun, IconGithub, IconMenu } from "~/components/astro/icons";
-const { } = Astro.props;
+const {} = Astro.props;
 ---
 
 <header
-  class="fixed top-0 z-40 flex-none mx-auto w-full bg-white/90 dark:bg-transparent backdrop-blur-sm border-b dark:border-b-0">
+  class="fixed top-0 z-40 flex-none mx-auto w-full bg-white/90 dark:bg-transparent backdrop-blur-sm border-b dark:border-b-0"
+>
   <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4">
     <div class="flex justify-between">
       <a class="flex items-center" href="/">
-        <span class="self-center ml-2 text-2xl font-extrabold text-gray-900 whitespace-nowrap dark:text-white">AstroWind
+        <span class="self-center ml-2 text-2xl font-extrabold text-gray-900 whitespace-nowrap dark:text-white"
+          >AstroWind
         </span>
       </a>
       <div class="flex items-center md:hidden">
-        <button type="button"
+        <button
+          type="button"
           class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-          aria-label="Toggle between Dark and Light mode" onclick="window.toggleDarkMode()">
+          aria-label="Toggle between Dark and Light mode"
+          onclick="window.toggleDarkMode()"
+        >
           <IconSun class="w-6 h-6" />
         </button>
         <button
           class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-          aria-label="Toggle Menu" onclick="toggleMenu()">
+          aria-label="Toggle Menu"
+          onclick="toggleMenu()"
+        >
           <IconMenu class="w-6 h-6" />
         </button>
       </div>
     </div>
-    <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 dark:text-slate-200"
-      aria-label="Main navigation" id="menu">
+    <nav
+      class="items-center w-full md:w-auto hidden md:flex text-gray-600 dark:text-slate-200"
+      aria-label="Main navigation"
+      id="menu"
+    >
       <ul class="flex flex-col py-2 md:py-0 md:flex-row md:self-center collapse w-full md:w-auto collapsed">
         <li>
-          <a class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-            href="#">Pages
+          <a
+            class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            href="#"
+            >Pages
           </a>
         </li>
         <li>
-          <a class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-            href="#">Resources
+          <a
+            class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            href="#"
+            >Resources
           </a>
         </li>
         <li>
-          <a class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-            href="#">Blog
+          <a
+            class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            href="#"
+            >Blog
           </a>
         </li>
       </ul>
       <div class="md:self-center flex items-center mb-4 md:mb-0 collapse collapsed">
         <div class="hidden items-center mr-3 md:flex">
-          <button type="button"
+          <button
+            type="button"
             class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-            aria-label="Toggle between Dark and Light mode" onclick="window.toggleDarkMode()">
+            aria-label="Toggle between Dark and Light mode"
+            onclick="window.toggleDarkMode()"
+          >
             <IconSun />
           </button>
-          <a href="https://github.com/onwidget/astrowind"
+          <a
+            href="https://github.com/onwidget/astrowind"
             class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1"
-            aria-label="Astrowind Github">
+            aria-label="Astrowind Github"
+          >
             <IconGithub />
           </a>
 

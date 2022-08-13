@@ -2,28 +2,33 @@
 import { getPicture } from "@astrojs/image";
 
 const {
-	src,
-	alt,
-	sizes,
-	widths,
-	aspectRatio,
-	formats = ['avif', 'webp'],
-	loading = 'lazy',
-	decoding = 'async',
-    class :className = "",
-	...attrs
+  src,
+  alt,
+  sizes,
+  widths,
+  aspectRatio,
+  formats = ["avif", "webp"],
+  loading = "lazy",
+  decoding = "async",
+  class: className = "",
+  ...attrs
 } = Astro.props;
 
-const { image, sources } = await getPicture({ src, widths, formats, aspectRatio });
+const { image, sources } = await getPicture({
+  src,
+  widths,
+  formats,
+  aspectRatio,
+});
 ---
 
 <picture {...attrs}>
-	{sources.map((attrs) => <source {...attrs} {sizes} />)}
-	<img {...image} {loading} {decoding} {alt} class={className} />
+  {sources.map((attrs) => <source {...attrs} {sizes} />)}
+  <img {...image} {loading} {decoding} {alt} class={className} />
 </picture>
 
 <style>
-	img {
-		content-visibility: auto;
-	}
+  img {
+    content-visibility: auto;
+  }
 </style>
