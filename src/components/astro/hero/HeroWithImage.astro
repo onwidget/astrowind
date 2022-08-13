@@ -1,45 +1,36 @@
 ---
-import { Picture } from "@astrojs/image/components";
-const {} = Astro.props;
+import Picture from "~/components/astro/utils/Picture.astro";
+const { } = Astro.props;
 ---
 
 <section>
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <div class="py-12 md:py-20">
       <div class="text-center pb-12 md:pb-16">
-        <h1
-          class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4"
-        >
+        <h1 class="text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-4">
           Your website with
-          <span
-            class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500"
-            >Astro
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500">Astro
           </span> +
           <span
-            class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500"
-            >Tailwind
+            class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500 whitespace-nowrap">Tailwind
+            CSS
           </span>
         </h1>
         <div class="max-w-3xl mx-auto">
           <p class="text-xl text-gray-600 mb-8 dark:text-slate-400">
-            A template to make your website using Astro + Tailwind CSS. Ready to
-            start a new project and designed taking into account best practices
-            for SEO, great page speed, accessibility, dark mode, image
-            optimization and automatic sitemap generation.
+            AstroWind is a production ready template to start your new website using Astro + Tailwind CSS.
+            It has been designed following Best Practices, SEO, Accessibility, Dark Mode, great Page Speed, image
+            optimization, sitemap generation and more.
           </p>
           <div class="max-w-xs max-w-none flex justify-center">
             <div>
-              <a
-                class="btn text-white bg-blue-600 hover:bg-blue-700 mb-4 sm:mb-0"
-                href="#"
-                >Get started
+              <a class="btn text-white bg-blue-600 hover:bg-blue-800 mb-4 sm:mb-0"
+                href="https://github.com/onwidget/astrowind" target="_blank" rel="noopener">Get template
               </a>
             </div>
             <div>
-              <a
-                class="btn text-white bg-gray-900 hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700 ml-4"
-                href="#"
-                >Learn more
+              <a class="btn text-white bg-gray-900 hover:bg-gray-800 dark:bg-gray-700 dark:hover:bg-gray-800 ml-4"
+                href="#">Learn more
               </a>
             </div>
           </div>
@@ -48,14 +39,8 @@ const {} = Astro.props;
       <div>
         <div class="relative flex justify-center mb-8">
           <div class="flex flex-col justify-center">
-            <Picture
-              src={import("~/assets/images/hero.jpg")}
-              class="mx-auto rounded-md"
-              widths={[400, 768]}
-              sizes="(max-width: 768px) 100vw, 768px"
-              alt="Hero Image"
-              aspectRatio="16:9"
-            />
+            <Picture src={import("~/assets/images/hero.jpg")} class="mx-auto rounded-md bg-gray-400 dark:bg-slate-700"
+              widths={[400, 768]} sizes="(max-width: 767px) 400px, 768px" alt="Hero Image" aspectRatio="16:9" />
           </div>
         </div>
       </div>

@@ -1,20 +1,21 @@
 ---
-const {} = Astro.props;
+const { } = Astro.props;
 ---
 
 <section class="relative">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <div class="py-12 md:py-20">
-      <div class="max-w-3xl mx-auto text-center pb-12">
-        <h2
-          class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4"
-        >
-          Astro + Tailwind CSS
+      <div class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none">
+        <h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4">
+          <span>Astro</span> + <span class="whitespace-nowrap">Tailwind CSS</span>
         </h2>
         <p class="text-xl text-gray-600 dark:text-slate-400">
-          Arcu cursus vitae congue mauris rhoncus viverra nibh cras pulvinar
-          mattis blandit libero cursus mattis.
+          Be very surprised by these huge fake numbers you are seeing on this page. <br />Don't waste more time! :P
         </p>
+
+        <div class="mt-6"><a class="btn text-white bg-blue-600 hover:bg-blue-800 sm:mb-0"
+            href="https://github.com/onwidget/astrowind" target="_blank" rel="noopener">Get template
+          </a></div>
       </div>
     </div>
   </div>
