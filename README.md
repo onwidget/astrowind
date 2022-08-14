@@ -5,18 +5,18 @@
 
 A template to make your website using **Astro + Tailwind CSS**. Ready to start a new project and designed taking into account best practices
 
-**Features**
+🚀 **Features**
 
-- Excellent **integration with Tailwind CSS** via [@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)
-- Image optimization using [@astrojs/images](https://docs.astro.build/en/guides/integrations-guide/image/). Supports resizing images and encoding them to different image formats.
-- Automatically generate the project sitemap with [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
-- Optimize the use of fonts from Google Fonts at build time with [subfont](https://www.npmjs.com/package/subfont) package
-- Excellent score in Chrome Lighthouse reports (build code):
+- Excellent integration with **Tailwind CSS** via [@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)
+- **Image optimization** using [@astrojs/images](https://docs.astro.build/en/guides/integrations-guide/image/). Supports resizing images and encoding them to different image formats.
+- Automatically generate the **project sitemap** based on your routes with [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/).
+- **Optimize the use of fonts** from Google Fonts at build time with [subfont](https://www.npmjs.com/package/subfont) package
+- **Perfect score in Lighthouse** reports (build code):
   - 100 Performance
   - 100 Accessibility
   - 100 Best Practices
   - 100 SEO
-- Production ready Google PageSpeed Insights score
+- Production **ready PageSpeed Insights** score
 
 <br>
 
@@ -26,7 +26,7 @@ A template to make your website using **Astro + Tailwind CSS**. Ready to start a
 
 <br>
 
-## 🚀 Project Structure
+## 📗 Project Structure
 
 Inside AstroWind template, you'll see the following folders and files:
 
@@ -81,15 +81,18 @@ All commands are run from the root of the project, from a terminal:
 
 <br>
 
-## ⏳ Roadmap
+## 🚧 Roadmap
 
-- **Add blog**: Support for accessible, fast and SEO friendly blog
-- **Documentation**: Create detailed documentation with best practices and redesign tips
-- **More components**: Add more Tailwind components useful for most scenarios (Features, Contact, Call to Actions, Content, FAQs ...)
-- **More Examples**: Add commonly used example pages (Ex: About, Terms, Services...)
+- *Config*: Move specific configurations to a specialized file
+- *Project structure*: Reduce the complexity in the components folder and simplify the other folders to make it very easy to use.
+- *SEO*: Add support to easily manage SEO meta-tags (title, description, canonical, social sharing, ...)
+- *Blog*: Add support for fast, accessible, and SEO friendly blog
+- *More components*: Add more Tailwind components useful for most scenarios (Features, Contact, Call to Actions, Content, FAQs ...)
+- *More Examples*: Add commonly used example pages (Ex: About, Terms, Services...)
+- *Documentation*: Create detailed documentation with best practices and redesign tips
 
 <br>
 
 ## 👀 Want more?
 
-If you have any suggestions or find any bugs, feel free to open an issue or a pull request.
+If you have any suggestions or find any bugs, feel free to open an issue or create a pull request.
