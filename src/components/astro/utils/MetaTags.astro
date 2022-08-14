@@ -2,9 +2,9 @@
 import { getImage } from "@astrojs/image";
 
 const { src: defaultImage } = await getImage({
-  src: import("~/assets/images/hero.jpg"),
-  width: 768,
-  aspectRatio: "16:9",
+  src: import("~/assets/images/default.png"),
+  width: 1200,
+  height: 628
 });
 
 const {
