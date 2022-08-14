@@ -4,7 +4,7 @@ const {} = Astro.props;
 ---
 
 <header
-  class="fixed top-0 z-40 flex-none mx-auto w-full bg-white/90 dark:bg-transparent backdrop-blur-sm border-b dark:border-b-0"
+  class="fixed top-0 z-40 flex-none mx-auto w-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b dark:border-b-0"
 >
   <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4">
     <div class="flex justify-between">
@@ -36,7 +36,7 @@ const {} = Astro.props;
       aria-label="Main navigation"
       id="menu"
     >
-      <ul class="flex flex-col py-2 md:py-0 md:flex-row md:self-center collapse w-full md:w-auto collapsed">
+      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center collapse w-full md:w-auto collapsed text-xl md:text-base">
         <li>
           <a
             class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
@@ -56,6 +56,14 @@ const {} = Astro.props;
             class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
             href="#"
             >Blog
+          </a>
+        </li>
+        <li class="md:hidden">
+          <a
+            class="font-bold hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            href="https://github.com/onwidget/astrowind"
+            >
+           Github
           </a>
         </li>
       </ul>
