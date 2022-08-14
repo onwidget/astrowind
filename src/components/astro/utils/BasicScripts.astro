@@ -1,0 +1,25 @@
+---
+const {} = Astro.props;
+---
+
+<script is:inline>
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle("dark");
+    localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+  }
+  window.toggleDarkMode = toggleDarkMode;
+
+  if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+
+  function toggleMenu() {
+    document.getElementById("menu").classList.toggle("hidden");
+  }
+  window.toggleMenu = toggleMenu;
+</script>
