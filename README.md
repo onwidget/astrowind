@@ -3,16 +3,16 @@
 <img src="performance.png" align="right"
      alt="Performance" width="100" height="358">
 
-A template to make your website using **Astro + Tailwind CSS**. Ready to start a new project and designed taking into account best practices
+A template to make your website using **Astro + Tailwind CSS**. Ready to start a new project and designed taking into account best practices.
 
 🚀 **Features**
 
-- Excellent integration with **Tailwind CSS** via [@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)
-- Support for fast and **SEO friendly blog**
-- Automatic **RSS feed** generation with [@astrojs/rss](https://docs.astro.build/en/guides/rss/)
-- **Image optimization** using [@astrojs/images](https://docs.astro.build/en/guides/integrations-guide/image/).
+- Excellent integration with **Tailwind CSS** via [@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/).
+- Support for fast and **SEO friendly Blog**.
+- Automatic **RSS feed** generation with [@astrojs/rss](https://docs.astro.build/en/guides/rss/).
+- **Image optimization** using [@astrojs/images](https://docs.astro.build/en/guides/integrations-guide/image/). Supports resizing images and encoding them to different image formats.
 - Automatically generate the **project sitemap** based on your routes with [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/).
-- **Optimize the use of fonts** from Google Fonts at build time with [subfont](https://www.npmjs.com/package/subfont) package
+- **Optimize the use of fonts** from Google Fonts at build time with [subfont](https://www.npmjs.com/package/subfont) library.
 - **Production-ready** scores in Lighthouse and PageSpeed Insights reports:
   - 100 Performance, 100 Accessibility, 100 Best Practices, 100 SEO
 
