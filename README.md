@@ -38,22 +38,27 @@ Inside AstroWind template, you'll see the following folders and files:
 ├── src/
 │   ├── assets/
 │   │   ├── images/
-|   |   |   └── ...
 |   |   └── styles/
 |   |       └── base.css
+│   ├── data/
+|   |   └── posts/
+|   |       └── post-1.md
+|   |       └── ...
 │   ├── components/
-│   │   ├── astro/
-|   |   |   ├── headers/
-|   |   |   ├── footers/
-|   |   |   ├── heros/
-|   |   |   └── ...
-|   |   ├── react/
-|   |   └── ...
+│   │   ├── core/
+|   |   ├── icons/
+|   |   └── widgets/
+|   |       └── Header.astro
+|   |       └── Footer.astro
+|   |       └── ...
 │   ├── layouts/
-│   |   └── Layout.astro
-│   └── pages/
-│       ├── index.astro
-|       └── ...
+│   |   |── Base.astro
+│   |   └── ...
+│   ├── pages/
+│   |   ├── blog/
+│   |   ├── index.astro
+|   |   └── 404.astro
+│   └── utils/
 └── package.json
 └── ...
 ```
