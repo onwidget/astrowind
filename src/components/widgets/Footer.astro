@@ -4,6 +4,7 @@ import {
   IconInstagram,
   IconFacebook,
   IconArrowRight,
+  IconRSS,
 } from "~/components/icons";
 const {} = Astro.props;
 ---
@@ -196,7 +197,7 @@ const {} = Astro.props;
       </div>
     </div>
     <div class="md:flex md:items-center md:justify-between py-4 md:py-8">
-      <ul class="flex mb-4 md:order-1 md:ml-4 md:mb-0">
+      <ul class="flex mb-6 md:order-1 md:ml-4 md:mb-0">
         <li>
           <a
             class="flex justify-center items-center text-gray-600 hover:text-gray-700 dark:text-gray-400 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out dark:bg-gray-800 dark:text-gray-400 p-1.5"
@@ -222,6 +223,15 @@ const {} = Astro.props;
             href="#"
           >
             <IconFacebook />
+          </a>
+        </li>
+        <li class="ml-4">
+          <a
+            class="flex justify-center items-center text-gray-600 hover:text-gray-700 dark:text-gray-400 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out dark:bg-gray-800 dark:text-gray-400 p-1.5"
+            aria-label="Twitter"
+            href="#"
+          >
+            <IconRSS />
           </a>
         </li>
       </ul>
