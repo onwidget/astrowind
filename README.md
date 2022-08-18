@@ -8,15 +8,13 @@ A template to make your website using **Astro + Tailwind CSS**. Ready to start a
 🚀 **Features**
 
 - Excellent integration with **Tailwind CSS** via [@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)
-- **Image optimization** using [@astrojs/images](https://docs.astro.build/en/guides/integrations-guide/image/). Supports resizing images and encoding them to different image formats.
+- Support for fast and **SEO friendly blog**
+- Automatic **RSS feed** generation with [@astrojs/rss](https://docs.astro.build/en/guides/rss/)
+- **Image optimization** using [@astrojs/images](https://docs.astro.build/en/guides/integrations-guide/image/).
 - Automatically generate the **project sitemap** based on your routes with [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/).
 - **Optimize the use of fonts** from Google Fonts at build time with [subfont](https://www.npmjs.com/package/subfont) package
-- **Perfect score in Lighthouse** reports (build code):
-  - 100 Performance
-  - 100 Accessibility
-  - 100 Best Practices
-  - 100 SEO
-- Production **ready PageSpeed Insights** score
+- **Production-ready** scores in Lighthouse and PageSpeed Insights reports:
+  - 100 Performance, 100 Accessibility, 100 Best Practices, 100 SEO
 
 <br>
 
