@@ -89,10 +89,10 @@ All commands are run from the root of the project, from a terminal:
 ## 🚧 Roadmap
 
 - *Config*: Move specific configurations to a specialized file
-- *Project structure*: Reduce the complexity in the components folder and simplify the other folders to make it very easy to use.
-- *SEO*: Add support to easily manage SEO meta-tags (title, description, canonical, social sharing, ...)
-- *Blog*: Add support for fast, accessible, and SEO friendly blog
-- *More components*: Add more Tailwind components useful for most scenarios (Features, Contact, Call to Actions, Content, FAQs ...)
+- *Project structure*: ~~Reduce the complexity in the components folder and simplify the other folders to make it very easy to use.~~ (DONE! Testing)
+- *SEO*: ~~Add support to easily manage SEO meta-tags (title, description, canonical, social sharing, ...)~~ (DONE! Testing)
+- *Blog*: ~~Add support for fast, accessible, and SEO friendly blog~~ (DONE! Testing)
+- *More components*: ~~Add more Tailwind components useful for most scenarios (Features, Contact, Call to Actions, Content, FAQs ...)~~
 - *More Examples*: Add commonly used example pages (Ex: About, Terms, Services...)
 - *Documentation*: Create detailed documentation with best practices and redesign tips
 
