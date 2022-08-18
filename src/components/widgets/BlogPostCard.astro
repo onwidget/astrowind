@@ -1,0 +1,62 @@
+---
+import Picture from "~/components/core/Picture.astro";
+
+const { post } = Astro.props;
+
+const images = import.meta.glob("../../assets/images/*");
+const imageSrc =
+  typeof images[post.image] === "function"
+    ? (await images[post.image]())["default"]
+    : typeof post.image === "string"
+    ? post.image
+    : null;
+---
+
+<article
+  class="max-w-md mx-auto md:max-w-none grid md:grid-cols-2 gap-6 md:gap-8"
+>
+  <a class="relative block group" href="#0">
+    <div
+      class="relative h-0 pb-[56.25%] md:pb-[75%] md:h-80 lg:pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded shadow-lg"
+    >
+      <Picture
+        src={imageSrc}
+        class="absolute inset-0 w-full h-full object-cover mb-6 rounded shadow-lg"
+        widths={[400, 768]}
+        sizes="(max-width: 767px) 400px, 768px"
+        alt={post.description}
+        aspectRatio="1"
+      />
+    </div>
+  </a>
+  <div>
+    <header>
+      <h2 class="text-xl sm:text-2xl font-bold leading-tight mb-2">
+        <a
+          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
+          href={`/blog/${post.slug}`}
+        >
+          {post.title}
+        </a>
+      </h2>
+    </header>
+    <p class="text-md sm:text-lg flex-grow">
+      {post.excerpt || post.description}
+    </p>
+    <footer class="flex items-center mt-4">
+      <div>
+        <span class="text-gray-500 dark:text-slate-400">
+          <time datetime={""}>
+            {
+              new Date(post.pubDate).toLocaleDateString("en-us", {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })
+            }
+          </time>
+        </span>
+      </div>
+    </footer>
+  </div>
+</article>

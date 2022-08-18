@@ -1,15 +1,18 @@
 ---
-import { IconSun, IconGithub, IconMenu } from "~/components/astro/icons";
+import { IconSun, IconGithub, IconMenu } from "~/components/icons";
 const {} = Astro.props;
 ---
 
 <header
   class="fixed top-0 z-40 flex-none mx-auto w-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b dark:border-b-0"
 >
-  <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4">
+  <div
+    class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4"
+  >
     <div class="flex justify-between">
       <a class="flex items-center" href="/">
-        <span class="self-center ml-2 text-2xl font-extrabold text-gray-900 whitespace-nowrap dark:text-white"
+        <span
+          class="self-center ml-2 text-2xl font-extrabold text-gray-900 whitespace-nowrap dark:text-white"
           >AstroWind
         </span>
       </a>
@@ -36,7 +39,9 @@ const {} = Astro.props;
       aria-label="Main navigation"
       id="menu"
     >
-      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center collapse w-full md:w-auto collapsed text-xl md:text-base">
+      <ul
+        class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center collapse w-full md:w-auto collapsed text-xl md:text-base"
+      >
         <li>
           <a
             class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
@@ -54,7 +59,7 @@ const {} = Astro.props;
         <li>
           <a
             class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-            href="#"
+            href="/blog"
             >Blog
           </a>
         </li>
@@ -62,12 +67,14 @@ const {} = Astro.props;
           <a
             class="font-bold hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
             href="https://github.com/onwidget/astrowind"
-            >
-           Github
+          >
+            Github
           </a>
         </li>
       </ul>
-      <div class="md:self-center flex items-center mb-4 md:mb-0 collapse collapsed">
+      <div
+        class="md:self-center flex items-center mb-4 md:mb-0 collapse collapsed"
+      >
         <div class="hidden items-center mr-3 md:flex">
           <button
             type="button"

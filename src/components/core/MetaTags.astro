@@ -4,16 +4,16 @@ import { getImage } from "@astrojs/image";
 const { src: defaultImage } = await getImage({
   src: import("~/assets/images/default.png"),
   width: 1200,
-  height: 628
+  height: 628,
 });
 
 const {
   title = "AstroWind",
   description = "",
   image = defaultImage,
+  canonical,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const absoluteImageUrl = new URL(image, Astro.site);
 ---
 
@@ -23,7 +23,7 @@ const absoluteImageUrl = new URL(image, Astro.site);
 
 <title>{title}</title>
 <meta name="description" content={description} />
-<link rel="canonical" href={canonicalURL} />
+{canonical && <link rel="canonical" href={canonical} />}
 
 <!-- Google / Search Engine Tags -->
 <meta itemprop="name" content={title} />
@@ -31,23 +31,27 @@ const absoluteImageUrl = new URL(image, Astro.site);
 <meta itemprop="image" content={absoluteImageUrl} />
 
 <!-- Facebook Meta Tags -->
-<meta property="og:url" content={canonicalURL} />
+{canonical && <meta property="og:url" content={canonical} />}
 <meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={absoluteImageUrl} />
 
 <!-- Twitter Meta Tags -->
+{canonical && <meta name="twitter:url" content={canonical} />}
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content={canonicalURL} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={absoluteImageUrl} />
 
 <!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+<link
+  href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap"
+  rel="stylesheet"
+/>
 
 <!-- Google Site Verification -->
-<meta name="google-site-verification" content="orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M" />
+<meta
+  name="google-site-verification"
+  content="orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M"
+/>

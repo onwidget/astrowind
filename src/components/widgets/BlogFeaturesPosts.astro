@@ -1,0 +1,112 @@
+---
+import Picture from "~/components/core/Picture.astro";
+const {} = Astro.props;
+---
+
+<section class="px-4 py-16 mx-auto max-w-6xl lg:py-20">
+  <div class="flex flex-col mb-6 lg:justify-between lg:flex-row md:mb-8">
+    <h2
+      class="max-w-lg mb-2 font-sans text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:mb-5 group"
+    >
+      <span class="inline-block mb-1 sm:mb-4"
+        >Find out more content<br class="hidden md:block" /> in our Blog
+      </span>
+    </h2>
+    <p class="text-gray-700 dark:text-slate-400 lg:text-sm lg:max-w-md">
+      The blog will be used to display AstroWind documentation. Each new article
+      will be an important step that you will need to know to be an expert in
+      creating a website using Astro + Tailwind CSS The blog does not exist yet,
+      but very soon. Astro is a very interesting technology. Thanks.
+    </p>
+  </div>
+
+  <div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-4 -mb-6">
+    <div class="mb-6 transition">
+      <Picture
+        src={import("~/assets/images/steps.jpg")}
+        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+        widths={[400, 768]}
+        sizes="(max-width: 767px) 400px, 768px"
+        alt="Post 2 Image"
+        aspectRatio="16:9"
+      />
+      <h3 class="mb-2 text-xl font-bold leading-none sm:text-2xl">
+        <a
+          href="/blog/get-started-with-astrowind"
+          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
+          >Get started with AstroWind
+        </a>
+      </h3>
+      <p class="text-gray-700 dark:text-gray-400">
+        I'll be sure to note that in my log. Smooth as an android's bottom, eh,
+        Data? When has justice ever been as simple as a rule book?
+      </p>
+    </div>
+
+    <div class="mb-6 transition">
+      <Picture
+        src={import("~/assets/images/colors.jpg")}
+        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+        widths={[400, 768]}
+        sizes="(max-width: 767px) 400px, 768px"
+        alt="Post 1 Image"
+        aspectRatio="16:9"
+      />
+      <h3 class="mb-2 text-xl font-bold leading-none sm:text-2xl">
+        <a
+          href="/blog/how-to-customize-the-template"
+          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
+          >How to customize the template
+        </a>
+      </h3>
+      <p class="text-gray-700 dark:text-gray-400">
+        O for awesome, this chocka full cuzzie is as rip-off as a cracker.
+        Meanwhile, in behind the bicycle shed, Hercules Morse.
+      </p>
+    </div>
+
+    <div class="mb-6 transition">
+      <Picture
+        src={import("~/assets/images/tools.jpg")}
+        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+        widths={[400, 768]}
+        sizes="(max-width: 767px) 400px, 768px"
+        alt="Post 3 Image"
+        aspectRatio="16:9"
+      />
+      <h3 class="mb-2 text-xl font-bold leading-none sm:text-2xl">
+        <a
+          href="/blog/helpful-tools-and-resources-to-design"
+          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
+          >Helpful tools and resources to design
+        </a>
+      </h3>
+      <p class="text-gray-700 dark:text-gray-400">
+        Yolo ipsum dolor sit amet, consectetur adipiscing elit. Ut ac suscipit
+        leo. Carpe diem vulputate est nec commodo rutrum.
+      </p>
+    </div>
+
+    <div class="mb-6 transition">
+      <Picture
+        src={import("~/assets/images/hero.jpg")}
+        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+        widths={[400, 768]}
+        sizes="(max-width: 767px) 400px, 768px"
+        alt="Post 2 Image"
+        aspectRatio="16:9"
+      />
+      <h3 class="mb-2 text-xl font-bold leading-none sm:text-2xl">
+        <a
+          href="/blog/astrowind-template-in-depth"
+          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
+          >AstroWind template in depth
+        </a>
+      </h3>
+      <p class="text-gray-700 dark:text-gray-400">
+        I'll be sure to note that in my log. Smooth as an android's bottom, eh,
+        Data? When has justice ever been as simple as a rule book?
+      </p>
+    </div>
+  </div>
+</section>
