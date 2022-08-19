@@ -18,7 +18,7 @@ const load = async function () {
 
 let _posts;
 
-export const getAllPosts = async () => {
+export const getPosts = async () => {
   _posts = _posts || load();
 
   return await _posts;
