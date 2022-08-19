@@ -1,7 +1,7 @@
 # AstroWind Template
 
-<img src="performance.png" align="right"
-     alt="Performance" width="100" height="358">
+<img src="lighthouse-score.png" align="right"
+     alt="AstroWind Lighthouse Score" width="100" height="358">
 
 A template to make your website using **Astro + Tailwind CSS**. Ready to start a new project and designed taking into account best practices.
 
@@ -18,7 +18,7 @@ A template to make your website using **Astro + Tailwind CSS**. Ready to start a
 
 <br>
 
-<img src="./screenshot.png" alt="AstroWind Image">
+<img src="./screenshot.png" alt="AstroWind Theme Screenshot">
      
 [Live demo](https://astrowind.vercel.app/)
 
