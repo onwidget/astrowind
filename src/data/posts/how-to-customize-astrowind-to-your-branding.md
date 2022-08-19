@@ -1,8 +1,8 @@
 ---
 pubDate: "Aug 10 2022"
-title: "How to customize the template"
+title: "How to customize AstroWind template to suit your branding"
 description: "Sint sit cillum pariatur eiusmod nulla pariatur ipsum. Sit laborum anim qui mollit tempor pariatur nisi minim dolor. Aliquip et adipisicing sit sit fugiat"
-image: "../../assets/images/colors.jpg"
+image: "~/assets/images/colors.jpg"
 ---
 
 ## Congue justo vulputate nascetur convallis varius orci fringilla nulla pharetr

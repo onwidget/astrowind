@@ -1,8 +1,8 @@
 ---
 pubDate: "Aug 09 2022"
-title: "Helpful tools and resources to design"
-description: "Sint sit cillum pariatur eiusmod nulla pariatur ipsum. Sit laborum anim qui mollit tempor pariatur nisi minim dolor. Aliquip et adipisicing sit sit fugiat"
-image: "../../assets/images/tools.jpg"
+title: "Useful tools and resources to create a professional website"
+description: "Nibh senectus lacinia volutpat nostra taciti ac posuere, dictum ultricies dictumst luctus in vehicula, mus molestie venenatis penatibus ridiculus elementum. Phasellus sollicitudin dignissim parturient."
+image: "~/assets/images/tools.jpg"
 ---
 
 ## Magna nunc senectus torquent per fusce sapien ligula tempus cra
