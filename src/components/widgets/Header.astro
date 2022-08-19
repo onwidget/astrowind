@@ -1,5 +1,6 @@
 ---
 import { IconSun, IconGithub, IconMenu, IconRSS } from "~/components/icons";
+import Logo from "~/components/widgets/Logo.astro";
 const {} = Astro.props;
 ---
 
@@ -11,10 +12,7 @@ const {} = Astro.props;
   >
     <div class="flex justify-between">
       <a class="flex items-center" href="/">
-        <span
-          class="self-center ml-2 text-2xl font-extrabold text-gray-900 whitespace-nowrap dark:text-white"
-          >🚀 AstroWind
-        </span>
+        <Logo />
       </a>
       <div class="flex items-center md:hidden">
         <button
