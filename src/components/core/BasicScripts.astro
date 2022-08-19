@@ -28,7 +28,7 @@ const {} = Astro.props;
 
   window.onload = function () {
     attachEvent("[data-aw-toggle-menu]", "click", function (elem) {
-      elem.classList.toggle("menu-opened");
+      elem.classList.toggle("expanded");
       document.getElementById("menu").classList.toggle("hidden");
     });
 
@@ -38,5 +38,12 @@ const {} = Astro.props;
         ? "dark"
         : "light";
     });
+  };
+  window.onpageshow = function () {
+    const elem = document.querySelector("[data-aw-toggle-menu]");
+    if (elem) {
+      elem.classList.remove("expanded");
+    }
+    document.getElementById("menu").classList.add("hidden");
   };
 </script>

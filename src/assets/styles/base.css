@@ -8,10 +8,10 @@
   }
 }
 
-.menu-opened .line1 {
+[data-aw-toggle-menu].expanded .line1 {
   transform: rotate(-45deg) translate(-12px, 8px);
 }
 
-.menu-opened .line2 {
+[data-aw-toggle-menu].expanded .line2 {
   transform: rotate(45deg) translate(4px, -16px);
 }
