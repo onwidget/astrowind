@@ -3,23 +3,40 @@ const {} = Astro.props;
 ---
 
 <script is:inline>
-  function toggleDarkMode() {
-    document.documentElement.classList.toggle("dark");
-    localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
-  }
-  window.toggleDarkMode = toggleDarkMode;
-
   if (
     localStorage.theme === "dark" ||
-    (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
   ) {
     document.documentElement.classList.add("dark");
   } else {
     document.documentElement.classList.remove("dark");
   }
 
-  function toggleMenu() {
-    document.getElementById("menu").classList.toggle("hidden");
+  function attachEvent(selector, event, fn) {
+    const elem = document.querySelector(selector);
+    if (elem) {
+      elem.addEventListener(
+        event,
+        function () {
+          fn(elem);
+        },
+        false
+      );
+    }
   }
-  window.toggleMenu = toggleMenu;
+
+  window.onload = function () {
+    attachEvent("[data-aw-toggle-menu]", "click", function (elem) {
+      elem.classList.toggle("menu-opened");
+      document.getElementById("menu").classList.toggle("hidden");
+    });
+
+    attachEvent("[data-aw-toggle-color-scheme]", "click", function (elem) {
+      document.documentElement.classList.toggle("dark");
+      localStorage.theme = document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light";
+    });
+  };
 </script>

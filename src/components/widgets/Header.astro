@@ -4,7 +4,7 @@ const {} = Astro.props;
 ---
 
 <header
-  class="fixed top-0 z-40 flex-none mx-auto w-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b dark:border-b-0"
+  class="sticky top-0 z-40 flex-none mx-auto w-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b dark:border-b-0"
 >
   <div
     class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4"
@@ -21,14 +21,14 @@ const {} = Astro.props;
           type="button"
           class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
           aria-label="Toggle between Dark and Light mode"
-          onclick="window.toggleDarkMode()"
+          data-aw-toggle-color-scheme
         >
           <IconSun class="w-6 h-6" />
         </button>
         <button
-          class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+          class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition"
           aria-label="Toggle Menu"
-          onclick="toggleMenu()"
+          data-aw-toggle-menu
         >
           <IconMenu class="w-6 h-6" />
         </button>
@@ -98,9 +98,6 @@ const {} = Astro.props;
           >
             <IconGithub />
           </a>
-
-          <!-- <a class="inline-flex items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium  text-center ml-3 btn-sm" href="/login/">Get started
-          </a> -->
         </div>
       </div>
     </nav>

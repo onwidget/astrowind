@@ -1,9 +1,9 @@
 import rss from "@astrojs/rss";
 
 import { SITE } from "~/config";
-import { getAllPosts } from "~/utils/getAllPosts";
+import { getPosts } from "~/utils/getPosts";
 
-const posts = await getAllPosts();
+const posts = await getPosts();
 
 export const get = () =>
   rss({

@@ -1,0 +1,42 @@
+---
+import Picture from "~/components/core/Picture.astro";
+
+const { post } = Astro.props;
+---
+
+<section class="py-8 sm:py-16 lg:py-20 mx-auto">
+  <article>
+    <header>
+      <p class="max-w-3xl mx-auto text-center">
+        <time datetime={post.pubDate}>
+          {
+            new Date(post.pubDate).toLocaleDateString("en-us", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })
+          }
+        </time> ~ {Math.ceil(post.readingTime)} min
+      </p>
+      <h1
+        class="px-4 sm:px-6 max-w-3xl mx-auto text-center text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-6 md:mb-8"
+      >
+        {post.title}
+      </h1>
+
+      <Picture
+        src={post.image}
+        class="max-w-full lg:max-w-6xl mx-auto mt-4 mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
+        widths={[400, 768, 900]}
+        sizes="(max-width: 767px) 400px, (max-width: 900px) 768px, 900px"
+        alt={post.description}
+        aspectRatio="16:9"
+      />
+    </header>
+    <div
+      class="container mx-auto px-4 sm:px-6 max-w-3xl prose prose-lg lg:prose-xl dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md prose-img:shadow-lg mt-8"
+    >
+      <Fragment set:html={post.body} />
+    </div>
+  </article>
+</section>
