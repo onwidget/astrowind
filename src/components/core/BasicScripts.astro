@@ -14,15 +14,20 @@ const {} = Astro.props;
   }
 
   function attachEvent(selector, event, fn) {
-    const elem = document.querySelector(selector);
-    if (elem) {
-      elem.addEventListener(
-        event,
-        function () {
-          fn(elem);
-        },
-        false
-      );
+    const matches = document.querySelectorAll(selector);
+    console.log(matches);
+    if (matches && matches.length) {
+      console.log("Hello");
+      matches.forEach((elem) => {
+        console.log(elem);
+        elem.addEventListener(
+          event,
+          function () {
+            fn(elem);
+          },
+          false
+        );
+      });
     }
   }
 
