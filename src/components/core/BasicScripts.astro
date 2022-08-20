@@ -31,7 +31,7 @@ const {} = Astro.props;
   window.onload = function () {
     attachEvent("[data-aw-toggle-menu]", "click", function (elem) {
       elem.classList.toggle("expanded");
-      document.getElementById("menu").classList.toggle("hidden");
+      document.getElementById("menu")?.classList.toggle("hidden");
     });
 
     attachEvent("[data-aw-toggle-color-scheme]", "click", function (elem) {
@@ -46,6 +46,6 @@ const {} = Astro.props;
     if (elem) {
       elem.classList.remove("expanded");
     }
-    document.getElementById("menu").classList.add("hidden");
+    document.getElementById("menu")?.classList.add("hidden");
   };
 </script>
