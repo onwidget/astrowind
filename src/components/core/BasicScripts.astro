@@ -15,7 +15,6 @@ const {} = Astro.props;
 
   function attachEvent(selector, event, fn) {
     const matches = document.querySelectorAll(selector);
-    console.log(matches);
     if (matches && matches.length) {
       matches.forEach((elem) => {
         elem.addEventListener(
