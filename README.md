@@ -24,7 +24,7 @@ A template to make your website using **Astro + Tailwind CSS**. Ready to start a
 
 <br>
 
-## 📗 Project Structure
+## Project Structure
 
 Inside AstroWind template, you'll see the following folders and files:
 
@@ -40,24 +40,28 @@ Inside AstroWind template, you'll see the following folders and files:
 |   |       └── base.css
 │   ├── data/
 |   |   └── posts/
-|   |       └── post-1.md
+|   |       ├── post-slug-1.md
 |   |       └── ...
 │   ├── components/
 │   │   ├── core/
 |   |   ├── icons/
 |   |   └── widgets/
-|   |       └── Header.astro
-|   |       └── Footer.astro
+|   |       ├── Header.astro
+|   |       ├── Footer.astro
 |   |       └── ...
 │   ├── layouts/
-│   |   |── Base.astro
+│   |   |── BaseLayout.astro
 │   |   └── ...
 │   ├── pages/
 │   |   ├── blog/
+|   |   |   ├── [...page].astro
+|   |   |   └── [slug].astro
 │   |   ├── index.astro
-|   |   └── 404.astro
-│   └── utils/
-└── package.json
+|   |   ├── 404.astro
+|   |   └-- rss.xml.js
+│   ├── utils/
+│   └── config.mjs
+├── package.json
 └── ...
 ```
 
@@ -65,13 +69,13 @@ Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page
 
 There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-Any static assets, like images, can be placed in the `public/` directory if they do not require any transformation or in the assets folder if they are imported directly.
+Any static assets, like images, can be placed in the `public/` directory if they do not require any transformation or in the `assets/` directory if they are imported directly.
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
 <br>
 
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -84,7 +88,7 @@ All commands are run from the root of the project, from a terminal:
 
 <br>
 
-## 🚧 Roadmap
+## Roadmap
 
 - *Config*: Move specific configurations to a specialized file
 - *Project structure*: ~~Reduce the complexity in the components folder and simplify the other folders to make it very easy to use.~~ (DONE! Testing)
@@ -96,6 +100,6 @@ All commands are run from the root of the project, from a terminal:
 
 <br>
 
-## 👀 Want more?
+## Want more?
 
-If you have any suggestions or find any bugs, feel free to open an issue or create a pull request.
+If you have any suggestions or find any bugs, feel free to [open an issue](https://github.com/onwidget/astrowind/issues) or [create a pull request](https://github.com/onwidget/astrowind/pulls).
