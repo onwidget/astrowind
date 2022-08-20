@@ -14,12 +14,6 @@ const {
   ...attrs
 } = Astro.props;
 
-// const { image, sources = [] } =
-//   !src ? { image: {}}
-//     : (typeof src === "string"
-//       ? { image: { src } }
-//       :
-
 let picture = null;
 try {
   picture = await getPicture({
