@@ -17,9 +17,7 @@ const {} = Astro.props;
     const matches = document.querySelectorAll(selector);
     console.log(matches);
     if (matches && matches.length) {
-      console.log("Hello");
       matches.forEach((elem) => {
-        console.log(elem);
         elem.addEventListener(
           event,
           function () {
