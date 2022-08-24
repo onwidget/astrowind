@@ -118,12 +118,13 @@ Clone this repository on own GitHub account and deploy to Vercel:
 
 <br>
 
-## Roadmap
+## Roadmap 1.0
 
-- *Config*: Move specific configurations to a specialized file
 - *Project*:
   - **(DONE)** Reduce the complexity in the components folder and simplify the other folders to make it very easy to use.
   - Create simple and clear strategy to get template updates
+  - Move specific configurations to a specialized file
+  - Fix some bugs with prettier
 - *SEO*:
   - **(DONE)** Add support to easily manage SEO meta-tags (title, description, canonical, social sharing, ...)
 - *Blog*:
