@@ -125,6 +125,7 @@ Clone this repository on own GitHub account and deploy to Vercel:
   - Create simple and clear strategy to get template updates
   - Move specific configurations to a specialized file
   - Fix some bugs with prettier
+  - Make the use of images clean and intuitive
 - *SEO*:
   - **(DONE)** Add support to easily manage SEO meta-tags (title, description, canonical, social sharing, ...)
 - *Blog*:
