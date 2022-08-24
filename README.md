@@ -7,14 +7,14 @@ A template to make your website using **Astro + Tailwind CSS**. Ready to start a
 
 **Features**
 
-- Integration with **Tailwind CSS** via [@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)
-- Support for **fast and SEO friendly Blog** with automatic **RSS feed** with [@astrojs/rss](https://docs.astro.build/en/guides/rss/).
-- **Image optimization** using [@astrojs/images](https://docs.astro.build/en/guides/integrations-guide/image/).
-- Generation of **project sitemap** based on your routes with [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/).
-- It supports **Dark mode**
-- **Open Graph tags** for social media sharing
-- **Fonts optimization** build time with [subfont](https://www.npmjs.com/package/subfont) library.
-- **Production-ready** scores in [Lighthouse](https://web.dev/measure/) and [PageSpeed Insights](https://pagespeed.web.dev/) reports
+- ✅ Integration with **Tailwind CSS** via [@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)
+- ✅ Support for **fast and SEO friendly Blog** with automatic **RSS feed** with [@astrojs/rss](https://docs.astro.build/en/guides/rss/).
+- ✅ **Image optimization** using [@astrojs/images](https://docs.astro.build/en/guides/integrations-guide/image/).
+- ✅ Generation of **project sitemap** based on your routes with [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/).
+- ✅ It supports **Dark mode**
+- ✅ **Open Graph tags** for social media sharing
+- ✅ **Fonts optimization** build time with [subfont](https://www.npmjs.com/package/subfont) library.
+- ✅ **Production-ready** scores in [Lighthouse](https://web.dev/measure/) and [PageSpeed Insights](https://pagespeed.web.dev/) reports
 
 <br>
 
