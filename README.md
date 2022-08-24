@@ -118,7 +118,7 @@ Clone this repository on own GitHub account and deploy to Vercel:
 
 <br>
 
-## Roadmap 1.0
+## Roadmap v1.0
 
 - *Project*:
   - **(DONE)** Reduce the complexity in the components folder and simplify the other folders to make it very easy to use.
