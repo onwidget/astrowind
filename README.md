@@ -121,10 +121,21 @@ Clone this repository on own GitHub account and deploy to Vercel:
 ## Roadmap
 
 - *Config*: Move specific configurations to a specialized file
-- *Project structure*: ~~Reduce the complexity in the components folder and simplify the other folders to make it very easy to use.~~ (DONE! Testing)
-- *SEO*: ~~Add support to easily manage SEO meta-tags (title, description, canonical, social sharing, ...)~~ (DONE! Testing)
-- *Blog*: ~~Add support for fast, accessible, and SEO friendly blog~~ (DONE! Testing)
-- *More components*: ~~Add more Tailwind components useful for most scenarios (Features, Contact, Call to Actions, Content, FAQs ...)~~
+- *Project*:
+  - **(DONE)** Reduce the complexity in the components folder and simplify the other folders to make it very easy to use.
+  - Create simple and clear strategy to get template updates
+- *SEO*:
+  - **(DONE)** Add support to easily manage SEO meta-tags (title, description, canonical, social sharing, ...)
+- *Blog*:
+  - **(DONE)** Support to Fast and SEO friendly blog
+  - Improve blog design
+  - Add support for categories and tags.
+  - Create component or utilities for latest posts
+  - Create component or utilities for related posts
+  - Add more *shortcodes* or *embed* functions to posts in Markdown: (eg video, tweet...)
+- *More widgets*:
+  - ~~Add more Tailwind components useful for most scenarios (Features, Contact, Call to Actions, Content, FAQs ...)~~
+  - Create external library or place with useful Tailwind components
 - *More Examples*: Add commonly used example pages (Ex: About, Terms, Services...)
 - *Documentation*: Create detailed documentation with best practices and redesign tips
 
@@ -132,7 +143,8 @@ Clone this repository on own GitHub account and deploy to Vercel:
 
 ## Contributing
 
-If you have any suggestions or find any bugs, feel free to open an issue or create a pull request.
+If you have any idea, suggestions or find any bugs, feel free to open a discussion, an issue or create a pull request. 
+That would be very useful for all of us and we would be happy to listen and take action.
 
 ## License
 
