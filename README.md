@@ -3,9 +3,9 @@
 <img src="lighthouse-score.png" align="right"
      alt="AstroWind Lighthouse Score" width="100" height="358">
 
-A template to make your website using **Astro + Tailwind CSS**. Ready to start a new project and designed taking into account best practices.
+**AstroWind** is a free and opensource template to make your website using **Astro + Tailwind CSS**. Ready to start a new project and designed taking into account best practices.
 
-**Features**
+Features:
 
 - ✅ Integration with **Tailwind CSS** via [@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)
 - ✅ Support for **fast and SEO friendly Blog** with automatic **RSS feed** with [@astrojs/rss](https://docs.astro.build/en/guides/rss/).
