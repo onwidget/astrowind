@@ -7,20 +7,20 @@ A template to make your website using **Astro + Tailwind CSS**. Ready to start a
 
 **Features**
 
-- Excellent integration with **Tailwind CSS** via [@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/).
-- Support for fast and **SEO friendly Blog**.
-- Automatic **RSS feed** generation with [@astrojs/rss](https://docs.astro.build/en/guides/rss/).
-- **Image optimization** using [@astrojs/images](https://docs.astro.build/en/guides/integrations-guide/image/). Supports resizing images and encoding them to different image formats.
-- Automatically generate the **project sitemap** based on your routes with [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/).
-- **Optimize the use of fonts** from Google Fonts at build time with [subfont](https://www.npmjs.com/package/subfont) library.
-- **Production-ready** scores in Lighthouse and PageSpeed Insights reports:
-  - 100 Performance, 100 Accessibility, 100 Best Practices, 100 SEO
+- Integration with **Tailwind CSS** via [@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)
+- Support for **fast and SEO friendly Blog** with automatic **RSS feed** with [@astrojs/rss](https://docs.astro.build/en/guides/rss/).
+- **Image optimization** using [@astrojs/images](https://docs.astro.build/en/guides/integrations-guide/image/).
+- Generation of **project sitemap** based on your routes with [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/).
+- It supports **Dark mode**
+- **Open Graph tags** for social media sharing
+- **Fonts optimization** build time with [subfont](https://www.npmjs.com/package/subfont) library.
+- **Production-ready** scores in [Lighthouse](https://web.dev/measure/) and [PageSpeed Insights](https://pagespeed.web.dev/) reports
 
 <br>
 
 <img src="./screenshot.png" alt="AstroWind Theme Screenshot">
-     
-[Live demo](https://astrowind.vercel.app/)
+
+[Live demo](https://astrowind.vercel.app/) 
 
 <br>
 
@@ -71,6 +71,8 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory if they do not require any transformation or in the `assets/` directory if they are imported directly.
 
+[![Edit AstroWind on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/onwidget/astrowind/tree/main)
+
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
 <br>
@@ -88,6 +90,30 @@ All commands are run from the root of the project, from a terminal:
 
 <br>
 
+## Deploy
+
+### Deploy to production (manual)
+
+You can create an optimized production build with:
+
+```shell
+npm run build
+```
+
+Now, your blog is ready to be deployed. All generated files are located at
+`dist` folder, which you can deploy the folder to any hosting service you
+prefer.
+
+<br>
+
+### Deploy to Netlify
+
+Clone this repository on own GitHub account and deploy to Netlify:
+
+[![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/onwidget/astrowind)
+
+<br>
+
 ## Roadmap
 
 - *Config*: Move specific configurations to a specialized file
@@ -100,6 +126,10 @@ All commands are run from the root of the project, from a terminal:
 
 <br>
 
-## Want more?
+## Contributing
 
-If you have any suggestions or find any bugs, feel free to [open an issue](https://github.com/onwidget/astrowind/issues) or [create a pull request](https://github.com/onwidget/astrowind/pulls).
+If you have any suggestions or find any bugs, feel free to open an issue or create a pull request.
+
+## License
+
+**AstroWind** is licensed under the MIT license — see the [LICENSE](https://github.com/onwidget/astrowind/blob/main/LICENSE) file for details.
