@@ -1,13 +1,13 @@
 ---
 import { SITE } from "~/config.mjs";
-import { getPosts } from "~/utils/getPosts";
+import { fetchPosts } from "~/utils/fetchPosts";
 import { findImage } from "~/utils/findImage";
 
 import Layout from "~/layouts/PageLayout.astro";
 import BlogPost from "~/components/widgets/BlogPost.astro";
 
 export async function getStaticPaths() {
-  const posts = await getPosts();
+  const posts = await fetchPosts();
 
   return posts.map((post) => ({
     params: { slug: post.slug },

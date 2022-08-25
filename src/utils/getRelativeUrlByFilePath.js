@@ -1,10 +1,11 @@
-import * as url from "url";
+import path from "path";
+import { getProjectRootDir } from "./getProjectRootDir";
 
-const __src = url.fileURLToPath(new URL("../", import.meta.url));
+const __srcFolder = path.join(getProjectRootDir(), "/src");
 
 export const getRelativeUrlByFilePath = (filepath) => {
   if (filepath) {
-    return "/" + filepath.substring(__src.length);
+    return filepath.replace(__srcFolder, "");
   }
 
   return null;

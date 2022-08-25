@@ -2,12 +2,12 @@
 import Layout from "~/layouts/PageLayout.astro";
 
 import { SITE } from "~/config.mjs";
-import { getPosts } from "~/utils/getPosts";
+import { fetchPosts } from "~/utils/fetchPosts";
 
 import BlogList from "~/components/widgets/BlogList.astro";
 
 export async function getStaticPaths({ paginate }) {
-  const posts = await getPosts();
+  const posts = await fetchPosts();
 
   return paginate(posts, {
     pageSize: SITE.postsPerPage,

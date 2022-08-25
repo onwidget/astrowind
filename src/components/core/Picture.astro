@@ -16,7 +16,7 @@ const {
 
 let picture = null;
 try {
-  picture = await getPicture({
+  picture = src && await getPicture({
     src,
     widths,
     formats,
@@ -24,7 +24,6 @@ try {
   })
 }
 catch (e) {
-  console.log(e);
 }
 
 const { image = {}, sources = [] } = picture || {}
