@@ -1,6 +1,6 @@
 import rss from "@astrojs/rss";
 
-import { SITE } from "~/config";
+import { SITE } from "~/config.mjs";
 import { getPosts } from "~/utils/getPosts";
 
 const posts = await getPosts();
