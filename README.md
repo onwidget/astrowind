@@ -150,4 +150,4 @@ That would be very useful for all of us and we would be happy to listen and take
 
 ## License
 
-**AstroWind** is licensed under the MIT license — see the [LICENSE](https://github.com/onwidget/astrowind/blob/main/LICENSE) file for details.
+**AstroWind** is licensed under the MIT license — see the [LICENSE](https://github.com/onwidget/astrowind/blob/main/LICENSE.md) file for details.
