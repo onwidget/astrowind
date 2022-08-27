@@ -20,11 +20,36 @@
 
 <img src="./screenshot.png" alt="AstroWind Theme Screenshot">
 
-[Live demo](https://astrowind.vercel.app/) 
+<br>
+
+<details open="open">
+<summary>Table of Contents</summary>
+
+- [Demo](#demo)
+- [Getting started](#getting-started)
+  - [Project structure](#project-structure)
+  - [Commands](#commands)
+  - [Deploy](#deploy)
+- [Roadmap](#roadmap)
+- [Frequently Asked Questions](#frequently-asked-questions)
+- [Contributing](#contributing)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
+
+</details>
 
 <br>
 
-## Project Structure
+## Demo
+
+[🏠 astrowind.vercel.app](https://astrowind.vercel.app/) 
+
+<br>
+
+
+## Getting started
+
+### Project structure
 
 Inside AstroWind template, you'll see the following folders and files:
 
@@ -76,7 +101,7 @@ Any static assets, like images, can be placed in the `public/` directory if they
 
 <br>
 
-## Commands
+### Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -89,9 +114,9 @@ All commands are run from the root of the project, from a terminal:
 
 <br>
 
-## Deploy
+### Deploy
 
-### Deploy to production (manual)
+#### Deploy to production (manual)
 
 You can create an optimized production build with:
 
@@ -103,13 +128,17 @@ Now, your website is ready to be deployed. All generated files are located at
 `dist` folder, which you can deploy the folder to any hosting service you
 prefer.
 
-### Deploy to Netlify
+<br>
+
+#### Deploy to Netlify
 
 Clone this repository on own GitHub account and deploy to Netlify:
 
 [![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/onwidget/astrowind)
 
-### Deploy to Vercel
+<br>
+
+#### Deploy to Vercel
 
 Clone this repository on own GitHub account and deploy to Vercel:
 
@@ -117,7 +146,7 @@ Clone this repository on own GitHub account and deploy to Vercel:
 
 <br>
 
-## Roadmap v1.0
+## Roadmap
 
 - *Project*:
   - **(DONE)** Reduce the complexity in the components folder and simplify the other folders to make it very easy to use.
@@ -142,11 +171,24 @@ Clone this repository on own GitHub account and deploy to Vercel:
 
 <br>
 
+## Frequently Asked Questions
+
+- 
+- 
+- 
+
+
+<br>
+
 ## Contributing
 
 If you have any idea, suggestions or find any bugs, feel free to open a discussion, an issue or create a pull request. 
 That would be very useful for all of us and we would be happy to listen and take action.
 
+## Acknowledgements
+
+Initially created by [onWidget](https://onwidget.com) and maintained by a community of [contributors](https://github.com/onwidget/astrowind/graphs/contributors).
+
 ## License
 
-**AstroWind** is licensed under the MIT license — see the [LICENSE](https://github.com/onwidget/astrowind/blob/main/LICENSE) file for details.
+**AstroWind** is licensed under the MIT license — see the [LICENSE](https://github.com/onwidget/astrowind/blob/main/LICENSE.md) file for details.
