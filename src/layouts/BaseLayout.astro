@@ -9,14 +9,14 @@ const { meta = {} } = Astro.props;
 
 <!DOCTYPE html>
 <html lang="en" class="motion-safe:scroll-smooth 2xl:text-[24px]">
-  <head>
-    <MetaTags {...meta} />
-  </head>
 
-  <body
-    class="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-900"
-  >
-    <slot />
-    <BasicScripts />
-  </body>
+<head>
+  <MetaTags {...meta} />
+</head>
+
+<body class="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-900">
+  <slot />
+  <BasicScripts />
+</body>
+
 </html>

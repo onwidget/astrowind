@@ -7,8 +7,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build && subfont -ir --no-fallbacks --silent --root dist",
-    "preview": "astro preview",
-    "pretty": "prettier --write ."
+    "preview": "astro preview"
   },
   "devDependencies": {
     "@astrojs/image": "^0.3.3",
@@ -18,8 +17,6 @@
     "@tailwindcss/typography": "^0.5.4",
     "astro": "^1.0.0",
     "astro-icon": "^0.7.3",
-    "prettier": "^2.7.1",
-    "prettier-plugin-astro": "^0.5.0",
     "reading-time": "^1.5.0",
     "subfont": "^6.9.0"
   }
