@@ -24,14 +24,7 @@ const canonical = post.canonical || new URL(`blog/${post.slug}`, Astro.site);
 const image = await findImage(post.image);
 ---
 
-<Layout
-  meta={{
-    title,
-    description,
-    canonical,
-    image,
-  }}
->
+<Layout meta={{ title, description, canonical, image, }}>
   <main>
     <BlogPost post={{ ...post, image }} />
   </main>

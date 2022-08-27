@@ -1,15 +1,12 @@
 ---
 import Picture from "~/components/core/Picture.astro";
-const {} = Astro.props;
+const { } = Astro.props;
 ---
 
 <section class="px-4 py-16 mx-auto max-w-6xl lg:py-20">
   <div class="flex flex-col mb-6 lg:justify-between lg:flex-row md:mb-8">
-    <h2
-      class="max-w-lg mb-2 font-sans text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:mb-5 group"
-    >
-      <span class="inline-block mb-1 sm:mb-4"
-        >Find out more content<br class="hidden md:block" /> in our Blog
+    <h2 class="max-w-lg mb-2 font-sans text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:mb-5 group">
+      <span class="inline-block mb-1 sm:mb-4">Find out more content<br class="hidden md:block" /> in our Blog
       </span>
     </h2>
     <p class="text-gray-700 dark:text-slate-400 lg:text-sm lg:max-w-md">
@@ -22,18 +19,13 @@ const {} = Astro.props;
 
   <div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-4 -mb-6">
     <div class="mb-6 transition">
-      <Picture
-        src={import("~/assets/images/steps.jpg")}
-        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-        widths={[400]}
-        alt="Post 2 Image"
-        aspectRatio="16:9"
-      />
+      <Picture src={import("~/assets/images/steps.jpg")}
+        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700" widths={[400]}
+        alt="Post 2 Image" aspectRatio="16:9" />
       <h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl">
-        <a
-          href="/blog/get-started-website-with-astro-tailwind-css"
-          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
-          >Get started with AstroWind to create a website using Astro and
+        <a href="/blog/get-started-website-with-astro-tailwind-css"
+          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200">Get
+          started with AstroWind to create a website using Astro and
           Tailwind CSS
         </a>
       </h3>
@@ -45,18 +37,13 @@ const {} = Astro.props;
     </div>
 
     <div class="mb-6 transition">
-      <Picture
-        src={import("~/assets/images/colors.jpg")}
-        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-        widths={[400]}
-        alt="Post 1 Image"
-        aspectRatio="16:9"
-      />
+      <Picture src={import("~/assets/images/colors.jpg")}
+        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700" widths={[400]}
+        alt="Post 1 Image" aspectRatio="16:9" />
       <h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl">
-        <a
-          href="/blog/how-to-customize-astrowind-to-your-brand"
-          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
-          >How to customize AstroWind template to suit your branding
+        <a href="/blog/how-to-customize-astrowind-to-your-brand"
+          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200">How
+          to customize AstroWind template to suit your branding
         </a>
       </h3>
       <p class="text-gray-700 dark:text-gray-400">
@@ -67,18 +54,13 @@ const {} = Astro.props;
     </div>
 
     <div class="mb-6 transition">
-      <Picture
-        src={import("~/assets/images/tools.jpg")}
-        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-        widths={[400]}
-        alt="Post 3 Image"
-        aspectRatio="16:9"
-      />
+      <Picture src={import("~/assets/images/tools.jpg")}
+        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700" widths={[400]}
+        alt="Post 3 Image" aspectRatio="16:9" />
       <h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl">
-        <a
-          href="/blog/useful-resources-to-create-websites"
-          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
-          >Useful tools and resources to create a professional website
+        <a href="/blog/useful-resources-to-create-websites"
+          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200">Useful
+          tools and resources to create a professional website
         </a>
       </h3>
       <p class="text-gray-700 dark:text-gray-400">
@@ -89,18 +71,13 @@ const {} = Astro.props;
     </div>
 
     <div class="mb-6 transition">
-      <Picture
-        src={import("~/assets/images/hero.jpg")}
-        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-        widths={[400]}
-        alt="Post 2 Image"
-        aspectRatio="16:9"
-      />
+      <Picture src={import("~/assets/images/hero.jpg")}
+        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700" widths={[400]}
+        alt="Post 2 Image" aspectRatio="16:9" />
       <h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl">
-        <a
-          href="/blog/astrowind-template-in-depth"
-          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
-          >AstroWind template in depth
+        <a href="/blog/astrowind-template-in-depth"
+          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200">AstroWind
+          template in depth
         </a>
       </h3>
       <p class="text-gray-700 dark:text-gray-400">

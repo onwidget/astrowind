@@ -2,11 +2,11 @@
   "prettier.documentSelectors": ["**/*.astro"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[astro]": {
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

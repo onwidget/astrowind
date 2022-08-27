@@ -18,9 +18,8 @@ const { page } = Astro.props;
 
 const currentPage = page.currentPage ?? 1;
 
-const title = `Blog ${currentPage > 1 ? `— Page ${currentPage} ` : ""}— ${
-  SITE.name
-}`;
+const title = `Blog ${currentPage > 1 ? `— Page ${currentPage} ` : ""}— ${SITE.name
+  }`;
 const description = "News and step-by-step guides about AstroWind";
 const canonical = new URL(page.url.current, Astro.site);
 ---
