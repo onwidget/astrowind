@@ -5,13 +5,19 @@ export const getNormalizedPost = async (post) => {
 
   return {
     pubDate: frontmatter.pubDate,
+
+    canonical: frontmatter.canonical,
+    slug: file.split("/").pop().split(".").shift(),
+
     title: frontmatter.title,
     description: frontmatter.description,
-    excerpt: frontmatter.excerpt,
     body: compiledContent(),
     image: frontmatter.image,
+
+    excerpt: frontmatter.excerpt,
     authors: frontmatter.authors,
-    slug: file.split("/").pop().split(".").shift(),
+    category: frontmatter.category,
+    tags: frontmatter.tags,
     readingTime: Math.ceil(getReadingTime(rawContent()).minutes),
   };
 };

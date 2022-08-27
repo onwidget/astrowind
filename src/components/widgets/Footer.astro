@@ -1,11 +1,6 @@
 ---
-import {
-  IconTwitter,
-  IconInstagram,
-  IconFacebook,
-  IconArrowRight,
-  IconRSS,
-} from "~/components/icons";
+import { Icon } from "astro-icon";
+
 const {} = Astro.props;
 ---
 
@@ -186,7 +181,8 @@ const {} = Astro.props;
                     class="absolute inset-0 right-auto w-px -ml-px my-2 bg-gray-300 dark:bg-slate-600"
                     aria-hidden="true"></span>
 
-                  <IconArrowRight
+                  <Icon
+                    name="tabler:arrow-right"
                     class="w-5 h-5 text-blue-600 mx-3 flex-shrink-0"
                   />
                 </button>
@@ -204,7 +200,7 @@ const {} = Astro.props;
             aria-label="Twitter"
             href="#"
           >
-            <IconTwitter />
+            <Icon name="tabler:brand-twitter" class="w-5 h-5" />
           </a>
         </li>
         <li class="ml-4">
@@ -213,7 +209,7 @@ const {} = Astro.props;
             aria-label="Instagram"
             href="#"
           >
-            <IconInstagram />
+            <Icon name="tabler:brand-instagram" class="w-5 h-5" />
           </a>
         </li>
         <li class="ml-4">
@@ -222,7 +218,7 @@ const {} = Astro.props;
             aria-label="Facebook"
             href="#"
           >
-            <IconFacebook />
+            <Icon name="tabler:brand-facebook" class="w-5 h-5" />
           </a>
         </li>
         <li class="ml-4">
@@ -231,7 +227,7 @@ const {} = Astro.props;
             aria-label="Twitter"
             href="/rss.xml"
           >
-            <IconRSS />
+            <Icon name="tabler:rss" class="w-5 h-5" />
           </a>
         </li>
       </ul>

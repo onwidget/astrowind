@@ -1,6 +1,7 @@
 ---
-import { IconSun, IconGithub, IconMenu, IconRSS } from "~/components/icons";
+import { Icon } from "astro-icon";
 import Logo from "~/components/widgets/Logo.astro";
+
 const {} = Astro.props;
 ---
 
@@ -21,14 +22,14 @@ const {} = Astro.props;
           aria-label="Toggle between Dark and Light mode"
           data-aw-toggle-color-scheme
         >
-          <IconSun class="w-6 h-6" />
+          <Icon name="tabler:sun" class="w-6 h-6" />
         </button>
         <button
           class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition"
           aria-label="Toggle Menu"
           data-aw-toggle-menu
         >
-          <IconMenu class="w-6 h-6" />
+          <Icon name="tabler:menu" class="w-6 h-6" />
         </button>
       </div>
     </div>
@@ -80,21 +81,21 @@ const {} = Astro.props;
             aria-label="Toggle between Dark and Light mode"
             data-aw-toggle-color-scheme
           >
-            <IconSun />
+            <Icon name="tabler:sun" class="w-5 h-5" />
           </button>
           <a
             class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
             aria-label="RSS Feed"
             href="/rss.xml"
           >
-            <IconRSS />
+            <Icon name="tabler:rss" class="w-5 h-5" />
           </a>
           <a
             href="https://github.com/onwidget/astrowind"
             class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1"
             aria-label="Astrowind Github"
           >
-            <IconGithub />
+            <Icon name="tabler:brand-github" class="w-5 h-5" />
           </a>
         </div>
       </div>

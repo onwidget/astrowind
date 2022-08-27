@@ -44,7 +44,6 @@ Inside AstroWind template, you'll see the following folders and files:
 |   |       └── ...
 │   ├── components/
 │   │   ├── core/
-|   |   ├── icons/
 |   |   └── widgets/
 |   |       ├── Header.astro
 |   |       ├── Footer.astro
