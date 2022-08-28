@@ -1,4 +1,6 @@
 ---
+import { SITE } from "~/config.mjs"
+
 import "~/assets/styles/base.css";
 
 import MetaTags from "~/components/core/MetaTags.astro";
@@ -6,6 +8,7 @@ import BasicScripts from "~/components/core/BasicScripts.astro";
 import Analytics from '@julian_cataldo/astro-analytics/Analytics.astro';
 
 const { meta = {} } = Astro.props;
+const { googleAnalyticsId = false } = SITE;
 ---
 
 <!DOCTYPE html>
@@ -13,7 +16,7 @@ const { meta = {} } = Astro.props;
 
 <head>
   <MetaTags {...meta} />
-  <Analytics id='G-XXXXXXXXXX' />
+  {googleAnalyticsId && <Analytics id={googleAnalyticsId} />}
 </head>
 
 <body class="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-900">
