@@ -41,6 +41,7 @@ const { } = Astro.props;
     if (elem) {
       elem.classList.remove("expanded");
     }
+    document.documentElement.classList.remove("overflow-hidden");
     document.getElementById("menu")?.classList.add("hidden");
   };
 </script>
