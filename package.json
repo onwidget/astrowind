@@ -19,5 +19,8 @@
     "astro-icon": "^0.7.3",
     "reading-time": "^1.5.0",
     "subfont": "^6.9.0"
+  },
+  "dependencies": {
+    "@julian_cataldo/astro-analytics": "^0.11.5"
   }
 }
