@@ -17,13 +17,7 @@ const { } = Astro.props;
     const matches = document.querySelectorAll(selector);
     if (matches && matches.length) {
       matches.forEach((elem) => {
-        elem.addEventListener(
-          event,
-          function () {
-            fn(elem);
-          },
-          false
-        );
+        elem.addEventListener(event, () => fn(elem), false);
       });
     }
   }
@@ -31,6 +25,7 @@ const { } = Astro.props;
   window.onload = function () {
     attachEvent("[data-aw-toggle-menu]", "click", function (elem) {
       elem.classList.toggle("expanded");
+      document.documentElement.classList.toggle("overflow-hidden");
       document.getElementById("menu")?.classList.toggle("hidden");
     });
 

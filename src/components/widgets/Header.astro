@@ -6,7 +6,7 @@ const { } = Astro.props;
 ---
 
 <header
-  class="sticky top-0 z-40 flex-none mx-auto w-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b dark:border-b-0">
+  class="sticky top-0 z-40 flex-none mx-auto w-full bg-white md:bg-white/90 dark:bg-slate-900 dark:md:bg-slate-900/90 md:backdrop-blur-sm border-b dark:border-b-0">
   <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4">
     <div class="flex justify-between">
       <a class="flex items-center" href="/">
@@ -21,11 +21,11 @@ const { } = Astro.props;
         <button
           class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition"
           aria-label="Toggle Menu" data-aw-toggle-menu>
-          <Icon name="tabler:menu" class="w-6 h-6" />
+          <Icon name="tabler:menu" class="w-6 h-6" optimize={false} />
         </button>
       </div>
     </div>
-    <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 dark:text-slate-200"
+    <nav class="items-center w-full md:w-auto hidden md:flex text-gray-600 dark:text-slate-200 h-screen md:h-auto"
       aria-label="Main navigation" id="menu">
       <ul
         class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center collapse w-full md:w-auto collapsed text-xl md:text-base">
@@ -74,11 +74,15 @@ const { } = Astro.props;
 </header>
 
 <style is:global>
-  [data-aw-toggle-menu].expanded .line1 {
-    transform: rotate(-45deg) translate(-12px, 8px);
-  }
+    [data-aw-toggle-menu] path {
+      @apply transition;
+    }
+    [data-aw-toggle-menu].expanded g > path:first-child {
+      @apply -rotate-45 translate-y-[14px] translate-x-[-3px];
+      /* transform: rotate(-45deg) translate(-12px, 8px); */
+    }
 
-  [data-aw-toggle-menu].expanded .line2 {
-    transform: rotate(45deg) translate(4px, -16px);
-  }
+    [data-aw-toggle-menu].expanded g > path:last-child {
+      @apply rotate-45 translate-y-[-9px] translate-x-[14px];
+    }
 </style>
