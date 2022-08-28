@@ -4,4 +4,6 @@ export const SITE = {
   github: "https://github.com/onwidget/astrowind",
 
   postsPerPage: 6,
+  
+  googleAnalyticsId: false, // or "G-XXXXXXXXXX"
 };
