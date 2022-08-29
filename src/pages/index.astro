@@ -13,22 +13,19 @@ import StepsLeft from "~/components/widgets/StepsLeft.astro";
 import HighlightedPosts from "~/components/widgets/HighlightedPosts.astro";
 import Stats from "~/components/widgets/Stats.astro";
 
-const title = `${SITE.name} — Your website with Astro + Tailwind CSS`;
-const description =
-  "🚀 AstroWind is a free and Ready to Start template to make your website using Astro and Tailwind CSS.";
+const title = SITE.title;
+const description = SITE.description;
 const canonical = new URL("", Astro.site);
 ---
 
 <Layout meta={{ title, description, canonical }}>
-  <main>
-    <Hero />
-    <BasicFeatures />
-    <StepsLeft />
-    <TwoColsFeatures />
-    <StepsFeatures />
-    <HighlightedPosts />
-    <FAQs />
-    <Stats />
-    <BasicCTA />
-  </main>
+  <Hero />
+  <BasicFeatures />
+  <StepsLeft />
+  <TwoColsFeatures />
+  <StepsFeatures />
+  <HighlightedPosts />
+  <FAQs />
+  <Stats />
+  <BasicCTA />
 </Layout>

@@ -18,14 +18,11 @@ const { page } = Astro.props;
 
 const currentPage = page.currentPage ?? 1;
 
-const title = `Blog ${currentPage > 1 ? `— Page ${currentPage} ` : ""}— ${SITE.name
-  }`;
-const description = "News and step-by-step guides about AstroWind";
+const title = `Blog ${currentPage > 1 ? `— Page ${currentPage} ` : ""}— ${SITE.name}`;
+const description = SITE.description;
 const canonical = new URL(page.url.current, Astro.site);
 ---
 
 <Layout meta={{ title, description, canonical }}>
-  <main>
-    <BlogList page={page} />
-  </main>
+  <BlogList page={page} />
 </Layout>

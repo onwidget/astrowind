@@ -16,7 +16,8 @@ const { googleAnalyticsId = false } = SITE;
 
 <head>
   <MetaTags {...meta} />
-  {googleAnalyticsId && <Analytics id={googleAnalyticsId} />}
+  {googleAnalyticsId &&
+  <Analytics id={googleAnalyticsId} />}
 </head>
 
 <body class="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-900">

@@ -8,9 +8,9 @@ const posts = await fetchPosts();
 export const get = () =>
   rss({
     title: `${SITE.name}’s Blog`,
-    description:
-      "A ready to start template to make your website using Astro and Tailwind CSS.",
+    description: SITE.description,
     site: import.meta.env.SITE,
+
     items: posts.map((post) => ({
       link: `blog/${post.slug}`,
       title: post.title,

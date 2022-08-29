@@ -25,7 +25,5 @@ const image = await findImage(post.image);
 ---
 
 <Layout meta={{ title, description, canonical, image, }}>
-  <main>
-    <BlogPost post={{ ...post, image }} />
-  </main>
+  <BlogPost post={{ ...post, image }} />
 </Layout>

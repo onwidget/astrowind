@@ -2,6 +2,8 @@
 import { getImage } from "@astrojs/image";
 import { getRelativeUrlByFilePath } from "~/utils/getRelativeUrlByFilePath";
 
+import { SITE } from "~/config.mjs";
+
 const { src: defaultImage } = await getImage({
   src: import("~/assets/images/default.png"),
   width: 1200,
@@ -9,7 +11,7 @@ const { src: defaultImage } = await getImage({
 });
 
 const {
-  title = "AstroWind",
+  title = SITE.name,
   description = "",
   image: _image = defaultImage,
   canonical,
@@ -60,4 +62,4 @@ const image =
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 
 <!-- Google Site Verification -->
-<meta name="google-site-verification" content="orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M" />
+{SITE.googleSiteVerificationId && <meta name="google-site-verification" content={SITE.googleSiteVerificationId} />}
