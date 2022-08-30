@@ -114,6 +114,46 @@ All commands are run from the root of the project, from a terminal:
 
 <br>
 
+### Configuration
+
+Basic configuration file: `./src/config.mjs`
+
+```javascript
+export const SITE = {
+  name: "Example",
+
+  domain: "https://example.com",
+  baseUrl: "/", // Change this if you need to deploy to Github Pages, for example
+
+  title: "Example - This is the homepage title of Example",
+  description: "This is the homepage description of Example",
+
+  googleAnalyticsId: false, // or "G-XXXXXXXXXX",
+  googleSiteVerificationId: false // or some value,
+};
+
+export const BLOG = {
+  disabled: false,
+  slug: "blog", // you can change this to "articles" (/articles)
+
+  postsWithoutBlogSlug: true, // true (/some-slug), false (/blog/some-slug), 
+  postsPerPage: 6,
+
+  category: {
+    disabled: false,
+    slug: "category", // set empty to change from /category/some-slug to /some-slug
+  },
+
+  tag: {
+    disabled: false,
+    slug: "tag",
+  },
+};
+
+```
+
+<br>
+
 ### Deploy
 
 #### Deploy to production (manual)
