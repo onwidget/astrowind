@@ -1,10 +1,11 @@
 ---
+
 import { SITE, BLOG } from "~/config.mjs";
 import { fetchPosts } from "~/utils/fetchPosts";
 import Layout from "~/layouts/BlogLayout.astro";
 import BlogList from "~/components/widgets/BlogList.astro";
 import Pagination from "~/components/widgets/Pagination.astro";
-import { getCanonical, getPermalink } from "~/utils/permalinks";
+import { getCanonical, getPermalink, getSlug, CATEGORY_BASE } from "~/utils/permalinks";
 
 
 export async function getStaticPaths({ paginate }) {
@@ -19,19 +20,19 @@ export async function getStaticPaths({ paginate }) {
 
   return Array.from(categories).map((category) => (
     paginate(posts.filter((post) => typeof post.category === "string" && category === post.category.toLowerCase()), {
-      params: { category, categories: BLOG?.category?.slug || undefined },
+      params: { category: getSlug(category), categories: CATEGORY_BASE || undefined },
       pageSize: BLOG.postsPerPage,
+      props: { category }
     })
   ))
 }
 
-const { page } = Astro.props;
-const { category } = Astro.params;
+const { page, category } = Astro.props;
 
 const currentPage = page.currentPage ?? 1;
 
 const meta = {
-  title: `Category ${category} ${currentPage > 1 ? `— Page ${currentPage} ` : ""}— ${SITE.name}`,
+  title: `Category '${category}' ${currentPage > 1 ? `— Page ${currentPage} ` : ""}— ${SITE.name}`,
   description: SITE.description,
   canonical: getCanonical(getPermalink(page.url.current))
 }
@@ -39,7 +40,7 @@ const meta = {
 
 <Layout meta={{ ...meta, noindex: true }}>
   <Fragment slot="title">
-    Category {category}
+    Category: {category}
   </Fragment>
   <BlogList page={page} />
   <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />

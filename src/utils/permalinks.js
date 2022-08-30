@@ -1,3 +1,4 @@
+import slugify from 'slugify'
 import { SITE, BLOG } from "~/config.mjs";
 
 const trim = (str, ch) => {
@@ -13,9 +14,10 @@ const trimSlash = (s) => trim(s, "/");
 const createPath = (...params) =>  "/" + params.filter((el) => !!el).join("/")
 
 const baseUrl = trimSlash(SITE.baseUrl);
-const blogBaseUrl = trimSlash(BLOG.slug);
-const categoryBaseUrl = trim(BLOG?.category?.slug);
-const tagBaseUrl = trim(BLOG?.tag?.slug);
+
+export const BLOG_BASE = slugify(trimSlash(BLOG.slug), { lower: true });
+export const CATEGORY_BASE = slugify(trim(BLOG?.category?.slug), { lower: true });
+export const TAG_BASE = slugify(trim(BLOG?.tag?.slug), { lower: true });
 
 const cleanSlug = (slug) => trimSlash(slug);
 
@@ -26,13 +28,13 @@ export const getPermalink = (slug = "", type = "page") => {
 
   switch (type) {
     case "category":
-      return createPath(baseUrl, categoryBaseUrl, _slug)
+      return createPath(baseUrl, CATEGORY_BASE, _slug)
 
     case "tag":
-      return createPath(baseUrl, tagBaseUrl, _slug)
+      return createPath(baseUrl, TAG_BASE, _slug)
 
     case "post":
-      return createPath(baseUrl, BLOG.postsWithoutBlogSlug ? "" : blogBaseUrl, _slug);
+      return createPath(baseUrl, BLOG.postsWithoutBlogSlug ? "" : BLOG_BASE, _slug);
 
     case "page":
     default:
@@ -40,8 +42,10 @@ export const getPermalink = (slug = "", type = "page") => {
   }
 };
 
-export const getBlogPermalink = () => getPermalink(blogBaseUrl);
+export const getBlogPermalink = () => getPermalink(BLOG_BASE);
 export const getHomePermalink = () => {
   const permalink = getPermalink();
   return permalink !== "/" ? permalink + "/" : permalink;
 }
+
+export const getSlug = (text) => slugify(text);

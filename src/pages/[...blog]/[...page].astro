@@ -4,7 +4,7 @@ import { fetchPosts } from "~/utils/fetchPosts";
 import Layout from "~/layouts/BlogLayout.astro";
 import BlogList from "~/components/widgets/BlogList.astro";
 import Pagination from "~/components/widgets/Pagination.astro";
-import { getCanonical, getPermalink } from "~/utils/permalinks";
+import { getCanonical, getPermalink, BLOG_BASE } from "~/utils/permalinks";
 
 
 export async function getStaticPaths({ paginate }) {
@@ -13,7 +13,7 @@ export async function getStaticPaths({ paginate }) {
   const posts = await fetchPosts();
 
   return paginate(posts, {
-    params: { blog: BLOG?.slug || undefined },
+    params: { blog: BLOG_BASE || undefined },
     pageSize: BLOG.postsPerPage,
   });
 }
