@@ -4,7 +4,7 @@ title: "Get started with AstroWind to create a website using Astro and Tailwind 
 description: "Lorem ipsum dolor sit amet"
 excerpt: "Sint sit cillum pariatur eiusmod nulla pariatur ipsum. Sit laborum anim qui mollit tempor pariatur nisi minim dolor. Aliquip et adipisicing sit sit fugiat"
 image: "~/assets/images/steps.jpg"
-category: "Tutorial"
+category: "Tutorials"
 tags: [astro, tailwind css]
 ---
 
