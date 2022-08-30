@@ -158,8 +158,8 @@ Clone this repository on own GitHub account and deploy to Vercel:
   - **(DONE)** Add support to easily manage SEO meta-tags (title, description, canonical, social sharing, ...)
 - *Blog*:
   - **(DONE)** Support to Fast and SEO friendly blog
-  - Improve blog design
   - **(DONE)** Add support for categories and tags.
+  - Improve blog design
   - Create component or utilities for latest posts
   - Create component or utilities for related posts
   - Add more *shortcodes* or *embed* functions to posts in Markdown: (eg video, tweet...)
