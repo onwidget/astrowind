@@ -78,9 +78,15 @@ Inside AstroWind template, you'll see the following folders and files:
 │   |   |── BaseLayout.astro
 │   |   └── ...
 │   ├── pages/
-│   |   ├── blog/
+│   |   ├── [...blog]/
 |   |   |   ├── [...page].astro
 |   |   |   └── [slug].astro
+│   |   ├── [...categories]/
+|   |   |   └── [category]/
+|   |   |       └── [...page].astro
+│   |   ├── [...tags]/
+|   |   |   └── [tag]/
+|   |   |       └── [...page].astro
 │   |   ├── index.astro
 |   |   ├── 404.astro
 |   |   └-- rss.xml.js
