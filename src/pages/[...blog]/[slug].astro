@@ -1,0 +1,33 @@
+---
+import { SITE, BLOG } from "~/config.mjs";
+import { getCanonical, getPermalink } from "~/utils/permalinks";
+import { fetchPosts } from "~/utils/fetchPosts";
+import { findImage } from "~/utils/findImage";
+import Layout from "~/layouts/PageLayout.astro";
+import BlogPost from "~/components/widgets/BlogPost.astro";
+
+
+export async function getStaticPaths() {
+  if (BLOG?.disabled) return [];
+
+  const posts = await fetchPosts();
+
+  return posts.map((post) => ({
+    params: { slug: post.slug, blog: BLOG.postsWithoutBlogSlug ? undefined : BLOG?.slug || undefined },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+const meta = {
+  title: `${post.title} — ${SITE.name}`,
+  description: post.description,
+  canonical: post.canonical || getCanonical(getPermalink(post.slug, "post")),
+  image: await findImage(post.image),
+}
+---
+
+<Layout meta={meta}>
+  <BlogPost post={{ ...post, image: meta.image }} />
+</Layout>

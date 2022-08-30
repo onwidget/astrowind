@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon";
 import Logo from "~/components/widgets/Logo.astro";
+import { getPermalink, getBlogPermalink, getHomePermalink } from "~/utils/permalinks";
 
 const { } = Astro.props;
 ---
@@ -9,7 +10,7 @@ const { } = Astro.props;
   class="sticky top-0 z-40 flex-none mx-auto w-full bg-white md:bg-white/90 dark:bg-slate-900 dark:md:bg-slate-900/90 md:backdrop-blur-sm border-b dark:border-b-0">
   <div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4">
     <div class="flex justify-between">
-      <a class="flex items-center" href="/">
+      <a class="flex items-center" href={getHomePermalink()}>
         <Logo />
       </a>
       <div class="flex items-center md:hidden">
@@ -36,12 +37,12 @@ const { } = Astro.props;
         </li>
         <li>
           <a class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-            href="#">Resources
+            href={getPermalink("useful-resources-to-create-websites", "post")}>Resources
           </a>
         </li>
         <li>
           <a class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-            href="/blog">Blog
+            href={getBlogPermalink()}>Blog
           </a>
         </li>
         <li class="md:hidden">
@@ -78,11 +79,10 @@ const { } = Astro.props;
       @apply transition;
     }
     [data-aw-toggle-menu].expanded g > path:first-child {
-      @apply -rotate-45 translate-y-[14px] translate-x-[-3px];
-      /* transform: rotate(-45deg) translate(-12px, 8px); */
+      @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
     }
 
     [data-aw-toggle-menu].expanded g > path:last-child {
-      @apply rotate-45 translate-y-[-9px] translate-x-[14px];
+      @apply rotate-45 translate-y-[-8px] translate-x-[14px];
     }
 </style>

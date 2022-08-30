@@ -1,0 +1,46 @@
+---
+import { SITE, BLOG } from "~/config.mjs";
+import { fetchPosts } from "~/utils/fetchPosts";
+import Layout from "~/layouts/BlogLayout.astro";
+import BlogList from "~/components/widgets/BlogList.astro";
+import Pagination from "~/components/widgets/Pagination.astro";
+import { getCanonical, getPermalink } from "~/utils/permalinks";
+
+
+export async function getStaticPaths({ paginate }) {
+  if (BLOG?.disabled || BLOG?.tag?.disabled) return [];
+
+  const posts = await fetchPosts();
+
+  const tags = new Set()
+  posts.map(post => {
+    Array.isArray(post.tags) && post.tags.map(tag => tags.add(tag.toLowerCase()))
+  })
+
+  return Array.from(tags).map((tag) => (
+    paginate(posts.filter((post) => Array.isArray(post.tags) && post.tags.includes(tag)), {
+      params: { tag, tags: BLOG?.tag?.slug || undefined },
+      pageSize: BLOG.postsPerPage,
+    })
+  ))
+}
+
+const { page } = Astro.props;
+const { tag } = Astro.params;
+
+const currentPage = page.currentPage ?? 1;
+
+const meta = {
+  title: `Posts by tag '${tag}' ${currentPage > 1 ? `— Page ${currentPage} ` : ""}— ${SITE.name}`,
+  description: SITE.description,
+  canonical: getCanonical(getPermalink(page.url.current))
+}
+---
+
+<Layout meta={{ ...meta, noindex: true }}>
+  <Fragment slot="title">
+    Tag {tag}
+  </Fragment>
+  <BlogList page={page} />
+  <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+</Layout>
