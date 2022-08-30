@@ -8,7 +8,7 @@ const load = async function () {
 
 let _images;
 
-export const getAllImages = async () => {
+export const fetchLocalImages = async () => {
   _images = _images || load();
   return await _images;
 };

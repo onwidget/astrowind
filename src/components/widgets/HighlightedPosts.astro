@@ -1,6 +1,21 @@
 ---
 import Picture from "~/components/core/Picture.astro";
+import { findPostsByIds } from "~/utils/fetchPosts";
+import { findImage } from "~/utils/findImage";
+import { getPermalink } from "~/utils/permalinks";
 const { } = Astro.props;
+
+const ids = [
+  "get-started-website-with-astro-tailwind-css",
+  "how-to-customize-astrowind-to-your-brand",
+  "useful-resources-to-create-websites",
+  "astrowind-template-in-depth"
+]
+
+const items = (await Promise.all((await findPostsByIds(ids))
+  .map(async (item) =>
+  ({ ...item, image: await findImage(item.image) }
+  ))));
 ---
 
 <section class="px-4 py-16 mx-auto max-w-6xl lg:py-20">
@@ -18,73 +33,19 @@ const { } = Astro.props;
   </div>
 
   <div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-4 -mb-6">
-    <div class="mb-6 transition">
-      <Picture src={import("~/assets/images/steps.jpg")}
-        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700" widths={[400]}
-        alt="Post 2 Image" aspectRatio="16:9" />
+    {items.map((post) => (
+    <article class="mb-6 transition">
+      <Picture src={post.image} class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+        widths={[400]} alt="Post 2 Image" aspectRatio="16:9" />
       <h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl">
-        <a href="/blog/get-started-website-with-astro-tailwind-css"
-          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200">Get
-          started with AstroWind to create a website using Astro and
-          Tailwind CSS
+        <a href={getPermalink(post.slug, "type")}
+          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200">{post.title}
         </a>
       </h3>
       <p class="text-gray-700 dark:text-gray-400">
-        Sint sit cillum pariatur eiusmod nulla pariatur ipsum. Sit laborum anim
-        qui mollit tempor pariatur nisi minim dolor. Aliquip et adipisicing sit
-        sit fugiat
+        {post.excerpt || post.description}
       </p>
-    </div>
-
-    <div class="mb-6 transition">
-      <Picture src={import("~/assets/images/colors.jpg")}
-        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700" widths={[400]}
-        alt="Post 1 Image" aspectRatio="16:9" />
-      <h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl">
-        <a href="/blog/how-to-customize-astrowind-to-your-brand"
-          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200">How
-          to customize AstroWind template to suit your branding
-        </a>
-      </h3>
-      <p class="text-gray-700 dark:text-gray-400">
-        Sint sit cillum pariatur eiusmod nulla pariatur ipsum. Sit laborum anim
-        qui mollit tempor pariatur nisi minim dolor. Aliquip et adipisicing sit
-        sit fugiat
-      </p>
-    </div>
-
-    <div class="mb-6 transition">
-      <Picture src={import("~/assets/images/tools.jpg")}
-        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700" widths={[400]}
-        alt="Post 3 Image" aspectRatio="16:9" />
-      <h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl">
-        <a href="/blog/useful-resources-to-create-websites"
-          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200">Useful
-          tools and resources to create a professional website
-        </a>
-      </h3>
-      <p class="text-gray-700 dark:text-gray-400">
-        Nibh senectus lacinia volutpat nostra taciti ac posuere, dictum
-        ultricies dictumst luctus in vehicula, mus molestie venenatis penatibus
-        ridiculus elementum. Phasellus sollicitudin dignissim parturient.
-      </p>
-    </div>
-
-    <div class="mb-6 transition">
-      <Picture src={import("~/assets/images/hero.jpg")}
-        class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700" widths={[400]}
-        alt="Post 2 Image" aspectRatio="16:9" />
-      <h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl">
-        <a href="/blog/astrowind-template-in-depth"
-          class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200">AstroWind
-          template in depth
-        </a>
-      </h3>
-      <p class="text-gray-700 dark:text-gray-400">
-        Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis
-        vehicula a, semper fames lacus maecenas dictumst pulvinar neque enim non
-        potenti. Torquent hac sociosqu eleifend potenti.
-      </p>
-    </div>
+    </article>
+    ))}
   </div>
 </section>

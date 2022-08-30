@@ -15,6 +15,8 @@ const {
   description = "",
   image: _image = defaultImage,
   canonical,
+  noindex = false,
+  nofollow = false
 } = Astro.props;
 
 const image =
@@ -33,6 +35,8 @@ const image =
 <meta name="description" content={description} />
 {canonical &&
 <link rel="canonical" href={canonical} />}
+
+<meta name="robots" content={`${noindex ? "noindex": "index"}, ${nofollow ? "nofollow" : "follow"}`} />
 
 <!-- Google / Search Engine Tags -->
 <meta itemprop="name" content={title} />
@@ -62,4 +66,5 @@ const image =
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 
 <!-- Google Site Verification -->
-{SITE.googleSiteVerificationId && <meta name="google-site-verification" content={SITE.googleSiteVerificationId} />}
+{SITE.googleSiteVerificationId &&
+<meta name="google-site-verification" content={SITE.googleSiteVerificationId} />}

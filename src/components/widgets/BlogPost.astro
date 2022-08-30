@@ -9,10 +9,10 @@ const { post } = Astro.props;
   <article>
     <header>
       <p class="max-w-3xl mx-auto text-center">
-        <time datetime={post.pubDate}>{getFormattedDate(post.pubDate)}</time> ~ {Math.ceil(post.readingTime)} min
+        <time datetime={post.pubDate}>{getFormattedDate(post.pubDate)}</time> ~ {Math.ceil(post.readingTime)} min read
       </p>
       <h1
-        class="px-4 sm:px-6 max-w-3xl mx-auto text-center text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-6 md:mb-8">
+        class="px-4 sm:px-6 max-w-3xl mx-auto text-center text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-8">
         {post.title}
       </h1>
 
@@ -25,7 +25,7 @@ const { post } = Astro.props;
       }
     </header>
     <div
-      class="container mx-auto px-4 sm:px-6 max-w-3xl prose prose-lg lg:prose-xl dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md prose-img:shadow-lg mt-8">
+      class="container mx-auto px-8 sm:px-6 max-w-3xl prose prose-lg lg:prose-xl dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-img:rounded-md prose-img:shadow-lg mt-8">
       <Fragment set:html={post.body} />
     </div>
   </article>

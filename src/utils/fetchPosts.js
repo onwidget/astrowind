@@ -10,9 +10,9 @@ const load = async function () {
     return await getNormalizedPost(post);
   });
 
-  const results = (await Promise.all(normalizedPosts)).sort(
-    (a, b) => new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf()
-  );
+  const results = (await Promise.all(normalizedPosts))
+    .sort((a, b) => new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf())
+    .filter((post) => !post.draft);
   return results;
 };
 
@@ -22,4 +22,17 @@ export const fetchPosts = async () => {
   _posts = _posts || load();
 
   return await _posts;
+};
+
+export const findPostsByIds = async (ids) => {
+  if (!Array.isArray(ids)) return [];
+
+  const posts = await fetchPosts();
+
+  return ids.reduce(function (r, a) {
+    posts.some(function (el) {
+      return a === el.slug && r.push(el);
+    });
+    return r;
+  }, []);
 };

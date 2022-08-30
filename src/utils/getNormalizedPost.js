@@ -5,6 +5,7 @@ export const getNormalizedPost = async (post) => {
 
   return {
     pubDate: frontmatter.pubDate,
+    draft: frontmatter.draft,
 
     canonical: frontmatter.canonical,
     slug: file.split("/").pop().split(".").shift(),

@@ -1,0 +1,39 @@
+---
+import { SITE, BLOG } from "~/config.mjs";
+import { fetchPosts } from "~/utils/fetchPosts";
+import Layout from "~/layouts/BlogLayout.astro";
+import BlogList from "~/components/widgets/BlogList.astro";
+import Pagination from "~/components/widgets/Pagination.astro";
+import { getCanonical, getPermalink, BLOG_BASE } from "~/utils/permalinks";
+
+
+export async function getStaticPaths({ paginate }) {
+  if (BLOG?.disabled) return [];
+
+  const posts = await fetchPosts();
+
+  return paginate(posts, {
+    params: { blog: BLOG_BASE || undefined },
+    pageSize: BLOG.postsPerPage,
+  });
+}
+
+const { page } = Astro.props;
+const currentPage = page.currentPage ?? 1;
+
+const meta = {
+  title: `Blog ${currentPage > 1 ? `— Page ${currentPage} ` : ""}— ${SITE.name}`,
+  description: SITE.description,
+  canonical: getCanonical(getPermalink(page.url.current))
+}
+---
+
+<Layout meta={meta}>
+  <Fragment slot="title">
+    News and step-by-step guides about
+    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500">AstroWind
+    </span>
+  </Fragment>
+  <BlogList page={page} />
+  <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+</Layout>
