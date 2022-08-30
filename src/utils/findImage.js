@@ -1,4 +1,4 @@
-import { getAllImages } from "~/utils/getAllImages";
+import { fetchLocalImages } from "~/utils/fetchLocalImages";
 
 export const findImage = async (imagePath) => {
   if (typeof imagePath !== "string") {
@@ -13,7 +13,7 @@ export const findImage = async (imagePath) => {
     return null;
   } // For now only consume images using ~/assets alias (or absolute)
 
-  const images = await getAllImages();
+  const images = await fetchLocalImages();
   const key = imagePath.replace("~/", "/src/");
 
   return typeof images[key] === "function"
