@@ -159,7 +159,7 @@ Clone this repository on own GitHub account and deploy to Vercel:
 - *Blog*:
   - **(DONE)** Support to Fast and SEO friendly blog
   - Improve blog design
-  - Add support for categories and tags.
+  - **(DONE)** Add support for categories and tags.
   - Create component or utilities for latest posts
   - Create component or utilities for related posts
   - Add more *shortcodes* or *embed* functions to posts in Markdown: (eg video, tweet...)
