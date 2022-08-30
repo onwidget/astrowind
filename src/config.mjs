@@ -20,7 +20,7 @@ export const BLOG = {
 
   category: {
     disabled: false,
-    slug: "",
+    slug: "category", // set empty to change from /category/some-slug to /some-slug
   },
 
   tag: {
