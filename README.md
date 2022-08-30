@@ -29,6 +29,7 @@
 - [Getting started](#getting-started)
   - [Project structure](#project-structure)
   - [Commands](#commands)
+  - [Configuration](#configuration)
   - [Deploy](#deploy)
 - [Roadmap](#roadmap)
 - [Frequently Asked Questions](#frequently-asked-questions)
