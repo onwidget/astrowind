@@ -3,6 +3,7 @@ import Picture from "~/components/core/Picture.astro";
 import { getPermalink } from "~/utils/permalinks";
 import { findImage } from "~/utils/findImage";
 import { getFormattedDate } from "~/utils/getFormatedDate";
+import PostTags from "./PostTags.astro";
 
 const { post } = Astro.props;
 
@@ -19,7 +20,7 @@ const image = await findImage(post.image);
   </a>
   <div>
     <header>
-      <h2 class="text-xl sm:text-2xl font-bold leading-snug mb-2">
+      <h2 class="text-xl sm:text-2xl font-bold leading-snug mb-2 font-heading">
         <a class="hover:text-blue-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
           href={getPermalink(post.slug, "post")}>
           {post.title}
@@ -29,11 +30,14 @@ const image = await findImage(post.image);
     <p class="text-md sm:text-lg flex-grow">
       {post.excerpt || post.description}
     </p>
-    <footer class="flex items-center mt-4">
+    <footer class="mt-4">
       <div>
         <span class="text-gray-500 dark:text-slate-400">
           <time datetime={post.pubDate}>{getFormattedDate(post.pubDate)}</time> ~ {Math.ceil(post.readingTime)} min read
         </span>
+      </div>
+      <div class="mt-4">
+        <PostTags tags={post.tags} />
       </div>
     </footer>
   </div>
