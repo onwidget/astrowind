@@ -1,6 +1,6 @@
 ---
 import { SITE, BLOG } from "~/config.mjs";
-import { getCanonical, getPermalink } from "~/utils/permalinks";
+import { getCanonical, getPermalink, cleanSlug, BLOG_BASE } from "~/utils/permalinks";
 import { fetchPosts } from "~/utils/fetchPosts";
 import { findImage } from "~/utils/findImage";
 import Layout from "~/layouts/PageLayout.astro";
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
   const posts = await fetchPosts();
 
   return posts.map((post) => ({
-    params: { slug: post.slug, blog: BLOG.postsWithoutBlogSlug ? undefined : BLOG?.slug || undefined },
+    params: { slug: cleanSlug(post.slug), blog: BLOG.postsWithoutBlogSlug ? undefined : BLOG_BASE || undefined },
     props: { post },
   }));
 }

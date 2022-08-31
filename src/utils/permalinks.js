@@ -1,4 +1,4 @@
-import slugify from 'slugify'
+import slugify from 'limax';
 import { SITE, BLOG } from "~/config.mjs";
 
 const trim = (str, ch) => {
@@ -10,16 +10,16 @@ const trim = (str, ch) => {
   return (start > 0 || end < str.length) ? str.substring(start, end) : str;
 }
 
-const trimSlash = (s) => trim(s, "/");
+const trimSlash = (s) => trim(trim(s, "/"));
 const createPath = (...params) =>  "/" + params.filter((el) => !!el).join("/")
 
 const baseUrl = trimSlash(SITE.baseUrl);
 
-export const BLOG_BASE = slugify(trimSlash(BLOG.slug), { lower: true });
-export const CATEGORY_BASE = slugify(trim(BLOG?.category?.slug), { lower: true });
-export const TAG_BASE = slugify(trim(BLOG?.tag?.slug), { lower: true });
+export const cleanSlug = (text) => slugify(trimSlash(text));
 
-const cleanSlug = (slug) => trimSlash(slug);
+export const BLOG_BASE = cleanSlug(BLOG.slug);
+export const CATEGORY_BASE = cleanSlug(BLOG?.category?.slug);
+export const TAG_BASE = cleanSlug(BLOG?.tag?.slug);
 
 export const getCanonical = (path = "") => new URL(path, SITE.domain);
 
@@ -47,5 +47,3 @@ export const getHomePermalink = () => {
   const permalink = getPermalink();
   return permalink !== "/" ? permalink + "/" : permalink;
 }
-
-export const getSlug = (text) => slugify(text);

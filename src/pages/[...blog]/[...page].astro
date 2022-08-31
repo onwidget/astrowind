@@ -31,9 +31,9 @@ const meta = {
 <Layout meta={meta}>
   <Fragment slot="title">
     News and step-by-step guides about
-    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500">AstroWind
+    <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500">AstroWind
     </span>
   </Fragment>
-  <BlogList page={page} />
+  <BlogList posts={page.data} />
   <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
 </Layout>
