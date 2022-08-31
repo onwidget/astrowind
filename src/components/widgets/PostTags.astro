@@ -5,7 +5,7 @@ const { tags } = Astro.props;
 
 {tags && Array.isArray(tags) && <ul>
   {tags.map(tag => (
-  <li class="bg-gray-100 inline-block mr-2 mb-2 py-0.5 px-2"><a href={getPermalink(tag, "tag" )}>{tag}</a></li>
+  <li class="bg-gray-100 dark:bg-slate-700 inline-block mr-2 mb-2 py-0.5 px-2"><a href={getPermalink(tag, "tag" )}>{tag}</a></li>
   ))
   }
 </ul>
