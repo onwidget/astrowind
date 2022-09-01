@@ -14,8 +14,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
   // Astro uses this full URL to generate your sitemap and canonical URLs in your final build
-  site: SITE.domain,
-  base: SITE.baseUrl,
+  site: SITE.origin,
+  base: SITE.basePathname,
 
   output: "static",
 
