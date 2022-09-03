@@ -31,7 +31,7 @@ export const findPostsByIds = async (ids) => {
 
   return ids.reduce(function (r, id) {
     posts.some(function (post) {
-      return id === post.ID && r.push(post);
+      return id === post.id && r.push(post);
     });
     return r;
   }, []);
