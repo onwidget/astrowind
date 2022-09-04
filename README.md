@@ -69,6 +69,8 @@ Inside AstroWind template, you'll see the following folders and files:
 |   |       ├── post-slug-1.md
 |   |       └── ...
 │   ├── components/
+│   │   ├── atoms/
+│   │   ├── blog/
 │   │   ├── core/
 |   |   └── widgets/
 |   |       ├── Header.astro
