@@ -1,25 +1,34 @@
 ---
-import { Icon } from "astro-icon"
+import { Icon } from "astro-icon";
 const { prevUrl, nextUrl, prevText = "Newer posts", nextText = "Older posts" } = Astro.props;
 ---
 
-{(prevUrl || nextUrl) && (
-<div class="container flex">
-  <div class="flex flex-row mx-auto container justify-between">
-    <a href={prevUrl} class={`btn font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white shadow-none mr-2
-      ${ !prevUrl ? "invisible" : "" }`}>
-      <div class="flex flex-row align-middle">
-        <Icon name="tabler:arrow-left" class="w-6 h-6" />
-        <p class="ml-2">{prevText}</p>
+{
+  (prevUrl || nextUrl) && (
+    <div class="container flex">
+      <div class="flex flex-row mx-auto container justify-between">
+        <a
+          href={prevUrl}
+          class={`btn font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white shadow-none mr-2
+      ${!prevUrl ? "invisible" : ""}`}
+        >
+          <div class="flex flex-row align-middle">
+            <Icon name="tabler:arrow-left" class="w-6 h-6" />
+            <p class="ml-2">{prevText}</p>
+          </div>
+        </a>
+        <a
+          href={nextUrl}
+          class={`btn font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white shadow-none ${
+            !nextUrl ? "invisible" : ""
+          }`}
+        >
+          <div class="flex flex-row align-middle">
+            <span class="mr-2">{nextText}</span>
+            <Icon name="tabler:arrow-right" class="w-6 h-6" />
+          </div>
+        </a>
       </div>
-    </a>
-    <a href={nextUrl} class={`btn font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white shadow-none ${
-      !nextUrl ? "invisible" : "" }`}>
-      <div class="flex flex-row align-middle">
-        <span class="mr-2">{nextText}</span>
-        <Icon name="tabler:arrow-right" class="w-6 h-6" />
-      </div>
-    </a>
-  </div>
-</div>
-)}
+    </div>
+  )
+}

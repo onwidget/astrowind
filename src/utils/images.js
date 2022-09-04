@@ -1,5 +1,20 @@
-import { fetchLocalImages } from "~/utils/fetchLocalImages";
+const load = async function () {
+  let images = [];
+  try {
+    images = import.meta.glob("~/assets/images/*");
+  } catch (e) {}
+  return images;
+};
 
+let _images;
+
+/** */
+export const fetchLocalImages = async () => {
+  _images = _images || load();
+  return await _images;
+};
+
+/** */
 export const findImage = async (imagePath) => {
   if (typeof imagePath !== "string") {
     return null;
@@ -16,7 +31,5 @@ export const findImage = async (imagePath) => {
   const images = await fetchLocalImages();
   const key = imagePath.replace("~/", "/src/");
 
-  return typeof images[key] === "function"
-    ? (await images[key]())["default"]
-    : null;
+  return typeof images[key] === "function" ? (await images[key]())["default"] : null;
 };

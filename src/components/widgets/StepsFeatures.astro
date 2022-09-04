@@ -1,5 +1,6 @@
 ---
-const { } = Astro.props;
+import { Icon } from "astro-icon";
+const {} = Astro.props;
 ---
 
 <section>
@@ -10,19 +11,23 @@ const { } = Astro.props;
           <div class="w-full lg:w-1/2 px-0 sm:px-8">
             <div class="mb-12 lg:mb-0 pb-12 lg:pb-0 border-b lg:border-b-0">
               <h2 class="mb-4 text-3xl lg:text-4xl font-bold font-heading">
-                Sed ac magna sit amet risus tristique interdum, at vel velit in
-                hac habitasse platea dictumst.
+                Sed ac magna sit amet risus tristique interdum, at vel velit in hac habitasse platea dictumst.
               </h2>
+
               <p class="mb-8 text-xl text-gray-600 dark:text-slate-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                sagittis, quam nec venenatis lobortis, mi risus tempus nulla,
-                sed porttitor est nibh at nulla. Praesent placerat enim ut ex
-                tincidunt vehicula. Fusce sit amet dui tellus.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi
+                risus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula.
+                Fusce sit amet dui tellus.
               </p>
+
               <div class="w-full">
-                <a class="btn bg-blue-600 hover:bg-blue-700 text-white font-bold"
-                  href="https://github.com/onwidget/astrowind" target="_blank" rel="noopener">
-                  Get template
+                <a
+                  class="btn text-white bg-primary-600 hover:bg-primary-800 mb-4 sm:mb-0 font-bold"
+                  href="https://github.com/onwidget/astrowind"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <Icon name="tabler:download" class="w-5 h-5 mr-1 hidden sm:inline-block" /> Get template
                 </a>
               </div>
             </div>
@@ -32,50 +37,48 @@ const { } = Astro.props;
               <li class="flex md:-mx-4">
                 <div class="pr-4 sm:pl-4">
                   <span
-                    class="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold font-heading rounded-full bg-blue-50 text-blue-600">
+                    class="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold rounded-full bg-primary-50 text-primary-600"
+                  >
                     1
                   </span>
                 </div>
                 <div class="px-4">
-                  <h3 class="mb-4 text-xl font-semibold">
-                    Responsive Elements
-                  </h3>
+                  <h3 class="mb-4 text-xl font-semibold font-heading">Responsive Elements</h3>
                   <p class="text-gray-500 dark:text-gray-400">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Morbi sagittis, quam nec venenatis lobortis, mi risus tempus
-                    nulla.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis
+                    lobortis, mi risus tempus nulla.
                   </p>
                 </div>
               </li>
               <li class="flex md:-mx-4">
                 <div class="pr-4 sm:pl-4">
                   <span
-                    class="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold font-heading rounded-full bg-blue-50 text-blue-600">
+                    class="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold rounded-full bg-primary-50 text-primary-600"
+                  >
                     2
                   </span>
                 </div>
                 <div class="px-4">
-                  <h3 class="mb-4 text-xl font-semibold">Flexible Team</h3>
+                  <h3 class="mb-4 text-xl font-semibold font-heading">Flexible Team</h3>
                   <p class="text-gray-500 dark:text-gray-400">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Morbi sagittis, quam nec venenatis lobortis, mi risus tempus
-                    nulla.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis
+                    lobortis, mi risus tempus nulla.
                   </p>
                 </div>
               </li>
               <li class="flex md:-mx-4">
                 <div class="pr-4 sm:pl-4">
                   <span
-                    class="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold font-heading rounded-full bg-blue-50 text-blue-600">
+                    class="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold rounded-full bg-primary-50 text-primary-600"
+                  >
                     3
                   </span>
                 </div>
                 <div class="px-4">
-                  <h3 class="mb-4 text-xl font-semibold">Ecologic Software</h3>
+                  <h3 class="mb-4 text-xl font-semibold font-heading">Ecologic Software</h3>
                   <p class="text-gray-500 dark:text-gray-400">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Morbi sagittis, quam nec venenatis lobortis, mi risus tempus
-                    nulla.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis
+                    lobortis, mi risus tempus nulla.
                   </p>
                 </div>
               </li>

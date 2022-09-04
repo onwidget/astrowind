@@ -1,30 +1,33 @@
 ---
-
 import { SITE, BLOG } from "~/config.mjs";
-import { fetchPosts } from "~/utils/fetchPosts";
+
 import Layout from "~/layouts/BlogLayout.astro";
 import BlogList from "~/components/widgets/BlogList.astro";
 import Pagination from "~/components/widgets/Pagination.astro";
-import { getCanonical, getPermalink, cleanSlug, CATEGORY_BASE } from "~/utils/permalinks";
 
+import { fetchPosts } from "~/utils/posts";
+import { getCanonical, getPermalink, cleanSlug, CATEGORY_BASE } from "~/utils/permalinks";
 
 export async function getStaticPaths({ paginate }) {
   if (BLOG?.disabled || BLOG?.category?.disabled) return [];
 
   const posts = await fetchPosts();
 
-  const categories = new Set()
-  posts.map(post => {
-    typeof post.category === "string" && categories.add(post.category.toLowerCase())
-  })
+  const categories = new Set();
+  posts.map((post) => {
+    typeof post.category === "string" && categories.add(post.category.toLowerCase());
+  });
 
-  return Array.from(categories).map((category) => (
-    paginate(posts.filter((post) => typeof post.category === "string" && category === post.category.toLowerCase()), {
-      params: { category: cleanSlug(category), categories: CATEGORY_BASE || undefined },
-      pageSize: BLOG.postsPerPage,
-      props: { category }
-    })
-  ))
+  return Array.from(categories).map((category) =>
+    paginate(
+      posts.filter((post) => typeof post.category === "string" && category === post.category.toLowerCase()),
+      {
+        params: { category: cleanSlug(category), categories: CATEGORY_BASE || undefined },
+        pageSize: BLOG.postsPerPage,
+        props: { category },
+      }
+    )
+  );
 }
 
 const { page, category } = Astro.props;
@@ -34,8 +37,8 @@ const currentPage = page.currentPage ?? 1;
 const meta = {
   title: `Category '${category}' ${currentPage > 1 ? `— Page ${currentPage} ` : ""}— ${SITE.name}`,
   description: SITE.description,
-  canonical: getCanonical(getPermalink(page.url.current))
-}
+  canonical: getCanonical(getPermalink(page.url.current)),
+};
 ---
 
 <Layout meta={{ ...meta, noindex: true }}>

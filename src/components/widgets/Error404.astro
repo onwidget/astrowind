@@ -1,5 +1,7 @@
 ---
-const { } = Astro.props;
+import { getHomePermalink } from "~/utils/permalinks";
+
+const {} = Astro.props;
 ---
 
 <section class="flex items-center h-full p-16">
@@ -7,18 +9,17 @@ const { } = Astro.props;
     <div class="max-w-md text-center">
       <h2 class="mb-8 font-bold text-9xl">
         <span class="sr-only">Error</span>
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500">404
-        </span>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500">404</span>
       </h2>
-      <p class="text-3xl font-semibold md:text-3xl">
-        Sorry, we couldn't find this page.
-      </p>
+      <p class="text-3xl font-semibold md:text-3xl">Sorry, we couldn't find this page.</p>
       <p class="mt-4 mb-8 text-lg text-gray-600 dark:text-slate-400">
         But dont worry, you can find plenty of other things on our homepage.
       </p>
-      <a rel="noopener noreferrer" href="/"
-        class="btn text-white bg-gray-900 hover:bg-gray-800 dark:bg-gray-700 dark:hover:bg-gray-800 ml-4">Back to
-        homepage
+      <a
+        rel="noopener noreferrer"
+        href={getHomePermalink()}
+        class="btn text-white bg-gray-900 hover:bg-gray-800 dark:bg-gray-700 dark:hover:bg-gray-800 ml-4"
+        >Back to homepage
       </a>
     </div>
   </div>

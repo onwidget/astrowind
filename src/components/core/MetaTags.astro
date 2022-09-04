@@ -1,11 +1,14 @@
 ---
 import { getImage } from "@astrojs/image";
-import { getRelativeUrlByFilePath } from "~/utils/getRelativeUrlByFilePath";
+import { getRelativeUrlByFilePath } from "~/utils/directories";
+
+import GoogleAnalytics from "~/components/core/GoogleAnalytics.astro";
+import defaultImageSrc from "~/assets/images/default.png";
 
 import { SITE } from "~/config.mjs";
 
 const { src: defaultImage } = await getImage({
-  src: import("~/assets/images/default.png"),
+  src: defaultImageSrc,
   width: 1200,
   height: 628,
 });
@@ -16,55 +19,53 @@ const {
   image: _image = defaultImage,
   canonical,
   noindex = false,
-  nofollow = false
+  nofollow = false,
 } = Astro.props;
 
 const image =
   typeof _image === "string"
     ? new URL(_image, Astro.site)
     : _image && typeof _image["src"] !== "undefined"
-      ? new URL(getRelativeUrlByFilePath(_image.src), Astro.site)
-      : null;
+    ? new URL(getRelativeUrlByFilePath(_image.src), Astro.site)
+    : null;
 ---
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="shortcut icon" href="/favicon.ico" />
 
 <title>{title}</title>
 <meta name="description" content={description} />
-{canonical &&
-<link rel="canonical" href={canonical} />}
+{canonical && <link rel="canonical" href={canonical} />}
 
-<meta name="robots" content={`${noindex ? "noindex": "index"}, ${nofollow ? "nofollow" : "follow"}`} />
+<meta name="robots" content={`${noindex ? "noindex" : "index"}, ${nofollow ? "nofollow" : "follow"}`} />
 
 <!-- Google / Search Engine Tags -->
 <meta itemprop="name" content={title} />
 <meta itemprop="description" content={description} />
-{image &&
-<meta itemprop="image" content={image} />}
+{image && <meta itemprop="image" content={image} />}
 
 <!-- Facebook Meta Tags -->
-{canonical &&
-<meta property="og:url" content={canonical} />}
+{canonical && <meta property="og:url" content={canonical} />}
 <meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-{image &&
-<meta property="og:image" content={image} />}
+{image && <meta property="og:image" content={image} />}
 
 <!-- Twitter Meta Tags -->
-{canonical &&
-<meta name="twitter:url" content={canonical} />}
+{canonical && <meta name="twitter:url" content={canonical} />}
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-{image &&
-<meta name="twitter:image" content={image} />}
+{image && <meta name="twitter:image" content={image} />}
 
-<!-- Fonts -->
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 
 <!-- Google Site Verification -->
-{SITE.googleSiteVerificationId &&
-<meta name="google-site-verification" content={SITE.googleSiteVerificationId} />}
+{SITE.googleSiteVerificationId && <meta name="google-site-verification" content={SITE.googleSiteVerificationId} />}
+
+<!-- Google Analytics -->
+{SITE.googleAnalyticsId && <GoogleAnalytics id={SITE.googleAnalyticsId} partytown={true} />}

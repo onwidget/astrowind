@@ -1,12 +1,16 @@
 ---
-const { } = Astro.props;
+const {} = Astro.props;
 ---
 
 <script is:inline>
+  // Set "light" theme as default
+  // if (!localStorage.theme) {
+  //   localStorage.theme = "light";
+  // }
+
   if (
     localStorage.theme === "dark" ||
-    (!("theme" in localStorage) &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
+    (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
   ) {
     document.documentElement.classList.add("dark");
   } else {
@@ -31,9 +35,7 @@ const { } = Astro.props;
 
     attachEvent("[data-aw-toggle-color-scheme]", "click", function (elem) {
       document.documentElement.classList.toggle("dark");
-      localStorage.theme = document.documentElement.classList.contains("dark")
-        ? "dark"
-        : "light";
+      localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
     });
   };
   window.onpageshow = function () {

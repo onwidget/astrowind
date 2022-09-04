@@ -1,28 +1,20 @@
 ---
-import { SITE } from "~/config.mjs"
-
 import "~/assets/styles/base.css";
 
 import MetaTags from "~/components/core/MetaTags.astro";
 import BasicScripts from "~/components/core/BasicScripts.astro";
-import Analytics from '@julian_cataldo/astro-analytics/Analytics.astro';
 
 const { meta = {} } = Astro.props;
-const { googleAnalyticsId = false } = SITE;
 ---
 
 <!DOCTYPE html>
 <html lang="en" class="motion-safe:scroll-smooth 2xl:text-[24px]">
+  <head>
+    <MetaTags {...meta} />
+  </head>
 
-<head>
-  <MetaTags {...meta} />
-  {googleAnalyticsId &&
-  <Analytics id={googleAnalyticsId} />}
-</head>
-
-<body class="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-900">
-  <slot />
-  <BasicScripts />
-</body>
-
+  <body class="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-900">
+    <slot />
+    <BasicScripts />
+  </body>
 </html>

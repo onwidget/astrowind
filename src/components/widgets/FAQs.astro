@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon";
-const { } = Astro.props;
+
+const {} = Astro.props;
 
 const items = [
   [
@@ -33,8 +34,7 @@ const items = [
       It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.`,
     },
     {
-      question:
-        "If you could only ask one question to each person you meet, what would that question be?",
+      question: "If you could only ask one question to each person you meet, what would that question be?",
       answer: `This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.`,
     },
   ],
@@ -44,7 +44,7 @@ const items = [
 <div class="px-4 py-16 mx-auto max-w-6xl lg:py-20">
   <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
     <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
-      <h2 class="max-w-lg mb-4 font-sans text-3xl font-bold leading-none tracking-tight sm:text-4xl md:mx-auto">
+      <h2 class="max-w-lg mb-4 text-3xl font-bold leading-none tracking-tight sm:text-4xl md:mx-auto font-heading">
         Frequently Asked Questions
       </h2>
     </div>
@@ -52,21 +52,21 @@ const items = [
   <div class="max-w-screen-xl sm:mx-auto">
     <div class="grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-x-16 md:grid-cols-2">
       {
-      items.map((subitems) => (
-      <div class="space-y-8">
-        {subitems.map(({ question, answer }) => (
-        <div>
-          <p class="mb-4 text-xl font-bold">
-            <Icon name="tabler:arrow-down-right" class="w-7 h-7 text-blue-500 inline-block icon-bold" />
-            {question}
-          </p>
-          {answer.split("\n\n").map((paragraph) => (
-          <p class="text-gray-700 dark:text-gray-400 mb-2" set:html={paragraph} />
-          ))}
-        </div>
-        ))}
-      </div>
-      ))
+        items.map((subitems) => (
+          <div class="space-y-8">
+            {subitems.map(({ question, answer }) => (
+              <div>
+                <p class="mb-4 text-xl font-bold">
+                  <Icon name="tabler:arrow-down-right" class="w-7 h-7 text-primary-500 inline-block icon-bold" />
+                  {question}
+                </p>
+                {answer.split("\n\n").map((paragraph) => (
+                  <p class="text-gray-700 dark:text-gray-400 mb-2" set:html={paragraph} />
+                ))}
+              </div>
+            ))}
+          </div>
+        ))
       }
     </div>
   </div>

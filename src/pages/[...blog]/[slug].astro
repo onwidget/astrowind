@@ -1,11 +1,12 @@
 ---
 import { SITE, BLOG } from "~/config.mjs";
-import { getCanonical, getPermalink, cleanSlug, BLOG_BASE } from "~/utils/permalinks";
-import { fetchPosts } from "~/utils/fetchPosts";
-import { findImage } from "~/utils/findImage";
+
 import Layout from "~/layouts/PageLayout.astro";
 import BlogPost from "~/components/widgets/BlogPost.astro";
 
+import { getCanonical, getPermalink, cleanSlug, BLOG_BASE } from "~/utils/permalinks";
+import { fetchPosts } from "~/utils/posts";
+import { findImage } from "~/utils/images";
 
 export async function getStaticPaths() {
   if (BLOG?.disabled) return [];
@@ -25,7 +26,7 @@ const meta = {
   description: post.description,
   canonical: post.canonical || getCanonical(getPermalink(post.slug, "post")),
   image: await findImage(post.image),
-}
+};
 ---
 
 <Layout meta={meta}>
