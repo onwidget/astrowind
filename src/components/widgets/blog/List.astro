@@ -1,5 +1,5 @@
 ---
-import BlogListItem from "~/components/widgets/BlogListItem.astro";
+import Item from "~/components/widgets/blog/ListItem.astro";
 
 const { posts } = Astro.props;
 ---
@@ -8,7 +8,7 @@ const { posts } = Astro.props;
   {
     posts.map((post) => (
       <li class="mb-10 md:mb-16">
-        <BlogListItem post={post} />
+        <Item post={post} />
       </li>
     ))
   }

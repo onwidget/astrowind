@@ -6,6 +6,8 @@ import GoogleAnalytics from "~/components/core/GoogleAnalytics.astro";
 import defaultImageSrc from "~/assets/images/default.png";
 
 import { SITE } from "~/config.mjs";
+import Fonts from "../atoms/Fonts.astro";
+import ExtraMetaTags from "../atoms/ExtraMetaTags.astro";
 
 const { src: defaultImage } = await getImage({
   src: defaultImageSrc,
@@ -59,13 +61,12 @@ const image =
 <meta name="twitter:description" content={description} />
 {image && <meta name="twitter:image" content={image} />}
 
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+<Fonts />
 
 <!-- Google Site Verification -->
 {SITE.googleSiteVerificationId && <meta name="google-site-verification" content={SITE.googleSiteVerificationId} />}
 
 <!-- Google Analytics -->
 {SITE.googleAnalyticsId && <GoogleAnalytics id={SITE.googleAnalyticsId} partytown={true} />}
+
+<ExtraMetaTags />

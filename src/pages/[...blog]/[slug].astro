@@ -2,7 +2,7 @@
 import { SITE, BLOG } from "~/config.mjs";
 
 import Layout from "~/layouts/PageLayout.astro";
-import BlogPost from "~/components/widgets/BlogPost.astro";
+import SinglePost from "~/components/widgets/blog/SinglePost.astro";
 
 import { getCanonical, getPermalink, cleanSlug, BLOG_BASE } from "~/utils/permalinks";
 import { fetchPosts } from "~/utils/posts";
@@ -30,5 +30,5 @@ const meta = {
 ---
 
 <Layout meta={meta}>
-  <BlogPost post={{ ...post, image: meta.image }} />
+  <SinglePost post={{ ...post, image: meta.image }} />
 </Layout>

@@ -1,6 +1,8 @@
 ---
 import { Icon } from "astro-icon";
-import Logo from "~/components/widgets/Logo.astro";
+import Logo from "~/components/atoms/Logo.astro";
+import ToggleTheme from "../core/ToggleTheme.astro";
+import ToggleMenu from "../core/ToggleMenu.astro";
 
 import { getPermalink, getBlogPermalink, getHomePermalink } from "~/utils/permalinks";
 
@@ -16,21 +18,8 @@ const {} = Astro.props;
         <Logo />
       </a>
       <div class="flex items-center md:hidden">
-        <button
-          type="button"
-          class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-          aria-label="Toggle between Dark and Light mode"
-          data-aw-toggle-color-scheme
-        >
-          <Icon name="tabler:sun" class="w-6 h-6" />
-        </button>
-        <button
-          class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition"
-          aria-label="Toggle Menu"
-          data-aw-toggle-menu
-        >
-          <Icon name="tabler:menu" class="w-6 h-6" optimize={false} />
-        </button>
+        <ToggleTheme />
+        <ToggleMenu />
       </div>
     </div>
     <nav
@@ -72,14 +61,7 @@ const {} = Astro.props;
       </ul>
       <div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
         <div class="hidden items-center md:flex">
-          <button
-            type="button"
-            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-            aria-label="Toggle between Dark and Light mode"
-            data-aw-toggle-color-scheme
-          >
-            <Icon name="tabler:sun" class="w-5 h-5" />
-          </button>
+          <ToggleTheme iconClass="w-5 h-5" />
           <a
             class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
             aria-label="RSS Feed"
@@ -99,16 +81,3 @@ const {} = Astro.props;
     </nav>
   </div>
 </header>
-
-<style is:global>
-  [data-aw-toggle-menu] path {
-    @apply transition;
-  }
-  [data-aw-toggle-menu].expanded g > path:first-child {
-    @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
-  }
-
-  [data-aw-toggle-menu].expanded g > path:last-child {
-    @apply rotate-45 translate-y-[-8px] translate-x-[14px];
-  }
-</style>

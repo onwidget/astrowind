@@ -2,8 +2,8 @@
 import { SITE, BLOG } from "~/config.mjs";
 
 import Layout from "~/layouts/BlogLayout.astro";
-import BlogList from "~/components/widgets/BlogList.astro";
-import Pagination from "~/components/widgets/Pagination.astro";
+import BlogList from "~/components/widgets/blog/List.astro";
+import Pagination from "~/components/atoms/Pagination.astro";
 
 import { fetchPosts } from "~/utils/posts";
 import { getCanonical, getPermalink, BLOG_BASE } from "~/utils/permalinks";
