@@ -29,7 +29,7 @@ const {} = Astro.props;
   window.onload = function () {
     attachEvent("[data-aw-toggle-menu]", "click", function (elem) {
       elem.classList.toggle("expanded");
-      document.documentElement.classList.toggle("overflow-hidden");
+      document.body.classList.toggle("overflow-hidden");
       document.getElementById("menu")?.classList.toggle("hidden");
     });
 
@@ -43,7 +43,7 @@ const {} = Astro.props;
     if (elem) {
       elem.classList.remove("expanded");
     }
-    document.documentElement.classList.remove("overflow-hidden");
+    document.body.classList.remove("overflow-hidden");
     document.getElementById("menu")?.classList.add("hidden");
   };
 </script>
