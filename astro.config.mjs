@@ -7,6 +7,7 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import partytown from "@astrojs/partytown";
 import image from "@astrojs/image";
+import react from "@astrojs/react";
 
 import { SITE } from "./src/config.mjs";
 
@@ -31,6 +32,7 @@ export default defineConfig({
       config: { forward: ["dataLayer.push"] },
     }),
     image(),
+    react(),
   ],
 
   vite: {
