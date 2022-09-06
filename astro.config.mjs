@@ -5,8 +5,8 @@ import { defineConfig } from "astro/config";
 
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
-import partytown from "@astrojs/partytown";
 import image from "@astrojs/image";
+import partytown from "@astrojs/partytown";
 
 import { SITE } from "./src/config.mjs";
 
@@ -27,10 +27,12 @@ export default defineConfig({
       },
     }),
     sitemap(),
+    image(),
+
+    /* Disable this integration if you don't use Google Analytics (or other external script). */
     partytown({
       config: { forward: ["dataLayer.push"] },
     }),
-    image(),
   ],
 
   vite: {
