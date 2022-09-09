@@ -3,6 +3,6 @@ services:
   - type: web
     name: astrowind
     env: static
-    buildCommand: npm build
+    buildCommand: npm run build
     staticPublishPath: ./dist
     pullRequestPreviewsEnabled: true # optional
