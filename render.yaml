@@ -1,8 +1,0 @@
-services:
-  # A static site
-  - type: web
-    name: astrowind
-    env: static
-    buildCommand: npm run build
-    staticPublishPath: ./dist
-    pullRequestPreviewsEnabled: true # optional
