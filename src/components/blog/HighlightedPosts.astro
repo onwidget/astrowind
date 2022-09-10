@@ -1,5 +1,5 @@
 ---
-import { Image } from "@astrojs/image/components";
+import Picture from "~/components/core/Picture.astro";
 
 import { findPostsByIds } from "~/utils/posts";
 import { findImage } from "~/utils/images";
@@ -36,11 +36,13 @@ const items = await Promise.all(
     {
       items.map((post) => (
         <article class="mb-6 transition">
-          <Image
+          <Picture
             src={post.image}
             class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-            width={400}
+            widths={[400, 900]}
+            sizes="(max-width: 900px) 400px, 900px"
             alt={post.title}
+            aspectRatio="16:9"
           />
           <h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl font-heading">
             <a
