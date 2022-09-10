@@ -10,7 +10,7 @@ module.exports = {
         secondary: colors.pink,
       },
       fontFamily: {
-        sans: ["'IBM Plex Sans'", ...defaultTheme.fontFamily.sans],
+        sans: ["'Inter'", ...defaultTheme.fontFamily.sans],
       },
     },
   },

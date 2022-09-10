@@ -13,16 +13,3 @@ const {
 <button type="button" class={className} aria-label={label} data-aw-toggle-menu>
   <Icon name={iconName} class={iconClass} optimize={false} />
 </button>
-
-<style is:inline>
-  [data-aw-toggle-menu] path {
-    @apply transition;
-  }
-  [data-aw-toggle-menu].expanded g > path:first-child {
-    @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
-  }
-
-  [data-aw-toggle-menu].expanded g > path:last-child {
-    @apply rotate-45 translate-y-[-8px] translate-x-[14px];
-  }
-</style>
