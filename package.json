@@ -19,6 +19,7 @@
     "@fontsource/inter": "^4.5.12",
     "@tailwindcss/typography": "^0.5.4",
     "astro": "^1.0.0",
+    "astro-critters": "1.0.3",
     "astro-icon": "^0.7.3",
     "limax": "^v2.1.0",
     "reading-time": "^1.5.0",

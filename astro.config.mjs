@@ -6,6 +6,7 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import image from "@astrojs/image";
+import critters from "astro-critters";
 import partytown from "@astrojs/partytown";
 
 import { SITE } from "./src/config.mjs";
@@ -28,6 +29,10 @@ export default defineConfig({
     }),
     sitemap(),
     image(),
+    critters({
+      inlineFonts: true,
+      logLevel: "silent",
+    }),
 
     /* Disable this integration if you don't use Google Analytics (or other external script). */
     partytown({
