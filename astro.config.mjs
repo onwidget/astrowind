@@ -30,7 +30,6 @@ export default defineConfig({
     sitemap(),
     image(),
     critters({
-      inlineFonts: true,
       logLevel: "silent",
     }),
 
