@@ -142,28 +142,28 @@ export const SITE = {
 };
 
 export const BLOG = {
-	disabled: false,
-	postsPerPage: 4,
+  disabled: false,
+  postsPerPage: 4,
 
-	blog: {
-		disabled: false,
-		pathname: 'blog', // blog main path, you can change this to "articles" (/articles)
-	},
+  blog: {
+    disabled: false,
+    pathname: 'blog', // blog main path, you can change this to "articles" (/articles)
+  },
 
-	post: {
-		disabled: false,
-		pathname: '', // empty for /some-post, value for /pathname/some-post 
-	},
+  post: {
+    disabled: false,
+    pathname: '', // empty for /some-post, value for /pathname/some-post 
+  },
 
-	category: {
-		disabled: false,
-		pathname: 'category', // set empty to change from /category/some-category to /some-category
-	},
+  category: {
+    disabled: false,
+    pathname: 'category', // set empty to change from /category/some-category to /some-category
+  },
 
-	tag: {
-		disabled: false,
-		pathname: 'tag', // set empty to change from /tag/some-tag to /some-tag
-	},
+  tag: {
+    disabled: false,
+    pathname: 'tag', // set empty to change from /tag/some-tag to /some-tag
+  },
 };
 
 
