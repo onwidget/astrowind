@@ -56,6 +56,10 @@ Inside AstroWind template, you'll see the following folders and files:
 
 ```
 /
+├── data/
+|   └── blog/
+|       ├── post-slug-1.md
+|       └── ...
 ├── public/
 │   ├── robots.txt
 │   └── favicon.ico
@@ -64,10 +68,6 @@ Inside AstroWind template, you'll see the following folders and files:
 │   │   ├── images/
 |   |   └── styles/
 |   |       └── base.css
-│   ├── data/
-|   |   └── posts/
-|   |       ├── post-slug-1.md
-|   |       └── ...
 │   ├── components/
 │   │   ├── atoms/
 │   │   ├── blog/
