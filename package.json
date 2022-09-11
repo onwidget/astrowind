@@ -20,9 +20,9 @@
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
     "@astrolib/google-analytics": "^0.2.1",
-    "@astrolib/seo": "^0.2.0",
+    "@astrolib/seo": "^0.2.1",
     "@fontsource/inter": "^4.5.12",
-    "@tailwindcss/typography": "^0.5.4",
+    "@tailwindcss/typography": "^0.5.7",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
     "astro": "^1.2.1",
@@ -34,7 +34,7 @@
     "prettier": "^2.7.1",
     "prettier-plugin-astro": "^0.5.4",
     "reading-time": "^1.5.0",
-    "subfont": "^6.9.0"
+    "subfont": "^6.12.0"
   },
   "engines": {
     "node": "^14.15.0 || >=16.0.0"
