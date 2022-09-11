@@ -43,7 +43,7 @@
 
 ## Demo
 
-[👉 astrowind.vercel.app](https://astrowind.vercel.app/) 
+[🌀 astrowind.vercel.app](https://astrowind.vercel.app/) 
 
 <br>
 
