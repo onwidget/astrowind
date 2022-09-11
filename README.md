@@ -22,7 +22,7 @@
 
 <br>
 
-<details open="open">
+<details>
 <summary>Table of Contents</summary>
 
 - [Demo](#demo)
