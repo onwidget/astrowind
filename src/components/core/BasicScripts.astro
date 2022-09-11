@@ -1,5 +1,4 @@
 ---
-const {} = Astro.props;
 ---
 
 <script is:inline>
@@ -33,7 +32,7 @@ const {} = Astro.props;
       document.getElementById("menu")?.classList.toggle("hidden");
     });
 
-    attachEvent("[data-aw-toggle-color-scheme]", "click", function (elem) {
+    attachEvent("[data-aw-toggle-color-scheme]", "click", function () {
       document.documentElement.classList.toggle("dark");
       localStorage.theme = document.documentElement.classList.contains("dark") ? "dark" : "light";
     });

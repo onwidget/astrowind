@@ -9,7 +9,7 @@ const attrs = partytown ? { type: "text/partytown" } : {};
 <script is:inline define:vars={{ id }} {...attrs}>
   window.dataLayer = window.dataLayer || [];
   function gtag() {
-    dataLayer.push(arguments);
+    window.dataLayer.push(arguments);
   }
   gtag("js", new Date());
   gtag("config", id);
