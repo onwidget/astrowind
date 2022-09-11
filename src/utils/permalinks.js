@@ -17,9 +17,10 @@ const basePathname = trimSlash(SITE.basePathname);
 
 export const cleanSlug = (text) => slugify(trimSlash(text));
 
-export const BLOG_BASE = cleanSlug(BLOG.slug);
-export const CATEGORY_BASE = cleanSlug(BLOG?.category?.slug);
-export const TAG_BASE = cleanSlug(BLOG?.tag?.slug);
+export const BLOG_BASE = cleanSlug(BLOG?.blog?.pathname);
+export const POST_BASE = cleanSlug(BLOG?.post?.pathname);
+export const CATEGORY_BASE = cleanSlug(BLOG?.category?.pathname);
+export const TAG_BASE = cleanSlug(BLOG?.tag?.pathname);
 
 /** */
 export const getCanonical = (path = '') => new URL(path, SITE.origin);
@@ -36,7 +37,7 @@ export const getPermalink = (slug = '', type = 'page') => {
 			return createPath(basePathname, TAG_BASE, _slug);
 
 		case 'post':
-			return createPath(basePathname, BLOG.postsWithoutBlogSlug ? '' : BLOG_BASE, _slug);
+			return createPath(basePathname, POST_BASE, _slug);
 
 		case 'page':
 		default:

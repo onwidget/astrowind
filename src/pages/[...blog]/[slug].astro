@@ -4,19 +4,19 @@ import { SITE, BLOG } from '~/config.mjs';
 import Layout from '~/layouts/PageLayout.astro';
 import SinglePost from '~/components/blog/SinglePost.astro';
 
-import { getCanonical, getPermalink, cleanSlug, BLOG_BASE } from '~/utils/permalinks';
+import { getCanonical, getPermalink, cleanSlug, POST_BASE } from '~/utils/permalinks';
 import { fetchPosts } from '~/utils/posts';
 import { findImage } from '~/utils/images';
 
 export async function getStaticPaths() {
-	if (BLOG?.disabled) return [];
+	if (BLOG?.disabled || BLOG?.post?.disabled) return [];
 
 	const posts = await fetchPosts();
 
 	return posts.map((post) => ({
 		params: {
 			slug: cleanSlug(post.slug),
-			blog: BLOG.postsWithoutBlogSlug ? undefined : BLOG_BASE || undefined,
+			blog: POST_BASE || undefined,
 		},
 		props: { post },
 	}));

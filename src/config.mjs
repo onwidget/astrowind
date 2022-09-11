@@ -13,18 +13,25 @@ export const SITE = {
 
 export const BLOG = {
 	disabled: false,
-	slug: 'blog',
+	postsPerPage: 4,
 
-	postsWithoutBlogSlug: true,
-	postsPerPage: 6,
+	blog: {
+		disabled: false,
+		pathname: 'blog', // blog main path, you can change this to "articles" (/articles)
+	},
+
+	post: {
+		disabled: false,
+		pathname: '', // empty for /some-post, value for /pathname/some-post 
+	},
 
 	category: {
 		disabled: false,
-		slug: 'category', // set empty to change from /category/some-slug to /some-slug
+		pathname: 'category', // set empty to change from /category/some-category to /some-category
 	},
 
 	tag: {
 		disabled: false,
-		slug: 'tag',
+		pathname: 'tag', // set empty to change from /tag/some-tag to /some-tag
 	},
 };
