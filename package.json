@@ -19,6 +19,7 @@
     "@astrojs/rss": "^1.0.0",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
+    "@astrolib/google-analytics": "^0.2.1",
     "@astrolib/seo": "^0.2.0",
     "@fontsource/inter": "^4.5.12",
     "@tailwindcss/typography": "^0.5.4",

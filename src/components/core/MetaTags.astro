@@ -1,9 +1,9 @@
 ---
 import { AstroSeo } from "@astrolib/seo"
+import { GoogleAnalytics } from "@astrolib/google-analytics"
 import { getImage } from '@astrojs/image';
 import { getRelativeUrlByFilePath } from '~/utils/directories';
 
-import GoogleAnalytics from '~/components/core/GoogleAnalytics.astro';
 import defaultImageSrc from '~/assets/images/default.png';
 
 import { SITE } from '~/config.mjs';
@@ -74,6 +74,6 @@ const image =
 {SITE.googleSiteVerificationId && <meta name="google-site-verification" content={SITE.googleSiteVerificationId} />}
 
 <!-- Google Analytics -->
-{SITE.googleAnalyticsId && <GoogleAnalytics id={SITE.googleAnalyticsId} partytown={true} />}
+{SITE.googleAnalyticsId && <GoogleAnalytics id={String(SITE.googleAnalyticsId)} partytown={true} />}
 
 <ExtraMetaTags />
