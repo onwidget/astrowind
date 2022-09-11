@@ -38,10 +38,11 @@ const meta = {
 	title: `Category '${category}' ${currentPage > 1 ? `— Page ${currentPage} ` : ''}— ${SITE.name}`,
 	description: SITE.description,
 	canonical: getCanonical(getPermalink(page.url.current)),
+	noindex: true,
 };
 ---
 
-<Layout meta={{ ...meta, noindex: true }}>
+<Layout meta={meta}>
 	<Fragment slot="title">
 		Category: {category}
 	</Fragment>

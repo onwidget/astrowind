@@ -8,6 +8,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "astro": "astro",
     "format": "prettier -w .",
     "lint:eslint": "eslint . --ext .js,.ts,.astro",
     "subfont": "subfont -ir --no-fallbacks --silent --root dist"
@@ -18,6 +19,7 @@
     "@astrojs/rss": "^1.0.0",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
+    "@astrolib/seo": "^0.2.0",
     "@fontsource/inter": "^4.5.12",
     "@tailwindcss/typography": "^0.5.4",
     "@typescript-eslint/eslint-plugin": "^5.36.2",

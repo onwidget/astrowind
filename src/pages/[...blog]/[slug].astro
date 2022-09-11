@@ -29,6 +29,8 @@ const meta = {
 	description: post.description,
 	canonical: post.canonical || getCanonical(getPermalink(post.slug, 'post')),
 	image: await findImage(post.image),
+	ogTitle: post.title,
+	ogType: "article"
 };
 ---
 
