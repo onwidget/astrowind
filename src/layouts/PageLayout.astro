@@ -1,15 +1,15 @@
 ---
-import Layout from "~/layouts/BaseLayout.astro";
-import Header from "~/components/widgets/Header.astro";
-import Footer from "~/components/widgets/Footer.astro";
+import Layout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
 
 const { meta } = Astro.props;
 ---
 
-<Layout meta={meta}>
-  <Header />
-  <main>
-    <slot />
-  </main>
-  <Footer />
+<Layout {meta}>
+	<Header />
+	<main>
+		<slot />
+	</main>
+	<Footer />
 </Layout>

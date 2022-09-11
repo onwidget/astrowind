@@ -1,58 +1,58 @@
 ---
-import Picture from "~/components/core/Picture.astro";
+import Picture from '~/components/core/Picture.astro';
 
-import { findPostsByIds } from "~/utils/posts";
-import { findImage } from "~/utils/images";
-import { getPermalink } from "~/utils/permalinks";
+import { findPostsByIds } from '~/utils/posts';
+import { findImage } from '~/utils/images';
+import { getPermalink } from '~/utils/permalinks';
 
 const ids = [
-  "get-started-website-with-astro-tailwind-css",
-  "how-to-customize-astrowind-to-your-brand",
-  "useful-resources-to-create-websites",
-  "astrowind-template-in-depth",
+	'get-started-website-with-astro-tailwind-css',
+	'how-to-customize-astrowind-to-your-brand',
+	'useful-resources-to-create-websites',
+	'astrowind-template-in-depth',
 ];
 
 const items = await Promise.all(
-  (await findPostsByIds(ids)).map(async (item) => ({ ...item, image: await findImage(item.image) }))
+	(await findPostsByIds(ids)).map(async (item) => ({ ...item, image: await findImage(item.image) }))
 );
 ---
 
 <section class="px-4 py-16 mx-auto max-w-6xl lg:py-20">
-  <div class="flex flex-col mb-6 lg:justify-between lg:flex-row md:mb-8">
-    <h2 class="max-w-lg mb-2 text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:mb-5 group font-heading">
-      <span class="inline-block mb-1 sm:mb-4">Find out more content<br class="hidden md:block" /> in our Blog</span>
-    </h2>
+	<div class="flex flex-col mb-6 lg:justify-between lg:flex-row md:mb-8">
+		<h2 class="max-w-lg mb-2 text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:mb-5 group font-heading">
+			<span class="inline-block mb-1 sm:mb-4">Find out more content<br class="hidden md:block" /> in our Blog</span>
+		</h2>
 
-    <p class="text-gray-700 dark:text-slate-400 lg:text-sm lg:max-w-md">
-      The blog will be used to display AstroWind documentation. Each new article will be an important step that you will
-      need to know to be an expert in creating a website using Astro + Tailwind CSS The blog does not exist yet, but
-      very soon. Astro is a very interesting technology. Thanks.
-    </p>
-  </div>
+		<p class="text-gray-700 dark:text-slate-400 lg:text-sm lg:max-w-md">
+			The blog will be used to display AstroWind documentation. Each new article will be an important step that you will
+			need to know to be an expert in creating a website using Astro + Tailwind CSS The blog does not exist yet, but
+			very soon. Astro is a very interesting technology. Thanks.
+		</p>
+	</div>
 
-  <div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-4 -mb-6">
-    {
-      items.map((post) => (
-        <article class="mb-6 transition">
-          <Picture
-            src={post.image}
-            class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-            widths={[400, 900]}
-            sizes="(max-width: 900px) 400px, 900px"
-            alt={post.title}
-            aspectRatio="16:9"
-          />
-          <h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl font-heading">
-            <a
-              href={getPermalink(post.slug, "type")}
-              class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
-            >
-              {post.title}
-            </a>
-          </h3>
-          <p class="text-gray-700 dark:text-gray-400">{post.excerpt || post.description}</p>
-        </article>
-      ))
-    }
-  </div>
+	<div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-4 -mb-6">
+		{
+			items.map((post) => (
+				<article class="mb-6 transition">
+					<Picture
+						src={post.image}
+						class="object-cover w-full h-64 mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+						widths={[400, 900]}
+						sizes="(max-width: 900px) 400px, 900px"
+						alt={post.title}
+						aspectRatio="16:9"
+					/>
+					<h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl font-heading">
+						<a
+							href={getPermalink(post.slug, 'type')}
+							class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
+						>
+							{post.title}
+						</a>
+					</h3>
+					<p class="text-gray-700 dark:text-gray-400">{post.excerpt || post.description}</p>
+				</article>
+			))
+		}
+	</div>
 </section>

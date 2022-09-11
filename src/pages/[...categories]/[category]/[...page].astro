@@ -1,33 +1,33 @@
 ---
-import { SITE, BLOG } from "~/config.mjs";
+import { SITE, BLOG } from '~/config.mjs';
 
-import Layout from "~/layouts/BlogLayout.astro";
-import BlogList from "~/components/blog/List.astro";
-import Pagination from "~/components/atoms/Pagination.astro";
+import Layout from '~/layouts/BlogLayout.astro';
+import BlogList from '~/components/blog/List.astro';
+import Pagination from '~/components/atoms/Pagination.astro';
 
-import { fetchPosts } from "~/utils/posts";
-import { getCanonical, getPermalink, cleanSlug, CATEGORY_BASE } from "~/utils/permalinks";
+import { fetchPosts } from '~/utils/posts';
+import { getCanonical, getPermalink, cleanSlug, CATEGORY_BASE } from '~/utils/permalinks';
 
 export async function getStaticPaths({ paginate }) {
-  if (BLOG?.disabled || BLOG?.category?.disabled) return [];
+	if (BLOG?.disabled || BLOG?.category?.disabled) return [];
 
-  const posts = await fetchPosts();
+	const posts = await fetchPosts();
 
-  const categories = new Set();
-  posts.map((post) => {
-    typeof post.category === "string" && categories.add(post.category.toLowerCase());
-  });
+	const categories = new Set();
+	posts.map((post) => {
+		typeof post.category === 'string' && categories.add(post.category.toLowerCase());
+	});
 
-  return Array.from(categories).map((category) =>
-    paginate(
-      posts.filter((post) => typeof post.category === "string" && category === post.category.toLowerCase()),
-      {
-        params: { category: cleanSlug(category), categories: CATEGORY_BASE || undefined },
-        pageSize: BLOG.postsPerPage,
-        props: { category },
-      }
-    )
-  );
+	return Array.from(categories).map((category) =>
+		paginate(
+			posts.filter((post) => typeof post.category === 'string' && category === post.category.toLowerCase()),
+			{
+				params: { category: cleanSlug(category), categories: CATEGORY_BASE || undefined },
+				pageSize: BLOG.postsPerPage,
+				props: { category },
+			}
+		)
+	);
 }
 
 const { page, category } = Astro.props;
@@ -35,16 +35,16 @@ const { page, category } = Astro.props;
 const currentPage = page.currentPage ?? 1;
 
 const meta = {
-  title: `Category '${category}' ${currentPage > 1 ? `— Page ${currentPage} ` : ""}— ${SITE.name}`,
-  description: SITE.description,
-  canonical: getCanonical(getPermalink(page.url.current)),
+	title: `Category '${category}' ${currentPage > 1 ? `— Page ${currentPage} ` : ''}— ${SITE.name}`,
+	description: SITE.description,
+	canonical: getCanonical(getPermalink(page.url.current)),
 };
 ---
 
 <Layout meta={{ ...meta, noindex: true }}>
-  <Fragment slot="title">
-    Category: {category}
-  </Fragment>
-  <BlogList posts={page.data} />
-  <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+	<Fragment slot="title">
+		Category: {category}
+	</Fragment>
+	<BlogList posts={page.data} />
+	<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
 </Layout>

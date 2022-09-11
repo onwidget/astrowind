@@ -1,35 +1,35 @@
 ---
-import { getImage } from "@astrojs/image";
-import { getRelativeUrlByFilePath } from "~/utils/directories";
+import { getImage } from '@astrojs/image';
+import { getRelativeUrlByFilePath } from '~/utils/directories';
 
-import GoogleAnalytics from "~/components/core/GoogleAnalytics.astro";
-import defaultImageSrc from "~/assets/images/default.png";
+import GoogleAnalytics from '~/components/core/GoogleAnalytics.astro';
+import defaultImageSrc from '~/assets/images/default.png';
 
-import { SITE } from "~/config.mjs";
-import Fonts from "../atoms/Fonts.astro";
-import ExtraMetaTags from "../atoms/ExtraMetaTags.astro";
+import { SITE } from '~/config.mjs';
+import Fonts from '../atoms/Fonts.astro';
+import ExtraMetaTags from '../atoms/ExtraMetaTags.astro';
 
 const { src: defaultImage } = await getImage({
-  src: defaultImageSrc,
-  width: 1200,
-  height: 628,
+	src: defaultImageSrc,
+	width: 1200,
+	height: 628,
 });
 
 const {
-  title = SITE.name,
-  description = "",
-  image: _image = defaultImage,
-  canonical,
-  noindex = false,
-  nofollow = false,
+	title = SITE.name,
+	description = '',
+	image: _image = defaultImage,
+	canonical,
+	noindex = false,
+	nofollow = false,
 } = Astro.props;
 
 const image =
-  typeof _image === "string"
-    ? new URL(_image, Astro.site)
-    : _image && typeof _image["src"] !== "undefined"
-    ? new URL(getRelativeUrlByFilePath(_image.src), Astro.site)
-    : null;
+	typeof _image === 'string'
+		? new URL(_image, Astro.site)
+		: _image && typeof _image['src'] !== 'undefined'
+		? new URL(getRelativeUrlByFilePath(_image.src), Astro.site)
+		: null;
 ---
 
 <meta charset="UTF-8" />
@@ -39,7 +39,7 @@ const image =
 <meta name="description" content={description} />
 {canonical && <link rel="canonical" href={canonical} />}
 
-<meta name="robots" content={`${noindex ? "noindex" : "index"}, ${nofollow ? "nofollow" : "follow"}`} />
+<meta name="robots" content={`${noindex ? 'noindex' : 'index'}, ${nofollow ? 'nofollow' : 'follow'}`} />
 
 <!-- Google / Search Engine Tags -->
 <meta itemprop="name" content={title} />
