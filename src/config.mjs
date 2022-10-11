@@ -9,6 +9,12 @@ export const SITE = {
 
 	googleAnalyticsId: false, // or "G-XXXXXXXXXX",
 	googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
+
+	splitbeeAnalytics: {
+		enabled: false,
+		doNotTrack: true,
+		noCookieMode: false,
+	}
 };
 
 export const BLOG = {
