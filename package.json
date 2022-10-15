@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@astrojs/image": "^0.7.0",
+    "@astrojs/mdx": "^0.11.4",
     "@astrojs/partytown": "^1.0.0",
     "@astrojs/rss": "^1.0.0",
     "@astrojs/sitemap": "^1.0.0",
@@ -31,6 +32,7 @@
     "eslint-plugin-astro": "^0.19.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "limax": "^v2.1.0",
+    "mdast-util-to-string": "^3.1.0",
     "prettier": "^2.7.1",
     "prettier-plugin-astro": "^0.5.4",
     "reading-time": "^1.5.0",
@@ -39,5 +41,6 @@
   },
   "engines": {
     "node": "^14.15.0 || >=16.0.0"
-  }
+  },
+  "dependencies": {}
 }

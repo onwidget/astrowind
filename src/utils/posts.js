@@ -1,13 +1,11 @@
-import getReadingTime from 'reading-time';
-
 const getNormalizedPost = async (post) => {
-	const { frontmatter, compiledContent, rawContent, file } = post;
+	const { frontmatter, Content, file } = post;
 	const ID = file.split('/').pop().split('.').shift();
 
 	return {
 		id: ID,
 
-		pubDate: frontmatter.pubDate,
+		publishDate: frontmatter.publishDate,
 		draft: frontmatter.draft,
 
 		canonical: frontmatter.canonical,
@@ -15,19 +13,21 @@ const getNormalizedPost = async (post) => {
 
 		title: frontmatter.title,
 		description: frontmatter.description,
-		body: compiledContent(),
 		image: frontmatter.image,
+
+		Content: Content,
+		// or 'body' in case you consume from API
 
 		excerpt: frontmatter.excerpt,
 		authors: frontmatter.authors,
 		category: frontmatter.category,
 		tags: frontmatter.tags,
-		readingTime: Math.ceil(getReadingTime(rawContent()).minutes),
+		readingTime: frontmatter.readingTime,
 	};
 };
 
 const load = async function () {
-	const posts = import.meta.glob('~/../data/blog/**/*.md', {
+	const posts = import.meta.glob(['~/../data/blog/**/*.md', '~/../data/blog/**/*.mdx'], {
 		eager: true,
 	});
 
@@ -37,7 +37,7 @@ const load = async function () {
 	});
 
 	const results = (await Promise.all(normalizedPosts))
-		.sort((a, b) => new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf())
+		.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf())
 		.filter((post) => !post.draft);
 	return results;
 };

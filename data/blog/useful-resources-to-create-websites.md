@@ -1,5 +1,5 @@
 ---
-pubDate: "Aug 09 2022"
+publishDate: "Aug 09 2022"
 title: "Useful tools and resources to create a professional website"
 description: "Nibh senectus lacinia volutpat nostra taciti ac posuere, dictum ultricies dictumst luctus in vehicula, mus molestie venenatis penatibus ridiculus elementum. Phasellus sollicitudin dignissim parturient."
 image: "~/assets/images/tools.jpg"

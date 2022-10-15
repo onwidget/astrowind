@@ -6,7 +6,10 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import image from '@astrojs/image';
+import mdx from "@astrojs/mdx";
 import partytown from '@astrojs/partytown';
+
+import { remarkReadingTime } from './src/utils/frontmatter.js';
 
 import { SITE } from './src/config.mjs';
 
@@ -28,12 +31,18 @@ export default defineConfig({
 		}),
 		sitemap(),
 		image(),
+		mdx(),
 
 		/* Disable this integration if you don't use Google Analytics (or other external script). */
 		partytown({
 			config: { forward: ['dataLayer.push'] },
 		}),
 	],
+
+	markdown: {
+    remarkPlugins: [remarkReadingTime],
+    extendDefaultPlugins: true,
+  },
 
 	vite: {
 		resolve: {
