@@ -35,3 +35,10 @@ export const BLOG = {
 		pathname: 'tag', // set empty to change from /tag/some-tag to /some-tag
 	},
 };
+
+export const PROFILE = {
+	githubURL: 'https://github.com/onwidget/astrowind',
+	twitterURL: 'https://twitter.com/onwidget',
+	twitterHandle: 'liran_tonwidgetal',
+	linkedinURL: 'https://www.linkedin.com/in/onwidget'
+}

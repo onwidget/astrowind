@@ -1,0 +1,30 @@
+---
+import { PROFILE } from '~/config.mjs'
+import { Icon } from 'astro-icon';
+
+const { title } = Astro.props;
+const url = Astro.url;
+---
+
+<div class="mx-auto text-center">
+    <div class="">
+        <a
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+            href={`https://twitter.com/share?url=${url}&text="${title}"&via=${PROFILE.twitterHandle}`}
+        >
+            <Icon name="logos:twitter" class="h-3" />
+        </a>
+        <a
+            href={`https://www.facebook.com/sharer.php?u=${url}`}
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+        >
+            <Icon name="logos:facebook" class="h-3" />
+        </a>
+        <a
+            href={`https://www.linkedin.com/shareArticle?url=${url}&title=${title}`}
+            class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+        >
+            <Icon name="logos:linkedin" class="h-3" />
+        </a>
+    </div>
+</div>
