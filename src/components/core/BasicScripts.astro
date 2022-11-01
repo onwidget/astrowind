@@ -29,7 +29,8 @@
 		attachEvent('[data-aw-toggle-menu]', 'click', function (elem) {
 			elem.classList.toggle('expanded');
 			document.body.classList.toggle('overflow-hidden');
-			document.getElementById('menu')?.classList.toggle('hidden');
+			document.getElementById('header')?.classList.toggle('h-screen');
+			document.querySelector('#header nav')?.classList.toggle('hidden');
 		});
 
 		attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
@@ -43,6 +44,7 @@
 			elem.classList.remove('expanded');
 		}
 		document.body.classList.remove('overflow-hidden');
-		document.getElementById('menu')?.classList.add('hidden');
+		document.getElementById('header')?.classList.remove('h-screen');
+		document.querySelector('#header nav')?.classList.add('hidden');
 	};
 </script>
