@@ -8,13 +8,13 @@
 ## Features
 
 - ✅ Integration with **Tailwind CSS** ([@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)).
-- ✅ Supports **Dark mode**.
+- ✅ **Production-ready** scores in [Lighthouse](https://web.dev/measure/) and [PageSpeed Insights](https://pagespeed.web.dev/) reports
 - ✅ **Fast and SEO friendly blog** with automatic **RSS feed** ([@astrojs/rss](https://docs.astro.build/en/guides/rss/)) and [**MDX** support](https://docs.astro.build/en/guides/integrations-guide/mdx/).
+- ✅ Supports **Dark mode**.
+- ✅ **Analytics** built-in Google Analytics, and Splitbee integration.
 - ✅ **Image optimization** ([@astrojs/images](https://docs.astro.build/en/guides/integrations-guide/image/)).
 - ✅ Generation of **project sitemap** based on your routes ([@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)).
 - ✅ **Open Graph tags** for social media sharing
-- ✅ **Fonts optimization** at build time ([subfont](https://www.npmjs.com/package/subfont)).
-- ✅ **Production-ready** scores in [Lighthouse](https://web.dev/measure/) and [PageSpeed Insights](https://pagespeed.web.dev/) reports
 
 <br>
 
@@ -204,16 +204,16 @@ Clone this repository on own GitHub account and deploy to Vercel:
 ## Roadmap
 
 - *Project*:
-  - **(DONE)** Reduce the complexity in the components folder and simplify the other folders to make it very easy to use.
+  - ✅ Reduce the complexity in the components folder and simplify the other folders to make it very easy to use.
   - Create simple and clear strategy to get template updates
   - Move specific configurations to a specialized file
   - Fix some bugs with prettier
   - Make the use of images clean and intuitive
 - *SEO*:
-  - **(DONE)** Add support to easily manage SEO meta-tags (title, description, canonical, social sharing, ...)
+  - ✅ Add support to easily manage SEO meta-tags (title, description, canonical, social sharing, ...)
 - *Blog*:
-  - **(DONE)** Support to Fast and SEO friendly blog
-  - **(DONE)** Add support for categories and tags.
+  - ✅ Support to Fast and SEO friendly blog
+  - ✅ Add support for categories and tags.
   - Improve blog design
   - Create component or utilities for latest posts
   - Create component or utilities for related posts
