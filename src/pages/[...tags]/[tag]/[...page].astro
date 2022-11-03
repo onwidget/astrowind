@@ -37,7 +37,7 @@ const currentPage = page.currentPage ?? 1;
 const meta = {
 	title: `Posts by tag '${tag}' ${currentPage > 1 ? `— Page ${currentPage} ` : ''}— ${SITE.name}`,
 	description: SITE.description,
-	canonical: getCanonical(getPermalink(page.url.current)),
+	canonical: getCanonical(getPermalink(tag, "tag")),
 	noindex: true 
 };
 ---
