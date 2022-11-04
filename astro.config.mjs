@@ -20,6 +20,7 @@ export default defineConfig({
 	// Astro uses this full URL to generate your sitemap and canonical URLs in your final build
 	site: SITE.origin,
 	base: SITE.basePathname,
+	trailingSlash: SITE.trailingSlash ? "always" : "never",
 
 	output: 'static',
 
