@@ -205,22 +205,15 @@ Clone this repository on own GitHub account and deploy to Vercel:
 ## Roadmap
 
 - *Project*:
-  - ✅ Reduce the complexity in the components folder and simplify the other folders to make it very easy to use.
   - Create simple and clear strategy to get template updates
   - Move specific configurations to a specialized file
-  - Fix some bugs with prettier
-  - Make the use of images clean and intuitive
-- *SEO*:
-  - ✅ Add support to easily manage SEO meta-tags (title, description, canonical, social sharing, ...)
 - *Blog*:
-  - ✅ Support to Fast and SEO friendly blog
-  - ✅ Add support for categories and tags.
   - Improve blog design
   - Create component or utilities for latest posts
   - Create component or utilities for related posts
   - Add more *shortcodes* or *embed* functions to posts in Markdown: (eg video, tweet...)
 - *More widgets*:
-  - ~~Add more Tailwind components useful for most scenarios (Features, Contact, Call to Actions, Content, FAQs ...)~~
+  - Add more Tailwind components useful for most scenarios (Features, Contact, Call to Actions, Content, FAQs ...)
   - Create external library or place with useful Tailwind components
 - *More Examples*: Add commonly used example pages (Ex: About, Terms, Services...)
 - *Documentation*: Create detailed documentation with best practices and redesign tips
