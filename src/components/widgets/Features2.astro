@@ -1,20 +1,25 @@
 ---
+import { Icon } from 'astro-icon';
+
 const items = [
 	[
 		{
 			title: 'Integration with Tailwind CSS',
 			description:
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+			icon: "tabler:brand-tailwind"
 		},
 		{
 			title: 'Ready-to-use Components',
 			description:
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+			icon: "tabler:components"
 		},
 		{
 			title: 'Best Practices',
 			description:
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+			icon: "tabler:list-check"
 		},
 	],
 	[
@@ -22,16 +27,19 @@ const items = [
 			title: 'Excellent Page Speed',
 			description:
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+			icon: "tabler:rocket"
 		},
 		{
 			title: 'Frequently updated',
 			description:
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+			icon: "tabler:arrows-right-left"
 		},
 		{
 			title: 'Open to new ideas and contributions',
 			description:
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+			icon: "tabler:ballon"
 		},
 	],
 ];
@@ -56,22 +64,11 @@ const items = [
 			{
 				items.map((subitems) => (
 					<div class="space-y-8 sm:px-8">
-						{subitems.map(({ title, description }) => (
+						{subitems.map(({ title, description, icon }) => (
 							<div class="flex flex-row max-w-md">
 								<div class="mb-4 mr-4">
 									<div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-500">
-										<svg class="w-12 h-12 p-0.5" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-											<g fill="none" fill-rule="evenodd">
-												<rect class="fill-current text-primary-600" width="64" height="64" rx="32" />
-												<g stroke-linecap="square" stroke-width="2">
-													<path class="stroke-current text-white" d="M20.571 20.571h13.714v17.143H20.571z" />
-													<path
-														class="stroke-current text-primary-300"
-														d="M38.858 26.993l6.397 1.73-4.473 16.549-13.24-3.58"
-													/>
-												</g>
-											</g>
-										</svg>
+										{icon && <Icon name={icon} class="w-5 h-5 text-white" />}
 									</div>
 								</div>
 								<div>
