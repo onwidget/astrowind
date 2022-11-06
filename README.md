@@ -43,10 +43,9 @@
 
 ## Demo
 
-[🌀 astrowind.vercel.app](https://astrowind.vercel.app/) 
+[🌀 astrowind.vercel.app](https://astrowind.vercel.app/)
 
 <br>
-
 
 ## Getting started
 
@@ -130,17 +129,17 @@ Basic configuration file: `./src/config.mjs`
 
 ```javascript
 export const SITE = {
-  name: "Example",
+  name: 'Example',
 
-  origin: "https://example.com",
-  basePathname: "/", // Change this if you need to deploy to Github Pages, for example
+  origin: 'https://example.com',
+  basePathname: '/', // Change this if you need to deploy to Github Pages, for example
   trailingSlash: false, // Generate permalinks with or without "/" at the end
 
-  title: "Example - This is the homepage title of Example",
-  description: "This is the homepage description of Example",
+  title: 'Example - This is the homepage title of Example',
+  description: 'This is the homepage description of Example',
 
   googleAnalyticsId: false, // or "G-XXXXXXXXXX",
-  googleSiteVerificationId: false // or some value,
+  googleSiteVerificationId: false, // or some value,
 };
 
 export const BLOG = {
@@ -154,7 +153,7 @@ export const BLOG = {
 
   post: {
     disabled: false,
-    pathname: '', // empty for /some-post, value for /pathname/some-post 
+    pathname: '', // empty for /some-post, value for /pathname/some-post
   },
 
   category: {
@@ -167,8 +166,6 @@ export const BLOG = {
     pathname: 'tag', // set empty to change from /tag/some-tag to /some-tag
   },
 };
-
-
 ```
 
 <br>
@@ -199,39 +196,37 @@ Clone this repository on own GitHub account and deploy to Vercel:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonwidget%2Fastrowind)
 
-
 <br>
 
 ## Roadmap
 
-- *Project*:
+- _Project_:
   - Create simple and clear strategy to get template updates
   - Move specific configurations to a specialized file
-- *Blog*:
+- _Blog_:
   - Improve blog design
   - Create component or utilities for latest posts
   - Create component or utilities for related posts
-  - Add more *shortcodes* or *embed* functions to posts in Markdown: (eg video, tweet...)
-- *More widgets*:
+  - Add more _shortcodes_ or _embed_ functions to posts in Markdown: (eg video, tweet...)
+- _More widgets_:
   - Add more Tailwind components useful for most scenarios (Features, Contact, Call to Actions, Content, FAQs ...)
   - Create external library or place with useful Tailwind components
-- *More Examples*: Add commonly used example pages (Ex: About, Terms, Services...)
-- *Documentation*: Create detailed documentation with best practices and redesign tips
+- _More Examples_: Add commonly used example pages (Ex: About, Terms, Services...)
+- _Documentation_: Create detailed documentation with best practices and redesign tips
 
 <br>
 
 ## Frequently Asked Questions
 
 - Why?
-- 
 -
-
+-
 
 <br>
 
 ## Contributing
 
-If you have any idea, suggestions or find any bugs, feel free to open a discussion, an issue or create a pull request. 
+If you have any idea, suggestions or find any bugs, feel free to open a discussion, an issue or create a pull request.
 That would be very useful for all of us and we would be happy to listen and take action.
 
 ## Acknowledgements
