@@ -5,5 +5,5 @@ export const getFormattedDate = (date) =>
 				year: 'numeric',
 				month: 'short',
 				day: 'numeric',
-		  })
+      })
 		: '';
