@@ -1,6 +1,6 @@
 ---
-import { AstroSeo } from "@astrolib/seo"
-import { GoogleAnalytics } from "@astrolib/analytics"
+import { AstroSeo } from '@astrolib/seo';
+import { GoogleAnalytics } from '@astrolib/analytics';
 import { getImage } from '@astrojs/image';
 import { getRelativeUrlByFilePath } from '~/utils/directories';
 
@@ -9,7 +9,7 @@ import defaultImageSrc from '~/assets/images/default.png';
 import { SITE } from '~/config.mjs';
 import Fonts from '../atoms/Fonts.astro';
 import ExtraMetaTags from '../atoms/ExtraMetaTags.astro';
-import SplitbeeAnalytics from "./SplitbeeAnalytics.astro";
+import SplitbeeAnalytics from './SplitbeeAnalytics.astro';
 
 const { src: defaultImage } = await getImage({
 	src: defaultImageSrc,
@@ -44,22 +44,22 @@ const image =
 <AstroSeo
 	title={title}
 	description={description}
-
 	canonical={canonical}
 	noindex={noindex}
 	nofollow={nofollow}
-
 	openGraph={{
 		url: canonical,
 		title: ogTitle,
 		description: description,
 		type: ogType,
-		images: image ? [
-			{
-				url: image.toString(),
-				alt: ogTitle,
-			},
-		] : undefined,
+		images: image
+			? [
+					{
+						url: image.toString(),
+						alt: ogTitle,
+					},
+			  ]
+			: undefined,
 		// site_name: 'SiteName',
 	}}
 	twitter={{

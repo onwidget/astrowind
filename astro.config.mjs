@@ -6,7 +6,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import image from '@astrojs/image';
-import mdx from "@astrojs/mdx";
+import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 
 import { remarkReadingTime } from './src/utils/frontmatter.js';
@@ -20,7 +20,7 @@ export default defineConfig({
 	// Astro uses this full URL to generate your sitemap and canonical URLs in your final build
 	site: SITE.origin,
 	base: SITE.basePathname,
-	trailingSlash: SITE.trailingSlash ? "always" : "never",
+	trailingSlash: SITE.trailingSlash ? 'always' : 'never',
 
 	output: 'static',
 
@@ -32,7 +32,7 @@ export default defineConfig({
 		}),
 		sitemap(),
 		image({
-			serviceEntryPoint: '@astrojs/image/sharp'
+			serviceEntryPoint: '@astrojs/image/sharp',
 		}),
 		mdx(),
 
@@ -43,9 +43,9 @@ export default defineConfig({
 	],
 
 	markdown: {
-    remarkPlugins: [remarkReadingTime],
-    extendDefaultPlugins: true,
-  },
+		remarkPlugins: [remarkReadingTime],
+		extendDefaultPlugins: true,
+	},
 
 	vite: {
 		resolve: {

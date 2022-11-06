@@ -9,7 +9,7 @@ const { prevUrl, nextUrl, prevText = 'Newer posts', nextText = 'Older posts' } =
 		<div class="container flex">
 			<div class="flex flex-row mx-auto container justify-between">
 				<a
-					href={getPermalink(prevUrl, "raw")}
+					href={getPermalink(prevUrl, 'raw')}
 					class={`btn px-2 font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white shadow-none mr-2
       ${!prevUrl ? 'invisible' : ''}`}
 				>
@@ -19,7 +19,7 @@ const { prevUrl, nextUrl, prevText = 'Newer posts', nextText = 'Older posts' } =
 					</div>
 				</a>
 				<a
-					href={getPermalink(nextUrl, "raw")}
+					href={getPermalink(nextUrl, 'raw')}
 					class={`btn px-2 font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white shadow-none ${
 						!nextUrl ? 'invisible' : ''
 					}`}

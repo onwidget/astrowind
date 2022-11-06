@@ -37,7 +37,7 @@ const currentPage = page.currentPage ?? 1;
 const meta = {
 	title: `Category '${category}' ${currentPage > 1 ? `— Page ${currentPage} ` : ''}— ${SITE.name}`,
 	description: SITE.description,
-	canonical: getCanonical(getPermalink(category, "category")),
+	canonical: getCanonical(getPermalink(category, 'category')),
 	noindex: true,
 };
 ---
