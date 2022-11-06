@@ -2,4 +2,3 @@ dist
 node_modules
 .github
 .changeset
-*.md
