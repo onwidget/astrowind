@@ -1,0 +1,32 @@
+---
+import Picture from '~/components/core/Picture.astro';
+
+import { findImage } from '~/utils/images';
+import { getPermalink } from '~/utils/permalinks';
+
+const { post } = Astro.props;
+
+const image = await findImage(post.image);
+---
+
+<article class="mb-6 transition">
+	<div class="relative h-0 pb-[56.25%] lg:h-64 overflow-hidden bg-gray-400 dark:bg-slate-700 rounded shadow-lg mb-6">
+		<Picture
+			src={image}
+			class="object-cover w-full lg:h-64 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+			widths={[400, 900]}
+			sizes="(max-width: 900px) 400px, 900px"
+			alt={post.title}
+			aspectRatio="16:9"
+		/>
+	</div>
+	<h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl font-heading">
+		<a
+			href={getPermalink(post.slug, 'post')}
+			class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
+		>
+			{post.title}
+		</a>
+	</h3>
+	<p class="text-gray-700 dark:text-gray-400">{post.excerpt || post.description}</p>
+</article>

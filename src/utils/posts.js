@@ -64,3 +64,11 @@ export const findPostsByIds = async (ids) => {
 		return r;
 	}, []);
 };
+
+/** */
+export const findLatestPosts = async ({ count }) => {
+	const _count = count || 4;
+	const posts = await fetchPosts();
+
+	return posts ? posts.slice(_count * -1) : [];
+};
