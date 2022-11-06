@@ -12,13 +12,21 @@ module.exports = {
   rules: {},
   overrides: [
     {
+      files: ['*.js'],
+      rules: {
+        'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
+      },
+    },
+    {
       files: ['*.astro'],
       parser: 'astro-eslint-parser',
       parserOptions: {
         parser: '@typescript-eslint/parser',
         extraFileExtensions: ['.astro'],
       },
-      rules: {},
+      rules: {
+        'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
+      },
     },
     {
       files: ['*.ts'],
