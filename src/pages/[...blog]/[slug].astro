@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const canonical = post.canonical || getCanonical(getPermalink(post.slug, 'post'))
+const canonical = post.canonical || getCanonical(getPermalink(post.slug, 'post'));
 
 const meta = {
 	title: `${post.title} — ${SITE.name}`,

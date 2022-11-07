@@ -1,11 +1,13 @@
 ---
 import { Icon } from 'astro-icon';
-const { text, url, class: className = "inline-block" } = Astro.props;
+const { text, url, class: className = 'inline-block' } = Astro.props;
 ---
 
 <div class={className}>
-  <span class="align-super font-bold">Share:</span> 
-	<button class="ml-2" data-aw-social-share="facebook" data-aw-url={url}><Icon name="logos:facebook" class="w-6 h-6" /></button>
+	<span class="align-super font-bold">Share:</span>
+	<button class="ml-2" data-aw-social-share="facebook" data-aw-url={url}
+		><Icon name="logos:facebook" class="w-6 h-6" />
+	</button>
 	<button class="ml-2" data-aw-social-share="twitter" data-aw-url={url} data-aw-text={text}
 		><Icon name="logos:twitter" class="w-6 h-6" />
 	</button>
