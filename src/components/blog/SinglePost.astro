@@ -5,7 +5,7 @@ import SocialShare from '~/components/atoms/SocialShare.astro';
 
 import { getFormattedDate } from '~/utils/utils';
 
-const { post, canonical } = Astro.props;
+const { post, url } = Astro.props;
 ---
 
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
@@ -45,7 +45,7 @@ const { post, canonical } = Astro.props;
 		<div class="container mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row">
 			<PostTags tags={post.tags} class="mr-5" />
 			<SocialShare
-				url={canonical}
+				url={url}
 				text={post.title}
 				class="mt-5 sm:mt-1 align-middle text-gray-400 dark:text-slate-600"
 			/>
