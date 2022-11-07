@@ -1,10 +1,11 @@
 ---
 import Picture from '~/components/core/Picture.astro';
 import PostTags from '~/components/atoms/Tags.astro';
+import SocialShare from '~/components/atoms/SocialShare.astro';
 
 import { getFormattedDate } from '~/utils/utils';
 
-const { post } = Astro.props;
+const { post, canonical } = Astro.props;
 ---
 
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
@@ -41,8 +42,9 @@ const { post } = Astro.props;
 		>
 			{post.Content ? <post.Content /> : <Fragment set:html={post.body} />}
 		</div>
-		<div class="container mx-auto px-8 sm:px-6 max-w-3xl mt-8">
-			<PostTags tags={post.tags} />
+		<div class="container mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row">
+			<PostTags tags={post.tags} class="mr-5" />
+			<SocialShare url={canonical} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-400 dark:text-slate-600"/>
 		</div>
 	</article>
 </section>

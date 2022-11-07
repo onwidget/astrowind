@@ -23,11 +23,12 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const canonical = post.canonical || getCanonical(getPermalink(post.slug, 'post'))
 
 const meta = {
 	title: `${post.title} — ${SITE.name}`,
 	description: post.description,
-	canonical: post.canonical || getCanonical(getPermalink(post.slug, 'post')),
+	canonical: canonical,
 	image: await findImage(post.image),
 	ogTitle: post.title,
 	ogType: 'article',
@@ -35,5 +36,5 @@ const meta = {
 ---
 
 <Layout {meta}>
-	<SinglePost post={{ ...post, image: meta.image }} />
+	<SinglePost post={{ ...post, image: meta.image }} canonical={canonical} />
 </Layout>
