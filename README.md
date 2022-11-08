@@ -202,10 +202,8 @@ Clone this repository on own GitHub account and deploy to Vercel:
 
 - _Project_:
   - Create simple and clear strategy to get template updates
-  - Move specific configurations to a specialized file
 - _Blog_:
   - Improve blog design
-  - Create component or utilities for latest posts
   - Create component or utilities for related posts
   - Add more _shortcodes_ or _embed_ functions to posts in Markdown: (eg video, tweet...)
 - _More widgets_:
