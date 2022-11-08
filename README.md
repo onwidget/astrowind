@@ -29,7 +29,7 @@
 
 <br>
 
-<details>
+<details open>
 <summary>Table of Contents</summary>
 
 - [Demo](#demo)
@@ -50,7 +50,7 @@
 
 ## Demo
 
-[🌀 astrowind.vercel.app](https://astrowind.vercel.app/)
+📌 [https://astrowind.vercel.app/](https://astrowind.vercel.app/)
 
 <br>
 
