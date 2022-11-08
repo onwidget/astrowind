@@ -20,10 +20,10 @@
 
 <img src="./screenshot.png" alt="AstroWind Theme Screenshot">
 
-[![License](https://img.shields.io/github/license/onwidget/astrowind?style=flat-square&color=%232F3741)](https://github.com/onwidget/astrowind/blob/main/LICENSE.md)
-[![Maintained](https://img.shields.io/badge/maintained%3F-yes-blue.svg?style=flat-square)](https://github.com/onwidget)
-[![Known Vulnerabilities](https://snyk.io/test/github/onwidget/astrowind/badge.svg?style=flat-square)](https://snyk.io/test/github/onwidget/astrowind)
+[![License](https://img.shields.io/github/license/onwidget/astrowind?style=flat-square&color=eeeeee&labelColor=000000)](https://github.com/onwidget/astrowind/blob/main/LICENSE.md)
+[![Maintained](https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/onwidget)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/onwidget/astrowind#contributing)
+[![Known Vulnerabilities](https://snyk.io/test/github/onwidget/astrowind/badge.svg?style=flat-square)](https://snyk.io/test/github/onwidget/astrowind)
 ![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=flat-square&logo=prettier&logoColor=F7BA3E)
 ![Eslint](https://img.shields.io/badge/eslint-3A33D1?style=flat-square&logo=eslint&logoColor=white)
 
