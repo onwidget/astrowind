@@ -1,3 +1,2 @@
 User-agent: *
 Disallow:
-Sitemap: https://astrowind.vercel.app/sitemap-index.xml
