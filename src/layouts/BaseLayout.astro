@@ -14,7 +14,9 @@ const { meta = {} } = Astro.props;
 	</head>
 
 	<body>
-		<slot />
+		<div class="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-900">
+			<slot />
+		</div>
 		<BasicScripts />
 		<style is:global>
 			img {
