@@ -19,10 +19,10 @@
 
 <img src="./screenshot.png" alt="AstroWind Theme Screenshot">
 
-[![License](https://img.shields.io/github/license/onwidget/astrowind?style=flat-square&color=eeeeee&labelColor=000000)](https://github.com/onwidget/astrowind/blob/main/LICENSE.md)
-[![Maintained](https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/onwidget)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/onwidget/astrowind#contributing)
-[![Known Vulnerabilities](https://snyk.io/test/github/onwidget/astrowind/badge.svg?style=flat-square)](https://snyk.io/test/github/onwidget/astrowind)
+[![License](https://img.shields.io/github/license/mhaidarhanif/astrowind?style=flat-square&color=eeeeee&labelColor=000000)](https://github.com/mhaidarhanif/astrowind/blob/main/LICENSE.md)
+[![Maintained](https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/mhaidarhanif)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/mhaidarhanif/astrowind#contributing)
+[![Known Vulnerabilities](https://snyk.io/test/github/mhaidarhanif/astrowind/badge.svg?style=flat-square)](https://snyk.io/test/github/mhaidarhanif/astrowind)
 ![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=flat-square&logo=prettier&logoColor=F7BA3E)
 ![Eslint](https://img.shields.io/badge/eslint-3A33D1?style=flat-square&logo=eslint&logoColor=white)
 
@@ -110,7 +110,7 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory if they do not require any transformation or in the `assets/` directory if they are imported directly.
 
-[![Edit AstroWind on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/onwidget/astrowind/tree/main)
+[![Edit AstroWind on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/mhaidarhanif/astrowind/tree/main)
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Update `config.mjs` and contents. Have fun!
 
@@ -197,7 +197,7 @@ prefer.
 
 Clone this repository on own GitHub account and deploy to Netlify:
 
-[![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/onwidget/astrowind)
+[![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/mhaidarhanif/astrowind)
 
 #### Deploy to Vercel
 
@@ -238,8 +238,8 @@ That would be very useful for all of us and we would be happy to listen and take
 
 ## Acknowledgements
 
-Initially created by [onWidget](https://onwidget.com) and maintained by a community of [contributors](https://github.com/onwidget/astrowind/graphs/contributors).
+Initially created by [onWidget](https://mhaidarhanif.com) and maintained by a community of [contributors](https://github.com/mhaidarhanif/astrowind/graphs/contributors).
 
 ## License
 
-**AstroWind** is licensed under the Unlicense license — see the [LICENSE](https://github.com/onwidget/astrowind/blob/main/LICENSE.md) file for details.
+**AstroWind** is licensed under the Unlicense license — see the [LICENSE](https://github.com/mhaidarhanif/astrowind/blob/main/LICENSE.md) file for details.
