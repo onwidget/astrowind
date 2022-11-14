@@ -49,7 +49,7 @@ Original template from [onwidget/astrowind](https://github.com/onwidget/astrowin
 
 ## Demo
 
-📌 [https://astrowind.vercel.app/](https://astrowind.vercel.app/)
+📌 [astrowind-mhaidarhanif.vercel.app/](https://astrowind-mhaidarhanif.vercel.app/)
 
 <br>
 
@@ -203,7 +203,7 @@ Clone this repository on own GitHub account and deploy to Netlify:
 
 Clone this repository on own GitHub account and deploy to Vercel:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonwidget%2Fastrowind)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmhaidarhanif%2Fastrowind)
 
 <br>
 
