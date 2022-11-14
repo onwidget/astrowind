@@ -238,7 +238,7 @@ That would be very useful for all of us and we would be happy to listen and take
 
 ## Acknowledgements
 
-Initially created by [onWidget](https://mhaidarhanif.com) and maintained by a community of [contributors](https://github.com/mhaidarhanif/astrowind/graphs/contributors).
+Initially created by [onWidget](https://onwidget.com) and maintained by a community of [contributors](https://github.com/mhaidarhanif/astrowind/graphs/contributors).
 
 ## License
 
