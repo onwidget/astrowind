@@ -1,9 +1,11 @@
 # 🚀 AstroWind
 
 <img src="lighthouse-score.png" align="right"
-     alt="AstroWind Lighthouse Score" width="100" height="358">
+  alt="AstroWind Lighthouse Score" width="100" height="358" />
 
 **AstroWind** is a free and open-source template to make your website using **Astro + Tailwind CSS**. Ready to start a new project and designed taking into account best practices.
+
+Original template from [onwidget/astrowind](https://github.com/onwidget/astrowind)
 
 ## Features
 
@@ -25,8 +27,6 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/mhaidarhanif/astrowind/badge.svg?style=flat-square)](https://snyk.io/test/github/mhaidarhanif/astrowind)
 ![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=flat-square&logo=prettier&logoColor=F7BA3E)
 ![Eslint](https://img.shields.io/badge/eslint-3A33D1?style=flat-square&logo=eslint&logoColor=white)
-
-<br>
 
 <details open>
 <summary>Table of Contents</summary>
