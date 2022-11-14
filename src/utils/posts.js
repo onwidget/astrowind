@@ -27,7 +27,7 @@ const getNormalizedPost = async (post) => {
 };
 
 const load = async function () {
-	const posts = import.meta.glob(['~/../data/blog/**/*.md', '~/../data/blog/**/*.mdx'], {
+	const posts = import.meta.glob(['~/data/blog/**/*.md', '~/data/blog/**/*.mdx'], {
 		eager: true,
 	});
 
@@ -39,6 +39,7 @@ const load = async function () {
 	const results = (await Promise.all(normalizedPosts))
 		.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf())
 		.filter((post) => !post.draft);
+
 	return results;
 };
 
