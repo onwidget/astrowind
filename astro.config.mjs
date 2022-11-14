@@ -1,17 +1,14 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-
 import { defineConfig } from 'astro/config';
-
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 
-import { remarkReadingTime } from './src/utils/frontmatter.js';
-
 import { SITE } from './src/config.mjs';
+import { remarkReadingTime } from './src/utils/frontmatter.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
