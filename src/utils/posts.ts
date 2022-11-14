@@ -1,4 +1,6 @@
-const getNormalizedPost = async (post) => {
+import type { Post, Posts } from '~/types';
+
+const getNormalizedPost = async (post: Post) => {
 	const { frontmatter, Content, file } = post;
 	const ID = file.split('/').pop().split('.').shift();
 
@@ -33,7 +35,7 @@ const load = async function () {
 
 	const normalizedPosts = Object.keys(posts).map(async (key) => {
 		const post = await posts[key];
-		return await getNormalizedPost(post);
+		return await getNormalizedPost(post as Post);
 	});
 
 	const results = (await Promise.all(normalizedPosts))
@@ -43,7 +45,7 @@ const load = async function () {
 	return results;
 };
 
-let _posts;
+let _posts: Posts;
 
 /** */
 export const fetchPosts = async () => {
@@ -53,21 +55,21 @@ export const fetchPosts = async () => {
 };
 
 /** */
-export const findPostsByIds = async (ids) => {
+export const findPostsByIds = async (ids: string[]) => {
 	if (!Array.isArray(ids)) return [];
 
 	const posts = await fetchPosts();
 
 	return ids.reduce(function (r, id) {
 		posts.some(function (post) {
-			return id === post.id && r.push(post);
+			return id === post.id && r.push(post as never);
 		});
 		return r;
 	}, []);
 };
 
 /** */
-export const findLatestPosts = async ({ count }) => {
+export const findLatestPosts = async ({ count }: { count: number }) => {
 	const _count = count || 4;
 	const posts = await fetchPosts();
 

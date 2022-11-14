@@ -8,7 +8,7 @@ import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 
 import { SITE } from './src/config.mjs';
-import { remarkReadingTime } from './src/utils/frontmatter.js';
+import { remarkReadingTime } from './src/utils/frontmatter.ts';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 

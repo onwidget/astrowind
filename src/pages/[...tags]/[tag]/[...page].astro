@@ -8,6 +8,7 @@ import Pagination from '~/components/atoms/Pagination.astro';
 import { fetchPosts } from '~/utils/posts';
 import { getCanonical, getPermalink, cleanSlug, TAG_BASE } from '~/utils/permalinks';
 
+// @ts-ignore
 export async function getStaticPaths({ paginate }) {
 	if (BLOG?.disabled || BLOG?.tag?.disabled) return [];
 

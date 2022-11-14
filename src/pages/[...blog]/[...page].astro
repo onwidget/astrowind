@@ -8,15 +8,18 @@ import Pagination from '~/components/atoms/Pagination.astro';
 import { fetchPosts } from '~/utils/posts';
 import { getCanonical, getPermalink, BLOG_BASE } from '~/utils/permalinks';
 
+// @ts-ignore
 export async function getStaticPaths({ paginate }) {
 	if (BLOG?.disabled || BLOG?.blog?.disabled) return [];
 
 	const posts = await fetchPosts();
-
-	return paginate(posts, {
-		params: { blog: BLOG_BASE || undefined },
+	const params = { blog: BLOG_BASE || undefined };
+	const paginatedPosts = paginate(posts, {
+		params,
 		pageSize: BLOG.postsPerPage,
 	});
+
+	return paginatedPosts;
 }
 
 const { page } = Astro.props;
