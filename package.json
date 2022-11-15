@@ -1,7 +1,7 @@
 {
   "name": "@onwidget/astrowind",
   "description": "A template to make your website using Astro + Tailwind CSS.",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -26,7 +26,7 @@
     "@tailwindcss/typography": "^0.5.8",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
-    "astro": "1.6.5",
+    "astro": "^1.6.8",
     "astro-icon": "^0.8.0",
     "eslint": "^8.27.0",
     "eslint-plugin-astro": "^0.21.0",
