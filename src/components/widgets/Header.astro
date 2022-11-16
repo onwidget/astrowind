@@ -1,20 +1,22 @@
 ---
 import { Icon } from 'astro-icon';
 import Logo from '~/components/atoms/Logo.astro';
+import Logo_dark from '~/components/atoms/Logo_dark.astro';
 import ToggleTheme from '~/components/core/ToggleTheme.astro';
 import ToggleMenu from '~/components/core/ToggleMenu.astro';
 
 import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permalinks';
 ---
 
+
 <header
-	class="sticky top-0 z-40 flex-none mx-auto w-full bg-white md:bg-white/90 dark:bg-slate-900 dark:md:bg-slate-900/90 md:backdrop-blur-sm border-b dark:border-b-0"
+	class=" sticky top-0 z-40 flex-none mx-auto w-full bg-white md:bg-white/90 dark:bg-slate-900 dark:md:bg-slate-900/90 md:backdrop-blur-sm border-b dark:border-b-0"
 	id="header"
 >
 	<div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4">
 		<div class="flex justify-between">
 			<a class="flex items-center" href={getHomePermalink()}>
-				<Logo />
+				<Logo /> <Logo_dark />
 			</a>
 			<div class="flex items-center md:hidden">
 				<ToggleTheme />
@@ -29,34 +31,29 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 				<li>
 					<a
 						class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-						href="#">Pages</a
+						href="#travelguide">Travel Guide</a
 					>
 				</li>
 				<li>
 					<a
 						class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-						href={getPermalink('useful-resources-to-create-websites', 'post')}
-						>Resources
+						href='#submissions'
+						>Submissions
 					</a>
 				</li>
-				<li>
-					<a
-						class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-						href={getBlogPermalink()}>Blog</a
-					>
-				</li>
-				<li class="md:hidden">
+				<!-- <li class="md:hidden">
 					<a
 						class="font-bold hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
 						href="https://github.com/onwidget/astrowind"
 						>Github
 					</a>
-				</li>
+				</li> -->
 			</ul>
+			
 			<div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
 				<div class="hidden items-center md:flex">
 					<ToggleTheme iconClass="w-5 h-5" />
-					<a
+					<!-- <a
 						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
 						aria-label="RSS Feed"
 						href="/rss.xml"
@@ -69,9 +66,11 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 						aria-label="Astrowind Github"
 					>
 						<Icon name="tabler:brand-github" class="w-5 h-5" />
-					</a>
+					</a> -->
 				</div>
 			</div>
 		</nav>
 	</div>
 </header>
+
+

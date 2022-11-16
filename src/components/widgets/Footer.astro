@@ -3,14 +3,14 @@ import { Icon } from 'astro-icon';
 import { getHomePermalink } from '~/utils/permalinks';
 ---
 
-<footer class="border-t border-gray-200 dark:border-slate-800">
+<footer class="border-t border-gray-200 dark:border-slate-800 dark:bg-slate-900">
 	<div class="max-w-6xl mx-auto px-4 sm:px-6">
-		<div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
+		<!-- <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
 			<div class="col-span-12 lg:col-span-4">
 				<div class="mb-2">
-					<a class="inline-block font-bold text-xl" href={getHomePermalink()}>AstroWind</a>
+					<a class="inline-block font-bold text-xl" href={getHomePermalink()}>Bioinformatics Open Days</a>
 				</div>
-				<div class="text-sm text-gray-600">
+				<!-- <div class="text-sm text-gray-600">
 					<a
 						class="text-gray-600 hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
 						href="#">Terms</a
@@ -19,9 +19,9 @@ import { getHomePermalink } from '~/utils/permalinks';
 						class="text-gray-600 hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
 						href="#">Privacy Policy</a
 					>
-				</div>
-			</div>
-			<div class="col-span-6 md:col-span-3 lg:col-span-2">
+				</div> -->
+			<!-- </div> -->
+			<!-- <div class="col-span-6 md:col-span-3 lg:col-span-2">
 				<div class="text-gray-800 dark:text-gray-300 font-medium mb-2">Product</div>
 				<ul class="text-sm">
 					<li class="mb-2">
@@ -160,63 +160,65 @@ import { getHomePermalink } from '~/utils/permalinks';
 						>
 					</li>
 				</ul>
-			</div>
-		</div>
+			</div> -->
+		<!-- </div> -->
 		<div class="md:flex md:items-center md:justify-between py-6 md:py-8">
 			<ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0">
 				<li>
 					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-						aria-label="Twitter"
-						href="#"
-					>
-						<Icon name="tabler:brand-twitter" class="w-5 h-5" />
-					</a>
-				</li>
-				<li>
-					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-						aria-label="Instagram"
-						href="#"
-					>
-						<Icon name="tabler:brand-instagram" class="w-5 h-5" />
-					</a>
-				</li>
-				<li>
-					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+						class="text-gray-500 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
 						aria-label="Facebook"
-						href="#"
+						href="https://www.facebook.com/bioinformaticsopendays"
 					>
 						<Icon name="tabler:brand-facebook" class="w-5 h-5" />
 					</a>
 				</li>
 				<li>
 					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-						aria-label="RSS"
-						href="/rss.xml"
+						class="text-gray-500 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+						aria-label="Instagram"
+						href="https://www.instagram.com/bioinformaticsopendays/"
 					>
-						<Icon name="tabler:rss" class="w-5 h-5" />
+						<Icon name="tabler:brand-instagram" class="w-5 h-5" />
 					</a>
 				</li>
 				<li>
 					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-						aria-label="Github"
-						href="https://github.com/onwidget/astrowind"
+					class="text-gray-500 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+					aria-label="Linkedin"
+					href="https://www.linkedin.com/in/bioinformatics-open-days-492052174/"
+				>
+					<Icon name="tabler:brand-linkedin" class="w-5 h-5" />
+				</a>
+				</li>
+				<li>
+					<a
+						class="text-gray-500 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+						aria-label="Twitter"
+						href="https://twitter.com/Bioinf_OpenDays"
 					>
-						<Icon name="tabler:brand-github" class="w-5 h-5" />
+						<Icon name="tabler:brand-twitter" class="w-5 h-5" />
+					</a>
+				</li>
+				<li>
+					<a
+						class="text-gray-500 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+						aria-label="Email"
+						href="mailto:bod.geral@gmail.com"
+					>
+						<Icon name="tabler:mail" class="w-5 h-5" />
 					</a>
 				</li>
 			</ul>
 			<div class="text-sm text-gray-700 mr-4 dark:text-slate-400">
-				<span
+				<!-- <span
 					class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 float-left rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"
 				>
-				</span>
-				Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/"> onWidget</a> ·
-				All rights reserved.
+				</span> -->
+				<a class="inline-block font-bold text-xl dark:text-white" href={getHomePermalink()}>Bioinformatics Open Days</a>
+				<br>
+				<br>
+				Made by Organizing Committee of BOD 2023 ·	All rights reserved.
 			</div>
 		</div>
 	</div>

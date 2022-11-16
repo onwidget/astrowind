@@ -3,27 +3,26 @@ import { Icon } from 'astro-icon';
 import Picture from '~/components/core/Picture.astro';
 ---
 
-<section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-6xl">
-	<div class="grid gap-6 row-gap-10 md:grid-cols-2">
+
+<section class="dark:bg-slate-900">
+	<div class=" px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-6xl grid gap-6 row-gap-10 md:grid-cols-2">
 		<div class="md:pb-6 md:pr-16">
-			<h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading">
-				Sed ac magna sit amet risus tristique interdum. hac.
+			<h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading dark:text-white">
+				Location
 			</h2>
 			<div class="flex">
 				<div class="flex flex-col items-center mr-4">
 					<div>
 						<div class="flex items-center justify-center w-10 h-10 rounded-full border-secondary-500 border-2">
-							<Icon name="tabler:arrow-down" class="w-6 h-6 text-gray-600 dark:text-slate-200 icon-bold" />
+							<Icon name="tabler:map-2" class="w-6 h-6 text-gray-600 dark:text-slate-200 icon-bold" />
 						</div>
 					</div>
 					<div class="w-px h-full bg-gray-300 dark:bg-slate-500"></div>
 				</div>
 				<div class="pt-1 pb-8">
-					<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">Step 1</p>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi
-						risus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce
-						sit amet dui tellus.
+					<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">Event Location</p>
+					<p class="dark:text-slate-400">
+						BOD will be held in Braga, at University of Minho - Gualtar.
 					</p>
 				</div>
 			</div>
@@ -31,16 +30,15 @@ import Picture from '~/components/core/Picture.astro';
 				<div class="flex flex-col items-center mr-4">
 					<div>
 						<div class="flex items-center justify-center w-10 h-10 rounded-full border-secondary-500 border-2">
-							<Icon name="tabler:arrow-down" class="w-6 h-6 text-gray-600 dark:text-slate-200 icon-bold" />
+							<Icon name="tabler:current-location" class="w-6 h-6 text-gray-600 dark:text-slate-200 icon-bold" />
 						</div>
 					</div>
 					<div class="w-px h-full bg-gray-300 dark:bg-slate-500"></div>
 				</div>
 				<div class="pt-1 pb-8">
-					<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">Step 2</p>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi
-						risus tempus nulla, sed porttitor est nibh at nulla.
+					<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">Coordinates</p>
+					<p class="dark:text-slate-400">
+						41.56035, -8.39572
 					</p>
 				</div>
 			</div>
@@ -48,16 +46,18 @@ import Picture from '~/components/core/Picture.astro';
 				<div class="flex flex-col items-center mr-4">
 					<div>
 						<div class="flex items-center justify-center w-10 h-10 rounded-full border-secondary-500 border-2">
-							<Icon name="tabler:arrow-down" class="w-6 h-6 text-gray-600 dark:text-slate-200 icon-bold" />
+							<Icon name="tabler:map-pin" class="w-6 h-6 text-gray-600 dark:text-slate-200 icon-bold" />
 						</div>
 					</div>
 					<div class="w-px h-full bg-gray-300 dark:bg-slate-500"></div>
 				</div>
 				<div class="pt-1 pb-8">
-					<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">Step 3</p>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi
-						risus tempus nulla, sed porttitor est nibh at nulla.
+					<p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300">Address</p>
+					<p class="dark:text-slate-400">
+						Universidade do Minho - Campus de Gualtar/Braga
+						Rua da Universidade,Gualtar
+						Braga, North, 4710-057
+						Portugal
 					</p>
 				</div>
 			</div>
@@ -76,14 +76,21 @@ import Picture from '~/components/core/Picture.astro';
 			</div>
 		</div>
 		<div class="relative">
+			<a
+			href="https://goo.gl/maps/twR3ArSt5SPtQKQ5A"
+			target="_blank"
+			rel="noopener"
+			>
 			<Picture
-				class="inset-0 object-cover object-top w-full rounded-md shadow-lg md:absolute md:h-full bg-gray-400 dark:bg-slate-700"
-				src={import('~/assets/images/astronaut.jpg')}
-				widths={[400, 768]}
-				sizes="(max-width: 768px) 100vw, 432px"
-				alt="Astronaut"
-				aspectRatio="432:768"
-			/>
+			class="inset-0 object-cover object-top w-full rounded-md shadow-lg md:absolute md:h-full bg-gray-400 dark:bg-slate-700"
+			src={import('~/assets/images/mapa_google_maps_universidade_minho.png')}
+			widths={[400, 768]}
+			sizes="(max-width: 768px) 100vw, 432px"
+			alt="University of Minho Location"
+			aspectRatio="432:768"
+		/>
+			</a>
+			
 		</div>
 	</div>
 </section>
