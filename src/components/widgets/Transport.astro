@@ -5,40 +5,42 @@ const items = [
 	{
 		title: 'Train',
 		icon: 'emojione-v1:bullet-train',
-		description: 'CP tickets and schedules here',
-		link: "https://www.cp.pt/passageiros/en/train-times/Stations/braga-station",
+		description: 'Learn more about CP train tickets and schedules.',
+		link: 'https://www.cp.pt/passageiros/en/train-times/Stations/braga-station',
 	},
 	{
 		title: 'Bus',
 		icon: 'emojione-v1:bus',
-		description: 'TUB routes and schedules here',
-		link: "https://tub.pt/percursos/",
+		description: 'See all the TUB bus routes and schedules.',
+		link: 'https://tub.pt/percursos/',
 	},
 	{
 		title: 'Airplane',
 		icon: 'emojione-v1:airplane',
-		description: 'Nearest airport to Braga - Oporto',
-		link: "https://www.aeroportoporto.pt/en/opo/home",
+		description: 'Find flights to Porto (OPO), the closest airport.',
+		link: 'https://www.aeroportoporto.pt/en/opo/home',
 	},
 	{
 		title: 'Car',
 		icon: 'emojione-v1:automobile',
-		description: 'Waze directions to Braga here',
-		link: "https://www.waze.com/live-map/directions/pt/braga/braga/university-of-minho-campus-of-gualtar?navigate=yes&utm_campaign=waze_website&utm_source=waze_website&utm_medium=lm_share_location&to=place.ChIJZTG3nSf8JA0R8GO30bCQMnU",
+		description: 'Beat the traffic and get here on time with Waze navigation.',
+		link: 'https://www.waze.com/live-map/directions/pt/braga/braga/university-of-minho-campus-of-gualtar?navigate=yes&utm_campaign=waze_website&utm_source=waze_website&utm_medium=lm_share_location&to=place.ChIJZTG3nSf8JA0R8GO30bCQMnU',
 	},
 ];
 ---
 
-<section class="relative dark:bg-slate-800 bg-primary-100" id='transport'>
+<section class="relative dark:bg-slate-800 bg-primary-100" id="transport">
 	<div class="absolute inset-0 bg-white dark:bg-slate-900 pointer-events-none mb-32" aria-hidden="true"></div>
-	<div class="relative max-w-6xl mx-auto px-4 sm:px-6 ">
-		<div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12 ">
+	<div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+		<div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
 			<div class="mb-8 text-center">
-				<h2 class="text-4xl dark:text-primary-400 md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+				<h2
+					class="text-4xl dark:text-primary-400 md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
+				>
 					How to get here?
 				</h2>
 				<p class="max-w-3xl mx-auto text-center text-xl text-gray-600 dark:text-slate-400">
-					Get here by train, airplane, bus or car!
+					Find some useful links to prepare for your commute by train, airplane, bus or car.
 				</p>
 			</div>
 			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 items-start my-12 dark:text-white">
@@ -46,13 +48,11 @@ const items = [
 					items.map(({ title, icon, description, link }) => (
 						<a class="dark:text-gray-200" href={link} target="_blank">
 							<div class="relative flex flex-col p-6 bg-white dark:bg-slate-800 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-slate-800">
-							<div class="flex items-center">
-								<Icon name={icon} class="w-12 h-12" />
-								<div class="ml-4 text-2xl font-bold">{title}</div>
-							</div>
-							<p class="text-gray-500 dark:text-gray-400 text-md py-4">
-								{description}
-							</p>
+								<div class="flex items-center">
+									<Icon name={icon} class="w-12 h-12" />
+									<div class="ml-4 text-2xl font-bold">{title}</div>
+								</div>
+								<p class="text-gray-500 dark:text-gray-400 text-md py-4">{description}</p>
 							</div>
 						</a>
 					))
