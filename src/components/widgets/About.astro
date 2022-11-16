@@ -1,0 +1,51 @@
+---
+import { Icon } from 'astro-icon';
+import Picture from '~/components/core/Picture.astro';
+---
+
+
+<section class="dark:bg-slate-900">
+	<div class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-6xl grid gap-6 row-gap-10 md:grid-cols-2">
+		
+		<div class="relative">
+			<a
+			href="#"
+			rel="noopener"
+			>
+			<img
+			class="cover"
+			src="src/assets/images/Logo-original-500px.png"
+			alt="Bioinformatics Open Days 2023"
+		/>
+			<!-- <Picture
+			src={import('src/assets/images/Logo-original-670px.png')}
+			widths={[400, 768]}
+			sizes="(max-width: 768px) 100vw, 432px"
+			alt="Bioinformatics Open Days"
+			aspectRatio="432:768"
+		/> -->
+			</a>
+			
+		</div>
+		<div class="md:pb-6 md:pr-16">
+		<br>
+		<br>
+			<h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading dark:text-white">
+				About us
+			</h2>
+			<p class="dark:text-slate-400">
+						Student-led initiative, first held at University of Minho, Braga, in 2012.
+						<br>
+						<br>
+						Aimed to promote the exchange of knowledge between students, teachers and
+						researchers from the Bioinformatics and Computational Biology fields.
+						<br>
+						<br>
+						Bioinformatics Students National Meeting
+					</p>
+		</div>
+	</div>
+</section>
+
+
+

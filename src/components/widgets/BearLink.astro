@@ -1,0 +1,44 @@
+---
+export interface Props {
+  rotate?: number;
+  animation?: "scale" | "scaleAndSlide";
+}
+const { animation, rotate } = Astro.props as Props;
+---
+
+<a
+  class="bear-link"
+  data-animation={animation}
+  href="#"
+  title="Read more about BOD"
+  ><img
+    class="bear"
+    style={rotate ? { transform: `rotate(${rotate}deg` } : {}}
+    src="public/favicon-bods.svg"
+    alt="BOD symbol"
+  />
+</a>
+
+<style>
+  .bear-link {
+    display: block;
+    transition: transform var(--speed-move) ease-out;
+  }
+  .bear-link::after {
+    display: none;
+  }
+  .bear-link[data-animation="scale"]:hover {
+    transform: scale(1.1);
+  }
+  .bear-link[data-animation="scaleAndSlide"]:hover {
+    transform: translateX(20px) scale(1.05);
+  }
+  .bear {
+    width: 11rem;
+  }
+  @media screen and (max-width: 756px) {
+    .bear {
+      width: 6rem;
+    }
+  }
+</style>
