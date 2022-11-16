@@ -12,9 +12,6 @@ module.exports = {
 			fontFamily: {
 				sans: ["'InterVariable'", ...defaultTheme.fontFamily.sans],
 			},
-			logo: {
-				light: "url('src/assets/images/logo_bods_6.svg')",
-				dark:"url('src/assets/images/logo_bods_8.svg')",
 			}
 		},
 	},
