@@ -3,14 +3,7 @@ import { SITE } from '~/config.mjs';
 import { getCanonical, getHomePermalink } from '~/utils/permalinks';
 import Layout from '~/layouts/PageLayout.astro';
 
-import Hero from '~/components/widgets/Hero.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import HighlightedPosts from '~/components/blog/HighlightedPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
+import Transport from '~/components/widgets/Transport.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const meta = {
@@ -21,13 +14,13 @@ const meta = {
 ---
 
 <Layout {meta}>
-	<Hero />
+	<!-- <Hero />
 	<Features />
-	<!-- <Steps />
-	<Features2 /> -->
+	<Steps />
+	<Features2 />
 	<Features3 />
-	<!-- <HighlightedPosts />
-	<FAQs />
-	<Stats /> -->
+	<HighlightedPosts />
+	<FAQs /> -->
+	<Transport />
 	<CallToAction />
 </Layout>
