@@ -4,42 +4,40 @@ import { Icon } from 'astro-icon';
 const items = [
 	{
 		title: 'Location',
-		description:
-			'BOD will be held in Braga, at University of Minho - Campus of Gualtar.',
+		description: 'Held in Braga, at the University of Minho - Campus of Gualtar.',
 		icon: 'emojione-v1:globe-showing-europe-africa',
-		link: "/location",
+		link: '/location',
 	},
 	{
 		title: 'Stay',
-		description:
-			'These are some of the best ways to stay in Braga. No matter the budget.',
+		description: 'Find some of the best stays in Braga, with options for every budget.',
 		icon: 'emojione-v1:hotel',
-		link: "/stays",
+		link: '/stays',
 	},
 	{
 		title: 'Transportation',
-		description:
-			'Here you can find all the details about how to get here.',
+		description: 'Learn about the best travel options to get here with no hiccups.',
 		icon: 'emojione-v1:bullet-train',
 		// 'icon-park:acceleration',
-		link: "/transportation",
+		link: '/transportation',
 	},
 ];
 ---
 
-<section class="relative dark:bg-slate-900" id='travelguide'>
+<section class="relative dark:bg-slate-900" id="travelguide">
 	<div class="absolute inset-0 bg-primary-100 dark:bg-slate-800 pointer-events-none mb-32" aria-hidden="true"></div>
-	<div class="relative max-w-6xl mx-auto px-4 sm:px-6 ">
-		<div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12 ">
+	<div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+		<div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
 			<div class="mb-8 text-center">
 				<p class="text-base text-primary-600 dark:text-white font-semibold tracking-wide uppercase">Travel Guide</p>
-				<h2 class="text-4xl dark:text-primary-400 md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+				<h2
+					class="text-4xl dark:text-primary-400 md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
+				>
 					How to join us
 				</h2>
 				<p class="max-w-3xl mx-auto text-center text-xl text-gray-600 dark:text-slate-400">
-					Know where you can stay and all.
-					We have prepared a travel guide where you can find all the details about how to get
-					here. Any questions feel free to ask!
+					Know before you go! See our travel guide for details on how to get to the event here. Questions? Feel free to
+					ask!
 				</p>
 			</div>
 			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-12 dark:text-white">
@@ -47,16 +45,14 @@ const items = [
 					items.map(({ title, description, icon, link }) => (
 						<a class="dark:text-gray-200" href={link}>
 							<div class="relative flex flex-col p-6 bg-white dark:bg-slate-900 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-slate-800">
-							<div class="flex items-center mb-4">
-								<Icon name={icon} class="w-12 h-12" />
+								<div class="flex items-center mb-4">
+									<Icon name={icon} class="w-12 h-12" />
 
-								<div class="ml-4 text-xl font-bold">{title}</div>
-							</div>
-							<p class="text-gray-500 dark:text-gray-400 text-md">{description}</p>
+									<div class="ml-4 text-xl font-bold">{title}</div>
+								</div>
+								<p class="text-gray-500 dark:text-gray-400 text-md">{description}</p>
 							</div>
 						</a>
-							
-						
 					))
 				}
 			</div>
