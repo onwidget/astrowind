@@ -23,4 +23,4 @@ That would be very useful for all of us and we would be happy to listen and take
 
 Follow us on social and subscribe to our newsletter for the latest news!
 
-[Facebook](https://www.facebook.com/bioinformaticsopendays) | [Instagram](https://www.instagram.com/bioinformaticsopendays/) | [Linkedin](https://www.linkedin.com/in/bioinformatics-open-days-492052174/) | [Twitter](https://twitter.com/Bioinf_OpenDays) | [Email](mailto:bod.geral@gmail.com)
+[Facebook](https://www.facebook.com/bioinformaticsopendays) | [Instagram](https://www.instagram.com/bioinformaticsopendays/) | [Linkedin](https://www.linkedin.com/in/bioinformaticsopendays/) | [Twitter](https://twitter.com/Bioinf_OpenDays) | [Email](mailto:bod.geral@gmail.com)
