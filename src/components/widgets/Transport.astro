@@ -29,8 +29,8 @@ const items = [
 ];
 ---
 
-<section class="relative dark:bg-slate-800 bg-primary-100" id="transport">
-	<div class="absolute inset-0 bg-white dark:bg-slate-900 pointer-events-none mb-32" aria-hidden="true"></div>
+<section class="relative dark:bg-gray-800 bg-primary-100" id="transport">
+	<div class="absolute inset-0 bg-white dark:bg-gray-900 pointer-events-none mb-32" aria-hidden="true"></div>
 	<div class="relative max-w-6xl mx-auto px-4 sm:px-6">
 		<div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
 			<div class="mb-8 text-center">
@@ -39,7 +39,7 @@ const items = [
 				>
 					How to get here?
 				</h2>
-				<p class="max-w-3xl mx-auto text-center text-xl text-gray-600 dark:text-slate-400">
+				<p class="max-w-3xl mx-auto text-center text-xl text-gray-600 dark:text-gray-400">
 					Find some useful links to prepare for your commute by train, airplane, bus or car.
 				</p>
 			</div>
@@ -47,7 +47,7 @@ const items = [
 				{
 					items.map(({ title, icon, description, link }) => (
 						<a class="dark:text-gray-200" href={link} target="_blank">
-							<div class="relative flex flex-col p-6 bg-white dark:bg-slate-800 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-slate-800">
+							<div class="relative flex flex-col p-6 bg-white dark:bg-gray-800 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-gray-800">
 								<div class="flex items-center">
 									<Icon name={icon} class="w-12 h-12" />
 									<div class="ml-4 text-2xl font-bold">{title}</div>
