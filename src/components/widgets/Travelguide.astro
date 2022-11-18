@@ -24,8 +24,8 @@ const items = [
 ];
 ---
 
-<section class="relative dark:bg-slate-900" id="travelguide">
-	<div class="absolute inset-0 bg-primary-100 dark:bg-slate-800 pointer-events-none mb-32" aria-hidden="true"></div>
+<section class="relative dark:bg-neutral-900" id="travelguide">
+	<div class="absolute inset-0 bg-primary-100 dark:bg-neutral-800 pointer-events-none mb-32" aria-hidden="true"></div>
 	<div class="relative max-w-6xl mx-auto px-4 sm:px-6">
 		<div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
 			<div class="mb-8 text-center">
@@ -35,7 +35,7 @@ const items = [
 				>
 					How to join us
 				</h2>
-				<p class="max-w-3xl mx-auto text-center text-xl text-gray-600 dark:text-slate-400">
+				<p class="max-w-3xl mx-auto text-center text-xl text-neutral-600 dark:text-neutral-400">
 					Know before you go! See our travel guide for details on how to get to the event here. Questions? Feel free to
 					ask!
 				</p>
@@ -43,14 +43,14 @@ const items = [
 			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-12 dark:text-white">
 				{
 					items.map(({ title, description, icon, link }) => (
-						<a class="dark:text-gray-200" href={link}>
-							<div class="relative flex flex-col p-6 bg-white dark:bg-slate-900 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-slate-800">
+						<a class="dark:text-neutral-200" href={link}>
+							<div class="relative flex flex-col p-6 bg-white dark:bg-neutral-900 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-neutral-800">
 								<div class="flex items-center mb-4">
 									<Icon name={icon} class="w-12 h-12" />
 
 									<div class="ml-4 text-xl font-bold">{title}</div>
 								</div>
-								<p class="text-gray-500 dark:text-gray-400 text-md">{description}</p>
+								<p class="text-neutral-500 dark:text-neutral-400 text-md">{description}</p>
 							</div>
 						</a>
 					))
