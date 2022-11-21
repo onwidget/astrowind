@@ -1,7 +1,7 @@
 export const SITE = {
 	name: 'Bioinformatics Open Days',
 
-	origin: 'https://astrowind.vercel.app',
+	origin: 'https://www.bioinformaticsopendays.com/',
 	basePathname: '/',
 	trailingSlash: false,
 
@@ -9,7 +9,7 @@ export const SITE = {
 	description: 'Bioinformatics Open Days | 16-18 March 2023',
 
 	googleAnalyticsId: false, // or "G-XXXXXXXXXX",
-	googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
+	googleSiteVerificationId: '3TtTSQ03yD-yOur3_FX1BiweBR_j2IrtmxheAHbMkAk',
 };
 
 export const BLOG = {
