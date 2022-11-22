@@ -2,11 +2,13 @@
 import Layout from '~/layouts/BaseLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
+import Banner from '~/components/widgets/Banner.astro';
 
 const { meta } = Astro.props;
 ---
 
 <Layout {meta}>
+	<Banner />
 	<Header />
 	<main>
 		<slot />
