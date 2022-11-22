@@ -1,6 +1,61 @@
 ---
 import { Icon } from 'astro-icon';
-import { getHomePermalink } from '~/utils/permalinks';
+import { getHomePermalink, getRelativeLink } from '~/utils/permalinks';
+
+const links = [
+	{
+		title: 'Product',
+		items: [
+			{ title: 'Features', href: '#' },
+			{ title: 'Security', href: '#' },
+			{ title: 'Team', href: '#' },
+			{ title: 'Enterprise', href: '#' },
+			{ title: 'Customer stories', href: '#' },
+			{ title: 'Pricing', href: '#' },
+			{ title: 'Resources', href: '#' },
+		],
+	},
+	{
+		title: 'Platform',
+		items: [
+			{ title: 'Developer API', href: '#' },
+			{ title: 'Partners', href: '#' },
+			{ title: 'Atom', href: '#' },
+			{ title: 'Electron', href: '#' },
+			{ title: 'AstroWind Desktop', href: '#' },
+		],
+	},
+	{
+		title: 'Support',
+		items: [
+			{ title: 'Docs', href: '#' },
+			{ title: 'Community Forum', href: '#' },
+			{ title: 'Professional Services', href: '#' },
+			{ title: 'Skills', href: '#' },
+			{ title: 'Status', href: '#' },
+		],
+	},
+	{
+		title: 'Company',
+		items: [
+			{ title: 'About', href: '#' },
+			{ title: 'Blog', href: '#' },
+			{ title: 'Careers', href: '#' },
+			{ title: 'Press', href: '#' },
+			{ title: 'Inclusion', href: '#' },
+			{ title: 'Social Impact', href: '#' },
+			{ title: 'Shop', href: '#' },
+		],
+	},
+];
+
+const social = [
+	{ label: 'Twitter', icon: 'tabler:brand-twitter', href: '#' },
+	{ label: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
+	{ label: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
+	{ label: 'RSS', icon: 'tabler:rss', href: getRelativeLink('/rss.xml') },
+	{ label: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
+];
 ---
 
 <footer class="border-t border-gray-200 dark:border-slate-800">
@@ -21,195 +76,45 @@ import { getHomePermalink } from '~/utils/permalinks';
 					>
 				</div>
 			</div>
-			<div class="col-span-6 md:col-span-3 lg:col-span-2">
-				<div class="text-gray-800 dark:text-gray-300 font-medium mb-2">Product</div>
-				<ul class="text-sm">
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Features</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Security</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Team</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Enterprise</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Customer stories</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Pricing</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Resources</a
-						>
-					</li>
-				</ul>
-			</div>
-			<div class="col-span-6 md:col-span-3 lg:col-span-2">
-				<div class="text-gray-800 dark:text-gray-300 font-medium mb-2">Platform</div>
-				<ul class="text-sm">
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Developer API</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Partners</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Atom</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Electron</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>GitHub Desktop</a
-						>
-					</li>
-				</ul>
-			</div>
-			<div class="col-span-6 md:col-span-3 lg:col-span-2">
-				<div class="text-gray-800 dark:text-gray-300 font-medium mb-2">Support</div>
-				<ul class="text-sm">
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Docs</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Community Forum</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Professional Services</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Skills</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Status</a
-						>
-					</li>
-				</ul>
-			</div>
-			<div class="col-span-6 md:col-span-3 lg:col-span-2">
-				<div class="text-gray-800 dark:text-gray-300 font-medium mb-2">Company</div>
-				<ul class="text-sm">
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>About</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Blog</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Careers</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Press</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Inclusion</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Social Impact</a
-						>
-					</li>
-					<li class="mb-2">
-						<a class="text-gray-600 hover:text-gray-700 dark:text-gray-400 transition duration-150 ease-in-out" href="#"
-							>Shop</a
-						>
-					</li>
-				</ul>
-			</div>
+			{
+				links.map(({ title, items }) => (
+					<div class="col-span-6 md:col-span-3 lg:col-span-2">
+						<div class="text-gray-800 dark:text-gray-300 font-medium mb-2">{title}</div>
+						{items && Array.isArray(items) && items.length > 0 && (
+							<ul class="text-sm">
+								{items.map(({ title, href }) => (
+									<li class="mb-2">
+										<a
+											class="text-gray-600 hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
+											href={href}
+										>
+											{title}
+										</a>
+									</li>
+								))}
+							</ul>
+						)}
+					</div>
+				))
+			}
 		</div>
 		<div class="md:flex md:items-center md:justify-between py-6 md:py-8">
 			<ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0">
-				<li>
-					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-						aria-label="Twitter"
-						href="#"
-					>
-						<Icon name="tabler:brand-twitter" class="w-5 h-5" />
-					</a>
-				</li>
-				<li>
-					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-						aria-label="Instagram"
-						href="#"
-					>
-						<Icon name="tabler:brand-instagram" class="w-5 h-5" />
-					</a>
-				</li>
-				<li>
-					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-						aria-label="Facebook"
-						href="#"
-					>
-						<Icon name="tabler:brand-facebook" class="w-5 h-5" />
-					</a>
-				</li>
-				<li>
-					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-						aria-label="RSS"
-						href="/rss.xml"
-					>
-						<Icon name="tabler:rss" class="w-5 h-5" />
-					</a>
-				</li>
-				<li>
-					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-						aria-label="Github"
-						href="https://github.com/onwidget/astrowind"
-					>
-						<Icon name="tabler:brand-github" class="w-5 h-5" />
-					</a>
-				</li>
+				{
+					social.map(({ label, href, icon }) => (
+						<li>
+							<a
+								class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+								aria-label={label}
+								href={href}
+							>
+								<Icon name={icon} class="w-5 h-5" />
+							</a>
+						</li>
+					))
+				}
 			</ul>
+
 			<div class="text-sm text-gray-700 mr-4 dark:text-slate-400">
 				<span
 					class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 float-left rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"
