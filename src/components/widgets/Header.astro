@@ -4,11 +4,11 @@ import Logo from '~/components/atoms/Logo.astro';
 import ToggleTheme from '~/components/core/ToggleTheme.astro';
 import ToggleMenu from '~/components/core/ToggleMenu.astro';
 
-import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permalinks';
+import { getHomePermalink, getBlogPermalink, getPermalink, getRelativelink } from '~/utils/permalinks';
 ---
 
 <header
-	class="sticky top-0 z-40 flex-none mx-auto w-full bg-white md:bg-white/90 dark:bg-slate-900 dark:md:bg-slate-900/90 md:backdrop-blur-sm border-b dark:border-b-0"
+	class="sticky top-0 z-40 flex-none mx-auto w-full bg-white md:bg-white/90 dark:bg-slate-900 dark:md:bg-slate-900/90 md:backdrop-blur-sm"
 	id="header"
 >
 	<div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4">
@@ -22,15 +22,33 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 			</div>
 		</div>
 		<nav
-			class="items-center w-full md:w-auto hidden md:flex text-gray-600 dark:text-slate-200 h-screen md:h-auto"
+			class="items-center w-full md:w-auto hidden md:flex text-gray-600 dark:text-slate-200 h-[calc(100vh-100px)] md:h-auto overflow-y-auto"
 			aria-label="Main navigation"
 		>
 			<ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-xl md:text-base">
-				<li>
-					<a
+				<li class="dropdown">
+					<button
 						class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-						href="#">Pages</a
+						>Pages</button
 					>
+					<ul
+						class="dropdown-menu rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white md:min-w-[200px] dark:md:bg-slate-800 drop-shadow-xl"
+					>
+						<li class="">
+							<a
+								class="rounded-t md:hover:bg-gray-100 dark:hover:bg-gray-700 py-2 px-4 block whitespace-no-wrap"
+								href="#">Features</a>
+						</li>
+						<li class="">
+							<a class="md:hover:bg-gray-100 dark:hover:bg-gray-700 py-2 px-4 block whitespace-no-wrap" href="#"
+								>Profile</a>
+						</li>
+						<li class="">
+							<a
+								class="rounded-b md:hover:bg-gray-100 dark:hover:bg-gray-700 py-2 px-4 block whitespace-no-wrap"
+								href="#">Pricing</a>
+						</li>
+					</ul>
 				</li>
 				<li>
 					<a
@@ -59,7 +77,7 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 					<a
 						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
 						aria-label="RSS Feed"
-						href="/rss.xml"
+						href={getRelativelink('/rss.xml')}
 					>
 						<Icon name="tabler:rss" class="w-5 h-5" />
 					</a>

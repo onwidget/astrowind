@@ -4,16 +4,21 @@
 
 @layer components {
 	.btn {
-		@apply inline-flex items-center justify-center rounded border border-transparent font-medium text-center text-base leading-snug transition py-3 px-6 shadow-lg ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2;
+		@apply inline-flex items-center justify-center rounded border-gray-400 border font-semibold text-center text-base text-gray-700 leading-snug transition py-3 px-6 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800;
+	}
+
+	.btn-primary {
+		@apply bg-primary-600 text-white border-primary-600 hover:bg-primary-800 hover:border-primary-800 hover:text-white dark:text-white dark:bg-primary-700 dark:border-primary-700 dark:hover:border-primary-900 dark:hover:bg-primary-900;
 	}
 }
 
-[astro-icon] > * {
-	stroke-width: 1.5;
+.dropdown:hover .dropdown-menu {
+  display: block;
 }
 
-[astro-icon].icon-bold > * {
-	stroke-width: 2;
+
+[astro-icon].icon-light > * {
+	stroke-width: 1.2;
 }
 
 [data-aw-toggle-menu] path {
