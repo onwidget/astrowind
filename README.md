@@ -17,7 +17,7 @@
 
 <br>
 
-<img src="./screenshot.png" alt="AstroWind Theme Screenshot">
+<img src="./screenshot.jpg" alt="AstroWind Theme Screenshot">
 
 [![License](https://img.shields.io/github/license/onwidget/astrowind?style=flat-square&color=eeeeee&labelColor=000000)](https://github.com/onwidget/astrowind/blob/main/LICENSE.md)
 [![Maintained](https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/onwidget)
