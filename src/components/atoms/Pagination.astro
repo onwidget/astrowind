@@ -10,7 +10,7 @@ const { prevUrl, nextUrl, prevText = 'Newer posts', nextText = 'Older posts' } =
 			<div class="flex flex-row mx-auto container justify-between">
 				<a
 					href={getRelativeLink(prevUrl)}
-					class={`btn px-3 font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white border-none mr-2
+					class={`btn btn-ghost px-3 mr-2
       ${!prevUrl ? 'invisible' : ''}`}
 				>
 					<div class="flex flex-row align-middle">
@@ -20,7 +20,7 @@ const { prevUrl, nextUrl, prevText = 'Newer posts', nextText = 'Older posts' } =
 				</a>
 				<a
 					href={getRelativeLink(nextUrl)}
-					class={`btn px-3 font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white border-none ${
+					class={`btn btn-ghost px-3 ${
 						!nextUrl ? 'invisible' : ''
 					}`}
 				>
