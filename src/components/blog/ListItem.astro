@@ -1,5 +1,5 @@
 ---
-import Picture from '~/components/core/Picture.astro';
+import { Picture } from '@astrojs/image/components';
 import PostTags from '~/components/atoms/Tags.astro';
 
 import { getPermalink } from '~/utils/permalinks';
@@ -16,14 +16,16 @@ const image = await findImage(post.image);
 		image && (
 			<a class="relative block group" href={getPermalink(post.slug, 'post')}>
 				<div class="relative h-0 pb-[56.25%] md:pb-[75%] md:h-80 lg:pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded shadow-lg">
-					<Picture
-						src={image}
-						class="absolute inset-0 object-cover w-full h-full mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
-						widths={[400, 900]}
-						sizes="(max-width: 900px) 400px, 900px"
-						alt={post.title}
-						aspectRatio="16:9"
-					/>
+					{image && (
+						<Picture
+							src={image}
+							class="absolute inset-0 object-cover w-full h-full mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+							widths={[400, 900]}
+							sizes="(max-width: 900px) 400px, 900px"
+							alt={post.title}
+							aspectRatio="16:9"
+						/>
+					)}
 				</div>
 			</a>
 		)
