@@ -28,7 +28,10 @@ const { post, url } = Astro.props;
 						widths={[400, 900]}
 						sizes="(max-width: 900px) 400px, 900px"
 						alt={post.description}
-						aspectRatio="16:9"
+						loading="eager"
+						aspectRatio={16/9}
+						width={900}
+						height={506}
 					/>
 				) : (
 					<div class="max-w-3xl mx-auto px-4 sm:px-6">
@@ -47,7 +50,7 @@ const { post, url } = Astro.props;
 			<SocialShare
 				url={url}
 				text={post.title}
-				class="mt-5 sm:mt-1 align-middle text-gray-400 dark:text-slate-600"
+				class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600"
 			/>
 		</div>
 	</article>
