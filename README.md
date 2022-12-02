@@ -40,6 +40,7 @@
   - [Deploy](#deploy)
 - [Roadmap](#roadmap)
 - [Frequently Asked Questions](#frequently-asked-questions)
+- [Related Projects](#related-projects)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
@@ -235,6 +236,10 @@ Clone this repository on own GitHub account and deploy to Vercel:
 -
 
 <br>
+
+## Related projects
+
+- [Qwind](https://qwind.pages.dev/) - A template to make your website using Qwik + Tailwind CSS.
 
 ## Contributing
 
