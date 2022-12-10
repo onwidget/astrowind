@@ -1,7 +1,7 @@
 {
   "name": "@onwidget/astrowind",
   "description": "A template to make your website using Astro + Tailwind CSS.",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -14,32 +14,32 @@
     "subfont": "subfont -ir --no-fallbacks --silent --root dist"
   },
   "devDependencies": {
-    "@astrojs/image": "^0.11.6",
-    "@astrojs/mdx": "^0.11.6",
-    "@astrojs/partytown": "^1.0.1",
-    "@astrojs/rss": "^1.0.3",
+    "@astrojs/image": "^0.12.1",
+    "@astrojs/mdx": "^0.12.1",
+    "@astrojs/partytown": "^1.0.2",
+    "@astrojs/rss": "^1.1.0",
     "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/tailwind": "^2.1.2",
+    "@astrojs/tailwind": "^2.1.3",
     "@astrolib/analytics": "^0.2.4",
     "@astrolib/seo": "^0.2.1",
     "@fontsource/inter": "^4.5.14",
     "@tailwindcss/typography": "^0.5.8",
-    "@typescript-eslint/eslint-plugin": "^5.44.0",
-    "@typescript-eslint/parser": "^5.44.0",
-    "astro": "^1.6.10",
+    "@typescript-eslint/eslint-plugin": "^5.46.0",
+    "@typescript-eslint/parser": "^5.46.0",
+    "astro": "^1.6.14",
     "astro-icon": "^0.8.0",
-    "eslint": "^8.28.0",
+    "eslint": "^8.29.0",
     "eslint-plugin-astro": "^0.21.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "limax": "^2.1.0",
     "mdast-util-to-string": "^3.1.0",
-    "prettier": "^2.8.0",
+    "prettier": "^2.8.1",
     "prettier-plugin-astro": "^0.7.0",
     "reading-time": "^1.5.0",
     "sharp": "^0.31.2",
     "subfont": "^6.12.2",
     "tailwindcss": "^3.2.4",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.4"
   },
   "engines": {
     "node": "^14.15.0 || >=16.0.0"
