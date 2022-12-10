@@ -215,17 +215,19 @@ Clone this repository on own GitHub account and deploy to Vercel:
 
 ## Roadmap
 
-- _Project_:
-  - Create simple and clear strategy to get template updates
-- _Blog_:
-  - Improve blog design
-  - Create component or utilities for related posts
-  - Add more _shortcodes_ or _embed_ functions to posts in Markdown: (eg video, tweet...)
-- _More widgets_:
-  - Add more Tailwind components useful for most scenarios (Features, Contact, Call to Actions, Content, FAQs ...)
-  - Create external library or place with useful Tailwind components
-- _More Examples_: Add commonly used example pages (Ex: About, Terms, Services...)
-- _Documentation_: Create detailed documentation with best practices and redesign tips
+### Base
+
+- [ ] Improve blog design (More generic design that adapts to more needs).
+- [ ] Create component or utilities for related posts.
+- [ ] Add more _shortcodes_ or _embed_ functions to posts in Markdown: (eg Video, Tweet...).
+- [ ] Add more Tailwind components useful for most scenarios (Features, Contact, Call to Actions, Content, FAQs...)
+- [ ] Add commonly used example pages (Ex: About, Terms, Profile, Services...).
+- [ ] Create detailed documentation with best practices and redesign tips.
+
+### Advanced
+
+- [ ] Create external library or place with useful Tailwind components.
+- [ ] Create examples of AstroWind in CodeSanbox or a similar platform that can be easily synchronized with new updates. (Redesign, Integration with React or Svelte components, Use of Tailwind plugins, Connection to headless CMS ...).
 
 <br>
 
