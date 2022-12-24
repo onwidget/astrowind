@@ -20,7 +20,7 @@ export async function getStaticPaths({ paginate }) {
 
 	return Array.from(tags).map((tag) =>
 		paginate(
-			posts.filter((post) => Array.isArray(post.tags) && post.tags.includes(tag)),
+			posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.toLowerCase() === tag)),
 			{
 				params: { tag: cleanSlug(tag), tags: TAG_BASE || undefined },
 				pageSize: BLOG.postsPerPage,
