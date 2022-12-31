@@ -241,6 +241,7 @@ Clone this repository on own GitHub account and deploy to Vercel:
 
 ## Related projects
 
+- [TailNext](https://tailnext.vercel.app/) - A template to make your website using Next.js + Tailwind CSS.
 - [Qwind](https://qwind.pages.dev/) - A template to make your website using Qwik + Tailwind CSS.
 
 ## Contributing
