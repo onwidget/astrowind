@@ -1,44 +1,29 @@
+import { getCollection, getEntry } from 'astro:content';
+
 const getNormalizedPost = async (post) => {
-	const { frontmatter, Content, file } = post;
-	const ID = file.split('/').pop().split('.').shift();
+	const { id, slug, data } = post;
+	const { Content, injectedFrontmatter } = await post.render();
 
 	return {
-		id: ID,
-
-		publishDate: frontmatter.publishDate,
-		draft: frontmatter.draft,
-
-		canonical: frontmatter.canonical,
-		slug: frontmatter.slug || ID,
-
-		title: frontmatter.title,
-		description: frontmatter.description,
-		image: frontmatter.image,
+		id: id,
+		slug: slug,
+		...data,
 
 		Content: Content,
 		// or 'body' in case you consume from API
 
-		excerpt: frontmatter.excerpt,
-		authors: frontmatter.authors,
-		category: frontmatter.category,
-		tags: frontmatter.tags,
-		readingTime: frontmatter.readingTime,
+		readingTime: injectedFrontmatter.readingTime,
 	};
 };
 
 const load = async function () {
-	const posts = import.meta.glob(['~/../data/blog/**/*.md', '~/../data/blog/**/*.mdx'], {
-		eager: true,
-	});
-
-	const normalizedPosts = Object.keys(posts).map(async (key) => {
-		const post = await posts[key];
-		return await getNormalizedPost(post);
-	});
+	const posts = await getCollection('blog');
+	const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
 
 	const results = (await Promise.all(normalizedPosts))
-		.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf())
+		.sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
 		.filter((post) => !post.draft);
+
 	return results;
 };
 
@@ -52,17 +37,29 @@ export const fetchPosts = async () => {
 };
 
 /** */
-export const findPostsByIds = async (ids) => {
-	if (!Array.isArray(ids)) return [];
+export const findPostsBySlugs = async (slugs) => {
+	if (!Array.isArray(slugs)) return [];
 
 	const posts = await fetchPosts();
 
-	return ids.reduce(function (r, id) {
+	return slugs.reduce(function (r, slug) {
 		posts.some(function (post) {
-			return id === post.id && r.push(post);
+			return slug === post.slug && r.push(post);
 		});
 		return r;
 	}, []);
+};
+
+/** */
+export const findPostsByIds = async (ids) => {
+	if (!Array.isArray(ids)) return [];
+
+	return await Promise.all(
+		ids.map(async (id) => {
+			const post = await getEntry('blog', id);
+			return await getNormalizedPost(post);
+		})
+	);
 };
 
 /** */

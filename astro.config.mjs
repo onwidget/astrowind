@@ -55,4 +55,8 @@ export default defineConfig({
 			},
 		},
 	},
+
+	experimental: {
+    contentCollections: true,
+  },
 });

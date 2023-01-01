@@ -2,7 +2,7 @@ import slugify from 'limax';
 
 import { SITE, BLOG } from '~/config.mjs';
 
-const trim = (str, ch) => {
+const trim = (str = "", ch) => {
 	let start = 0,
 		end = str.length || 0;
 	while (start < end && str[start] === ch) ++start;
