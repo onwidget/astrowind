@@ -3,7 +3,7 @@
 <img src="lighthouse-score.png" align="right"
      alt="AstroWind Lighthouse Score" width="100" height="358">
 
-**AstroWind** is a free and open-source template to make your website using **[Astro](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account best practices.
+**AstroWind** is a free and open-source template to make your website using **[Astro](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account best practices. 🌟 **Most *starred* & *forked* Astro theme in 2022**.
 
 ## Features
 
@@ -241,6 +241,7 @@ Clone this repository on own GitHub account and deploy to Vercel:
 
 ## Related projects
 
+- [TailNext](https://tailnext.vercel.app/) - A template to make your website using Next.js + Tailwind CSS.
 - [Qwind](https://qwind.pages.dev/) - A template to make your website using Qwik + Tailwind CSS.
 
 ## Contributing
