@@ -4,6 +4,12 @@ import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
 
+import { MetaSEO } from '~/types';
+
+export interface Props {
+	meta?: MetaSEO;
+}
+
 const { meta } = Astro.props;
 ---
 

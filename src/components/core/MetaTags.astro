@@ -11,12 +11,16 @@ import Fonts from '../atoms/Fonts.astro';
 import ExtraMetaTags from '../atoms/ExtraMetaTags.astro';
 import SplitbeeAnalytics from './SplitbeeAnalytics.astro';
 
+import { MetaSEO } from '~/types';
+
 const { src: defaultImage } = await getImage({
 	src: defaultImageSrc,
 	alt: 'Default image',
 	width: 1200,
 	height: 628,
 });
+
+export interface Props extends MetaSEO {}
 
 const {
 	title = SITE.name,

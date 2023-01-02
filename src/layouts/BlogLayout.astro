@@ -1,6 +1,12 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
+import { MetaSEO } from '~/types';
+
+export interface Props {
+	meta?: MetaSEO;
+}
+
 const { meta } = Astro.props;
 ---
 

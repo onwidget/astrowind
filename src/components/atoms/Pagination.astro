@@ -16,11 +16,7 @@ const { prevUrl, nextUrl, prevText = 'Newer posts', nextText = 'Older posts' } =
 	(prevUrl || nextUrl) && (
 		<div class="container flex">
 			<div class="flex flex-row mx-auto container justify-between">
-				<a
-					href={getRelativeLink(prevUrl)}
-					class={`btn btn-ghost px-3 mr-2
-      ${!prevUrl ? 'invisible' : ''}`}
-				>
+				<a href={getRelativeLink(prevUrl)} class={`btn btn-ghost px-3 mr-2 ${!prevUrl ? 'invisible' : ''}`}>
 					<div class="flex flex-row align-middle">
 						<Icon name="tabler:arrow-left" class="w-6 h-6" />
 						<p class="ml-2">{prevText}</p>

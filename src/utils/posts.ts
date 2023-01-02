@@ -1,30 +1,6 @@
 import { getCollection, getEntry } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-
-export interface Post {
-	id: string;
-	slug: string;
-
-	publishDate: Date;
-	title: string;
-	description?: string;
-
-	image?: string;
-
-	canonical?: string;
-	permalink?: string;
-
-	draft?: boolean;
-
-	excerpt?: string;
-	category?: string;
-	tags?: Array<string>;
-	authors?: Array<string>;
-
-	Content: unknown;
-	content?: string;
-	readingTime: number;
-}
+import type { Post } from "~/types"
 
 const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> => {
 	const { id, slug, data } = post;
