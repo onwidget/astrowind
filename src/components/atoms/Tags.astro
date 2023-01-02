@@ -1,6 +1,13 @@
 ---
 import { getPermalink } from '~/utils/permalinks';
 
+import type { Post } from '~/utils/posts';
+
+export interface Props {
+	tags: Post['tags'];
+	class?: string;
+}
+
 const { tags, class: className = 'text-sm' } = Astro.props;
 ---
 

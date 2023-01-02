@@ -17,9 +17,8 @@
 }
 
 .dropdown:hover .dropdown-menu {
-  display: block;
+	display: block;
 }
-
 
 [astro-icon].icon-light > * {
 	stroke-width: 1.2;

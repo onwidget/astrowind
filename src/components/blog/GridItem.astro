@@ -1,11 +1,16 @@
 ---
-import { Picture } from '@astrojs/image/components'
+import { Picture } from '@astrojs/image/components';
 
 import { findImage } from '~/utils/images';
 import { getPermalink } from '~/utils/permalinks';
 
-const { post } = Astro.props;
+import type { Post } from '~/utils/posts';
 
+export interface Props {
+	post: Post;
+}
+
+const { post } = Astro.props;
 const image = await findImage(post.image);
 ---
 

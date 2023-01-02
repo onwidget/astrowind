@@ -1,5 +1,12 @@
 ---
 import { Icon } from 'astro-icon';
+
+export interface Props {
+	text: string;
+	url: string;
+	class?: string;
+}
+
 const { text, url, class: className = 'inline-block' } = Astro.props;
 ---
 

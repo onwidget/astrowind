@@ -1,9 +1,16 @@
 ---
-import { Picture } from '@astrojs/image/components'
+import { Picture } from '@astrojs/image/components';
 import PostTags from '~/components/atoms/Tags.astro';
 import SocialShare from '~/components/atoms/SocialShare.astro';
 
 import { getFormattedDate } from '~/utils/utils';
+
+import type { Post } from '~/utils/posts';
+
+export interface Props {
+	post: Post;
+	url: string;
+}
 
 const { post, url } = Astro.props;
 ---
@@ -12,8 +19,9 @@ const { post, url } = Astro.props;
 	<article>
 		<header class={post.image ? 'text-center' : ''}>
 			<p class="px-4 sm:px-6 max-w-3xl mx-auto">
-				<time datetime={post.publishDate}>{getFormattedDate(post.publishDate)}</time> ~ {Math.ceil(post.readingTime)} min
-				read
+				<time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time> ~ {
+					Math.ceil(post.readingTime)
+				} min read
 			</p>
 			<h1
 				class="px-4 sm:px-6 max-w-3xl mx-auto text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-8 font-heading"
@@ -27,9 +35,9 @@ const { post, url } = Astro.props;
 						class="max-w-full lg:max-w-6xl mx-auto mt-4 mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
 						widths={[400, 900]}
 						sizes="(max-width: 900px) 400px, 900px"
-						alt={post.description}
+						alt={post.description || ''}
 						loading="eager"
-						aspectRatio={16/9}
+						aspectRatio={16 / 9}
 						width={900}
 						height={506}
 					/>
@@ -43,15 +51,20 @@ const { post, url } = Astro.props;
 		<div
 			class="container mx-auto px-6 sm:px-6 max-w-3xl prose prose-lg lg:prose-xl dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-img:rounded-md prose-img:shadow-lg mt-8"
 		>
-			{post.Content ? <post.Content /> : <Fragment set:html={post.body} />}
+			{
+				post.Content ? (
+					<>
+						{/* @ts-ignore */}
+						<post.Content />
+					</>
+				) : (
+					<Fragment set:html={post.content} />
+				)
+			}
 		</div>
 		<div class="container mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row">
 			<PostTags tags={post.tags} class="mr-5" />
-			<SocialShare
-				url={url}
-				text={post.title}
-				class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600"
-			/>
+			<SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600" />
 		</div>
 	</article>
 </section>

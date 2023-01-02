@@ -1,6 +1,14 @@
 ---
 import { Icon } from 'astro-icon';
 import { getRelativeLink } from '~/utils/permalinks';
+
+export interface Props {
+	prevUrl: string;
+	nextUrl: string;
+	prevText?: string;
+	nextText?: string;
+}
+
 const { prevUrl, nextUrl, prevText = 'Newer posts', nextText = 'Older posts' } = Astro.props;
 ---
 
@@ -18,12 +26,7 @@ const { prevUrl, nextUrl, prevText = 'Newer posts', nextText = 'Older posts' } =
 						<p class="ml-2">{prevText}</p>
 					</div>
 				</a>
-				<a
-					href={getRelativeLink(nextUrl)}
-					class={`btn btn-ghost px-3 ${
-						!nextUrl ? 'invisible' : ''
-					}`}
-				>
+				<a href={getRelativeLink(nextUrl)} class={`btn btn-ghost px-3 ${!nextUrl ? 'invisible' : ''}`}>
 					<div class="flex flex-row align-middle">
 						<span class="mr-2">{nextText}</span>
 						<Icon name="tabler:arrow-right" class="w-6 h-6" />

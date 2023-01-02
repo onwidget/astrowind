@@ -1,5 +1,10 @@
 ---
 import Item from '~/components/blog/ListItem.astro';
+import type { Post } from '~/utils/posts';
+
+export interface Props {
+	posts: Array<Post>;
+}
 
 const { posts } = Astro.props;
 ---

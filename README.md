@@ -3,7 +3,7 @@
 <img src="lighthouse-score.png" align="right"
      alt="AstroWind Lighthouse Score" width="100" height="358">
 
-**AstroWind** is a free and open-source template to make your website using **[Astro](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account best practices. 🌟 **Most *starred* & *forked* Astro theme in 2022**.
+**AstroWind** is a free and open-source template to make your website using **[Astro](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account best practices. 🌟 **Most _starred_ & _forked_ Astro theme in 2022**.
 
 ## Features
 
@@ -88,7 +88,7 @@ Inside AstroWind template, you'll see the following folders and files:
 │   |   |   ├── post-slug-1.md
 │   |   |   ├── post-slug-2.mdx
 │   |   |   └── ...
-│   |   └-- config.js
+│   |   └-- config.ts
 │   ├── layouts/
 │   |   |── BaseLayout.astro
 │   |   └── ...
@@ -104,7 +104,7 @@ Inside AstroWind template, you'll see the following folders and files:
 |   |   |       └── [...page].astro
 │   |   ├── index.astro
 |   |   ├── 404.astro
-|   |   └-- rss.xml.js
+|   |   └-- rss.xml.ts
 │   ├── utils/
 │   └── config.mjs
 ├── package.json

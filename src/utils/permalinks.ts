@@ -2,7 +2,7 @@ import slugify from 'limax';
 
 import { SITE, BLOG } from '~/config.mjs';
 
-const trim = (str = "", ch) => {
+const trim = (str = '', ch?: string) => {
 	let start = 0,
 		end = str.length || 0;
 	while (start < end && str[start] === ch) ++start;
@@ -18,7 +18,7 @@ const createPath = (...params) => {
 
 const basePathname = trimSlash(SITE.basePathname);
 
-export const cleanSlug = (text) => slugify(trimSlash(text));
+export const cleanSlug = (text: string) => slugify(trimSlash(text));
 
 export const BLOG_BASE = cleanSlug(BLOG?.blog?.pathname);
 export const POST_BASE = cleanSlug(BLOG?.post?.pathname);
@@ -29,7 +29,7 @@ export const TAG_BASE = cleanSlug(BLOG?.tag?.pathname);
 export const getCanonical = (path = '') => new URL(path, SITE.origin);
 
 /** */
-export const getPermalink = (slug = '', type = 'page') => {
+export const getPermalink = (slug = '', type = 'page'): string => {
 	const _slug = cleanSlug(slug);
 
 	switch (type) {
@@ -49,15 +49,15 @@ export const getPermalink = (slug = '', type = 'page') => {
 };
 
 /** */
-export const getHomePermalink = () => {
+export const getHomePermalink = (): string => {
 	const permalink = getPermalink();
 	return permalink !== '/' ? permalink + '/' : permalink;
 };
 
 /** */
-export const getRelativeLink = (link = "") => {
+export const getRelativeLink = (link = ''): string => {
 	return createPath(basePathname, trimSlash(link));
-}
+};
 
 /** */
-export const getBlogPermalink = () => getPermalink(BLOG_BASE);
+export const getBlogPermalink = (): string => getPermalink(BLOG_BASE);
