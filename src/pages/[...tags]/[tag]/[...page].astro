@@ -1,18 +1,18 @@
 ---
 import { SITE, BLOG } from '~/config.mjs';
 
-import Layout from '~/layouts/BlogLayout.astro';
+import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
-import Pagination from '~/components/atoms/Pagination.astro';
+import Pagination from '~/components/common/Pagination.astro';
 
 import { fetchPosts } from '~/utils/posts';
 import { getCanonical, getPermalink, cleanSlug, TAG_BASE } from '~/utils/permalinks';
+import Title from '~/components/blog/Title.astro';
 
 export async function getStaticPaths({ paginate }) {
 	if (BLOG?.disabled || BLOG?.tag?.disabled) return [];
 
 	const posts = await fetchPosts();
-
 	const tags = new Set();
 	posts.map((post) => {
 		Array.isArray(post.tags) && post.tags.map((tag) => tags.add(tag.toLowerCase()));
@@ -33,7 +33,6 @@ export async function getStaticPaths({ paginate }) {
 const { page, tag } = Astro.props;
 
 const currentPage = page.currentPage ?? 1;
-
 const meta = {
 	title: `Posts by tag '${tag}' ${currentPage > 1 ? `— Page ${currentPage} ` : ''}— ${SITE.name}`,
 	description: SITE.description,
@@ -43,9 +42,9 @@ const meta = {
 ---
 
 <Layout meta={meta}>
-	<Fragment slot="title">
-		Tag: {tag}
-	</Fragment>
-	<BlogList posts={page.data} />
-	<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+	<section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-3xl">
+		<Title>Tag: {tag}</Title>
+		<BlogList posts={page.data} />
+		<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+	</section>
 </Layout>

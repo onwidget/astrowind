@@ -4,21 +4,23 @@ import { GoogleAnalytics } from '@astrolib/analytics';
 import { getImage } from '@astrojs/image';
 import { getRelativeUrlByFilePath } from '~/utils/directories';
 
-import defaultImageSrc from '~/assets/images/default.png';
-
 import { SITE } from '~/config.mjs';
-import Fonts from '../atoms/Fonts.astro';
-import ExtraMetaTags from '../atoms/ExtraMetaTags.astro';
+import Fonts from '~/components/common/Fonts.astro';
+import ExtraMetaTags from '~/components/common/ExtraMetaTags.astro';
 import SplitbeeAnalytics from './SplitbeeAnalytics.astro';
 
 import { MetaSEO } from '~/types';
 
-const { src: defaultImage } = await getImage({
-	src: defaultImageSrc,
-	alt: 'Default image',
-	width: 1200,
-	height: 628,
-});
+const defaultImage = SITE.defaultImage
+	? (
+			await getImage({
+				src: SITE.defaultImage,
+				alt: 'Default image',
+				width: 1200,
+				height: 628,
+			})
+	  ).src
+	: '';
 
 export interface Props extends MetaSEO {}
 
@@ -39,7 +41,8 @@ const image =
 	typeof _image === 'string'
 		? new URL(_image, Astro.site)
 		: _image && typeof _image['src'] !== 'undefined'
-		? new URL(getRelativeUrlByFilePath(_image.src), Astro.site)
+		? // @ts-ignore
+		  new URL(getRelativeUrlByFilePath(_image.src), Astro.site)
 		: null;
 ---
 
@@ -49,11 +52,11 @@ const image =
 <AstroSeo
 	title={title}
 	description={description}
-	canonical={canonical}
+	canonical={String(canonical)}
 	noindex={noindex}
 	nofollow={nofollow}
 	openGraph={{
-		url: canonical,
+		url: String(canonical),
 		title: ogTitle,
 		description: description,
 		type: ogType,

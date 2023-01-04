@@ -24,14 +24,14 @@ export interface Post {
 }
 
 export interface MetaSEO {
-  title?: string,
-	description?: string,
-	image?: string,
+	title?: string;
+	description?: string;
+	image?: string;
 
-	canonical?: string,
-	noindex?: boolean,
-	nofollow?: boolean,
+	canonical?: string | URL;
+	noindex?: boolean;
+	nofollow?: boolean;
 
-	ogTitle?: string,
-	ogType?: string,
+	ogTitle?: string;
+	ogType?: string;
 }

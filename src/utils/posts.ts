@@ -1,6 +1,6 @@
 import { getCollection, getEntry } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import type { Post } from "~/types"
+import type { Post } from '~/types';
 
 const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> => {
 	const { id, slug, data } = post;

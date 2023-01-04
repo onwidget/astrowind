@@ -3,6 +3,7 @@ import { SITE, BLOG } from '~/config.mjs';
 
 import Layout from '~/layouts/PageLayout.astro';
 import SinglePost from '~/components/blog/SinglePost.astro';
+import ToBlogLink from '~/components/blog/ToBlogLink.astro';
 
 import { getCanonical, getPermalink, cleanSlug, POST_BASE } from '~/utils/permalinks';
 import { fetchPosts } from '~/utils/posts';
@@ -10,9 +11,7 @@ import { findImage } from '~/utils/images';
 
 export async function getStaticPaths() {
 	if (BLOG?.disabled || BLOG?.post?.disabled) return [];
-
 	const posts = await fetchPosts();
-
 	return posts.map((post) => ({
 		params: {
 			slug: cleanSlug(post.slug),
@@ -37,4 +36,5 @@ const meta = {
 
 <Layout {meta}>
 	<SinglePost post={{ ...post, image: meta.image }} url={url} />
+	<ToBlogLink />
 </Layout>

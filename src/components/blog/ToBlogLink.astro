@@ -1,0 +1,10 @@
+---
+import { Icon } from 'astro-icon';
+import { getBlogPermalink } from '~/utils/permalinks';
+---
+
+<div class="mx-auto px-6 sm:px-6 max-w-3xl pt-8 pb-12 md:pb-20 text-center md:text-left">
+	<a class="btn btn-ghost px-3" href={getBlogPermalink()}
+		><Icon name="tabler:chevron-left" class="w-5 h-5 mr-1" /> Back to Blog</a
+	>
+</div>

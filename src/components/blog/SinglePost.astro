@@ -1,15 +1,15 @@
 ---
 import { Picture } from '@astrojs/image/components';
-import PostTags from '~/components/atoms/Tags.astro';
-import SocialShare from '~/components/atoms/SocialShare.astro';
+import PostTags from '~/components/common/Tags.astro';
+import SocialShare from '~/components/common/SocialShare.astro';
 
 import { getFormattedDate } from '~/utils/utils';
 
-import type { Post } from "~/types"
+import type { Post } from '~/types';
 
 export interface Props {
 	post: Post;
-	url: string;
+	url: string | URL;
 }
 
 const { post, url } = Astro.props;

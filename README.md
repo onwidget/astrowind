@@ -76,9 +76,8 @@ Inside AstroWind template, you'll see the following folders and files:
 |   |   └── styles/
 |   |       └── base.css
 │   ├── components/
-│   │   ├── atoms/
 │   │   ├── blog/
-│   │   ├── core/
+│   │   ├── common/
 |   |   └── widgets/
 |   |       ├── Header.astro
 |   |       ├── Footer.astro

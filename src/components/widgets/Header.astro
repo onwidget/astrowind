@@ -1,8 +1,8 @@
 ---
 import { Icon } from 'astro-icon';
-import Logo from '~/components/atoms/Logo.astro';
-import ToggleTheme from '~/components/core/ToggleTheme.astro';
-import ToggleMenu from '~/components/core/ToggleMenu.astro';
+import Logo from '~/components/common/Logo.astro';
+import ToggleTheme from '~/components/common/ToggleTheme.astro';
+import ToggleMenu from '~/components/common/ToggleMenu.astro';
 
 import { getHomePermalink, getBlogPermalink, getPermalink, getRelativeLink } from '~/utils/permalinks';
 ---
@@ -69,9 +69,8 @@ import { getHomePermalink, getBlogPermalink, getPermalink, getRelativeLink } fro
 				<li class="md:hidden">
 					<a
 						class="font-bold hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-						href="https://github.com/onwidget/astrowind"
-						>Github
-					</a>
+						href="https://github.com/onwidget/astrowind">Github</a
+					>
 				</li>
 			</ul>
 			<div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
