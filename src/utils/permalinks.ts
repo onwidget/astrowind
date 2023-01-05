@@ -10,8 +10,9 @@ const trim = (str = '', ch?: string) => {
 	return start > 0 || end < str.length ? str.substring(start, end) : str;
 };
 
-const trimSlash = (s) => trim(trim(s, '/'));
-const createPath = (...params) => {
+const trimSlash = (s: string) => trim(trim(s, '/'));
+
+const createPath = (...params: string[]) => {
 	const paths = params.filter((el) => !!el).join('/');
 	return '/' + paths + (SITE.trailingSlash && paths ? '/' : '');
 };
