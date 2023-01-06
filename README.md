@@ -144,49 +144,49 @@ Basic configuration file: `./src/config.mjs`
 
 ```javascript
 const CONFIG = {
-	name: 'Example',
+  name: 'Example',
 
   origin: 'https://example.com',
   basePathname: '/', // Change this if you need to deploy to Github Pages, for example
   trailingSlash: false, // Generate permalinks with or without "/" at the end
 
   title: 'Example - This is the homepage title of Example', // default seo title
-  description: 'This is the homepage description of Example', // default seo description
-	defaultImage: "image.jpg", // default seo image
+  description: 'This is the homepage description of Example', // default seo descriptio
+  defaultImage: "image.jpg", // default seo image
 
-	defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 
   googleAnalyticsId: false, // or "G-XXXXXXXXXX",
   googleSiteVerificationId: false, // or some value,
 
-	blog: {
-		disabled: false,
-		postsPerPage: 4,
+  blog: {
+    disabled: false,
+    postsPerPage: 4,
 
-		list: {
-			pathname: 'blog', // blog main path, you can change this to "articles" (/articles)
-			noindex: false,
-			disabled: false,
-		},
+    list: {
+      pathname: 'blog', // blog main path, you can change this to "articles" (/articles)
+      noindex: false,
+      disabled: false,
+    },
 
-		post: {
-			pathname: '', // empty for /some-post, value for /pathname/some-post
-			noindex: false,
-			disabled: false,
-		},
+    post: {
+      pathname: '', // empty for /some-post, value for /pathname/some-post
+      noindex: false,
+      disabled: false,
+    },
 
-		category: {
-			pathname: 'category', // set empty to change from /category/some-category to /some-category
-			noindex: true,
-			disabled: false,
-		},
+    category: {
+      pathname: 'category', // set empty to change from /category/some-category to /some-category
+      noindex: true,
+      disabled: false,
+    },
 
-		tag: {
-			pathname: 'tag', // set empty to change from /tag/some-tag to /some-tag
-			noindex: true,
-			disabled: false,
-		},
-	},
+    tag: {
+      pathname: 'tag', // set empty to change from /tag/some-tag to /some-tag
+      noindex: true,
+      disabled: false,
+    },
+  },
 }
 ```
 
