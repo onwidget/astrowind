@@ -11,6 +11,7 @@ export const SITE = {
 	description: '🚀 AstroWind is a free and ready to start template to make your website using Astro and Tailwind CSS.',
 
 	defaultImage: defaultImage,
+	defaultTheme: "system", // "system" | "light" | "dark" | "light:only" | "dark:only"
 
 	googleAnalyticsId: false, // or "G-XXXXXXXXXX",
 	googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
