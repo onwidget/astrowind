@@ -4,14 +4,12 @@ import { GoogleAnalytics } from '@astrolib/analytics';
 import { getImage } from '@astrojs/image';
 
 import { SITE } from '~/config.mjs';
-import { getCanonical } from '~/utils/permalinks';
+import { MetaSEO } from '~/types';
+import { getPermalink, getCanonical } from '~/utils/permalinks';
 import { getRelativeUrlByFilePath } from '~/utils/directories';
 
 import Fonts from '~/components/common/Fonts.astro';
-import ExtraMetaTags from '~/components/common/ExtraMetaTags.astro';
 import SplitbeeAnalytics from './SplitbeeAnalytics.astro';
-
-import { MetaSEO } from '~/types';
 
 export interface Props extends MetaSEO {
 	dontUseTitleTemplate?: boolean;
@@ -94,4 +92,6 @@ const image =
 
 {SITE.splitbeeAnalytics?.enabled && <SplitbeeAnalytics {...SITE.splitbeeAnalytics} />}
 
-<ExtraMetaTags />
+<link rel="shortcut icon" href={getPermalink('/favicon.ico')} />
+<link rel="icon" type="image/svg+xml" href={getPermalink('/favicon.svg')} />
+<link rel="mask-icon" href={getPermalink('/favicon.svg')} color="#8D46E7" />
