@@ -5,16 +5,15 @@ import Layout from '~/layouts/PageLayout.astro';
 import SinglePost from '~/components/blog/SinglePost.astro';
 import ToBlogLink from '~/components/blog/ToBlogLink.astro';
 
-import { getCanonical, getPermalink, cleanSlug, POST_BASE } from '~/utils/permalinks';
-import { fetchPosts } from '~/utils/posts';
+import { getCanonical, getPermalink, POST_BASE } from '~/utils/permalinks';
+import { fetchPosts } from '~/utils/blog';
 import { findImage } from '~/utils/images';
 
 export async function getStaticPaths() {
 	if (BLOG?.disabled || BLOG?.post?.disabled) return [];
-	const posts = await fetchPosts();
-	return posts.map((post) => ({
+	return (await fetchPosts()).map((post) => ({
 		params: {
-			slug: cleanSlug(post.slug),
+			slug: post.slug,
 			blog: POST_BASE || undefined,
 		},
 		props: { post },

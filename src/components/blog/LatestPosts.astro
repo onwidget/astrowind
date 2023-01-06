@@ -2,7 +2,7 @@
 import Grid from '~/components/blog/Grid.astro';
 
 import { getBlogPermalink } from '~/utils/permalinks';
-import { findLatestPosts } from '~/utils/posts';
+import { findLatestPosts } from '~/utils/blog';
 
 const count = 4;
 const posts = await findLatestPosts({ count });

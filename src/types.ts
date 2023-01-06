@@ -16,7 +16,7 @@ export interface Post {
 	excerpt?: string;
 	category?: string;
 	tags?: Array<string>;
-	authors?: Array<string>;
+	author?: string;
 
 	Content: unknown;
 	content?: string;

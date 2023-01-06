@@ -5,14 +5,13 @@ import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Pagination from '~/components/common/Pagination.astro';
 
-import { fetchPosts } from '~/utils/posts';
-import { getCanonical, getPermalink, BLOG_BASE } from '~/utils/permalinks';
+import { fetchPosts } from '~/utils/blog';
+import { BLOG_BASE } from '~/utils/permalinks';
 import Title from '~/components/blog/Title.astro';
 
 export async function getStaticPaths({ paginate }) {
 	if (BLOG?.disabled || BLOG?.blog?.disabled) return [];
-	const posts = await fetchPosts();
-	return paginate(posts, {
+	return paginate(await fetchPosts(), {
 		params: { blog: BLOG_BASE || undefined },
 		pageSize: BLOG.postsPerPage,
 	});

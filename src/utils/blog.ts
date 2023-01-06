@@ -1,15 +1,24 @@
 import { getCollection, getEntry } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
+import { cleanSlug } from './permalinks';
 
 const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> => {
 	const { id, slug, data } = post;
 	const { Content, injectedFrontmatter } = await post.render();
 
+	const { tags = [], category = 'default', author = 'Anonymous', publishDate, ...rest } = data;
+
 	return {
 		id: id,
 		slug: slug,
-		...data,
+
+		publishDate: new Date(publishDate),
+		category: cleanSlug(category),
+		tags: tags.map((tag: string) => cleanSlug(tag)),
+		author,
+
+		...rest,
 
 		Content: Content,
 		// or 'body' in case you consume from API

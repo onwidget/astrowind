@@ -1,4 +1,5 @@
 import { z, defineCollection } from 'astro:content';
+import { cleanSlug } from '~/utils/permalinks';
 
 const blog = defineCollection({
 	schema: {
@@ -9,16 +10,16 @@ const blog = defineCollection({
 		canonical: z.string().url().optional(),
 		permalink: z.string().optional(),
 
-		publishDate: z.string().transform((str) => new Date(str)),
+		publishDate: z.date().optional(),
 		draft: z.boolean().optional(),
 
 		excerpt: z.string().optional(),
 		category: z.string().optional(),
 		tags: z.array(z.string()).optional(),
-		authors: z.array(z.string()).optional(),
+		author: z.string().optional(),
 	},
 	slug: ({ defaultSlug, data }) => {
-		return data.permalink || defaultSlug;
+		return cleanSlug(data.permalink || defaultSlug);
 	},
 });
 
