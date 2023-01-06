@@ -1,7 +1,7 @@
 ---
-import { getRelativeLink } from '~/utils/permalinks';
+import { getPermalink } from '~/utils/permalinks';
 ---
 
-<link rel="shortcut icon" href={getRelativeLink('/favicon.ico')} />
-<link rel="icon" type="image/svg+xml" href={getRelativeLink('/favicon.svg')} />
-<link rel="mask-icon" href={getRelativeLink('/favicon.svg')} color="#8D46E7" />
+<link rel="shortcut icon" href={getPermalink('/favicon.ico')} />
+<link rel="icon" type="image/svg+xml" href={getPermalink('/favicon.svg')} />
+<link rel="mask-icon" href={getPermalink('/favicon.svg')} color="#8D46E7" />

@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon';
-import { getHomePermalink, getRelativeLink } from '~/utils/permalinks';
+import { getHomePermalink, getPermalink } from '~/utils/permalinks';
 
 const links = [
 	{
@@ -53,7 +53,7 @@ const social = [
 	{ label: 'Twitter', icon: 'tabler:brand-twitter', href: '#' },
 	{ label: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
 	{ label: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
-	{ label: 'RSS', icon: 'tabler:rss', href: getRelativeLink('/rss.xml') },
+	{ label: 'RSS', icon: 'tabler:rss', href: getPermalink('/rss.xml') },
 	{ label: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
 ];
 ---

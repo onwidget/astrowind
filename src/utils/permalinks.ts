@@ -11,7 +11,6 @@ const trim = (str = '', ch?: string) => {
 };
 
 const trimSlash = (s: string) => trim(trim(s, '/'));
-
 const createPath = (...params: string[]) => {
 	const paths = params.filter((el) => !!el).join('/');
 	return '/' + paths + (SITE.trailingSlash && paths ? '/' : '');
@@ -19,7 +18,11 @@ const createPath = (...params: string[]) => {
 
 const basePathname = trimSlash(SITE.basePathname);
 
-export const cleanSlug = (text: string) => slugify(trimSlash(text));
+export const cleanSlug = (text: string) =>
+	trimSlash(text)
+		.split('/')
+		.map((slug) => slugify(slug))
+		.join('/');
 
 export const BLOG_BASE = cleanSlug(BLOG?.blog?.pathname);
 export const POST_BASE = cleanSlug(BLOG?.post?.pathname);
@@ -31,33 +34,24 @@ export const getCanonical = (path = ''): string | URL => new URL(path, SITE.orig
 
 /** */
 export const getPermalink = (slug = '', type = 'page'): string => {
-	const _slug = cleanSlug(slug);
-
 	switch (type) {
 		case 'category':
-			return createPath(basePathname, CATEGORY_BASE, _slug);
+			return createPath(basePathname, CATEGORY_BASE, cleanSlug(slug));
 
 		case 'tag':
-			return createPath(basePathname, TAG_BASE, _slug);
+			return createPath(basePathname, TAG_BASE, cleanSlug(slug));
 
 		case 'post':
-			return createPath(basePathname, POST_BASE, _slug);
-
-		case 'page':
-		default:
-			return createPath(basePathname, _slug);
+			return createPath(basePathname, POST_BASE, cleanSlug(slug));
 	}
+
+	return createPath(basePathname, trimSlash(slug));
 };
 
 /** */
 export const getHomePermalink = (): string => {
 	const permalink = getPermalink();
-	return permalink !== '/' ? permalink + '/' : permalink;
-};
-
-/** */
-export const getRelativeLink = (link = ''): string => {
-	return createPath(basePathname, trimSlash(link));
+	return !permalink.startsWith('/') ? '/' + permalink : permalink;
 };
 
 /** */
