@@ -2,8 +2,8 @@
 
 <img src="lighthouse-score.png" align="right"
      alt="AstroWind Lighthouse Score" width="100" height="358">
-     
-🌟 *Most _starred_ & _forked_ Astro theme in 2022*. 🌟
+
+🌟 _Most *starred* & *forked* Astro theme in 2022_. 🌟
 
 **AstroWind** is a free and open-source template to make your website using **[Astro](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account web best practices.
 
@@ -154,7 +154,7 @@ const CONFIG = {
 
   title: 'Example - This is the homepage title of Example', // default seo title
   description: 'This is the homepage description of Example', // default seo descriptio
-  defaultImage: "image.jpg", // default seo image
+  defaultImage: 'image.jpg', // default seo image
 
   defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 
@@ -189,7 +189,7 @@ const CONFIG = {
       disabled: false,
     },
   },
-}
+};
 ```
 
 <br>
