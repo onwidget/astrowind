@@ -23,8 +23,8 @@ const currentPage = page.currentPage ?? 1;
 const meta = {
 	title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
 	description: SITE.description,
+	noindex: BLOG?.blog?.noindex || currentPage > 1,
 	ogType: 'blog',
-	noindex: currentPage > 1,
 };
 ---
 

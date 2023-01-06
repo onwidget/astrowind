@@ -28,7 +28,7 @@ const meta = {
 	description: post.description,
 	canonical: post.canonical || undefined,
 	image: await findImage(post.image),
-	ogTitle: post.title,
+	noindex: BLOG?.post?.noindex,
 	ogType: 'article',
 };
 ---
