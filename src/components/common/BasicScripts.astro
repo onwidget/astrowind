@@ -1,10 +1,9 @@
 ---
-import { SITE } from "~/config.mjs"
+import { SITE } from '~/config.mjs';
 ---
 
 <script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
-
-function applyTheme(theme) {
+	function applyTheme(theme) {
 		if (theme === 'dark') {
 			document.documentElement.classList.add('dark');
 		} else {
@@ -12,28 +11,30 @@ function applyTheme(theme) {
 		}
 	}
 
-	if ((defaultTheme && defaultTheme.endsWith(":only")) || (!localStorage.theme && defaultTheme !== "system")) {
-		applyTheme(defaultTheme.replace(":only", ""));
-	}
-	else if (
+	if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
+		applyTheme(defaultTheme.replace(':only', ''));
+	} else if (
 		localStorage.theme === 'dark' ||
 		(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
 	) {
-		applyTheme("dark")
+		applyTheme('dark');
 	} else {
-		applyTheme("light")
+		applyTheme('light');
 	}
 
 	function attachEvent(selector, event, fn) {
-		const matches = document.querySelectorAll(selector);
+		const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
 		if (matches && matches.length) {
 			matches.forEach((elem) => {
-				elem.addEventListener(event, () => fn(elem), false);
+				elem.addEventListener(event, (e) => fn(e, elem), false);
 			});
 		}
 	}
 
 	window.onload = function () {
+		let lastKnownScrollPosition = 0;
+		let ticking = false;
+
 		attachEvent('[data-aw-toggle-menu]', 'click', function (elem) {
 			elem.classList.toggle('expanded');
 			document.body.classList.toggle('overflow-hidden');
@@ -42,7 +43,7 @@ function applyTheme(theme) {
 		});
 
 		attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
-			if (defaultTheme.endsWith(":only")) {
+			if (defaultTheme.endsWith(':only')) {
 				return;
 			}
 			document.documentElement.classList.toggle('dark');
@@ -81,7 +82,26 @@ function applyTheme(theme) {
 			newlink.href = href;
 			newlink.click();
 		});
+
+		attachEvent([document], 'scroll', function () {
+			lastKnownScrollPosition = window.scrollY;
+
+			if (!ticking) {
+				window.requestAnimationFrame(() => {
+					const header = document.getElementById('header');
+					if (lastKnownScrollPosition > 100 && !header.classList.contains('scroll')) {
+						document.getElementById('header').classList.add('scroll');
+					} else if (lastKnownScrollPosition <= 100 && header.classList.contains('scroll')) {
+						document.getElementById('header').classList.remove('scroll');
+					}
+					ticking = false;
+				});
+
+				ticking = true;
+			}
+		});
 	};
+
 	window.onpageshow = function () {
 		const elem = document.querySelector('[data-aw-toggle-menu]');
 		if (elem) {

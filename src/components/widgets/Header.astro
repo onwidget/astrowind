@@ -5,12 +5,58 @@ import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 
 import { getHomePermalink, getBlogPermalink, getPermalink } from '~/utils/permalinks';
+
+const links = [
+	{
+		text: 'Landing Pages',
+		links: [
+			{
+				text: 'Startup',
+				href: getPermalink('/landing/startup'),
+			},
+			{
+				text: 'Saas',
+				href: getPermalink('/landing/saas'),
+			},
+			{
+				text: 'Mobile App',
+				href: getPermalink('/landing/mobile-app'),
+			},
+		],
+	},
+	{
+		text: 'Pages',
+		links: [
+			{
+				text: 'Services',
+				href: getPermalink('/services'),
+			},
+			{
+				text: 'About us',
+				href: getPermalink('/about'),
+			},
+			{
+				text: 'Contact',
+				href: getPermalink('/contact'),
+			},
+			{
+				text: 'Terms',
+				href: getPermalink('/terms'),
+			},
+			{
+				text: 'Privacy policy',
+				href: getPermalink('/privacy'),
+			},
+		],
+	},
+	{
+		text: 'Blog',
+		href: getBlogPermalink(),
+	},
+];
 ---
 
-<header
-	class="sticky top-0 z-40 flex-none mx-auto w-full bg-white md:bg-white/90 dark:bg-slate-900 dark:md:bg-slate-900/90 md:backdrop-blur-sm"
-	id="header"
->
+<header class="sticky top-0 z-40 flex-none mx-auto w-full transition-all ease-in duration-200" id="header">
 	<div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4">
 		<div class="flex justify-between">
 			<a class="flex items-center" href={getHomePermalink()}>
@@ -26,58 +72,38 @@ import { getHomePermalink, getBlogPermalink, getPermalink } from '~/utils/permal
 			aria-label="Main navigation"
 		>
 			<ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-xl md:text-base">
-				<li class="dropdown">
-					<button
-						class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-						>Pages</button
-					>
-					<ul
-						class="dropdown-menu rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white md:min-w-[200px] dark:md:bg-slate-800 drop-shadow-xl"
-					>
-						<li>
-							<a
-								class="rounded-t md:hover:bg-gray-100 dark:hover:bg-gray-700 py-2 px-4 block whitespace-no-wrap"
-								href="#">Features</a
-							>
+				{
+					links.map(({ text, href, links }) => (
+						<li class={links?.length ? 'dropdown' : ''}>
+							{links?.length ? (
+								<>
+									<button class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out">
+										{text} <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 hidden md:inline" />
+									</button>
+									<ul class="dropdown-menu rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white md:min-w-[200px] dark:md:bg-slate-800 drop-shadow-xl">
+										{links.map(({ text: text2, href: href2 }) => (
+											<li>
+												<a
+													class="first:rounded-t last:rounded-b md:hover:bg-gray-100 dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap"
+													href={href2}
+												>
+													{text2}
+												</a>
+											</li>
+										))}
+									</ul>
+								</>
+							) : (
+								<a
+									class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+									href={href}
+								>
+									{text}
+								</a>
+							)}
 						</li>
-						<li>
-							<a class="md:hover:bg-gray-100 dark:hover:bg-gray-700 py-2 px-4 block whitespace-no-wrap" href="#"
-								>Profile</a
-							>
-						</li>
-						<li>
-							<a
-								class="rounded-b md:hover:bg-gray-100 dark:hover:bg-gray-700 py-2 px-4 block whitespace-no-wrap"
-								href="#">Pricing</a
-							>
-						</li>
-						<li>
-							<a
-								class="rounded-b md:hover:bg-gray-100 dark:hover:bg-gray-700 py-2 px-4 block whitespace-no-wrap"
-								href={getPermalink('/terms')}>Terms and Conditions</a
-							>
-						</li>
-						<li>
-							<a
-								class="rounded-b md:hover:bg-gray-100 dark:hover:bg-gray-700 py-2 px-4 block whitespace-no-wrap"
-								href={getPermalink('/privacy')}>Privacy Policy</a
-							>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a
-						class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-						href={getPermalink('useful-resources-to-create-websites', 'post')}
-						>Resources
-					</a>
-				</li>
-				<li>
-					<a
-						class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-						href={getBlogPermalink()}>Blog</a
-					>
-				</li>
+					))
+				}
 				<li class="md:hidden">
 					<a
 						class="font-bold hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
@@ -85,25 +111,22 @@ import { getHomePermalink, getBlogPermalink, getPermalink } from '~/utils/permal
 					>
 				</li>
 			</ul>
-			<div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
-				<div class="hidden items-center md:flex">
-					<ToggleTheme iconClass="w-5 h-5" />
-					<a
-						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-						aria-label="RSS Feed"
-						href={getPermalink('/rss.xml')}
-					>
-						<Icon name="tabler:rss" class="w-5 h-5" />
-					</a>
-					<a
-						href="https://github.com/onwidget/astrowind"
-						class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
-						aria-label="Astrowind Github"
-					>
-						<Icon name="tabler:brand-github" class="w-5 h-5" />
-					</a>
-				</div>
-			</div>
 		</nav>
+		<div class="md:self-center flex items-center md:mb-0">
+			<div class="hidden items-center md:flex">
+				<ToggleTheme iconClass="w-5 h-5" />
+				<a
+					class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+					aria-label="RSS Feed"
+					href={getPermalink('/rss.xml')}
+				>
+					<Icon name="tabler:rss" class="w-5 h-5" />
+				</a>
+				<a
+					class="btn w-full ml-3 py-2.5 px-6 font-medium text-gray-600 shadow-none"
+					href="https://github.com/onwidget/astrowind">Download</a
+				>
+			</div>
+		</div>
 	</div>
 </header>
