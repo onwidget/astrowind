@@ -27,7 +27,7 @@ const url = getCanonical(getPermalink(post.slug, 'post'));
 const meta = {
 	title: post.title,
 	description: post.description,
-	canonical: post.canonical || url,
+	canonical: post.canonical || undefined,
 	image: await findImage(post.image),
 	ogTitle: post.title,
 	ogType: 'article',

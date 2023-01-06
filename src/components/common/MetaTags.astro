@@ -2,9 +2,11 @@
 import { AstroSeo } from '@astrolib/seo';
 import { GoogleAnalytics } from '@astrolib/analytics';
 import { getImage } from '@astrojs/image';
-import { getRelativeUrlByFilePath } from '~/utils/directories';
 
 import { SITE } from '~/config.mjs';
+import { getCanonical } from '~/utils/permalinks';
+import { getRelativeUrlByFilePath } from '~/utils/directories';
+
 import Fonts from '~/components/common/Fonts.astro';
 import ExtraMetaTags from '~/components/common/ExtraMetaTags.astro';
 import SplitbeeAnalytics from './SplitbeeAnalytics.astro';
@@ -31,7 +33,7 @@ const {
 	description = '',
 	image: _image = defaultImage,
 
-	canonical,
+	canonical = getCanonical(String(Astro.url.pathname)),
 	noindex = false,
 	nofollow = false,
 

@@ -6,7 +6,7 @@ import BlogList from '~/components/blog/List.astro';
 import Pagination from '~/components/common/Pagination.astro';
 
 import { fetchPosts } from '~/utils/posts';
-import { getCanonical, getPermalink, cleanSlug, CATEGORY_BASE } from '~/utils/permalinks';
+import { cleanSlug, CATEGORY_BASE } from '~/utils/permalinks';
 import Title from '~/components/blog/Title.astro';
 
 export async function getStaticPaths({ paginate }) {
@@ -36,7 +36,6 @@ const currentPage = page.currentPage ?? 1;
 const meta = {
 	title: `Category'${category}' ${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
 	description: SITE.description,
-	canonical: getCanonical(getPermalink(category, 'category')),
 	noindex: true,
 };
 ---
