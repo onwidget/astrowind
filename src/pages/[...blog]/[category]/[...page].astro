@@ -3,11 +3,11 @@ import { SITE, BLOG } from '~/config.mjs';
 
 import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
+import Title from '~/components/blog/Title.astro';
 import Pagination from '~/components/common/Pagination.astro';
 
 import { fetchPosts } from '~/utils/blog';
 import { CATEGORY_BASE } from '~/utils/permalinks';
-import Title from '~/components/blog/Title.astro';
 
 export async function getStaticPaths({ paginate }) {
 	if (BLOG?.disabled || BLOG?.category?.disabled) return [];
