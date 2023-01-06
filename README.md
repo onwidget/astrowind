@@ -82,7 +82,6 @@ Inside AstroWind template, you'll see the following folders and files:
 │   │   ├── common/
 |   |   └── widgets/
 |   |       ├── Header.astro
-|   |       ├── Footer.astro
 |   |       └── ...
 │   ├── content/
 │   |   ├── blog/
@@ -95,17 +94,14 @@ Inside AstroWind template, you'll see the following folders and files:
 │   |   └── ...
 │   ├── pages/
 │   |   ├── [...blog]/
+|   |   |   ├── [category]/
+|   |   |   ├── [tag]/
 |   |   |   ├── [...page].astro
 |   |   |   └── [slug].astro
-│   |   ├── [...categories]/
-|   |   |   └── [category]/
-|   |   |       └── [...page].astro
-│   |   ├── [...tags]/
-|   |   |   └── [tag]/
-|   |   |       └── [...page].astro
 │   |   ├── index.astro
 |   |   ├── 404.astro
-|   |   └-- rss.xml.ts
+|   |   ├-- rss.xml.ts
+│   |   └── ...
 │   ├── utils/
 │   └── config.mjs
 ├── package.json
