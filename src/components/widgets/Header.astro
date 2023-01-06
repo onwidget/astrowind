@@ -4,7 +4,7 @@ import Logo from '~/components/common/Logo.astro';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 
-import { getHomePermalink, getBlogPermalink, getPermalink, getPermalink } from '~/utils/permalinks';
+import { getHomePermalink, getBlogPermalink, getPermalink } from '~/utils/permalinks';
 ---
 
 <header
@@ -34,21 +34,33 @@ import { getHomePermalink, getBlogPermalink, getPermalink, getPermalink } from '
 					<ul
 						class="dropdown-menu rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white md:min-w-[200px] dark:md:bg-slate-800 drop-shadow-xl"
 					>
-						<li class="">
+						<li>
 							<a
 								class="rounded-t md:hover:bg-gray-100 dark:hover:bg-gray-700 py-2 px-4 block whitespace-no-wrap"
 								href="#">Features</a
 							>
 						</li>
-						<li class="">
+						<li>
 							<a class="md:hover:bg-gray-100 dark:hover:bg-gray-700 py-2 px-4 block whitespace-no-wrap" href="#"
 								>Profile</a
 							>
 						</li>
-						<li class="">
+						<li>
 							<a
 								class="rounded-b md:hover:bg-gray-100 dark:hover:bg-gray-700 py-2 px-4 block whitespace-no-wrap"
 								href="#">Pricing</a
+							>
+						</li>
+						<li>
+							<a
+								class="rounded-b md:hover:bg-gray-100 dark:hover:bg-gray-700 py-2 px-4 block whitespace-no-wrap"
+								href={getPermalink('/terms')}>Terms and Conditions</a
+							>
+						</li>
+						<li>
+							<a
+								class="rounded-b md:hover:bg-gray-100 dark:hover:bg-gray-700 py-2 px-4 block whitespace-no-wrap"
+								href={getPermalink('/privacy')}>Privacy Policy</a
 							>
 						</li>
 					</ul>
