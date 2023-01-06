@@ -10,7 +10,7 @@ import { BLOG_BASE } from '~/utils/permalinks';
 import Title from '~/components/blog/Title.astro';
 
 export async function getStaticPaths({ paginate }) {
-	if (BLOG?.disabled || BLOG?.blog?.disabled) return [];
+	if (BLOG?.disabled || BLOG?.list?.disabled) return [];
 	return paginate(await fetchPosts(), {
 		params: { blog: BLOG_BASE || undefined },
 		pageSize: BLOG.postsPerPage,
@@ -23,7 +23,7 @@ const currentPage = page.currentPage ?? 1;
 const meta = {
 	title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
 	description: SITE.description,
-	noindex: BLOG?.blog?.noindex || currentPage > 1,
+	noindex: BLOG?.list?.noindex || currentPage > 1,
 	ogType: 'blog',
 };
 ---

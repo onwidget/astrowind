@@ -1,6 +1,7 @@
 ---
 import { getPermalink } from '~/utils/permalinks';
 
+import { BLOG } from '~/config.mjs';
 import type { Post } from '~/types';
 
 export interface Props {
@@ -16,7 +17,7 @@ const { tags, class: className = 'text-sm' } = Astro.props;
 		<ul class={className}>
 			{tags.map((tag) => (
 				<li class="bg-gray-100 dark:bg-slate-700 inline-block mr-2 mb-2 py-0.5 px-2 lowercase">
-					<a href={getPermalink(tag, 'tag')}>{tag}</a>
+					{BLOG?.tag?.disabled ? tag : <a href={getPermalink(tag, 'tag')}>{tag}</a>}
 				</li>
 			))}
 		</ul>

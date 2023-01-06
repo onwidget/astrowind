@@ -2,11 +2,12 @@
 import { Picture } from '@astrojs/image/components';
 import PostTags from '~/components/common/Tags.astro';
 
+import { BLOG } from '~/config.mjs';
+import type { Post } from '~/types';
+
 import { getPermalink } from '~/utils/permalinks';
 import { findImage } from '~/utils/images';
 import { getFormattedDate } from '~/utils/utils';
-
-import type { Post } from '~/types';
 
 export interface Props {
 	post: Post;
@@ -14,12 +15,14 @@ export interface Props {
 
 const { post } = Astro.props;
 const image = await findImage(post.image);
+
+const link = !BLOG?.post?.disabled ? getPermalink(post.slug, 'post') : '';
 ---
 
 <article class={`max-w-md mx-auto md:max-w-none grid gap-6 md:gap-8 ${image ? 'md:grid-cols-2' : ''}`}>
 	{
 		image && (
-			<a class="relative block group" href={getPermalink(post.slug, 'post')}>
+			<a class="relative block group" href={link ?? 'javascript:void(0)'}>
 				<div class="relative h-0 pb-[56.25%] md:pb-[75%] md:h-80 lg:pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded shadow-lg">
 					{image && (
 						<Picture
@@ -38,12 +41,18 @@ const image = await findImage(post.image);
 	<div>
 		<header>
 			<h2 class="text-xl sm:text-2xl font-bold leading-snug mb-2 font-heading">
-				<a
-					class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
-					href={getPermalink(post.slug, 'post')}
-				>
-					{post.title}
-				</a>
+				{
+					link ? (
+						<a
+							class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
+							href={link}
+						>
+							{post.title}
+						</a>
+					) : (
+						post.title
+					)
+				}
 			</h2>
 		</header>
 		<p class="text-md sm:text-lg flex-grow">

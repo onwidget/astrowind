@@ -24,7 +24,7 @@ export const cleanSlug = (text: string) =>
 		.map((slug) => slugify(slug))
 		.join('/');
 
-export const BLOG_BASE = cleanSlug(BLOG?.blog?.pathname);
+export const BLOG_BASE = cleanSlug(BLOG?.list?.pathname);
 export const POST_BASE = cleanSlug(BLOG?.post?.pathname);
 export const CATEGORY_BASE = cleanSlug(BLOG?.category?.pathname);
 export const TAG_BASE = cleanSlug(BLOG?.tag?.pathname);

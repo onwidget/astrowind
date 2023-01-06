@@ -1,10 +1,11 @@
 ---
 import { Picture } from '@astrojs/image/components';
 
+import { BLOG } from '~/config.mjs';
+import type { Post } from '~/types';
+
 import { findImage } from '~/utils/images';
 import { getPermalink } from '~/utils/permalinks';
-
-import type { Post } from '~/types';
 
 export interface Props {
 	post: Post;
@@ -30,12 +31,18 @@ const image = await findImage(post.image);
 		}
 	</div>
 	<h3 class="mb-2 text-xl font-bold leading-snug sm:text-2xl font-heading">
-		<a
-			href={getPermalink(post.slug, 'post')}
-			class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
-		>
-			{post.title}
-		</a>
+		{
+			BLOG?.post?.disabled ? (
+				post.title
+			) : (
+				<a
+					href={getPermalink(post.slug, 'post')}
+					class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
+				>
+					{post.title}
+				</a>
+			)
+		}
 	</h3>
 	<p class="text-gray-700 dark:text-gray-400">{post.excerpt || post.description}</p>
 </article>
