@@ -11,6 +11,10 @@ import SplitbeeAnalytics from './SplitbeeAnalytics.astro';
 
 import { MetaSEO } from '~/types';
 
+export interface Props extends MetaSEO {
+	dontUseTitleTemplate?: boolean;
+}
+
 const defaultImage = SITE.defaultImage
 	? (
 			await getImage({
@@ -21,8 +25,6 @@ const defaultImage = SITE.defaultImage
 			})
 	  ).src
 	: '';
-
-export interface Props extends MetaSEO {}
 
 const {
 	title = SITE.name,
@@ -35,6 +37,8 @@ const {
 
 	ogTitle = title,
 	ogType = 'website',
+
+	dontUseTitleTemplate = false,
 } = Astro.props;
 
 const image =
@@ -51,6 +55,7 @@ const image =
 
 <AstroSeo
 	title={title}
+	titleTemplate={dontUseTitleTemplate ? '%s' : `%s — ${SITE.name}`}
 	description={description}
 	canonical={String(canonical)}
 	noindex={noindex}

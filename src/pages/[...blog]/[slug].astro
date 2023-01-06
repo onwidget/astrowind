@@ -25,7 +25,7 @@ const { post } = Astro.props;
 const url = getCanonical(getPermalink(post.slug, 'post'));
 
 const meta = {
-	title: `${post.title} — ${SITE.name}`,
+	title: post.title,
 	description: post.description,
 	canonical: post.canonical || url,
 	image: await findImage(post.image),

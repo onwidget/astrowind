@@ -22,7 +22,7 @@ const { page } = Astro.props;
 const currentPage = page.currentPage ?? 1;
 
 const meta = {
-	title: `Blog ${currentPage > 1 ? `— Page ${currentPage} ` : ''}— ${SITE.name}`,
+	title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
 	description: SITE.description,
 	canonical: getCanonical(getPermalink(BLOG?.blog?.pathname)),
 	ogType: 'blog',

@@ -34,7 +34,7 @@ const { page, tag } = Astro.props;
 
 const currentPage = page.currentPage ?? 1;
 const meta = {
-	title: `Posts by tag '${tag}' ${currentPage > 1 ? `— Page ${currentPage} ` : ''}— ${SITE.name}`,
+	title: `Posts by tag '${tag}'${currentPage > 1 ? ` — Page ${currentPage} ` : ''}`,
 	description: SITE.description,
 	canonical: getCanonical(getPermalink(tag, 'tag')),
 	noindex: true,
