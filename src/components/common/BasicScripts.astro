@@ -23,6 +23,7 @@ import { SITE } from '~/config.mjs';
 	}
 
 	function attachEvent(selector, event, fn) {
+		console.log(selector);
 		const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
 		if (matches && matches.length) {
 			matches.forEach((elem) => {
@@ -35,7 +36,7 @@ import { SITE } from '~/config.mjs';
 		let lastKnownScrollPosition = 0;
 		let ticking = false;
 
-		attachEvent('[data-aw-toggle-menu]', 'click', function (elem) {
+		attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
 			elem.classList.toggle('expanded');
 			document.body.classList.toggle('overflow-hidden');
 			document.getElementById('header')?.classList.toggle('h-screen');
@@ -50,7 +51,7 @@ import { SITE } from '~/config.mjs';
 			localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
 		});
 
-		attachEvent('[data-aw-social-share]', 'click', function (elem) {
+		attachEvent('[data-aw-social-share]', 'click', function (_, elem) {
 			const network = elem.getAttribute('data-aw-social-share');
 			const url = encodeURIComponent(elem.getAttribute('data-aw-url'));
 			const text = encodeURIComponent(elem.getAttribute('data-aw-text'));

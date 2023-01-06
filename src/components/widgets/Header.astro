@@ -8,23 +8,6 @@ import { getHomePermalink, getBlogPermalink, getPermalink } from '~/utils/permal
 
 const links = [
 	{
-		text: 'Landing Pages',
-		links: [
-			{
-				text: 'Startup',
-				href: getPermalink('/landing/startup'),
-			},
-			{
-				text: 'Saas',
-				href: getPermalink('/landing/saas'),
-			},
-			{
-				text: 'Mobile App',
-				href: getPermalink('/landing/mobile-app'),
-			},
-		],
-	},
-	{
 		text: 'Pages',
 		links: [
 			{
@@ -111,22 +94,22 @@ const links = [
 					>
 				</li>
 			</ul>
-		</nav>
-		<div class="md:self-center flex items-center md:mb-0">
-			<div class="hidden items-center md:flex">
-				<ToggleTheme iconClass="w-5 h-5" />
-				<a
-					class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-					aria-label="RSS Feed"
-					href={getPermalink('/rss.xml')}
-				>
-					<Icon name="tabler:rss" class="w-5 h-5" />
-				</a>
-				<a
-					class="btn w-full ml-3 py-2.5 px-6 font-medium text-gray-600 shadow-none"
-					href="https://github.com/onwidget/astrowind">Download</a
-				>
+			<div class="md:self-center flex items-center md:mb-0 ml-4">
+				<div class="hidden items-center md:flex">
+					<ToggleTheme iconClass="w-5 h-5" />
+					<a
+						class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+						aria-label="RSS Feed"
+						href={getPermalink('/rss.xml')}
+					>
+						<Icon name="tabler:rss" class="w-5 h-5" />
+					</a>
+					<a
+						class="btn w-full ml-3 py-2.5 px-6 font-medium text-gray-600 shadow-none"
+						href="https://github.com/onwidget/astrowind">Download</a
+					>
+				</div>
 			</div>
-		</div>
+		</nav>
 	</div>
 </header>
