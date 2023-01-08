@@ -4,14 +4,14 @@ import type { Post } from '~/types';
 import { cleanSlug } from './permalinks';
 
 const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> => {
-	const { id, slug, data } = post;
+	const { id, slug = '', data } = post;
 	const { Content, injectedFrontmatter } = await post.render();
 
-	const { tags = [], category = 'default', author = 'Anonymous', publishDate, ...rest } = data;
+	const { tags = [], category = 'default', author = 'Anonymous', publishDate = new Date(), ...rest } = data;
 
 	return {
 		id: id,
-		slug: slug,
+		slug: cleanSlug(slug.split('/').pop() ?? ''),
 
 		publishDate: new Date(publishDate),
 		category: cleanSlug(category),

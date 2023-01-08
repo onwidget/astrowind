@@ -1,22 +1,18 @@
 import slugify from 'limax';
 
 import { SITE, BLOG } from '~/config.mjs';
-
-const trim = (str = '', ch?: string) => {
-	let start = 0,
-		end = str.length || 0;
-	while (start < end && str[start] === ch) ++start;
-	while (end > start && str[end - 1] === ch) --end;
-	return start > 0 || end < str.length ? str.substring(start, end) : str;
-};
+import { trim } from '~/utils/utils';
 
 const trimSlash = (s: string) => trim(trim(s, '/'));
 const createPath = (...params: string[]) => {
-	const paths = params.filter((el) => !!el).join('/');
+	const paths = params
+		.map((el) => trimSlash(el))
+		.filter((el) => !!el)
+		.join('/');
 	return '/' + paths + (SITE.trailingSlash && paths ? '/' : '');
 };
 
-const basePathname = trimSlash(SITE.basePathname);
+const BASE_PATHNAME = SITE.basePathname;
 
 export const cleanSlug = (text: string) =>
 	trimSlash(text)
@@ -34,25 +30,35 @@ export const getCanonical = (path = ''): string | URL => new URL(path, SITE.orig
 
 /** */
 export const getPermalink = (slug = '', type = 'page'): string => {
+	let permalink: string;
+
 	switch (type) {
 		case 'category':
-			return createPath(basePathname, CATEGORY_BASE, cleanSlug(slug));
+			permalink = createPath(CATEGORY_BASE, cleanSlug(slug));
+			break;
 
 		case 'tag':
-			return createPath(basePathname, TAG_BASE, cleanSlug(slug));
+			permalink = createPath(TAG_BASE, cleanSlug(slug));
+			break;
 
 		case 'post':
-			return createPath(basePathname, POST_BASE, cleanSlug(slug));
+			permalink = createPath(POST_BASE, cleanSlug(slug));
+			break;
+
+		case 'page':
+		default:
+			permalink = createPath(slug);
+			break;
 	}
 
-	return createPath(basePathname, trimSlash(slug));
+	return definitivePermalink(permalink);
 };
 
 /** */
-export const getHomePermalink = (): string => {
-	const permalink = getPermalink();
-	return !permalink.startsWith('/') ? '/' + permalink : permalink;
-};
+export const getHomePermalink = (): string => getPermalink('/');
 
 /** */
 export const getBlogPermalink = (): string => getPermalink(BLOG_BASE);
+
+/** */
+const definitivePermalink = (permalink: string): string => createPath(BASE_PATHNAME, permalink);

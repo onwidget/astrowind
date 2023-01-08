@@ -149,10 +149,20 @@ const CONFIG = {
   trailingSlash: false, // Generate permalinks with or without "/" at the end
 
   title: 'Example - This is the homepage title of Example', // default seo title
-  description: 'This is the homepage description of Example', // default seo descriptio
+  description: 'This is the homepage description of Example', // default seo description
   defaultImage: 'image.jpg', // default seo image
 
   defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+
+  language: 'en', // default language
+  textDirection: 'ltr', // default html text direction
+
+  dateFormatter: new Intl.DateTimeFormat('en', { // date format
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  }),
 
   googleAnalyticsId: false, // or "G-XXXXXXXXXX",
   googleSiteVerificationId: false, // or some value,

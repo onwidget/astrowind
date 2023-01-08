@@ -1,12 +1,14 @@
 ---
-publishDate: 'Aug 12 2022'
-title: 'Get started with AstroWind to create a website using Astro and Tailwind CSS'
-description: 'Lorem ipsum dolor sit amet'
-excerpt: 'Sint sit cillum pariatur eiusmod nulla pariatur ipsum. Sit laborum anim qui mollit tempor pariatur nisi minim dolor. Aliquip et adipisicing sit sit fugiat'
-image: '~/assets/images/steps.jpg'
-category: 'Tutorials'
-tags: [astro, tailwind css]
-canonical: https://astrowind.vercel.app/get-started-website-with-astro-tailwind-css # When posting content to multiple platforms at the same time (such as this website and Medium) and want to specify the ultimate authority. Remove it to automatically generate canonical
+publishDate: 2023-01-12T00:00:00Z
+title: Get started with AstroWind to create a website using Astro and Tailwind CSS
+description: Lorem ipsum dolor sit amet
+excerpt: Sint sit cillum pariatur eiusmod nulla pariatur ipsum. Sit laborum anim qui mollit tempor pariatur nisi minim dolor. Aliquip et adipisicing sit sit fugiat
+image: ~/assets/images/steps.jpg
+category: Tutorials
+tags:
+  - astro
+  - tailwind css
+canonical: https://astrowind.vercel.app/get-started-website-with-astro-tailwind-css
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

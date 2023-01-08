@@ -1,10 +1,13 @@
 ---
-publishDate: 'Aug 10 2022'
-title: 'How to customize AstroWind template to suit your branding'
-description: 'Sint sit cillum pariatur eiusmod nulla pariatur ipsum. Sit laborum anim qui mollit tempor pariatur nisi minim dolor. Aliquip et adipisicing sit sit fugiat'
-image: '~/assets/images/colors.jpg'
-tags: [astro, tailwind css, theme]
-canonical: https://astrowind.vercel.app/how-to-customize-astrowind-to-your-brand # When posting content to multiple platforms at the same time (such as this website and Medium) and want to specify the ultimate authority. Remove it to automatically generate canonical
+publishDate: 2023-01-06T00:00:00Z
+title: How to customize AstroWind template to suit your branding
+description: Sint sit cillum pariatur eiusmod nulla pariatur ipsum. Sit laborum anim qui mollit tempor pariatur nisi minim dolor. Aliquip et adipisicing sit sit fugiat
+image: ~/assets/images/colors.jpg
+tags:
+  - astro
+  - tailwind css
+  - theme
+canonical: https://astrowind.vercel.app/how-to-customize-astrowind-to-your-brand
 ---
 
 ## Congue justo vulputate nascetur convallis varius orci fringilla nulla pharetr

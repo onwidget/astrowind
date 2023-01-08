@@ -5,16 +5,18 @@ import MetaTags from '~/components/common/MetaTags.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 
 import { MetaSEO } from '~/types';
+import { SITE } from '~/config.mjs';
 
 export interface Props {
 	meta?: MetaSEO;
 }
 
 const { meta = {} } = Astro.props;
+const { language = 'en', textDirection = 'ltr' } = SITE;
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="motion-safe:scroll-smooth 2xl:text-[20px]">
+<html lang={language} dir={textDirection} class="motion-safe:scroll-smooth 2xl:text-[20px]">
 	<head>
 		<MetaTags {...meta} />
 	</head>
