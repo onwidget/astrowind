@@ -21,14 +21,97 @@ const meta = {
 ---
 
 <Layout {meta}>
-	<Hero />
+	<!-- Hero Widget -->
+
+	<Hero
+		callToAction1={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
+		callToAction2={{ text: 'Learn more', href: '#features' }}
+		image={{ src: import('~/assets/images/hero.png'), alt: 'AstroWind Hero Image' }}
+	>
+		<Fragment slot="title">
+			Your website with <span>Astro</span> + <span class="sm:whitespace-nowrap">Tailwind CSS</span>
+		</Fragment>
+		<Fragment slot="subtitle">
+			<span class="hidden sm:inline">
+				<span class="font-semibold underline decoration-wavy decoration-1 decoration-primary-600 underline-offset-2"
+					>AstroWind</span
+				> is a free, production-ready template to start your new website using <em>Astro</em> + <em>Tailwind CSS</em
+				>.</span
+			>
+			<span class="block mb-1 sm:hidden font-bold text-primary-600">AstroWind: Free template.</span> Suitable for Startups,
+			Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
+		</Fragment>
+	</Hero>
+
 	<Note />
+
 	<Features />
+
 	<Steps />
+
 	<Features2 />
+
 	<Features3 />
-	<HighlightedPosts />
-	<FAQs />
+
+	<!-- HighlightedPosts Widget -->
+
+	<HighlightedPosts
+		title="Find out more content in our Blog"
+		information={`The blog will be used to display AstroWind documentation.
+			Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
+			Astro is a very interesting technology. Thanks.
+		`}
+		postsIds={[
+			'get-started-website-with-astro-tailwind-css.md',
+			'how-to-customize-astrowind-to-your-brand.md',
+			'useful-resources-to-create-websites.md',
+			'astrowind-template-in-depth.md',
+		]}
+	/>
+
+	<!-- FAQs Widget -->
+
+	<FAQs
+		title="Frequently Asked Questions"
+		items={[
+			[
+				{
+					question: 'What do I need to start?',
+					answer:
+						'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+				},
+				{
+					question: 'How to install the Astro + Tailwind CSS template?',
+					answer:
+						"Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.",
+				},
+				{
+					question: "What's something that you don't understand?",
+					answer:
+						"A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+				},
+			],
+			[
+				{
+					question: "What's an example of when you changed your mind?",
+					answer:
+						"Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+				},
+				{
+					question: 'What is something that you would like to try again?',
+					answer:
+						"A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
+				},
+				{
+					question: 'If you could only ask one question to each person you meet, what would that question be?',
+					answer:
+						"This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+				},
+			],
+		]}
+	/>
+
 	<Stats />
+
 	<CallToAction />
 </Layout>
