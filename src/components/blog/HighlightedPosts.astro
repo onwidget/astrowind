@@ -9,7 +9,7 @@ export interface Props {
 	allPostsText?: string;
 	allPostsLink?: string | URL;
 	information?: string;
-	postsIds: string[];
+	postIds: string[];
 }
 
 const {
@@ -17,10 +17,10 @@ const {
 	allPostsText = 'View all posts',
 	allPostsLink = getBlogPermalink(),
 	information = await Astro.slots.render('information'),
-	postsIds = [],
+	postIds = [],
 } = Astro.props;
 
-const posts = await findPostsByIds(postsIds);
+const posts = await findPostsByIds(postIds);
 ---
 
 <section class="px-4 py-16 mx-auto max-w-6xl lg:py-20">

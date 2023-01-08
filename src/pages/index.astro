@@ -21,7 +21,6 @@ const meta = {
 ---
 
 <Layout {meta}>
-	<!-- Hero Widget -->
 
 	<Hero
 		callToAction1={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
@@ -45,7 +44,53 @@ const meta = {
 
 	<Note />
 
-	<Features />
+	<Features
+		highlight="Features"
+		title="What you get with AstroWind"
+		subtitle="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae."
+		items={[
+			[
+				{
+					title: 'Astro + Tailwind CSS Integration',
+					description:
+						'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
+					icon: 'tabler:brand-tailwind',
+				},
+				{
+					title: 'Ready-to-use Components',
+					description:
+						'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
+					icon: 'tabler:components',
+				},
+				{
+					title: 'Best Practices',
+					description:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+					icon: 'tabler:list-check',
+				},
+			],
+			[
+				{
+					title: 'Excellent Page Speed',
+					description:
+						'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
+					icon: 'tabler:rocket',
+				},
+				{
+					title: 'Search Engine Optimization (SEO)',
+					description:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+					icon: 'tabler:arrows-right-left',
+				},
+				{
+					title: 'Open to new ideas and contributions',
+					description:
+						'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+					icon: 'tabler:bulb',
+				},
+			],
+		]}
+	/>
 
 	<Steps />
 
@@ -53,23 +98,19 @@ const meta = {
 
 	<Features3 />
 
-	<!-- HighlightedPosts Widget -->
-
 	<HighlightedPosts
 		title="Find out more content in our Blog"
 		information={`The blog will be used to display AstroWind documentation.
 			Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
 			Astro is a very interesting technology. Thanks.
 		`}
-		postsIds={[
+		postIds={[
 			'get-started-website-with-astro-tailwind-css.md',
 			'how-to-customize-astrowind-to-your-brand.md',
 			'useful-resources-to-create-websites.md',
 			'astrowind-template-in-depth.md',
 		]}
 	/>
-
-	<!-- FAQs Widget -->
 
 	<FAQs
 		title="Frequently Asked Questions"
