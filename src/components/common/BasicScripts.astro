@@ -33,8 +33,8 @@ import { SITE } from '~/config.mjs';
 	}
 
 	window.onload = function () {
-		let lastKnownScrollPosition = 0;
-		let ticking = false;
+		let lastKnownScrollPosition = window.scrollY;
+		let ticking = true;
 
 		attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
 			elem.classList.toggle('expanded');
@@ -84,20 +84,24 @@ import { SITE } from '~/config.mjs';
 			newlink.click();
 		});
 
+		function appyHeaderStylesOnScroll() {
+			const header = document.getElementById('header');
+			if (lastKnownScrollPosition > 60 && !header.classList.contains('scroll')) {
+				document.getElementById('header').classList.add('scroll');
+			} else if (lastKnownScrollPosition <= 60 && header.classList.contains('scroll')) {
+				document.getElementById('header').classList.remove('scroll');
+			}
+			ticking = false;
+		}
+		appyHeaderStylesOnScroll();
+
 		attachEvent([document], 'scroll', function () {
 			lastKnownScrollPosition = window.scrollY;
 
 			if (!ticking) {
 				window.requestAnimationFrame(() => {
-					const header = document.getElementById('header');
-					if (lastKnownScrollPosition > 100 && !header.classList.contains('scroll')) {
-						document.getElementById('header').classList.add('scroll');
-					} else if (lastKnownScrollPosition <= 100 && header.classList.contains('scroll')) {
-						document.getElementById('header').classList.remove('scroll');
-					}
-					ticking = false;
+					appyHeaderStylesOnScroll();
 				});
-
 				ticking = true;
 			}
 		});
