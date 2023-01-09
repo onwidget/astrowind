@@ -1,25 +1,55 @@
 ---
+interface Item {
+	name: string;
+	value: string;
+}
+
+export interface Props {
+	title?: string;
+	subtitle?: string;
+	highlight?: string;
+	items?: Array<Item>;
+}
+
+const {
+	title = await Astro.slots.render('title'),
+	subtitle = await Astro.slots.render('subtitle'),
+	highlight,
+	items = [],
+} = Astro.props;
 ---
 
 <div class="px-4 py-8 md:py-16 sm:px-6 mx-auto md:px-24 lg:px-8 lg:py-20 max-w-6xl">
+	{
+		(title || subtitle || highlight) && (
+			<div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+				{highlight && (
+					<p class="text-base text-primary-600 dark:text-primary-200 font-semibold tracking-wide uppercase">
+						{highlight}
+					</p>
+				)}
+				{title && (
+					<h2
+						class="max-w-lg mb-4 text-3xl font-bold leading-none tracking-tight sm:text-4xl md:mx-auto font-heading"
+						set:html={title}
+					/>
+				)}
+				{subtitle && (
+					<p class="max-w-3xl mx-auto text-center text-xl text-gray-600 dark:text-slate-400" set:html={subtitle} />
+				)}
+			</div>
+		)
+	}
 	<div class="grid grid-cols-2 row-gap-8 md:grid-cols-4">
-		<div class="text-center md:border-r dark:md:border-slate-500 mb-10 md:mb-0">
-			<div class="text-4xl font-bold lg:text-5xl xl:text-6xl text-primary-500 font-heading">132K</div>
-			<p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
-				Downloads
-			</p>
-		</div>
-		<div class="text-center md:border-r dark:md:border-slate-500 mb-10 md:mb-0">
-			<div class="text-4xl font-bold lg:text-5xl xl:text-6xl text-primary-500 font-heading">24.8K</div>
-			<p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">Stars</p>
-		</div>
-		<div class="text-center md:border-r dark:md:border-slate-500 font-heading">
-			<div class="text-4xl font-bold lg:text-5xl xl:text-6xl text-primary-500">10.3K</div>
-			<p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">Forks</p>
-		</div>
-		<div class="text-center">
-			<div class="text-4xl font-bold lg:text-5xl xl:text-6xl text-primary-500 font-heading">48.4K</div>
-			<p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">Users</p>
-		</div>
+		{
+			items.map(({ name, value }) => (
+				<div class="text-center md:border-r md:last:border-none dark:md:border-slate-500 mb-10 md:mb-0">
+					<div class="text-4xl font-bold lg:text-5xl xl:text-6xl text-primary-500 font-heading">{value}</div>
+					<p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
+						{name}
+					</p>
+				</div>
+			))
+		}
 	</div>
 </div>

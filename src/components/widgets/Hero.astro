@@ -11,7 +11,7 @@ interface CallToAction {
 export interface Props {
 	title?: string;
 	subtitle?: string;
-	callToAction1?: string | CallToAction;
+	callToAction?: string | CallToAction;
 	callToAction2?: string | CallToAction;
 	image?: string | any; // TODO: find HTMLElementProps
 }
@@ -19,7 +19,7 @@ export interface Props {
 const {
 	title = await Astro.slots.render('title'),
 	subtitle = await Astro.slots.render('subtitle'),
-	callToAction1 = await Astro.slots.render('callToAction1'),
+	callToAction = await Astro.slots.render('callToAction'),
 	callToAction2 = await Astro.slots.render('callToAction2'),
 	image = await Astro.slots.render('image'),
 } = Astro.props;
@@ -41,14 +41,14 @@ const {
 					{subtitle && <p class="text-xl text-gray-600 mb-8 dark:text-slate-400" set:html={subtitle} />}
 					<div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
 						{
-							callToAction1 && (
+							callToAction && (
 								<div class="flex w-full sm:w-auto">
-									{typeof callToAction1 === 'string' ? (
-										<Fragment set:html={callToAction1} />
+									{typeof callToAction === 'string' ? (
+										<Fragment set:html={callToAction} />
 									) : (
-										<a class="btn btn-primary sm:mb-0 w-full" href={callToAction1?.href} target="_blank" rel="noopener">
-											{callToAction1?.icon && <><Icon name={callToAction1.icon} class="w-5 h-5 mr-1 -ml-1.5" />{' '}</>}
-											{callToAction1?.text}
+										<a class="btn btn-primary sm:mb-0 w-full" href={callToAction?.href} target="_blank" rel="noopener">
+											{callToAction?.icon && <><Icon name={callToAction.icon} class="w-5 h-5 mr-1 -ml-1.5" />{' '}</>}
+											{callToAction?.text}
 										</a>
 									)}
 								</div>

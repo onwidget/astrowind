@@ -7,7 +7,7 @@ import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
-import Features3 from '~/components/widgets/Features3.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
 import HighlightedPosts from '~/components/blog/HighlightedPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
@@ -21,15 +21,17 @@ const meta = {
 ---
 
 <Layout {meta}>
+	<!-- Hero Widget ******************* -->
 
 	<Hero
-		callToAction1={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
+		callToAction={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
 		callToAction2={{ text: 'Learn more', href: '#features' }}
 		image={{ src: import('~/assets/images/hero.png'), alt: 'AstroWind Hero Image' }}
 	>
 		<Fragment slot="title">
 			Your website with <span>Astro</span> + <span class="sm:whitespace-nowrap">Tailwind CSS</span>
 		</Fragment>
+
 		<Fragment slot="subtitle">
 			<span class="hidden sm:inline">
 				<span class="font-semibold underline decoration-wavy decoration-1 decoration-primary-600 underline-offset-2"
@@ -42,7 +44,11 @@ const meta = {
 		</Fragment>
 	</Hero>
 
+	<!-- Note Widget ******************* -->
+
 	<Note />
+
+	<!-- Features Widget *************** -->
 
 	<Features
 		highlight="Features"
@@ -92,15 +98,107 @@ const meta = {
 		]}
 	/>
 
-	<Steps />
+	<!-- Steps Widget ****************** -->
 
-	<Features2 />
+	<Steps
+		title="Sed ac magna sit amet risus tristique interdum. hac."
+		items={[
+			{
+				title: 'Step 1',
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus.',
+				icon: 'tabler:arrow-down',
+			},
+			{
+				title: 'Step 2',
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla.',
+				icon: 'tabler:arrow-down',
+			},
+			{
+				title: 'Step 3',
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus.',
+				icon: 'tabler:arrow-down',
+			},
+			{
+				title: 'Ready!',
+				icon: 'tabler:check',
+			},
+		]}
+		image={{
+			src: import('~/assets/images/astronaut.jpg'),
+			alt: "Steps image"
+		}}
+	/>
 
-	<Features3 />
+	<!-- Features2 Widget ************** -->
+
+	<Features2
+		title="Most used widgets"
+		subtitle="Provides frequently used components for building websites using Tailwind CSS"
+		highlight="Components"
+		items={[
+			{
+				title: 'Headers',
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+				icon: 'flat-color-icons:home',
+			},
+			{
+				title: 'Heros',
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+				icon: 'flat-color-icons:voice-presentation',
+			},
+			{
+				title: 'Features',
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+				icon: 'flat-color-icons:video-projector',
+			},
+			{
+				title: 'Content',
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+				icon: 'flat-color-icons:video-projector',
+			},
+			{
+				title: 'Call-to-Action',
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+				icon: 'flat-color-icons:video-projector',
+			},
+			{
+				title: 'Pricing',
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+				icon: 'flat-color-icons:calculator',
+			},
+			{
+				title: 'Testimonial',
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+				icon: 'flat-color-icons:voice-presentation',
+			},
+			{
+				title: 'Footers',
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+				icon: 'flat-color-icons:faq',
+			},
+		]}
+	/>
+
+	<!-- Steps2 Widget ***************** -->
+
+	<Steps2 />
+
+	<!-- HighlightedPosts Widget ******* -->
 
 	<HighlightedPosts
 		title="Find out more content in our Blog"
-		information={`The blog will be used to display AstroWind documentation.
+		information={`The blog is used to display AstroWind documentation.
 			Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
 			Astro is a very interesting technology. Thanks.
 		`}
@@ -111,6 +209,8 @@ const meta = {
 			'astrowind-template-in-depth.md',
 		]}
 	/>
+
+	<!-- FAQs Widget ******************* -->
 
 	<FAQs
 		title="Frequently Asked Questions"
@@ -152,7 +252,33 @@ const meta = {
 		]}
 	/>
 
-	<Stats />
+	<!-- Stats Widget ****************** -->
 
-	<CallToAction />
+	<Stats
+		items={[
+			{ name: 'Downloads', value: '132K' },
+			{ name: 'Stars', value: '24.8K' },
+			{ name: 'Forks', value: '10.3K' },
+			{ name: 'Users', value: '48.4K' },
+		]}
+	/>
+
+	<!-- CallToAction Widget *********** -->
+
+	<CallToAction
+		callToAction={{
+			text: 'Get template',
+			href: 'https://github.com/onwidget/astrowind',
+			icon: 'tabler:download',
+		}}
+	>
+		<Fragment slot="title">
+			Astro + <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+		</Fragment>
+
+		<Fragment slot="subtitle">
+			Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
+			waste more time! :P
+		</Fragment>
+	</CallToAction>
 </Layout>
