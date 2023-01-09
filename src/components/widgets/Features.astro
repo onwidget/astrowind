@@ -29,7 +29,7 @@ const {
 				<div class="mb-10 md:mx-auto text-center md:mb-12 max-w-3xl">
 					{highlight && (
 						<p
-							class="text-base text-primary-600 dark:text-primary-200 font-semibold tracking-wide uppercase"
+							class="text-base text-primary-800 dark:text-primary-200 font-semibold tracking-wide uppercase"
 							set:html={highlight}
 						/>
 					)}
@@ -53,7 +53,7 @@ const {
 						{subitems.map(({ title, description, icon }) => (
 							<div class="flex flex-row max-w-md">
 								<div class="mb-4 mr-4">
-									<div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-500 dark:bg-primary-700">
+									<div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-800 dark:bg-primary-700">
 										{icon && <Icon name={icon} class="w-6 h-6 text-white icon-light" />}
 									</div>
 								</div>

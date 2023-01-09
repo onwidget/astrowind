@@ -2,8 +2,8 @@
 import { Icon } from 'astro-icon';
 
 interface Item {
-	title: string;
-	description: string;
+	title?: string;
+	description?: string;
 	icon?: string;
 }
 
@@ -19,7 +19,6 @@ const {
 	subtitle = await Astro.slots.render('subtitle'),
 	highlight,
 	items = [],
-	responsiveGrid = { xs: 1, sm: 1, md: 2, lg: 4 }
 } = Astro.props;
 ---
 
@@ -32,7 +31,7 @@ const {
 					<div class="mb-8 md:mx-auto text-center max-w-3xl">
 						{highlight && (
 							<p
-								class="text-base text-primary-600 dark:text-primary-200 font-semibold tracking-wide uppercase"
+								class="text-base text-primary-800 dark:text-primary-200 font-semibold tracking-wide uppercase"
 								set:html={highlight}
 							/>
 						)}
@@ -49,16 +48,15 @@ const {
 					</div>
 				)
 			}
-			<div class={`grid gap-6 grid-cols-${responsiveGrid?.xs || 1} sm:grid-cols-${responsiveGrid?.sm || 1} md:grid-cols-${responsiveGrid?.md || 2} lg:grid-cols-${responsiveGrid?.lg || 4} items-start my-12 dark:text-white`}>
+			<div class={`grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-12 dark:text-white items-stretch`}>
 				{
 					items.map(({ title, description, icon }) => (
-						<div class="relative flex flex-col p-6 bg-white dark:bg-slate-900 rounded shadow-lg hover:shadow-md transition dark:border dark:border-slate-800">
-							<div class="flex items-center mb-4">
+						<div class="relative flex flex-col p-6 bg-white dark:bg-slate-900 rounded shadow-lg hover:shadow-md transition border border-transparent dark:border-slate-800">
+							<div class="flex items-center">
 								<Icon name={icon} class="w-10 h-10" />
-
 								<div class="ml-4 text-xl font-bold">{title}</div>
 							</div>
-							<p class="text-gray-500 dark:text-gray-400 text-md" set:html={description} />
+							{description && <p class="text-gray-500 dark:text-gray-400 text-md mt-4" set:html={description} />}
 						</div>
 					))
 				}

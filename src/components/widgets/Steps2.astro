@@ -28,6 +28,39 @@ const {
 	callToAction = await Astro.slots.render('callToAction'),
 	items = [],
 } = Astro.props;
+
+/**
+ * 
+	
+<!-- Steps2 Widget Example ***************** -->
+
+<Steps2
+	title="Sed ac magna sit amet risus tristique interdum, at vel velit in hac habitasse platea dictumst."
+	subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus."
+	callToAction={{
+		text: 'Get template',
+		href: 'https://github.com/onwidget/astrowind',
+		icon: 'tabler:download',
+	}}
+	items={[
+		{
+			title: 'Responsive Elements',
+			description:
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+		},
+		{
+			title: 'Flexible Team',
+			description:
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+		},
+		{
+			title: 'Ecologic Software',
+			description:
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+		},
+	]}
+/>
+ */
 ---
 
 <section>
@@ -40,7 +73,7 @@ const {
 							{
 								highlight && (
 									<p
-										class="text-base text-primary-600 dark:text-primary-200 font-semibold tracking-wide uppercase"
+										class="text-base text-primary-800 dark:text-primary-200 font-semibold tracking-wide uppercase"
 										set:html={highlight}
 									/>
 								)
@@ -73,7 +106,7 @@ const {
 									? items.map(({ title: title2, description, icon }, index) => (
 											<li class="flex md:-mx-4">
 												<div class="pr-4 sm:pl-4">
-													<span class="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold rounded-full bg-primary-50 text-primary-600">
+													<span class="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold rounded-full bg-primary-100 text-primary-800">
 														{icon ? <Icon name={icon} class="w-6 h-6 icon-bold" /> : index + 1}
 													</span>
 												</div>

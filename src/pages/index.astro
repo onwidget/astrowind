@@ -7,7 +7,7 @@ import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
+import Content from '~/components/widgets/Content.astro';
 import HighlightedPosts from '~/components/blog/HighlightedPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
@@ -98,28 +98,94 @@ const meta = {
 		]}
 	/>
 
+	<!-- Content Widget **************** -->
+
+	<Content
+		highlight="Inside template"
+		title="And what's inside? ..."
+		content="Ne dicta praesent ocurreret has, diam theophrastus at pro. Eos etiam regione ut, persius eripuit quo id. Sit te euismod tacimates."
+		items={[
+			{
+				title: 'Per ei quaeque sensibus',
+				description:
+					'Ex usu illum iudico molestie. Pro ne agam facete mediocritatem, ridens labore facete mea ei. Pro id apeirian dignissim.',
+			},
+			{
+				title: 'Cu imperdiet posidonium sed',
+				description:
+					'Amet utinam aliquando ut mea, malis admodum ocurreret nec et, elit tibique cu nec. Nec ex maluisset inciderint, ex quis.',
+			},
+			{
+				title: 'Nulla omittam sadipscing mel ne',
+				description:
+					'At sed possim oporteat probatus, justo graece ne nec, minim commodo legimus ut vix. Ut eos iudico quando soleat, nam modus.',
+			},
+		]}
+		image={{
+			src: import('~/assets/images/caos.jpg'),
+			alt: 'Colorful Image',
+		}}
+	/>
+
+	<!-- Content Widget **************** -->
+
+	<Content
+		isReversed
+		isAfterContent
+		items={[
+			{
+				title: 'Per ei quaeque sensibus',
+				
+			},
+			{
+				title: 'Cu imperdiet posidonium sed',
+				
+			},
+			{
+				title: 'Nulla omittam sadipscing mel ne',
+				
+			},
+			{
+				title: 'Per ei quaeque sensibus',
+				
+			},
+			{
+				title: 'Cu imperdiet posidonium sed',
+				
+			},
+			{
+				title: 'Nulla omittam sadipscing mel ne',
+				
+			},
+		]}
+		image={{
+			src: import('~/assets/images/vintage.jpg'),
+			alt: 'Vintage Image',
+		}}
+	/>
+
 	<!-- Steps Widget ****************** -->
 
 	<Steps
-		title="Sed ac magna sit amet risus tristique interdum. hac."
+		title="Get your dream website up and running in no time with AstroWind."
 		items={[
 			{
-				title: 'Step 1',
+				title: 'Step 1: <span class="font-medium">Download</span>',
 				description:
-					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus.',
-				icon: 'tabler:arrow-down',
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula.',
+				icon: 'tabler:package',
 			},
 			{
-				title: 'Step 2',
+				title: 'Step 2: <span class="font-medium">Add content</em>',
 				description:
 					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla.',
-				icon: 'tabler:arrow-down',
+				icon: 'tabler:letter-case',
 			},
 			{
-				title: 'Step 3',
+				title: 'Step 3: <span class="font-medium">Customize styles</span>',
 				description:
 					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus.',
-				icon: 'tabler:arrow-down',
+				icon: 'tabler:paint',
 			},
 			{
 				title: 'Ready!',
@@ -127,7 +193,7 @@ const meta = {
 			},
 		]}
 		image={{
-			src: import('~/assets/images/astronaut.jpg'),
+			src: import('~/assets/images/creativity.jpg'),
 			alt: 'Steps image',
 		}}
 	/>
@@ -142,38 +208,38 @@ const meta = {
 			{
 				title: 'Headers',
 				description:
-					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-				icon: 'flat-color-icons:home',
+					'In general, Headers contain information that makes it easier for visitors to interact with the website.',
+				icon: 'flat-color-icons:template',
 			},
 			{
 				title: 'Heros',
 				description:
-					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-				icon: 'flat-color-icons:voice-presentation',
+					'If you want your website to get more than its fair share of visitors, the Hero section needs to be stellar.',
+				icon: 'flat-color-icons:gallery',
 			},
 			{
 				title: 'Features',
 				description:
-					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-				icon: 'flat-color-icons:video-projector',
+					'Display your product in action and how the Features actually create a solution for your target customer.',
+				icon: 'flat-color-icons:todo-list',
 			},
 			{
 				title: 'Content',
 				description:
 					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-				icon: 'flat-color-icons:video-projector',
+				icon: 'flat-color-icons:document',
 			},
 			{
 				title: 'Call-to-Action',
 				description:
 					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-				icon: 'flat-color-icons:video-projector',
+				icon: 'flat-color-icons:advertising',
 			},
 			{
 				title: 'Pricing',
 				description:
 					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-				icon: 'flat-color-icons:calculator',
+				icon: 'flat-color-icons:currency-exchange',
 			},
 			{
 				title: 'Testimonial',
@@ -182,38 +248,18 @@ const meta = {
 				icon: 'flat-color-icons:voice-presentation',
 			},
 			{
+				title: 'Contact',
+				description:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+				icon: 'flat-color-icons:business-contact',
+			},
+			{
 				title: 'Footers',
 				description:
 					'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-				icon: 'flat-color-icons:faq',
+				icon: 'icon-park:page-template',
 			},
 		]}
-	/>
-
-	<!-- Steps2 Widget ***************** -->
-
-	<Steps2
-		title="Sed ac magna sit amet risus tristique interdum, at vel velit in hac habitasse platea dictumst."
-		subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus."
-		callToAction={{
-			text: 'Get template',
-			href: 'https://github.com/onwidget/astrowind',
-			icon: 'tabler:download',
-		}}
-		items={
-			[{
-				title: "Responsive Elements",
-				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.",
-			},
-			{
-				title: "Flexible Team",
-				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.",
-			},
-			{
-				title: "Ecologic Software",
-				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.",
-			}]
-		}
 	/>
 
 	<!-- HighlightedPosts Widget ******* -->
@@ -236,6 +282,8 @@ const meta = {
 
 	<FAQs
 		title="Frequently Asked Questions"
+		subtitle="Duis turpis dui, fringilla mattis sem nec, fringilla euismod neque. Morbi tincidunt lacus nec tortor scelerisque pulvinar."
+		highlight="FAQs"
 		items={[
 			[
 				{

@@ -23,34 +23,34 @@ const {
 
 <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-6xl">
 	<div class="grid gap-6 row-gap-10 md:grid-cols-2">
-		<div class="md:pb-6 md:pr-16 mb-4 md:mb-0">
-			{title && <h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading" set:html={title} />}
-			{
-				items &&
-					items.length &&
-					items.map(({ title, description, icon }, index) => (
-						<div class="flex">
-							<div class="flex flex-col items-center mr-4">
-								<div>
-									{index !== items.length - 1 ? (
-										<div class="flex items-center justify-center w-10 h-10 rounded-full border-primary-600 border-2">
-											{icon && <Icon name={icon} class="w-6 h-6 text-primary-600 dark:text-slate-200" />}
-										</div>
-									) : (
-										<div class="flex items-center justify-center w-10 h-10 rounded-full border-primary-600 border-2 bg-primary-600">
-											<Icon name={icon} class="w-6 h-6 text-white dark:text-slate-200" />
-										</div>
-									)}
+		<div class="md:py-4 md:pr-16 mb-4 md:mb-0">
+				{title && <h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading" set:html={title} />}
+				{
+					items &&
+						items.length &&
+						items.map(({ title, description, icon }, index) => (
+							<div class="flex">
+								<div class="flex flex-col items-center mr-4">
+									<div>
+										{index !== items.length - 1 ? (
+											<div class="flex items-center justify-center w-10 h-10 rounded-full border-primary-800 dark:border-primary-700 border-2">
+												{icon && <Icon name={icon} class="w-6 h-6 text-primary-800 dark:text-slate-200" />}
+											</div>
+										) : (
+											<div class="flex items-center justify-center w-10 h-10 rounded-full border-primary-800 border-2 bg-primary-800 dark:bg-primary-700 dark:border-primary-700">
+												<Icon name={icon} class="w-6 h-6 text-white dark:text-slate-200" />
+											</div>
+										)}
+									</div>
+									<div class="w-px h-full bg-gray-300 dark:bg-slate-500" />
 								</div>
-								<div class="w-px h-full bg-gray-300 dark:bg-slate-500" />
+								<div class={`pt-1 ${index !== items.length - 1 ? 'pb-8' : ''}`}>
+									{title && <p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300" set:html={title} />}
+									{description && <p class="text-gray-600 dark:text-slate-400" set:html={description} />}
+								</div>
 							</div>
-							<div class={`pt-1 ${index !== items.length - 1 ? 'pb-8' : ''}`}>
-								{title && <p class="mb-2 text-xl font-bold text-gray-900 dark:text-slate-300" set:html={title} />}
-								{description && <p class="text-gray-600 dark:text-slate-400" set:html={description} />}
-							</div>
-						</div>
-					))
-			}
+						))
+				}
 		</div>
 		<div class="relative">
 			{
