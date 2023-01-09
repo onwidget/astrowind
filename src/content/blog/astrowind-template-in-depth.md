@@ -1,7 +1,8 @@
 ---
 publishDate: 2023-01-08T00:00:00Z
 title: AstroWind template in depth
-description: Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis vehicula a, semper fames lacus maecenas dictumst pulvinar neque enim non potenti. Torquent hac sociosqu eleifend potenti.
+description: Lorem ipsum dolor sit amet
+excerpt: Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis vehicula a, semper fames lacus maecenas
 image: ~/assets/images/old.jpg
 category: Tutorials
 tags:

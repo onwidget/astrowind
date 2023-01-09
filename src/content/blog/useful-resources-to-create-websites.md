@@ -1,7 +1,7 @@
 ---
 publishDate: 2023-01-09T00:00:00Z
 title: Useful tools and resources to create a professional website
-description: Nibh senectus lacinia volutpat nostra taciti ac posuere, dictum ultricies dictumst luctus in vehicula, mus molestie venenatis penatibus ridiculus elementum. Phasellus sollicitudin dignissim parturient.
+excerpt: Sint sit cillum pariatur eiusmod nulla pariatur ipsum. Sit laborum anim qui mollit tempor pariatur.
 image: ~/assets/images/tools.jpg
 tags:
   - front-end

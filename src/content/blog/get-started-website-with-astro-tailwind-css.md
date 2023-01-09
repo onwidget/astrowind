@@ -2,7 +2,7 @@
 publishDate: 2023-01-12T00:00:00Z
 title: Get started with AstroWind to create a website using Astro and Tailwind CSS
 description: Lorem ipsum dolor sit amet
-excerpt: Sint sit cillum pariatur eiusmod nulla pariatur ipsum. Sit laborum anim qui mollit tempor pariatur nisi minim dolor. Aliquip et adipisicing sit sit fugiat
+excerpt: Sint sit cillum pariatur eiusmod nulla pariatur ipsum. Sit laborum anim qui mollit tempor pariatur.
 image: ~/assets/images/steps.jpg
 category: Tutorials
 tags:
