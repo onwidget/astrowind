@@ -23,7 +23,6 @@ import { SITE } from '~/config.mjs';
 	}
 
 	function attachEvent(selector, event, fn) {
-		console.log(selector);
 		const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
 		if (matches && matches.length) {
 			matches.forEach((elem) => {
