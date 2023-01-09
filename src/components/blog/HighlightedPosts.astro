@@ -24,12 +24,12 @@ const posts = await findPostsByIds(postIds);
 ---
 
 <section class="px-4 py-16 mx-auto max-w-6xl lg:py-20">
-	<div class="flex flex-col mb-6 lg:justify-between lg:flex-row md:mb-8">
-		<div class="md:max-w-sm mb-2 lg:mb-5">
+	<div class="flex flex-col lg:justify-between lg:flex-row mb-8">
+		<div class="md:max-w-sm">
 			{
 				title && (
 					<h2
-						class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-1 sm:mb-2"
+						class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2"
 						set:html={title}
 					/>
 				)
@@ -37,7 +37,7 @@ const posts = await findPostsByIds(postIds);
 			{
 				allPostsText && allPostsLink && (
 					<a
-						class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
+						class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200 block mb-6 md:mb-0"
 						href={allPostsLink}
 					>
 						{allPostsText} »

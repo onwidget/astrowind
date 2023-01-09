@@ -21,18 +21,18 @@ const {
 
 <div class="px-4 py-16 mx-auto max-w-6xl lg:py-20">
 	<div class="max-w-xl sm:mx-auto lg:max-w-2xl">
-		<div class="max-w-xl mb-10 md:mx-auto text-center lg:max-w-2xl md:mb-12">
+		<div class="max-w-xl mb-10 md:mx-auto md:text-center lg:max-w-2xl md:mb-12">
 			{
 				title && (
 					<h2
-						class="max-w-lg mb-4 text-3xl font-bold leading-none tracking-tight sm:text-4xl md:mx-auto font-heading"
+						class="max-w-lg mb-4 text-3xl font-bold leading-none md:tracking-tight sm:text-4xl md:mx-auto font-heading"
 						set:html={title}
 					/>
 				)
 			}
 			{
 				subtitle && (
-					<p class="max-w-3xl mx-auto sm:text-center text-xl text-gray-600 dark:text-slate-400" set:html={subtitle} />
+					<p class="max-w-3xl mx-auto text-xl text-gray-600 dark:text-slate-400" set:html={subtitle} />
 				)
 			}
 		</div>
