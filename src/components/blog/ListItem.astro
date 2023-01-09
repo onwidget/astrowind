@@ -1,4 +1,5 @@
 ---
+import Icon from 'astro-icon';
 import { Picture } from '@astrojs/image/components';
 import PostTags from '~/components/common/Tags.astro';
 
@@ -38,9 +39,16 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.slug, 'post') : '';
 			</a>
 		)
 	}
-	<div>
+	<div class="mt-2">
 		<header>
-			<h2 class="text-xl sm:text-2xl font-bold leading-tight mb-2 font-heading">
+			<div class="mb-1">
+				<span class="text-sm">
+					<Icon name="tabler:clock" class="w-3.5 h-3.5 inline-block -mt-0.5 text-gray-500 dark:text-gray-400" />
+					<time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time> ~
+					{Math.ceil(post.readingTime)} min read
+				</span>
+			</div>
+			<h2 class="text-xl sm:text-2xl font-bold leading-tight  mb-2 font-heading text-gray-700 dark:text-slate-300">
 				{
 					link ? (
 						<a
@@ -55,19 +63,11 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.slug, 'post') : '';
 				}
 			</h2>
 		</header>
-		<p class="text-md sm:text-lg flex-grow">
-			{post.excerpt || post.description}
-		</p>
-		<footer class="mt-4">
-			<div>
-				<span class="text-gray-500 dark:text-slate-400">
-					<time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time> ~
-					{Math.ceil(post.readingTime)} min read
-				</span>
-			</div>
-			<div class="mt-4">
-				<PostTags tags={post.tags} />
-			</div>
+
+		{post.excerpt && <p class="flex-grow text-gray-500 dark:text-slate-400 text-lg">{post.excerpt}</p>}
+		<footer class="mt-5">
+			<PostTags tags={post.tags} />
+			
 		</footer>
 	</div>
 </article>

@@ -1,5 +1,7 @@
 ---
+import Icon from 'astro-icon';
 import { Picture } from '@astrojs/image/components';
+
 import PostTags from '~/components/common/Tags.astro';
 import SocialShare from '~/components/common/SocialShare.astro';
 
@@ -17,22 +19,29 @@ const { post, url } = Astro.props;
 
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
 	<article>
-		<header class={post.image ? 'text-center' : ''}>
-			<p class="px-4 sm:px-6 max-w-3xl mx-auto">
-				<time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time> ~ {
-					Math.ceil(post.readingTime)
-				} min read
-			</p>
+		<header class={post.image ? '' : ''}>
+			<div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center">
+				<p>
+					<Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-1 text-gray-500 dark:text-gray-400" />
+					<time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time> ~ {
+						Math.ceil(post.readingTime)
+					} min read
+				</p>
+			</div>
 			<h1
-				class="px-4 sm:px-6 max-w-3xl mx-auto text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-8 font-heading"
+				class="px-4 sm:px-6 max-w-3xl mx-auto text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading"
 			>
 				{post.title}
 			</h1>
+			<p class="max-w-3xl mx-auto mt-4 mb-8 px-4 sm:px-6 text-xl md:text-2xl text-gray-500 dark:text-slate-400 font-medium text-justify">
+				{post.excerpt}
+			</p>
+			
 			{
 				post.image ? (
 					<Picture
 						src={post.image}
-						class="max-w-full lg:max-w-6xl mx-auto mt-4 mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
+						class="max-w-full lg:max-w-6xl mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
 						widths={[400, 900]}
 						sizes="(max-width: 900px) 400px, 900px"
 						alt={post.description || ''}
