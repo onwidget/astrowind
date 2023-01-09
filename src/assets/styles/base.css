@@ -28,6 +28,10 @@
 	stroke-width: 1.2;
 }
 
+[astro-icon].icon-bold > * {
+	stroke-width: 2.4;
+}
+
 [data-aw-toggle-menu] path {
 	@apply transition;
 }

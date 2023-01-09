@@ -128,7 +128,7 @@ const meta = {
 		]}
 		image={{
 			src: import('~/assets/images/astronaut.jpg'),
-			alt: "Steps image"
+			alt: 'Steps image',
 		}}
 	/>
 
@@ -192,7 +192,29 @@ const meta = {
 
 	<!-- Steps2 Widget ***************** -->
 
-	<Steps2 />
+	<Steps2
+		title="Sed ac magna sit amet risus tristique interdum, at vel velit in hac habitasse platea dictumst."
+		subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus."
+		callToAction={{
+			text: 'Get template',
+			href: 'https://github.com/onwidget/astrowind',
+			icon: 'tabler:download',
+		}}
+		items={
+			[{
+				title: "Responsive Elements",
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.",
+			},
+			{
+				title: "Flexible Team",
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.",
+			},
+			{
+				title: "Ecologic Software",
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.",
+			}]
+		}
+	/>
 
 	<!-- HighlightedPosts Widget ******* -->
 
