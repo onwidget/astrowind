@@ -7,7 +7,7 @@ import Pagination from '~/components/common/Pagination.astro';
 
 import { fetchPosts } from '~/utils/blog';
 import { TAG_BASE } from '~/utils/permalinks';
-import Title from '~/components/blog/Title.astro';
+import Headline from '~/components/blog/Headline.astro';
 
 export async function getStaticPaths({ paginate }) {
 	if (BLOG?.disabled || BLOG?.tag?.disabled) return [];
@@ -42,7 +42,7 @@ const meta = {
 
 <Layout meta={meta}>
 	<section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-3xl">
-		<Title>Tag: {tag}</Title>
+		<Headline>Tag: {tag}</Headline>
 		<BlogList posts={page.data} />
 		<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
 	</section>

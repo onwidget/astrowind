@@ -3,7 +3,7 @@ import { SITE, BLOG } from '~/config.mjs';
 
 import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
-import Title from '~/components/blog/Title.astro';
+import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/common/Pagination.astro';
 
 import { fetchPosts } from '~/utils/blog';
@@ -42,7 +42,7 @@ const meta = {
 
 <Layout meta={meta}>
 	<section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-3xl">
-		<Title>Category {category}</Title>
+		<Headline>Category {category}</Headline>
 		<BlogList posts={page.data} />
 		<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
 	</section>

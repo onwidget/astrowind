@@ -23,7 +23,7 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.slug, 'post') : '';
 	{
 		image && (
 			<a class="relative block group" href={link ?? 'javascript:void(0)'}>
-				<div class="relative h-0 pb-[56.25%] md:pb-[75%] md:h-80 lg:pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded shadow-lg">
+				<div class="relative h-0 pb-[56.25%] md:pb-[75%] md:h-72 lg:pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded shadow-lg">
 					{image && (
 						<Picture
 							src={image}
@@ -40,11 +40,11 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.slug, 'post') : '';
 	}
 	<div>
 		<header>
-			<h2 class="text-xl sm:text-2xl font-bold leading-snug mb-2 font-heading">
+			<h2 class="text-xl sm:text-2xl font-bold leading-tight mb-2 font-heading">
 				{
 					link ? (
 						<a
-							class="hover:text-primary-600 underline underline-offset-4 decoration-1 decoration-dotted transition ease-in duration-200"
+							class="hover:text-primary-600 hover:underline hover:underline-offset-4 hover:decoration-1 hover:decoration-dotted transition ease-in duration-200"
 							href={link}
 						>
 							{post.title}
