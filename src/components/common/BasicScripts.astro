@@ -3,117 +3,117 @@ import { SITE } from '~/config.mjs';
 ---
 
 <script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
-	function applyTheme(theme) {
-		if (theme === 'dark') {
-			document.documentElement.classList.add('dark');
-		} else {
-			document.documentElement.classList.remove('dark');
-		}
-	}
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
 
-	if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
-		applyTheme(defaultTheme.replace(':only', ''));
-	} else if (
-		localStorage.theme === 'dark' ||
-		(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-	) {
-		applyTheme('dark');
-	} else {
-		applyTheme('light');
-	}
+  if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
+    applyTheme(defaultTheme.replace(':only', ''));
+  } else if (
+    localStorage.theme === 'dark' ||
+    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    applyTheme('dark');
+  } else {
+    applyTheme('light');
+  }
 
-	function attachEvent(selector, event, fn) {
-		const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
-		if (matches && matches.length) {
-			matches.forEach((elem) => {
-				elem.addEventListener(event, (e) => fn(e, elem), false);
-			});
-		}
-	}
+  function attachEvent(selector, event, fn) {
+    const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.addEventListener(event, (e) => fn(e, elem), false);
+      });
+    }
+  }
 
-	window.onload = function () {
-		let lastKnownScrollPosition = window.scrollY;
-		let ticking = true;
+  window.onload = function () {
+    let lastKnownScrollPosition = window.scrollY;
+    let ticking = true;
 
-		attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
-			elem.classList.toggle('expanded');
-			document.body.classList.toggle('overflow-hidden');
-			document.getElementById('header')?.classList.toggle('h-screen');
-			document.querySelector('#header nav')?.classList.toggle('hidden');
-		});
+    attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
+      elem.classList.toggle('expanded');
+      document.body.classList.toggle('overflow-hidden');
+      document.getElementById('header')?.classList.toggle('h-screen');
+      document.querySelector('#header nav')?.classList.toggle('hidden');
+    });
 
-		attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
-			if (defaultTheme.endsWith(':only')) {
-				return;
-			}
-			document.documentElement.classList.toggle('dark');
-			localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-		});
+    attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
+      if (defaultTheme.endsWith(':only')) {
+        return;
+      }
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    });
 
-		attachEvent('[data-aw-social-share]', 'click', function (_, elem) {
-			const network = elem.getAttribute('data-aw-social-share');
-			const url = encodeURIComponent(elem.getAttribute('data-aw-url'));
-			const text = encodeURIComponent(elem.getAttribute('data-aw-text'));
+    attachEvent('[data-aw-social-share]', 'click', function (_, elem) {
+      const network = elem.getAttribute('data-aw-social-share');
+      const url = encodeURIComponent(elem.getAttribute('data-aw-url'));
+      const text = encodeURIComponent(elem.getAttribute('data-aw-text'));
 
-			let href;
-			switch (network) {
-				case 'facebook':
-					href = `https://www.facebook.com/sharer.php?u=${url}`;
-					break;
-				case 'twitter':
-					href = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
-					break;
-				case 'linkedin':
-					href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${text}`;
-					break;
-				case 'whatsapp':
-					href = `https://wa.me/?text=${text}%20${url}`;
-					break;
-				case 'mail':
-					href = `mailto:?subject=%22${text}%22&body=${text}%20${url}`;
-					break;
+      let href;
+      switch (network) {
+        case 'facebook':
+          href = `https://www.facebook.com/sharer.php?u=${url}`;
+          break;
+        case 'twitter':
+          href = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+          break;
+        case 'linkedin':
+          href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${text}`;
+          break;
+        case 'whatsapp':
+          href = `https://wa.me/?text=${text}%20${url}`;
+          break;
+        case 'mail':
+          href = `mailto:?subject=%22${text}%22&body=${text}%20${url}`;
+          break;
 
-				default:
-					return;
-			}
+        default:
+          return;
+      }
 
-			const newlink = document.createElement('a');
-			newlink.target = '_blank';
-			newlink.href = href;
-			newlink.click();
-		});
+      const newlink = document.createElement('a');
+      newlink.target = '_blank';
+      newlink.href = href;
+      newlink.click();
+    });
 
-		function appyHeaderStylesOnScroll() {
-			const header = document.getElementById('header');
-			if (lastKnownScrollPosition > 60 && !header.classList.contains('scroll')) {
-				document.getElementById('header').classList.add('scroll');
-			} else if (lastKnownScrollPosition <= 60 && header.classList.contains('scroll')) {
-				document.getElementById('header').classList.remove('scroll');
-			}
-			ticking = false;
-		}
-		appyHeaderStylesOnScroll();
+    function appyHeaderStylesOnScroll() {
+      const header = document.getElementById('header');
+      if (lastKnownScrollPosition > 60 && !header.classList.contains('scroll')) {
+        document.getElementById('header').classList.add('scroll');
+      } else if (lastKnownScrollPosition <= 60 && header.classList.contains('scroll')) {
+        document.getElementById('header').classList.remove('scroll');
+      }
+      ticking = false;
+    }
+    appyHeaderStylesOnScroll();
 
-		attachEvent([document], 'scroll', function () {
-			lastKnownScrollPosition = window.scrollY;
+    attachEvent([document], 'scroll', function () {
+      lastKnownScrollPosition = window.scrollY;
 
-			if (!ticking) {
-				window.requestAnimationFrame(() => {
-					appyHeaderStylesOnScroll();
-				});
-				ticking = true;
-			}
-		});
-	};
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          appyHeaderStylesOnScroll();
+        });
+        ticking = true;
+      }
+    });
+  };
 
-	window.onpageshow = function () {
-		document.documentElement.classList.add('motion-safe:scroll-smooth');
-		const elem = document.querySelector('[data-aw-toggle-menu]');
-		if (elem) {
-			elem.classList.remove('expanded');
-		}
-		document.body.classList.remove('overflow-hidden');
-		document.getElementById('header')?.classList.remove('h-screen');
-		document.querySelector('#header nav')?.classList.add('hidden');
-	};
+  window.onpageshow = function () {
+    document.documentElement.classList.add('motion-safe:scroll-smooth');
+    const elem = document.querySelector('[data-aw-toggle-menu]');
+    if (elem) {
+      elem.classList.remove('expanded');
+    }
+    document.body.classList.remove('overflow-hidden');
+    document.getElementById('header')?.classList.remove('h-screen');
+    document.querySelector('#header nav')?.classList.add('hidden');
+  };
 </script>

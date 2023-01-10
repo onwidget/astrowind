@@ -3,42 +3,42 @@
 @tailwind utilities;
 
 @layer components {
-	.btn {
-		@apply inline-flex items-center justify-center rounded-md shadow-md border-gray-400 border bg-transparent font-medium text-center text-base text-gray-700 leading-snug transition py-3.5 px-6 md:px-7 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800;
-	}
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md shadow-md border-gray-400 border bg-transparent font-medium text-center text-base text-gray-700 leading-snug transition py-3.5 px-6 md:px-7 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800;
+  }
 
-	.btn-ghost {
-		@apply border-none shadow-none text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
-	}
+  .btn-ghost {
+    @apply border-none shadow-none text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
+  }
 
-	.btn-primary {
-		@apply font-semibold bg-primary-800 text-white border-primary-800 hover:bg-primary-900 hover:border-primary-900 hover:text-white dark:text-white dark:bg-primary-700 dark:border-primary-700 dark:hover:border-primary-900 dark:hover:bg-primary-900;
-	}
+  .btn-primary {
+    @apply font-semibold bg-primary-800 text-white border-primary-800 hover:bg-primary-900 hover:border-primary-900 hover:text-white dark:text-white dark:bg-primary-700 dark:border-primary-700 dark:hover:border-primary-900 dark:hover:bg-primary-900;
+  }
 }
 
 #header.scroll {
-	@apply shadow-md md:shadow-lg bg-white md:bg-white/90 md:backdrop-blur-sm dark:bg-slate-900 dark:md:bg-slate-900/90;
+  @apply shadow-md md:shadow-lg bg-white md:bg-white/90 md:backdrop-blur-sm dark:bg-slate-900 dark:md:bg-slate-900/90;
 }
 
 .dropdown:hover .dropdown-menu {
-	display: block;
+  display: block;
 }
 
 [astro-icon].icon-light > * {
-	stroke-width: 1.2;
+  stroke-width: 1.2;
 }
 
 [astro-icon].icon-bold > * {
-	stroke-width: 2.4;
+  stroke-width: 2.4;
 }
 
 [data-aw-toggle-menu] path {
-	@apply transition;
+  @apply transition;
 }
 [data-aw-toggle-menu].expanded g > path:first-child {
-	@apply -rotate-45 translate-y-[15px] translate-x-[-3px];
+  @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
 }
 
 [data-aw-toggle-menu].expanded g > path:last-child {
-	@apply rotate-45 translate-y-[-8px] translate-x-[14px];
+  @apply rotate-45 translate-y-[-8px] translate-x-[14px];
 }

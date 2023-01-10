@@ -10,40 +10,40 @@ import { TAG_BASE } from '~/utils/permalinks';
 import Headline from '~/components/blog/Headline.astro';
 
 export async function getStaticPaths({ paginate }) {
-	if (BLOG?.disabled || BLOG?.tag?.disabled) return [];
+  if (BLOG?.disabled || BLOG?.tag?.disabled) return [];
 
-	const posts = await fetchPosts();
-	const tags = new Set();
-	posts.map((post) => {
-		Array.isArray(post.tags) && post.tags.map((tag) => tags.add(tag.toLowerCase()));
-	});
+  const posts = await fetchPosts();
+  const tags = new Set();
+  posts.map((post) => {
+    Array.isArray(post.tags) && post.tags.map((tag) => tags.add(tag.toLowerCase()));
+  });
 
-	return Array.from(tags).map((tag: string) =>
-		paginate(
-			posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.toLowerCase() === tag)),
-			{
-				params: { tag: tag, blog: TAG_BASE || undefined },
-				pageSize: BLOG.postsPerPage,
-				props: { tag },
-			}
-		)
-	);
+  return Array.from(tags).map((tag: string) =>
+    paginate(
+      posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.toLowerCase() === tag)),
+      {
+        params: { tag: tag, blog: TAG_BASE || undefined },
+        pageSize: BLOG.postsPerPage,
+        props: { tag },
+      }
+    )
+  );
 }
 
 const { page, tag } = Astro.props;
 
 const currentPage = page.currentPage ?? 1;
 const meta = {
-	title: `Posts by tag '${tag}'${currentPage > 1 ? ` — Page ${currentPage} ` : ''}`,
-	description: SITE.description,
-	noindex: BLOG?.tag?.noindex,
+  title: `Posts by tag '${tag}'${currentPage > 1 ? ` — Page ${currentPage} ` : ''}`,
+  description: SITE.description,
+  noindex: BLOG?.tag?.noindex,
 };
 ---
 
 <Layout meta={meta}>
-	<section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-3xl">
-		<Headline>Tag: {tag}</Headline>
-		<BlogList posts={page.data} />
-		<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-	</section>
+  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-3xl">
+    <Headline>Tag: {tag}</Headline>
+    <BlogList posts={page.data} />
+    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+  </section>
 </Layout>

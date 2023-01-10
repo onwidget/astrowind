@@ -2,54 +2,56 @@
 import { Icon } from 'astro-icon';
 
 interface CallToAction {
-	text: string;
-	href: string;
-	icon?: string;
+  text: string;
+  href: string;
+  icon?: string;
 }
 
 export interface Props {
-	title?: string;
-	description?: string;
-	callToAction?: string | CallToAction;
+  title?: string;
+  description?: string;
+  callToAction?: string | CallToAction;
 }
 
 const {
-	title = await Astro.slots.render('title'),
-	subtitle = await Astro.slots.render('subtitle'),
-	callToAction = await Astro.slots.render('callToAction'),
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  callToAction = await Astro.slots.render('callToAction'),
 } = Astro.props;
 ---
 
 <section class="relative">
-	<div class="max-w-6xl mx-auto px-4 sm:px-6">
-		<div class="py-12 md:py-20">
-			<div class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600">
-				{
-					title && (
-						<h2
-							class="text-4xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
-							set:html={title}
-						/>
-					)
-				}
-				{subtitle && <p class="text-xl text-gray-600 dark:text-slate-400" set:html={subtitle} />}
-				{
-					typeof callToAction === 'string' ? (
-						<Fragment set:html={callToAction} />
-					) : (
-						callToAction &&
-						callToAction.text &&
-						callToAction.href && (
-							<div class="mt-6 max-w-xs mx-auto">
-								<a class="btn btn-primary w-full sm:w-auto" href={callToAction.href} target="_blank" rel="noopener">
-									{callToAction.icon && <Icon name={callToAction.icon} class="w-5 h-5 mr-1 -ml-1.5" />}
-									{callToAction.text}
-								</a>
-							</div>
-						)
-					)
-				}
-			</div>
-		</div>
-	</div>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="py-12 md:py-20">
+      <div
+        class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600"
+      >
+        {
+          title && (
+            <h2
+              class="text-4xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
+              set:html={title}
+            />
+          )
+        }
+        {subtitle && <p class="text-xl text-gray-600 dark:text-slate-400" set:html={subtitle} />}
+        {
+          typeof callToAction === 'string' ? (
+            <Fragment set:html={callToAction} />
+          ) : (
+            callToAction &&
+            callToAction.text &&
+            callToAction.href && (
+              <div class="mt-6 max-w-xs mx-auto">
+                <a class="btn btn-primary w-full sm:w-auto" href={callToAction.href} target="_blank" rel="noopener">
+                  {callToAction.icon && <Icon name={callToAction.icon} class="w-5 h-5 mr-1 -ml-1.5" />}
+                  {callToAction.text}
+                </a>
+              </div>
+            )
+          )
+        }
+      </div>
+    </div>
+  </div>
 </section>

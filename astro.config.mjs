@@ -16,58 +16,58 @@ import { SITE } from './src/config.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const whenExternalScripts = (items = []) =>
-	SITE.googleAnalyticsId ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
+  SITE.googleAnalyticsId ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-	site: SITE.origin,
-	base: SITE.basePathname,
-	trailingSlash: SITE.trailingSlash ? 'always' : 'never',
+  site: SITE.origin,
+  base: SITE.basePathname,
+  trailingSlash: SITE.trailingSlash ? 'always' : 'never',
 
-	output: 'static',
+  output: 'static',
 
-	integrations: [
-		tailwind({
-			config: {
-				applyBaseStyles: false,
-			},
-		}),
-		sitemap(),
-		image({
-			serviceEntryPoint: '@astrojs/image/sharp',
-		}),
-		mdx(),
+  integrations: [
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+    sitemap(),
+    image({
+      serviceEntryPoint: '@astrojs/image/sharp',
+    }),
+    mdx(),
 
-		...whenExternalScripts(() =>
-			partytown({
-				config: { forward: ['dataLayer.push'] },
-			})
-		),
+    ...whenExternalScripts(() =>
+      partytown({
+        config: { forward: ['dataLayer.push'] },
+      })
+    ),
 
-		compress({
-			css: true,
-			html: true,
-			img: false,
-			js: true,
-			svg: false,
+    compress({
+      css: true,
+      html: true,
+      img: false,
+      js: true,
+      svg: false,
 
-			logger: 1,
-		}),
-	],
+      logger: 1,
+    }),
+  ],
 
-	markdown: {
-		remarkPlugins: [remarkReadingTime],
-		extendDefaultPlugins: true,
-	},
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+    extendDefaultPlugins: true,
+  },
 
-	vite: {
-		resolve: {
-			alias: {
-				'~': path.resolve(__dirname, './src'),
-			},
-		},
-	},
+  vite: {
+    resolve: {
+      alias: {
+        '~': path.resolve(__dirname, './src'),
+      },
+    },
+  },
 
-	experimental: {
-		contentCollections: true,
-	},
+  experimental: {
+    contentCollections: true,
+  },
 });

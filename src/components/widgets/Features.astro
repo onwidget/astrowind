@@ -2,70 +2,70 @@
 import { Icon } from 'astro-icon';
 
 interface Item {
-	title: string;
-	description: string;
-	icon?: string;
+  title: string;
+  description: string;
+  icon?: string;
 }
 
 export interface Props {
-	title?: string;
-	subtitle?: string;
-	highlight?: string;
-	items: Array<Array<Item>>;
+  title?: string;
+  subtitle?: string;
+  highlight?: string;
+  items: Array<Array<Item>>;
 }
 
 const {
-	title = await Astro.slots.render('title'),
-	subtitle = await Astro.slots.render('subtitle'),
-	highlight,
-	items = [],
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  highlight,
+  items = [],
 } = Astro.props;
 ---
 
 <section class="scroll-mt-16" id="features">
-	<div class="px-4 py-16 mx-auto max-w-6xl lg:px-8 lg:py-20">
-		{
-			(title || subtitle || highlight) && (
-				<div class="mb-10 md:mx-auto text-center md:mb-12 max-w-3xl">
-					{highlight && (
-						<p
-							class="text-base text-primary-800 dark:text-primary-200 font-semibold tracking-wide uppercase"
-							set:html={highlight}
-						/>
-					)}
-					{title && (
-						<h2
-							class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
-							set:html={title}
-						/>
-					)}
+  <div class="px-4 py-16 mx-auto max-w-6xl lg:px-8 lg:py-20">
+    {
+      (title || subtitle || highlight) && (
+        <div class="mb-10 md:mx-auto text-center md:mb-12 max-w-3xl">
+          {highlight && (
+            <p
+              class="text-base text-primary-800 dark:text-primary-200 font-semibold tracking-wide uppercase"
+              set:html={highlight}
+            />
+          )}
+          {title && (
+            <h2
+              class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
+              set:html={title}
+            />
+          )}
 
-					{subtitle && (
-						<p class="max-w-3xl mx-auto sm:text-center text-xl text-gray-600 dark:text-slate-400" set:html={subtitle} />
-					)}
-				</div>
-			)
-		}
-		<div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
-			{
-				items.map((subitems) => (
-					<div class="space-y-8 sm:px-8">
-						{subitems.map(({ title, description, icon }) => (
-							<div class="flex flex-row max-w-md">
-								<div class="mb-4 mr-4">
-									<div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-800 dark:bg-primary-700">
-										{icon && <Icon name={icon} class="w-6 h-6 text-white icon-light" />}
-									</div>
-								</div>
-								<div>
-									<h3 class="mb-3 text-xl font-bold">{title}</h3>
-									<p class="text-gray-600 dark:text-slate-400" set:html={description} />
-								</div>
-							</div>
-						))}
-					</div>
-				))
-			}
-		</div>
-	</div>
+          {subtitle && (
+            <p class="max-w-3xl mx-auto sm:text-center text-xl text-gray-600 dark:text-slate-400" set:html={subtitle} />
+          )}
+        </div>
+      )
+    }
+    <div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
+      {
+        items.map((subitems) => (
+          <div class="space-y-8 sm:px-8">
+            {subitems.map(({ title, description, icon }) => (
+              <div class="flex flex-row max-w-md">
+                <div class="mb-4 mr-4">
+                  <div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary-800 dark:bg-primary-700">
+                    {icon && <Icon name={icon} class="w-6 h-6 text-white icon-light" />}
+                  </div>
+                </div>
+                <div>
+                  <h3 class="mb-3 text-xl font-bold">{title}</h3>
+                  <p class="text-gray-600 dark:text-slate-400" set:html={description} />
+                </div>
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </div>
 </section>

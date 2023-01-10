@@ -10,40 +10,40 @@ import { fetchPosts } from '~/utils/blog';
 import { CATEGORY_BASE } from '~/utils/permalinks';
 
 export async function getStaticPaths({ paginate }) {
-	if (BLOG?.disabled || BLOG?.category?.disabled) return [];
+  if (BLOG?.disabled || BLOG?.category?.disabled) return [];
 
-	const posts = await fetchPosts();
-	const categories = new Set();
-	posts.map((post) => {
-		typeof post.category === 'string' && categories.add(post.category.toLowerCase());
-	});
+  const posts = await fetchPosts();
+  const categories = new Set();
+  posts.map((post) => {
+    typeof post.category === 'string' && categories.add(post.category.toLowerCase());
+  });
 
-	return Array.from(categories).map((category: string) =>
-		paginate(
-			posts.filter((post) => typeof post.category === 'string' && category === post.category.toLowerCase()),
-			{
-				params: { category: category, blog: CATEGORY_BASE || undefined },
-				pageSize: BLOG.postsPerPage,
-				props: { category },
-			}
-		)
-	);
+  return Array.from(categories).map((category: string) =>
+    paginate(
+      posts.filter((post) => typeof post.category === 'string' && category === post.category.toLowerCase()),
+      {
+        params: { category: category, blog: CATEGORY_BASE || undefined },
+        pageSize: BLOG.postsPerPage,
+        props: { category },
+      }
+    )
+  );
 }
 
 const { page, category } = Astro.props;
 
 const currentPage = page.currentPage ?? 1;
 const meta = {
-	title: `Category'${category}' ${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
-	description: SITE.description,
-	noindex: BLOG?.category?.noindex,
+  title: `Category'${category}' ${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
+  description: SITE.description,
+  noindex: BLOG?.category?.noindex,
 };
 ---
 
 <Layout meta={meta}>
-	<section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-3xl">
-		<Headline>Category {category}</Headline>
-		<BlogList posts={page.data} />
-		<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-	</section>
+  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-3xl">
+    <Headline>Category {category}</Headline>
+    <BlogList posts={page.data} />
+    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+  </section>
 </Layout>

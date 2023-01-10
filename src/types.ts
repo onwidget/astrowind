@@ -1,37 +1,37 @@
 export interface Post {
-	id: string;
-	slug: string;
+  id: string;
+  slug: string;
 
-	publishDate: Date;
-	title: string;
-	description?: string;
+  publishDate: Date;
+  title: string;
+  description?: string;
 
-	image?: string;
+  image?: string;
 
-	canonical?: string | URL;
-	permalink?: string;
+  canonical?: string | URL;
+  permalink?: string;
 
-	draft?: boolean;
+  draft?: boolean;
 
-	excerpt?: string;
-	category?: string;
-	tags?: Array<string>;
-	author?: string;
+  excerpt?: string;
+  category?: string;
+  tags?: Array<string>;
+  author?: string;
 
-	Content: unknown;
-	content?: string;
-	readingTime: number;
+  Content: unknown;
+  content?: string;
+  readingTime: number;
 }
 
 export interface MetaSEO {
-	title?: string;
-	description?: string;
-	image?: string;
+  title?: string;
+  description?: string;
+  image?: string;
 
-	canonical?: string | URL;
-	noindex?: boolean;
-	nofollow?: boolean;
+  canonical?: string | URL;
+  noindex?: boolean;
+  nofollow?: boolean;
 
-	ogTitle?: string;
-	ogType?: string;
+  ogTitle?: string;
+  ogType?: string;
 }

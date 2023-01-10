@@ -12,74 +12,74 @@ import Fonts from '~/components/common/Fonts.astro';
 import SplitbeeAnalytics from './SplitbeeAnalytics.astro';
 
 export interface Props extends MetaSEO {
-	dontUseTitleTemplate?: boolean;
+  dontUseTitleTemplate?: boolean;
 }
 
 const defaultImage = SITE.defaultImage
-	? (
-			await getImage({
-				src: SITE.defaultImage,
-				alt: 'Default image',
-				width: 1200,
-				height: 628,
-			})
-	  ).src
-	: '';
+  ? (
+      await getImage({
+        src: SITE.defaultImage,
+        alt: 'Default image',
+        width: 1200,
+        height: 628,
+      })
+    ).src
+  : '';
 
 const {
-	title = SITE.name,
-	description = '',
-	image: _image = defaultImage,
+  title = SITE.name,
+  description = '',
+  image: _image = defaultImage,
 
-	canonical = getCanonical(String(Astro.url.pathname)),
-	noindex = false,
-	nofollow = false,
+  canonical = getCanonical(String(Astro.url.pathname)),
+  noindex = false,
+  nofollow = false,
 
-	ogTitle = title,
-	ogType = 'website',
+  ogTitle = title,
+  ogType = 'website',
 
-	dontUseTitleTemplate = false,
+  dontUseTitleTemplate = false,
 } = Astro.props;
 
 const image =
-	typeof _image === 'string'
-		? new URL(_image, Astro.site)
-		: _image && typeof _image['src'] !== 'undefined'
-		? // @ts-ignore
-		  new URL(getRelativeUrlByFilePath(_image.src), Astro.site)
-		: null;
+  typeof _image === 'string'
+    ? new URL(_image, Astro.site)
+    : _image && typeof _image['src'] !== 'undefined'
+    ? // @ts-ignore
+      new URL(getRelativeUrlByFilePath(_image.src), Astro.site)
+    : null;
 ---
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <AstroSeo
-	title={title}
-	titleTemplate={dontUseTitleTemplate ? '%s' : `%s — ${SITE.name}`}
-	description={description}
-	canonical={String(canonical)}
-	noindex={noindex}
-	nofollow={nofollow}
-	openGraph={{
-		url: String(canonical),
-		title: ogTitle,
-		description: description,
-		type: ogType,
-		images: image
-			? [
-					{
-						url: image.toString(),
-						alt: ogTitle,
-					},
-			  ]
-			: undefined,
-		// site_name: 'SiteName',
-	}}
-	twitter={{
-		// handle: '@handle',
-		// site: '@site',
-		cardType: image ? 'summary_large_image' : undefined,
-	}}
+  title={title}
+  titleTemplate={dontUseTitleTemplate ? '%s' : `%s — ${SITE.name}`}
+  description={description}
+  canonical={String(canonical)}
+  noindex={noindex}
+  nofollow={nofollow}
+  openGraph={{
+    url: String(canonical),
+    title: ogTitle,
+    description: description,
+    type: ogType,
+    images: image
+      ? [
+          {
+            url: image.toString(),
+            alt: ogTitle,
+          },
+        ]
+      : undefined,
+    // site_name: 'SiteName',
+  }}
+  twitter={{
+    // handle: '@handle',
+    // site: '@site',
+    cardType: image ? 'summary_large_image' : undefined,
+  }}
 />
 
 <Fonts />

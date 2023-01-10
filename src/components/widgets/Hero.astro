@@ -3,96 +3,104 @@ import { Icon } from 'astro-icon';
 import { Picture } from '@astrojs/image/components';
 
 interface CallToAction {
-	text: string;
-	href: string;
-	icon?: string;
+  text: string;
+  href: string;
+  icon?: string;
 }
 
 export interface Props {
-	title?: string;
-	subtitle?: string;
-	callToAction?: string | CallToAction;
-	callToAction2?: string | CallToAction;
-	image?: string | any; // TODO: find HTMLElementProps
+  title?: string;
+  subtitle?: string;
+  callToAction?: string | CallToAction;
+  callToAction2?: string | CallToAction;
+  image?: string | any; // TODO: find HTMLElementProps
 }
 
 const {
-	title = await Astro.slots.render('title'),
-	subtitle = await Astro.slots.render('subtitle'),
-	callToAction = await Astro.slots.render('callToAction'),
-	callToAction2 = await Astro.slots.render('callToAction2'),
-	image = await Astro.slots.render('image'),
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  callToAction = await Astro.slots.render('callToAction'),
+  callToAction2 = await Astro.slots.render('callToAction2'),
+  image = await Astro.slots.render('image'),
 } = Astro.props;
 ---
 
 <section>
-	<div class="max-w-6xl mx-auto px-4 sm:px-6">
-		<div class="py-12 md:py-20">
-			<div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">
-				{
-					title && (
-						<h1
-							class="text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-4 font-heading"
-							set:html={title}
-						/>
-					)
-				}
-				<div class="max-w-3xl mx-auto">
-					{subtitle && <p class="text-xl font-medium text-gray-500 mb-8 dark:text-slate-400" set:html={subtitle} />}
-					<div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
-						{
-							callToAction && (
-								<div class="flex w-full sm:w-auto">
-									{typeof callToAction === 'string' ? (
-										<Fragment set:html={callToAction} />
-									) : (
-										<a class="btn btn-primary sm:mb-0 w-full" href={callToAction?.href} target="_blank" rel="noopener">
-											{callToAction?.icon && <><Icon name={callToAction.icon} class="w-5 h-5 mr-1 -ml-1.5" />{' '}</>}
-											{callToAction?.text}
-										</a>
-									)}
-								</div>
-							)
-						}
-						{
-							callToAction2 && (
-								<div class="flex w-full sm:w-auto">
-									{typeof callToAction2 === 'string' ? (
-										<Fragment set:html={callToAction2} />
-									) : (
-										<a class="btn w-full" href={callToAction2?.href}>
-											{callToAction2?.icon && <><Icon name={callToAction2.icon} class="w-5 h-5 mr-1 -ml-1.5" />{' '}</>}
-											{callToAction2.text}
-										</a>
-									)}
-								</div>
-							)
-						}
-					</div>
-				</div>
-			</div>
-			<div>
-				{
-					image && (
-						<div class="relative m-auto max-w-4xl">
-							{typeof image === 'string' ? (
-								<Fragment set:html={image} />
-							) : (
-								<Picture
-									class="mx-auto rounded-md w-full"
-									widths={[400, 768, 1480]}
-									sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
-									aspectRatio={1480 / 833}
-									loading="eager"
-									width={1480}
-									height={833}
-									{...image}
-								/>
-							)}
-						</div>
-					)
-				}
-			</div>
-		</div>
-	</div>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="py-12 md:py-20">
+      <div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">
+        {
+          title && (
+            <h1
+              class="text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-4 font-heading"
+              set:html={title}
+            />
+          )
+        }
+        <div class="max-w-3xl mx-auto">
+          {subtitle && <p class="text-xl font-medium text-gray-500 mb-8 dark:text-slate-400" set:html={subtitle} />}
+          <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
+            {
+              callToAction && (
+                <div class="flex w-full sm:w-auto">
+                  {typeof callToAction === 'string' ? (
+                    <Fragment set:html={callToAction} />
+                  ) : (
+                    <a class="btn btn-primary sm:mb-0 w-full" href={callToAction?.href} target="_blank" rel="noopener">
+                      {callToAction?.icon && (
+                        <>
+                          <Icon name={callToAction.icon} class="w-5 h-5 mr-1 -ml-1.5" />{' '}
+                        </>
+                      )}
+                      {callToAction?.text}
+                    </a>
+                  )}
+                </div>
+              )
+            }
+            {
+              callToAction2 && (
+                <div class="flex w-full sm:w-auto">
+                  {typeof callToAction2 === 'string' ? (
+                    <Fragment set:html={callToAction2} />
+                  ) : (
+                    <a class="btn w-full" href={callToAction2?.href}>
+                      {callToAction2?.icon && (
+                        <>
+                          <Icon name={callToAction2.icon} class="w-5 h-5 mr-1 -ml-1.5" />{' '}
+                        </>
+                      )}
+                      {callToAction2.text}
+                    </a>
+                  )}
+                </div>
+              )
+            }
+          </div>
+        </div>
+      </div>
+      <div>
+        {
+          image && (
+            <div class="relative m-auto max-w-4xl">
+              {typeof image === 'string' ? (
+                <Fragment set:html={image} />
+              ) : (
+                <Picture
+                  class="mx-auto rounded-md w-full"
+                  widths={[400, 768, 1480]}
+                  sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
+                  aspectRatio={1480 / 833}
+                  loading="eager"
+                  width={1480}
+                  height={833}
+                  {...image}
+                />
+              )}
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
 </section>

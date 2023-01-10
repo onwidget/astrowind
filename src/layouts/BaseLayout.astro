@@ -8,7 +8,7 @@ import { MetaSEO } from '~/types';
 import { SITE } from '~/config.mjs';
 
 export interface Props {
-	meta?: MetaSEO;
+  meta?: MetaSEO;
 }
 
 const { meta = {} } = Astro.props;
@@ -17,17 +17,17 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
 
 <!DOCTYPE html>
 <html lang={language} dir={textDirection} class="2xl:text-[20px]">
-	<head>
-		<MetaTags {...meta} />
-	</head>
+  <head>
+    <MetaTags {...meta} />
+  </head>
 
-	<body class="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-900">
-		<slot />
-		<BasicScripts />
-		<style is:global>
-			img {
-				content-visibility: auto;
-			}
-		</style>
-	</body>
+  <body class="antialiased text-gray-900 dark:text-slate-300 tracking-tight bg-white dark:bg-slate-900">
+    <slot />
+    <BasicScripts />
+    <style is:global>
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
 </html>

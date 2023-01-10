@@ -157,7 +157,8 @@ const CONFIG = {
   language: 'en', // Default language
   textDirection: 'ltr', // Default html text direction
 
-  dateFormatter: new Intl.DateTimeFormat('en', { // Date format
+  dateFormatter: new Intl.DateTimeFormat('en', {
+    // Date format
     year: 'numeric',
     month: 'short',
     day: 'numeric',

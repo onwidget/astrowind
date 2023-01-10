@@ -4,81 +4,81 @@ import type { Post } from '~/types';
 import { cleanSlug } from './permalinks';
 
 const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> => {
-	const { id, slug = '', data } = post;
-	const { Content, injectedFrontmatter } = await post.render();
+  const { id, slug = '', data } = post;
+  const { Content, injectedFrontmatter } = await post.render();
 
-	const { tags = [], category = 'default', author = 'Anonymous', publishDate = new Date(), ...rest } = data;
+  const { tags = [], category = 'default', author = 'Anonymous', publishDate = new Date(), ...rest } = data;
 
-	return {
-		id: id,
-		slug: cleanSlug(slug.split('/').pop() ?? ''),
+  return {
+    id: id,
+    slug: cleanSlug(slug.split('/').pop() ?? ''),
 
-		publishDate: new Date(publishDate),
-		category: cleanSlug(category),
-		tags: tags.map((tag: string) => cleanSlug(tag)),
-		author,
+    publishDate: new Date(publishDate),
+    category: cleanSlug(category),
+    tags: tags.map((tag: string) => cleanSlug(tag)),
+    author,
 
-		...rest,
+    ...rest,
 
-		Content: Content,
-		// or 'body' in case you consume from API
+    Content: Content,
+    // or 'body' in case you consume from API
 
-		readingTime: injectedFrontmatter.readingTime,
-	};
+    readingTime: injectedFrontmatter.readingTime,
+  };
 };
 
 const load = async function (): Promise<Array<Post>> {
-	const posts = await getCollection('blog');
-	const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
+  const posts = await getCollection('blog');
+  const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
 
-	const results = (await Promise.all(normalizedPosts))
-		.sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
-		.filter((post) => !post.draft);
+  const results = (await Promise.all(normalizedPosts))
+    .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
+    .filter((post) => !post.draft);
 
-	return results;
+  return results;
 };
 
 let _posts: Array<Post>;
 
 /** */
 export const fetchPosts = async (): Promise<Array<Post>> => {
-	if (!_posts) {
-		_posts = await load();
-	}
+  if (!_posts) {
+    _posts = await load();
+  }
 
-	return _posts;
+  return _posts;
 };
 
 /** */
 export const findPostsBySlugs = async (slugs: Array<string>): Promise<Array<Post>> => {
-	if (!Array.isArray(slugs)) return [];
+  if (!Array.isArray(slugs)) return [];
 
-	const posts = await fetchPosts();
+  const posts = await fetchPosts();
 
-	return slugs.reduce(function (r: Array<Post>, slug: string) {
-		posts.some(function (post: Post) {
-			return slug === post.slug && r.push(post);
-		});
-		return r;
-	}, []);
+  return slugs.reduce(function (r: Array<Post>, slug: string) {
+    posts.some(function (post: Post) {
+      return slug === post.slug && r.push(post);
+    });
+    return r;
+  }, []);
 };
 
 /** */
 export const findPostsByIds = async (ids: Array<string>): Promise<Array<Post>> => {
-	if (!Array.isArray(ids)) return [];
+  if (!Array.isArray(ids)) return [];
 
-	return await Promise.all(
-		ids.map(async (id: never) => {
-			const post = await getEntry('blog', id);
-			return await getNormalizedPost(post);
-		})
-	);
+  return await Promise.all(
+    ids.map(async (id: never) => {
+      const post = await getEntry('blog', id);
+      return await getNormalizedPost(post);
+    })
+  );
 };
 
 /** */
 export const findLatestPosts = async ({ count }: { count?: number }): Promise<Array<Post>> => {
-	const _count = count || 4;
-	const posts = await fetchPosts();
+  const _count = count || 4;
+  const posts = await fetchPosts();
 
-	return posts ? posts.slice(_count * -1) : [];
+  return posts ? posts.slice(_count * -1) : [];
 };
