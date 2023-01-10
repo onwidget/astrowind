@@ -11,7 +11,7 @@ const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> =
 
   return {
     id: id,
-    slug: cleanSlug(slug.split('/').pop() ?? ''),
+    slug: cleanSlug(slug.split('/').pop()),
 
     publishDate: new Date(publishDate),
     category: cleanSlug(category),

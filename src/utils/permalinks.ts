@@ -14,7 +14,7 @@ const createPath = (...params: string[]) => {
 
 const BASE_PATHNAME = SITE.basePathname;
 
-export const cleanSlug = (text: string) =>
+export const cleanSlug = (text = '') =>
   trimSlash(text)
     .split('/')
     .map((slug) => slugify(slug))
