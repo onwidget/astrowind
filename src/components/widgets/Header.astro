@@ -8,15 +8,15 @@ import ToggleMenu from '~/components/core/ToggleMenu.astro';
 import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permalinks';
 ---
 
-
 <header
-	class=" sticky top-0 z-40 flex-none mx-auto w-full bg-white md:bg-white/90 dark:bg-neutral-900 dark:md:bg-neutral-900 md:backdrop-blur-sm border-b dark:border-b-0"
+	class="sticky top-0 z-40 flex-none mx-auto w-full bg-white md:bg-white/90 dark:bg-neutral-900 dark:md:bg-neutral-900 md:backdrop-blur-sm border-b dark:border-b-0"
 	id="header"
 >
 	<div class="py-3 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4">
 		<div class="flex justify-between">
 			<a class="flex items-center" href={getHomePermalink()}>
-				<Logo /> <Logo_dark />
+				<Logo />
+				<Logo_dark />
 			</a>
 			<div class="flex items-center md:hidden">
 				<ToggleTheme />
@@ -37,8 +37,15 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 				<li>
 					<a
 						class="font-medium hover:text-neutral-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-						href='https://bioinformaticsopendays.com/#submissions'
+						href="https://bioinformaticsopendays.com/#submissions"
 						>Submissions
+					</a>
+				</li>
+				<li>
+					<a
+						class="font-medium hover:text-neutral-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+						href="#registration"
+						>Registration
 					</a>
 				</li>
 				<!-- <li class="md:hidden">
@@ -49,7 +56,7 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 					</a>
 				</li> -->
 			</ul>
-			
+
 			<div class="md:self-center flex items-center mb-4 md:mb-0 ml-2">
 				<div class="hidden items-center md:flex">
 					<ToggleTheme iconClass="w-5 h-5" />
@@ -72,5 +79,3 @@ import { getPermalink, getBlogPermalink, getHomePermalink } from '~/utils/permal
 		</nav>
 	</div>
 </header>
-
-
