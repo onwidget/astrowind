@@ -5,7 +5,7 @@ import { getImage } from '@astrojs/image';
 
 import { SITE } from '~/config.mjs';
 import { MetaSEO } from '~/types';
-import { getPermalink, getCanonical } from '~/utils/permalinks';
+import { getCanonical, getAsset  } from '~/utils/permalinks';
 import { getRelativeUrlByFilePath } from '~/utils/directories';
 
 import Fonts from '~/components/common/Fonts.astro';
@@ -92,6 +92,6 @@ const image =
 
 {SITE.splitbeeAnalytics?.enabled && <SplitbeeAnalytics {...SITE.splitbeeAnalytics} />}
 
-<link rel="shortcut icon" href={getPermalink('/favicon.ico')} />
-<link rel="icon" type="image/svg+xml" href={getPermalink('/favicon.svg')} />
-<link rel="mask-icon" href={getPermalink('/favicon.svg')} color="#8D46E7" />
+<link rel="shortcut icon" href={getAsset('/favicon.ico')} />
+<link rel="icon" type="image/svg+xml" href={getAsset('/favicon.svg')} />
+<link rel="mask-icon" href={getAsset('/favicon.svg')} color="#8D46E7" />
