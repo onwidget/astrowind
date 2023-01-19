@@ -1,0 +1,68 @@
+---
+import { Icon } from 'astro-icon';
+import Sectionhead from "~/components/widgets/sectionhead.astro";
+import { Picture } from "@astrojs/image/components";
+
+
+const TeamImg1 =
+  "public/speakers/Loic-Lannelongue.png";
+const TeamImg2 =
+  "https://images.unsplash.com/photo-1633332755192-727a05c4013d?&fit=crop&w=280";
+const TeamImg3 =
+  "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?&fit=crop&w=280";
+	
+	
+const team = [
+  {
+    name: "Loïc Lannelongue",
+    title: "Research Associate in Biomedical Data Science",
+		place: "University of Cambridge",
+    avatar: {
+      src: TeamImg1,
+      width: 500,
+      height: 500,
+    },
+  },
+
+];
+---
+
+<section id="speakers" class="dark:bg-neutral-900">
+	<div class="max-w-6xl mx-auto px-4 sm:px-6 overflow-hidden pb-20 ">
+		<div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+			<h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">Speakers</h2>
+			<p class="mt-1 text-neutral-600 dark:text-neutral-400">
+				Here you can see the first speakers confirmed
+			</p>
+		</div>
+		<div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
+			{
+				team.map((item) => (
+					<div class="group ">
+						<div class="w-full aspect-square">
+						<a>
+							<Picture
+								{...item.avatar}
+								format="avif"
+								alt="Team"
+								animation="scale"
+								widths={[200, 400]}
+								aspectRatio="1:1"
+								sizes="(max-width: 800px) 100vw, 400px"
+								class="w-full h-full object-cover rounded transition group-hover:-translate-y-1 group-hover:shadow-xl"
+								format="avif"
+							/>
+						</a>
+						</div>
+						<div class="mt-4 text-center">
+							<h2 class="text-lg text-gray-800"> {item.name}</h2>
+							<h3 class="text-sm text-slate-500"> {item.title}</h3>
+							<h4 class="text-sm text-slate-500"> {item.place}</h4>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
