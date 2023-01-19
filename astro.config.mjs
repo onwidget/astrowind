@@ -45,7 +45,9 @@ export default defineConfig({
 
     compress({
       css: true,
-      html: true,
+      html: {
+        removeAttributeQuotes: false,
+      },
       img: false,
       js: true,
       svg: false,
