@@ -22,4 +22,4 @@ pnpm-debug.log*
 package-lock.json
 pnpm-lock.yaml
 
-src/content/types.generated.d.ts
+.astro

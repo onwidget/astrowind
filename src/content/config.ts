@@ -1,7 +1,7 @@
 import { z, defineCollection } from 'astro:content';
 
 const blog = defineCollection({
-  schema: {
+  schema: z.object({
     title: z.string(),
     description: z.string().optional(),
     image: z.string().optional(),
@@ -16,7 +16,7 @@ const blog = defineCollection({
     category: z.string().optional(),
     tags: z.array(z.string()).optional(),
     author: z.string().optional(),
-  },
+  }),
   slug: ({ defaultSlug, data }) => {
     return data.permalink || defaultSlug;
   },
