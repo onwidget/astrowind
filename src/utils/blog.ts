@@ -1,11 +1,11 @@
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
 import { cleanSlug } from './permalinks';
 
 const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> => {
   const { id, slug = '', data } = post;
-  const { Content, injectedFrontmatter } = await post.render();
+  const { Content, remarkPluginFrontmatter } = await post.render();
 
   const { tags = [], category = 'default', author = 'Anonymous', publishDate = new Date(), ...rest } = data;
 
@@ -23,7 +23,7 @@ const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> =
     Content: Content,
     // or 'body' in case you consume from API
 
-    readingTime: injectedFrontmatter.readingTime,
+    readingTime: remarkPluginFrontmatter?.readingTime,
   };
 };
 
@@ -67,12 +67,14 @@ export const findPostsBySlugs = async (slugs: Array<string>): Promise<Array<Post
 export const findPostsByIds = async (ids: Array<string>): Promise<Array<Post>> => {
   if (!Array.isArray(ids)) return [];
 
-  return await Promise.all(
-    ids.map(async (id: never) => {
-      const post = await getEntry('blog', id);
-      return await getNormalizedPost(post);
-    })
-  );
+  const posts = await fetchPosts();
+
+  return ids.reduce(function (r: Array<Post>, id: string) {
+    posts.some(function (post: Post) {
+      return id === post.id && r.push(post);
+    });
+    return r;
+  }, []);
 };
 
 /** */

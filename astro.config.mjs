@@ -58,7 +58,6 @@ export default defineConfig({
 
   markdown: {
     remarkPlugins: [remarkReadingTime],
-    extendDefaultPlugins: true,
   },
 
   vite: {
@@ -67,9 +66,5 @@ export default defineConfig({
         '~': path.resolve(__dirname, './src'),
       },
     },
-  },
-
-  experimental: {
-    contentCollections: true,
   },
 });
