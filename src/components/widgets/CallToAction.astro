@@ -34,7 +34,7 @@ const {
             />
           )
         }
-        {subtitle && <p class="text-xl text-gray-600 dark:text-slate-400" set:html={subtitle} />}
+        {subtitle && <p class="text-xl text-muted dark:text-slate-400" set:html={subtitle} />}
         {
           typeof callToAction === 'string' ? (
             <Fragment set:html={callToAction} />

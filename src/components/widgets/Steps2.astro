@@ -73,13 +73,13 @@ const {
               {
                 highlight && (
                   <p
-                    class="text-base text-primary-800 dark:text-primary-200 font-semibold tracking-wide uppercase"
+                    class="text-base text-primary dark:text-blue-200 font-semibold tracking-wide uppercase"
                     set:html={highlight}
                   />
                 )
               }
               {title && <h2 class="mb-4 text-3xl lg:text-4xl font-bold font-heading" set:html={title} />}
-              {subtitle && <p class="mb-8 text-xl text-gray-600 dark:text-slate-400" set:html={subtitle} />}
+              {subtitle && <p class="mb-8 text-xl text-muted dark:text-slate-400" set:html={subtitle} />}
 
               <div class="w-full">
                 {
@@ -106,13 +106,13 @@ const {
                   ? items.map(({ title: title2, description, icon }, index) => (
                       <li class="flex md:-mx-4">
                         <div class="pr-4 sm:pl-4">
-                          <span class="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold rounded-full bg-primary-100 text-primary-800">
+                          <span class="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold rounded-full bg-blue-100 text-primary">
                             {icon ? <Icon name={icon} class="w-6 h-6 icon-bold" /> : index + 1}
                           </span>
                         </div>
                         <div class="pl-4">
                           <h3 class="mb-4 text-xl font-semibold font-heading" set:html={title2} />
-                          <p class="text-gray-500 dark:text-gray-400" set:html={description} />
+                          <p class="text-muted dark:text-gray-400" set:html={description} />
                         </div>
                       </li>
                     ))

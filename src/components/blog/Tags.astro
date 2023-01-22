@@ -22,7 +22,7 @@ const { tags, class: className = 'text-sm' } = Astro.props;
           ) : (
             <a
               href={getPermalink(tag, 'tag')}
-              class="text-gray-600 dark:text-slate-300 hover:text-primary-800 dark:hover:text-gray-200"
+              class="text-muted dark:text-slate-300 hover:text-primary dark:hover:text-gray-200"
             >
               {tag}
             </a>

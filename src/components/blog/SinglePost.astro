@@ -22,10 +22,10 @@ const { post, url } = Astro.props;
     <header class={post.image ? '' : ''}>
       <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center">
         <p>
-          <Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-1 text-gray-500 dark:text-gray-400" />
-          <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time> ~ {
-            Math.ceil(post.readingTime)
-          } min read
+        <Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-1 dark:text-gray-400" />
+        <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time> ~ {
+          Math.ceil(post.readingTime)
+        } min read
         </p>
       </div>
       <h1
@@ -34,7 +34,7 @@ const { post, url } = Astro.props;
         {post.title}
       </h1>
       <p
-        class="max-w-3xl mx-auto mt-4 mb-8 px-4 sm:px-6 text-xl md:text-2xl text-gray-500 dark:text-slate-400 font-medium text-justify"
+        class="max-w-3xl mx-auto mt-4 mb-8 px-4 sm:px-6 text-xl md:text-2xl text-muted dark:text-slate-400 text-justify"
       >
         {post.excerpt}
       </p>
@@ -60,7 +60,7 @@ const { post, url } = Astro.props;
       }
     </header>
     <div
-      class="mx-auto px-6 sm:px-6 max-w-3xl prose prose-lg lg:prose-xl dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-primary-800 dark:prose-a:text-primary-400 prose-img:rounded-md prose-img:shadow-lg mt-8"
+      class="mx-auto px-6 sm:px-6 max-w-3xl prose prose-lg lg:prose-xl dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-primary dark:prose-a:text-blue-400 prose-img:rounded-md prose-img:shadow-lg mt-8"
     >
       {
         post.Content ? (
