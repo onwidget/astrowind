@@ -1,0 +1,110 @@
+---
+import { Icon } from 'astro-icon';
+import { Picture } from '@astrojs/image/components';
+
+interface CallToAction {
+  text: string;
+  href: string;
+  icon?: string;
+}
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  callToAction?: string | CallToAction;
+  callToAction2?: string | CallToAction;
+  image?: string | any; // TODO: find HTMLElementProps
+}
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  content = await Astro.slots.render('content'),
+  callToAction = await Astro.slots.render('callToAction'),
+  callToAction2 = await Astro.slots.render('callToAction2'),
+  image = await Astro.slots.render('image'),
+} = Astro.props;
+---
+
+<section class="relative md:-mt-[76px]">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+  <div class="relative max-w-screen-xl mx-auto px-4 sm:px-6">
+    <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
+    <div class="py-12 md:py-20 lg:py-0 lg:flex lg:items-center lg:h-screen lg:gap-8">
+      <div class="basis-1/2 text-center lg:text-left pb-10 md:pb-16 mx-auto">
+        {
+          title && (
+            <h1
+              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
+              set:html={title}
+            />
+          )
+        }
+        <div class="max-w-3xl mx-auto lg:max-w-none">
+          {subtitle && <p class="text-xl text-muted mb-6 dark:text-slate-300" set:html={subtitle} />}
+          <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 lg:justify-start lg:m-0 lg:max-w-screen-xl">
+            {
+              callToAction && (
+                <div class="flex w-full sm:w-auto">
+                  {typeof callToAction === 'string' ? (
+                    <Fragment set:html={callToAction} />
+                  ) : (
+                    <a class="btn btn-primary sm:mb-0 w-full" href={callToAction?.href} target="_blank" rel="noopener">
+                      {callToAction?.icon && (
+                        <>
+                          <Icon name={callToAction.icon} class="w-5 h-5 mr-1 -ml-1.5" />{' '}
+                        </>
+                      )}
+                      {callToAction?.text}
+                    </a>
+                  )}
+                </div>
+              )
+            }
+            {
+              callToAction2 && (
+                <div class="flex w-full sm:w-auto">
+                  {typeof callToAction2 === 'string' ? (
+                    <Fragment set:html={callToAction2} />
+                  ) : (
+                    <a class="btn w-full" href={callToAction2?.href}>
+                      {callToAction2?.icon && (
+                        <>
+                          <Icon name={callToAction2.icon} class="w-5 h-5 mr-1 -ml-1.5" />{' '}
+                        </>
+                      )}
+                      {callToAction2.text}
+                    </a>
+                  )}
+                </div>
+              )
+            }
+          </div>
+        </div>
+        {content && <Fragment set:html={content} />}
+      </div>
+      <div class="basis-1/2">
+        {
+          image && (
+            <div class="relative m-auto max-w-5xl">
+              {typeof image === 'string' ? (
+                <Fragment set:html={image} />
+              ) : (
+                <Picture
+                  class="mx-auto rounded-md w-full"
+                  widths={[400, 768, 1024, 2040]}
+                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+                  aspectRatio={600 / 600}
+                  loading="eager"
+                  width={600}
+                  height={600}
+                  {...image}
+                />
+              )}
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>
