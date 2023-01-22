@@ -4,6 +4,8 @@ import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
 
+import { headerData, footerData } from '~/data';
+
 import { MetaSEO } from '~/types';
 
 export interface Props {
@@ -15,9 +17,9 @@ const { meta } = Astro.props;
 
 <Layout {meta}>
   <Announcement />
-  <Header />
+  <Header {...headerData} />
   <main>
     <slot />
   </main>
-  <Footer />
+  <Footer {...footerData} />
 </Layout>
