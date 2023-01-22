@@ -37,7 +37,7 @@ const posts = await findPostsByIds(postIds);
       {
         allPostsText && allPostsLink && (
           <a
-            class="text-gray-500 dark:text-slate-400 hover:text-primary-800 transition ease-in duration-200 block mb-6 md:mb-0"
+            class="text-muted dark:text-slate-400 hover:text-primary transition ease-in duration-200 block mb-6 md:mb-0"
             href={allPostsLink}
           >
             {allPostsText} »
@@ -46,7 +46,7 @@ const posts = await findPostsByIds(postIds);
       }
     </div>
 
-    {information && <p class="text-gray-700 dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={information} />}
+    {information && <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={information} />}
   </div>
 
   <Grid posts={posts} />

@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
 import { cleanSlug } from './permalinks';
 
-const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> => {
+const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> => {
   const { id, slug = '', data } = post;
   const { Content, remarkPluginFrontmatter } = await post.render();
 
@@ -28,7 +28,7 @@ const getNormalizedPost = async (post: CollectionEntry<'blog'>): Promise<Post> =
 };
 
 const load = async function (): Promise<Array<Post>> {
-  const posts = await getCollection('blog');
+  const posts = await getCollection('posts');
   const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
 
   const results = (await Promise.all(normalizedPosts))
@@ -82,5 +82,5 @@ export const findLatestPosts = async ({ count }: { count?: number }): Promise<Ar
   const _count = count || 4;
   const posts = await fetchPosts();
 
-  return posts ? posts.slice(_count * -1) : [];
+  return posts ? posts.slice(0, _count) : [];
 };

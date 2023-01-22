@@ -3,20 +3,32 @@
 @tailwind utilities;
 
 @layer components {
-  .btn {
-    @apply inline-flex items-center justify-center rounded-full shadow-md border-gray-400 border bg-transparent font-medium text-center text-base text-gray-700 leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800;
+  .text-page {
+    color: var(--aw-color-text-page);
   }
 
-  .btn-ghost {
-    @apply border-none shadow-none text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
+  .text-muted {
+    color: var(--aw-color-text-muted);
   }
 
-  .btn-primary {
-    @apply font-semibold bg-primary-800 text-white border-primary-800 hover:bg-primary-900 hover:border-primary-900 hover:text-white dark:text-white dark:bg-primary-800 dark:border-primary-800 dark:hover:border-primary-900 dark:hover:bg-primary-900;
+  .bg-light {
+    background-color: var(--aw-color-bg-page);
   }
 
   .bg-dark {
     @apply bg-slate-900;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full shadow-md border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800;
+  }
+
+  .btn-ghost {
+    @apply border-none shadow-none text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
+  }
+
+  .btn-primary {
+    @apply font-semibold bg-primary text-white border-primary hover:bg-blue-900 hover:border-blue-900 hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-blue-900 dark:hover:bg-blue-900;
   }
 }
 

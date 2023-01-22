@@ -1,7 +1,7 @@
 ---
 import Icon from 'astro-icon';
 import { Picture } from '@astrojs/image/components';
-import PostTags from '~/components/common/Tags.astro';
+import PostTags from '~/components/blog/Tags.astro';
 
 import { BLOG } from '~/config.mjs';
 import type { Post } from '~/types';
@@ -43,15 +43,15 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.slug, 'post') : '';
     <header>
       <div class="mb-1">
         <span class="text-sm">
-          <Icon name="tabler:clock" class="w-3.5 h-3.5 inline-block -mt-0.5 text-gray-500 dark:text-gray-400" />
+          <Icon name="tabler:clock" class="w-3.5 h-3.5 inline-block -mt-0.5 dark:text-gray-400" />
           <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time> ~
           {Math.ceil(post.readingTime)} min read
         </span>
       </div>
-      <h2 class="text-xl sm:text-2xl font-bold leading-tight mb-2 font-heading text-gray-700 dark:text-slate-300">
+      <h2 class="text-xl sm:text-2xl font-bold leading-tight mb-2 font-heading dark:text-slate-300">
         {
           link ? (
-            <a class="hover:text-primary-800 dark:hover:text-primary-700 transition ease-in duration-200" href={link}>
+            <a class="hover:text-primary dark:hover:text-blue-700 transition ease-in duration-200" href={link}>
               {post.title}
             </a>
           ) : (
@@ -61,7 +61,7 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.slug, 'post') : '';
       </h2>
     </header>
 
-    {post.excerpt && <p class="flex-grow text-gray-500 dark:text-slate-400 text-lg">{post.excerpt}</p>}
+    {post.excerpt && <p class="flex-grow text-muted dark:text-slate-400 text-lg">{post.excerpt}</p>}
     <footer class="mt-5">
       <PostTags tags={post.tags} />
     </footer>
