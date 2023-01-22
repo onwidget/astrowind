@@ -1,8 +1,11 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
+import Header from '~/components/widgets/Header.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import { headerData } from '~/data';
 
 const meta = {
   title: "Startup Landing Page",
@@ -10,6 +13,15 @@ const meta = {
 ---
 
 <Layout {meta}>
+  <Fragment slot="header">
+    <Header
+      {...headerData}
+      showRssFeed
+      showToggleTheme
+      position="left"
+    />
+  </Fragment>
+
   <!-- Hero2 Widget ******************* -->
 
   <Hero

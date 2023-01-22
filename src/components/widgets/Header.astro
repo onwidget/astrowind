@@ -27,9 +27,17 @@ export interface Props {
   isSticky?: boolean;
   showToggleTheme?: boolean;
   showRssFeed?: boolean;
+  position?: string;
 }
 
-const { links = [], actions = [], isSticky = false, showToggleTheme = false, showRssFeed = false } = Astro.props;
+const {
+  links = [],
+  actions = [],
+  isSticky = false,
+  showToggleTheme = false,
+  showRssFeed = false,
+  position = 'center',
+} = Astro.props;
 ---
 
 <header
@@ -40,7 +48,7 @@ const { links = [], actions = [], isSticky = false, showToggleTheme = false, sho
   id="header"
 >
   <div class="py-3 px-3 md:py-3.5 md:px-4 mx-auto w-full md:flex md:justify-between max-w-screen-xl">
-    <div class="flex justify-between">
+    <div class:list={[{"mr-auto": position === "right"}, "flex justify-between"]}>
       <a class="flex items-center" href={getHomePermalink()}>
         <Logo />
       </a>
@@ -50,7 +58,7 @@ const { links = [], actions = [], isSticky = false, showToggleTheme = false, sho
       </div>
     </div>
     <nav
-      class="items-center w-full md:w-auto hidden md:flex dark:text-slate-200 h-[calc(100vh-72px)] md:h-auto overflow-y-auto md:overflow-visible"
+      class="items-center w-full md:w-auto hidden md:flex dark:text-slate-200 h-[calc(100vh-72px)] md:h-auto overflow-y-auto md:overflow-visible md:mx-5"
       aria-label="Main navigation"
     >
       <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-xl md:text-base">
@@ -88,7 +96,7 @@ const { links = [], actions = [], isSticky = false, showToggleTheme = false, sho
         }
       </ul>
     </nav>
-    <div class="md:self-center flex items-center md:mb-0">
+    <div class:list={[{ 'ml-auto': position === 'left' }, 'md:self-center flex items-center md:mb-0']}>
       <div class="hidden items-center md:flex">
         {showToggleTheme && <ToggleTheme iconClass="w-5 h-5" />}
 
