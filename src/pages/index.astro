@@ -102,7 +102,6 @@ const meta = {
   <Content
     highlight="Inside template"
     title="And what's inside? ..."
-    content="Ne dicta praesent ocurreret has, diam theophrastus at pro. Eos etiam regione ut, persius eripuit quo id. Sit te euismod tacimates."
     items={[
       {
         title: 'Per ei quaeque sensibus',
@@ -124,7 +123,14 @@ const meta = {
       src: import('~/assets/images/caos.jpg'),
       alt: 'Colorful Image',
     }}
-  />
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl mb-2">
+        Ad vix debet docendi
+      </h3>
+      Ne dicta praesent ocurreret has, diam theophrastus at pro. Eos etiam regione ut, persius eripuit quo id. Sit te euismod tacimates.
+    </Fragment>
+  </Content>
 
   <!-- Content Widget **************** -->
 
