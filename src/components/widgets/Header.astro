@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon';
-import Logo from '~/components/common/Logo.astro';
+import Logo from '~/components/Logo.astro';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 
@@ -24,14 +24,19 @@ interface MenuLink extends Link {
 export interface Props {
   links?: Array<MenuLink>;
   actions?: Array<ActionLink>;
-  isFixed?: boolean;
+  isSticky?: boolean;
+  showToggleTheme?: boolean;
+  showRssFeed?: boolean;
 }
 
-const { links = [], actions = [], isFixed = false } = Astro.props;
+const { links = [], actions = [], isSticky = false, showToggleTheme = false, showRssFeed = false } = Astro.props;
 ---
 
 <header
-  class:list={[{ sticky: isFixed }, 'top-0 z-40 flex-none mx-auto w-full transition-all ease-in duration-100']}
+  class:list={[
+    { sticky: isSticky, relative: !isSticky },
+    'top-0 z-40 flex-none mx-auto w-full transition-all ease-in duration-100',
+  ]}
   id="header"
 >
   <div class="py-3 px-3 md:py-3.5 md:px-4 mx-auto w-full md:flex md:justify-between max-w-screen-xl">
@@ -85,15 +90,19 @@ const { links = [], actions = [], isFixed = false } = Astro.props;
     </nav>
     <div class="md:self-center flex items-center md:mb-0">
       <div class="hidden items-center md:flex">
-        <ToggleTheme iconClass="w-5 h-5" />
+        {showToggleTheme && <ToggleTheme iconClass="w-5 h-5" />}
 
-        <a
-          class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-          aria-label="RSS Feed"
-          href={getAsset('/rss.xml')}
-        >
-          <Icon name="tabler:rss" class="w-5 h-5" />
-        </a>
+        {
+          showRssFeed && (
+            <a
+              class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+              aria-label="RSS Feed"
+              href={getAsset('/rss.xml')}
+            >
+              <Icon name="tabler:rss" class="w-5 h-5" />
+            </a>
+          )
+        }
         {
           actions?.length ? (
             <span class="ml-4">
