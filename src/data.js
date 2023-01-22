@@ -7,15 +7,15 @@ export const headerData = {
       links: [
         {
           text: 'Sass',
-          href: '#',
+          href: getPermalink('/landing/saas'),
         },
         {
           text: 'Startup',
-          href: '#',
+          href: getPermalink('/landing/startup'),
         },
         {
           text: 'Mobile App',
-          href: '#',
+          href: getPermalink('/landing/mobile-app'),
         },
       ],
     },
@@ -55,10 +55,6 @@ export const headerData = {
     {
       text: 'Blog',
       href: getBlogPermalink(),
-    },
-    {
-      text: 'About',
-      href: '#',
     },
   ],
   actions: [
