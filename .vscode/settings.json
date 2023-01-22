@@ -1,4 +1,5 @@
 {
+  "css.customData": ["./vscode/css-custom-data.json"],
   "eslint.validate": [
     "javascript",
     "javascriptreact",
