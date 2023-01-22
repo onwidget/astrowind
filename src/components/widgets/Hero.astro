@@ -19,26 +19,29 @@ export interface Props {
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
+  content = await Astro.slots.render('content'),
   callToAction = await Astro.slots.render('callToAction'),
   callToAction2 = await Astro.slots.render('callToAction2'),
   image = await Astro.slots.render('image'),
 } = Astro.props;
 ---
 
-<section>
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+<section class="relative md:-mt-[76px]">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+  <div class="relative max-w-screen-xl mx-auto px-4 sm:px-6">
+    <div class="pt-0 md:pt-[76px]"></div>
     <div class="py-12 md:py-20">
-      <div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">
+      <div class="text-center pb-10 md:pb-16 max-w-screen-lg mx-auto">
         {
           title && (
             <h1
-              class="text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-4 font-heading"
+              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
               set:html={title}
             />
           )
         }
         <div class="max-w-3xl mx-auto">
-          {subtitle && <p class="text-xl font-medium text-gray-500 mb-8 dark:text-slate-400" set:html={subtitle} />}
+          {subtitle && <p class="text-xl text-gray-600 mb-6 dark:text-slate-300" set:html={subtitle} />}
           <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
             {
               callToAction && (
@@ -78,22 +81,23 @@ const {
             }
           </div>
         </div>
+        {content && <Fragment set:html={content} />}
       </div>
       <div>
         {
           image && (
-            <div class="relative m-auto max-w-4xl">
+            <div class="relative m-auto max-w-5xl">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
                 <Picture
                   class="mx-auto rounded-md w-full"
-                  widths={[400, 768, 1480]}
-                  sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
-                  aspectRatio={1480 / 833}
+                  widths={[400, 768, 1024, 2040]}
+                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+                  aspectRatio={1024 / 576}
                   loading="eager"
-                  width={1480}
-                  height={833}
+                  width={1024}
+                  height={576}
                   {...image}
                 />
               )}
