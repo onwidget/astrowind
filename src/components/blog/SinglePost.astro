@@ -22,10 +22,8 @@ const { post, url } = Astro.props;
     <header class={post.image ? '' : ''}>
       <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center">
         <p>
-        <Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-1 dark:text-gray-400" />
-        <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time> ~ {
-          Math.ceil(post.readingTime)
-        } min read
+          <Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-1 dark:text-gray-400" />
+          <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time>
         </p>
       </div>
       <h1

@@ -20,7 +20,6 @@ export interface Post {
 
   Content: unknown;
   content?: string;
-  readingTime: number;
 }
 
 export interface MetaSEO {
