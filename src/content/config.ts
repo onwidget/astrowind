@@ -7,7 +7,6 @@ const posts = defineCollection({
     image: z.string().optional(),
 
     canonical: z.string().url().optional(),
-    permalink: z.string().optional(),
 
     publishDate: z.date().or(z.string()).optional(),
     draft: z.boolean().optional(),
@@ -17,9 +16,6 @@ const posts = defineCollection({
     tags: z.array(z.string()).optional(),
     author: z.string().optional(),
   }),
-  slug: ({ defaultSlug, data }) => {
-    return data.permalink || defaultSlug;
-  },
 });
 
 export const collections = {
