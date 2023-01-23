@@ -40,7 +40,6 @@
   - [Commands](#commands)
   - [Configuration](#configuration)
   - [Deploy](#deploy)
-- [Roadmap](#roadmap)
 - [Frequently Asked Questions](#frequently-asked-questions)
 - [Related Projects](#related-projects)
 - [Contributing](#contributing)
@@ -226,24 +225,6 @@ Clone this repository on own GitHub account and deploy to Netlify:
 Clone this repository on own GitHub account and deploy to Vercel:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonwidget%2Fastrowind)
-
-<br>
-
-## Roadmap
-
-### Base
-
-- [ ] Improve blog design (More generic design that adapts to more needs).
-- [ ] Create component or utilities for related posts.
-- [ ] Add more _shortcodes_ or _embed_ functions to posts in Markdown: (eg Video, Tweet...).
-- [ ] Add more Tailwind components useful for most scenarios (Features, Contact, Call to Actions, Content, FAQs...)
-- [ ] Add commonly used example pages (Ex: About, Terms, Profile, Services...).
-- [ ] Create detailed documentation with best practices and redesign tips.
-
-### Advanced
-
-- [ ] Create external library or place with useful Tailwind components.
-- [ ] Create examples of AstroWind in CodeSanbox or a similar platform that can be easily synchronized with new updates. (Redesign, Integration with React or Svelte components, Use of Tailwind plugins, Connection to headless CMS ...).
 
 <br>
 
