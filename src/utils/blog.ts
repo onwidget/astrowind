@@ -5,7 +5,7 @@ import { cleanSlug } from './permalinks';
 
 const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> => {
   const { id, slug = '', data } = post;
-  const { Content, remarkPluginFrontmatter } = await post.render();
+  const { Content } = await post.render();
 
   const { tags = [], category = 'default', author = 'Anonymous', publishDate = new Date(), ...rest } = data;
 
@@ -22,8 +22,6 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
 
     Content: Content,
     // or 'body' in case you consume from API
-
-    readingTime: remarkPluginFrontmatter?.readingTime,
   };
 };
 

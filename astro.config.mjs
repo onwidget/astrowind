@@ -10,7 +10,6 @@ import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import compress from 'astro-compress';
 
-import { remarkReadingTime } from './src/utils/frontmatter.mjs';
 import { SITE } from './src/config.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -56,9 +55,7 @@ export default defineConfig({
     }),
   ],
 
-  markdown: {
-    remarkPlugins: [remarkReadingTime],
-  },
+  markdown: {},
 
   vite: {
     resolve: {
