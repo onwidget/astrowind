@@ -3,7 +3,7 @@ import slugify from 'limax';
 import { SITE, BLOG } from '~/config.mjs';
 import { trim } from '~/utils/utils';
 
-const trimSlash = (s: string) => trim(trim(s, '/'));
+export const trimSlash = (s: string) => trim(trim(s, '/'));
 const createPath = (...params: string[]) => {
   const paths = params
     .map((el) => trimSlash(el))
