@@ -1,27 +1,60 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
-import { cleanSlug } from './permalinks';
+import { cleanSlug, POST_PERMALINK_PATTERN } from './permalinks';
+
+const generatePermalink = async ({ id, slug, publishDate, category }) => {
+  const year = String(publishDate.getFullYear()).padStart(4, '0');
+  const month = String(publishDate.getMonth() + 1).padStart(2, '0');
+  const day = String(publishDate.getDate()).padStart(2, '0');
+  const hour = String(publishDate.getHours()).padStart(2, '0');
+  const minute = String(publishDate.getMinutes()).padStart(2, '0');
+  const second = String(publishDate.getSeconds()).padStart(2, '0');
+
+  return POST_PERMALINK_PATTERN
+    .replace('%slug%', slug)
+    .replace('%id%', id)
+    .replace('%category%', category)
+    .replace('%year%', year)
+    .replace('%month%', month)
+    .replace('%day%', day)
+    .replace('%hour%', hour)
+    .replace('%minute%', minute)
+    .replace('%second%', second);
+};
 
 const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> => {
-  const { id, slug = '', data } = post;
+  const { id, slug: rawSlug = '', data } = post;
   const { Content } = await post.render();
 
-  const { tags = [], category = 'default', author = 'Anonymous', publishDate = new Date(), ...rest } = data;
+  const {
+    tags: rawTags = [],
+    category: rawCategory = 'default',
+    author = 'Anonymous',
+    publishDate: rawPublishDate = new Date(),
+    ...rest
+  } = data;
+
+  const slug = cleanSlug(rawSlug.split('/').pop());
+  const publishDate = new Date(rawPublishDate);
+  const category = cleanSlug(rawCategory);
+  const tags = rawTags.map((tag: string) => cleanSlug(tag));
 
   return {
     id: id,
-    slug: cleanSlug(slug.split('/').pop()),
+    slug: slug,
 
-    publishDate: new Date(publishDate),
-    category: cleanSlug(category),
-    tags: tags.map((tag: string) => cleanSlug(tag)),
-    author,
+    publishDate: publishDate,
+    category: category,
+    tags: tags,
+    author: author,
 
     ...rest,
 
     Content: Content,
     // or 'body' in case you consume from API
+
+    permalink: await generatePermalink({ id, slug, publishDate, category }),
   };
 };
 
