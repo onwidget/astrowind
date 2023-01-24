@@ -74,36 +74,40 @@ Inside AstroWind template, you'll see the following folders and files:
 ├── src/
 │   ├── assets/
 │   │   ├── images/
-|   |   └── styles/
-|   |       └── base.css
+│   │   └── styles/
+│   │       └── base.css
 │   ├── components/
 │   │   ├── blog/
 │   │   ├── common/
-|   |   └── widgets/
-|   |       ├── Header.astro
-|   |       └── ...
+│   │   ├── widgets/
+│   │   │   ├── Header.astro
+│   │   │   └── ...
+│   │   ├── CustomStyles.astro
+│   │   └── Logo.astro
 │   ├── content/
-│   |   ├── blog/
-│   |   |   ├── post-slug-1.md
-│   |   |   ├── post-slug-2.mdx
-│   |   |   └── ...
-│   |   └-- config.ts
+│   │   ├── post/
+│   │   │   ├── post-slug-1.md
+│   │   │   ├── post-slug-2.mdx
+│   │   │   └── ...
+│   │   └-- config.ts
 │   ├── layouts/
-│   |   |── BaseLayout.astro
-│   |   └── ...
+│   │   ├── BaseLayout.astro
+│   │   └── ...
 │   ├── pages/
-│   |   ├── [...blog]/
-|   |   |   ├── [category]/
-|   |   |   ├── [tag]/
-|   |   |   ├── [...page].astro
-|   |   |   └── [slug].astro
-│   |   ├── index.astro
-|   |   ├── 404.astro
-|   |   ├-- rss.xml.ts
-│   |   └── ...
+│   │   ├── [...blog]/
+│   │   │   ├── [category]/
+│   │   │   ├── [tag]/
+│   │   │   ├── [...page].astro
+│   │   │   └── index.astro
+│   │   ├── index.astro
+│   │   ├── 404.astro
+│   │   ├-- rss.xml.ts
+│   │   └── ...
 │   ├── utils/
-│   └── config.mjs
+│   ├── config.mjs
+│   └── data.js
 ├── package.json
+├── astro.config.mjs
 └── ...
 ```
 
