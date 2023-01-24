@@ -30,7 +30,7 @@ const { post, url } = Astro.props;
               <>
                 {' '}
                 ·
-                <a class="font-bold capitalize" href={getPermalink(post.category, 'category')}>
+                <a class="capitalize hover:underline" href={getPermalink(post.category, 'category')}>
                   {post.category.replaceAll('-', ' ')}
                 </a>
               </>
