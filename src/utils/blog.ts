@@ -1,7 +1,7 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
-import { cleanSlug, POST_PERMALINK_PATTERN } from './permalinks';
+import { cleanSlug, trimSlash, POST_PERMALINK_PATTERN } from './permalinks';
 
 const generatePermalink = async ({ id, slug, publishDate, category }) => {
   const year = String(publishDate.getFullYear()).padStart(4, '0');
@@ -11,25 +11,30 @@ const generatePermalink = async ({ id, slug, publishDate, category }) => {
   const minute = String(publishDate.getMinutes()).padStart(2, '0');
   const second = String(publishDate.getSeconds()).padStart(2, '0');
 
-  return POST_PERMALINK_PATTERN
-    .replace('%slug%', slug)
+  const permalink = POST_PERMALINK_PATTERN.replace('%slug%', slug)
     .replace('%id%', id)
-    .replace('%category%', category)
+    .replace('%category%', category || '')
     .replace('%year%', year)
     .replace('%month%', month)
     .replace('%day%', day)
     .replace('%hour%', hour)
     .replace('%minute%', minute)
     .replace('%second%', second);
+
+  return permalink
+    .split('/')
+    .map((el) => trimSlash(el))
+    .filter((el) => !!el)
+    .join('/');
 };
 
-const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> => {
+const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> => {
   const { id, slug: rawSlug = '', data } = post;
   const { Content } = await post.render();
 
   const {
     tags: rawTags = [],
-    category: rawCategory = 'default',
+    category: rawCategory,
     author = 'Anonymous',
     publishDate: rawPublishDate = new Date(),
     ...rest
@@ -37,7 +42,7 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
 
   const slug = cleanSlug(rawSlug.split('/').pop());
   const publishDate = new Date(rawPublishDate);
-  const category = cleanSlug(rawCategory);
+  const category = rawCategory ? cleanSlug(rawCategory) : undefined;
   const tags = rawTags.map((tag: string) => cleanSlug(tag));
 
   return {
@@ -59,7 +64,7 @@ const getNormalizedPost = async (post: CollectionEntry<'posts'>): Promise<Post> 
 };
 
 const load = async function (): Promise<Array<Post>> {
-  const posts = await getCollection('posts');
+  const posts = await getCollection('post');
   const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
 
   const results = (await Promise.all(normalizedPosts))
