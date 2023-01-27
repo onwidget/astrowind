@@ -58,21 +58,19 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     ...rest,
 
     Content: Content,
-    // or 'body' in case you consume from API
+    // or 'content' in case you consume from API
 
     permalink: await generatePermalink({ id, slug, publishDate, category }),
   };
 };
 
 const load = async function (): Promise<Array<Post>> {
-  const posts = await getCollection('post', ({ data }) => {
-    return data.draft !== true;
-  });
+  const posts = await getCollection('post');
   const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
 
-  const results = (await Promise.all(normalizedPosts)).sort(
-    (a, b) => b.publishDate.valueOf() - a.publishDate.valueOf()
-  );
+  const results = (await Promise.all(normalizedPosts))
+    .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
+    .filter((post) => !post.draft);
 
   return results;
 };
