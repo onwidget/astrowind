@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon';
 
-import { SITE } from '~/config.mjs';
+import UI from '~/config/ui';
 
 export interface Props {
   label?: string;
@@ -16,13 +16,44 @@ const {
     className = 'text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center',
   iconClass = 'w-6 h-6',
   iconName = 'tabler:sun',
+  darkIconName = 'tabler:moon',
 } = Astro.props;
 ---
 
 {
-  !(SITE?.defaultTheme && SITE.defaultTheme.endsWith(':only')) && (
-    <button type="button" class={className} aria-label={label} data-aw-toggle-color-scheme>
-      <Icon name={iconName} class={iconClass} />
-    </button>
+  !(UI?.defaultTheme && UI.defaultTheme.endsWith(':only')) && (
+    <label class={className} aria-label={label} data-aw-toggle-color-scheme>
+      <input type="checkbox" checked class="" />
+      <Icon name={iconName} data-aw-sun class={iconClass} />
+      <Icon name={darkIconName} data-aw-moon class={iconClass} />
+    </label>
   )
 }
+
+<style is:inline>
+  [data-aw-toggle-color-scheme] {
+    position: relative;
+    display: inline-grid;
+    place-content: center;
+    cursor: pointer;
+  }
+  [data-aw-toggle-color-scheme] > * {
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+  [data-aw-toggle-color-scheme] input {
+    appearance: none;
+  }
+  [data-aw-toggle-color-scheme] [data-aw-sun] {
+    opacity: 0;
+    position: absolute;
+  }
+  [data-aw-toggle-color-scheme] input:checked ~ [data-aw-moon] {
+    opacity: 0;
+    position: absolute;
+  }
+  [data-aw-toggle-color-scheme] input:checked ~ [data-aw-sun] {
+    opacity: 1;
+    position: static;
+  }
+</style>
