@@ -11,7 +11,7 @@ export interface Props {
 const {
   label = 'Toggle Menu',
   class:
-    className = 'ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition',
+    className = 'ml-1.5 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition',
   iconClass = 'w-6 h-6',
   iconName = 'tabler:menu',
 } = Astro.props;
@@ -20,3 +20,18 @@ const {
 <button type="button" class={className} aria-label={label} data-aw-toggle-menu>
   <Icon name={iconName} class={iconClass} optimize={false} />
 </button>
+
+<style is:inline>
+  [data-aw-toggle-menu] path {
+    transition-property: color, background-color, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  [data-aw-toggle-menu].expanded g > path:first-child {
+    transform: translate(-3px, 15px) rotate(-45deg);
+  }
+
+  [data-aw-toggle-menu].expanded g > path:last-child {
+    transform: translate(14px, -8px) rotate(45deg);
+  }
+</style>

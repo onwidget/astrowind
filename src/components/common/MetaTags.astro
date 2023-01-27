@@ -3,13 +3,15 @@ import { AstroSeo } from '@astrolib/seo';
 import { GoogleAnalytics } from '@astrolib/analytics';
 import { getImage } from '@astrojs/image';
 
-import { SITE } from '~/config.mjs';
+import SITE from '~/utils/config.mjs';
+
 import { MetaSEO } from '~/types';
 import { getCanonical, getAsset } from '~/utils/permalinks';
 import { getRelativeUrlByFilePath } from '~/utils/directories';
 
 import CustomStyles from '~/components/CustomStyles.astro';
 import SplitbeeAnalytics from './SplitbeeAnalytics.astro';
+import { findImage } from '~/utils/images';
 
 export interface Props extends MetaSEO {
   dontUseTitleTemplate?: boolean;
@@ -18,7 +20,7 @@ export interface Props extends MetaSEO {
 const defaultImage = SITE.defaultImage
   ? (
       await getImage({
-        src: SITE.defaultImage,
+        src: await findImage(SITE.defaultImage),
         alt: 'Default image',
         width: 1200,
         height: 628,

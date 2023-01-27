@@ -4,7 +4,7 @@ import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
 
-import { headerData, footerData } from '~/data';
+import { header, footer } from '~/config/navigation';
 
 import { MetaSEO } from '~/types';
 
@@ -20,12 +20,12 @@ const { meta } = Astro.props;
     <Announcement />
   </slot>
   <slot name="header">
-    <Header {...headerData} isSticky showRssFeed showToggleTheme />
+    <Header {...header} isSticky showRssFeed showToggleTheme />
   </slot>
-  <main>
+  <main class="min-h-[60vh] 2xl:min-h-[400px]">
     <slot />
   </main>
   <slot name="footer">
-    <Footer {...footerData} />
+    <Footer {...footer} />
   </slot>
 </Layout>

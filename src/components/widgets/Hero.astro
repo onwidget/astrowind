@@ -11,37 +11,58 @@ interface CallToAction {
 export interface Props {
   title?: string;
   subtitle?: string;
+  content?: string;
+  highlight?: string;
   callToAction?: string | CallToAction;
   callToAction2?: string | CallToAction;
   image?: string | any; // TODO: find HTMLElementProps
+  isDark?: boolean;
+  withHeaderOffset?: boolean;
+  headerOffsetClasses?: string;
 }
 
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   content = await Astro.slots.render('content'),
+  highlight,
   callToAction = await Astro.slots.render('callToAction'),
   callToAction2 = await Astro.slots.render('callToAction2'),
   image = await Astro.slots.render('image'),
+  isDark = false,
+  withHeaderOffset = false,
+  headerOffsetClasses = '-top-[72px] md:-top-[130px]',
 } = Astro.props;
 ---
 
-<section class="relative md:-mt-[76px]">
-  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-  <div class="relative max-w-screen-xl mx-auto px-4 sm:px-6">
-    <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
+<section class="relative">
+  <div
+    class:list={['absolute inset-0 pointer-events-none -z-[1]', { [headerOffsetClasses]: withHeaderOffset }]}
+    aria-hidden="true"
+  >
+    <slot name="bg"><div class:list={['absolute inset-0', { 'bg-dark dark:bg-transparent': isDark }]}></div></slot>
+  </div>
+  <div class:list={['relative max-w-screen-xl mx-auto px-6', { dark: isDark }]}>
     <div class="py-12 md:py-20">
       <div class="text-center pb-10 md:pb-16 max-w-screen-lg mx-auto">
         {
+          highlight && (
+            <p
+              class="text-base text-primary dark:text-blue-200 font-semibold tracking-wide uppercase"
+              set:html={highlight}
+            />
+          )
+        }
+        {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
+              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading text-heading"
               set:html={title}
             />
           )
         }
         <div class="max-w-3xl mx-auto">
-          {subtitle && <p class="text-xl text-muted mb-6 dark:text-slate-300" set:html={subtitle} />}
+          {subtitle && <p class="text-xl text-muted mb-6" set:html={subtitle} />}
           <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
             {
               callToAction && (
@@ -81,7 +102,7 @@ const {
             }
           </div>
         </div>
-        {content && <Fragment set:html={content} />}
+        {content && <div set:html={content} class="mt-4" />}
       </div>
       <div>
         {

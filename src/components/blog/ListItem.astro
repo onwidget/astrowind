@@ -3,12 +3,12 @@ import Icon from 'astro-icon';
 import { Picture } from '@astrojs/image/components';
 import PostTags from '~/components/blog/Tags.astro';
 
-import { BLOG } from '~/config.mjs';
 import type { Post } from '~/types';
 
 import { getPermalink } from '~/utils/permalinks';
 import { findImage } from '~/utils/images';
 import { getFormattedDate } from '~/utils/utils';
+import { isBlogCategoryRouteEnabled, isBlogPostRouteEnabled } from '~/utils/blog';
 
 export interface Props {
   post: Post;
@@ -17,22 +17,24 @@ export interface Props {
 const { post } = Astro.props;
 const image = await findImage(post.image);
 
-const link = !BLOG?.post?.disabled ? getPermalink(post.permalink, 'post') : '';
+const link = isBlogPostRouteEnabled ? getPermalink(post.permalink, 'post') : '';
 ---
 
 <article class={`max-w-md mx-auto md:max-w-none grid gap-6 md:gap-8 ${image ? 'md:grid-cols-2' : ''}`}>
   {
     image && (
       <a class="relative block group" href={link ?? 'javascript:void(0)'}>
-        <div class="relative h-0 pb-[56.25%] md:pb-[75%] md:h-72 lg:pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded shadow-lg">
+        <div class="relative h-0 pb-[56.25%] md:pb-[75%] md:h-72 lg:pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded-md">
           {image && (
             <Picture
               src={image}
-              class="absolute inset-0 object-cover w-full h-full mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+              class="absolute inset-0 object-cover w-full h-full mb-6 rounded-md"
               widths={[400, 900]}
               sizes="(max-width: 900px) 400px, 900px"
               alt={post.title}
               aspectRatio="16:9"
+              loading="lazy"
+              decoding="async"
             />
           )}
         </div>
@@ -43,22 +45,28 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.permalink, 'post') : '';
     <header>
       <div class="mb-1">
         <span class="text-sm">
-          
           <Icon name="tabler:clock" class="w-3.5 h-3.5 inline-block -mt-0.5 dark:text-gray-400" />
           <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time>
           {
-            post.category && (
-              <>
-              {' '} ·
-                <a class="capitalize hover:underline" href={getPermalink(post.category, 'category')}>
-                  {post.category.replaceAll('-', ' ')}
-                </a>
-              </>
-            )
+            post.category &&
+              (isBlogCategoryRouteEnabled ? (
+                <>
+                  {' '}
+                  ·
+                  <a class="capitalize hover:underline" href={getPermalink(post.category, 'category')}>
+                    {post.category.replaceAll('-', ' ')}
+                  </a>
+                </>
+              ) : (
+                <>
+                  {' '}
+                  ·<span class="capitalize">{post.category.replaceAll('-', ' ')}</span>
+                </>
+              ))
           }
         </span>
       </div>
-      <h2 class="text-xl sm:text-2xl font-bold leading-tight mb-2 font-heading dark:text-slate-300">
+      <h2 class="text-xl sm:text-2xl font-bold leading-tight mb-2 dark:text-slate-300">
         {
           link ? (
             <a class="hover:text-primary dark:hover:text-blue-700 transition ease-in duration-200" href={link}>

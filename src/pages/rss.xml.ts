@@ -1,11 +1,11 @@
 import rss from '@astrojs/rss';
 
-import { SITE, BLOG } from '~/config.mjs';
-import { fetchPosts } from '~/utils/blog';
+import SITE from '~/utils/config.mjs';
+import { fetchPosts, isBlogEnabled, isBlogPostRouteEnabled } from '~/utils/blog';
 import { getPermalink } from '~/utils/permalinks';
 
 export const get = async () => {
-  if (BLOG.disabled) {
+  if (!isBlogEnabled || !isBlogPostRouteEnabled) {
     return new Response(null, {
       status: 404,
       statusText: 'Not found',

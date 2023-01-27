@@ -14,7 +14,7 @@ interface Link {
 }
 
 interface ActionLink extends Link {
-  type?: string;
+  class?: string;
 }
 
 interface MenuLink extends Link {
@@ -25,6 +25,7 @@ export interface Props {
   links?: Array<MenuLink>;
   actions?: Array<ActionLink>;
   isSticky?: boolean;
+  isDark?: boolean;
   showToggleTheme?: boolean;
   showRssFeed?: boolean;
   position?: string;
@@ -34,6 +35,8 @@ const {
   links = [],
   actions = [],
   isSticky = false,
+  isDark = false,
+  isFullWidth = false,
   showToggleTheme = false,
   showRssFeed = false,
   position = 'center',
@@ -42,39 +45,49 @@ const {
 
 <header
   class:list={[
-    { sticky: isSticky, relative: !isSticky },
-    'top-0 z-40 flex-none mx-auto w-full transition-all ease-in duration-100',
+    { sticky: isSticky, relative: !isSticky, dark: isDark },
+    'top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 relative',
   ]}
   id="header"
 >
-  <div class="py-3 px-3 md:py-3.5 md:px-4 mx-auto w-full md:flex md:justify-between max-w-screen-xl">
-    <div class:list={[{"mr-auto": position === "right"}, "flex justify-between"]}>
+  <div class="absolute inset-0"></div>
+  <div
+    class:list={[
+      'relative py-3 md:py-5 px-3 md:px-4 mx-auto w-full md:flex md:justify-between transition-[padding] duration-200',
+      {
+        'max-w-screen-xl': !isFullWidth,
+      },
+    ]}
+  >
+    <div class:list={[{ 'mr-auto': position === 'right' }, 'flex justify-between']}>
       <a class="flex items-center" href={getHomePermalink()}>
         <Logo />
       </a>
       <div class="flex items-center md:hidden">
-        <ToggleTheme />
+        <!-- <ToggleTheme /> -->
         <ToggleMenu />
       </div>
     </div>
     <nav
-      class="items-center w-full md:w-auto hidden md:flex dark:text-slate-200 h-[calc(100vh-72px)] md:h-auto overflow-y-auto md:overflow-visible md:mx-5"
+      class="items-center w-full md:w-auto pb-[60px] md:pb-0 hidden md:flex text-default h-[calc(100vh-72px)] md:h-auto overflow-y-auto md:overflow-visible md:mx-5"
       aria-label="Main navigation"
     >
-      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-xl md:text-base">
+      <ul
+        class="flex flex-col pt-4 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium"
+      >
         {
           links.map(({ text, href, links }) => (
             <li class={links?.length ? 'dropdown' : ''}>
               {links?.length ? (
                 <>
-                  <button class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out">
+                  <button class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center">
                     {text} <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 hidden md:inline" />
                   </button>
-                  <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
+                  <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-page md:min-w-[200px] drop-shadow-xl">
                     {links.map(({ text: text2, href: href2 }) => (
                       <li>
                         <a
-                          class="first:rounded-t last:rounded-b md:hover:bg-gray-200 dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap"
+                          class="first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap"
                           href={href2}
                         >
                           {text2}
@@ -84,10 +97,7 @@ const {
                   </ul>
                 </>
               ) : (
-                <a
-                  class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-                  href={href}
-                >
+                <a class="hover:text-link dark:hover:text-white px-4 py-3 flex items-centers" href={href}>
                   {text}
                 </a>
               )}
@@ -96,32 +106,40 @@ const {
         }
       </ul>
     </nav>
-    <div class:list={[{ 'ml-auto': position === 'left' }, 'md:self-center flex items-center md:mb-0']}>
-      <div class="hidden items-center md:flex">
-        {showToggleTheme && <ToggleTheme iconClass="w-5 h-5" />}
+    <!-- position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    padding: 15px;
+    justify-content: end;
+    background: #fff; -->
+    <div
+      class:list={[
+        { 'ml-auto': position === 'left' },
+        'hidden md:self-center flex md:flex items-center md:mb-0 absolute w-full md:w-auto md:static justify-end left-0 bottom-0 p-3 md:p-0 bg-page md:bg-transparent',
+      ]}
+    >
+      <div class="items-center flex justify-between w-full md:w-auto">
+        <div class="flex">
+          {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
 
-        {
-          showRssFeed && (
-            <a
-              class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-              aria-label="RSS Feed"
-              href={getAsset('/rss.xml')}
-            >
-              <Icon name="tabler:rss" class="w-5 h-5" />
-            </a>
-          )
-        }
+          {
+            showRssFeed && (
+              <a
+                class="md:inline-block text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+                aria-label="RSS Feed"
+                href={getAsset('/rss.xml')}
+              >
+                <Icon name="tabler:rss" class="w-6 h-6 md:w-5 md:h-5" />
+              </a>
+            )
+          }
+        </div>
         {
           actions?.length ? (
             <span class="ml-4">
-              {actions.map(({ text, href, type }) => (
-                <a
-                  class:list={[
-                    'btn ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm',
-                    { 'btn-ghost': type === 'ghost', 'btn-primary': type === 'primary' },
-                  ]}
-                  href={href}
-                >
+              {actions.map(({ text, href, class: className }) => (
+                <a class:list={['ml-2 btn btn-sm', className]} href={href}>
                   <Fragment set:html={text} />
                 </a>
               ))}

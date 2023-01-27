@@ -1,6 +1,5 @@
 ---
 import { Icon } from 'astro-icon';
-import { SITE } from '~/config.mjs';
 import { getHomePermalink } from '~/utils/permalinks';
 
 interface Link {
@@ -16,23 +15,26 @@ interface Links {
 }
 
 export interface Props {
+  siteName?: string;
   links: Array<Links>;
   secondaryLinks: Array<Link>;
   socialLinks: Array<Link>;
   footNote?: string;
-  theme?: string;
+  isDark?: boolean;
 }
 
-const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+const { siteName = '', socialLinks = [], secondaryLinks = [], links = [], footNote = '', isDark = false } = Astro.props;
 ---
 
-<footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800']}>
-  <div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-  <div class="relative max-w-screen-xl mx-auto px-4 sm:px-6 dark:text-slate-300">
+<footer class="relative border-t border-gray-200 dark:border-slate-800">
+  <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">
+    <slot name="bg"><div class:list={['absolute inset-0', { 'bg-dark dark:bg-transparent': isDark }]}></div></slot>
+  </div>
+  <div class:list={['relative max-w-screen-xl mx-auto px-6 text-default', { dark: isDark }]}>
     <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
       <div class="col-span-12 lg:col-span-4">
         <div class="mb-2">
-          <a class="inline-block font-bold text-xl" href={getHomePermalink()}>{SITE?.name}</a>
+          <a class="inline-block font-bold text-xl" href={getHomePermalink()}>{siteName}</a>
         </div>
         <div class="text-sm text-muted">
           {

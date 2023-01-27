@@ -5,26 +5,23 @@ import Header from '~/components/widgets/Header.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
-import { headerData } from '~/data';
+import { header } from '~/config/navigation';
+import Background from '~/components/common/Background.astro';
 
 const meta = {
-  title: "Startup Landing Page",
+  title: 'Startup Landing Page',
 };
 ---
 
 <Layout {meta}>
-  <Fragment slot="header">
-    <Header
-      {...headerData}
-      showRssFeed
-      showToggleTheme
-      position="left"
-    />
-  </Fragment>
+  <Fragment slot="announcement"></Fragment>
+  <Header slot="header" {...header} showRssFeed showToggleTheme position="left" isDark isSticky />
 
-  <!-- Hero2 Widget ******************* -->
+  <!-- Hero Widget ******************* -->
 
   <Hero
+    isDark
+    withHeaderOffset
     callToAction={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
   >
@@ -35,16 +32,25 @@ const meta = {
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0 +
-        Tailwind CSS.</span
+        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0
+        + Tailwind CSS.</span
       >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span> Suitable for Startups,
-      Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
+      <span class="block mb-1 sm:hidden font-bold">AstroWind: Production-ready.</span> Suitable for Startups, Small Business,
+      Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
     </Fragment>
 
     <Fragment slot="image">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/dsTXcSeAZq8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%"></iframe>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/dsTXcSeAZq8"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="width:100%"></iframe>
     </Fragment>
+
+    <Background slot="bg" class="absolute inset-0 bg-gradient-to-b from-slate-900 to-purple-800 dark:bg-none" />
   </Hero>
 
   <!-- CallToAction Widget *********** -->

@@ -11,38 +11,58 @@ interface CallToAction {
 export interface Props {
   title?: string;
   subtitle?: string;
+  content?: string;
+  highlight?: string;
   callToAction?: string | CallToAction;
   callToAction2?: string | CallToAction;
   image?: string | any; // TODO: find HTMLElementProps
+  isDark?: boolean;
+  withHeaderOffset?: boolean;
+  headerOffsetClasses?: string;
 }
 
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
+  highlight,
   content = await Astro.slots.render('content'),
   callToAction = await Astro.slots.render('callToAction'),
   callToAction2 = await Astro.slots.render('callToAction2'),
   image = await Astro.slots.render('image'),
+  isDark = false,
+  withHeaderOffset = false,
+  headerOffsetClasses = '-top-[72px] md:-top-[130px]',
 } = Astro.props;
 ---
 
-<section class="relative md:-mt-[76px]">
-  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-  <div class="relative max-w-screen-xl mx-auto px-4 sm:px-6">
-    <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
-    <div class="py-12 md:py-20 lg:py-0 lg:flex lg:items-center lg:h-screen lg:gap-8">
+<section class="relative">
+  <div
+    class:list={['absolute inset-0 pointer-events-none -z-[1]', { [headerOffsetClasses]: withHeaderOffset }]}
+    aria-hidden="true"
+  >
+    <slot name="bg"><div class:list={['absolute inset-0', { 'bg-dark dark:bg-transparent': isDark }]}></div></slot>
+  </div>
+  <div class:list={['relative max-w-screen-xl mx-auto px-6', { dark: isDark }]}>
+    <div class="py-12 md:py-20 lg:py-0 lg:flex lg:items-center lg:min-h-screen lg:gap-8 2xl:min-h-0">
       <div class="basis-1/2 text-center lg:text-left pb-10 md:pb-16 mx-auto">
+        {
+          highlight && (
+            <p class="text-base text-primary font-semibold tracking-wide uppercase mb-2" set:html={highlight} />
+          )
+        }
         {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
+              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading text-heading"
               set:html={title}
             />
           )
         }
         <div class="max-w-3xl mx-auto lg:max-w-none">
-          {subtitle && <p class="text-xl text-muted mb-6 dark:text-slate-300" set:html={subtitle} />}
-          <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 lg:justify-start lg:m-0 lg:max-w-screen-xl">
+          {subtitle && <p class="text-xl md:text-[1.4rem] text-muted mb-6" set:html={subtitle} />}
+          <div
+            class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 lg:justify-start lg:m-0 lg:max-w-screen-xl"
+          >
             {
               callToAction && (
                 <div class="flex w-full sm:w-auto">
@@ -81,7 +101,7 @@ const {
             }
           </div>
         </div>
-        {content && <Fragment set:html={content} />}
+        {content && <div set:html={content} class="mt-4" />}
       </div>
       <div class="basis-1/2">
         {

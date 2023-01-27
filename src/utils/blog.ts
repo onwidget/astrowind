@@ -1,6 +1,7 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
+import BLOG from '~/config/blog';
 import { cleanSlug, trimSlash, POST_PERMALINK_PATTERN } from './permalinks';
 
 const generatePermalink = async ({ id, slug, publishDate, category }) => {
@@ -64,12 +65,14 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
 };
 
 const load = async function (): Promise<Array<Post>> {
-  const posts = await getCollection('post');
+  const posts = await getCollection('post', ({ data }) => {
+    return data.draft !== true;
+  });
   const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
 
-  const results = (await Promise.all(normalizedPosts))
-    .sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf())
-    .filter((post) => !post.draft);
+  const results = (await Promise.all(normalizedPosts)).sort(
+    (a, b) => b.publishDate.valueOf() - a.publishDate.valueOf()
+  );
 
   return results;
 };
@@ -120,3 +123,16 @@ export const findLatestPosts = async ({ count }: { count?: number }): Promise<Ar
 
   return posts ? posts.slice(0, _count) : [];
 };
+
+export const isBlogEnabled = !BLOG?.post?.disabled;
+export const isBlogListRouteEnabled = !BLOG?.list?.disabled;
+export const isBlogPostRouteEnabled = !BLOG?.post?.disabled;
+export const isBlogCategoryRouteEnabled = !BLOG?.category?.disabled;
+export const isBlogTagRouteEnabled = !BLOG?.tag?.disabled;
+
+export const canIndexBlogList = !BLOG?.list?.noindex;
+export const canIndexBlogPost = !BLOG?.post?.noindex;
+export const canIndexBlogCategory = !BLOG?.category?.noindex;
+export const canIndexBlogTag = !BLOG?.tag?.noindex;
+
+export const blogPostsPerPage = BLOG?.postsPerPage || 6;

@@ -1,5 +1,5 @@
 ---
-import { SITE, BLOG } from '~/config.mjs';
+import { isBlogEnabled, isBlogCategoryRouteEnabled, canIndexBlogCategory, blogPostsPerPage } from '~/utils/blog';
 
 import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
@@ -10,7 +10,7 @@ import { fetchPosts } from '~/utils/blog';
 import { CATEGORY_BASE } from '~/utils/permalinks';
 
 export async function getStaticPaths({ paginate }) {
-  if (BLOG?.disabled || BLOG?.category?.disabled) return [];
+  if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
   const posts = await fetchPosts();
   const categories = new Set();
@@ -23,7 +23,7 @@ export async function getStaticPaths({ paginate }) {
       posts.filter((post) => typeof post.category === 'string' && category === post.category.toLowerCase()),
       {
         params: { category: category, blog: CATEGORY_BASE || undefined },
-        pageSize: BLOG.postsPerPage,
+        pageSize: blogPostsPerPage,
         props: { category },
       }
     )
@@ -35,13 +35,12 @@ const { page, category } = Astro.props;
 const currentPage = page.currentPage ?? 1;
 const meta = {
   title: `Category'${category}' ${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
-  description: SITE.description,
-  noindex: BLOG?.category?.noindex,
+  noindex: !canIndexBlogCategory,
 };
 ---
 
 <Layout meta={meta}>
-  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-3xl">
+  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
     <Headline><span class="capitalize">{category.replaceAll('-', ' ')}</span></Headline>
     <BlogList posts={page.data} />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />

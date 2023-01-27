@@ -1,13 +1,20 @@
 ---
-import { SITE } from '~/config.mjs';
+import UI from '~/config/ui';
 ---
 
-<script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
+<script is:inline define:vars={{ defaultTheme: UI?.defaultTheme || 'system' }}>
   function applyTheme(theme) {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
+    }
+    const matches = document.querySelectorAll('[data-aw-toggle-color-scheme] > input');
+
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.checked = theme !== 'dark';
+      });
     }
   }
 
@@ -39,15 +46,18 @@ import { SITE } from '~/config.mjs';
       elem.classList.toggle('expanded');
       document.body.classList.toggle('overflow-hidden');
       document.getElementById('header')?.classList.toggle('h-screen');
+      document.getElementById('header')?.classList.toggle('bg-page');
       document.querySelector('#header nav')?.classList.toggle('hidden');
+      document.querySelector('#header > div > div:last-child')?.classList.toggle('hidden');
     });
 
-    attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
+    attachEvent('[data-aw-toggle-color-scheme] > input', 'click', function () {
       if (defaultTheme.endsWith(':only')) {
         return;
       }
-      document.documentElement.classList.toggle('dark');
-      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      const theme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+      applyTheme(theme);
+      localStorage.theme = theme;
     });
 
     attachEvent('[data-aw-social-share]', 'click', function (_, elem) {
@@ -85,7 +95,7 @@ import { SITE } from '~/config.mjs';
 
     function appyHeaderStylesOnScroll() {
       const header = document.getElementById('header');
-      if (lastKnownScrollPosition > 60 && !header.classList.contains('scroll')) {
+      if (lastKnownScrollPosition > 72 && !header.classList.contains('scroll') && header.classList.contains('sticky')) {
         document.getElementById('header').classList.add('scroll');
       } else if (lastKnownScrollPosition <= 60 && header.classList.contains('scroll')) {
         document.getElementById('header').classList.remove('scroll');

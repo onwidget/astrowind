@@ -1,6 +1,8 @@
 import slugify from 'limax';
 
-import { SITE, BLOG } from '~/config.mjs';
+import SITE from '~/utils/config.mjs';
+import BLOG from '~/config/blog';
+
 import { trim } from '~/utils/utils';
 
 export const trimSlash = (s: string) => trim(trim(s, '/'));

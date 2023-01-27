@@ -1,7 +1,7 @@
-import { DATE_FORMATTER } from '~/config.mjs';
+import I18N from '~/config/i18n';
 
 const formatter =
-  DATE_FORMATTER ||
+  I18N?.dateFormatter ||
   new Intl.DateTimeFormat('en', {
     year: 'numeric',
     month: 'short',
