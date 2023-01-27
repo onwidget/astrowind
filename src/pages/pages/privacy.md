@@ -1,5 +1,6 @@
 ---
 title: 'Privacy Policy'
+noindex: true
 layout: '~/layouts/MarkdownLayout.astro'
 ---
 

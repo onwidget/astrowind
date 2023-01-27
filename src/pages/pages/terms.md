@@ -1,5 +1,6 @@
 ---
 title: 'Terms and Conditions'
+noindex: true
 layout: '~/layouts/MarkdownLayout.astro'
 ---
 
