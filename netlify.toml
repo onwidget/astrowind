@@ -2,6 +2,6 @@
   publish = "dist"
   command = "npm run build"
 [[headers]]
-  for = "/assets/*"
+  for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
