@@ -94,14 +94,35 @@ const {
             </li>
           ))
         }
+        {
+          actions?.length ? (
+            <li>
+              {actions.map(({ text, href, type, icon }) => (
+                <a
+                  class:list={[
+                    'btn ml-2 px-5.5 h-12 md:px-6 font-semibold shadow-none text-sm',
+                    { 'btn-ghost': type === 'ghost', 'btn-primary': type === 'primary' },
+                  ]}
+                  href={href}
+                >
+                {icon && (
+                      <Icon name={icon} class="w-5 h-5 mr-1 -ml-1.5" />
+                  )}
+                  <Fragment set:html={text} />
+                </a>
+              ))}
+            </li>
+          ) : (
+            ''
+          )
+        }
       </ul>
     </nav>
+
     <div class:list={[{ 'ml-auto': position === 'left' }, 'md:self-center flex items-center md:mb-0']}>
       <div class="hidden items-center md:flex">
         {showToggleTheme && <ToggleTheme iconClass="w-5 h-5" />}
-
-        {
-          showRssFeed && (
+        {showRssFeed && (
             <a
               class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
               aria-label="RSS Feed"
@@ -111,10 +132,10 @@ const {
             </a>
           )
         }
-        {
+        <!-- {
           actions?.length ? (
             <span class="ml-4">
-              {actions.map(({ text, href, type }) => (
+              {actions.map(({ text, href, type, icon }) => (
                 <a
                   class:list={[
                     'btn ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm',
@@ -122,6 +143,9 @@ const {
                   ]}
                   href={href}
                 >
+                {icon && (
+                      <Icon name={icon} class="w-5 h-5 mr-1 -ml-1.5" />
+                  )}
                   <Fragment set:html={text} />
                 </a>
               ))}
@@ -129,7 +153,7 @@ const {
           ) : (
             ''
           )
-        }
+        } -->
       </div>
     </div>
   </div>

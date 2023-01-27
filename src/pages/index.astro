@@ -2,7 +2,7 @@
 import { SITE } from '~/config.mjs';
 import Layout from '~/layouts/PageLayout.astro';
 
-import Hero from '~/components/widgets/Hero.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
@@ -23,25 +23,23 @@ const meta = {
 <Layout {meta}>
   <!-- Hero Widget ******************* -->
 
-  <Hero
-    callToAction={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
-    callToAction2={{ text: 'Learn more', href: '#features' }}
-    image={{ src: import('~/assets/images/hero.png'), alt: 'AstroWind Hero Image' }}
+  <Hero2
+    callToAction={{ text: 'Contact', href: '/contact', icon: 'tabler:mail' }}
+    callToAction2={{ text: 'En savoir plus', href: '#features' }}
+    image={{ src: import('~/assets/images/ligne-production.png'), alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden lg:inline">create your website <br />with</span>
-      <span class="text-accent dark:text-white highlight"> Astro 2.0</span> + Tailwind CSS
+      La solution pour vos opérations de
+      <span class="text-accent dark:text-white highlight"> packaging</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0 +
-        Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span> Suitable for Startups,
-      Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
+      <span class="font-semibold">HdF Packaging</span> vous accompagne pour la définition de votre besoin, 
+      la recherche de solutions, la rédaction des cahiers des charges, 
+      la mise en relation avec les mécaniseurs et les fournisseurs les plus pertinents du domaine, 
+      et si vous le désirez, jusqu’à l’analyse des retours de consultation de ces fournisseurs.  
     </Fragment>
-  </Hero>
+  </Hero2>
 
   <!-- Note Widget ******************* -->
 
@@ -68,10 +66,10 @@ const meta = {
           icon: 'tabler:components',
         },
         {
-          title: 'Best Practices',
+          title: 'Ready-to-use Components',
           description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
-          icon: 'tabler:list-check',
+            'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
+          icon: 'tabler:components',
         },
       ],
       [
@@ -86,12 +84,6 @@ const meta = {
           description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
           icon: 'tabler:arrows-right-left',
-        },
-        {
-          title: 'Open to new ideas and contributions',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
-          icon: 'tabler:bulb',
         },
       ],
     ]}
