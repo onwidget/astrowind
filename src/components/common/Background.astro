@@ -1,0 +1,7 @@
+---
+const { class: className, ...rest } = Astro.props;
+---
+
+<div class:list={['absolute inset-0', className]} {...rest}>
+  <slot />
+</div>
