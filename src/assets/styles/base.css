@@ -47,6 +47,15 @@
   @apply py-3;
 } */
 
+#header.expanded nav {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 70px !important;
+  padding: 0 5px;
+}
+
 .dropdown:hover .dropdown-menu {
   display: block;
 }
