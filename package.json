@@ -34,6 +34,7 @@
     "eslint-plugin-astro": "^0.23.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "limax": "^2.1.0",
+    "lodash.merge": "^4.6.2",
     "mdast-util-to-string": "^3.1.1",
     "prettier": "^2.8.3",
     "prettier-plugin-astro": "^0.8.0",
