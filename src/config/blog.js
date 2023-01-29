@@ -15,13 +15,13 @@ export default {
   },
 
   category: {
-    pathname: 'category', // Category main path /category/some-category
+    pathname: 'category', // Category main path /category/some-category, you can change this to "group" (/group/some-category)
     noindex: true,
     disabled: false,
   },
 
   tag: {
-    pathname: 'tag', // Tag main path /tag/some-tag
+    pathname: 'tag', // Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
     noindex: true,
     disabled: false,
   },
