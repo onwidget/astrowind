@@ -26,7 +26,7 @@ export const findImage = async (imagePath?: string) => {
     return imagePath;
   }
 
-  if (!imagePath.startsWith('~/assets')) {
+  if (!imagePath.startsWith('~/assets/images')) {
     return null;
   } // For now only consume images using ~/assets alias (or absolute)
 

@@ -30,8 +30,13 @@ const adaptOpenGraphImages = async (openGraph: MetaDataOpenGraph): Promise<MetaD
   const adaptedImages = await Promise.all(
     images.map(async (image) => {
       if (image?.url) {
+        const resolvedImage = await findImage(image.url);
+        if (!resolvedImage) {
+          return {};
+        }
+
         const _image = await getImage({
-          src: await findImage(image.url),
+          src: resolvedImage,
           alt: 'Placeholder alt',
           width: width,
           height: height,
