@@ -27,8 +27,8 @@ export const findImage = async (imagePath?: string) => {
   }
 
   if (!imagePath.startsWith('~/assets/images')) {
-    return null;
-  } // For now only consume images using ~/assets alias (or absolute)
+    return imagePath; // FIXME: Fix relative images
+  }
 
   const images = await fetchLocalImages();
   const key = imagePath.replace('~/', '/src/');
