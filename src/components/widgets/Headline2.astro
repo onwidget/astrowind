@@ -1,0 +1,56 @@
+---
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  content?: string;
+  highlight?: string;
+  isDark?: boolean;
+  withHeaderOffset?: boolean;
+  headerOffsetClasses?: string;
+}
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  content = await Astro.slots.render('content'),
+  highlight,
+  isDark = false,
+  withHeaderOffset = false,
+  headerOffsetClasses = '-top-[72px] md:-top-[130px]',
+} = Astro.props;
+---
+
+<section class="relative">
+  <div
+    class:list={['absolute inset-0 pointer-events-none -z-[1]', { [headerOffsetClasses]: withHeaderOffset }]}
+    aria-hidden="true"
+  >
+    <slot name="bg"><div class:list={['absolute inset-0', { 'bg-dark dark:bg-transparent': isDark }]}></div></slot>
+  </div>
+  <div class:list={['relative max-w-screen-xl mx-auto px-6 text-center', { dark: isDark }]}>
+    <div class="py-12 md:py-20">
+      <div class="max-w-screen-lg">
+        {
+          highlight && (
+            <p
+              class="text-base text-secondary dark:text-blue-200 font-semibold tracking-wide uppercase"
+              set:html={highlight}
+            />
+          )
+        }
+        {
+          title && (
+            <h1
+              class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading text-heading"
+              set:html={title}
+            />
+          )
+        }
+        <div class="max-w-3xl mx-auto">
+          {subtitle && <p class="text-xl text-muted mb-6" set:html={subtitle} />}
+        </div>
+        {content && <div set:html={content} class="mt-4" />}
+      </div>
+    </div>
+  </div>
+</section>
