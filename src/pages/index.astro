@@ -29,8 +29,8 @@ const meta = {
     image={{ src: import('~/assets/images/hero.png'), alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden lg:inline">create your website <br />with</span>
-      <span class="text-accent highlight-none md:highlight"> Astro 2.0</span> + Tailwind CSS
+      Free template for <span class="hidden lg:inline">create your website <br />with </span>
+      <span class="text-accent mark md:mark-underline">Astro 2.0</span> + Tailwind CSS
     </Fragment>
 
     <Fragment slot="subtitle">
@@ -72,6 +72,7 @@ const meta = {
           description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
           icon: 'tabler:list-check',
+          iconBgClass: 'bg-secondary'
         },
       ],
       [
@@ -96,7 +97,7 @@ const meta = {
       ],
     ]}
   >
-    <Background slot="bg" class="bg-[#b2e3ff] dark:bg-transparent" />
+    <Background slot="bg" class="bg-[#e7f1ff] dark:bg-transparent" />
   </Features>
 
   <!-- Steps Widget ****************** -->
