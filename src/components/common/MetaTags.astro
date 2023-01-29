@@ -44,7 +44,7 @@ const adaptOpenGraphImages = async (openGraph: MetaDataOpenGraph): Promise<MetaD
 
         if (typeof _image === 'object') {
           return {
-            url: typeof _image.src === 'string' ? _image.src : undefined,
+            url: typeof _image.src === 'string' ? String(new URL(_image.src, Astro.site)) : undefined,
             width: typeof _image.width === 'number' ? _image.width : undefined,
             height: typeof _image.height === 'number' ? _image.height : undefined,
           };
