@@ -26,6 +26,7 @@ export interface Props {
   actions?: Array<ActionLink>;
   isSticky?: boolean;
   isDark?: boolean;
+  isFullWidth?: boolean;
   showToggleTheme?: boolean;
   showRssFeed?: boolean;
   position?: string;
@@ -46,14 +47,14 @@ const {
 <header
   class:list={[
     { sticky: isSticky, relative: !isSticky, dark: isDark },
-    'top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 relative',
+    'top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0',
   ]}
   id="header"
 >
   <div class="absolute inset-0"></div>
   <div
     class:list={[
-      'relative py-3 md:py-5 px-3 md:px-4 mx-auto w-full md:flex md:justify-between transition-[padding] duration-200',
+      'relative py-3 px-3 md:px-6 mx-auto w-full md:flex md:justify-between',
       {
         'max-w-screen-xl': !isFullWidth,
       },
@@ -69,7 +70,7 @@ const {
       </div>
     </div>
     <nav
-      class="items-center w-full md:w-auto pb-[60px] md:pb-0 hidden md:flex text-default h-[calc(100vh-72px)] md:h-auto overflow-y-auto md:overflow-visible md:mx-5"
+      class="items-center w-full md:w-auto pb-[60px] md:pb-0 hidden md:flex text-default h-[calc(100vh-72px)] md:h-auto overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:mx-5"
       aria-label="Main navigation"
     >
       <ul
@@ -106,13 +107,6 @@ const {
         }
       </ul>
     </nav>
-    <!-- position: absolute;
-    bottom: 0;
-    width: 100%;
-    left: 0;
-    padding: 15px;
-    justify-content: end;
-    background: #fff; -->
     <div
       class:list={[
         { 'ml-auto': position === 'left' },
