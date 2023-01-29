@@ -31,7 +31,7 @@ const { post, url } = Astro.props;
               (isBlogCategoryRouteEnabled ? (
                 <>
                   {' '}
-                  ·
+                  ·{' '}
                   <a class="capitalize hover:underline" href={getPermalink(post.category, 'category')}>
                     {post.category.replaceAll('-', ' ')}
                   </a>
@@ -39,7 +39,7 @@ const { post, url } = Astro.props;
               ) : (
                 <>
                   {' '}
-                  ·<span class="capitalize">{post.category.replaceAll('-', ' ')}</span>
+                  ·{' '}<span class="capitalize">{post.category.replaceAll('-', ' ')}</span>
                 </>
               ))
           }

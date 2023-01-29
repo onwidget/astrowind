@@ -52,7 +52,7 @@ const link = isBlogPostRouteEnabled ? getPermalink(post.permalink, 'post') : '';
               (isBlogCategoryRouteEnabled ? (
                 <>
                   {' '}
-                  ·
+                  ·{' '}
                   <a class="capitalize hover:underline" href={getPermalink(post.category, 'category')}>
                     {post.category.replaceAll('-', ' ')}
                   </a>
@@ -60,7 +60,7 @@ const link = isBlogPostRouteEnabled ? getPermalink(post.permalink, 'post') : '';
               ) : (
                 <>
                   {' '}
-                  ·<span class="capitalize">{post.category.replaceAll('-', ' ')}</span>
+                  ·{' '}<span class="capitalize">{post.category.replaceAll('-', ' ')}</span>
                 </>
               ))
           }
