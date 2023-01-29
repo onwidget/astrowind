@@ -39,10 +39,11 @@ import UI from '~/config/ui';
   }
 
   window.onload = function () {
+    const headerScrollTop = document.getElementById('header').getBoundingClientRect().y;
     let lastKnownScrollPosition = window.scrollY;
     let ticking = true;
 
-    attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
+    attachEvent('[data-aw-toggle-menu] > input', 'click', function (_, elem) {
       elem.classList.toggle('expanded');
       document.body.classList.toggle('overflow-hidden');
       document.getElementById('header')?.classList.toggle('h-screen');
@@ -95,9 +96,9 @@ import UI from '~/config/ui';
 
     function appyHeaderStylesOnScroll() {
       const header = document.getElementById('header');
-      if (lastKnownScrollPosition > 72 && !header.classList.contains('scroll') && header.classList.contains('sticky')) {
+      if (lastKnownScrollPosition > headerScrollTop && !header.classList.contains('scroll') && header.classList.contains('sticky')) {
         document.getElementById('header').classList.add('scroll');
-      } else if (lastKnownScrollPosition <= 60 && header.classList.contains('scroll')) {
+      } else if (lastKnownScrollPosition <= headerScrollTop && header.classList.contains('scroll')) {
         document.getElementById('header').classList.remove('scroll');
       }
       ticking = false;
