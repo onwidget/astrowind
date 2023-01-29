@@ -22,11 +22,11 @@ export const cleanSlug = (text = '') =>
     .map((slug) => slugify(slug))
     .join('/');
 
-export const POST_PERMALINK_PATTERN = trimSlash(BLOG?.post?.permalink || '/%slug%');
-
 export const BLOG_BASE = cleanSlug(BLOG?.list?.pathname);
-export const CATEGORY_BASE = cleanSlug(BLOG?.category?.pathname || 'category');
+export const CATEGORY_BASE = cleanSlug(BLOG?.category?.pathname);
 export const TAG_BASE = cleanSlug(BLOG?.tag?.pathname) || 'tag';
+
+export const POST_PERMALINK_PATTERN = trimSlash(BLOG?.post?.permalink || `${BLOG_BASE}/%slug%`);
 
 /** */
 export const getCanonical = (path = ''): string | URL => new URL(path, SITE.origin);
