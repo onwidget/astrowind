@@ -1,18 +1,18 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
-import { MetaSEO } from '~/types';
+import { MetaData } from '~/types';
 
 export interface Props {}
 
 const { frontmatter } = Astro.props;
 
-const meta: MetaSEO = {
+const metadata: MetaData = {
   title: frontmatter?.title,
 };
 ---
 
-<Layout {meta}>
+<Layout {metadata}>
   <section class="px-6 py-16 mx-auto lg:px-8 lg:py-20 max-w-3xl">
     <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter">{frontmatter.title}</h1>
     <div

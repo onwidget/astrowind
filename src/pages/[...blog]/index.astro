@@ -20,17 +20,23 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const url = getCanonical(getPermalink(post.permalink, 'post'));
 
-const meta = {
+const image = await findImage(post.image);
+
+const metadata = {
   title: post.title,
   description: post.description,
   canonical: post.canonical || url,
-  image: await findImage(post.image),
-  noindex: canIndexBlogPost,
-  ogType: 'article',
+  robots: {
+    index: canIndexBlogPost,
+  },
+  openGraph: {
+    type: 'article',
+    ...(image ? { images: [{ url: image.src, width: image.width, height: image.height }] } : {}),
+  },
 };
 ---
 
-<Layout {meta}>
-  <SinglePost post={{ ...post, image: meta.image }} url={url} />
+<Layout {metadata}>
+  <SinglePost post={{ ...post, image: image }} url={url} />
   <ToBlogLink />
 </Layout>

@@ -1,11 +1,15 @@
 ---
+import Background from '~/components/common/Background.astro';
+import Headline from '~/components/widgets/Headline2.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
-const meta = {
+const metadata = {
   title: 'Contact',
 };
 ---
 
-<Layout {meta}>
-  <h1>Contact</h1>
+<Layout {metadata}>
+  <Headline title="Contact us">
+    <Background slot="bg" class="bg-gray-100" />
+  </Headline>
 </Layout>

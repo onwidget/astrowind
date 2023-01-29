@@ -1,0 +1,11 @@
+---
+import { GoogleAnalytics } from '@astrolib/analytics';
+import ANALYTICS from '~/config/analytics';
+import SplitbeeAnalytics from './SplitbeeAnalytics.astro';
+---
+
+<!-- Google Analytics -->{
+  ANALYTICS.googleAnalyticsId && <GoogleAnalytics id={String(ANALYTICS.googleAnalyticsId)} partytown={true} />
+}
+
+{ANALYTICS.splitbeeAnalytics?.enabled && <SplitbeeAnalytics {...ANALYTICS.splitbeeAnalytics} />}

@@ -3,7 +3,7 @@ import { isBlogEnabled, isBlogCategoryRouteEnabled, canIndexBlogCategory, blogPo
 
 import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
-import Headline from '~/components/blog/Headline.astro';
+import Headline from '~/components/widgets/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
 
 import { fetchPosts } from '~/utils/blog';
@@ -33,13 +33,15 @@ export async function getStaticPaths({ paginate }) {
 const { page, category } = Astro.props;
 
 const currentPage = page.currentPage ?? 1;
-const meta = {
+const metadata = {
   title: `Category'${category}' ${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
-  noindex: !canIndexBlogCategory,
+  robots: {
+    index: canIndexBlogCategory,
+  },
 };
 ---
 
-<Layout meta={meta}>
+<Layout {metadata}>
   <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
     <Headline><span class="capitalize">{category.replaceAll('-', ' ')}</span></Headline>
     <BlogList posts={page.data} />

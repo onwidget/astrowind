@@ -6,16 +6,16 @@ import Announcement from '~/components/widgets/Announcement.astro';
 
 import { header, footer } from '~/config/navigation';
 
-import { MetaSEO } from '~/types';
+import { MetaData } from '~/types';
 
 export interface Props {
-  meta?: MetaSEO;
+  metadata?: MetaData;
 }
 
-const { meta } = Astro.props;
+const { metadata } = Astro.props;
 ---
 
-<Layout {meta}>
+<Layout {metadata}>
   <slot name="announcement">
     <Announcement />
   </slot>

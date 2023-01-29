@@ -1,99 +1,111 @@
 ---
+import merge from 'lodash.merge';
 import { AstroSeo } from '@astrolib/seo';
-import { GoogleAnalytics } from '@astrolib/analytics';
 import { getImage } from '@astrojs/image';
 
 import SITE from '~/utils/config.mjs';
+import I18N from '~/config/i18n';
 
-import { MetaSEO } from '~/types';
-import { getCanonical, getAsset } from '~/utils/permalinks';
-import { getRelativeUrlByFilePath } from '~/utils/directories';
+import { MetaData, MetaDataOpenGraph } from '~/types';
+import { getCanonical } from '~/utils/permalinks';
+// import { getRelativeUrlByFilePath } from '~/utils/directories';
 
-import CustomStyles from '~/components/CustomStyles.astro';
-import SplitbeeAnalytics from './SplitbeeAnalytics.astro';
 import { findImage } from '~/utils/images';
 
-export interface Props extends MetaSEO {
-  dontUseTitleTemplate?: boolean;
-}
+export interface Props extends MetaData {}
 
-const defaultImage = SITE.defaultImage
-  ? (
-      await getImage({
-        src: await findImage(SITE.defaultImage),
-        alt: 'Default image',
-        width: 1200,
-        height: 628,
-      })
-    ).src
-  : '';
+// FIXME: Review this for relative urls
+// new URL(getRelativeUrlByFilePath(_image.src), Astro.site)
+
+// FIXME: Don't do optimization on DEV or many times with default image
+const adaptOpenGraphImages = async (openGraph: MetaDataOpenGraph): Promise<MetaDataOpenGraph> => {
+  if (!openGraph?.images?.length) {
+    return openGraph;
+  }
+
+  const images = openGraph.images;
+  const width = 1200;
+  const height = 626;
+
+  const adaptedImages = await Promise.all(
+    images.map(async (image) => {
+      if (image?.url) {
+        const _image = await getImage({
+          src: await findImage(image.url),
+          alt: 'Placeholder alt',
+          width: width,
+          height: height,
+        });
+
+        if (typeof _image === 'object') {
+          return {
+            url: typeof _image.src === 'string' ? _image.src : undefined,
+            width: typeof _image.width === 'number' ? _image.width : undefined,
+            height: typeof _image.height === 'number' ? _image.height : undefined,
+          };
+        }
+        return {};
+      }
+
+      return {};
+    })
+  );
+
+  return { ...openGraph, ...(adaptedImages ? { images: adaptedImages } : {}) };
+};
 
 const {
-  title = SITE.name,
-  description = '',
-  image: _image = defaultImage,
-
-  canonical = getCanonical(String(Astro.url.pathname)),
-  noindex = false,
-  nofollow = false,
-
-  ogTitle = title,
-  ogType = 'website',
-
-  dontUseTitleTemplate = false,
+  title,
+  ignoreTitleTemplate = false,
+  canonical = String(getCanonical(String(Astro.url.pathname))),
+  robots,
+  description,
+  openGraph,
+  twitter,
 } = Astro.props;
 
-const image =
-  typeof _image === 'string'
-    ? new URL(_image, Astro.site)
-    : _image && typeof _image['src'] !== 'undefined'
-    ? // @ts-ignore
-      new URL(getRelativeUrlByFilePath(_image.src), Astro.site)
-    : null;
+const seoProps = merge(
+  {
+    title: '',
+    titleTemplate: '%s',
+    canonical: canonical,
+    noindex: true,
+    nofollow: true,
+    description: undefined,
+    openGraph: {
+      url: canonical,
+      siteName: SITE?.name,
+      images: [],
+      locale: I18N?.locale || 'en',
+      type: 'website',
+    },
+    twitter: {
+      cardType: openGraph?.images?.length ? 'summary_large_image' : 'summary',
+    },
+  },
+  {
+    title: SITE?.metadata?.title?.default,
+    titleTemplate: SITE?.metadata?.title?.template,
+    noindex: typeof SITE?.metadata?.robots?.index !== 'undefined' ? !SITE.metadata.robots.index : undefined,
+    nofollow: typeof SITE?.metadata?.robots?.follow !== 'undefined' ? !SITE.metadata.robots.follow : undefined,
+    description: SITE?.metadata?.description,
+    openGraph: SITE?.metadata?.openGraph,
+    twitter: SITE?.metadata?.twitter,
+  },
+  {
+    title: title,
+    titleTemplate: ignoreTitleTemplate ? '%s' : undefined,
+    canonical: canonical,
+    noindex: typeof robots?.index !== 'undefined' ? !robots.index : undefined,
+    nofollow: typeof robots?.follow !== 'undefined' ? !robots.follow : undefined,
+    description: description,
+    openGraph: { url: canonical, ...openGraph },
+    twitter: twitter,
+  }
+);
 ---
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<AstroSeo
-  title={title}
-  titleTemplate={dontUseTitleTemplate ? '%s' : `%s — ${SITE.name}`}
-  description={description}
-  canonical={String(canonical)}
-  noindex={noindex}
-  nofollow={nofollow}
-  openGraph={{
-    url: String(canonical),
-    title: ogTitle,
-    description: description,
-    type: ogType,
-    images: image
-      ? [
-          {
-            url: image.toString(),
-            alt: ogTitle,
-          },
-        ]
-      : undefined,
-    // site_name: 'SiteName',
-  }}
-  twitter={{
-    // handle: '@handle',
-    // site: '@site',
-    cardType: image ? 'summary_large_image' : undefined,
-  }}
-/>
-
-<CustomStyles />
+<AstroSeo {...({...seoProps, openGraph: await adaptOpenGraphImages(seoProps.openGraph)})} />
 
 <!-- Google Site Verification -->
 {SITE.googleSiteVerificationId && <meta name="google-site-verification" content={SITE.googleSiteVerificationId} />}
-
-<!-- Google Analytics -->
-{SITE.googleAnalyticsId && <GoogleAnalytics id={String(SITE.googleAnalyticsId)} partytown={true} />}
-
-{SITE.splitbeeAnalytics?.enabled && <SplitbeeAnalytics {...SITE.splitbeeAnalytics} />}
-
-<link rel="shortcut icon" href={getAsset('/favicon.ico')} />
-<link rel="icon" type="image/svg+xml" href={getAsset('/favicon.svg')} />
-<link rel="mask-icon" href={getAsset('/favicon.svg')} color="#8D46E7" />

@@ -1,24 +1,30 @@
 ---
 import '~/assets/styles/base.css';
 
+import Favicons from '~/components/Favicons.astro';
+import CustomFonts from '~/components/CustomFonts.astro';
 import MetaTags from '~/components/common/MetaTags.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 
-import { MetaSEO } from '~/types';
+import { MetaData } from '~/types';
 import I18N from '~/config/i18n';
 
 export interface Props {
-  meta?: MetaSEO;
+  metadata?: MetaData;
 }
 
-const { meta = {} } = Astro.props;
+const { metadata = {} } = Astro.props;
 const { language = 'en', textDirection = 'ltr' } = I18N;
 ---
 
 <!DOCTYPE html>
 <html lang={language} dir={textDirection} class="2xl:text-[20px]">
   <head>
-    <MetaTags {...meta} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <Favicons />
+    <CustomFonts />
+    <MetaTags {...metadata} />
   </head>
 
   <body class="antialiased text-default bg-page tracking-tight">

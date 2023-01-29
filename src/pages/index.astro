@@ -13,32 +13,32 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Background from '~/components/common/Background.astro';
 
-const meta = {
-  title: SITE.title,
+const metadata = {
+  title: 'Astrowind — Free template for create a website with Astro 2.0 + Tailwind CSS',
   description: SITE.description,
-  dontUseTitleTemplate: true,
+  ignoreTitleTemplate: true,
 };
 ---
 
-<Layout {meta}>
+<Layout {metadata}>
   <!-- Hero Widget ******************* -->
 
   <Hero
     callToAction={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
-    image={{ src: import('~/assets/images/hero.png'), alt: 'AstroWind Hero Image' }}
+    image={{ src: import('~/assets/images/hero.png'), alt: 'Astrowind Hero Image' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden lg:inline">create your website <br />with </span>
-      <span class="text-accent mark md:mark-underline">Astro 2.0</span> + Tailwind CSS
+      Free template for <span class="hidden lg:inline">create your website <br />with</span>
+      {' '}<span class="text-accent mark md:mark-underline">Astro 2.0</span> + Tailwind CSS
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0
+        <span class="font-semibold">Astrowind</span> is a free, customizable and production-ready template for Astro 2.0
         + Tailwind CSS.</span
       >
-      <span class="block mb-1 sm:hidden font-bold">AstroWind: Production-ready.</span> Suitable for Startups, Small Business,
+      <span class="block mb-1 sm:hidden font-bold">Astrowind: Production-ready.</span> Suitable for Startups, Small Business,
       Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
     </Fragment>
   </Hero>
@@ -51,7 +51,7 @@ const meta = {
 
   <Features
     highlight="Features"
-    title="What you get with AstroWind"
+    title="What you get with Astrowind"
     subtitle="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae."
     items={[
       [
@@ -72,7 +72,7 @@ const meta = {
           description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
           icon: 'tabler:list-check',
-          iconBgClass: 'bg-secondary'
+          iconBgClass: 'bg-secondary',
         },
       ],
       [
@@ -97,28 +97,28 @@ const meta = {
       ],
     ]}
   >
-    <Background slot="bg" class="bg-[#e7f1ff] dark:bg-transparent" />
+    <Background slot="bg" class="bg-[#dbeafe] dark:bg-transparent" />
   </Features>
 
   <!-- Steps Widget ****************** -->
 
   <Steps
-    title="Get your dream website up and running in no time with AstroWind."
+    title="Get your dream website up and running in no time with Astrowind."
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Download</span>',
+        title: 'Step 1: <span class="font-medium mark md:mark-underline">Download</span>',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula.',
         icon: 'tabler:package',
       },
       {
-        title: 'Step 2: <span class="font-medium">Add content</em>',
+        title: 'Step 2: <span class="font-medium mark md:mark-underline">Add content</em>',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla.',
         icon: 'tabler:letter-case',
       },
       {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        title: 'Step 3: <span class="font-medium mark md:mark-underline">Customize styles</span>',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus.',
         icon: 'tabler:paint',
@@ -277,7 +277,7 @@ const meta = {
 
   <LatestPosts
     title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
+    information={`The blog is used to display Astrowind documentation.
 			Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
 			Astro is a very interesting technology. Thanks.
 		`}
