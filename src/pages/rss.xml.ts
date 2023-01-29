@@ -16,7 +16,7 @@ export const get = async () => {
 
   return rss({
     title: `${SITE.name}’s Blog`,
-    description: SITE.description,
+    description: SITE?.metadata?.description || 'RSS Feed',
     site: import.meta.env.SITE,
 
     items: posts.map((post) => ({
