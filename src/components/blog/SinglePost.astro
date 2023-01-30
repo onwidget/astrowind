@@ -1,5 +1,5 @@
 ---
-import Icon from 'astro-icon';
+import { Icon } from 'astro-icon';
 import { Picture } from '@astrojs/image/components';
 
 import PostTags from '~/components/blog/Tags.astro';
@@ -39,7 +39,7 @@ const { post, url } = Astro.props;
               ) : (
                 <>
                   {' '}
-                  ·{' '}<span class="capitalize">{post.category.replaceAll('-', ' ')}</span>
+                  · <span class="capitalize">{post.category.replaceAll('-', ' ')}</span>
                 </>
               ))
           }
