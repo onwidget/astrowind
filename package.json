@@ -30,7 +30,7 @@
     "astro-compress": "1.1.28",
     "astro-icon": "^0.8.0",
     "color": "^4.2.3",
-    "eslint": "^8.32.0",
+    "eslint": "^8.33.0",
     "eslint-plugin-astro": "^0.23.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "limax": "^2.1.0",
