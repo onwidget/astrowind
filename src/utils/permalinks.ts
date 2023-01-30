@@ -14,7 +14,7 @@ const createPath = (...params: string[]) => {
   return '/' + paths + (SITE.trailingSlash && paths ? '/' : '');
 };
 
-const BASE_PATHNAME = SITE.basePathname;
+const BASE_PATHNAME = SITE.base;
 
 export const cleanSlug = (text = '') =>
   trimSlash(text)
@@ -29,7 +29,7 @@ export const TAG_BASE = cleanSlug(BLOG?.tag?.pathname) || 'tag';
 export const POST_PERMALINK_PATTERN = trimSlash(BLOG?.post?.permalink || `${BLOG_BASE}/%slug%`);
 
 /** */
-export const getCanonical = (path = ''): string | URL => new URL(path, SITE.origin);
+export const getCanonical = (path = ''): string | URL => new URL(path, SITE.site);
 
 /** */
 export const getPermalink = (slug = '', type = 'page'): string => {

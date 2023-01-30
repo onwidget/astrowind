@@ -1,11 +1,13 @@
 export default {
   name: 'Astrowind',
 
-  origin: 'https://astrowind.vercel.app',
-  basePathname: '/',
+  site: 'https://astrowind.vercel.app',
+  base: '/',
   trailingSlash: false,
 
-  // Default SEO metadata
+  /**
+   * Default SEO metadata
+   */
   metadata: {
     title: {
       default: 'Astrowind',
@@ -26,7 +28,6 @@ export default {
           height: 628,
         },
       ],
-      locale: 'en',
       type: 'website',
     },
     twitter: {
