@@ -11,17 +11,17 @@ import partytown from '@astrojs/partytown';
 import compress from 'astro-compress';
 import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs';
 
-import SETTINGS from './src/utils/config.mjs';
+import SITE, { hasGoogleAnalytics } from './src/utils/config.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const whenExternalScripts = (items = []) =>
-  SETTINGS.googleAnalyticsId ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
+  hasGoogleAnalytics ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  site: SETTINGS.origin,
-  base: SETTINGS.basePathname,
-  trailingSlash: SETTINGS.trailingSlash ? 'always' : 'never',
+  site: SITE.site,
+  base: SITE.base,
+  trailingSlash: SITE.trailingSlash ? 'always' : 'never',
 
   output: 'static',
 
