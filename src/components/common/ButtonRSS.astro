@@ -1,0 +1,24 @@
+---
+import { Icon } from 'astro-icon';
+import { getAsset } from '~/utils/permalinks';
+
+import { isBlogEnabled, isBlogPostRouteEnabled } from '~/utils/blog';
+
+const {
+  label = 'RSS Feed',
+  class:
+    className = 'md:inline-block text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center',
+  iconClass = 'w-6 h-6 md:w-5 md:h-5',
+  iconName = 'tabler:rss',
+} = Astro.props;
+---
+
+{
+  isBlogEnabled && isBlogPostRouteEnabled ? (
+    <a class={className} aria-label={label} href={getAsset('/rss.xml')}>
+      <Icon name={iconName} class={iconClass} />
+    </a>
+  ) : (
+    ''
+  )
+}

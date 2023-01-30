@@ -43,7 +43,7 @@ import UI from '~/config/ui';
     let lastKnownScrollPosition = window.scrollY;
     let ticking = true;
 
-    attachEvent('[data-aw-toggle-menu] > input', 'click', function (_, elem) {
+    attachEvent('[data-aw-toggle-menu] > input', 'click', function () {
       document.body.classList.toggle('overflow-hidden');
       document.getElementById('header')?.classList.toggle('h-screen');
       document.getElementById('header')?.classList.toggle('expanded');
@@ -96,7 +96,11 @@ import UI from '~/config/ui';
 
     function appyHeaderStylesOnScroll() {
       const header = document.getElementById('header');
-      if (lastKnownScrollPosition > headerScrollTop && !header.classList.contains('scroll') && header.classList.contains('sticky')) {
+      if (
+        lastKnownScrollPosition > headerScrollTop &&
+        !header.classList.contains('scroll') &&
+        header.classList.contains('sticky')
+      ) {
         document.getElementById('header').classList.add('scroll');
       } else if (lastKnownScrollPosition <= headerScrollTop && header.classList.contains('scroll')) {
         document.getElementById('header').classList.remove('scroll');

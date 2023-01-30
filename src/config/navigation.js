@@ -1,5 +1,5 @@
 import SITE from './site';
-import { getPermalink, getBlogPermalink, getAsset } from '../utils/permalinks';
+import { getPermalink, getBlogPermalink } from '../utils/permalinks';
 
 export const header = {
   links: [
@@ -83,7 +83,7 @@ export const footer = {
         { text: 'Partners', href: '#' },
         { text: 'Atom', href: '#' },
         { text: 'Electron', href: '#' },
-        { text: 'AstroWind Desktop', href: '#' },
+        { text: 'Astrowind Desktop', href: '#' },
       ],
     },
     {
@@ -116,8 +116,8 @@ export const footer = {
   socialLinks: [
     { ariaLabel: 'Twitter', icon: 'tabler:brand-twitter', href: '#' },
     { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
+    { ariaLabel: 'Youtube', icon: 'tabler:brand-youtube', href: '#' },
     { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss') },
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
   ],
   footNote: `

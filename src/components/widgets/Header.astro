@@ -4,7 +4,8 @@ import Logo from '~/components/Logo.astro';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 
-import { getHomePermalink, getAsset } from '~/utils/permalinks';
+import { getHomePermalink } from '~/utils/permalinks';
+import ButtonRSS from '../common/ButtonRSS.astro';
 
 interface Link {
   text?: string;
@@ -116,18 +117,7 @@ const {
       <div class="items-center flex justify-between w-full md:w-auto">
         <div class="flex">
           {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
-
-          {
-            showRssFeed && (
-              <a
-                class="md:inline-block text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-                aria-label="RSS Feed"
-                href={getAsset('/rss.xml')}
-              >
-                <Icon name="tabler:rss" class="w-6 h-6 md:w-5 md:h-5" />
-              </a>
-            )
-          }
+          {showRssFeed && <ButtonRSS iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
         </div>
         {
           actions?.length ? (

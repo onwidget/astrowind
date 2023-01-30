@@ -110,7 +110,7 @@ const seoProps = merge(
 );
 ---
 
-<AstroSeo {...({...seoProps, openGraph: await adaptOpenGraphImages(seoProps.openGraph)})} />
+<AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps.openGraph) }} />
 
 <!-- Google Site Verification -->
 {SITE.googleSiteVerificationId && <meta name="google-site-verification" content={SITE.googleSiteVerificationId} />}
