@@ -4,22 +4,14 @@ import SinglePost from '~/components/blog/SinglePost.astro';
 import ToBlogLink from '~/components/blog/ToBlogLink.astro';
 
 import { getCanonical, getPermalink } from '~/utils/permalinks';
-import { canIndexBlogPost, fetchPosts, isBlogEnabled, isBlogPostRouteEnabled } from '~/utils/blog';
+import { canIndexBlogPost, getStaticPathsBlogPost } from '~/utils/blog';
 import { findImage } from '~/utils/images';
 
-export async function getStaticPaths() {
-  if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
-  return (await fetchPosts()).map((post) => ({
-    params: {
-      blog: post.permalink,
-    },
-    props: { post },
-  }));
-}
+export const getStaticPaths = getStaticPathsBlogPost;
 
 const { post } = Astro.props;
-const url = getCanonical(getPermalink(post.permalink, 'post'));
 
+const url = getCanonical(getPermalink(post.permalink, 'post'));
 const image = await findImage(post.image);
 
 const metadata = {

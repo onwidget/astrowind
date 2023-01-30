@@ -2,7 +2,7 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
 import BLOG from '~/config/blog';
-import { cleanSlug, trimSlash, POST_PERMALINK_PATTERN } from './permalinks';
+import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
 
 const generatePermalink = async ({ id, slug, publishDate, category }) => {
   const year = String(publishDate.getFullYear()).padStart(4, '0');
@@ -78,6 +78,20 @@ const load = async function (): Promise<Array<Post>> {
 let _posts: Array<Post>;
 
 /** */
+export const isBlogEnabled = !BLOG?.post?.disabled;
+export const isBlogListRouteEnabled = !BLOG?.list?.disabled;
+export const isBlogPostRouteEnabled = !BLOG?.post?.disabled;
+export const isBlogCategoryRouteEnabled = !BLOG?.category?.disabled;
+export const isBlogTagRouteEnabled = !BLOG?.tag?.disabled;
+
+export const canIndexBlogList = !BLOG?.list?.noindex;
+export const canIndexBlogPost = !BLOG?.post?.noindex;
+export const canIndexBlogCategory = !BLOG?.category?.noindex;
+export const canIndexBlogTag = !BLOG?.tag?.noindex;
+
+export const blogPostsPerPage = BLOG?.postsPerPage || 6;
+
+/** */
 export const fetchPosts = async (): Promise<Array<Post>> => {
   if (!_posts) {
     _posts = await load();
@@ -122,15 +136,66 @@ export const findLatestPosts = async ({ count }: { count?: number }): Promise<Ar
   return posts ? posts.slice(0, _count) : [];
 };
 
-export const isBlogEnabled = !BLOG?.post?.disabled;
-export const isBlogListRouteEnabled = !BLOG?.list?.disabled;
-export const isBlogPostRouteEnabled = !BLOG?.post?.disabled;
-export const isBlogCategoryRouteEnabled = !BLOG?.category?.disabled;
-export const isBlogTagRouteEnabled = !BLOG?.tag?.disabled;
+/** */
+export const getStaticPathsBlogList = async ({ paginate }) => {
+  if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
+  return paginate(await fetchPosts(), {
+    params: { blog: BLOG_BASE || undefined },
+    pageSize: blogPostsPerPage,
+  });
+};
 
-export const canIndexBlogList = !BLOG?.list?.noindex;
-export const canIndexBlogPost = !BLOG?.post?.noindex;
-export const canIndexBlogCategory = !BLOG?.category?.noindex;
-export const canIndexBlogTag = !BLOG?.tag?.noindex;
+/** */
+export const getStaticPathsBlogPost = async () => {
+  if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
+  return (await fetchPosts()).map((post) => ({
+    params: {
+      blog: post.permalink,
+    },
+    props: { post },
+  }));
+};
 
-export const blogPostsPerPage = BLOG?.postsPerPage || 6;
+/** */
+export const getStaticPathsBlogCategory = async ({ paginate }) => {
+  if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
+
+  const posts = await fetchPosts();
+  const categories = new Set();
+  posts.map((post) => {
+    typeof post.category === 'string' && categories.add(post.category.toLowerCase());
+  });
+
+  return Array.from(categories).map((category: string) =>
+    paginate(
+      posts.filter((post) => typeof post.category === 'string' && category === post.category.toLowerCase()),
+      {
+        params: { category: category, blog: CATEGORY_BASE || undefined },
+        pageSize: blogPostsPerPage,
+        props: { category },
+      }
+    )
+  );
+};
+
+/** */
+export const getStaticPathsBlogTag = async ({ paginate }) => {
+  if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
+
+  const posts = await fetchPosts();
+  const tags = new Set();
+  posts.map((post) => {
+    Array.isArray(post.tags) && post.tags.map((tag) => tags.add(tag.toLowerCase()));
+  });
+
+  return Array.from(tags).map((tag: string) =>
+    paginate(
+      posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.toLowerCase() === tag)),
+      {
+        params: { tag: tag, blog: TAG_BASE || undefined },
+        pageSize: blogPostsPerPage,
+        props: { tag },
+      }
+    )
+  );
+};

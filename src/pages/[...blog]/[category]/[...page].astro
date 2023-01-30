@@ -1,38 +1,17 @@
 ---
-import { isBlogEnabled, isBlogCategoryRouteEnabled, canIndexBlogCategory, blogPostsPerPage } from '~/utils/blog';
+import { canIndexBlogCategory, getStaticPathsBlogCategory } from '~/utils/blog';
 
 import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/widgets/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
 
-import { fetchPosts } from '~/utils/blog';
-import { CATEGORY_BASE } from '~/utils/permalinks';
-
-export async function getStaticPaths({ paginate }) {
-  if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
-
-  const posts = await fetchPosts();
-  const categories = new Set();
-  posts.map((post) => {
-    typeof post.category === 'string' && categories.add(post.category.toLowerCase());
-  });
-
-  return Array.from(categories).map((category: string) =>
-    paginate(
-      posts.filter((post) => typeof post.category === 'string' && category === post.category.toLowerCase()),
-      {
-        params: { category: category, blog: CATEGORY_BASE || undefined },
-        pageSize: blogPostsPerPage,
-        props: { category },
-      }
-    )
-  );
-}
+export const getStaticPaths = getStaticPathsBlogCategory;
 
 const { page, category } = Astro.props;
 
 const currentPage = page.currentPage ?? 1;
+
 const metadata = {
   title: `Category'${category}' ${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
   robots: {

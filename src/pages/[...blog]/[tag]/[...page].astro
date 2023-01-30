@@ -1,43 +1,22 @@
 ---
-import { blogPostsPerPage, canIndexBlogTag, isBlogEnabled, isBlogTagRouteEnabled } from '~/utils/blog';
+import { canIndexBlogTag, getStaticPathsBlogTag } from '~/utils/blog';
 
 import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/widgets/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
 
-import { fetchPosts } from '~/utils/blog';
-import { TAG_BASE } from '~/utils/permalinks';
-
-export async function getStaticPaths({ paginate }) {
-  if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
-
-  const posts = await fetchPosts();
-  const tags = new Set();
-  posts.map((post) => {
-    Array.isArray(post.tags) && post.tags.map((tag) => tags.add(tag.toLowerCase()));
-  });
-
-  return Array.from(tags).map((tag: string) =>
-    paginate(
-      posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.toLowerCase() === tag)),
-      {
-        params: { tag: tag, blog: TAG_BASE || undefined },
-        pageSize: blogPostsPerPage,
-        props: { tag },
-      }
-    )
-  );
-}
+export const getStaticPaths = getStaticPathsBlogTag;
 
 const { page, tag } = Astro.props;
 
 const currentPage = page.currentPage ?? 1;
+
 const metadata = {
   title: `Posts by tag '${tag}'${currentPage > 1 ? ` — Page ${currentPage} ` : ''}`,
   robots: {
     index: canIndexBlogTag,
-  }
+  },
 };
 ---
 

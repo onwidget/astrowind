@@ -1,33 +1,25 @@
 ---
-import { blogPostsPerPage, canIndexBlogList, isBlogEnabled, isBlogListRouteEnabled } from '~/utils/blog';
+import { canIndexBlogList, getStaticPathsBlogList } from '~/utils/blog';
 
 import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/widgets/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
 
-import { fetchPosts } from '~/utils/blog';
-import { BLOG_BASE } from '~/utils/permalinks';
-
-export async function getStaticPaths({ paginate }) {
-  if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
-  return paginate(await fetchPosts(), {
-    params: { blog: BLOG_BASE || undefined },
-    pageSize: blogPostsPerPage,
-  });
-}
+export const getStaticPaths = getStaticPathsBlogList;
 
 const { page } = Astro.props;
+
 const currentPage = page.currentPage ?? 1;
 
 const metadata = {
   title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
   robots: {
-    index: canIndexBlogList && currentPage === 1
+    index: canIndexBlogList && currentPage === 1,
   },
   openGraph: {
     type: 'blog',
-  }
+  },
 };
 ---
 
