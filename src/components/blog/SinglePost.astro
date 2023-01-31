@@ -61,6 +61,9 @@ const { post, url } = Astro.props;
             aspectRatio={16 / 9}
             width={900}
             height={506}
+            loading="eager"
+            decoding="async"
+            background={undefined}
           />
         ) : (
           <div class="max-w-3xl mx-auto px-4 sm:px-6">

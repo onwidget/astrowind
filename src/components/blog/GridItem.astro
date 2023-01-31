@@ -23,11 +23,13 @@ const image = await findImage(post.image);
           src={image}
           class="md:object-cover w-full md:w-auto md:h-full rounded shadow-lg bg-gray-400 dark:bg-slate-700"
           widths={[400, 900]}
-          width="400"
-          height="224"
+          width={400}
+          height={224}
           sizes="(max-width: 900px) 400px, 900px"
           alt={post.title}
           aspectRatio="16:9"
+          loading="lazy"
+          decoding="async"
         />
       )
     }
