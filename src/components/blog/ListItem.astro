@@ -33,6 +33,8 @@ const link = !BLOG?.post?.disabled ? getPermalink(post.permalink, 'post') : '';
               sizes="(max-width: 900px) 400px, 900px"
               alt={post.title}
               aspectRatio="16:9"
+              loading="lazy"
+              decoding="async"
             />
           )}
         </div>
