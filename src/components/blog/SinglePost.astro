@@ -29,13 +29,14 @@ const { post, url } = Astro.props;
             post.category && (
               <>
                 {' '}
-                ·
+                ·{' '}
                 <a class="capitalize hover:underline" href={getPermalink(post.category, 'category')}>
                   {post.category.replaceAll('-', ' ')}
                 </a>
               </>
             )
           }
+          {' '}·{' '}{post.readingTime} min read
         </p>
       </div>
       <h1
