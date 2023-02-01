@@ -25,6 +25,10 @@ export default defineConfig({
 
   output: 'static',
 
+  markdown: {
+    remarkPlugins: [readingTimeRemarkPlugin],
+  },
+
   integrations: [
     tailwind({
       config: {
@@ -55,10 +59,6 @@ export default defineConfig({
       logger: 1,
     }),
   ],
-
-  markdown: {
-    remarkPlugins: [readingTimeRemarkPlugin],
-  },
 
   vite: {
     resolve: {
