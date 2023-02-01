@@ -14,12 +14,12 @@
     "subfont": "subfont -ir --no-fallbacks --silent --root dist"
   },
   "devDependencies": {
-    "@astrojs/image": "^0.13.1",
+    "@astrojs/image": "0.13.0",
     "@astrojs/mdx": "^0.15.2",
     "@astrojs/partytown": "^1.0.3",
     "@astrojs/rss": "^2.1.0",
     "@astrojs/sitemap": "^1.0.1",
-    "@astrojs/tailwind": "^3.0.1",
+    "@astrojs/tailwind": "3.0.0",
     "@astrolib/analytics": "^0.3.0",
     "@astrolib/seo": "^0.3.0",
     "@fontsource/inter": "^4.5.15",
@@ -27,7 +27,7 @@
     "@types/lodash.merge": "^4.6.7",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.49.0",
-    "astro": "^2.0.4",
+    "astro": "2.0.2",
     "astro-compress": "1.1.28",
     "astro-icon": "^0.8.0",
     "color": "^4.2.3",
