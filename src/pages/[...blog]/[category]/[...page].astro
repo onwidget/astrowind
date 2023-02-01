@@ -1,5 +1,5 @@
 ---
-import { canIndexBlogCategory, getStaticPathsBlogCategory } from '~/utils/blog';
+import { blogCategoryRobots, getStaticPathsBlogCategory } from '~/utils/blog';
 
 import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
@@ -15,7 +15,8 @@ const currentPage = page.currentPage ?? 1;
 const metadata = {
   title: `Category'${category}' ${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
   robots: {
-    index: canIndexBlogCategory,
+    index: blogCategoryRobots?.index,
+    follow: blogCategoryRobots?.follow,
   },
 };
 ---

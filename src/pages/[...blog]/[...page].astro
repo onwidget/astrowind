@@ -1,5 +1,5 @@
 ---
-import { canIndexBlogList, getStaticPathsBlogList } from '~/utils/blog';
+import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
 
 import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
@@ -15,7 +15,8 @@ const currentPage = page.currentPage ?? 1;
 const metadata = {
   title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
   robots: {
-    index: canIndexBlogList && currentPage === 1,
+    index: blogListRobots?.index && currentPage === 1,
+    follow: blogListRobots?.follow,
   },
   openGraph: {
     type: 'blog',

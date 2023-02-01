@@ -5,7 +5,7 @@ import SinglePost from '~/components/blog/SinglePost.astro';
 import ToBlogLink from '~/components/blog/ToBlogLink.astro';
 
 import { getCanonical, getPermalink } from '~/utils/permalinks';
-import { canIndexBlogPost, getStaticPathsBlogPost } from '~/utils/blog';
+import { blogPostRobots, getStaticPathsBlogPost } from '~/utils/blog';
 import { findImage } from '~/utils/images';
 
 export const getStaticPaths = getStaticPathsBlogPost;
@@ -20,14 +20,15 @@ const metadata = merge(
     title: post.title,
     description: post.excerpt,
     robots: {
-      index: canIndexBlogPost,
+      index: blogPostRobots?.index,
+      follow: blogPostRobots?.follow,
     },
     openGraph: {
       type: 'article',
       ...(image ? { images: [{ url: image.src, width: image.width, height: image.height }] } : {}),
     },
   },
-  { ...(post?.metadata ? { ...post.metadata, canonical: post?.metadata?.canonical || url } : {}) }
+  { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
 );
 ---
 

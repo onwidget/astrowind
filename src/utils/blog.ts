@@ -93,16 +93,16 @@ const load = async function (): Promise<Array<Post>> {
 let _posts: Array<Post>;
 
 /** */
-export const isBlogEnabled = !BLOG?.post?.disabled;
-export const isBlogListRouteEnabled = !BLOG?.list?.disabled;
-export const isBlogPostRouteEnabled = !BLOG?.post?.disabled;
-export const isBlogCategoryRouteEnabled = !BLOG?.category?.disabled;
-export const isBlogTagRouteEnabled = !BLOG?.tag?.disabled;
+export const isBlogEnabled = BLOG?.post?.isEnabled;
+export const isBlogListRouteEnabled = BLOG?.list?.isEnabled;
+export const isBlogPostRouteEnabled = BLOG?.post?.isEnabled;
+export const isBlogCategoryRouteEnabled = BLOG?.category?.isEnabled;
+export const isBlogTagRouteEnabled = BLOG?.tag?.isEnabled;
 
-export const canIndexBlogList = !BLOG?.list?.noindex;
-export const canIndexBlogPost = !BLOG?.post?.noindex;
-export const canIndexBlogCategory = !BLOG?.category?.noindex;
-export const canIndexBlogTag = !BLOG?.tag?.noindex;
+export const blogListRobots = BLOG?.list?.robots || { index: true };
+export const blogPostRobots = BLOG?.post?.robots || { index: true };
+export const blogCategoryRobots = BLOG?.category?.robots || { index: true };
+export const blogTagRobots = BLOG?.tag?.robots || { index: false };
 
 export const blogPostsPerPage = BLOG?.postsPerPage || 6;
 
