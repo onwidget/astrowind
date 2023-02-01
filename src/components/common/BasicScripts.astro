@@ -123,12 +123,13 @@ import UI from '~/config/ui';
 
   window.onpageshow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');
-    const elem = document.querySelector('[data-aw-toggle-menu]');
+    const elem = document.querySelector('[data-aw-toggle-menu] > input');
     if (elem) {
-      elem.classList.remove('expanded');
+      elem.checked = true;
     }
     document.body.classList.remove('overflow-hidden');
     document.getElementById('header')?.classList.remove('h-screen');
+    document.getElementById('header')?.classList.remove('expanded');
     document.querySelector('#header nav')?.classList.add('hidden');
   };
 </script>

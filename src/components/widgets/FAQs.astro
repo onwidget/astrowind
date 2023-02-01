@@ -1,23 +1,24 @@
 ---
-import { Icon } from 'astro-icon';
+import Headline from '~/components/ui/Headline.astro';
+import ItemGrid from '../ui/ItemGrid.astro';
 
 interface Item {
-  question: string;
-  answer: string;
+  title: string;
+  description?: string;
 }
 
 export interface Props {
   title?: string;
   subtitle?: string;
   highlight?: string;
-  items: Array<Array<Item>>;
+  items: Array<Item>;
   isDark?: boolean;
 }
 
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
-  highlight,
+  highlight = await Astro.slots.render('highlight'),
   items = [],
   isDark = false,
 } = Astro.props;
@@ -27,47 +28,20 @@ const {
   <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">
     <slot name="bg"><div class:list={['absolute inset-0', { 'bg-dark dark:bg-transparent': isDark }]}></div></slot>
   </div>
-  <div class:list={['relative text-default px-6 py-16 mx-auto max-w-6xl lg:py-20', { dark: isDark }]}>
-    <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
-      {
-        (title || subtitle || highlight) && (
-          <div class="max-w-xl mb-10 md:mx-auto md:text-center lg:max-w-2xl md:mb-12">
-            {highlight && (
-              <p
-                class="text-base text-secondary dark:text-blue-200 font-semibold tracking-wide uppercase"
-                set:html={highlight}
-              />
-            )}
-            {title && (
-              <h2
-                class="max-w-lg mb-4 text-3xl font-bold leading-none md:tracking-tight sm:text-4xl md:mx-auto font-heading text-heading"
-                set:html={title}
-              />
-            )}
-            {subtitle && <p class="max-w-3xl mx-auto text-xl text-muted dark:text-slate-400" set:html={subtitle} />}
-          </div>
-        )
-      }
-    </div>
-    <div class="max-w-screen-xl sm:mx-auto">
-      <div class="grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-x-16 md:grid-cols-2">
-        {
-          items &&
-            items.map((subitems) => (
-              <div class="space-y-8">
-                {subitems.map(({ question, answer }) => (
-                  <div>
-                    <h3 class="mb-4 text-xl font-bold">
-                      <Icon name="tabler:arrow-down-right" class="w-7 h-7 text-primary inline-block" />
-                      {question}
-                    </h3>
-                    {answer && <div class="text-muted dark:text-gray-400" set:html={answer} />}
-                  </div>
-                ))}
-              </div>
-            ))
-        }
-      </div>
+  <div class:list={['relative text-default px-4 md:px-6 py-12 md:py-16 lg:py-20 mx-auto max-w-6xl', { dark: isDark }]}>
+    <Headline
+      title={title}
+      subtitle={subtitle}
+      highlight={highlight}
+      classes={{
+        container: 'max-w-xl sm:mx-auto lg:max-w-2xl',
+        title: 'sm:text-4xl text-3xl',
+      }}
+    />
+    <div class="sm:mx-auto">
+      <ItemGrid items={items} defaultIcon="tabler:chevron-right" classes={{
+                panel: 'max-w-none',
+      }} />
     </div>
   </div>
 </section>

@@ -29,7 +29,7 @@ const posts = await findLatestPosts({ count });
   <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">
     <slot name="bg"><div class:list={['absolute inset-0', { 'bg-dark dark:bg-transparent': isDark }]}></div></slot>
   </div>
-  <div class:list={['relative text-default px-6 py-16 mx-auto max-w-screen-xl lg:py-20', { dark: isDark }]}>
+  <div class:list={['relative text-default px-4 md:px-6 mx-auto max-w-7xl py-12 md:py-16 lg:py-20', { dark: isDark }]}>
     <div class="flex flex-col lg:justify-between lg:flex-row mb-8">
       <div class="md:max-w-sm">
         {

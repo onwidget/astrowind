@@ -26,11 +26,14 @@ export interface Props {
 const { siteName = '', socialLinks = [], secondaryLinks = [], links = [], footNote = '', isDark = false } = Astro.props;
 ---
 
-<footer class="relative border-t border-gray-200 dark:border-slate-800">
+<footer class="relative">
   <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">
     <slot name="bg"><div class:list={['absolute inset-0', { 'bg-dark dark:bg-transparent': isDark }]}></div></slot>
   </div>
-  <div class:list={['relative max-w-screen-xl mx-auto px-6 text-default', { dark: isDark }]}>
+  <div class:list={['relative max-w-7xl mx-auto px-4 md:px-6 text-default', { dark: isDark }]}>
+    <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">
+      <slot name="bg-inside"></slot>
+    </div>
     <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
       <div class="col-span-12 lg:col-span-4">
         <div class="mb-2">
@@ -51,7 +54,7 @@ const { siteName = '', socialLinks = [], secondaryLinks = [], links = [], footNo
       {
         links.map(({ title, links }) => (
           <div class="col-span-6 md:col-span-3 lg:col-span-2">
-            <div class="dark:text-gray-300 font-medium mb-2">{title}</div>
+            <div class="dark:text-gray-300 font-bold mb-2">{title}</div>
             {links && Array.isArray(links) && links.length > 0 && (
               <ul class="text-sm">
                 {links.map(({ text, href, ariaLabel }) => (

@@ -48,5 +48,5 @@ const image = await findImage(post.image);
       )
     }
   </h3>
-  <p class="text-muted dark:text-slate-400 text-lg">{post.excerpt || post.description}</p>
+  {post.excerpt && <p class="text-muted dark:text-slate-400 text-lg">{post.excerpt}</p>}
 </article>

@@ -1,7 +1,9 @@
 ---
-title: 'Terms and Conditions'
-noindex: true
-layout: '~/layouts/MarkdownLayout.astro'
+layout: ~/layouts/MarkdownLayout.astro
+title: Terms and Conditions
+metadata:
+  robots:
+    index: false
 ---
 
 _Last updated_: January 06, 2023
@@ -22,7 +24,7 @@ For the purposes of these Terms and Conditions:
 
 - **Country** refers to: California, United States
 
-- **Company** (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Astrowind LLC, 1 Cupertino, CA 95014.
+- **Company** (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to AstroWind LLC, 1 Cupertino, CA 95014.
 
 - **Device** means any device that can access the Service such as a computer, a cellphone or a digital tablet.
 
@@ -32,7 +34,7 @@ For the purposes of these Terms and Conditions:
 
 - **Third-party Social Media Service** means any services or content (including data, information, products or services) provided by a third-party that may be displayed, included or made available by the Service.
 
-- **Website** refers to Astrowind, accessible from [https://astrowind.vercel.app](https://astrowind.vercel.app)
+- **Website** refers to AstroWind, accessible from [https://astrowind.vercel.app](https://astrowind.vercel.app)
 
 - **You** means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.
 

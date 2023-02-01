@@ -12,7 +12,7 @@
   }
 
   .mark-underline:after,
-  .mark-underline.highlight-none:after {
+  .mark-underline.mark-none:after {
     display: block;
     content: '';
     position: absolute;
@@ -24,6 +24,21 @@
     left: 0;
     right: 0;
     height: 0.75rem;
+    z-index: -1;
+  }
+
+  .mark-underline-2:after,
+  .mark-underline-2.mark-none:after {
+    display: block;
+    content: '';
+    position: absolute;
+    background: url('~/assets/resources/underline2.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    bottom: -0.1rem;
+    left: 0;
+    right: 0;
+    height: 0.5rem;
     z-index: -1;
   }
 }
@@ -60,8 +75,13 @@
   display: block;
 }
 
+[astro-icon] > *,
+[astro-icon].icon-normal > * {
+  stroke-width: 1.8;
+}
+
 [astro-icon].icon-light > * {
-  stroke-width: 1.2;
+  stroke-width: 1.4;
 }
 
 [astro-icon].icon-bold > * {

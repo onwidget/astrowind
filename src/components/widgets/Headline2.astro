@@ -13,7 +13,7 @@ const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   content = await Astro.slots.render('content'),
-  highlight,
+  highlight = await Astro.slots.render('highlight'),
   isDark = false,
   withHeaderOffset = false,
   headerOffsetClasses = '-top-[72px] md:-top-[130px]',
@@ -27,9 +27,9 @@ const {
   >
     <slot name="bg"><div class:list={['absolute inset-0', { 'bg-dark dark:bg-transparent': isDark }]}></div></slot>
   </div>
-  <div class:list={['relative max-w-screen-xl mx-auto px-6 text-center', { dark: isDark }]}>
+  <div class:list={['relative max-w-7xl mx-auto px-4 md:px-6 text-center', { dark: isDark }]}>
     <div class="py-12 md:py-20">
-      <div class="max-w-screen-lg">
+      <div class="mx-auto">
         {
           highlight && (
             <p

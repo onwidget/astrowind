@@ -1,12 +1,13 @@
 ---
 import merge from 'lodash.merge';
 import { AstroSeo } from '@astrolib/seo';
+import type { AstroSeoProps, OpenGraph } from '@astrolib/seo/src/types';
 import { getImage } from '@astrojs/image';
 
 import SITE from '~/utils/config.mjs';
 import I18N from '~/config/i18n';
 
-import { MetaData, MetaDataOpenGraph } from '~/types';
+import { MetaData } from '~/types';
 import { getCanonical } from '~/utils/permalinks';
 // import { getRelativeUrlByFilePath } from '~/utils/directories';
 
@@ -17,8 +18,8 @@ export interface Props extends MetaData {}
 // FIXME: Review this for relative urls
 // new URL(getRelativeUrlByFilePath(_image.src), Astro.site)
 
-// FIXME: Don't do optimization on DEV or many times with default image
-const adaptOpenGraphImages = async (openGraph: MetaDataOpenGraph): Promise<MetaDataOpenGraph> => {
+// FIXME: Don't do many times with default image
+const adaptOpenGraphImages = async (openGraph: OpenGraph = {}): Promise<OpenGraph> => {
   if (!openGraph?.images?.length) {
     return openGraph;
   }
@@ -32,7 +33,9 @@ const adaptOpenGraphImages = async (openGraph: MetaDataOpenGraph): Promise<MetaD
       if (image?.url) {
         const resolvedImage = await findImage(image.url);
         if (!resolvedImage) {
-          return {};
+          return {
+            url: '',
+          };
         }
 
         const _image = await getImage({
@@ -44,15 +47,19 @@ const adaptOpenGraphImages = async (openGraph: MetaDataOpenGraph): Promise<MetaD
 
         if (typeof _image === 'object') {
           return {
-            url: typeof _image.src === 'string' ? String(new URL(_image.src, Astro.site)) : undefined,
+            url: typeof _image.src === 'string' ? String(new URL(_image.src, Astro.site)) : 'pepe',
             width: typeof _image.width === 'number' ? _image.width : undefined,
             height: typeof _image.height === 'number' ? _image.height : undefined,
           };
         }
-        return {};
+        return {
+          url: '',
+        };
       }
 
-      return {};
+      return {
+        url: '',
+      };
     })
   );
 
@@ -63,13 +70,13 @@ const {
   title,
   ignoreTitleTemplate = false,
   canonical = String(getCanonical(String(Astro.url.pathname))),
-  robots,
+  robots = {},
   description,
-  openGraph,
-  twitter,
+  openGraph = {},
+  twitter = {},
 } = Astro.props;
 
-const seoProps = merge(
+const seoProps: AstroSeoProps = merge(
   {
     title: '',
     titleTemplate: '%s',
@@ -110,7 +117,7 @@ const seoProps = merge(
 );
 ---
 
-<AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps.openGraph) }} />
+<AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph) }} />
 
 <!-- Google Site Verification -->
 {SITE.googleSiteVerificationId && <meta name="google-site-verification" content={SITE.googleSiteVerificationId} />}

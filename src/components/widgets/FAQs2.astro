@@ -1,0 +1,83 @@
+---
+import { Icon } from 'astro-icon';
+import Headline from '~/components/ui/Headline.astro';
+
+interface Item {
+  title: string;
+  description: string;
+}
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  highlight?: string;
+  items: Array<Item>;
+  isDark?: boolean;
+}
+
+const unique_id = 'faqs-accordion';
+
+const {
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  highlight = await Astro.slots.render('highlight'),
+  items = [],
+  isDark = false,
+} = Astro.props;
+---
+
+<section class="relative">
+  <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">
+    <slot name="bg"><div class:list={['absolute inset-0', { 'bg-dark dark:bg-transparent': isDark }]}></div></slot>
+  </div>
+  <div class:list={['relative text-default px-4 md:px-6 mx-auto max-w-screen-lg py-12 md:py-16 lg:py-20', { dark: isDark }]}>
+    <Headline title={title} subtitle={subtitle} highlight={highlight}
+    classes={{
+      container: 'max-w-xl sm:mx-auto lg:max-w-2xl',
+      title: 'sm:text-4xl text-3xl'
+    }} />
+    <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
+      {
+        items &&
+          items.map(({ title, description }, index) => (
+            <div class="border-b">
+              <div class="overflow-hidden">
+                <input
+                  type="radio"
+                  {...(index === 0 ? { checked: true } : {})}
+                  id={`${unique_id}-${index}`}
+                  class="checkbox appearance-none opacity-0 absolute"
+                  name={unique_id}
+                />
+                <label
+                  class="text-lg font-bold select-none block py-4"
+                  for={`${unique_id}-${index}`}
+                  role="button"
+                  aria-controls={`${unique_id}-${index}-panel`}
+                >
+                  <Icon name="tabler:arrow-down-right" class="w-7 h-7 text-primary inline-block ml-auto" />
+                  {title}
+                </label>
+                {description && (
+                  <div
+                    class="text-muted dark:text-gray-400 max-h-0 pb-0 opacity-0 transition-all"
+                    set:html={description}
+                    id={`${unique_id}-${index}-panel`}
+                  />
+                )}
+              </div>
+            </div>
+          ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .checkbox:checked ~ div {
+    max-height: 100vh;
+    overflow: visible;
+    opacity: 1;
+    padding-bottom: 1rem;
+  }
+</style>

@@ -22,7 +22,7 @@ const { post, url } = Astro.props;
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
   <article>
     <header class={post.image ? '' : ''}>
-      <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-6 sm:items-center">
+      <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 md:px-6 sm:items-center">
         <p>
           <Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-0.5" />
           <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time>
@@ -43,14 +43,15 @@ const { post, url } = Astro.props;
                 </>
               ))
           }
+          {' '}·{' '}{post.readingTime} min read
         </p>
       </div>
       <h1
-        class="px-6 max-w-3xl mx-auto text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading text-heading"
+        class="px-4 md:px-6 max-w-3xl mx-auto text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading text-heading"
       >
         {post.title}
       </h1>
-      <p class="max-w-3xl mx-auto mt-4 mb-8 px-6 text-xl md:text-2xl text-muted text-justify">
+      <p class="max-w-3xl mx-auto mt-4 mb-8 px-4 md:px-6 text-xl md:text-2xl text-muted text-justify">
         {post.excerpt}
       </p>
 
@@ -61,7 +62,7 @@ const { post, url } = Astro.props;
             class="max-w-full lg:max-w-6xl mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
             widths={[400, 900]}
             sizes="(max-width: 900px) 400px, 900px"
-            alt={post.description || ''}
+            alt={post.title || ''}
             loading="eager"
             aspectRatio={16 / 9}
             width={900}
@@ -70,14 +71,14 @@ const { post, url } = Astro.props;
             background={undefined}
           />
         ) : (
-          <div class="max-w-3xl mx-auto px-4 sm:px-6">
+          <div class="max-w-3xl mx-auto px-4 md:px-6">
             <div class="border-t dark:border-slate-700" />
           </div>
         )
       }
     </header>
     <div
-      class="mx-auto px-6 sm:px-6 max-w-3xl prose prose-lg lg:prose-xl dark:prose-invert dark:prose-headings:text-heading prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-link prose-img:rounded-md mt-8"
+      class="mx-auto px-4 md:px-6 max-w-3xl prose prose-lg lg:prose-xl dark:prose-invert dark:prose-headings:text-heading prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-link prose-img:rounded-md mt-8"
     >
       {
         post.Content ? (
@@ -90,7 +91,7 @@ const { post, url } = Astro.props;
         )
       }
     </div>
-    <div class="mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row">
+    <div class="mx-auto px-4 md:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row">
       <PostTags tags={post.tags} class="mr-5" />
       <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600" />
     </div>

@@ -1,75 +1,46 @@
 ---
-import { Icon } from 'astro-icon';
+import ItemGrid from '~/components/ui/ItemGrid.astro';
+import Headline from '~/components/ui/Headline.astro';
 
 interface Item {
   title: string;
   description: string;
   icon?: string;
-  iconBgClass?: string;
+  iconClass?: string;
 }
 
 export interface Props {
+  id?: string;
   title?: string;
   subtitle?: string;
   highlight?: string;
-  items: Array<Array<Item>>;
+  items: Array<Item>;
   isDark?: boolean;
 }
 
 const {
+  id = '',
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
-  highlight,
+  highlight = await Astro.slots.render('highlight'),
   items = [],
   isDark = false,
 } = Astro.props;
 ---
 
-<section class="relative scroll-mt-16" id="features">
+<section class="relative scroll-mt-16" {...id ? { id } : {}}>
   <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">
     <slot name="bg"><div class:list={['absolute inset-0', { 'bg-dark dark:bg-transparent': isDark }]}></div></slot>
   </div>
-  <div class:list={['relative px-6 py-16 mx-auto max-w-6xl lg:px-8 lg:py-20 text-default', { dark: isDark }]}>
-    {
-      (title || subtitle || highlight) && (
-        <div class="mb-10 md:mx-auto text-center md:mb-12 max-w-3xl">
-          {highlight && (
-            <p
-              class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase"
-              set:html={highlight}
-            />
-          )}
-          {title && (
-            <h2
-              class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading text-heading"
-              set:html={title}
-            />
-          )}
-
-          {subtitle && <p class="max-w-3xl mx-auto sm:text-center text-xl text-muted" set:html={subtitle} />}
-        </div>
-      )
-    }
-    <div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
-      {
-        items.map((subitems) => (
-          <div class="space-y-8 sm:px-8">
-            {subitems.map(({ title, description, icon, iconBgClass = 'bg-primary' }) => (
-              <div class="flex flex-row max-w-md">
-                <div class="mb-4 mr-4">
-                  <div class:list={['flex items-center justify-center w-12 h-12 rounded-full', iconBgClass]}>
-                    {icon && <Icon name={icon} class="w-6 h-6 text-white icon-light" />}
-                  </div>
-                </div>
-                <div>
-                  <h3 class="mb-3 text-xl font-bold">{title}</h3>
-                  <p class="text-muted" set:html={description} />
-                </div>
-              </div>
-            ))}
-          </div>
-        ))
-      }
-    </div>
+  <div class:list={['relative py-16 mx-auto max-w-5xl px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default', { dark: isDark }]}>
+    <Headline title={title} subtitle={subtitle} highlight={highlight} />
+    <ItemGrid
+      items={items}
+      classes={{
+        container: 'md:grid-cols-2',
+        title: 'md:text-[1.3rem]',
+        icon: 'text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4',
+      }}
+    />
   </div>
 </section>

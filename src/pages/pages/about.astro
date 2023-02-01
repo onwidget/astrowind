@@ -1,7 +1,7 @@
 ---
-import Background from '~/components/common/Background.astro';
-import Headline from '~/components/widgets/Headline2.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/widgets/Headline2.astro';
+import Background from '~/components/ui/Background.astro';
 
 const metadata = {
   title: 'About us',
@@ -10,6 +10,6 @@ const metadata = {
 
 <Layout {metadata}>
   <Headline title="About us">
-    <Background slot="bg" class="bg-gray-100" />
+    <Background slot="bg" class="bg-gray-100 dark:bg-slate-800" />
   </Headline>
 </Layout>

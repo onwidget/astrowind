@@ -7,6 +7,7 @@ import Announcement from '~/components/widgets/Announcement.astro';
 import { header, footer } from '~/config/navigation';
 
 import { MetaData } from '~/types';
+import Background from '~/components/ui/Background.astro';
 
 export interface Props {
   metadata?: MetaData;
@@ -26,6 +27,8 @@ const { metadata } = Astro.props;
     <slot />
   </main>
   <slot name="footer">
-    <Footer {...footer} />
+    <Footer {...footer}>
+      <Background slot="bg" class="border-t border-gray-200 dark:border-slate-800" />
+    </Footer>
   </slot>
 </Layout>

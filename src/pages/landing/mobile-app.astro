@@ -6,7 +6,7 @@ import Header from '~/components/widgets/Header.astro';
 import Hero2 from '~/components/widgets/Hero2.astro';
 import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import Background from '~/components/common/Background.astro';
+import Background from '~/components/ui/Background.astro';
 
 const metadata = {
   title: 'Mobile App Landing Page',
@@ -34,14 +34,14 @@ const metadata = {
   <!-- Hero2 Widget ******************* -->
 
   <Hero2
-    highlight="Introducing Astrowind"
-    image={{ src: import('~/assets/images/mobile-app.png'), alt: 'Astrowind Hero Image' }}
+    highlight="Introducing AstroWind"
+    image={{ src: import('~/assets/images/mobile-app.png'), alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">Free & flexible Professional App ready for use</Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">Astrowind</span> is a free, customizable and production-ready template for Astro 2.0
+        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0
         + Tailwind CSS.</span
       >
       Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages &
@@ -68,7 +68,7 @@ const metadata = {
       />
     </a>
 
-    <Background slot="bg" class="bg-[#e6f2ff] dark:bg-transparent" />
+    <Background slot="bg" class="bg-[#e6f2ff] dark:bg-transparent" style="background: linear-gradient(68deg,#e7faf5,#e0ecfd,#fefafc)" />
   </Hero2>
 
   <!-- <Note /> -->

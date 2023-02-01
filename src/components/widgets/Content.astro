@@ -1,6 +1,7 @@
 ---
-import { Icon } from 'astro-icon';
 import { Picture } from '@astrojs/image/components';
+import ItemGrid from '../ui/ItemGrid.astro';
+import Headline from '../ui/Headline.astro';
 
 interface Item {
   title: string;
@@ -23,7 +24,7 @@ export interface Props {
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
-  highlight,
+  highlight = await Astro.slots.render('highlight'),
   content = await Astro.slots.render('content'),
   items = [],
   image = await Astro.slots.render('image'),
@@ -37,55 +38,23 @@ const {
   <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">
     <slot name="bg"><div class:list={['absolute inset-0', { 'bg-dark dark:bg-transparent': isDark }]}></div></slot>
   </div>
-  <div class:list={[{ 'pt-0 md:pt-0': isAfterContent, dark: isDark }, 'relative text-default py-16 md:py-20']}>
-    <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
-      {
-        (title || subtitle || highlight) && (
-          <div class="mb-10 md:mx-auto text-center md:mb-12 max-w-3xl">
-            {highlight && (
-              <p
-                class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase"
-                set:html={highlight}
-              />
-            )}
-            {title && (
-              <h2
-                class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading text-heading"
-                set:html={title}
-              />
-            )}
+  <div class:list={[{ 'pt-0 md:pt-0': isAfterContent, dark: isDark }, 'relative text-default py-12 md:py-16 lg:py-20']}>
+    <Headline title={title} subtitle={subtitle} highlight={highlight} />
+    <div class="mx-auto max-w-7xl px-4 md:px-6 md:self-center">
+      <div class:list={['flex flex-col gap-8 md:flex-row md:gap-12', { 'md:flex-row-reverse': isReversed }]}>
+        <div class="md:basis-1/2 md:self-center">
+          {content && <div class="mb-10 text-lg" set:html={content} />}
 
-            {subtitle && <p class="max-w-3xl mx-auto sm:text-center text-xl mt-4 text-muted" set:html={subtitle} />}
-          </div>
-        )
-      }
-    </div>
-    <div class="mx-auto max-w-screen-xl px-6 md:px-8">
-      <div class={`md:flex ${isReversed ? 'md:flex-row-reverse' : ''} md:gap-16`}>
-        <div class="md:basis-1/2 self-center">
-          {content && <div class="mb-12 text-lg" set:html={content} />}
-
-          {
-            items && (
-              <div class="space-y-6">
-                {items.map(({ title: title2, description, icon }) => (
-                  <div class="flex">
-                    <div class="flex-shrink-0">
-                      <div class="flex h-7 w-7 items-center justify-center rounded-full bg-success text-gray-50">
-                        <Icon name={icon ? icon : 'tabler:check'} class="w-5 h-5" />
-                      </div>
-                    </div>
-                    <div class="ml-4">
-                      {title2 && <h3 class="text-lg font-bold leading-6">{title2}</h3>}
-                      {description && <p class="mt-2 text-muted" set:html={description} />}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )
-          }
+          <ItemGrid
+            items={items}
+            defaultIcon="tabler:check"
+            classes={{
+              container: '',
+              icon: 'w-7 h-7 bg-success text-gray-50 p-0.5 rounded-full mr-4',
+            }}
+          />
         </div>
-        <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2 self-center">
+        <div aria-hidden="true" class="md:basis-1/2">
           {
             image && (
               <div class="relative m-auto max-w-4xl">
