@@ -1,0 +1,48 @@
+---
+import { Icon } from 'astro-icon';
+import { twMerge } from 'tailwind-merge';
+
+interface Item {
+  title?: string;
+  description?: string;
+  icon?: string;
+  iconClass?: string;
+}
+
+export interface Props {
+  items?: Array<Item>;
+  defaultIcon?: string;
+  classes?: Record<string, string>;
+}
+
+const { items = [], defaultIcon = '', classes = {} } = Astro.props;
+
+const {
+  container: containerClass = 'sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+  panel: panelClass = 'text-center items-center',
+  title: titleClass = '',
+  description: descriptionClass = '',
+  icon: defaultIconClass = 'text-primary',
+} = classes;
+---
+
+{
+  items && (
+    <div class={twMerge('grid gap-8', containerClass)}>
+      {items.map(({ title, description, icon, iconClass }) => (
+        <div
+          class={twMerge(
+            'relative flex flex-col text-center items-center',
+            panelClass
+          )}
+        >
+          {(icon || defaultIcon) && (
+            <Icon name={icon || defaultIcon} class={twMerge('mb-2 w-10 h-10', defaultIconClass, iconClass)} />
+          )}
+          <div class={twMerge('text-xl font-bold', titleClass)}>{title}</div>
+          {description && <p class={twMerge('text-muted mt-2', descriptionClass)} set:html={description} />}
+        </div>
+      ))}
+    </div>
+  )
+}
