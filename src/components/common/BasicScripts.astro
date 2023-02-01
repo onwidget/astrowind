@@ -105,11 +105,24 @@ import UI from '~/config/ui';
       } else if (lastKnownScrollPosition <= headerScrollTop && header.classList.contains('scroll')) {
         document.getElementById('header').classList.remove('scroll');
       }
+
+      // lastKnownScrollPosition = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+
       ticking = false;
     }
     appyHeaderStylesOnScroll();
 
     attachEvent([document], 'scroll', function () {
+      const st = window.scrollY;
+
+      if (st > lastKnownScrollPosition && st > 120 && !document.getElementById('header').classList.contains("expanded") ) {
+        document.getElementById('header').classList.add("opacity-0")
+        console.log("scroll down");
+      } else if (st < lastKnownScrollPosition) {
+        document.getElementById('header').classList.remove("opacity-0")
+        console.log("scroll up");
+      }
+
       lastKnownScrollPosition = window.scrollY;
 
       if (!ticking) {
