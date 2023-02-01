@@ -83,7 +83,7 @@ export const footer = {
         { text: 'Partners', href: '#' },
         { text: 'Atom', href: '#' },
         { text: 'Electron', href: '#' },
-        { text: 'Astrowind Desktop', href: '#' },
+        { text: 'AstroWind Desktop', href: '#' },
       ],
     },
     {

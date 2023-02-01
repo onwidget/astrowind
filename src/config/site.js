@@ -1,5 +1,5 @@
 export default {
-  name: 'Astrowind',
+  name: 'AstroWind',
 
   site: 'https://astrowind.vercel.app',
   base: '/',
@@ -10,8 +10,8 @@ export default {
    */
   metadata: {
     title: {
-      default: 'Astrowind',
-      template: '%s — Astrowind',
+      default: 'AstroWind',
+      template: '%s — AstroWind',
     },
     robots: {
       index: true,
@@ -20,7 +20,7 @@ export default {
     description:
       '🚀 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.',
     openGraph: {
-      siteName: 'Astrowind',
+      siteName: 'AstroWind',
       images: [
         {
           url: '~/assets/images/default.jpg',
