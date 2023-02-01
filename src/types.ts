@@ -1,25 +1,41 @@
 export interface Post {
   id: string;
   slug: string;
+  permalink: string;
 
   publishDate: Date;
-  title: string;
-  description?: string;
+  updateDate?: Date;
 
+  title: string;
+  excerpt?: string;
   image?: string;
 
-  canonical?: string | URL;
-  permalink?: string;
-
-  draft?: boolean;
-
-  excerpt?: string;
   category?: string;
   tags?: Array<string>;
   author?: string;
 
-  Content: unknown;
+  draft?: boolean;
+
+  Content?: unknown;
   content?: string;
+
+  readingTime?: number;
+
+  metadata?: MetaData;
+}
+
+export interface MetaData {
+  title?: string;
+  ignoreTitleTemplate?: boolean;
+
+  canonical?: string;
+
+  robots?: MetaDataRobots;
+
+  description?: string;
+
+  openGraph?: MetaDataOpenGraph;
+  twitter?: MetaDataTwitter;
 }
 
 export interface MetaDataRobots {
@@ -28,7 +44,7 @@ export interface MetaDataRobots {
 }
 
 export interface MetaDataImage {
-  url?: string;
+  url: string;
   width?: number;
   height?: number;
 }
@@ -45,18 +61,4 @@ export interface MetaDataTwitter {
   handle?: string;
   site?: string;
   cardType?: string;
-}
-
-export interface MetaData {
-  title?: string;
-  ignoreTitleTemplate?: boolean;
-
-  canonical?: string;
-
-  robots?: MetaDataRobots;
-
-  description?: string;
-
-  openGraph?: MetaDataOpenGraph;
-  twitter?: MetaDataTwitter;
 }

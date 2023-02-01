@@ -31,36 +31,51 @@ const generatePermalink = async ({ id, slug, publishDate, category }) => {
 
 const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> => {
   const { id, slug: rawSlug = '', data } = post;
-  const { Content } = await post.render();
+  const { Content, remarkPluginFrontmatter } = await post.render();
 
   const {
+    publishDate: rawPublishDate = new Date(),
+    updateDate: rawUpdateDate,
+    title,
+    excerpt,
+    image,
     tags: rawTags = [],
     category: rawCategory,
-    author = 'Anonymous',
-    publishDate: rawPublishDate = new Date(),
-    ...rest
+    author,
+    draft = false,
+    metadata = {},
   } = data;
 
   const slug = cleanSlug(rawSlug.split('/').pop());
   const publishDate = new Date(rawPublishDate);
+  const updateDate = rawUpdateDate ? new Date(rawUpdateDate) : undefined;
   const category = rawCategory ? cleanSlug(rawCategory) : undefined;
   const tags = rawTags.map((tag: string) => cleanSlug(tag));
 
   return {
     id: id,
     slug: slug,
+    permalink: await generatePermalink({ id, slug, publishDate, category }),
 
     publishDate: publishDate,
+    updateDate: updateDate,
+
+    title: title,
+    excerpt: excerpt,
+    image: image,
+
     category: category,
     tags: tags,
     author: author,
 
-    ...rest,
+    draft: draft,
+
+    metadata,
 
     Content: Content,
     // or 'content' in case you consume from API
 
-    permalink: await generatePermalink({ id, slug, publishDate, category }),
+    readingTime: remarkPluginFrontmatter?.readingTime,
   };
 };
 

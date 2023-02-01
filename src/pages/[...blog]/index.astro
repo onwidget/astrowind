@@ -1,4 +1,5 @@
 ---
+import merge from 'lodash.merge';
 import Layout from '~/layouts/PageLayout.astro';
 import SinglePost from '~/components/blog/SinglePost.astro';
 import ToBlogLink from '~/components/blog/ToBlogLink.astro';
@@ -14,18 +15,20 @@ const { post } = Astro.props;
 const url = getCanonical(getPermalink(post.permalink, 'post'));
 const image = await findImage(post.image);
 
-const metadata = {
-  title: post.title,
-  description: post.description,
-  canonical: post.canonical || url,
-  robots: {
-    index: canIndexBlogPost,
+const metadata = merge(
+  {
+    title: post.title,
+    description: post.excerpt,
+    robots: {
+      index: canIndexBlogPost,
+    },
+    openGraph: {
+      type: 'article',
+      ...(image ? { images: [{ url: image.src, width: image.width, height: image.height }] } : {}),
+    },
   },
-  openGraph: {
-    type: 'article',
-    ...(image ? { images: [{ url: image.src, width: image.width, height: image.height }] } : {}),
-  },
-};
+  { ...(post?.metadata ? { ...post.metadata, canonical: post?.metadata?.canonical || url } : {}) }
+);
 ---
 
 <Layout {metadata}>
