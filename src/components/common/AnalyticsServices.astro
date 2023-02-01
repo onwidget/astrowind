@@ -8,4 +8,5 @@ import SplitbeeAnalytics from './SplitbeeAnalytics.astro';
   ANALYTICS.googleAnalyticsId && <GoogleAnalytics id={String(ANALYTICS.googleAnalyticsId)} partytown={true} />
 }
 
+<!-- Splitbee Analytics -->
 {ANALYTICS.splitbeeAnalytics?.enabled && <SplitbeeAnalytics {...ANALYTICS.splitbeeAnalytics} />}
