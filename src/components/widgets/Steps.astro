@@ -35,15 +35,15 @@ const {
   <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">
     <slot name="bg"><div class:list={['absolute inset-0', { 'bg-dark dark:bg-transparent': isDark }]}></div></slot>
   </div>
-  <div
-    class:list={[
-      'relative text-default px-4 md:px-6 py-12 md:py-16 lg:py-20 mx-auto max-w-6xl',
-      { dark: isDark },
-    ]}
-  >
+  <div class:list={['relative text-default px-4 md:px-6 py-12 md:py-16 lg:py-20 mx-auto max-w-6xl', { dark: isDark }]}>
     <div class:list={['flex flex-col gap-8 md:gap-12 md:flex-row', { 'md:flex-row-reverse': isReversed }]}>
       <div class="md:py-4 md:basis-1/2 md:self-center">
-        <Headline title={title} subtitle={subtitle} highlight={highlight} classes={{ container: "text-left", title:"text-3xl lg:text-4xl"}}/>
+        <Headline
+          title={title}
+          subtitle={subtitle}
+          highlight={highlight}
+          classes={{ container: 'text-left', title: 'text-3xl lg:text-4xl' }}
+        />
         <!-- {title && <h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading text-heading" set:html={title} />} -->
         <Timeline items={items} />
       </div>
@@ -58,6 +58,8 @@ const {
                 widths={[400, 768]}
                 sizes="(max-width: 768px) 100vw, 432px"
                 aspectRatio="432:768"
+                width={432}
+                height={768}
                 {...image}
               />
             ))
