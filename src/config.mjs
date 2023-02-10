@@ -1,15 +1,15 @@
 import defaultImage from './assets/images/default.png';
 
 const CONFIG = {
-  name: 'AstroWind',
+  name: 'StatusArea',
 
-  origin: 'https://astrowind.vercel.app',
+  origin: 'https://status-area.vercel.app',
   basePathname: '/',
   trailingSlash: false,
 
-  title: 'AstroWind — Free template for create a website with Astro + Tailwind CSS',
+  title: 'StatausArea',
   description:
-    '🚀 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.',
+    '✨',
   defaultImage: defaultImage,
 
   defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
@@ -21,7 +21,7 @@ const CONFIG = {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
-    timeZone: 'UTC',
+    timeZone: 'IST',
   }),
 
   googleAnalyticsId: false, // or "G-XXXXXXXXXX",
