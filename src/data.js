@@ -3,8 +3,9 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Landing',
-      links: [
+      text: 'test',
+      href: '#',
+    },
         {
           text: 'Sass',
           href: '#',
@@ -17,8 +18,6 @@ export const headerData = {
           text: 'Mobile App',
           href: '#',
         },
-      ],
-    },
     {
       text: 'Pages',
       links: [
