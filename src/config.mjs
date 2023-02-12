@@ -9,7 +9,7 @@ const CONFIG = {
 
   title: 'StatausArea',
   description:
-    '✨',
+    'Watch & Download Malyalam Hindi Tamil Telugu Movies Online Free',
   defaultImage: defaultImage,
 
   defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
@@ -38,7 +38,7 @@ const CONFIG = {
     },
 
     list: {
-      pathname: 'blog', // Blog main path, you can change this to "articles" (/articles)
+      pathname: 'movies', // Blog main path, you can change this to "articles" (/articles)
       noindex: false,
       disabled: false,
     },
