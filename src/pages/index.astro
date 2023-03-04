@@ -5,16 +5,17 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import About from '~/components/widgets/About.astro';
 import Travelguide from '~/components/widgets/Travelguide.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Submissions from '~/components/widgets/Submissions.astro';
-import HighlightedPosts from '~/components/blog/HighlightedPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
+// import Steps from '~/components/widgets/Steps.astro';
+// import HighlightedPosts from '~/components/blog/HighlightedPosts.astro';
+// import FAQs from '~/components/widgets/FAQs.astro';
+// import Stats from '~/components/widgets/Stats.astro';
+// import Speakers from '~/components/widgets/Speakers.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Liga from '~/components/widgets/Liga.astro';
 import Registration from '~/components/widgets/Registration.astro';
 import Banner from '~/components/widgets/Banner.astro';
-import Speakers from '~/components/widgets/Speakers.astro';
+import Submissions from '~/components/widgets/Submissions.astro';
+import ScheduleMini from '~/components/widgets/ScheduleMini.astro';
 
 const meta = {
 	title: SITE.title,
@@ -30,14 +31,12 @@ const meta = {
 	<Travelguide />
 	<!-- <Steps />
 	<Features2 /> -->
+	<!-- <ScheduleMini /> -->
 	<Submissions />
+	<Liga />
 	<Registration />
 	<!-- <HighlightedPosts />
 	<FAQs />
 	<Stats /> -->
-	<Liga />
-
-	<Submissions />
-
 	<CallToAction />
 </Layout>

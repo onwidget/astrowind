@@ -965,6 +965,11 @@ abbrev@1:
   resolved "https://registry.npmjs.org/abbrev/-/abbrev-1.1.1.tgz"
   integrity sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==
 
+accessible-astro-components@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.npmjs.org/accessible-astro-components/-/accessible-astro-components-1.6.5.tgz"
+  integrity sha512-LmwIO/KJ7Sdq/P9H39SUcjWbuwAoZRW4UoEjMLeGN4TmvRa/HnT8zjXqg4emY9CqCLAnAas1Cx/Ts3PFROyyUA==
+
 acorn-globals@^6.0.0:
   version "6.0.0"
   resolved "https://registry.npmjs.org/acorn-globals/-/acorn-globals-6.0.0.tgz"
