@@ -10,8 +10,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier -w .",
-    "lint:eslint": "eslint . --ext .js,.ts,.astro",
-    "subfont": "subfont -ir --no-fallbacks --silent --root dist"
+    "lint:eslint": "eslint . --ext .js,.ts,.astro"
   },
   "devDependencies": {
     "@astrojs/image": "^0.16.0",
@@ -38,7 +37,6 @@
     "prettier-plugin-astro": "^0.8.0",
     "reading-time": "^1.5.0",
     "sharp": "^0.31.3",
-    "subfont": "^6.12.4",
     "svgo": "2.8.0",
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5"
