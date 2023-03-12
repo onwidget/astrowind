@@ -1,0 +1,88 @@
+name: Node
+
+concurrency:
+    group: node-${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+permissions:
+    security-events: write
+
+on:
+    workflow_dispatch:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+    workflow_call:
+
+jobs:
+    node:
+        runs-on: ubuntu-latest
+
+        env:
+            ADBLOCK: true
+            ASTRO_TELEMETRY_DISABLED: 1
+            AUTOMATEDLAB_TELEMETRY_OPTOUT: 1
+            AZURE_CORE_COLLECT_TELEMETRY: 0
+            CHOOSENIM_NO_ANALYTICS: 1
+            DIEZ_DO_NOT_TRACK: 1
+            DO_NOT_TRACK: 1
+            DOTNET_CLI_TELEMETRY_OPTOUT: 1
+            DOTNET_INTERACTIVE_CLI_TELEMETRY_OPTOUT: 1
+            ET_NO_TELEMETRY: 1
+            GATSBY_TELEMETRY_DISABLED: 1
+            GATSBY_TELEMETRY_OPT_OUT: 1
+            GATSBY_TELEMETRY_OPTOUT: 1
+            HASURA_GRAPHQL_ENABLE_TELEMETRY: false
+            HINT_TELEMETRY: off
+            HOMEBREW_NO_ANALYTICS: 1
+            INFLUXD_REPORTING_DISABLED: true
+            ITERATIVE_DO_NOT_TRACK: 1
+            NEXT_TELEMETRY_DEBUG: 1
+            NEXT_TELEMETRY_DISABLED: 1
+            NG_CLI_ANALYTICS: false
+            NUXT_TELEMETRY_DISABLED: 1
+            PIN_DO_NOT_TRACK: 1
+            POWERSHELL_TELEMETRY_OPTOUT: 1
+            SAM_CLI_TELEMETRY: 0
+            STNOUPGRADE: 1
+            STRIPE_CLI_TELEMETRY_OPTOUT: 1
+
+        strategy:
+            matrix:
+                node-version: [16, 18, 19]
+
+        steps:
+            - uses: actions/checkout@v3.3.0
+            - uses: pnpm/action-setup@v2.2.4
+              with:
+                  version: 7.17.1
+                  run_install: |
+                      - recursive: true
+                        args: [
+                          --child-concurrency=9999,
+                          --link-workspace-packages=true,
+                          --lockfile-only,
+                          --network-concurrency=9999,
+                          --prefer-frozen-lockfile=false,
+                          --shamefully-hoist=false,
+                          --shared-workspace-lockfile=true,
+                          --strict-peer-dependencies=false,
+                          --unsafe-perm=true
+                        ]
+
+            - uses: actions/setup-node@v3.6.0
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: "pnpm"
+                  cache-dependency-path: ./pnpm-lock.yaml
+            - run: pnpm install
+              working-directory: .
+
+            - run: pnpm run build
+              working-directory: .
+
+            - uses: actions/upload-artifact@v3.1.2
+              with:
+                  name: .-node-${{ matrix.node-version }}-dist
+                  path: ./dist
