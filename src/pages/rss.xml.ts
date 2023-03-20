@@ -25,5 +25,7 @@ export const get = async () => {
       description: post.description,
       pubDate: post.publishDate,
     })),
+
+    trailingSlash: SITE.trailingSlash
   });
 };
