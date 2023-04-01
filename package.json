@@ -13,10 +13,10 @@
     "lint:eslint": "eslint . --ext .js,.ts,.astro"
   },
   "devDependencies": {
-    "@astrojs/image": "^0.16.3",
+    "@astrojs/image": "^0.16.4",
     "@astrojs/mdx": "^0.18.2",
     "@astrojs/partytown": "^1.2.0",
-    "@astrojs/rss": "^2.3.1",
+    "@astrojs/rss": "^2.3.2",
     "@astrojs/sitemap": "^1.2.1",
     "@astrojs/tailwind": "^3.1.1",
     "@astrolib/analytics": "^0.3.0",
@@ -25,7 +25,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
-    "astro": "^2.1.8",
+    "astro": "^2.1.9",
     "astro-compress": "^1.1.35",
     "astro-icon": "^0.8.0",
     "eslint": "^8.37.0",
