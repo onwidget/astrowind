@@ -6,6 +6,6 @@ export function readingTimeRemarkPlugin() {
     const textOnPage = toString(tree);
     const readingTime = Math.ceil(getReadingTime(textOnPage).minutes);
 
-    file.data.astro.frontmatter.readingTime = readingTime
+    file.data.astro.frontmatter.readingTime = readingTime;
   };
 }

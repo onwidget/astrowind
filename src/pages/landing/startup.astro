@@ -8,18 +8,13 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import { headerData } from '~/data';
 
 const meta = {
-  title: "Startup Landing Page",
+  title: 'Startup Landing Page',
 };
 ---
 
 <Layout {meta}>
   <Fragment slot="header">
-    <Header
-      {...headerData}
-      showRssFeed
-      showToggleTheme
-      position="left"
-    />
+    <Header {...headerData} showRssFeed showToggleTheme position="left" />
   </Fragment>
 
   <!-- Hero2 Widget ******************* -->
@@ -35,15 +30,23 @@ const meta = {
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0 +
-        Tailwind CSS.</span
+        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0
+        + Tailwind CSS.</span
       >
       <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span> Suitable for Startups,
       Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
     </Fragment>
 
     <Fragment slot="image">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/dsTXcSeAZq8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%"></iframe>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/dsTXcSeAZq8"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="width:100%"></iframe>
     </Fragment>
   </Hero>
 

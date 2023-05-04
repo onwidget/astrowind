@@ -57,11 +57,9 @@ export const headerData = {
       href: getBlogPermalink(),
     },
   ],
-  actions: [
-    { type: 'button', text: 'Download', href: 'https://github.com/onwidget/astrowind' }
-  ],
+  actions: [{ type: 'button', text: 'Download', href: 'https://github.com/onwidget/astrowind' }],
 };
-  
+
 export const footerData = {
   links: [
     {
