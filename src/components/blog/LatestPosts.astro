@@ -9,12 +9,11 @@ export interface Props {
   allPostsText?: string;
   allPostsLink?: string | URL;
   information?: string;
-  postIds: string[];
 }
 
 const {
   title = await Astro.slots.render('title'),
-  allPostsText = 'View all posts',
+  allPostsText = 'Ver todos los posts',
   allPostsLink = getBlogPermalink(),
   information = await Astro.slots.render('information'),
   count = 4,
@@ -29,7 +28,7 @@ const posts = await findLatestPosts({ count });
       {
         title && (
           <h2
-            class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2"
+            class="text-3xl font-bold text-third tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2 dark:text-white"
             set:html={title}
           />
         )

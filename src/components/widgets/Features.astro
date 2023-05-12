@@ -11,7 +11,7 @@ export interface Props {
   title?: string;
   subtitle?: string;
   highlight?: string;
-  items: Array<Array<Item>>;
+  items: Array<Item>;
 }
 
 const {
@@ -23,49 +23,55 @@ const {
 ---
 
 <section class="scroll-mt-16" id="features">
-  <div class="px-4 py-16 mx-auto max-w-6xl lg:px-8 lg:py-20">
-    {
-      (title || subtitle || highlight) && (
-        <div class="mb-10 md:mx-auto text-center md:mb-12 max-w-3xl">
-          {highlight && (
-            <p
-              class="text-base text-primary dark:text-blue-200 font-semibold tracking-wide uppercase"
-              set:html={highlight}
-            />
-          )}
-          {title && (
-            <h2
-              class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
-              set:html={title}
-            />
-          )}
-
-          {subtitle && (
-            <p class="max-w-3xl mx-auto sm:text-center text-xl text-muted dark:text-slate-400" set:html={subtitle} />
-          )}
-        </div>
-      )
-    }
-    <div class="grid mx-auto space-y-6 md:grid-cols-2 md:space-y-0">
+  <div class="py-24 sm:py-32">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
       {
-        items.map((subitems) => (
-          <div class="space-y-8 sm:px-8">
-            {subitems.map(({ title, description, icon }) => (
-              <div class="flex flex-row max-w-md">
-                <div class="mb-4 mr-4">
-                  <div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary dark:bg-blue-700">
-                    {icon && <Icon name={icon} class="w-6 h-6 text-white icon-light" />}
-                  </div>
-                </div>
-                <div>
-                  <h3 class="mb-3 text-xl font-bold">{title}</h3>
-                  <p class="text-muted dark:text-slate-400" set:html={description} />
-                </div>
-              </div>
-            ))}
+        (title || subtitle || highlight) && (
+          <div class="mb-10 md:mx-auto text-center md:mb-12 max-w-3xl">
+            {highlight && (
+              <p
+                class="text-base text-secondary dark:text-secondary font-semibold tracking-wide uppercase"
+                set:html={highlight}
+              />
+            )}
+            {title && (
+              <h2
+                class="text-4xl md:text-5xl font-bold text-third leading-tighter mb-4 font-heading dark:text-white"
+                set:html={title}
+              />
+            )}
+
+            {subtitle && (
+              <p class="max-w-3xl mx-auto sm:text-center text-lg text-muted dark:text-slate-400" set:html={subtitle} />
+            )}
           </div>
-        ))
+        )
       }
+    </div>
+
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+        <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+          {
+            items.map(({ title, description, icon }) => (
+              <div class="flex flex-col">
+                <dt class="flex items-center gap-x-3 text-xl text-third font-bold leading-7 dark:text-white">
+                  {icon && <Icon name={icon} class="w-6 h-6 flex-none text-secondary dark:text-secondary" />}
+                  {title}
+                </dt>
+                <dd class="mt-4 flex flex-auto flex-col leading-7 text-muted dark:text-slate-400">
+                  <p class="flex-auto text-base">{description}</p>
+                  <p class="mt-6">
+                    <a href="#" class="text-sm text-primary font-semibold leading-6 dark:text-secondary">
+                      Leer más <span aria-hidden="true">→</span>
+                    </a>
+                  </p>
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
     </div>
   </div>
 </section>

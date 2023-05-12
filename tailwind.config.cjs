@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         primary: 'var(--aw-color-primary)',
         secondary: 'var(--aw-color-secondary)',
+        third: 'var(--aw-color-third)',
         accent: 'var(--aw-color-accent)',
       },
       fontFamily: {

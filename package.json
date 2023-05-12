@@ -22,6 +22,7 @@
     "@astrolib/analytics": "^0.3.0",
     "@astrolib/seo": "^0.3.0",
     "@fontsource/inter": "^4.5.15",
+    "@fontsource/poppins": "^4.5.10",
     "@tailwindcss/typography": "^0.5.9",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
@@ -43,5 +44,13 @@
   },
   "engines": {
     "node": ">=16.12.0"
+  },
+  "volta": {
+    "node": "16.20.0"
+  },
+  "dependencies": {
+    "@astrojs/alpinejs": "^0.2.1",
+    "@types/alpinejs": "^3.7.1",
+    "alpinejs": "^3.12.0"
   }
 }

@@ -1,20 +1,20 @@
 import defaultImage from './assets/images/default.png';
 
 const CONFIG = {
-  name: 'AstroWind',
+  name: 'CIMADent',
 
-  origin: 'https://astrowind.vercel.app',
+  origin: 'https://cimadent.cl',
   basePathname: '/',
   trailingSlash: false,
 
-  title: 'AstroWind — Free template for create a website with Astro + Tailwind CSS',
+  title: 'CIMADent: El Software Dental Líder en Gestión para Odontólogos y Clínicas | ¡Prueba Gratis!',
   description:
-    '🚀 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.',
+    'CIMADent es el software para odontólogos y clínicas dentales que facilita la gestión dental con una plataforma fácil de usar y económica. ¡Optimiza tus consultas y disfruta de nuestro free trial de 7 días.',
   defaultImage: defaultImage,
 
   defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 
-  language: 'en',
+  language: 'es',
   textDirection: 'ltr',
 
   dateFormatter: new Intl.DateTimeFormat('en', {

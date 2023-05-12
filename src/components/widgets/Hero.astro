@@ -35,7 +35,7 @@ const {
         {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
+              class="text-5xl md:text-6xl font-bold text-third leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
               set:html={title}
             />
           )
@@ -49,7 +49,12 @@ const {
                   {typeof callToAction === 'string' ? (
                     <Fragment set:html={callToAction} />
                   ) : (
-                    <a class="btn btn-primary sm:mb-0 w-full" href={callToAction?.href} target="_blank" rel="noopener">
+                    <a
+                      class="btn btn-primary rounded-md bg-primary hover:bg-primary px-3 py-2 text-sm font-medium text-white sm:mb-0 w-full"
+                      href={callToAction?.href}
+                      target="_blank"
+                      rel="noopener"
+                    >
                       {callToAction?.icon && (
                         <>
                           <Icon name={callToAction.icon} class="w-5 h-5 mr-1 -ml-1.5" />{' '}
@@ -67,7 +72,7 @@ const {
                   {typeof callToAction2 === 'string' ? (
                     <Fragment set:html={callToAction2} />
                   ) : (
-                    <a class="btn w-full" href={callToAction2?.href}>
+                    <a class="btn rounded-md px-3 py-2 text-sm font-medium w-full" href={callToAction2?.href}>
                       {callToAction2?.icon && (
                         <>
                           <Icon name={callToAction2.icon} class="w-5 h-5 mr-1 -ml-1.5" />{' '}
@@ -92,9 +97,8 @@ const {
               ) : (
                 <Picture
                   class="mx-auto rounded-md w-full"
-                  widths={[400, 768, 1024, 2040]}
-                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-                  aspectRatio={1024 / 576}
+                  widths={[2040]}
+                  sizes="(max-width: 2039px) 2040px"
                   loading="eager"
                   width={1024}
                   height={576}

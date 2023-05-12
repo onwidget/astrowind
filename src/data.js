@@ -2,126 +2,139 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {
   links: [
+    // {
+    //   text: 'Landing',
+    //   links: [
+    //     {
+    //       text: 'Sass',
+    //       href: getPermalink('/landing/saas'),
+    //     },
+    //     {
+    //       text: 'Startup',
+    //       href: getPermalink('/landing/startup'),
+    //     },
+    //     {
+    //       text: 'Mobile App',
+    //       href: getPermalink('/landing/mobile-app'),
+    //     },
+    //   ],
+    // },
     {
-      text: 'Landing',
+      text: 'Funcionalidades',
       links: [
         {
-          text: 'Sass',
-          href: getPermalink('/landing/saas'),
+          text: 'Notificaciones y Alertas',
+          desc: 'Mantén tus pacientes al tanto y comprometidos.',
+          href: getPermalink('/notificaciones-y-alertas'),
+          icon: 'cil:bell',
         },
         {
-          text: 'Startup',
-          href: getPermalink('/landing/startup'),
+          text: 'Administración y Configuración',
+          desc: 'Personaliza tu espacio de trabajo.',
+          href: getPermalink('/administracion-y-configuracion'),
+          icon: 'cil:settings',
         },
         {
-          text: 'Mobile App',
-          href: getPermalink('/landing/mobile-app'),
+          text: 'Ficha Clínica',
+          desc: 'Accede y gestiona la información clínica de tus pacientes.',
+          href: getPermalink('/ficha-clinica'),
+          icon: 'cil:file',
+        },
+        {
+          text: 'Calendario',
+          desc: 'Organiza citas con facilidad.',
+          href: getPermalink('/calendario'),
+          icon: 'cil:calendar',
+        },
+        {
+          text: 'Agenda Online',
+          desc: 'Reservas en línea para pacientes.',
+          href: getPermalink('/agenda-online'),
+          icon: 'cil:calendar-check',
+        },
+        {
+          text: 'Reportes y Análisis',
+          desc: 'Evalúa el éxito de tu práctica dental.',
+          href: getPermalink('/reportes-y-analisis'),
+          icon: 'cil:graph',
         },
       ],
     },
     {
-      text: 'Pages',
+      text: 'Soluciones',
       links: [
         {
-          text: 'Features',
-          href: '#',
+          text: 'Profesionales Independientes',
+          desc: 'Potencia tu práctica dental con CIMADent.',
+          href: getPermalink('/profesionales-independientes'),
+          icon: 'ph:user',
         },
         {
-          text: 'Pricing',
-          href: '#',
-        },
-        {
-          text: 'About us',
-          href: '#',
-        },
-        {
-          text: 'Contact',
-          href: '#',
-        },
-        {
-          text: 'Terms',
-          href: getPermalink('/terms'),
-        },
-        {
-          text: 'Privacy policy',
-          href: getPermalink('/privacy'),
+          text: 'Clínicas',
+          desc: 'Transforma la gestión de tu clínica dental.',
+          href: getPermalink('/clinicas'),
+          icon: 'ph:users-three',
         },
       ],
     },
     {
-      text: 'Widgets',
-      href: '#',
+      text: 'Precios',
+      href: getPermalink('/precios'),
     },
     {
       text: 'Blog',
       href: getBlogPermalink(),
     },
+    {
+      text: 'Contacto',
+      href: getPermalink('/contacto'),
+    },
   ],
   actions: [
-    { type: 'button', text: 'Download', href: 'https://github.com/onwidget/astrowind' }
+    { type: 'button', text: 'Registrarse', href: 'https://github.com/onwidget/astrowind' },
+    { type: 'link', text: 'Iniciar sesión', href: 'https://github.com/onwidget/astrowind' },
   ],
 };
-  
+
 export const footerData = {
   links: [
     {
-      title: 'Product',
+      title: 'Funcionalidades',
       links: [
-        { text: 'Features', href: '#' },
-        { text: 'Security', href: '#' },
-        { text: 'Team', href: '#' },
-        { text: 'Enterprise', href: '#' },
-        { text: 'Customer stories', href: '#' },
-        { text: 'Pricing', href: '#' },
-        { text: 'Resources', href: '#' },
+        { text: 'Notificaciones y Alertas', href: getPermalink('/notificaciones-y-alertas') },
+        { text: 'Administración y Configuración', href: getPermalink('/administracion-y-configuracion') },
+        { text: 'Ficha Clínica', href: getPermalink('/ficha-clinica') },
+        { text: 'Calendario', href: getPermalink('/calendario') },
+        { text: 'Agenda Online', href: getPermalink('/agenda-online') },
+        { text: 'Reportes y Análisis', href: getPermalink('/reportes-y-analisis') },
       ],
     },
     {
-      title: 'Platform',
+      title: 'Soluciones',
       links: [
-        { text: 'Developer API', href: '#' },
-        { text: 'Partners', href: '#' },
-        { text: 'Atom', href: '#' },
-        { text: 'Electron', href: '#' },
-        { text: 'AstroWind Desktop', href: '#' },
+        { text: 'Profesionales Independientes', href: getPermalink('/profesionales-independientes') },
+        { text: 'Clínicas', href: getPermalink('/clinicas') },
       ],
     },
     {
-      title: 'Support',
-      links: [
-        { text: 'Docs', href: '#' },
-        { text: 'Community Forum', href: '#' },
-        { text: 'Professional Services', href: '#' },
-        { text: 'Skills', href: '#' },
-        { text: 'Status', href: '#' },
-      ],
+      title: 'Soporte',
+      links: [{ text: 'Contacto', href: getPermalink('/contacto') }],
     },
     {
-      title: 'Company',
+      title: 'Compañia',
       links: [
-        { text: 'About', href: '#' },
-        { text: 'Blog', href: '#' },
-        { text: 'Careers', href: '#' },
-        { text: 'Press', href: '#' },
-        { text: 'Inclusion', href: '#' },
-        { text: 'Social Impact', href: '#' },
-        { text: 'Shop', href: '#' },
+        { text: 'Precios', href: getPermalink('/precios') },
+        { text: 'Blog', href: getBlogPermalink() },
       ],
     },
   ],
-  secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
-  ],
+  secondaryLinks: [{ text: 'Privacidad', href: getPermalink('/privacy') }],
   socialLinks: [
-    { ariaLabel: 'Twitter', icon: 'tabler:brand-twitter', href: '#' },
     { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
     { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
   ],
   footNote: `
     <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 float-left rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"></span>
-    Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
+    Creado por <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://cimadent.cl/"> CIMA</a> · All rights reserved.
   `,
 };

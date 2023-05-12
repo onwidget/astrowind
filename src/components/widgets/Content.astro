@@ -6,6 +6,13 @@ interface Item {
   title: string;
   description?: string;
   icon?: string;
+  id?: number;
+}
+
+interface Imagen {
+  id?: number;
+  src?: string;
+  alt?: string;
 }
 
 export interface Props {
@@ -14,6 +21,7 @@ export interface Props {
   highlight?: string;
   content?: string;
   items?: Array<Item>;
+  images?: Array<Imagen>;
   image?: string | any; // TODO: find HTMLElementProps
   isReversed?: boolean;
   isAfterContent?: boolean;
@@ -24,14 +32,19 @@ const {
   subtitle = await Astro.slots.render('subtitle'),
   highlight,
   content = await Astro.slots.render('content'),
+  images = [],
   items = [],
-  image = await Astro.slots.render('image'),
   isReversed = false,
   isAfterContent = false,
 } = Astro.props;
+
+const defaultImageId = 1;
 ---
 
-<section class:list={[{ 'pt-0 md:pt-0': isAfterContent }, 'bg-blue-50 dark:bg-slate-800 py-16 md:py-20']}>
+<section
+  x-data={`{ activeImage: ${defaultImageId} }`}
+  class:list={[{ 'pt-0 md:pt-0': isAfterContent }, 'bg-blue-50 dark:bg-slate-800 py-16 md:py-20']}
+>
   <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
     {
       (title || subtitle || highlight) && (
@@ -44,7 +57,7 @@ const {
           )}
           {title && (
             <h2
-              class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
+              class="text-4xl md:text-5xl font-bold text-third leading-tighter tracking-tighter mb-4 font-heading "
               set:html={title}
             />
           )}
@@ -64,16 +77,16 @@ const {
         {
           items && (
             <div class="space-y-8">
-              {items.map(({ title: title2, description, icon }) => (
-                <div class="flex">
+              {items.map(({ title: title2, description, icon, id }) => (
+                <div class="flex cursor-pointer" x-on:click={`activeImage = ${id}`}>
                   <div class="flex-shrink-0">
-                    <div class="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-gray-50">
+                    <div class="flex h-7 w-7 items-center justify-center rounded-full bg-secondary text-white">
                       <Icon name={icon ? icon : 'tabler:check'} class="w-5 h-5" />
                     </div>
                   </div>
                   <div class="ml-4">
-                    {title2 && <h3 class="text-lg font-medium leading-6 dark:text-white">{title2}</h3>}
-                    {description && <p class="mt-2 text-muted dark:text-slate-400" set:html={description} />}
+                    {title2 && <h3 class="text-lg font-semibold text-third leading-6 dark:text-white">{title2}</h3>}
+                    {description && <p class="mt-2 text-muted text-base dark:text-slate-400" set:html={description} />}
                   </div>
                 </div>
               ))}
@@ -83,21 +96,21 @@ const {
       </div>
       <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2">
         {
-          image && (
+          images && (
             <div class="relative m-auto max-w-4xl">
-              {typeof image === 'string' ? (
-                <Fragment set:html={image} />
-              ) : (
+              {images.map(({ id, src = '', alt = '' }) => (
                 <Picture
-                  class="mx-auto w-full rounded-lg bg-gray-500 shadow-lg"
+                  class="mx-auto w-full "
                   width={500}
                   height={500}
                   widths={[400, 768]}
-                  sizes="(max-width: 768px) 100vw, 432px"
+                  sizes="(max-width: 768px)"
                   aspectRatio="500:500"
-                  {...image}
+                  src={src}
+                  alt={alt}
+                  x-show={`activeImage === ${id}`}
                 />
-              )}
+              ))}
             </div>
           )
         }

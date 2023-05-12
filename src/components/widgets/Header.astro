@@ -9,6 +9,7 @@ import { getHomePermalink, getAsset } from '~/utils/permalinks';
 interface Link {
   text?: string;
   href?: string;
+  desc?: string;
   ariaLabel?: string;
   icon?: string;
 }
@@ -48,7 +49,7 @@ const {
   id="header"
 >
   <div class="py-3 px-3 md:py-3.5 md:px-4 mx-auto w-full md:flex md:justify-between max-w-7xl">
-    <div class:list={[{"mr-auto": position === "right"}, "flex justify-between"]}>
+    <div class:list={[{ 'mr-auto': position === 'right' }, 'flex justify-between']}>
       <a class="flex items-center" href={getHomePermalink()}>
         <Logo />
       </a>
@@ -67,25 +68,31 @@ const {
             <li class={links?.length ? 'dropdown' : ''}>
               {links?.length ? (
                 <>
-                  <button class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out">
+                  <button class="font-medium text-sm hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out">
                     {text} <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 hidden md:inline" />
                   </button>
-                  <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
-                    {links.map(({ text: text2, href: href2 }) => (
-                      <li>
-                        <a
-                          class="first:rounded-t last:rounded-b md:hover:bg-gray-200 dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap"
-                          href={href2}
-                        >
-                          {text2}
-                        </a>
+                  <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white md:min-w-[200px] drop-shadow-xl">
+                    {links.map(({ text: text2, href: href2, desc, icon }) => (
+                      <li class="p-1">
+                        <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-base leading-6 hover:bg-gray-50 dark:hover:bg-gray-800">
+                          <div class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-gray-800">
+                            {icon && <Icon name={icon} class="h-6 w-6 text-third dark:text-secondary" />}
+                          </div>
+                          <div class="flex-auto">
+                            <a href={href2} class="block font-medium text-third text-sm text-gray-900 dark:text-white">
+                              {text2}
+                              <span class="absolute inset-0" />
+                            </a>
+                            <p class="mt-1 text-sm text-gray-600 dark:text-slate-400">{desc}</p>
+                          </div>
+                        </div>
                       </li>
                     ))}
                   </ul>
                 </>
               ) : (
                 <a
-                  class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                  class="font-medium text-sm hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
                   href={href}
                 >
                   {text}
@@ -93,6 +100,20 @@ const {
               )}
             </li>
           ))
+        }
+        {
+          actions?.length
+            ? actions.map(({ text, href }) => (
+                <li class="md:hidden">
+                  <a
+                    class="font-medium text-sm hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                    href={href}
+                  >
+                    <Fragment set:html={text} />
+                  </a>
+                </li>
+              ))
+            : ''
         }
       </ul>
     </nav>
@@ -117,8 +138,11 @@ const {
               {actions.map(({ text, href, type }) => (
                 <a
                   class:list={[
-                    'btn ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm',
-                    { 'btn-ghost': type === 'ghost', 'btn-primary': type === 'primary' },
+                    {
+                      'btn-primary rounded-md bg-primary px-3 py-2 text-sm font-medium text-white': type === 'button',
+                      'font-medium text-sm hover:text-gray-900 dark:hover:text-white transition duration-150 ease-in-out ml-2':
+                        type === 'link',
+                    },
                   ]}
                   href={href}
                 >
