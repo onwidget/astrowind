@@ -28,7 +28,7 @@ const CONFIG = {
   googleSiteVerificationId: false,
 
   blog: {
-    disabled: false,
+    disabled: true,
     postsPerPage: 4,
 
     post: {
