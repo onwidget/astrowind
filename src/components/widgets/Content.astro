@@ -17,6 +17,7 @@ export interface Props {
   image?: string | any; // TODO: find HTMLElementProps
   isReversed?: boolean;
   isAfterContent?: boolean;
+  id?: string;
 }
 
 const {
@@ -31,7 +32,10 @@ const {
 } = Astro.props;
 ---
 
-<section class:list={[{ 'pt-0 md:pt-0': isAfterContent }, 'bg-blue-50 dark:bg-slate-800 py-16 md:py-20']}>
+<section
+  id={highlight !== undefined ? highlight : ''}
+  class:list={[{ 'pt-0 md:pt-0': isAfterContent }, 'bg-blue-50 dark:bg-slate-800 py-16 md:py-20']}
+>
   <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
     {
       (title || subtitle || highlight) && (
