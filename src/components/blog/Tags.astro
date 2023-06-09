@@ -22,7 +22,7 @@ const { tags, class: className = 'text-sm', title = undefined } = Astro.props;
       <ul class={className}>
         {tags.map((tag) => (
           <li class="bg-gray-100 dark:bg-slate-700 inline-block mr-2 mb-2 py-0.5 px-2 lowercase font-medium">
-            {BLOG?.tag?.disabled || PORTFOLIO?.tag?.disabled ? (
+            {BLOG?.tag?.disabled ? (
               tag
             ) : (
               <a
