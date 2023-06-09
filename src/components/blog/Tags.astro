@@ -8,9 +8,10 @@ export interface Props {
   tags: Post['tags'];
   class?: string;  
   title?: string | undefined;
+  isCategory?: boolean;
 }
 
-const { tags, class: className = 'text-sm', title = undefined } = Astro.props;
+const { tags, class: className = 'text-sm', title = undefined, isCategory = false } = Astro.props;
 ---
 
 {
@@ -26,7 +27,7 @@ const { tags, class: className = 'text-sm', title = undefined } = Astro.props;
               tag
             ) : (
               <a
-                href={getPermalink(tag, 'tag')}
+                href={getPermalink(tag, (isCategory ? 'category' : 'tag')}
                 class="text-muted dark:text-slate-300 hover:text-primary dark:hover:text-gray-200"
               >
                 {tag}
