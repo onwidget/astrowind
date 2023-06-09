@@ -17,7 +17,7 @@ const { tags, class: className = 'text-sm', title = undefined } = Astro.props;
   tags && Array.isArray(tags) && (
     <>
       <>
-        {header !== undefined && <span class="align-super font-normal underline underline-offset-4 decoration-2 dark:text-slate-400">{header}</span>}
+        {title !== undefined && <span class="align-super font-normal underline underline-offset-4 decoration-2 dark:text-slate-400">{title}</span>}
       </>
       <ul class={className}>
         {tags.map((tag) => (
