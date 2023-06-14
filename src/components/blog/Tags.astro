@@ -27,7 +27,7 @@ const { tags, class: className = 'text-sm', title = undefined, isCategory = fals
               tag
             ) : (
               <a
-                href={getPermalink(tag, (isCategory ? 'category' : 'tag')}
+                href={getPermalink(tag, (isCategory ? 'category' : 'tag'))}
                 class="text-muted dark:text-slate-300 hover:text-primary dark:hover:text-gray-200"
               >
                 {tag}
