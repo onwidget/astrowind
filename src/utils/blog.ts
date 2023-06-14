@@ -122,3 +122,27 @@ export const findLatestPosts = async ({ count }: { count?: number }): Promise<Ar
 
   return posts ? posts.slice(0, _count) : [];
 };
+
+/** */
+export const findTags = async (): Promise<Array<string>> => {
+  const posts = await fetchPosts();
+  const tags = posts.reduce((acc, post: Post) => {
+    if (post.tags && Array.isArray(post.tags)) {
+      return [...acc, ...post.tags];
+    }
+    return acc;
+  }, []);
+  return [...new Set(tags)];
+};
+
+/** */
+export const findCategories = async (): Promise<Array<string>> => {
+  const posts = await fetchPosts();
+  const categories = posts.reduce((acc, post: Post) => {
+    if (post.category) {
+      return [...acc, post.category];
+    }
+    return acc;
+  }, []);
+  return [...new Set(categories)];
+};
