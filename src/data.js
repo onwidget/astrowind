@@ -24,7 +24,7 @@ export const headerData = {
       links: [
         {
           text: 'Features',
-          href: '#',
+          href: '#features',
         },
         {
           text: 'Pricing',
