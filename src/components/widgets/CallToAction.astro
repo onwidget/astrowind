@@ -9,6 +9,7 @@ interface CallToAction {
 
 export interface Props {
   title?: string;
+  subtitle?: string;
   description?: string;
   callToAction?: string | CallToAction;
 }
@@ -20,7 +21,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="relative">
+<section class="relative not-prose">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <div class="py-12 md:py-20">
       <div

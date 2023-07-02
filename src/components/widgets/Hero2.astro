@@ -11,6 +11,7 @@ interface CallToAction {
 export interface Props {
   title?: string;
   subtitle?: string;
+  content?: string;
   callToAction?: string | CallToAction;
   callToAction2?: string | CallToAction;
   image?: string | any; // TODO: find HTMLElementProps
@@ -26,7 +27,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="relative md:-mt-[76px]">
+<section class="relative md:-mt-[76px] not-prose">
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
     <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
