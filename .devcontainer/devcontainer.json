@@ -1,0 +1,30 @@
+
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+	"name": "Qwik",
+	"dockerFile": "Dockerfile",
+	
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {
+	//	"ghcr.io/devcontainers-contrib/features/gulp-cli:2": {}
+	// },
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			"settings": {},
+			"extensions": [
+				"streetsidesoftware.code-spell-checker"
+			]
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [
+	     3000	
+	],
+
+	"postCreateCommand": "npm install && npm run dev"
+}
