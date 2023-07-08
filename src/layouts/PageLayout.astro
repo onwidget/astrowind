@@ -2,7 +2,7 @@
 import Layout from '~/layouts/BaseLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
-import Announcement from '~/components/widgets/Announcement.astro';
+// import Announcement from '~/components/widgets/Announcement.astro';
 
 import { headerData, footerData } from '~/data';
 
@@ -17,10 +17,10 @@ const { meta } = Astro.props;
 
 <Layout {meta}>
   <slot name="announcement">
-    <Announcement />
+    <!-- <Announcement /> -->
   </slot>
   <slot name="header">
-    <Header {...headerData} isSticky showRssFeed showToggleTheme />
+    <Header {...headerData} isSticky showToggleTheme />
   </slot>
   <main>
     <slot />
