@@ -24,72 +24,59 @@ const meta = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    callToAction={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
-    callToAction2={{ text: 'Learn more', href: '#features' }}
-    image={{ src: import('~/assets/images/hero.png'), alt: 'AstroWind Hero Image' }}
+    image={{ src: import('~/assets/images/hero.png'), alt: 'Cloudsmart Unlimited DevOps' }}
+    callToAction={{ text: 'Sign up now', href: 'https://app.cloudsmart.io'}}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white highlight"> Astro 2.0</span> + Tailwind CSS    </Fragment>
+      <span class="text-accent dark:text-white highlight">Unlimited DevOps</span> for
+      <span class="text-accent dark:text-white highlight"> Public Cloud</span> and
+      <span class="text-accent dark:text-white highlight"> Kubernetes</span>
+    </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0 +
-        Tailwind CSS.</span
+        <span class="font-semibold">Cloudsmart</span> = DevOps engineering for Public Cloud APIs and Kubernetes</span
       >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span> Suitable for Startups,
-      Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
+      <span class="block mb-1 sm:hidden font-bold text-blue-600">Cloudsmart Unlimited DevOps</span>
     </Fragment>
   </Hero>
 
   <!-- Note Widget ******************* -->
 
-  <Note />
+  <!-- <Note /> -->
 
   <!-- Features Widget *************** -->
 
   <Features
-    highlight="Features"
-    title="What you get with AstroWind"
-    subtitle="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae."
+    highlight="Everything as Code"
+    title="Your DevOps Code Factory"
+    subtitle="Built, tested and released for:"
     items={[
       [
         {
-          title: 'Astro + Tailwind CSS Integration',
+          title: 'Infrastructure as Code (IaC)',
           description:
-            'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
+            'Infrastructure as Code for Azure, Digital Ocean, AWS and GCP including Kubernetes clusters (AKS, DOKS, EKS, GKE respectively)',
           icon: 'tabler:brand-tailwind',
         },
         {
-          title: 'Ready-to-use Components',
+          title: 'Application Modernization',
           description:
-            'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-          icon: 'tabler:components',
-        },
-        {
-          title: 'Best Practices',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
-          icon: 'tabler:list-check',
+            'Containerization for Javascript, Java (and other JVM languages), Go, Python, PHP',
+          icon: 'tabler:rocket',
         },
       ],
       [
         {
-          title: 'Excellent Page Speed',
+          title: 'Continuous Integration (CI)',
           description:
-            'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-          icon: 'tabler:rocket',
-        },
-        {
-          title: 'Search Engine Optimization (SEO)',
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+            'Build, test and release for your Infrastructure and Containerized Applications',
           icon: 'tabler:arrows-right-left',
         },
         {
-          title: 'Open to new ideas and contributions',
+          title: 'Continuous Deployment (CD)',
           description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+            'Continuous Deployment of infrastructure changes, Kubernetes resources changes and containerized application (images) releases',
           icon: 'tabler:bulb',
         },
       ],
@@ -98,22 +85,22 @@ const meta = {
 
   <!-- Content Widget **************** -->
 
-  <Content
-    highlight="Inside template"
-    title="And what's inside? ..."
+  <!-- <Content
+    highlight="Coming Soon!"
+    title="An Agile platform"
     items={[
       {
-        title: 'Per ei quaeque sensibus',
+        title: 'Add user stories',
         description:
           'Ex usu illum iudico molestie. Pro ne agam facete mediocritatem, ridens labore facete mea ei. Pro id apeirian dignissim.',
       },
       {
-        title: 'Cu imperdiet posidonium sed',
+        title: 'Collaborate with Cloudsmart engineers in real-time',
         description:
           'Amet utinam aliquando ut mea, malis admodum ocurreret nec et, elit tibique cu nec. Nec ex maluisset inciderint, ex quis.',
       },
       {
-        title: 'Nulla omittam sadipscing mel ne',
+        title: 'Get feedback on builds, deployments etc',
         description:
           'At sed possim oporteat probatus, justo graece ne nec, minim commodo legimus ut vix. Ut eos iudico quando soleat, nam modus.',
       },
@@ -124,15 +111,14 @@ const meta = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Ad vix debet docendi</h3>
-      Ne dicta praesent ocurreret has, diam theophrastus at pro. Eos etiam regione ut, persius eripuit quo id. Sit te euismod
-      tacimates.
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Platform for Planning and Collaboration</h3>
+      Coming soon; An integrated platform hosting a Kanban board and collaboration platform (think Slack)
     </Fragment>
-  </Content>
+  </Content> -->
 
   <!-- Content Widget **************** -->
 
-  <Content
+  <!-- <Content
     isReversed
     isAfterContent
     items={[
@@ -159,33 +145,35 @@ const meta = {
       src: import('~/assets/images/vintage.jpg'),
       alt: 'Vintage Image',
     }}
-  />
+  /> -->
 
   <!-- Steps Widget ****************** -->
 
   <Steps
-    title="Get your dream website up and running in no time with AstroWind."
+    title="Three Steps to Success"
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Download</span>',
+        title: 'Step 1: <span class="font-medium">Create a project in Github</span>',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula.',
+          'A Project outlines your requirements at a high level.<br><br>Invite us as a Collaborator',
         icon: 'tabler:package',
       },
       {
-        title: 'Step 2: <span class="font-medium">Add content</em>',
+        title: 'Step 2: <span class="font-medium">Break down the project into smaller chunks of work</em>',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla.',
+          'In Agile, an Initiative is broken down into logical "Epics" that, themselves, are made up of more granular "user stories". In order to effectively do the required engineering, our engineers need to work through each user story, one at a time',
         icon: 'tabler:letter-case',
       },
       {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        title: 'Step 3: <span class="font-medium">Define what "Done" looks like</span>',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus.',
+          'In Agile planning, the Definition of Done is an agreed-upon set of items that must be completed before a project or user story can be considered complete.',
         icon: 'tabler:paint',
       },
       {
-        title: 'Ready!',
+        title: 'Rinse and repeat.',
+        description:
+          'With our unique, Unlimited plans, you can simply add new projects as, and when, you like and an engineer will work through them, one at a time.',
         icon: 'tabler:check',
       },
     ]}
@@ -195,119 +183,87 @@ const meta = {
     }}
   />
 
+ <!-- Note Widget ******************* -->
+
+  <Note />
+
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
+    title="Partners"
+    subtitle="Partners work with you on Solution Design (Day 0 ) and post-deployment maintainance, monitoring and optimizing (Day 2) leaving Cloudsmart to focus on delivering insane value for Day 1 code, build, test"
     highlight="Components"
     items={[
       {
-        title: 'Headers',
+        title: 'NextOps',
         description:
-          'In general, Headers contain information that makes it easier for visitors to interact with the website.',
+          'NextOps specialises in Application Modernization',
         icon: 'flat-color-icons:template',
       },
       {
-        title: 'Heros',
+        title: 'Your Name Here',
         description:
-          'If you want your website to get more than its fair share of visitors, the Hero section needs to be stellar.',
+          'Apply here to get a DevOps Factory on-tap and with Whitelabelling',
         icon: 'flat-color-icons:gallery',
       },
       {
-        title: 'Features',
+        title: 'This block is intentionally blank',
         description:
-          'Display your product in action and how the Features actually create a solution for your target customer.',
+          'Blocks look better in threes',
         icon: 'flat-color-icons:todo-list',
-      },
-      {
-        title: 'Content',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'icon-park:page-template',
       },
     ]}
   />
 
   <!-- HighlightedPosts Widget ******* -->
 
-  <LatestPosts
+  <!-- <LatestPosts
     title="Find out more content in our Blog"
     information={`The blog is used to display AstroWind documentation.
                         Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
                         Astro is a very interesting technology. Thanks.
                 `}
-  />
+  /> -->
 
   <!-- FAQs Widget ******************* -->
 
   <FAQs
     title="Frequently Asked Questions"
-    subtitle="Duis turpis dui, fringilla mattis sem nec, fringilla euismod neque. Morbi tincidunt lacus nec tortor scelerisque pulvinar."
+    subtitle=""
     highlight="FAQs"
     items={[
       [
         {
-          question: 'What do I need to start?',
+          question: 'Do you provide code to do XYZ?',
           answer:
-            'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+            'We will work on code for any infrastructure supported by Public Cloud APIs.<br><br> For Applications, we are focused on containerized applications which includes modernizing legacy applications to run in containers and orchestrating the deployment and integration of those containers with any other services',
         },
         {
-          question: 'How to install the Astro + Tailwind CSS template?',
+          question: "Can you help us with solution design?",
           answer:
-            "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.",
+            "Cloudsmart only provides 'Day 1' work, that is 'creating the infrastructure and application configuration'. 'Day 0' is the design phase which produces the product requirements that are the inputs Cloudsmart needs.<br><br> For Day 0 design work, we have a Partner Network that can assist",
         },
         {
-          question: "What's something that you don't understand?",
+          question: "Can you monitor and manage the solution",
           answer:
-            "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+            "You will be please to know that this is called 'Day 2'. We don't currently plan to support Day 2 (maintainance, monitoring and optimizing) and, once again, we will refer you to our Partner Network."
         },
       ],
       [
         {
-          question: "What's an example of when you changed your mind?",
+          question: 'What does "Unlimited" mean',
           answer:
-            "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+            'Unlimited means you can add as many tasks as you like to your Product Backlog and a DevOps engineer will work through them, one at a time.',
         },
         {
-          question: 'What is something that you would like to try again?',
+          question: 'What if the engineer is slow?',
           answer:
-            "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
+            "For sure, some tasks can take longer and this is normal however, we should try to spot these tasks ahead of time and either break them down or re-priorise them. <br><br>We do this in a Planning Session ahead of starting work",
         },
         {
-          question: 'If you could only ask one question to each person you meet, what would that question be?',
+          question: 'I have paid for my Unlimited plan and would like a refund',
           answer:
-            "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+            "If, for any reason you are not satisfied, we may issue a refund which would be pro-rated back from the time you cancel.<br><br> This would only apply if claimed prior to the delivery of work because, delivery ('handing over') implies your implicit acceptance per the Definition of Done created in initial Planning",
         },
       ],
     ]}
@@ -315,26 +271,26 @@ const meta = {
 
   <!-- Stats Widget ****************** -->
 
-  <Stats
+  <!-- <Stats
     items={[
       { name: 'Downloads', value: '132K' },
       { name: 'Stars', value: '24.8K' },
       { name: 'Forks', value: '10.3K' },
       { name: 'Users', value: '48.4K' },
     ]}
-  />
+  /> -->
 
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
     callToAction={{
-      text: 'Get template',
+      text: 'Sign up now',
       href: 'https://github.com/onwidget/astrowind',
       icon: 'tabler:download',
     }}
   >
     <Fragment slot="title">
-      Astro + <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+      Unlimited<br class="block sm:hidden" /><span class="sm:whitespace-nowrap"> DevOps</span>
     </Fragment>
 
     <Fragment slot="subtitle">
