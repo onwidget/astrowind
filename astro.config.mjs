@@ -30,9 +30,10 @@ export default defineConfig({
       },
     }),
     sitemap(),
-    image({
-      serviceEntryPoint: '@astrojs/image/sharp',
-    }),
+    image(),
+    // image({
+    //   serviceEntryPoint: '@astrojs/image/sharp',
+    // }),
     mdx(),
     ...whenExternalScripts(() =>
       partytown({
