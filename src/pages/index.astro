@@ -7,6 +7,7 @@ import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Content from '~/components/widgets/Content.astro';
 import LatestPosts from '~/components/blog/LatestPosts.astro';
+import { Picture } from '@astrojs/image/components';
 
 const meta = {
   title: SITE.title,
@@ -17,11 +18,15 @@ const meta = {
 
 <Layout {meta}>
   <Hero
-    callToAction={{ text: 'EMPIEZA AHORA', href: 'https://github.com/onwidget/astrowind' }}
-    callToAction2={{ text: 'Descubre más', href: '#features' }}
+    callToAction={{ text: 'EMPIEZA AHORA', href: 'https://app.cimadent.cl/register' }}
+    callToAction2={{ text: 'Descubre más', href: '#caracteristicas' }}
     image={{ src: import('~/assets/images/hero-cimadent-2.png'), alt: 'AstroWind Hero Image' }}
   >
-    <Fragment slot="title">Transforma tu práctica dental con CIMADent</Fragment>
+    <Fragment slot="title">
+      Transforma tu <span id="rotatingWord" class="transition-all duration-500 ease-in-out text-primary"
+        >Práctica Dental</span
+      > con CIMADent
+    </Fragment>
 
     <Fragment slot="subtitle">
       Descubre el poder de nuestro software dental fácil de usar y asequible para gestionar pacientes y citas.
@@ -38,52 +43,54 @@ const meta = {
         title: 'Eficiencia sin precedentes',
         description:
           'Aumenta la productividad de tu práctica dental simplificando la gestión de pacientes, citas e información clínica.',
-        icon: 'cil:battery-5',
+        icon: 'ph:battery-full-bold',
       },
       {
         title: 'Diseño intuitivo y fácil de usar',
         description:
           'Navega por CIMADent con facilidad y rapidez, garantizando un aprendizaje ágil para profesionales y administradores.',
-        icon: 'cil:window-restore',
+        icon: 'ph:app-window-bold',
       },
       {
         title: 'Poderoso y económico',
         description:
           'Disfruta de una solución rentable y eficaz en comparación con otros softwares dentales del mercado.',
-        icon: 'cil:money',
+        icon: 'ph:money-bold',
       },
       {
         title: 'Gestión multi-sucursal',
         description:
           'Administra múltiples consultorios o clínicas con una sola cuenta, optimizando el seguimiento de la información en diferentes ubicaciones.',
-        icon: 'cil:library-building',
+        icon: 'ph:buildings-duotone',
       },
       {
         title: 'Personalización a tu medida',
         description:
           'Adapta CIMADent según las necesidades específicas de tu práctica dental, ya seas un profesional independiente o una clínica.',
-        icon: 'cil:cog',
+        icon: 'ph:gear-bold',
       },
       {
         title: 'Soporte cercano y confiable',
         description:
           'Cuenta con un equipo de soporte dedicado para resolver tus dudas y asegurar una experiencia fluida con CIMADent.',
-        icon: 'cil:voice-over-record',
+        icon: 'ph:chat-bold',
       },
       {
         title: 'Seguridad en la nube',
         description:
           'Tus datos están protegidos y almacenados en Amazon Web Services (AWS), una de las plataformas en la nube más seguras y confiables.',
-        icon: 'cil:https',
+        icon: 'ph:cloud-check-bold',
       },
       {
         title: 'Siempre contigo',
         description:
           'Accede a CIMADent desde cualquier dispositivo con nuestras aplicaciones móviles y de escritorio, facilitando la gestión de tu práctica en cualquier momento y lugar.',
-        icon: 'cil:devices',
+        icon: 'ph:device-mobile-bold',
       },
     ]}
   />
+
+  <img class="mx-auto w-full -mb-1" src="src/assets/images/borde-1.svg" alt="Borde 1" />
 
   <Content
     highlight=""
@@ -115,11 +122,13 @@ const meta = {
     ]}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold text-third tracking-tight dark:text-white sm:text-3xl mb-2">
-        Comunicación eficiente y dinámica
-      </h3>
-      Optimiza tus citas y comunicaciones con pacientes gracias a nuestras notificaciones y alertas automatizadas, manteniéndote
-      siempre informado y en control.
+      <a href="/notificaciones-y-alertas"
+        ><h3 class="text-2xl font-bold text-third dark:text-white sm:text-3xl mb-2">
+          Comunicación eficiente y dinámica
+        </h3>
+        Optimiza tus citas y comunicaciones con pacientes gracias a nuestras notificaciones y alertas automatizadas, manteniéndote
+        siempre informado y en control.
+      </a>
     </Fragment>
   </Content>
 
@@ -157,11 +166,13 @@ const meta = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold text-third tracking-tight dark:text-white sm:text-3xl mb-2">
-        Organiza tu tiempo como un profesional
-      </h3>
-      El calendario y la agenda online de CIMADent te permiten manejar tus citas y la disponibilidad de profesionales y salas
-      de atención de manera eficiente y sin complicaciones.
+      <a href="/calendario"
+        ><h3 class="text-2xl font-bold text-third dark:text-white sm:text-3xl mb-2">
+          Organiza tu tiempo como un profesional
+        </h3>
+        El calendario y la agenda online de CIMADent te permiten manejar tus citas y la disponibilidad de profesionales y
+        salas de atención de manera eficiente y sin complicaciones.
+      </a>
     </Fragment>
   </Content>
 
@@ -200,11 +211,13 @@ const meta = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold text-third tracking-tight dark:text-white sm:text-3xl mb-2">
-        Administración personalizada y flexible
-      </h3>
-      Personaliza y configura tu entorno de trabajo de acuerdo a tus necesidades, tanto para profesionales independientes
-      como clínicas, y aprovecha al máximo las capacidades de CIMADent.
+      <a href="/administracion-y-configuracion">
+        <h3 class="text-2xl font-bold text-third dark:text-white sm:text-3xl mb-2">
+          Administración personalizada y flexible
+        </h3>
+        Personaliza y configura tu entorno de trabajo de acuerdo a tus necesidades, tanto para profesionales independientes
+        como clínicas, y aprovecha al máximo las capacidades de CIMADent.
+      </a>
     </Fragment>
   </Content>
 
@@ -242,11 +255,13 @@ const meta = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold text-third tracking-tight dark:text-white sm:text-3xl mb-2">
-        Ficha Clínica completa y accesible
-      </h3>
-      Accede y gestiona toda la información clínica de tus pacientes en un solo lugar, de manera ordenada y eficiente, mejorando
-      la atención y el seguimiento de sus tratamientos.
+      <a href="/ficha-clinica">
+        <h3 class="text-2xl font-bold text-third dark:text-white sm:text-3xl mb-2">
+          Ficha Clínica completa y accesible
+        </h3>
+        Accede y gestiona toda la información clínica de tus pacientes en un solo lugar, de manera ordenada y eficiente,
+        mejorando la atención y el seguimiento de sus tratamientos.
+      </a>
     </Fragment>
   </Content>
 
@@ -283,11 +298,13 @@ const meta = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold text-third tracking-tight dark:text-white sm:text-3xl mb-2">
-        Análisis y reportes para potenciar tu práctica
-      </h3>
-      Evalúa el rendimiento de tu práctica dental con reportes detallados y análisis en tiempo real sobre ingresos, deudas
-      y desempeño de profesionales, para tomar decisiones informadas y potenciar tu negocio.
+      <a href="/reportes-y-analisis">
+        <h3 class="text-2xl font-bold text-third dark:text-white sm:text-3xl mb-2">
+          Análisis y reportes para potenciar tu práctica
+        </h3>
+        Evalúa el rendimiento de tu práctica dental con reportes detallados y análisis en tiempo real sobre ingresos, deudas
+        y desempeño de profesionales, para tomar decisiones informadas y potenciar tu negocio.</a
+      >
     </Fragment>
   </Content>
 
@@ -300,13 +317,15 @@ const meta = {
         title: 'Profesionales Independientes',
         description:
           'CIMADent permite a los profesionales independientes optimizar su práctica dental al centralizar la información de sus pacientes, citas y reportes en un solo lugar. Adapta el software a tus necesidades específicas y mejora la comunicación con tus pacientes.',
-        icon: 'flat-color-icons:manager',
+        icon: 'ph:users-three-light',
+        link: '/profesionales-independientes',
       },
       {
         title: 'Clínicas Dentales',
         description:
           'CIMADent proporciona a las clínicas dentales una solución integral para la gestión eficiente de múltiples profesionales, pacientes y consultorios. Facilita la administración y el seguimiento del rendimiento para tomar decisiones informadas y mejorar la calidad de la atención.',
-        icon: 'flat-color-icons:department',
+        icon: 'ph:buildings',
+        link: '/clinicas',
       },
     ]}
   />
@@ -322,13 +341,13 @@ const meta = {
         <h2 class="text-4xl md:text-5xl font-bold text-third leading-tighter mb-4 font-heading dark:text-white">
           Transforma tu práctica dental hoy
         </h2>
-        <p class="mx-auto mt-6 max-w-xl leading-8 text-muted dark:text-slate-400 text-base">
+        <p class="mx-auto mt-6 max-w-xl leading-8 text-muted dark:text-slate-400 text-lg">
           Únete a los profesionales y clínicas que ya han optimizado su administración con CIMADent. Experimenta la
           eficiencia y simplicidad que nuestro software brinda. ¡No esperes más y da el salto hacia el éxito!
         </p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
           <a
-            href="#"
+            href="https://app.cimadent.cl/register"
             class="btn btn-primary rounded-md bg-primary hover:bg-primary px-3 py-2 text-sm font-medium text-white sm:mb-0"
             >Comienza tu prueba gratuita de 7 días</a
           >

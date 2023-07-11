@@ -35,7 +35,7 @@ const {
         {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold text-third leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
+              class="text-5xl md:text-6xl font-bold text-third leading-tighter mb-4 font-heading dark:text-gray-200"
               set:html={title}
             />
           )
@@ -112,3 +112,18 @@ const {
     </div>
   </div>
 </section>
+
+<script>
+  const words = ['Práctica Dental', 'Clínica Dental', 'Consultorio', 'Clínica Odontológica'];
+  let i = 0;
+  const rotatingWord = document.getElementById('rotatingWord');
+
+  setInterval(() => {
+    rotatingWord.classList.add('opacity-0');
+    setTimeout(() => {
+      i = (i + 1) % words.length;
+      rotatingWord.textContent = words[i];
+      rotatingWord.classList.remove('opacity-0');
+    }, 500); // este es el tiempo que dura el fadeout, asegúrate que coincida con la duración de la transición en Tailwind
+  }, 3000); // este es el tiempo que pasa entre cada cambio de palabra
+</script>

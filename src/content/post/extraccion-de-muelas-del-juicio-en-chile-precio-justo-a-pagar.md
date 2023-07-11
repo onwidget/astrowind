@@ -35,4 +35,4 @@ La extracción de las muelas del juicio es una intervención común pero costosa
 
 Si tienes más preguntas sobre la extracción de las muelas del juicio o cualquier otro procedimiento dental, no dudes en contactarnos. En CIMADent, estamos aquí para ayudarte a entender y manejar mejor todos los aspectos de tu salud dental.
 
-[[Top]](#top)
+[[Inicio]](#top)

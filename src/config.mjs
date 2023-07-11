@@ -7,9 +7,9 @@ const CONFIG = {
   basePathname: '/',
   trailingSlash: false,
 
-  title: 'CIMADent: El Software Dental Líder en Gestión para Odontólogos y Clínicas | ¡Prueba Gratis!',
+  title: 'CIMADent: El Software Dental Líder en Gestión para Odontólogos y Clínicas',
   description:
-    'CIMADent es el software para odontólogos y clínicas dentales que facilita la gestión dental con una plataforma fácil de usar y económica. ¡Optimiza tus consultas y disfruta de nuestro free trial de 7 días.',
+    'CIMADent es el Software Dental para odontólogos y clínicas dentales que facilita la gestión dental con una plataforma fácil de usar y económica.',
   defaultImage: defaultImage,
 
   defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
@@ -25,7 +25,7 @@ const CONFIG = {
   }),
 
   googleAnalyticsId: false, // or "G-XXXXXXXXXX",
-  googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
+  googleSiteVerificationId: '',
 
   blog: {
     disabled: false,

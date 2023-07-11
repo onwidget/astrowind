@@ -1,0 +1,359 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import { Icon } from 'astro-icon';
+import { Picture } from '@astrojs/image/components';
+import FAQs from '~/components/widgets/FAQs.astro';
+
+const meta = {
+  dontUseTitleTemplate: true,
+  title: 'Calendario',
+  description:
+    'Optimiza la gestión de tu clínica con el calendario de CIMADent. Gestiona citas, envía recordatorios por WhatsApp y recibe notificaciones de llegada de pacientes en tiempo real.',
+  ogTitle: 'Calendario en CIMADent | Gestión Eficaz de Citas y Horarios',
+  ogType: 'website',
+};
+---
+
+<Layout {meta}>
+  <!-- Sección Titulo -->
+  <div class="px-6 py-12 sm:py-16 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-4xl font-bold text-third sm:text-6xl dark:text-white">Calendario</h2>
+      <p class="mt-6 text-lg leading-8 text-muted dark:text-slate-300">
+        Experimenta la facilidad y eficacia en la administración de tus citas
+      </p>
+    </div>
+  </div>
+
+  <!-- Resumen del paciente al instante -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="px-6 lg:px-0 lg:pr-4 lg:pt-4 left-col">
+          <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">
+              Personaliza tu vista de calendario
+            </p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              El calendario de CIMADent te permite elegir entre vistas por box o por profesional, adaptándose a las
+              necesidades específicas de tu clínica y optimizando la organización de citas.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:flower-lotus-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Flexibilidad a tu medida.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Ajusta la vista del calendario según tus preferencias para una administración de agenda más eficiente.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:folder-notch-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Organización impecable.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Selecciona la vista adecuada para una gestión óptima de recursos y profesionales.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:shuffle-angular-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Coordinación fluida.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Las diferentes vistas facilitan una coordinación perfecta entre profesionales y espacios.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center sm:px-6 lg:px-0">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/calendario-vista.png"
+            alt="Personaliza tu vista de calendario"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gestión de citas en un instante -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="lg:ml-auto lg:pl-4 lg:pt-4 right-col">
+          <div class="lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">
+              Gestión de citas en un instante
+            </p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              Con CIMADent, agenda, confirma, cancela y elimina citas con total facilidad, agilizando la administración
+              de la agenda de tu clínica.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:alarm-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Ahorra tiempo valioso.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Gestiona todas tus citas en un solo lugar y reduce el tiempo dedicado a la administración.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:eject-simple-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Control absoluto.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  La gestión centralizada de citas brinda un seguimiento y control detallado.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:arrow-down-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Minimiza errores.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Unifica la gestión de citas para evitar confusiones y errores en la agenda.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center justify-end lg:order-first">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/calendario-agenda.png"
+            alt="Gestión de citas en un instante"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recordatorios por WhatsApp -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="px-6 lg:px-0 lg:pr-4 lg:pt-4 left-col">
+          <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">Recordatorios por WhatsApp</p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              Envía recordatorios de citas a tus pacientes a través de WhatsApp desde el calendario, mejorando la
+              comunicación y asegurando su asistencia.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:arrow-fat-lines-up-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Respuestas ágiles.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Los pacientes responden más rápidamente a los recordatorios por WhatsApp que por correo electrónico.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:chats-circle-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Comunicación efectiva.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Los mensajes de WhatsApp garantizan una comunicación instantánea y dinámica con tus pacientes.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:presentation-chart-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Reduce inasistencias.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Los recordatorios por WhatsApp disminuyen las faltas y cancelaciones de último minuto.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center sm:px-6 lg:px-0">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/calendario-whatsapp.png"
+            alt="Recordatorios por WhatsApp"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notificaciones de llegada del paciente -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="lg:ml-auto lg:pl-4 lg:pt-4 right-col">
+          <div class="lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">
+              Notificaciones de llegada del paciente
+            </p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              CIMADent te informa en tiempo real cuando un paciente llega a la clínica, permitiéndote prepararte para la
+              cita de manera oportuna.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:image-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Puntualidad garantizada.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Las notificaciones de llegada aseguran que los profesionales atiendan a sus pacientes a tiempo.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:smiley-sticker-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Experiencia excepcional.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Los pacientes apreciarán la prontitud y eficiencia en la atención brindada.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:paper-plane-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Coordinación impecable.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Las notificaciones facilitan a los profesionales ajustar su tiempo y preparación antes de la cita.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center justify-end lg:order-first">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/calendario-llegada.png"
+            alt="Notificaciones de llegada del paciente"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="bg-third dark:bg-dark">
+    <div class="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold text-white sm:text-4xl">¡No esperes más!</h2>
+        <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-200 dark:text-slate-400">
+          Prueba CIMADent gratis por 7 días y descubre cómo transformar la administración de tu clínica. ¡Regístrate
+          ahora!
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-x-6">
+          <a
+            href="https://app.cimadent.cl/register"
+            class="rounded-md bg-primary dark:bg-primary px-3.5 py-2.5 text-sm font-medium text-white dark:text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+            >Inicia tu prueba gratuita de 7 días</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQs -->
+  <FAQs
+    title="Preguntas frecuentes"
+    subtitle=""
+    highlight="FAQs"
+    items={[
+      [
+        {
+          question: '¿Es posible sincronizar el calendario de CIMADent con mi calendario personal?',
+          answer:
+            'Aunque CIMADent no ofrece sincronización directa con calendarios personales, puedes gestionar fácilmente todas tus citas dentro del sistema, manteniendo una organización eficiente.',
+        },
+        {
+          question: '¿Puedo configurar recordatorios de citas para mí como profesional?',
+          answer:
+            'Sí, CIMADent te permite configurar recordatorios personalizados que te mantendrán informado sobre tus citas próximas y te ayudarán a estar siempre al tanto de tu agenda.',
+        },
+        {
+          question: '¿Cómo puedo personalizar la duración predeterminada de las citas?',
+          answer:
+            'En la configuración de CIMADent, podrás establecer la duración predeterminada de las citas según tus necesidades y preferencias, adaptándose a tus requerimientos específicos.',
+        },
+      ],
+      [
+        {
+          question: '¿Puedo reservar horarios en el calendario para reuniones o descansos?',
+          answer:
+            'Sí, CIMADent te permite bloquear horarios en el calendario, asegurando que no se agenden citas durante esos periodos de tiempo y permitiéndote organizar tu tiempo de manera eficiente.',
+        },
+        {
+          question: '¿Qué sucede si un paciente no recibe la notificación por WhatsApp?',
+          answer:
+            'Si un paciente no recibe la notificación por WhatsApp, te recomendamos verificar que el número de teléfono esté correcto en el sistema. También puedes optar por enviar recordatorios por correo electrónico como alternativa, garantizando una comunicación efectiva.',
+        },
+        {
+          question: '¿Puedo ver y gestionar las citas de otros profesionales en mi clínica?',
+          answer:
+            'Sí, siempre que tengas los permisos adecuados, podrás ver y gestionar las citas de otros profesionales en tu clínica desde el calendario de CIMADent, facilitando la coordinación y colaboración entre colegas.',
+        },
+      ],
+    ]}
+  />
+</Layout>

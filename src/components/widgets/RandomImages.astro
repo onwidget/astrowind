@@ -1,0 +1,60 @@
+---
+import { Picture } from '@astrojs/image/components';
+
+interface Imagen {
+  id?: number;
+  src?: string;
+  alt?: string;
+}
+
+export interface Props {
+  id: string;
+  images?: Array<Imagen>;
+}
+
+const { id = 0, images = [] } = Astro.props;
+
+const defaultImageId = 1;
+---
+
+<div
+  x-data={`{ id: '${id}', activeImage: ${defaultImageId}, images: ${JSON.stringify(images)},
+  rotationInterval: null,
+  isRotating: true,
+  changeImage() { 
+    if (this.activeImage <= this.images.length - 1) {
+      this.activeImage++;
+    } else {
+      this.activeImage = 1;
+    } 
+    this.$dispatch('image-clicked', { componentId: this.id, id: this.activeImage });
+  }, 
+  startRotation() { 
+    this.rotationInterval = setInterval(() => {
+      if (this.isRotating) {
+        this.changeImage();
+      } else {
+        clearInterval(this.rotationInterval);
+      }
+    }, 2000); 
+  }
+  }`}
+  x-init="startRotation"
+  @text-clicked.window="if ($event.detail.componentId === id) { activeImage = $event.detail.id; isRotating = false; }"
+>
+  {
+    images.map(({ id, src = '', alt = '' }) => (
+      <Picture
+        class="mx-auto w-full cursor-pointer"
+        width={500}
+        height={500}
+        widths={[400, 768]}
+        sizes="(max-width: 768px)"
+        aspectRatio="500:500"
+        src={src}
+        alt={alt}
+        x-show={`activeImage === ${id}`}
+      />
+    ))
+  }
+</div>

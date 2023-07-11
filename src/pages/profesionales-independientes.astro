@@ -1,0 +1,593 @@
+---
+import { Picture } from '@astrojs/image/components';
+import { Icon } from 'astro-icon';
+import FAQs from '~/components/widgets/FAQs.astro';
+import RandomImages from '~/components/widgets/RandomImages.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const meta = {
+  dontUseTitleTemplate: true,
+  title: 'Profesionales Independientes',
+  description:
+    'Descubre CIMADent, el software dental diseñado para dentistas independientes. Gestiona citas, pacientes y múltiples clínicas con facilidad, mientras ofreces a tus pacientes una experiencia de agendamiento mejorada.',
+  ogTitle: 'Profesionales Independientes en CIMADent | Gestiona tu Consulta Dental con Facilidad',
+  ogType: 'website',
+};
+---
+
+<Layout {meta}>
+  <!-- Sección Titulo -->
+  <div class="px-6 py-12 sm:py-16 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-4xl font-bold text-third sm:text-6xl dark:text-white">
+        Lleva tu éxito dental al siguiente nivel
+      </h2>
+      <p class="mt-6 text-lg leading-8 text-muted dark:text-slate-300">
+        ¡Descubre cómo nuestro software revoluciona la gestión de citas, pacientes y clínicas!
+      </p>
+    </div>
+  </div>
+
+  <!-- Beneficios Clave -->
+  <div class="py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <h2 class="text-3xl font-bold text-third sm:text-4xl dark:text-white">Beneficios clave</h2>
+        <dl class="col-span-2 grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2">
+          <div class="opacity-0 entrada-animations">
+            <dt class="text-base font-semibold leading-7 text-third dark:text-white">
+              <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-secondary">
+                <Icon name="tabler:heart-rate-monitor" class="w-6 h-6 text-white" />
+              </div>
+              Interfaz amigable que simplifica la administración.
+            </dt>
+            <dd class="mt-1 text-base leading-7 text-muted dark:text-slate-400">
+              Nuestra plataforma intuitiva te permite navegar y acceder rápidamente a las funciones que necesitas.
+            </dd>
+          </div>
+          <div class="opacity-0 entrada-animations">
+            <dt class="text-base font-semibold leading-7 text-third dark:text-white">
+              <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-secondary">
+                <Icon name="tabler:building-hospital" class="w-6 h-6 text-white" />
+              </div>
+              Gestiona múltiples clínicas con una sola cuenta.
+            </dt>
+            <dd class="mt-1 text-base leading-7 text-muted dark:text-slate-400">
+              Nuestra función de multi-tenancy te permite administrar todos tus espacios de trabajo con una sola cuenta,
+              facilitando la coordinación y el seguimiento de citas y pacientes.
+            </dd>
+          </div>
+          <div class="opacity-0 entrada-animations">
+            <dt class="text-base font-semibold leading-7 text-third dark:text-white">
+              <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-secondary">
+                <Icon name="tabler:zoom-money" class="w-6 h-6 text-white" />
+              </div>
+              Precios competitivos que se ajustan a tus necesidades sin comprometer la calidad.
+            </dt>
+            <dd class="mt-1 text-base leading-7 text-muted dark:text-slate-400">
+              Ofrecemos planes de precios asequibles adaptados a dentistas independientes, sin comprometer la calidad de
+              nuestro software. A diferencia de soluciones más costosas, CIMADent proporciona todas las herramientas
+              necesarias para gestionar tu consulta de manera efectiva sin vaciar tu bolsillo.
+            </dd>
+          </div>
+          <div class="opacity-0 entrada-animations">
+            <dt class="text-base font-semibold leading-7 text-third dark:text-white">
+              <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-secondary">
+                <Icon name="tabler:puzzle" class="w-6 h-6 text-white" />
+              </div>
+              Adapta el software a las necesidades específicas de tu consulta.
+            </dt>
+            <dd class="mt-1 text-base leading-7 text-muted dark:text-slate-400">
+              Entendemos que cada consulta dental es única, por lo que CIMADent ofrece opciones de personalización para
+              adaptarse a tus necesidades específicas. Desde la configuración del calendario hasta la gestión de
+              aranceles y tipos de citas, nuestro software se ajusta a tu práctica para brindarte una experiencia
+              optimizada.
+            </dd>
+          </div>
+          <div class="opacity-0 entrada-animations">
+            <dt class="text-base font-semibold leading-7 text-third dark:text-white">
+              <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-secondary">
+                <Icon name="tabler:calendar" class="w-6 h-6 text-white" />
+              </div>
+              Permite a tus pacientes agendar citas fácilmente en tiempo real.
+            </dt>
+            <dd class="mt-1 text-base leading-7 text-muted dark:text-slate-400">
+              CIMADent incluye una agenda online en tiempo real para que tus pacientes puedan reservar citas sin
+              necesidad de llamadas telefónicas. Este sistema facilita el proceso de agendamiento, aumentando la
+              satisfacción del paciente y reduciendo la carga administrativa en tu consulta.
+            </dd>
+          </div>
+          <div class="opacity-0 entrada-animations">
+            <dt class="text-base font-semibold leading-7 text-third dark:text-white">
+              <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-secondary">
+                <Icon name="tabler:report-analytics" class="w-6 h-6 text-white" />
+              </div>
+              Optimiza la gestión de citas, pagos, reportes y más.
+            </dt>
+            <dd class="mt-1 text-base leading-7 text-muted dark:text-slate-400">
+              Nuestro software permite llevar un control detallado de tus pacientes, ingresos y rendimiento, para que
+              puedas tomar decisiones informadas y centrarte en brindar la mejor atención posible.
+            </dd>
+          </div>
+          <div class="opacity-0 entrada-animations">
+            <dt class="text-base font-semibold leading-7 text-third dark:text-white">
+              <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-secondary">
+                <Icon name="tabler:phone" class="w-6 h-6 text-white" />
+              </div>
+              Accede a un equipo de soporte dispuesto a ayudarte cuando lo necesites.
+            </dt>
+            <dd class="mt-1 text-base leading-7 text-muted dark:text-slate-400">
+              Nuestro equipo de soporte está siempre disponible para responder tus preguntas, resolver problemas y
+              ofrecer consejos sobre cómo aprovechar al máximo nuestro software. No dudes en ponerte en contacto con
+              nosotros en cualquier momento.
+            </dd>
+          </div>
+          <div class="opacity-0 entrada-animations">
+            <dt class="text-base font-semibold leading-7 text-third dark:text-white">
+              <div class="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-secondary">
+                <Icon name="tabler:cloud" class="w-6 h-6 text-white" />
+              </div>
+              Protege la información de tus pacientes con medidas de seguridad robustas.
+            </dt>
+            <dd class="mt-1 text-base leading-7 text-muted dark:text-slate-400">
+              La seguridad de la información de tus pacientes es nuestra principal preocupación. CIMADent cuenta con
+              medidas de seguridad robustas que garantizan la protección y confidencialidad de los datos sensibles.
+              Puedes confiar en nuestro software para mantener la información de tus pacientes segura y cumplir con las
+              normativas vigentes.
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="bg-third dark:bg-slate-800">
+    <div class="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold text-white sm:text-4xl">
+          Prueba todas las funcionalidades sin restricciones durante 7 días.
+        </h2>
+        <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-200 dark:text-slate-400">
+          ¡No pierdas esta oportunidad! Regístrate y comienza tu prueba gratuita hoy mismo para descubrir cómo CIMADent
+          puede transformar tu consulta.
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-x-6">
+          <a
+            href="https://app.cimadent.cl/register"
+            class="rounded-md bg-primary dark:bg-primary px-3.5 py-2.5 text-sm font-medium text-white dark:text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+            >Inicia tu prueba gratuita de 7 días</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonios -->
+  <div class="py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-xl text-center">
+        <h2 class="text-base font-semibold leading-8 text-secondary">CIMADENT EN ACCIÓN</h2>
+        <p class="mt-2 text-3xl font-bold text-third sm:text-4xl dark:text-white">Voces Reales, Experiencias Reales</p>
+      </div>
+      <div class="mx-auto mt-16 flow-root max-w-2xl sm:mt-20 lg:mx-0 lg:max-w-none">
+        <div class="-mt-8 sm:-mx-4 sm:columns-2 sm:text-[0] lg:columns-3">
+          <div class="pt-8 sm:inline-block sm:w-full sm:px-4">
+            <figure class="rounded-2xl bg-blue-50 dark:bg-slate-800 p-8 text-sm leading-6 opacity-0 entrada-animations">
+              <blockquote class="text-muted dark:text-slate-400">
+                <p>
+                  “Desde que empecé a utilizar CIMADent, he notado una mejora significativa en la eficiencia de mi
+                  consulta dental. La administración de citas y pacientes es más sencilla y rápida, permitiéndome
+                  enfocarme en brindar la mejor atención a mis pacientes. ¡Definitivamente lo recomiendo!”
+                </p>
+              </blockquote>
+              <figcaption class="mt-6 flex items-center gap-x-4">
+                <div>
+                  <div class="font-semibold text-muted dark:text-slate-200">Laura Sánchez</div>
+                  <div class="text-muted dark:text-slate-200">Dentista Independiente</div>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="pt-8 sm:inline-block sm:w-full sm:px-4">
+            <figure class="rounded-2xl bg-blue-50 dark:bg-slate-800 p-8 text-sm leading-6 opacity-0 entrada-animations">
+              <blockquote class="text-muted dark:text-slate-400">
+                <p>
+                  “Como dentista que trabaja en múltiples clínicas, CIMADent ha sido un verdadero salvavidas. La función
+                  de multi-tenancy me permite gestionar todas mis clínicas con una sola cuenta, lo cual simplifica
+                  enormemente mi trabajo. Estoy muy satisfecho con el software y su soporte al cliente.”
+                </p>
+              </blockquote>
+              <figcaption class="mt-6 flex items-center gap-x-4">
+                <div>
+                  <div class="font-semibold text-muted dark:text-slate-200">Dr. Juan Pérez</div>
+                  <div class="text-muted dark:text-slate-200">Dentista Independiente</div>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="pt-8 sm:inline-block sm:w-full sm:px-4">
+            <figure class="rounded-2xl bg-blue-50 dark:bg-slate-800 p-8 text-sm leading-6 opacity-0 entrada-animations">
+              <blockquote class="text-muted dark:text-slate-400">
+                <p>
+                  “La implementación de CIMADent en mi clínica dental ha sido un cambio transformador. La gestión de la
+                  clínica, las citas y los registros de los pacientes nunca ha sido tan eficiente. No sólo me ha
+                  permitido optimizar mi tiempo, sino también mejorar la calidad de mi atención. La interfaz es
+                  intuitiva y el soporte técnico siempre está dispuesto a resolver cualquier duda. Si eres un
+                  profesional del sector dental, definitivamente deberías probar CIMADent.”
+                </p>
+              </blockquote>
+              <figcaption class="mt-6 flex items-center gap-x-4">
+                <div>
+                  <div class="font-semibold text-muted dark:text-slate-200">Dr. José Silva</div>
+                  <div class="text-muted dark:text-slate-200">Dentista Independiente</div>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="pt-8 sm:inline-block sm:w-full sm:px-4">
+            <figure class="rounded-2xl bg-blue-50 dark:bg-slate-800 p-8 text-sm leading-6 opacity-0 entrada-animations">
+              <blockquote class="text-muted dark:text-slate-400">
+                <p>
+                  “La agenda online de CIMADent es fantástica. Mis pacientes pueden agendar sus citas fácilmente, lo que
+                  ha reducido las llamadas telefónicas y me ha permitido centrarme en mi trabajo. Además, el software es
+                  muy fácil de usar y personalizar según mis necesidades.”
+                </p>
+              </blockquote>
+              <figcaption class="mt-6 flex items-center gap-x-4">
+                <div>
+                  <div class="font-semibold text-muted dark:text-slate-200">Dra. María Rodríguez</div>
+                  <div class="text-muted dark:text-slate-200">Dentista Independiente</div>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="pt-8 sm:inline-block sm:w-full sm:px-4">
+            <figure class="rounded-2xl bg-blue-50 dark:bg-slate-800 p-8 text-sm leading-6 opacity-0 entrada-animations">
+              <blockquote class="text-muted dark:text-slate-400">
+                <p>
+                  “CIMADent es un software excepcional para dentistas independientes. Me ha ayudado a mejorar la
+                  eficiencia en la atención dental y a simplificar la administración de mi consulta. La relación
+                  calidad-precio es excelente y el equipo de soporte siempre está dispuesto a ayudar.”
+                </p>
+              </blockquote>
+              <figcaption class="mt-6 flex items-center gap-x-4">
+                <div>
+                  <div class="font-semibold text-muted dark:text-slate-200">Dr. Andrés Torres</div>
+                  <div class="text-muted dark:text-slate-200">Dentista Independiente</div>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+
+          <div class="pt-8 sm:inline-block sm:w-full sm:px-4">
+            <figure class="rounded-2xl bg-blue-50 dark:bg-slate-800 p-8 text-sm leading-6 opacity-0 entrada-animations">
+              <blockquote class="text-muted dark:text-slate-400">
+                <p>
+                  “He probado varios softwares para mi práctica dental, pero ninguno se compara con CIMADent. Su
+                  facilidad de uso, funciones personalizables y excelente soporte técnico hacen que sea la solución
+                  perfecta para mi consulta. Mi experiencia ha sido muy positiva y recomendaría CIMADent a otros
+                  dentistas independientes sin dudarlo.”
+                </p>
+              </blockquote>
+              <figcaption class="mt-6 flex items-center gap-x-4">
+                <div>
+                  <div class="font-semibold text-muted dark:text-slate-200">Dra. Carolina Gómez</div>
+                  <div class="text-muted dark:text-slate-200">Dentista Independiente</div>
+                </div>
+              </figcaption>
+            </figure>
+          </div>
+          <!-- More testimonials... -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calendario y Agenda flexible -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div
+        x-data="{ activeImage: 1 }"
+        @image-clicked.window="if ($event.detail.componentId === 'randomImages-calendario') { activeImage = $event.detail.id; }"
+        class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
+      >
+        <div class="lg:ml-auto lg:pl-4 lg:pt-4">
+          <div class="lg:max-w-lg">
+            <a href="/calendario" class="">
+              <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">
+                Calendario y Agenda Online Flexibles
+              </p>
+              <p class="mt-6 text-lg leading-8 text-muted dark:text-slate-400">
+                Gestiona tus citas fácilmente con nuestro calendario personalizable, con vistas por sala de atención o
+                por profesional. Además, la agenda online permite a tus pacientes reservar citas en tiempo real.
+                ¡Descubre cómo estas funciones pueden transformar tu práctica!
+              </p>
+            </a>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-muted dark:text-slate-400 lg:max-w-none">
+              <div
+                x-bind:class="{ 'bg-blue-50 dark:bg-slate-800': activeImage === 1 }"
+                @click="$dispatch('text-clicked', { componentId: 'randomImages-calendario', id: 1 }); activeImage = 1"
+                class="relative p-3 px-5 rounded-md cursor-pointer"
+              >
+                <dt class="inline font-semibold text-third dark:text-white">Vista personalizada.</dt>
+                <dd class="inline">
+                  Consulta las citas por sala de atención o por profesional, ofreciendo una visión organizada y clara de
+                  tu agenda.
+                </dd>
+              </div>
+              <div
+                x-bind:class="{ 'bg-blue-50 dark:bg-slate-800': activeImage === 2 }"
+                @click="$dispatch('text-clicked', { componentId: 'randomImages-calendario', id: 2 }); activeImage = 2"
+                class="relative p-3 px-5 rounded-md cursor-pointer"
+              >
+                <dt class="inline font-semibold text-third dark:text-white">Funciones de programación avanzada.</dt>
+                <dd class="inline">
+                  Programa, confirma, cancela y elimina citas fácilmente, optimizando la gestión del tiempo de los
+                  profesionales y mejorando la experiencia del paciente.
+                </dd>
+              </div>
+              <div
+                x-bind:class="{ 'bg-blue-50 dark:bg-slate-800': activeImage === 3 }"
+                @click="$dispatch('text-clicked', { componentId: 'randomImages-calendario', id: 3 }); activeImage = 3"
+                class="relative p-3 px-5 rounded-md cursor-pointer"
+              >
+                <dt class="inline font-semibold text-third dark:text-white">Reservas online en tiempo real.</dt>
+                <dd class="inline">
+                  Permite a tus pacientes reservar citas desde la comodidad de su hogar, sin necesidad de llamar a la
+                  consulta, y sincroniza automáticamente con tu agenda.
+                </dd>
+              </div>
+              <div
+                x-bind:class="{ 'bg-blue-50 dark:bg-slate-800': activeImage === 4 }"
+                @click="$dispatch('text-clicked', { componentId: 'randomImages-calendario', id: 4 }); activeImage = 4"
+                class="relative p-3 px-5 rounded-md cursor-pointer"
+              >
+                <dt class="inline font-semibold text-third dark:text-white">Confirmaciones instantáneas.</dt>
+                <dd class="inline">
+                  Los pacientes reciben confirmaciones automáticas al agendar citas, asegurando su compromiso y
+                  mejorando la experiencia.
+                </dd>
+              </div>
+              <div
+                x-bind:class="{ 'bg-blue-50 dark:bg-slate-800': activeImage === 5 }"
+                @click="$dispatch('text-clicked', { componentId: 'randomImages-calendario', id: 5 }); activeImage = 5"
+                class="relative p-3 px-5 rounded-md cursor-pointer"
+              >
+                <dt class="inline font-semibold text-third dark:text-white">Recordatorios automáticos.</dt>
+                <dd class="inline">
+                  Envía recordatorios de citas a tus pacientes por correo electrónico o WhatsApp, minimizando faltas y
+                  cancelaciones de última hora.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center justify-end lg:order-first">
+          <RandomImages
+            id="randomImages-calendario"
+            images={[
+              { id: 1, src: 'src/assets/images/calendario-por-hora.png', alt: 'Vista personalizada' },
+              {
+                id: 2,
+                src: 'src/assets/images/calendario-confirma-cancela.png',
+                alt: 'Funciones de programación avanzada',
+              },
+              { id: 3, src: 'src/assets/images/reservas-online.png', alt: 'Reservas online en tiempo real' },
+              { id: 4, src: 'src/assets/images/confirmacion-cita.png', alt: 'Confirmaciones instantáneas' },
+              { id: 5, src: 'src/assets/images/confirmacion-agendamiento.png', alt: 'Recordatorios automáticos' },
+            ]}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ficha Clínica -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="px-6 lg:px-0 lg:pr-4 lg:pt-4">
+          <div
+            x-data="{ activeImage: 1 }"
+            @image-clicked.window="if ($event.detail.componentId === 'randomImages-ficha-clinica') { activeImage = $event.detail.id; }"
+            class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg"
+          >
+            <a href="/ficha-clinica" class="">
+              <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">Ficha Clínica Completa</p>
+              <p class="mt-6 text-lg leading-8 text-muted dark:text-slate-400">
+                La ficha clínica de CIMADent es una herramienta integral que incluye información general, presupuestos,
+                odontograma, evoluciones, sesiones, imágenes, recetas y pagos realizados. ¡Conoce cómo esta
+                funcionalidad te ayudará a llevar un registro detallado de tus pacientes!
+              </p>
+            </a>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-muted dark:text-slate-400 lg:max-w-none">
+              <div
+                x-bind:class="{ 'bg-blue-50 dark:bg-slate-800': activeImage === 1 }"
+                @click="$dispatch('text-clicked', { componentId: 'randomImages-ficha-clinica', id: 1 }); activeImage = 1"
+                class="relative p-3 px-5 rounded-md cursor-pointer"
+              >
+                <dt class="inline font-semibold text-third dark:text-white">Comunicación ágil.</dt>
+                <dd class="inline">
+                  Facilita el envío de presupuestos, recetas y otros documentos relevantes a tus pacientes a través de
+                  WhatsApp y correo electrónico.
+                </dd>
+              </div>
+              <div
+                x-bind:class="{ 'bg-blue-50 dark:bg-slate-800': activeImage === 2 }"
+                @click="$dispatch('text-clicked', { componentId: 'randomImages-ficha-clinica', id: 2 }); activeImage = 2"
+                class="relative p-3 px-5 rounded-md cursor-pointer"
+              >
+                <dt class="inline font-semibold text-third dark:text-white">Multi-clínica simplificado.</dt>
+                <dd class="inline">
+                  Administra múltiples consultorios o clínicas desde una sola cuenta, facilitando el monitoreo y la
+                  gestión de la información en diferentes ubicaciones.
+                </dd>
+              </div>
+              <div
+                x-bind:class="{ 'bg-blue-50 dark:bg-slate-800': activeImage === 3 }"
+                @click="$dispatch('text-clicked', { componentId: 'randomImages-ficha-clinica', id: 3 }); activeImage = 3"
+                class="relative p-3 px-5 rounded-md cursor-pointer"
+              >
+                <dt class="inline font-semibold text-third dark:text-white">Historial dental completo y unificado.</dt>
+                <dd class="inline">
+                  Consulta fácilmente el historial dental del paciente, incluyendo odontograma, evoluciones y sesiones,
+                  para brindar una atención personalizada y efectiva.
+                </dd>
+              </div>
+              <div
+                x-bind:class="{ 'bg-blue-50 dark:bg-slate-800': activeImage === 4 }"
+                @click="$dispatch('text-clicked', { componentId: 'randomImages-ficha-clinica', id: 4 }); activeImage = 4"
+                class="relative p-3 px-5 rounded-md cursor-pointer"
+              >
+                <dt class="inline font-semibold text-third dark:text-white">Imágenes y documentos a tu alcance.</dt>
+                <dd class="inline">
+                  Almacena y accede rápidamente a imágenes, recetas y otros documentos relevantes en la ficha clínica
+                  del paciente, agilizando la consulta y el diagnóstico.
+                </dd>
+              </div>
+              <div
+                x-bind:class="{ 'bg-blue-50 dark:bg-slate-800': activeImage === 5 }"
+                @click="$dispatch('text-clicked', { componentId: 'randomImages-ficha-clinica', id: 5 }); activeImage = 5"
+                class="relative p-3 px-5 rounded-md cursor-pointer"
+              >
+                <dt class="inline font-semibold text-third dark:text-white">Seguimiento de pagos eficiente.</dt>
+                <dd class="inline">
+                  Lleva un registro detallado de los pagos realizados y pendientes, ayudando a mantener al día las
+                  finanzas de tu práctica y mejorando la relación con tus pacientes.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center sm:px-6 lg:px-0">
+          <RandomImages
+            id="randomImages-ficha-clinica"
+            images={[
+              { id: 1, src: 'src/assets/images/envio-presupuesto.png', alt: 'Comunicación ágil' },
+              { id: 2, src: 'src/assets/images/multi-clinica.png', alt: 'Multi-clínica simplificado' },
+              { id: 3, src: 'src/assets/images/odontograma.png', alt: 'Historial dental completo y unificado' },
+              { id: 4, src: 'src/assets/images/imagenes.png', alt: 'Imágenes y documentos a tu alcance' },
+              { id: 5, src: 'src/assets/images/pagos.png', alt: 'Seguimiento de pagos eficiente' },
+            ]}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQs -->
+  <FAQs
+    title="Resuelve tus dudas"
+    subtitle="Desde cómo empezar tu free trial hasta nuestras políticas de privacidad, en nuestra sección de Preguntas Frecuentes te ayudamos a resolver todas tus inquietudes sobre CIMADent, tu software odontológico de confianza."
+    highlight="Preguntas frecuentes"
+    items={[
+      [
+        {
+          question: '¿Cómo puedo comenzar mi free trial de 7 días en CIMADent?',
+          answer:
+            'Para comenzar tu free trial de 7 días, simplemente regístrate en nuestra plataforma. No se requiere información de pago. Una vez registrado, tendrás acceso completo a todas las funcionalidades de CIMADent durante el periodo de prueba.',
+        },
+        {
+          question: '¿CIMADent es compatible con múltiples dispositivos?',
+          answer:
+            'Sí, CIMADent es compatible con múltiples dispositivos, como computadoras, tablets y smartphones. Puedes acceder a tu cuenta y gestionar tus clínicas y pacientes desde cualquier dispositivo con conexión a internet.',
+        },
+        {
+          question: '¿Cuánto cuesta CIMADent después del periodo de prueba gratuita?',
+          answer:
+            'Luego del free trial de 7 días, ofrecemos diferentes planes de precios asequibles diseñados para profesionales independientes. Visita nuestra sección de planes de precios en la página web para obtener más información sobre las opciones disponibles.',
+        },
+      ],
+      [
+        {
+          question: '¿CIMADent ofrece soporte técnico?',
+          answer:
+            'Sí, CIMADent cuenta con un equipo de soporte dedicado y siempre dispuesto a ayudarte con cualquier problema o pregunta que puedas tener. Puedes contactar a nuestro equipo de soporte a través de la plataforma o por correo electrónico.',
+        },
+        {
+          question: '¿CIMADent cumple con las normativas de privacidad y protección de datos?',
+          answer:
+            'La seguridad de la información de tus pacientes es nuestra principal preocupación. CIMADent cumple con las normativas vigentes en materia de privacidad y protección de datos, garantizando la confidencialidad y seguridad de la información de tus pacientes.',
+        },
+      ],
+    ]}
+  />
+
+  <!-- CTA -->
+  <div class="">
+    <div class="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-4xl md:text-5xl font-bold text-third leading-tighter mb-4 font-heading dark:text-white">
+          Prueba Gratis y Planes de Precios Asequibles
+        </h2>
+        <p class="mx-auto mt-6 max-w-xl leading-8 text-muted dark:text-slate-400 text-lg">
+          ¡Descubre CIMADent con nuestro free trial de 7 días sin restricciones! Si te encanta, elige uno de nuestros
+          planes de precios asequibles diseñados para profesionales independientes. ¡No esperes más, regístrate y mejora
+          tu práctica dental con CIMADent hoy mismo!
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-x-6">
+          <a
+            href="https://app.cimadent.cl/register"
+            class="btn btn-primary rounded-md bg-primary hover:bg-primary px-3 py-2 text-sm font-medium text-white sm:mb-0"
+            >Comienza tu prueba gratuita de 7 días</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contacto -->
+  <div class="relative bg-third dark:bg-slate-800">
+    <div class="relative h-80 overflow-hidden bg-third md:absolute md:left-0 md:h-full md:w-1/3 lg:w-1/2">
+      <Picture
+        class="h-full w-full object-cover"
+        width={500}
+        height={500}
+        widths={[400, 768]}
+        sizes="(max-width: 768px)"
+        aspectRatio="16:9"
+        src="src/assets/images/servicio-al-cliente.jpg"
+        alt="Servicio al Cliente"
+      />
+    </div>
+    <div class="relative mx-auto max-w-7xl py-24 sm:py-32 lg:px-8 lg:py-40">
+      <div class="pl-6 pr-6 md:ml-auto md:w-2/3 md:pl-16 lg:w-1/2 lg:pl-24 lg:pr-0 xl:pl-32">
+        <p class="mt-2 text-3xl font-bold text-white sm:text-4xl">¿Tienes preguntas? ¡Contáctanos ahora!</p>
+        <p class="mt-6 text-lg leading-7 text-slate-200 dark:text-slate-400">
+          Si necesitas más información o tienes alguna pregunta, no dudes en ponerte en contacto con nosotros a través
+          del chat ubicado en la parte inferior derecha de la página. Nuestro equipo de soporte estará encantado de
+          ayudarte y resolver tus dudas en tiempo real.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const elements = document.querySelectorAll('.entrada-animations');
+
+  elements.forEach((element) => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('invisible');
+
+          const delay = Math.floor(Math.random() * 1000);
+
+          entry.target.style.animationDelay = `${delay}ms`;
+
+          entry.target.classList.add('animate-fade-slide-in');
+
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    observer.observe(element);
+  });
+</script>

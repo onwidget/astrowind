@@ -1,0 +1,152 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import { Icon } from 'astro-icon';
+import { Picture } from '@astrojs/image/components';
+import FAQs from '~/components/widgets/FAQs.astro';
+
+const meta = {
+  dontUseTitleTemplate: true,
+  title: 'Agenda Online',
+  description:
+    'Descubre cómo la Agenda Online de CIMADent transforma la experiencia de reserva de citas para profesionales y pacientes. Facilita la gestión de tu clínica dental y ofrece una experiencia moderna y accesible.',
+  ogTitle: 'Agenda Online en CIMADent | Transforma la Reserva de Citas',
+  ogType: 'website',
+};
+---
+
+<Layout {meta}>
+  <!-- Sección Titulo -->
+  <div class="px-6 py-12 sm:py-16 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-4xl font-bold text-third sm:text-6xl dark:text-white">Agenda Online</h2>
+      <p class="mt-6 text-lg leading-8 text-muted dark:text-slate-300">
+        Simplifica y moderniza la reserva de citas para tus pacientes.
+      </p>
+    </div>
+  </div>
+
+  <!-- Reservas en tiempo real y sin complicaciones -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="px-6 lg:px-0 lg:pr-4 lg:pt-4 left-col">
+          <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">
+              Reservas en tiempo real y sin complicaciones
+            </p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              La Agenda Online de CIMADent brinda a tus pacientes la comodidad de reservar citas en tiempo real,
+              evitando llamadas innecesarias. Los profesionales pueden visualizar y administrar sus citas en el
+              calendario fácilmente.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:door-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Accesibilidad sin límites.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Ofrece a tus pacientes la libertad de reservar citas desde cualquier lugar y en cualquier momento,
+                  facilitando su experiencia con la clínica.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:phone-call-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Menos llamadas, más eficiencia.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Al habilitar la reserva de citas online, reducirás las llamadas a la clínica y mejorarás la
+                  productividad del equipo.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:calendar-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Gestión optimizada de la agenda.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  La sincronización en tiempo real con el calendario de CIMADent garantiza una gestión eficiente de la
+                  agenda de cada profesional.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center sm:px-6 lg:px-0">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/agenda-online.png"
+            alt="Reservas en tiempo real y sin complicaciones"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="bg-third dark:bg-dark">
+    <div class="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold text-white sm:text-4xl">
+          ¡Dale un giro moderno a la gestión de citas con la Agenda Online de CIMADent!
+        </h2>
+        <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-200 dark:text-slate-400">
+          Regístrate ahora y disfruta de una prueba gratuita por 7 días. ¡No esperes más!
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-x-6">
+          <a
+            href="https://app.cimadent.cl/register"
+            class="rounded-md bg-primary dark:bg-primary px-3.5 py-2.5 text-sm font-medium text-white dark:text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+            >Inicia tu prueba gratuita de 7 días</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQs -->
+  <FAQs
+    title="Preguntas frecuentes"
+    subtitle=""
+    highlight="FAQs"
+    items={[
+      [
+        {
+          question: '¿Es posible personalizar mi Agenda Online?',
+          answer:
+            'Claro, puedes adaptar la Agenda Online de CIMADent para reflejar la imagen de tu clínica y ajustarla según tus preferencias.',
+        },
+        {
+          question: '¿Qué ocurre si un paciente necesita cancelar o modificar una cita?',
+          answer:
+            'Los pacientes pueden cancelar o modificar sus citas fácilmente a través de la Agenda Online, y los profesionales serán notificados de los cambios realizados.',
+        },
+      ],
+      [
+        {
+          question: '¿Puedo establecer límites en el número de citas disponibles en línea?',
+          answer:
+            'Por supuesto, puedes configurar la cantidad de citas disponibles en línea según tus necesidades y capacidad de atención.',
+        },
+        {
+          question: '¿La Agenda Online funciona en dispositivos móviles?',
+          answer:
+            'Sí, la Agenda Online de CIMADent está diseñada para ser compatible con dispositivos móviles, brindando una experiencia accesible tanto para profesionales como pacientes.',
+        },
+      ],
+    ]}
+  />
+</Layout>

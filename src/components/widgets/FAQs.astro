@@ -27,18 +27,15 @@ const {
       (title || subtitle || highlight) && (
         <div class="max-w-xl mb-10 md:mx-auto md:text-center lg:max-w-2xl md:mb-12">
           {highlight && (
-            <p
-              class="text-base text-primary dark:text-blue-200 font-semibold tracking-wide uppercase"
-              set:html={highlight}
-            />
+            <p class="text-base text-secondary font-semibold tracking-wide uppercase" set:html={highlight} />
           )}
           {title && (
             <h2
-              class="max-w-lg mb-4 text-3xl font-bold leading-none md:tracking-tight sm:text-4xl md:mx-auto font-heading"
+              class="max-w-lg mb-4 text-3xl font-bold leading-none md:tracking-tight sm:text-4xl md:mx-auto font-heading text-third dark:text-white"
               set:html={title}
             />
           )}
-          {subtitle && <p class="max-w-3xl mx-auto text-xl text-muted dark:text-slate-400" set:html={subtitle} />}
+          {subtitle && <p class="max-w-3xl mx-auto text-base text-muted dark:text-slate-400" set:html={subtitle} />}
         </div>
       )
     }
@@ -47,15 +44,15 @@ const {
     <div class="grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-x-16 md:grid-cols-2">
       {
         items &&
-          items.map((subitems) => (
-            <div class="space-y-8">
+          items.map((subitems, i) => (
+            <div class={`space-y-8 invisible ${i % 2 === 0 ? 'left-col' : 'right-col'}`}>
               {subitems.map(({ question, answer }) => (
                 <div>
-                  <h3 class="mb-4 text-xl font-bold">
-                    <Icon name="tabler:arrow-down-right" class="w-7 h-7 text-primary inline-block" />
+                  <h3 class="mb-4 text-xl font-bold text-third dark:text-white invisible left-col">
+                    <Icon name="tabler:arrow-down-right" class="w-7 h-7 text-secondary inline-block" />
                     {question}
                   </h3>
-                  {answer && <div class="text-muted dark:text-gray-400" set:html={answer} />}
+                  {answer && <div class="text-muted text-base dark:text-gray-400" set:html={answer} />}
                 </div>
               ))}
             </div>
@@ -64,3 +61,37 @@ const {
     </div>
   </div>
 </div>
+
+<script>
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1,
+  };
+
+  const fadeInObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('invisible');
+        entry.target.classList.add('animate-fade-slide-in-left');
+        fadeInObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  const slideInObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('invisible');
+        entry.target.classList.add('animate-fade-slide-in-right');
+        slideInObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  const leftItems = document.querySelectorAll('.left-col');
+  leftItems.forEach((item) => fadeInObserver.observe(item));
+
+  const rightItems = document.querySelectorAll('.right-col');
+  rightItems.forEach((item) => slideInObserver.observe(item));
+</script>

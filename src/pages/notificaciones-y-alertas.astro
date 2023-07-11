@@ -1,339 +1,355 @@
 ---
-import { SITE } from '~/config.mjs';
 import Layout from '~/layouts/PageLayout.astro';
 
-import Hero from '~/components/widgets/Hero.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Content from '~/components/widgets/Content.astro';
-import LatestPosts from '~/components/blog/LatestPosts.astro';
+import { Icon } from 'astro-icon';
+import { Picture } from '@astrojs/image/components';
+import FAQs from '~/components/widgets/FAQs.astro';
 
 const meta = {
-  title: SITE.title,
-  description: SITE.description,
   dontUseTitleTemplate: true,
+  title: 'Notificaciones y Alertas',
+  description:
+    'CIMADent mejora la comunicación con tus pacientes a través de notificaciones y alertas automáticas. Asegura la puntualidad y minimiza errores con nuestro software.',
+  ogTitle: 'Notificaciones y Alertas en CIMADent | Optimiza la Comunicación con Pacientes',
+  ogType: 'website',
 };
 ---
 
 <Layout {meta}>
-  <Hero
-    callToAction={{ text: 'EMPIEZA AHORA', href: 'https://github.com/onwidget/astrowind' }}
-    callToAction2={{ text: 'Descubre más', href: '#features' }}
-    image={{ src: import('~/assets/images/hero-cimadent-2.png'), alt: 'AstroWind Hero Image' }}
-  >
-    <Fragment slot="title">Transforma tu práctica dental con CIMADent</Fragment>
+  <!-- Sección Titulo -->
+  <div class="px-6 py-12 sm:py-16 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-4xl font-bold text-third sm:text-6xl dark:text-white">Notificaciones y Alertas</h2>
+      <p class="mt-6 text-lg leading-8 text-muted dark:text-slate-300">
+        Simplifica y optimiza la comunicación con tus pacientes.
+      </p>
+    </div>
+  </div>
 
-    <Fragment slot="subtitle">
-      Descubre el poder de nuestro software dental fácil de usar y asequible para gestionar pacientes y citas.
-      ¡Experimenta la revolución CIMADent!
-    </Fragment>
-  </Hero>
+  <!-- Emails automáticos al agendar citas -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="px-6 lg:px-0 lg:pr-4 lg:pt-4 left-col">
+          <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">
+              Emails automáticos al agendar citas
+            </p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              Al agendar una cita, CIMADent envía automáticamente un correo con los detalles de la cita, ahorrando
+              tiempo y mejorando la comunicación con tus pacientes.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:alarm-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Ahorro de tiempo.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Deja de preocuparte por enviar correos manualmente; CIMADent lo hace por ti.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:speaker-simple-high-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Comunicación efectiva.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Asegura que tus pacientes estén siempre informados sobre sus citas de manera puntual y precisa.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:arrows-counter-clockwise-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Minimiza errores.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  La automatización previene errores humanos al compartir información de citas.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center sm:px-6 lg:px-0">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/confirmacion-agendamiento.png"
+            alt="Recordatorios automáticos"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <Features
-    highlight="INNOVACIÓN EN GESTIÓN DENTAL A TU ALCANCE"
-    title="Potencia tu práctica dental en cada etapa"
-    subtitle="CIMADent es un revolucionario software dental diseñado para empoderar a profesionales y clínicas en la administración de pacientes y citas. Nuestra plataforma se destaca por su facilidad de uso, asequibilidad y soporte para múltiples consultorios, convirtiéndola en la solución perfecta para optimizar tu práctica dental. "
-    items={[
-      {
-        title: 'Eficiencia sin precedentes',
-        description:
-          'Aumenta la productividad de tu práctica dental simplificando la gestión de pacientes, citas e información clínica.',
-        icon: 'cil:battery-5',
-      },
-      {
-        title: 'Diseño intuitivo y fácil de usar',
-        description:
-          'Navega por CIMADent con facilidad y rapidez, garantizando un aprendizaje ágil para profesionales y administradores.',
-        icon: 'cil:window-restore',
-      },
-      {
-        title: 'Poderoso y económico',
-        description:
-          'Disfruta de una solución rentable y eficaz en comparación con otros softwares dentales del mercado.',
-        icon: 'cil:money',
-      },
-      {
-        title: 'Gestión multi-sucursal',
-        description:
-          'Administra múltiples consultorios o clínicas con una sola cuenta, optimizando el seguimiento de la información en diferentes ubicaciones.',
-        icon: 'cil:library-building',
-      },
-      {
-        title: 'Personalización a tu medida',
-        description:
-          'Adapta CIMADent según las necesidades específicas de tu práctica dental, ya seas un profesional independiente o una clínica.',
-        icon: 'cil:cog',
-      },
-      {
-        title: 'Soporte cercano y confiable',
-        description:
-          'Cuenta con un equipo de soporte dedicado para resolver tus dudas y asegurar una experiencia fluida con CIMADent.',
-        icon: 'cil:voice-over-record',
-      },
-      {
-        title: 'Seguridad en la nube',
-        description:
-          'Tus datos están protegidos y almacenados en Amazon Web Services (AWS), una de las plataformas en la nube más seguras y confiables.',
-        icon: 'cil:https',
-      },
-      {
-        title: 'Siempre contigo',
-        description:
-          'Accede a CIMADent desde cualquier dispositivo con nuestras aplicaciones móviles y de escritorio, facilitando la gestión de tu práctica en cualquier momento y lugar.',
-        icon: 'cil:devices',
-      },
-    ]}
-  />
+  <!-- Calendario y Agenda flexible -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="lg:ml-auto lg:pl-4 lg:pt-4 right-col">
+          <div class="lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">
+              Recordatorios automáticos previos a la cita
+            </p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              CIMADent envía recordatorios automáticos por correo, permitiendo a los pacientes confirmar o cancelar
+              citas con antelación.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:user-plus-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Reduce inasistencias.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Los recordatorios disminuyen cancelaciones de último minuto e inasistencias.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:clipboard-text-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Gestión eficiente.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Al confirmar o cancelar citas, puedes organizar mejor tu agenda.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:heart-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Experiencia sobresaliente.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Los pacientes valorarán la atención personalizada y los recordatorios oportunos.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center justify-end lg:order-first">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/confirmacion-cita.png"
+            alt="Confirmaciones instantáneas"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <Content
-    highlight=""
-    title=""
-    images={[
-      { id: 1, src: 'src/assets/images/confirmacion-agendamiento.png', alt: 'Recordatorios automáticos' },
-      { id: 2, src: 'src/assets/images/confirmacion-cita.png', alt: 'Confirmaciones instantáneas' },
-      { id: 3, src: 'src/assets/images/envio-presupuesto.png', alt: 'Comunicación ágil' },
-    ]}
-    items={[
-      {
-        title: 'Recordatorios automáticos',
-        description:
-          'Envía recordatorios de citas a tus pacientes por correo electrónico o WhatsApp, minimizando faltas y cancelaciones de última hora.',
-        id: 1,
-      },
-      {
-        title: 'Confirmaciones instantáneas',
-        description:
-          'Los pacientes reciben confirmaciones automáticas al agendar citas, asegurando su compromiso y mejorando la experiencia.',
-        id: 2,
-      },
-      {
-        title: 'Comunicación ágil',
-        description:
-          'Facilita el envío de presupuestos, recetas y otros documentos relevantes a tus pacientes a través de WhatsApp y correo electrónico.',
-        id: 3,
-      },
-    ]}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold text-third tracking-tight dark:text-white sm:text-3xl mb-2">
-        Comunicación eficiente y dinámica
-      </h3>
-      Optimiza tus citas y comunicaciones con pacientes gracias a nuestras notificaciones y alertas automatizadas, manteniéndote
-      siempre informado y en control.
-    </Fragment>
-  </Content>
+  <!-- Notificaciones en tiempo real -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="px-6 lg:px-0 lg:pr-4 lg:pt-4 left-col">
+          <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">Notificaciones en tiempo real</p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              El dashboard de CIMADent muestra notificaciones sobre citas y cambios en tiempo real, manteniendo a los
+              profesionales siempre informados.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:repeat-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Información al día.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Siempre estarás al tanto de los cambios en tus citas.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:bounding-box-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Organización optimizada.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Las notificaciones te permiten gestionar mejor tu tiempo y recursos.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:graph-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Decisiones informadas.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Con información actualizada, podrás tomar decisiones acertadas sobre tu agenda.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center sm:px-6 lg:px-0">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/notificaciones.png"
+            alt="Notificaciones en tiempo real"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <Content
-    isReversed
-    isAfterContent
-    images={[
-      { id: 1, src: 'src/assets/images/calendario-por-hora.png', alt: 'Vista personalizada' },
-      { id: 2, src: 'src/assets/images/calendario-confirma-cancela.png', alt: 'Funciones de programación avanzada' },
-      { id: 3, src: 'src/assets/images/reservas-online.png', alt: 'Reservas online en tiempo real' },
-    ]}
-    items={[
-      {
-        title: 'Vista personalizada',
-        description:
-          'Consulta las citas por sala de atención o por profesional, ofreciendo una visión organizada y clara de tu agenda.',
-        id: 1,
-      },
-      {
-        title: 'Funciones de programación avanzada',
-        description:
-          'Programa, confirma, cancela y elimina citas fácilmente, optimizando la gestión del tiempo de los profesionales y mejorando la experiencia del paciente.',
-        id: 2,
-      },
-      {
-        title: 'Reservas online en tiempo real',
-        description:
-          'Permite a tus pacientes reservar citas desde la comodidad de su hogar, sin necesidad de llamar a la consulta, y sincroniza automáticamente con tu agenda.',
-        id: 3,
-      },
-    ]}
-    image={{
-      src: import('~/assets/images/vintage.jpg'),
-      alt: 'Vintage Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold text-third tracking-tight dark:text-white sm:text-3xl mb-2">
-        Organiza tu tiempo como un profesional
-      </h3>
-      El calendario y la agenda online de CIMADent te permiten manejar tus citas y la disponibilidad de profesionales y salas
-      de atención de manera eficiente y sin complicaciones.
-    </Fragment>
-  </Content>
+  <!-- Calendario y Agenda flexible -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="lg:ml-auto lg:pl-4 lg:pt-4 right-col">
+          <div class="lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">
+              Mensajes personalizados vía WhatsApp
+            </p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              Envía mensajes personalizados a pacientes a través de WhatsApp, incluyendo un enlace para confirmar la
+              cita, facilitando la comunicación.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:whatsapp-logo-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Comunicación instantánea.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  WhatsApp permite una rápida conexión con los pacientes.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:tree-structure-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Respuestas más ágiles.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Los pacientes suelen responder más rápido a WhatsApp que a emails.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:circle-wavy-check-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Confirmaciones sencillas.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  El enlace en el mensaje facilita a los pacientes confirmar sus citas.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center justify-end lg:order-first">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/confirmacion-whatsapp.png"
+            alt="Mensajes personalizados vía WhatsApp"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <Content
-    highlight=""
-    title=""
-    isAfterContent
-    images={[
-      { id: 1, src: 'src/assets/images/configuracion-personalizada.png', alt: 'Configuración personalizada' },
-      { id: 2, src: 'src/assets/images/gestion-usuarios-avanzada.png', alt: 'Gestión de usuarios avanzada' },
-      { id: 3, src: 'src/assets/images/multi-clinica.png', alt: 'Multi-clínica simplificado' },
-    ]}
-    items={[
-      {
-        title: 'Configuración personalizada',
-        description:
-          'Ajusta tipos de citas, salas de atención, tarifas y más según las necesidades específicas de tu práctica dental.',
-        id: 1,
-      },
-      {
-        title: 'Gestión de usuarios avanzada',
-        description:
-          'Establece permisos y roles personalizados para diferentes usuarios, garantizando el acceso adecuado a la información y mejorando la seguridad.',
-        id: 2,
-      },
-      {
-        title: 'Multi-clínica simplificado',
-        description:
-          'Administra múltiples consultorios o clínicas desde una sola cuenta, facilitando el monitoreo y la gestión de la información en diferentes ubicaciones.',
-        id: 3,
-      },
-    ]}
-    image={{
-      src: import('~/assets/images/caos.jpg'),
-      alt: 'Colorful Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold text-third tracking-tight dark:text-white sm:text-3xl mb-2">
-        Administración personalizada y flexible
-      </h3>
-      Personaliza y configura tu entorno de trabajo de acuerdo a tus necesidades, tanto para profesionales independientes
-      como clínicas, y aprovecha al máximo las capacidades de CIMADent.
-    </Fragment>
-  </Content>
-
-  <Content
-    isReversed
-    isAfterContent
-    images={[
-      { id: 1, src: 'src/assets/images/odontograma.png', alt: 'Historial dental completo y unificado' },
-      { id: 2, src: 'src/assets/images/imagenes.png', alt: 'Imágenes y documentos a tu alcance' },
-      { id: 3, src: 'src/assets/images/pagos.png', alt: 'Seguimiento de pagos eficiente' },
-    ]}
-    items={[
-      {
-        title: 'Historial dental completo y unificado',
-        description:
-          'Consulta fácilmente el historial dental del paciente, incluyendo odontograma, evoluciones y sesiones, para brindar una atención personalizada y efectiva.',
-        id: 1,
-      },
-      {
-        title: 'Imágenes y documentos a tu alcance',
-        description:
-          'Almacena y accede rápidamente a imágenes, recetas y otros documentos relevantes en la ficha clínica del paciente, agilizando la consulta y el diagnóstico.',
-        id: 2,
-      },
-      {
-        title: 'Seguimiento de pagos eficiente',
-        description:
-          'Lleva un registro detallado de los pagos realizados y pendientes, ayudando a mantener al día las finanzas de tu práctica y mejorando la relación con tus pacientes.',
-        id: 3,
-      },
-    ]}
-    image={{
-      src: import('~/assets/images/vintage.jpg'),
-      alt: 'Vintage Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold text-third tracking-tight dark:text-white sm:text-3xl mb-2">
-        Ficha Clínica completa y accesible
-      </h3>
-      Accede y gestiona toda la información clínica de tus pacientes en un solo lugar, de manera ordenada y eficiente, mejorando
-      la atención y el seguimiento de sus tratamientos.
-    </Fragment>
-  </Content>
-
-  <Content
-    isAfterContent
-    images={[
-      { id: 1, src: 'src/assets/images/reporte-pacientes.png', alt: 'Información financiera actualizada' },
-      { id: 2, src: 'src/assets/images/reporte-profesionales.png', alt: 'Evaluación del rendimiento en tiempo real' },
-      { id: 3, src: 'src/assets/images/reporte-general.png', alt: 'Datos accesibles y comprensibles' },
-    ]}
-    items={[
-      {
-        title: 'Información financiera actualizada',
-        description:
-          'Analiza la recaudación y los pacientes con deuda para tomar decisiones informadas y planificar el crecimiento de tu práctica dental.',
-        id: 1,
-      },
-      {
-        title: 'Evaluación del rendimiento en tiempo real',
-        description:
-          'Monitorea el desempeño de profesionales y clínicas, identificando áreas de mejora y oportunidades de crecimiento para optimizar tu práctica.',
-        id: 2,
-      },
-      {
-        title: 'Datos accesibles y comprensibles',
-        description:
-          'Visualiza fácilmente la información relevante para la toma de decisiones y el seguimiento del progreso de tu práctica dental con gráficos y tablas claras y concisas.',
-        id: 3,
-      },
-    ]}
-    image={{
-      src: import('~/assets/images/vintage.jpg'),
-      alt: 'Vintage Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold text-third tracking-tight dark:text-white sm:text-3xl mb-2">
-        Análisis y reportes para potenciar tu práctica
-      </h3>
-      Evalúa el rendimiento de tu práctica dental con reportes detallados y análisis en tiempo real sobre ingresos, deudas
-      y desempeño de profesionales, para tomar decisiones informadas y potenciar tu negocio.
-    </Fragment>
-  </Content>
-
-  <Features2
-    title="CIMADent para Todos"
-    subtitle="Desde profesionales independientes hasta clínicas dentales"
-    highlight=""
-    items={[
-      {
-        title: 'Profesionales Independientes',
-        description:
-          'CIMADent permite a los profesionales independientes optimizar su práctica dental al centralizar la información de sus pacientes, citas y reportes en un solo lugar. Adapta el software a tus necesidades específicas y mejora la comunicación con tus pacientes.',
-        icon: 'flat-color-icons:manager',
-      },
-      {
-        title: 'Clínicas Dentales',
-        description:
-          'CIMADent proporciona a las clínicas dentales una solución integral para la gestión eficiente de múltiples profesionales, pacientes y consultorios. Facilita la administración y el seguimiento del rendimiento para tomar decisiones informadas y mejorar la calidad de la atención.',
-        icon: 'flat-color-icons:department',
-      },
-    ]}
-  />
-
-  <LatestPosts
-    title="Últimas novedades en nuestro Blog"
-    information={`Descubre en el blog de CIMADent todas las novedades y actualizaciones que tenemos para ti, así como noticias de interés en el ámbito dental. ¡No te lo pierdas!`}
-  />
-
-  <div class="">
+  <!-- CTA -->
+  <div class="bg-third dark:bg-dark">
     <div class="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
       <div class="mx-auto max-w-2xl text-center">
-        <h2 class="text-4xl md:text-5xl font-bold text-third leading-tighter mb-4 font-heading dark:text-white">
-          Transforma tu práctica dental hoy
-        </h2>
-        <p class="mx-auto mt-6 max-w-xl leading-8 text-muted dark:text-slate-400 text-base">
-          Únete a los profesionales y clínicas que ya han optimizado su administración con CIMADent. Experimenta la
-          eficiencia y simplicidad que nuestro software brinda. ¡No esperes más y da el salto hacia el éxito!
+        <h2 class="text-3xl font-bold text-white sm:text-4xl">¡No esperes más!</h2>
+        <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-200 dark:text-slate-400">
+          Prueba CIMADent gratis por 7 días y transforma la comunicación con tus pacientes. ¡Regístrate ahora!
         </p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
           <a
-            href="#"
-            class="btn btn-primary rounded-md bg-primary hover:bg-primary px-3 py-2 text-sm font-medium text-white sm:mb-0"
-            >Comienza tu prueba gratuita de 7 días</a
+            href="https://app.cimadent.cl/register"
+            class="rounded-md bg-primary dark:bg-primary px-3.5 py-2.5 text-sm font-medium text-white dark:text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+            >Inicia tu prueba gratuita de 7 días</a
           >
         </div>
       </div>
     </div>
   </div>
+
+  <!-- FAQs -->
+  <FAQs
+    title="Preguntas frecuentes"
+    subtitle=""
+    highlight="FAQs"
+    items={[
+      [
+        {
+          question: '¿Se envían automáticamente las notificaciones a todos los pacientes?',
+          answer:
+            'Las notificaciones se envían automáticamente a los pacientes con correo electrónico y/o teléfono registrado en su perfil. Asegúrate de mantener actualizada la información de contacto para garantizar una comunicación efectiva.',
+        },
+        {
+          question: '¿Qué pasa si un paciente no tiene correo o teléfono registrado?',
+          answer:
+            'Si un paciente carece de correo o teléfono registrado, las notificaciones no se enviarán. Es crucial mantener actualizada la información de contacto de los pacientes para asegurar una comunicación efectiva.',
+        },
+        {
+          question: '¿Qué tipo de notificaciones recibo como profesional en el dashboard de CIMADent?',
+          answer:
+            'En el dashboard de CIMADent, recibirás notificaciones sobre agendamientos y cambios en el estado de las citas, permitiéndote estar siempre informado y mantener una organización eficiente.',
+        },
+      ],
+      [
+        {
+          question: '¿Hay límites en la cantidad de notificaciones que se pueden enviar?',
+          answer:
+            'No hay límites en la cantidad de notificaciones que puedes enviar con CIMADent. Nuestro sistema está diseñado para facilitar la comunicación entre profesionales y pacientes sin restricciones.',
+        },
+        {
+          question: '¿Qué sucede si un paciente responde a un correo electrónico de recordatorio?',
+          answer:
+            'Si un paciente responde a un correo electrónico de recordatorio, la respuesta se enviará a la dirección de correo electrónico asociada con la cuenta del profesional en CIMADent. Esto permite a los profesionales manejar cualquier consulta o inquietud del paciente de manera oportuna.',
+        },
+        {
+          question: '¿Puedo enviar mensajes de WhatsApp a pacientes que no tienen esta aplicación?',
+          answer:
+            'No, los mensajes de WhatsApp solo se pueden enviar a pacientes que tienen la aplicación instalada en sus dispositivos móviles y han registrado un número de teléfono válido. Es importante confirmar esta información antes de enviar mensajes a través de WhatsApp.',
+        },
+      ],
+    ]}
+  />
 </Layout>

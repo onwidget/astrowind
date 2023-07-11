@@ -1,4 +1,4 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getBlogPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
@@ -85,14 +85,14 @@ export const headerData = {
       text: 'Blog',
       href: getBlogPermalink(),
     },
-    {
-      text: 'Contacto',
-      href: getPermalink('/contacto'),
-    },
+    // {
+    //   text: 'Contacto',
+    //   href: getPermalink('/contacto'),
+    // },
   ],
   actions: [
-    { type: 'button', text: 'Registrarse', href: 'https://github.com/onwidget/astrowind' },
-    { type: 'link', text: 'Iniciar sesión', href: 'https://github.com/onwidget/astrowind' },
+    { type: 'button', text: 'Registrarse', href: 'https://app.cimadent.cl/register' },
+    { type: 'link', text: 'Iniciar sesión', href: 'https://app.cimadent.cl' },
   ],
 };
 
@@ -118,7 +118,7 @@ export const footerData = {
     },
     {
       title: 'Soporte',
-      links: [{ text: 'Contacto', href: getPermalink('/contacto') }],
+      // links: [{ text: 'Contacto', href: getPermalink('/contacto') }],
     },
     {
       title: 'Compañia',
@@ -128,13 +128,12 @@ export const footerData = {
       ],
     },
   ],
-  secondaryLinks: [{ text: 'Privacidad', href: getPermalink('/privacy') }],
+  secondaryLinks: [{ text: 'Privacidad', href: getPermalink('/privacidad') }],
   socialLinks: [
     { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
     { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
   ],
   footNote: `
-    <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 float-left rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"></span>
     Creado por <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://cimadent.cl/"> CIMA</a> · All rights reserved.
   `,
 };

@@ -9,9 +9,10 @@ import partytown from '@astrojs/partytown';
 import compress from 'astro-compress';
 import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs';
 import { SITE } from './src/config.mjs';
-import alpinejs from "@astrojs/alpinejs";
+import alpinejs from '@astrojs/alpinejs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const whenExternalScripts = (items = []) => SITE.googleAnalyticsId ? Array.isArray(items) ? items.map(item => item()) : [items()] : [];
+const whenExternalScripts = (items = []) =>
+  SITE.googleAnalyticsId ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,33 +21,43 @@ export default defineConfig({
   trailingSlash: SITE.trailingSlash ? 'always' : 'never',
   output: 'static',
   markdown: {
-    remarkPlugins: [readingTimeRemarkPlugin]
+    remarkPlugins: [readingTimeRemarkPlugin],
   },
-  integrations: [tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), sitemap(), image({
-    serviceEntryPoint: '@astrojs/image/sharp'
-  }), mdx(), ...whenExternalScripts(() => partytown({
-    config: {
-      forward: ['dataLayer.push']
-    }
-  })), compress({
-    css: true,
-    html: {
-      removeAttributeQuotes: false
-    },
-    img: false,
-    js: true,
-    svg: false,
-    logger: 1
-  }), alpinejs()],
+  integrations: [
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+    sitemap(),
+    image({
+      serviceEntryPoint: '@astrojs/image/sharp',
+    }),
+    mdx(),
+    ...whenExternalScripts(() =>
+      partytown({
+        config: {
+          forward: ['dataLayer.push'],
+        },
+      })
+    ),
+    compress({
+      css: true,
+      html: {
+        removeAttributeQuotes: false,
+      },
+      img: false,
+      js: true,
+      svg: false,
+      logger: 1,
+    }),
+    alpinejs(),
+  ],
   vite: {
     resolve: {
       alias: {
-        '~': path.resolve(__dirname, './src')
-      }
-    }
-  }
+        '~': path.resolve(__dirname, './src'),
+      },
+    },
+  },
 });

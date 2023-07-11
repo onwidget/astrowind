@@ -61,4 +61,4 @@ En resumen, CIMADent es una herramienta poderosa que impulsa la eficiencia en la
 
 ¿Estás listo para llevar tu práctica dental al siguiente nivel con CIMADent? Solicita una demostración gratuita hoy y descubre cómo nuestro software dental puede revolucionar tu clínica.
 
-[[Top]](#top)
+[[Inicio]](#top)

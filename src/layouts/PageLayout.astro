@@ -20,7 +20,7 @@ const { meta } = Astro.props;
     <Announcement />
   </slot>
   <slot name="header">
-    <Header {...headerData} isSticky showRssFeed showToggleTheme />
+    <Header {...headerData} isSticky showRssFeed={false} showToggleTheme />
   </slot>
   <main>
     <slot />

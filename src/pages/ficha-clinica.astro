@@ -1,0 +1,679 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import { Icon } from 'astro-icon';
+import { Picture } from '@astrojs/image/components';
+import FAQs from '~/components/widgets/FAQs.astro';
+
+const meta = {
+  dontUseTitleTemplate: true,
+  title: 'Ficha Clínica Digital',
+  description:
+    'La ficha clínica digital todo-en-uno. Mejora la eficiencia de tu clínica dental con acceso inmediato a datos clave, monitoreo efectivo y decisiones informadas al alcance de tu mano.',
+  ogTitle: 'Ficha Clínica Digital en CIMADent | Ficha Clínica Digital Todo-en-Uno',
+  ogType: 'website',
+};
+---
+
+<Layout {meta}>
+  <!-- Sección Titulo -->
+  <div class="px-6 py-12 sm:py-16 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-4xl font-bold text-third sm:text-6xl dark:text-white">Ficha Clínica Digital Todo-en-Uno</h2>
+      <p class="mt-6 text-lg leading-8 text-muted dark:text-slate-300">
+        Maneja la información clínica de tus pacientes de manera eficiente, segura y centralizada.
+      </p>
+    </div>
+  </div>
+
+  <!-- Resumen del paciente al instante -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="px-6 lg:px-0 lg:pr-4 lg:pt-4 left-col">
+          <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">
+              Resumen del paciente al instante
+            </p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              Obtén de un vistazo información crucial sobre tus pacientes, como citas programadas, confirmadas,
+              ausencias, cancelaciones, presupuestos y notas importantes.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:arrow-arc-right-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Acceso inmediato a datos clave.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Encuentra toda la información vital de tus pacientes en un solo lugar, optimizando tiempo y esfuerzo.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:monitor-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Monitoreo efectivo.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Mantén un control riguroso del historial de citas y tratamientos de tus pacientes.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:lightbulb-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Decisiones informadas al alcance de tu mano.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  La información relevante te permite tomar decisiones fundamentadas para el tratamiento y seguimiento
+                  de tus pacientes.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center sm:px-6 lg:px-0">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/ficha-resumen.png"
+            alt="Resumen del paciente al instante"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calendario y Agenda flexible -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="lg:ml-auto lg:pl-4 lg:pt-4 right-col">
+          <div class="lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">
+              Alertas e información básica al alcance
+            </p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              Accede fácilmente a la información esencial del paciente y sus alertas, como alergias, enfermedades
+              previas, medicamentos e intervenciones.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:person-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Atención personalizada y segura.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Comprende las necesidades específicas de tus pacientes para brindar un cuidado excepcional y seguro.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:user-gear-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Evita complicaciones.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Las alertas te ayudan a prevenir posibles contraindicaciones y complicaciones durante el tratamiento.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:device-tablet-speaker-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Datos importantes al instante.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Accede rápidamente a la información crucial para brindar una atención eficaz y efectiva.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center justify-end lg:order-first">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/ficha-alertas.png"
+            alt="Alertas e información básica al alcance"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gestión de presupuestos -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="px-6 lg:px-0 lg:pr-4 lg:pt-4 left-col">
+          <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">Gestión de presupuestos</p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              Agrega y modifica fácilmente los presupuestos de tus pacientes en función de sus necesidades y
+              tratamientos.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:coin-vertical-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Flexibilidad financiera.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Adapta los presupuestos a las necesidades y posibilidades de tus pacientes.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:bank-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Control de ingresos.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Lleva un registro detallado de los presupuestos y pagos de tus pacientes.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:airplane-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Facilita el seguimiento.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Mantén un registro actualizado de los presupuestos para un mejor seguimiento de tus pacientes.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center sm:px-6 lg:px-0">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/ficha-presupuesto.png"
+            alt="Gestión de presupuestos"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manejo de odontogramas-->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="lg:ml-auto lg:pl-4 lg:pt-4 right-col">
+          <div class="lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">Manejo de odontogramas</p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              Actualiza y modifica odontogramas de tus pacientes, facilitando el seguimiento de sus tratamientos
+              dentales.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:image-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Registro gráfico.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Visualiza el estado dental de tus pacientes de manera clara y precisa.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:smiley-sticker-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Seguimiento de tratamientos.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Observa fácilmente la evolución de los tratamientos y las intervenciones realizadas.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:paper-plane-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Planificación de procedimientos.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Utiliza el odontograma para planificar futuros tratamientos y procedimientos.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center justify-end lg:order-first">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/ficha-odontograma.png"
+            alt="Manejo de odontogramas"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gestión de evoluciones -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="px-6 lg:px-0 lg:pr-4 lg:pt-4 left-col">
+          <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">Gestión de evoluciones</p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              Registra la historia clínica y evolución de tus pacientes en sus fichas, asegurando un seguimiento
+              adecuado.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:list-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Historial completo.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Accede rápidamente a la historia clínica de tus pacientes.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:chat-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Mejora la comunicación.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Comparte la información clínica relevante con otros profesionales del equipo.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:chart-line-up-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Evaluación de tratamientos.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Monitorea el progreso y la efectividad de los tratamientos realizados.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center sm:px-6 lg:px-0">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/ficha-evolucion.png"
+            alt="Gestión de evoluciones"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Administración de sesiones-->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="lg:ml-auto lg:pl-4 lg:pt-4 right-col">
+          <div class="lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">Administración de sesiones</p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              Lleva un registro de las sesiones de tratamiento de tus pacientes, facilitando la organización y
+              seguimiento.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:codesandbox-logo-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Organización de citas.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Mantén un control detallado de las sesiones y citas de tus pacientes.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:folder-plus-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Seguimiento de tratamientos.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Verifica fácilmente el avance y el cumplimiento de los tratamientos.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:graph-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Evaluación del progreso.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Utiliza el registro de sesiones para evaluar el progreso del paciente a lo largo del tiempo.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center justify-end lg:order-first">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/ficha-sesiones.png"
+            alt="Administración de sesiones"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gestión de imágenes -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="px-6 lg:px-0 lg:pr-4 lg:pt-4 left-col">
+          <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">Gestión de imágenes</p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              Almacena y organiza imágenes relacionadas con el tratamiento de tus pacientes, como radiografías y
+              fotografías.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:image-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Archivo visual.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Crea un registro visual del tratamiento y evolución de tus pacientes.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:fast-forward-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Acceso rápido.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Encuentra y comparte fácilmente imágenes relevantes para la atención del paciente.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:faders-horizontal-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Comparación de imágenes.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Utiliza las imágenes almacenadas para evaluar el progreso y la efectividad de los tratamientos.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center sm:px-6 lg:px-0">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/ficha-imagenes.png"
+            alt="Gestión de imágenes"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Creación de recetas-->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="lg:ml-auto lg:pl-4 lg:pt-4 right-col">
+          <div class="lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">Creación de recetas</p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              Genera y gestiona recetas médicas para tus pacientes de manera rápida y eficiente.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:globe-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Prescripción digital.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Emite recetas de forma rápida y precisa directamente desde la ficha clínica.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:list-checks-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Historial de recetas.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Lleva un registro de las recetas emitidas para cada paciente..
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:arrow-elbow-right-down-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Reducción de errores.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  La generación de recetas digitales minimiza la posibilidad de errores y malentendidos.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center justify-end lg:order-first">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/ficha-recetas.png"
+            alt="Creación de recetas"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detalle de pagos realizados -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="px-6 lg:px-0 lg:pr-4 lg:pt-4 left-col">
+          <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">Detalle de pagos realizados</p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              Lleva un control de los pagos realizados por tus pacientes, permitiéndote tener una visión clara de su
+              situación financiera.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:clipboard-text-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Control financiero.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Registra de manera detallada los ingresos generados por tus pacientes y evalúa el desempeño financiero
+                  de tu clínica.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:diamond-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Transparencia.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Facilita la comunicación con tus pacientes acerca de sus pagos y saldos pendientes, fomentando una
+                  relación de confianza.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:arrow-bend-left-up-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Mejora la gestión.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Utiliza el detalle de pagos para planificar y optimizar el rendimiento financiero de tu clínica.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center sm:px-6 lg:px-0">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/ficha-pagos.png"
+            alt="Detalle de pagos realizados"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="bg-third dark:bg-dark">
+    <div class="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold text-white sm:text-4xl">¡No esperes más!</h2>
+        <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-200 dark:text-slate-400">
+          Prueba CIMADent gratis por 7 días y revoluciona la gestión de las fichas clínicas de tus pacientes.
+          ¡Regístrate ahora!
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-x-6">
+          <a
+            href="https://app.cimadent.cl/register"
+            class="rounded-md bg-primary dark:bg-primary px-3.5 py-2.5 text-sm font-medium text-white dark:text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+            >Inicia tu prueba gratuita de 7 días</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQs -->
+  <FAQs
+    title="Preguntas frecuentes"
+    subtitle=""
+    highlight="FAQs"
+    items={[
+      [
+        {
+          question: '¿Puedo agregar información sobre alergias y enfermedades del paciente en la ficha clínica?',
+          answer:
+            'Sí, en la ficha clínica puedes agregar información sobre alergias, enfermedades previas, medicamentos que el paciente usa a diario e intervenciones realizadas.',
+        },
+        {
+          question: '¿Es posible guardar imágenes, como radiografías, en la ficha clínica del paciente?',
+          answer:
+            'Sí, en la ficha clínica puedes agregar imágenes relacionadas con el tratamiento del paciente, como radiografías o fotografías.',
+        },
+        {
+          question: '¿Puedo emitir recetas directamente desde la ficha clínica?',
+          answer:
+            'Sí, CIMADent permite generar recetas de forma rápida y precisa directamente desde la ficha clínica del paciente.',
+        },
+      ],
+      [
+        {
+          question: '¿Cómo puedo llevar un registro de los pagos realizados por los pacientes?',
+          answer:
+            'En la ficha clínica, encontrarás una sección de detalle de pagos realizados donde podrás llevar un control de los ingresos generados por cada paciente.',
+        },
+        {
+          question: '¿Es posible modificar el odontograma del paciente en la ficha clínica?',
+          answer:
+            'Sí, dentro de la ficha clínica puedes modificar el odontograma del paciente según sus tratamientos y evolución.',
+        },
+        {
+          question: '¿Puedo agregar y consultar evoluciones o historias clínicas del paciente?',
+          answer:
+            'Sí, en la ficha clínica puedes agregar evoluciones o historias clínicas y consultarlas en cualquier momento.',
+        },
+      ],
+    ]}
+  />
+</Layout>

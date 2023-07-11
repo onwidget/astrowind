@@ -1,0 +1,281 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import { Icon } from 'astro-icon';
+import { Picture } from '@astrojs/image/components';
+import FAQs from '~/components/widgets/FAQs.astro';
+
+const meta = {
+  dontUseTitleTemplate: true,
+  title: 'Reportes y Análisis',
+  description:
+    'Potencia el éxito de tu práctica dental con los reportes y análisis detallados de CIMADent. Descubre oportunidades de crecimiento y mejora continua.',
+  ogTitle: 'Reportes y Análisis en CIMADent | Mejora tu Práctica Dental',
+  ogType: 'website',
+};
+---
+
+<Layout {meta}>
+  <!-- Sección Titulo -->
+  <div class="px-6 py-12 sm:py-16 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-4xl font-bold text-third sm:text-6xl dark:text-white">Reportes y Análisis</h2>
+      <p class="mt-6 text-lg leading-8 text-muted dark:text-slate-300">
+        Descubre oportunidades de crecimiento y mejora continua.
+      </p>
+    </div>
+  </div>
+
+  <!-- Reportes de recaudación detallados -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="px-6 lg:px-0 lg:pr-4 lg:pt-4 left-col">
+          <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">
+              Reportes de recaudación detallados
+            </p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              CIMADent te proporciona reportes exhaustivos de la recaudación de tu clínica, incluyendo ingresos por
+              tratamiento, pagos y deudas pendientes. Fortalece la salud financiera de tu negocio basándote en datos
+              concretos.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:coins-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Gestión financiera eficiente.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Lleva un registro claro y preciso de tus ingresos para optimizar la administración de tu clínica.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:arrow-fat-up-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Descubre oportunidades de crecimiento.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Examina los datos de recaudación para detectar áreas de crecimiento y oportunidades de mejora.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:bookmarks-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Planificación estratégica.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Utiliza los reportes de recaudación para trazar objetivos financieros realistas y alcanzables.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center sm:px-6 lg:px-0">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/reporte-gestion-mensual.png"
+            alt="Reportes de recaudación detallados"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reportes de pacientes con deuda -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="lg:ml-auto lg:pl-4 lg:pt-4 right-col">
+          <div class="lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">
+              Reportes de pacientes con deuda
+            </p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              CIMADent facilita la generación de reportes de pacientes con deudas pendientes, permitiéndote llevar un
+              seguimiento eficaz y gestionar los cobros en tu clínica.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:monitor-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Monitoreo de deudas.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Mantén un registro actualizado de las deudas pendientes para un seguimiento eficiente y efectivo.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:chat-circle-dots-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Comunicación efectiva.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Interactúa con los pacientes deudores de manera oportuna y adecuada para agilizar el proceso de pago.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:arrow-line-up-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Incrementa la rentabilidad.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  La gestión efectiva de deudas contribuye a la rentabilidad y estabilidad financiera de tu clínica.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center justify-end lg:order-first">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/reporte-pacientes-con-deuda.png"
+            alt="Reportes de pacientes con deuda"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Evaluación del rendimiento de los profesionales -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="px-6 lg:px-0 lg:pr-4 lg:pt-4 left-col">
+          <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">
+              Evaluación del rendimiento de los profesionales
+            </p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              Examina el desempeño de los profesionales en tu clínica con reportes detallados que incluyen cantidad de
+              citas, tratamientos realizados y recaudación generada.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:align-center-horizontal-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Análisis de desempeño.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Identifica áreas de mejora y fortalezas en el rendimiento de tus profesionales.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:person-simple-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Inspiración para tu equipo.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Utiliza los reportes para establecer metas ambiciosas y motivar a tu equipo a elevar su rendimiento.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:star-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Asignación de recursos inteligente.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Basándote en el rendimiento de los profesionales, distribuye recursos y tareas de manera eficaz y
+                  estratégica.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center sm:px-6 lg:px-0">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src="src/assets/images/reporte-rendimiento-profesionales.png"
+            alt="Evaluación del rendimiento de los profesionales"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="bg-third dark:bg-dark">
+    <div class="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold text-white sm:text-4xl">
+          ¡Potencia el rendimiento de tu clínica con información valiosa en CIMADent!
+        </h2>
+        <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-200 dark:text-slate-400">
+          Regístrate ahora y aprovecha nuestra prueba gratuita de 7 días con acceso completo a todas las
+          funcionalidades. ¡No esperes más para tomar el control de tu negocio dental!
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-x-6">
+          <a
+            href="https://app.cimadent.cl/register"
+            class="rounded-md bg-primary dark:bg-primary px-3.5 py-2.5 text-sm font-medium text-white dark:text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+            >Inicia tu prueba gratuita de 7 días</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQs -->
+  <FAQs
+    title="Preguntas frecuentes"
+    subtitle=""
+    highlight="FAQs"
+    items={[
+      [
+        {
+          question: '¿Puedo exportar los reportes en varios formatos?',
+          answer:
+            'Sí, los reportes generados en CIMADent pueden ser exportados a formatos populares como PDF, Excel y CSV.',
+        },
+        {
+          question: '¿Puedo personalizar los reportes de acuerdo a mis necesidades?',
+          answer:
+            'Sí, CIMADent ofrece opciones de personalización en los reportes, adaptándolos a las necesidades específicas de tu clínica.',
+        },
+      ],
+      [
+        {
+          question: '¿Cuán seguros están mis datos en CIMADent?',
+          answer:
+            'CIMADent se compromete a garantizar la seguridad y privacidad de tus datos, cumpliendo con las regulaciones y estándares de seguridad aplicables.',
+        },
+      ],
+    ]}
+  />
+</Layout>

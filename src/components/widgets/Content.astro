@@ -42,7 +42,28 @@ const defaultImageId = 1;
 ---
 
 <section
-  x-data={`{ activeImage: ${defaultImageId} }`}
+  x-data={`{ 
+    activeImage: ${defaultImageId}, 
+    rotationInterval: null,
+    isRotating: true,
+    changeImage() { 
+      if (this.activeImage <= ${images.length - 1}) {
+        this.activeImage++;
+      } else {
+        this.activeImage = 1;
+      } 
+    },
+    startRotation() {
+      this.rotationInterval = setInterval(() => {
+        if (this.isRotating) {
+          this.changeImage();
+        } else {
+          clearInterval(this.rotationInterval);
+        }
+      }, 2000); 
+    }
+  }`}
+  x-init="startRotation"
   class:list={[{ 'pt-0 md:pt-0': isAfterContent }, 'bg-blue-50 dark:bg-slate-800 py-16 md:py-20']}
 >
   <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
@@ -56,10 +77,7 @@ const defaultImageId = 1;
             />
           )}
           {title && (
-            <h2
-              class="text-4xl md:text-5xl font-bold text-third leading-tighter tracking-tighter mb-4 font-heading "
-              set:html={title}
-            />
+            <h2 class="text-4xl md:text-5xl font-bold text-third leading-tighter mb-4 font-heading " set:html={title} />
           )}
 
           {subtitle && (
@@ -71,14 +89,18 @@ const defaultImageId = 1;
   </div>
   <div class="mx-auto max-w-7xl p-4 md:px-8">
     <div class={`md:flex ${isReversed ? 'md:flex-row-reverse' : ''} md:gap-16`}>
-      <div class="md:basis-1/2 self-center">
+      <div class={`md:basis-1/2 self-center invisible ${isReversed ? 'right-col' : 'left-col'}`}>
         {content && <div class="mb-12 text-lg dark:text-slate-400" set:html={content} />}
 
         {
           items && (
             <div class="space-y-8">
               {items.map(({ title: title2, description, icon, id }) => (
-                <div class="flex cursor-pointer" x-on:click={`activeImage = ${id}`}>
+                <div
+                  class="flex rounded-md cursor-pointer p-3"
+                  x-bind:class={`{ 'bg-blue-100 dark:bg-slate-700': activeImage === ${id} }`}
+                  x-on:click={`activeImage = ${id}; isRotating = false;`}
+                >
                   <div class="flex-shrink-0">
                     <div class="flex h-7 w-7 items-center justify-center rounded-full bg-secondary text-white">
                       <Icon name={icon ? icon : 'tabler:check'} class="w-5 h-5" />
@@ -118,3 +140,37 @@ const defaultImageId = 1;
     </div>
   </div>
 </section>
+
+<script>
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1,
+  };
+
+  const fadeInObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('invisible');
+        entry.target.classList.add('animate-fade-slide-in-left');
+        fadeInObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  const slideInObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('invisible');
+        entry.target.classList.add('animate-fade-slide-in-right');
+        slideInObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  const leftItems = document.querySelectorAll('.left-col');
+  leftItems.forEach((item) => fadeInObserver.observe(item));
+
+  const rightItems = document.querySelectorAll('.right-col');
+  rightItems.forEach((item) => slideInObserver.observe(item));
+</script>

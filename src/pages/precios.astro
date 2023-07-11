@@ -1,0 +1,167 @@
+---
+import FAQs from '~/components/widgets/FAQs.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const meta = {
+  dontUseTitleTemplate: true,
+  title: 'Precios',
+  description:
+    'Descubre nuestros planes de precios flexibles y asequibles. Paga sólo por lo que necesitas con CIMADent, el software de gestión dental que se ajusta a tus necesidades.',
+  ogTitle: 'Precios en CIMADent | Software Dental Asequible y Transparente',
+  ogType: 'website',
+};
+---
+
+<Layout {meta}>
+  <!-- Sección Titulo -->
+  <div class="px-6 py-12 sm:py-16 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-4xl font-bold text-third sm:text-6xl dark:text-white">
+        Tarifas: Sencillez, transparencia y asequibilidad
+      </h2>
+      <p class="mt-6 text-lg leading-8 text-muted dark:text-slate-300">
+        Nuestro modelo de precios es simple y adaptable a tus necesidades, ya seas un dentista independiente o formes
+        parte de una clínica.
+      </p>
+    </div>
+  </div>
+
+  <!-- Precio -->
+  <div class="py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div
+        class="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 dark:ring-slate-800 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none"
+      >
+        <div class="p-8 sm:p-10 lg:flex-auto">
+          <h3 class="text-2xl font-bold text-third dark:text-white">
+            Tarifa por profesional, ¡olvídate de planes complicados!
+          </h3>
+          <p class="mt-6 text-base leading-7 text-muted dark:text-slate-400">
+            Nuestro modelo de precios es simple: $10.000 CLP mensuales por dentista y $7.500 CLP por profesional
+            adicional. Acceso completo y administración ilimitada de clínicas incluido.
+          </p>
+          <ul
+            role="list"
+            class="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-muted dark:text-slate-400 sm:grid-cols-2 sm:gap-6"
+          >
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-secondary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              Acceso total al software y a todas sus funcionalidades.
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-secondary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              Crea y gestiona tantas clínicas como desees.
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-secondary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              Invita a otros profesionales o administradores a tu clínica.
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-secondary" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              Perfecto para clínicas con múltiples dentistas.
+            </li>
+          </ul>
+        </div>
+        <div class="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
+          <div
+            class="rounded-2xl bg-blue-50 dark:bg-slate-800 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16"
+          >
+            <div class="mx-auto max-w-xs px-8">
+              <p class="text-base font-semibold text-third dark:text-white">Pago por profesional</p>
+              <p class="mt-6 flex items-baseline justify-center gap-x-2">
+                <span class="text-5xl font-bold text-muted dark:text-slate-400">$10.000</span>
+                <span class="text-sm font-semibold leading-6 tracking-wide text-muted dark:text-slate-400">CLP</span>
+              </p>
+              <a
+                href="https://app.cimadent.cl/register"
+                class="mt-10 block w-full rounded-md bg-primary px-3 py-2 text-center text-sm font-medium text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                >Regístrate Gratis</a
+              >
+              <p class="mt-6 text-xs leading-5 text-muted dark:text-slate-400">
+                Profesional o administrador adicional: $7.500 CLP mensuales por persona.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="bg-third dark:bg-dark">
+    <div class="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold text-white sm:text-4xl">¡Transforma tu gestión dental hoy!</h2>
+        <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-200 dark:text-slate-400">
+          Descubre cómo CIMADent simplifica la administración de tus pacientes y clínicas. ¡Regístrate hoy y accede a
+          todas las funcionalidades sin restricciones durante 7 días!
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-x-6">
+          <a
+            href="https://app.cimadent.cl/register"
+            class="rounded-md bg-primary dark:bg-primary px-3.5 py-2.5 text-sm font-medium text-white dark:text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+            >Inicia tu prueba gratuita de 7 días</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQs -->
+  <FAQs
+    title="Preguntas frecuentes"
+    subtitle="Si tienes dudas sobre la facturación, suscripciones o descuentos de CIMADent, nuestras preguntas frecuentes proporcionan las respuestas esenciales para ayudarte a tomar decisiones informadas."
+    highlight="FAQs"
+    items={[
+      [
+        {
+          question: '¿Cuándo se realiza el cobro mensual de la suscripción de CIMADent?',
+          answer:
+            'El cobro de la suscripción se efectúa automáticamente cada mes en la fecha en que te registraste inicialmente en CIMADent. Por ejemplo, si te registraste el día 10 del mes, tu pago se procesará el día 10 de cada mes siguiente.',
+        },
+        {
+          question: '¿Es posible cambiar o cancelar mi suscripción en cualquier momento?',
+          answer:
+            'Sí, puedes modificar o cancelar tu suscripción en cualquier momento desde la sección de administración de tu cuenta. Si decides cancelar, tendrás acceso a CIMADent hasta el final del período de facturación en curso.',
+        },
+        {
+          question: '¿Qué métodos de pago acepta CIMADent?',
+          answer:
+            'Aceptamos pagos mediante tarjetas de crédito y débito (Visa, Mastercard, American Express) y transferencia bancaria. Si tienes problemas con el pago o necesitas más información, no dudes en ponerte en contacto con nuestro equipo de soporte.',
+        },
+      ],
+      [
+        {
+          question: '¿Ofrecen algún tipo de descuento para grupos grandes, estudiantes o instituciones educativas?',
+          answer:
+            'Sí, ofrecemos descuentos especiales para grupos grandes, estudiantes e instituciones educativas. Por favor, ponte en contacto con nuestro equipo de ventas para obtener más información sobre estos descuentos y cómo aplicar.',
+        },
+        {
+          question: '¿Cómo se maneja la facturación en caso de agregar o eliminar profesionales durante el mes?',
+          answer:
+            'Si agregas un profesional adicional durante el mes, la tarifa proporcional por el resto del mes en curso se cobrará de inmediato y se sumará a tu próxima factura. Si eliminas un profesional de tu suscripción, se ajustará el monto en tu próxima factura, descontando la tarifa proporcional correspondiente al período no utilizado.',
+        },
+      ],
+    ]}
+  />
+</Layout>

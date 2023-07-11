@@ -43,4 +43,4 @@ El futuro de la odontología ya está aquí, y las tendencias como la inteligenc
 
 Aprovecha al máximo las tendencias emergentes en el software dental. Contáctanos hoy mismo y descubre cómo CIMADent puede ayudarte a prepararte para el futuro de la gestión dental.
 
-[[Top]](#top)
+[[Inicio]](#top)

@@ -41,4 +41,4 @@ Adoptar un software dental como CIMADent en tu práctica odontológica puede apo
 
 ¿Estás listo para llevar tu práctica al siguiente nivel con CIMADent? Prueba nuestro software dental de forma gratuita durante 7 días y descubre cómo puede transformar tu gestión dental.
 
-[[Top]](#top)
+[[Inicio]](#top)

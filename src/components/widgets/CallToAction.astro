@@ -26,14 +26,7 @@ const {
       <div
         class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600"
       >
-        {
-          title && (
-            <h2
-              class="text-4xl md:text-4xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
-              set:html={title}
-            />
-          )
-        }
+        {title && <h2 class="text-4xl md:text-4xl font-bold leading-tighter mb-4 font-heading" set:html={title} />}
         {subtitle && <p class="text-xl text-muted dark:text-slate-400" set:html={subtitle} />}
         {
           typeof callToAction === 'string' ? (

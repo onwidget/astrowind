@@ -22,7 +22,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="scroll-mt-16" id="features">
+<section class="scroll-mt-16" id="caracteristicas">
   <div class="py-24 sm:py-32">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       {
@@ -54,18 +54,13 @@ const {
         <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
           {
             items.map(({ title, description, icon }) => (
-              <div class="flex flex-col">
+              <div class="flex flex-col opacity-0 entrada-animations">
                 <dt class="flex items-center gap-x-3 text-xl text-third font-bold leading-7 dark:text-white">
                   {icon && <Icon name={icon} class="w-6 h-6 flex-none text-secondary dark:text-secondary" />}
                   {title}
                 </dt>
                 <dd class="mt-4 flex flex-auto flex-col leading-7 text-muted dark:text-slate-400">
                   <p class="flex-auto text-base">{description}</p>
-                  <p class="mt-6">
-                    <a href="#" class="text-sm text-primary font-semibold leading-6 dark:text-secondary">
-                      Leer más <span aria-hidden="true">→</span>
-                    </a>
-                  </p>
                 </dd>
               </div>
             ))
@@ -75,3 +70,27 @@ const {
     </div>
   </div>
 </section>
+
+<script>
+  const elements = document.querySelectorAll('.entrada-animations');
+
+  elements.forEach((element) => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('invisible');
+
+          const delay = Math.floor(Math.random() * 1000);
+
+          entry.target.style.animationDelay = `${delay}ms`;
+
+          entry.target.classList.add('animate-fade-slide-in');
+
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    observer.observe(element);
+  });
+</script>
