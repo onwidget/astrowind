@@ -1,4 +1,6 @@
 ---
+import { Image } from '@astrojs/image/components';
+
 import { SITE } from '~/config.mjs';
 import Layout from '~/layouts/PageLayout.astro';
 
@@ -7,13 +9,14 @@ import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Content from '~/components/widgets/Content.astro';
 import LatestPosts from '~/components/blog/LatestPosts.astro';
-import { Picture } from '@astrojs/image/components';
 
 const meta = {
   title: SITE.title,
   description: SITE.description,
   dontUseTitleTemplate: true,
 };
+
+import border1 from '~/assets/images/borde-1.svg';
 ---
 
 <Layout {meta}>
@@ -90,7 +93,7 @@ const meta = {
     ]}
   />
 
-  <img class="mx-auto w-full -mb-1" src="src/assets/images/borde-1.svg" alt="Borde 1" />
+  <img src={border1} alt="Borde 1" />
 
   <Content
     highlight=""
