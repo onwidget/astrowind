@@ -373,15 +373,15 @@ const meta = {
           <RandomImages
             id="randomImages-calendario"
             images={[
-              { id: 1, src: 'src/assets/images/calendario-por-hora.png', alt: 'Vista personalizada' },
+              { id: 1, src: '/assets/calendario-por-hora.png', alt: 'Vista personalizada' },
               {
                 id: 2,
-                src: 'src/assets/images/calendario-confirma-cancela.png',
+                src: '/assets/calendario-confirma-cancela.png',
                 alt: 'Funciones de programación avanzada',
               },
-              { id: 3, src: 'src/assets/images/reservas-online.png', alt: 'Reservas online en tiempo real' },
-              { id: 4, src: 'src/assets/images/confirmacion-cita.png', alt: 'Confirmaciones instantáneas' },
-              { id: 5, src: 'src/assets/images/confirmacion-agendamiento.png', alt: 'Recordatorios automáticos' },
+              { id: 3, src: '/assets/reservas-online.png', alt: 'Reservas online en tiempo real' },
+              { id: 4, src: '/assets/confirmacion-cita.png', alt: 'Confirmaciones instantáneas' },
+              { id: 5, src: '/assets/confirmacion-agendamiento.png', alt: 'Recordatorios automáticos' },
             ]}
           />
         </div>
@@ -472,11 +472,11 @@ const meta = {
           <RandomImages
             id="randomImages-ficha-clinica"
             images={[
-              { id: 1, src: 'src/assets/images/envio-presupuesto.png', alt: 'Comunicación ágil' },
-              { id: 2, src: 'src/assets/images/multi-clinica.png', alt: 'Multi-clínica simplificado' },
-              { id: 3, src: 'src/assets/images/odontograma.png', alt: 'Historial dental completo y unificado' },
-              { id: 4, src: 'src/assets/images/imagenes.png', alt: 'Imágenes y documentos a tu alcance' },
-              { id: 5, src: 'src/assets/images/pagos.png', alt: 'Seguimiento de pagos eficiente' },
+              { id: 1, src: '/assets/envio-presupuesto.png', alt: 'Comunicación ágil' },
+              { id: 2, src: '/assets/multi-clinica.png', alt: 'Multi-clínica simplificado' },
+              { id: 3, src: '/assets/odontograma.png', alt: 'Historial dental completo y unificado' },
+              { id: 4, src: '/assets/imagenes.png', alt: 'Imágenes y documentos a tu alcance' },
+              { id: 5, src: '/assets/pagos.png', alt: 'Seguimiento de pagos eficiente' },
             ]}
           />
         </div>
@@ -555,8 +555,9 @@ const meta = {
         widths={[400, 768]}
         sizes="(max-width: 768px)"
         aspectRatio="16:9"
-        src="src/assets/images/servicio-al-cliente.jpg"
+        src="/assets/servicio-al-cliente.jpg"
         alt="Servicio al Cliente"
+        loading="lazy"
       />
     </div>
     <div class="relative mx-auto max-w-7xl py-24 sm:py-32 lg:px-8 lg:py-40">

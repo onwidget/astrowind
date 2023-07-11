@@ -5,6 +5,11 @@ import { Icon } from 'astro-icon';
 import { Picture } from '@astrojs/image/components';
 import FAQs from '~/components/widgets/FAQs.astro';
 
+import configuracionAMedida from '~/assets/images/configuracion-a-medida.png';
+import administracionDeUsuarios from '~/assets/images/administracion-de-usuarios.png';
+import notificaciones from '~/assets/images/notificaciones.png';
+import confirmacionWhatsapp from '~/assets/images/confirmacion-whatsapp.png';
+
 const meta = {
   dontUseTitleTemplate: true,
   title: 'Administración y Configuración',
@@ -89,7 +94,7 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/configuracion-a-medida.png"
+            src={configuracionAMedida}
             alt="Domina con nuestro panel de administración simplificado"
           />
         </div>
@@ -153,7 +158,7 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/administracion-de-usuarios.png"
+            src={administracionDeUsuarios}
             alt="Invita a tu equipo al futuro"
           />
         </div>
@@ -217,7 +222,7 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/notificaciones.png"
+            src={notificaciones}
             alt="Notificaciones en tiempo real"
           />
         </div>
@@ -286,7 +291,7 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/confirmacion-whatsapp.png"
+            src={confirmacionWhatsapp}
             alt="Mensajes personalizados vía WhatsApp"
           />
         </div>

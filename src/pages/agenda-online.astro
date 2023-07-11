@@ -13,6 +13,8 @@ const meta = {
   ogTitle: 'Agenda Online en CIMADent | Transforma la Reserva de Citas',
   ogType: 'website',
 };
+
+import agendaOnline from '~/assets/images/agenda-online.png';
 ---
 
 <Layout {meta}>
@@ -88,8 +90,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/agenda-online.png"
+            src={agendaOnline}
             alt="Reservas en tiempo real y sin complicaciones"
+            loading="lazy"
           />
         </div>
       </div>

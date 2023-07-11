@@ -13,6 +13,11 @@ const meta = {
   ogTitle: 'Calendario en CIMADent | Gestión Eficaz de Citas y Horarios',
   ogType: 'website',
 };
+
+import calendarioVista from '~/assets/images/calendario-vista.png';
+import calendarioAgenda from '~/assets/images/calendario-agenda.png';
+import calendarioWhatsapp from '~/assets/images/calendario-whatsapp.png';
+import calendarioLlegada from '~/assets/images/calendario-llegada.png';
 ---
 
 <Layout {meta}>
@@ -87,8 +92,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/calendario-vista.png"
+            src={calendarioVista}
             alt="Personaliza tu vista de calendario"
+            loading="lazy"
           />
         </div>
       </div>
@@ -153,8 +159,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/calendario-agenda.png"
+            src={calendarioAgenda}
             alt="Gestión de citas en un instante"
+            loading="lazy"
           />
         </div>
       </div>
@@ -220,8 +227,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/calendario-whatsapp.png"
+            src={calendarioWhatsapp}
             alt="Recordatorios por WhatsApp"
+            loading="lazy"
           />
         </div>
       </div>
@@ -286,8 +294,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/calendario-llegada.png"
+            src={calendarioLlegada}
             alt="Notificaciones de llegada del paciente"
+            loading="lazy"
           />
         </div>
       </div>

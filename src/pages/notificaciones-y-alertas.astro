@@ -13,6 +13,11 @@ const meta = {
   ogTitle: 'Notificaciones y Alertas en CIMADent | Optimiza la Comunicación con Pacientes',
   ogType: 'website',
 };
+
+import confirmacionAgendamiento from '~/assets/images/confirmacion-agendamiento.png';
+import confirmacionCita from '~/assets/images/confirmacion-cita.png';
+import notificaciones from '~/assets/images/notificaciones.png';
+import confirmacionWhatsapp from '~/assets/images/confirmacion-whatsapp.png';
 ---
 
 <Layout {meta}>
@@ -84,8 +89,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/confirmacion-agendamiento.png"
+            src={confirmacionAgendamiento}
             alt="Recordatorios automáticos"
+            loading="lazy"
           />
         </div>
       </div>
@@ -150,8 +156,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/confirmacion-cita.png"
+            src={confirmacionCita}
             alt="Confirmaciones instantáneas"
+            loading="lazy"
           />
         </div>
       </div>
@@ -214,8 +221,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/notificaciones.png"
+            src={notificaciones}
             alt="Notificaciones en tiempo real"
+            loading="lazy"
           />
         </div>
       </div>
@@ -283,8 +291,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/confirmacion-whatsapp.png"
+            src={confirmacionWhatsapp}
             alt="Mensajes personalizados vía WhatsApp"
+            loading="lazy"
           />
         </div>
       </div>

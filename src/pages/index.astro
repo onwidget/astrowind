@@ -1,6 +1,4 @@
 ---
-import { Image } from '@astrojs/image/components';
-
 import { SITE } from '~/config.mjs';
 import Layout from '~/layouts/PageLayout.astro';
 
@@ -15,8 +13,6 @@ const meta = {
   description: SITE.description,
   dontUseTitleTemplate: true,
 };
-
-import border1 from '~/assets/images/administracion-de-usuarios.png';
 ---
 
 <Layout {meta}>
@@ -93,15 +89,15 @@ import border1 from '~/assets/images/administracion-de-usuarios.png';
     ]}
   />
 
-  <img src={border1} alt="Borde 1" />
+  <img src="/assets/borde-1.svg" alt="Borde 1" />
 
   <Content
     highlight=""
     title=""
     images={[
-      { id: 1, src: 'src/assets/images/confirmacion-agendamiento.png', alt: 'Recordatorios automáticos' },
-      { id: 2, src: 'src/assets/images/confirmacion-cita.png', alt: 'Confirmaciones instantáneas' },
-      { id: 3, src: 'src/assets/images/envio-presupuesto.png', alt: 'Comunicación ágil' },
+      { id: 1, src: '/assets/confirmacion-agendamiento.png', alt: 'Recordatorios automáticos' },
+      { id: 2, src: '/assets/confirmacion-cita.png', alt: 'Confirmaciones instantáneas' },
+      { id: 3, src: '/assets/envio-presupuesto.png', alt: 'Comunicación ágil' },
     ]}
     items={[
       {
@@ -139,9 +135,9 @@ import border1 from '~/assets/images/administracion-de-usuarios.png';
     isReversed
     isAfterContent
     images={[
-      { id: 1, src: 'src/assets/images/calendario-por-hora.png', alt: 'Vista personalizada' },
-      { id: 2, src: 'src/assets/images/calendario-confirma-cancela.png', alt: 'Funciones de programación avanzada' },
-      { id: 3, src: 'src/assets/images/reservas-online.png', alt: 'Reservas online en tiempo real' },
+      { id: 1, src: '/assets/calendario-por-hora.png', alt: 'Vista personalizada' },
+      { id: 2, src: '/assets/calendario-confirma-cancela.png', alt: 'Funciones de programación avanzada' },
+      { id: 3, src: '/assets/reservas-online.png', alt: 'Reservas online en tiempo real' },
     ]}
     items={[
       {
@@ -184,9 +180,9 @@ import border1 from '~/assets/images/administracion-de-usuarios.png';
     title=""
     isAfterContent
     images={[
-      { id: 1, src: 'src/assets/images/configuracion-personalizada.png', alt: 'Configuración personalizada' },
-      { id: 2, src: 'src/assets/images/gestion-usuarios-avanzada.png', alt: 'Gestión de usuarios avanzada' },
-      { id: 3, src: 'src/assets/images/multi-clinica.png', alt: 'Multi-clínica simplificado' },
+      { id: 1, src: '/assets/configuracion-personalizada.png', alt: 'Configuración personalizada' },
+      { id: 2, src: '/assets/gestion-usuarios-avanzada.png', alt: 'Gestión de usuarios avanzada' },
+      { id: 3, src: '/assets/multi-clinica.png', alt: 'Multi-clínica simplificado' },
     ]}
     items={[
       {
@@ -228,9 +224,9 @@ import border1 from '~/assets/images/administracion-de-usuarios.png';
     isReversed
     isAfterContent
     images={[
-      { id: 1, src: 'src/assets/images/odontograma.png', alt: 'Historial dental completo y unificado' },
-      { id: 2, src: 'src/assets/images/imagenes.png', alt: 'Imágenes y documentos a tu alcance' },
-      { id: 3, src: 'src/assets/images/pagos.png', alt: 'Seguimiento de pagos eficiente' },
+      { id: 1, src: '/assets/odontograma.png', alt: 'Historial dental completo y unificado' },
+      { id: 2, src: '/assets/imagenes.png', alt: 'Imágenes y documentos a tu alcance' },
+      { id: 3, src: '/assets/pagos.png', alt: 'Seguimiento de pagos eficiente' },
     ]}
     items={[
       {
@@ -271,9 +267,9 @@ import border1 from '~/assets/images/administracion-de-usuarios.png';
   <Content
     isAfterContent
     images={[
-      { id: 1, src: 'src/assets/images/reporte-pacientes.png', alt: 'Información financiera actualizada' },
-      { id: 2, src: 'src/assets/images/reporte-profesionales.png', alt: 'Evaluación del rendimiento en tiempo real' },
-      { id: 3, src: 'src/assets/images/reporte-general.png', alt: 'Datos accesibles y comprensibles' },
+      { id: 1, src: '/assets/reporte-pacientes.png', alt: 'Información financiera actualizada' },
+      { id: 2, src: '/assets/reporte-profesionales.png', alt: 'Evaluación del rendimiento en tiempo real' },
+      { id: 3, src: '/assets/reporte-general.png', alt: 'Datos accesibles y comprensibles' },
     ]}
     items={[
       {

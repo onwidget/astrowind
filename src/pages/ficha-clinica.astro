@@ -13,6 +13,16 @@ const meta = {
   ogTitle: 'Ficha Clínica Digital en CIMADent | Ficha Clínica Digital Todo-en-Uno',
   ogType: 'website',
 };
+
+import fichaResumen from '~/assets/images/ficha-resumen.png';
+import fichaAlertas from '~/assets/images/ficha-alertas.png';
+import fichaPresupuesto from '~/assets/images/ficha-presupuesto.png';
+import fichaOdontograma from '~/assets/images/ficha-odontograma.png';
+import fichaSesiones from '~/assets/images/ficha-sesiones.png';
+import fichaEvaluacion from '~/assets/images/ficha-evolucion.png';
+import fichaImagenes from '~/assets/images/ficha-imagenes.png';
+import fichaRecetas from '~/assets/images/ficha-recetas.png';
+import fichaPagos from '~/assets/images/ficha-pagos.png';
 ---
 
 <Layout {meta}>
@@ -88,8 +98,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/ficha-resumen.png"
+            src={fichaResumen}
             alt="Resumen del paciente al instante"
+            loading="lazy"
           />
         </div>
       </div>
@@ -157,8 +168,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/ficha-alertas.png"
+            src={fichaAlertas}
             alt="Alertas e información básica al alcance"
+            loading="lazy"
           />
         </div>
       </div>
@@ -221,8 +233,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/ficha-presupuesto.png"
+            src={fichaPresupuesto}
             alt="Gestión de presupuestos"
+            loading="lazy"
           />
         </div>
       </div>
@@ -285,8 +298,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/ficha-odontograma.png"
+            src={fichaOdontograma}
             alt="Manejo de odontogramas"
+            loading="lazy"
           />
         </div>
       </div>
@@ -346,8 +360,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/ficha-evolucion.png"
+            src={fichaEvaluacion}
             alt="Gestión de evoluciones"
+            loading="lazy"
           />
         </div>
       </div>
@@ -410,8 +425,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/ficha-sesiones.png"
+            src={fichaSesiones}
             alt="Administración de sesiones"
+            loading="lazy"
           />
         </div>
       </div>
@@ -474,8 +490,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/ficha-imagenes.png"
+            src={fichaImagenes}
             alt="Gestión de imágenes"
+            loading="lazy"
           />
         </div>
       </div>
@@ -537,8 +554,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/ficha-recetas.png"
+            src={fichaRecetas}
             alt="Creación de recetas"
+            loading="lazy"
           />
         </div>
       </div>
@@ -606,8 +624,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/ficha-pagos.png"
+            src={fichaPagos}
             alt="Detalle de pagos realizados"
+            loading="lazy"
           />
         </div>
       </div>

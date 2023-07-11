@@ -13,6 +13,10 @@ const meta = {
   ogTitle: 'Reportes y Análisis en CIMADent | Mejora tu Práctica Dental',
   ogType: 'website',
 };
+
+import reporteGestionMensual from '~/assets/images/reporte-gestion-mensual.png';
+import reportePacientesConDeuda from '~/assets/images/reporte-pacientes-con-deuda.png';
+import reporteRendimientoProfesionales from '~/assets/images/reporte-rendimiento-profesionales.png';
 ---
 
 <Layout {meta}>
@@ -85,8 +89,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/reporte-gestion-mensual.png"
+            src={reporteGestionMensual}
             alt="Reportes de recaudación detallados"
+            loading="lazy"
           />
         </div>
       </div>
@@ -154,8 +159,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/reporte-pacientes-con-deuda.png"
+            src={reportePacientesConDeuda}
             alt="Reportes de pacientes con deuda"
+            loading="lazy"
           />
         </div>
       </div>
@@ -221,8 +227,9 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src="src/assets/images/reporte-rendimiento-profesionales.png"
+            src={reporteRendimientoProfesionales}
             alt="Evaluación del rendimiento de los profesionales"
+            loading="lazy"
           />
         </div>
       </div>
