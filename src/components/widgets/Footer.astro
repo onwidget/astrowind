@@ -21,13 +21,22 @@ export interface Props {
   socialLinks: Array<Link>;
   footNote?: string;
   theme?: string;
+  newsletterText?: string;
 }
 
-const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+const {
+  socialLinks = [],
+  secondaryLinks = [],
+  links = [],
+  footNote = '',
+  theme = 'light',
+  newsletterText = 'Las últimas noticias, artículos y recursos, enviados a tu correo electrónico semanalmente.',
+} = Astro.props;
 ---
 
 <footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800']}>
   <div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300">
     <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
       <div class="col-span-12 lg:col-span-4">
@@ -69,6 +78,43 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
         ))
       }
     </div>
+    <div class="border-t border-gray-900/10 pt-8 lg:flex lg:items-center lg:justify-between">
+      <div>
+        <h3 id="result" class="text-sm font-semibold leading-6 text-gray-900">Suscríbete a nuestro boletín</h3>
+        <p class="mt-2 text-sm leading-6 text-gray-600">
+          {newsletterText}
+        </p>
+      </div>
+      <form
+        action="https://api.web3forms.com/submit"
+        method="POST"
+        id="form"
+        class="mt-6 sm:flex sm:max-w-md lg:mt-0"
+        novalidate
+      >
+        <input type="hidden" name="access_key" value="6311e158-9d08-4aa3-a01a-936149c99148" />
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+        <input type="hidden" name="text" value={newsletterText} />
+
+        <label for="email-address" class="sr-only">Email</label>
+        <input
+          type="email"
+          name="email-address"
+          id="email-address"
+          autocomplete="email"
+          required
+          class="w-full min-w-0 appearance-none rounded-md border-0 bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:w-56 sm:text-sm sm:leading-6"
+          placeholder="Ingresa tu email"
+        />
+        <div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
+          <button
+            type="submit"
+            class="btn btn-primary rounded-md bg-primary hover:bg-primary px-3 py-2 text-sm font-medium text-white sm:mb-0"
+            >Suscríbete</button
+          >
+        </div>
+      </form>
+    </div>
     <div class="md:flex md:items-center md:justify-between py-6 md:py-8">
       {
         socialLinks?.length ? (
@@ -97,3 +143,53 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
     </div>
   </div>
 </footer>
+
+<script is:inline>
+  const form = document.getElementById('form');
+  const result = document.getElementById('result');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.querySelectorAll(':invalid')[0].focus();
+      return;
+    }
+
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+
+    const json = JSON.stringify(object);
+
+    console.log(json);
+
+    result.innerHTML = 'Enviando...';
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: json,
+    })
+      .then(async (response) => {
+        let json = await response.json();
+
+        if (response.status == 200) {
+          result.classList.add('text-green-500');
+          result.innerHTML = json.message;
+        } else {
+          console.log(response);
+          result.classList.add('text-red-500');
+          result.innerHTML = json.message;
+        }
+      })
+      .catch((error) => {
+        result.innerHTML = 'Algo fallo!';
+      })
+      .then(function () {
+        form.reset();
+      });
+  });
+</script>

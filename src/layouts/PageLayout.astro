@@ -10,9 +10,12 @@ import { MetaSEO } from '~/types';
 
 export interface Props {
   meta?: MetaSEO;
+  newsletterText?: string;
 }
 
-const { meta } = Astro.props;
+const { meta, newsletterText } = Astro.props;
+
+const mutableFooterData = { ...footerData, newsletterText };
 ---
 
 <Layout {meta}>
@@ -26,6 +29,6 @@ const { meta } = Astro.props;
     <slot />
   </main>
   <slot name="footer">
-    <Footer {...footerData} />
+    <Footer {...mutableFooterData} />
   </slot>
 </Layout>

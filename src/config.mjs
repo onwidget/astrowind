@@ -24,7 +24,7 @@ const CONFIG = {
     timeZone: 'UTC',
   }),
 
-  googleAnalyticsId: false, // or "G-XXXXXXXXXX",
+  googleAnalyticsId: 'G-EPTDDS3QS3', // or "G-XXXXXXXXXX",
   googleSiteVerificationId: '',
 
   blog: {
