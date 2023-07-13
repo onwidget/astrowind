@@ -11,11 +11,12 @@ import { MetaSEO } from '~/types';
 export interface Props {
   meta?: MetaSEO;
   newsletterText?: string;
+  page?: string;
 }
 
-const { meta, newsletterText } = Astro.props;
+const { meta, newsletterText, page } = Astro.props;
 
-const mutableFooterData = { ...footerData, newsletterText };
+const mutableFooterData = { ...footerData, newsletterText, page };
 ---
 
 <Layout {meta}>

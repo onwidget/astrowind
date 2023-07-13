@@ -22,6 +22,7 @@ export interface Props {
   footNote?: string;
   theme?: string;
   newsletterText?: string;
+  page?: string;
 }
 
 const {
@@ -31,6 +32,7 @@ const {
   footNote = '',
   theme = 'light',
   newsletterText = 'Las últimas noticias, artículos y recursos, enviados a tu correo electrónico semanalmente.',
+  page = 'Otra',
 } = Astro.props;
 ---
 
@@ -94,7 +96,7 @@ const {
       >
         <input type="hidden" name="access_key" value="6311e158-9d08-4aa3-a01a-936149c99148" />
         <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
-        <input type="hidden" name="text" value={newsletterText} />
+        <input type="hidden" name="page" value={page} />
 
         <label for="email-address" class="sr-only">Email</label>
         <input
