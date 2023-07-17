@@ -1,12 +1,7 @@
 ---
 import { Icon } from 'astro-icon';
 import { Picture } from '@astrojs/image/components';
-
-interface CallToAction {
-  text: string;
-  href: string;
-  icon?: string;
-}
+import type { CallToAction } from '~/components/widgets/CallToAction.astro';
 
 export interface Props {
   title?: string;
