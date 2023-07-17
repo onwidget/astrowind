@@ -55,7 +55,7 @@ _Dark Mode_ is triggered by the little 'sunlight' icon:<ToggleTheme/>in the page
 ```
 Note that this is a client event.  _BasicScripts.astro_ defines several other client-side functionality as well as this one.
 
-## Unorthodox Slot Usage
+## Advanced Slot Usage
 
 _slots_ are part of the component implementation, which is a common concept among many frameworks, including _Astrojs_.  The typical slot definition in a component looks like this:
 ```astro 
@@ -163,7 +163,7 @@ That's pretty concise and a bit of a head-scratcher to read, but basically what 
   1. you can reference a slot from a child element of that component and,
   1. provide content to the parent component's slot from the child by naming the slot in the child with a `slot="<slot-name>"` property assignment, where the _slot-name_ is the parent's slot.
 
-So, in the example above, the _CallToAction_ component defines the _subtitle_ slot, and the following _&lt;Fragment slot="subtitle"&gt;_ with populates the slot with the following content:
+So, in the example above, the _CallToAction_ component defines the _subtitle_ slot, and the following _&lt;Fragment slot="subtitle"&gt;_ populates the slot with the following content:
 
 ```astro
     <Fragment slot="subtitle">
@@ -191,13 +191,13 @@ There's a lot to wrap your head around, here.
 Notice first that _subtitle_ is defined as a prop/argument, but it's being processed as a slot.  Interestingly, prop args and slots seem to be somewhat interchangeable: if the subtitle was just a string, it would simply take that assignment.  The main difference is that if you render them independently, you have to call the render with an _await_ modifier.
 
 ## CallToAction Property
-<table style="color:red">
+<table>
 <tr>
 <td class="font-bold">Note:</td>
 <td>
-There's a _lot_ of duplicate code in the following components, especially as regards the _CallToAction_ mechanism -- adding to a lot of confusion and something of a maintenance headache:
+There's a _lot_ of duplicate (or at least very similar code) in the following components, especially as regards the _CallToAction_ mechanism -- adding to a lot of confusion and something of a maintenance headache:
 
-<div style="margin-left:2em;">
+<div class="ml-8">
 src/components/widgets/Hero.astro  
 src/components/widgets/Steps2.astro  
 src/components/widgets/CallToAction.astro  
