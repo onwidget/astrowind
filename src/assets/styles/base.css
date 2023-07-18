@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+.dd *:first-child { margin-top: 0;}
+
 @layer components {
   .text-page {
     color: var(--aw-color-text-page);
