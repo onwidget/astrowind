@@ -1,0 +1,38 @@
+---
+import { Icon } from "astro-icon/components";
+import type { CallToAction } from "~/types";
+
+const { callToAction } = Astro.props;
+
+const {
+  targetBlank,
+  text = "",
+  icon = "",
+  href = "",
+} = callToAction as CallToAction;
+---
+
+<div class="flex w-auto">
+  {
+    targetBlank ? (
+      <a
+        class="inline-flex items-center justify-center"
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {text}
+        {icon && (
+          <Icon name={icon} class="w-5 h-5 ml-1 -mr-1.5 rtl:ml-1 rtl:-mr-1.5" />
+        )}
+      </a>
+    ) : (
+      <a class="inline-flex items-center justify-center" href={href}>
+        {text}
+        {icon && (
+          <Icon name={icon} class="w-5 h-5 ml-1 -mr-1.5 rtl:ml-1 rtl:-mr-1.5" />
+        )}
+      </a>
+    )
+  }
+</div>

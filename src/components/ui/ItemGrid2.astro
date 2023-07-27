@@ -1,0 +1,94 @@
+---
+import { Icon } from "astro-icon/components";
+import { twMerge } from "tailwind-merge";
+import type { ItemGrid } from "~/types";
+import CTA from "./CTA.astro";
+
+const {
+  items = [],
+  columns,
+  defaultIcon = "",
+  classes = {},
+} = Astro.props as ItemGrid;
+
+const {
+  container: containerClass = "",
+  // container: containerClass = "sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
+  panel: panelClass = "",
+  title: titleClass = "",
+  description: descriptionClass = "",
+  icon: defaultIconClass = "text-primary",
+} = classes;
+---
+
+{
+  items && (
+    <div
+      class={twMerge(
+        `grid gap-8 gap-x-12 sm:gap-y-8 ${
+          columns === 4
+            ? "lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2"
+            : columns === 3
+            ? "lg:grid-cols-3 sm:grid-cols-2"
+            : columns === 2
+            ? "sm:grid-cols-2 "
+            : ""
+        }`,
+        containerClass
+      )}
+    >
+      {items.map(
+        ({
+          title,
+          description,
+          icon,
+          callToAction,
+          classes: itemClasses = {},
+        }) => (
+          <div
+            class={twMerge(
+              "relative flex flex-col",
+              panelClass,
+              itemClasses?.panel
+            )}
+          >
+            {(icon || defaultIcon) && (
+              <Icon
+                name={icon || defaultIcon}
+                class={twMerge(
+                  "mb-2 w-10 h-10",
+                  defaultIconClass,
+                  itemClasses?.icon
+                )}
+              />
+            )}
+            <div
+              class={twMerge(
+                "text-xl font-bold",
+                titleClass,
+                itemClasses?.title
+              )}
+            >
+              {title}
+            </div>
+            {description && (
+              <p
+                class={twMerge(
+                  "text-muted mt-2",
+                  descriptionClass,
+                  itemClasses?.description
+                )}
+                set:html={description}
+              />
+            )}
+            {callToAction && (
+              <div class="mt-2 text-primary cursor-pointer">
+                <CTA callToAction={callToAction} />
+              </div>
+            )}
+          </div>
+        )
+      )}
+    </div>
+  )
+}
