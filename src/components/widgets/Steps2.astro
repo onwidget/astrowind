@@ -11,7 +11,7 @@ interface Item {
 export interface Props {
   title?: string;
   subtitle?: string;
-  highlight?: string;
+  tagline?: string;
   callToAction?: string | CallToAction;
   items: Array<Item>;
 }
@@ -19,7 +19,7 @@ export interface Props {
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
-  highlight,
+  tagline,
   callToAction = await Astro.slots.render('callToAction'),
   items = [],
 } = Astro.props;
@@ -66,10 +66,10 @@ const {
           <div class="w-full lg:w-1/2 px-0 sm:px-8 mb-12">
             <div>
               {
-                highlight && (
+                tagline && (
                   <p
                     class="text-base text-primary dark:text-blue-200 font-semibold tracking-wide uppercase"
-                    set:html={highlight}
+                    set:html={tagline}
                   />
                 )
               }

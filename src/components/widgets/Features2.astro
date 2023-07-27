@@ -1,69 +1,46 @@
 ---
-import { Icon } from 'astro-icon/components';
-
-interface Item {
-  title?: string;
-  description?: string;
-  icon?: string;
-}
-
-export interface Props {
-  title?: string;
-  subtitle?: string;
-  highlight?: string;
-  items: Array<Item>;
-}
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
+import Headline from "~/components/ui/Headline.astro";
+import ItemGrid2 from "~/components/ui/ItemGrid2.astro";
+import type { Features } from "~/types";
 
 const {
-  title = await Astro.slots.render('title'),
-  subtitle = await Astro.slots.render('subtitle'),
-  highlight,
+  title = await Astro.slots.render("title"),
+  subtitle = await Astro.slots.render("subtitle"),
+  tagline = await Astro.slots.render("tagline"),
   items = [],
-} = Astro.props;
+  columns = 3,
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render("bg"),
+} = Astro.props as Features;
 ---
 
-<section class="relative not-prose">
-  <div class="absolute inset-0 bg-blue-50 dark:bg-slate-800 pointer-events-none mb-32" aria-hidden="true"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 -mb-12">
-    <div class="py-4 pt-8 sm:py-6 lg:py-8 lg:pt-12">
-      {
-        (title || subtitle || highlight) && (
-          <div class="mb-8 md:mx-auto text-center max-w-3xl">
-            {highlight && (
-              <p
-                class="text-base text-primary dark:text-blue-200 font-semibold tracking-wide uppercase"
-                set:html={highlight}
-              />
-            )}
-            {title && (
-              <h2
-                class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
-                set:html={title}
-              />
-            )}
-
-            {subtitle && (
-              <p
-                class="max-w-3xl mx-auto sm:text-center text-xl text-muted dark:text-slate-400"
-                set:html={subtitle}
-              />
-            )}
-          </div>
-        )
-      }
-      <div class={`grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-12 dark:text-white items-stretch`}>
-        {
-          items.map(({ title, description, icon }) => (
-            <div class="relative flex flex-col p-6 bg-white dark:bg-slate-900 rounded shadow-lg hover:shadow-md transition border border-transparent dark:border-slate-800">
-              <div class="flex items-center">
-                <Icon name={icon} class="w-10 h-10" />
-                <div class="ml-4 text-xl font-bold">{title}</div>
-              </div>
-              {description && <p class="text-muted dark:text-gray-400 text-md mt-4" set:html={description} />}
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </div>
-</section>
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  containerClass={classes?.container}
+  bg={bg}
+>
+  <Headline
+    title={title}
+    subtitle={subtitle}
+    tagline={tagline}
+    classes={classes?.headline}
+  />
+  <ItemGrid2
+    items={items}
+    columns={columns}
+    classes={{
+      container: "gap-4 md:gap-6",
+      panel:
+            'rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-white dark:bg-slate-900 p-6',
+      // panel:
+      //   "text-center bg-page items-center md:text-left rtl:md:text-right md:items-start p-6 p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-800",
+      icon: "w-12 h-12 mb-6 text-primary",
+      ...((classes?.items as {}) ?? {}),
+    }}
+  />
+</WidgetWrapper>

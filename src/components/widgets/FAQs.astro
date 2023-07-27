@@ -1,66 +1,37 @@
 ---
-import { Icon } from 'astro-icon/components';
-
-interface Item {
-  question: string;
-  answer: string;
-}
-
-export interface Props {
-  title?: string;
-  subtitle?: string;
-  highlight?: string;
-  items: Array<Array<Item>>;
-}
+import Headline from "~/components/ui/Headline.astro";
+import ItemGrid from "~/components/ui/ItemGrid.astro";
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
+import type { Faqs } from "~/types";
 
 const {
-  title = await Astro.slots.render('title'),
-  subtitle = await Astro.slots.render('subtitle'),
-  highlight,
+  title = "",
+  subtitle = "",
+  tagline = "",
   items = [],
-} = Astro.props;
+  columns = 2,
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render("bg"),
+} = Astro.props as Faqs;
 ---
 
-<div class="px-4 py-16 mx-auto max-w-6xl lg:py-20 not-prose">
-  <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
-    {
-      (title || subtitle || highlight) && (
-        <div class="max-w-xl mb-10 md:mx-auto md:text-center lg:max-w-2xl md:mb-12">
-          {highlight && (
-            <p
-              class="text-base text-primary dark:text-blue-200 font-semibold tracking-wide uppercase"
-              set:html={highlight}
-            />
-          )}
-          {title && (
-            <h2
-              class="max-w-lg mb-4 text-3xl font-bold leading-none md:tracking-tight sm:text-4xl md:mx-auto font-heading"
-              set:html={title}
-            />
-          )}
-          {subtitle && <p class="max-w-3xl mx-auto text-xl text-muted dark:text-slate-400" set:html={subtitle} />}
-        </div>
-      )
-    }
-  </div>
-  <div class="max-w-7xl sm:mx-auto">
-    <div class="grid grid-cols-1 gap-x-8 gap-y-8 lg:gap-x-16 md:grid-cols-2">
-      {
-        items &&
-          items.map((subitems) => (
-            <div class="space-y-8">
-              {subitems.map(({ question, answer }) => (
-                <div>
-                  <h3 class="mb-4 text-xl font-bold">
-                    <Icon name="tabler:arrow-down-right" class="w-7 h-7 text-primary inline-block" />
-                    {question}
-                  </h3>
-                  {answer && <div class="text-muted dark:text-gray-400" set:html={answer} />}
-                </div>
-              ))}
-            </div>
-          ))
-      }
-    </div>
-  </div>
-</div>
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  containerClass={`max-w-screen-xl mx-auto ${classes?.container ?? ""}`}
+  bg={bg}
+>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} />
+  <ItemGrid
+    items={items}
+    columns={columns}
+    defaultIcon="tabler:chevron-right"
+    classes={{
+      panel: 'max-w-none',
+      icon: "flex-shrink-0 mt-1 w-6 h-6 text-primary",
+    }}
+  />
+</WidgetWrapper>

@@ -11,7 +11,7 @@ interface Item {
 export interface Props {
   title?: string;
   subtitle?: string;
-  highlight?: string;
+  tagline?: string;
   content?: string;
   items?: Array<Item>;
   image?: string | any; // TODO: find HTMLElementProps
@@ -22,7 +22,7 @@ export interface Props {
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
-  highlight,
+  tagline,
   content = await Astro.slots.render('content'),
   items = [],
   image = await Astro.slots.render('image'),
@@ -34,12 +34,12 @@ const {
 <section class:list={[{ 'pt-0 md:pt-0': isAfterContent }, 'bg-blue-50 dark:bg-slate-800 py-16 md:py-20 not-prose']}>
   <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
     {
-      (title || subtitle || highlight) && (
+      (title || subtitle || tagline) && (
         <div class="mb-10 md:mx-auto text-center md:mb-12 max-w-3xl">
-          {highlight && (
+          {tagline && (
             <p
               class="text-base text-primary dark:text-blue-200 font-semibold tracking-wide uppercase"
-              set:html={highlight}
+              set:html={tagline}
             />
           )}
           {title && (

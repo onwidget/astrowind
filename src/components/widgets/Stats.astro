@@ -7,25 +7,25 @@ interface Item {
 export interface Props {
   title?: string;
   subtitle?: string;
-  highlight?: string;
+  tagline?: string;
   items?: Array<Item>;
 }
 
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
-  highlight,
+  tagline,
   items = [],
 } = Astro.props;
 ---
 
 <div class="px-4 py-4 md:py-16 sm:px-6 mx-auto md:px-24 lg:px-8 lg:py-20 max-w-6xl not-prose">
   {
-    (title || subtitle || highlight) && (
+    (title || subtitle || tagline) && (
       <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
-        {highlight && (
+        {tagline && (
           <p class="text-base text-primary dark:text-blue-200 font-semibold tracking-wide uppercase">
-            {highlight}
+            {tagline}
           </p>
         )}
         {title && (

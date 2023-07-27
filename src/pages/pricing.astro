@@ -1,11 +1,105 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
+import Pricing from '~/components/widgets/Pricing.astro';
+
 const meta = {
   title: "Pricing",
 };
 ---
 
 <Layout {meta}>
-  Pricing
+  <Pricing
+    title="Basic Pricing"
+    tagline="Pricing"
+    subtitle="Our prices"
+    prices={[
+      {
+        "title": "basic",
+        "price": 29,
+        "period": "Per Month",
+        "items": [
+          {
+            "description": "Etiam in libero",
+            "icon": "tabler:check"
+          },
+          {
+            "description": "Aenean ac nunc",
+            "icon": "tabler:check"
+          },
+          {
+            "description": "Cras scelerisque accumsan libero, et volutpat dolor tristique at",
+            "icon": "tabler:check"
+          },
+          {
+            "description": "In hac habitasse",
+            "icon": "tabler:check"
+          }
+        ],
+        "callToAction": {
+          "targetBlank": true,
+          "text": "Free 7-day trial",
+          "href": "#"
+        }
+      },
+      {
+        "title": "standard",
+        "price": 69,
+        "period": "Per Month",
+        "items": [
+          {
+            "description": "Proin vel laoreet",
+            "icon": "tabler:check"
+          },
+          {
+            "description": "Ut efficitur egestas",
+            "icon": "tabler:check"
+          },
+          {
+            "description": "Pellentesque ut nibh",
+            "icon": "tabler:check"
+          },
+          {
+            "description": "Donec fringilla sem",
+            "icon": "tabler:check"
+          }
+        ],
+        "callToAction": {
+          "targetBlank": true,
+          "text": "Free 15-day trial",
+          "href": "#"
+        },
+        "hasRibbon": true,
+        "ribbonTitle": "popular"
+      },
+      {
+        "title": "premium",
+        "price": 199,
+        "period": "Per Month",
+        "items": [
+          {
+            "description": "Curabitur suscipit risus",
+            "icon": "tabler:check"
+          },
+          {
+            "description": "Aliquam blandit malesuada",
+            "icon": "tabler:check"
+          },
+          {
+            "description": "Suspendisse sit amet",
+            "icon": "tabler:check"
+          },
+          {
+            "description": "Suspendisse auctor dui",
+            "icon": "tabler:check"
+          }
+        ],
+        "callToAction": {
+          "targetBlank": true,
+          "text": "Free 30-day trial",
+          "href": "#"
+        }
+      }
+    ]}
+  />
 </Layout>

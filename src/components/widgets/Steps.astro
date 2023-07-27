@@ -1,58 +1,37 @@
 ---
-import { Icon } from 'astro-icon/components';
 import { Picture } from '@astrojs/image/components';
-
-interface Item {
-  title: string;
-  description?: string;
-  icon?: string;
-}
-
-export interface Props {
-  title?: string;
-  items: Array<Item>;
-  image?: string | any; // TODO: find HTMLElementProps
-}
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
+import Timeline from "~/components/ui/Timeline.astro";
+import Headline from "~/components/ui/Headline.astro";
+import type { Steps } from "~/types";
 
 const {
-  title = await Astro.slots.render('title'),
+  title = await Astro.slots.render("title"),
+  subtitle = await Astro.slots.render("subtitle"),
+  tagline = await Astro.slots.render("tagline"),
   items = [],
-  image = await Astro.slots.render('image'),
-} = Astro.props;
+  image = await Astro.slots.render("image"),
+  isReversed = false,
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render("bg"),
+} = Astro.props as Steps;
 ---
 
-<section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-6xl not-prose">
-  <div class="grid gap-6 row-gap-10 md:grid-cols-2">
-    <div class="md:py-4 md:pr-16 mb-4 md:mb-0">
-      {title && <h2 class="mb-8 text-3xl lg:text-4xl font-bold font-heading" set:html={title} />}
-      {
-        items &&
-          items.length &&
-          items.map(({ title, description, icon }, index) => (
-            <div class="flex">
-              <div class="flex flex-col items-center mr-4">
-                <div>
-                  {index !== items.length - 1 ? (
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-primary dark:border-blue-700 border-2">
-                      {icon && <Icon name={icon} class="w-6 h-6 text-primary dark:text-slate-200" />}
-                    </div>
-                  ) : (
-                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-primary border-2 bg-primary dark:bg-blue-700 dark:border-blue-700">
-                      <Icon name={icon} class="w-6 h-6 text-white dark:text-slate-200" />
-                    </div>
-                  )}
-                </div>
-                <div class="w-px h-full bg-gray-300 dark:bg-slate-500" />
-              </div>
-              <div class={`pt-1 ${index !== items.length - 1 ? 'pb-8' : ''}`}>
-                {title && <p class="mb-2 text-xl font-bold dark:text-slate-300" set:html={title} />}
-                {description && <p class="text-muted dark:text-slate-400" set:html={description} />}
-              </div>
-            </div>
-          ))
-      }
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl ${classes?.container ?? ""}`} bg={bg}>
+  <div class:list={["flex flex-col gap-8 md:gap-12 md:flex-row", { "md:flex-row-reverse": isReversed }]}>
+    <div class="md:py-4 md:basis-1/2 md:self-center">
+      <Headline
+        title={title}
+        subtitle={subtitle}
+        tagline={tagline}
+        classes={{ container: "text-left", title: "text-3xl lg:text-4xl", ...((classes?.headline as {}) ?? {}) }}
+      />
+      <Timeline items={items} classes={classes?.items as {}} />
     </div>
-    <div class="relative">
+    <div class="relative md:basis-1/2">
       {
         image &&
           (typeof image === 'string' ? (
@@ -71,4 +50,4 @@ const {
       }
     </div>
   </div>
-</section>
+</WidgetWrapper>
