@@ -80,6 +80,7 @@ Inside AstroWind template, you'll see the following folders and files:
 │   ├── components/
 │   │   ├── blog/
 │   │   ├── common/
+│   │   ├── ui/
 │   │   ├── widgets/
 │   │   │   ├── Header.astro
 │   │   │   └── ...
@@ -108,7 +109,7 @@ Inside AstroWind template, you'll see the following folders and files:
 │   │   └── ...
 │   ├── utils/
 │   ├── config.mjs
-│   └── data.js
+│   └── navigation.js
 ├── package.json
 ├── astro.config.mjs
 └── ...
