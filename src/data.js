@@ -23,20 +23,24 @@ export const headerData = {
       text: 'Pages',
       links: [
         {
-          text: 'Features',
+          text: 'Features (Anchor Link)',
           href: getPermalink('/#features'),
         },
         {
+          text: 'Services',
+          href: getPermalink('/services'),
+        },
+        {
           text: 'Pricing',
-          href: '#',
+          href: getPermalink('/pricing'),
         },
         {
           text: 'About us',
-          href: '#',
+          href: getPermalink('/about'),
         },
         {
           text: 'Contact',
-          href: '#',
+          href: getPermalink('/contact'),
         },
         {
           text: 'Terms',
@@ -49,12 +53,37 @@ export const headerData = {
       ],
     },
     {
+      text: "Blog",
+      links: [
+        {
+          text: "Blog List",
+          href: getBlogPermalink(),
+        },
+        {
+          text: "Article",
+          href: getPermalink("get-started-website-with-astro-tailwind-css", "post"),
+        },
+        {
+          text: "Article (with Widgets)",
+          href: getPermalink("markdown-elements-demo-post", "post"),
+        },
+        {
+          text: "Category Page",
+          href: getPermalink("tutorials", "category"),
+        },
+        {
+          text: "Tag Page",
+          href: getPermalink("astro", "tag"),
+        },
+      ],
+    },
+    {
       text: 'Widgets',
       href: '#',
     },
     {
-      text: 'Blog',
-      href: getBlogPermalink(),
+      text: 'Contact',
+      href: '#',
     },
   ],
   actions: [{ type: 'button', text: 'Download', href: 'https://github.com/onwidget/astrowind' }],
