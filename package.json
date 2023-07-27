@@ -27,7 +27,7 @@
     "@typescript-eslint/parser": "^6.2.0",
     "astro": "^2.9.3",
     "astro-compress": "^1.1.49",
-    "astro-icon": "^0.8.1",
+    "astro-icon": "^1.0.0-next.2",
     "eslint": "^8.45.0",
     "eslint-plugin-astro": "^0.27.2",
     "eslint-plugin-jsx-a11y": "^6.7.1",
@@ -43,5 +43,10 @@
   },
   "engines": {
     "node": ">=16.12.0"
+  },
+  "dependencies": {
+    "@iconify-json/flat-color-icons": "^1.1.6",
+    "@iconify-json/ri": "^1.1.10",
+    "@iconify-json/tabler": "^1.1.85"
   }
 }
