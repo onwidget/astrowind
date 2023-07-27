@@ -2,6 +2,9 @@
 import '~/assets/styles/base.css';
 
 import MetaTags from '~/components/common/MetaTags.astro';
+import Favicons from '~/components/Favicons.astro';
+import VariablesCss from "~/components/VariablesCss.astro"
+import CustomFonts from "~/components/CustomFonts.astro"
 import BasicScripts from '~/components/common/BasicScripts.astro';
 
 import { MetaSEO } from '~/types';
@@ -18,6 +21,9 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
 <!DOCTYPE html>
 <html lang={language} dir={textDirection} class="2xl:text-[20px]">
   <head>
+    <Favicons />
+    <VariablesCss />
+    <CustomFonts />
     <MetaTags {...meta} />
   </head>
 

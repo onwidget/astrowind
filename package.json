@@ -21,7 +21,10 @@
     "@astrojs/tailwind": "^4.0.0",
     "@astrolib/analytics": "^0.3.0",
     "@astrolib/seo": "^0.4.0",
-    "@fontsource/inter": "^4.5.15",
+    "@fontsource-variable/inter": "^5.0.5",
+    "@iconify-json/flat-color-icons": "^1.1.6",
+    "@iconify-json/ri": "^1.1.10",
+    "@iconify-json/tabler": "^1.1.85",
     "@tailwindcss/typography": "^0.5.9",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",
@@ -43,10 +46,5 @@
   },
   "engines": {
     "node": ">=16.12.0"
-  },
-  "dependencies": {
-    "@iconify-json/flat-color-icons": "^1.1.6",
-    "@iconify-json/ri": "^1.1.10",
-    "@iconify-json/tabler": "^1.1.85"
   }
 }
