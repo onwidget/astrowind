@@ -26,6 +26,6 @@ export const get = async () => {
       pubDate: post.publishDate,
     })),
 
-    trailingSlash: SITE.trailingSlash
+    trailingSlash: SITE.trailingSlash,
   });
 };

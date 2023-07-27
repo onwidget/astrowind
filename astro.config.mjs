@@ -7,7 +7,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
-import icon from "astro-icon";
+import icon from 'astro-icon';
 import partytown from '@astrojs/partytown';
 import compress from 'astro-compress';
 import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs';
@@ -43,9 +43,19 @@ export default defineConfig({
     mdx(),
     icon({
       include: {
-        tabler: ["*"],
-        "flat-color-icons": ["template", "gallery", "approval", "document", "advertising", "currency-exchange", "voice-presentation", "business-contact", "database"],
-        ri: ["twitter-fill", "facebook-box-fill", "linkedin-box-fill", "whatsapp-fill", "mail-fill"],
+        tabler: ['*'],
+        'flat-color-icons': [
+          'template',
+          'gallery',
+          'approval',
+          'document',
+          'advertising',
+          'currency-exchange',
+          'voice-presentation',
+          'business-contact',
+          'database',
+        ],
+        ri: ['twitter-fill', 'facebook-box-fill', 'linkedin-box-fill', 'whatsapp-fill', 'mail-fill'],
       },
     }),
 
