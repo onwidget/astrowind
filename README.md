@@ -69,13 +69,14 @@ Inside AstroWind template, you'll see the following folders and files:
 ```
 /
 ├── public/
-│   ├── robots.txt
-│   └── favicon.ico
+│   ├── _headers
+│   └── robots.txt
 ├── src/
 │   ├── assets/
+│   │   ├── favicons/
 │   │   ├── images/
 │   │   └── styles/
-│   │       └── base.css
+│   │       └── tailwind.css
 │   ├── components/
 │   │   ├── blog/
 │   │   ├── common/
@@ -83,6 +84,7 @@ Inside AstroWind template, you'll see the following folders and files:
 │   │   │   ├── Header.astro
 │   │   │   └── ...
 │   │   ├── CustomStyles.astro
+│   │   ├── Favicons.astro
 │   │   └── Logo.astro
 │   ├── content/
 │   │   ├── post/
@@ -92,7 +94,8 @@ Inside AstroWind template, you'll see the following folders and files:
 │   │   └-- config.ts
 │   ├── layouts/
 │   │   ├── BaseLayout.astro
-│   │   └── ...
+│   │   ├── MarkdownLayout.astro
+│   │   └── PageLayout.astro
 │   ├── pages/
 │   │   ├── [...blog]/
 │   │   │   ├── [category]/
