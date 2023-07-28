@@ -1,0 +1,443 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "site": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "site": {
+          "type": "string"
+        },
+        "base": {
+          "type": "string"
+        },
+        "trailingSlash": {
+          "type": "boolean"
+        },
+        "googleSiteVerificationId": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "site", "base", "trailingSlash"],
+      "additionalProperties": false
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "object",
+          "properties": {
+            "default": {
+              "type": "string"
+            },
+            "template": {
+              "type": "string"
+            }
+          },
+          "required": ["default", "template"]
+        },
+        "description": {
+          "type": "string"
+        },
+        "robots": {
+          "type": "object",
+          "properties": {
+            "index": {
+              "type": "boolean"
+            },
+            "follow": {
+              "type": "boolean"
+            }
+          },
+          "required": ["index", "follow"]
+        },
+        "openGraph": {
+          "type": "object",
+          "properties": {
+            "siteName": {
+              "type": "string"
+            },
+            "images": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "integer"
+                    },
+                    "height": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": ["url", "width", "height"]
+                }
+              ]
+            },
+            "type": {
+              "type": "string"
+            }
+          },
+          "required": ["siteName", "images", "type"]
+        },
+        "twitter": {
+          "type": "object",
+          "properties": {
+            "handle": {
+              "type": "string"
+            },
+            "site": {
+              "type": "string"
+            },
+            "cardType": {
+              "type": "string"
+            }
+          },
+          "required": ["handle", "site", "cardType"]
+        }
+      },
+      "required": ["title", "description", "robots", "openGraph", "twitter"]
+    },
+    "i18n": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "type": "string"
+        },
+        "textDirection": {
+          "type": "string"
+        }
+      },
+      "required": ["language", "textDirection"]
+    },
+    "apps": {
+      "type": "object",
+      "properties": {
+        "blog": {
+          "type": "object",
+          "properties": {
+            "isEnabled": {
+              "type": "boolean"
+            },
+            "postsPerPage": {
+              "type": "integer"
+            },
+            "post": {
+              "type": "object",
+              "properties": {
+                "isEnabled": {
+                  "type": "boolean"
+                },
+                "permalink": {
+                  "type": "string"
+                },
+                "robots": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "boolean"
+                    },
+                    "follow": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": ["index"]
+                }
+              },
+              "required": ["isEnabled", "permalink", "robots"]
+            },
+            "list": {
+              "type": "object",
+              "properties": {
+                "isEnabled": {
+                  "type": "boolean"
+                },
+                "pathname": {
+                  "type": "string"
+                },
+                "robots": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "boolean"
+                    },
+                    "follow": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": ["index"]
+                }
+              },
+              "required": ["isEnabled", "pathname", "robots"]
+            },
+            "category": {
+              "type": "object",
+              "properties": {
+                "isEnabled": {
+                  "type": "boolean"
+                },
+                "pathname": {
+                  "type": "string"
+                },
+                "robots": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "boolean"
+                    },
+                    "follow": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": ["index"]
+                }
+              },
+              "required": ["isEnabled", "pathname", "robots"]
+            },
+            "tag": {
+              "type": "object",
+              "properties": {
+                "isEnabled": {
+                  "type": "boolean"
+                },
+                "pathname": {
+                  "type": "string"
+                },
+                "robots": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "boolean"
+                    },
+                    "follow": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": ["index"]
+                }
+              },
+              "required": ["isEnabled", "pathname", "robots"]
+            }
+          },
+          "required": ["isEnabled", "postsPerPage", "post", "list", "category", "tag"]
+        }
+      },
+      "required": ["blog"]
+    },
+    "analytics": {
+      "type": "object",
+      "properties": {
+        "vendors": {
+          "type": "object",
+          "properties": {
+            "googleAnalytics": {
+              "type": "object",
+              "properties": {
+                "isEnabled": {
+                  "type": "boolean"
+                },
+                "id": {
+                  "type": "null"
+                }
+              },
+              "required": ["isEnabled", "id"]
+            }
+          },
+          "required": ["googleAnalytics"]
+        }
+      },
+      "required": ["vendors"]
+    },
+    "ui": {
+      "type": "object",
+      "properties": {
+        "theme": {
+          "type": "string"
+        },
+        "classes": {
+          "type": "object",
+          "properties": {
+            "html": {
+              "type": "null"
+            },
+            "body": {
+              "type": "null"
+            },
+            "heading1": {
+              "type": "null"
+            },
+            "heading2": {
+              "type": "null"
+            },
+            "button": {
+              "type": "null"
+            }
+          },
+          "required": ["html", "body", "heading1", "heading2", "button"]
+        },
+        "tokens": {
+          "type": "object",
+          "properties": {
+            "default": {
+              "type": "object",
+              "properties": {
+                "colors": {
+                  "type": "object",
+                  "properties": {
+                    "default": {
+                      "type": "string"
+                    },
+                    "heading": {
+                      "type": "string"
+                    },
+                    "muted": {
+                      "type": "string"
+                    },
+                    "bgPage": {
+                      "type": "string"
+                    },
+                    "primary": {
+                      "type": "string"
+                    },
+                    "secondary": {
+                      "type": "string"
+                    },
+                    "accent": {
+                      "type": "string"
+                    },
+                    "info": {
+                      "type": "string"
+                    },
+                    "success": {
+                      "type": "string"
+                    },
+                    "warning": {
+                      "type": "string"
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "link": {
+                      "type": "string"
+                    },
+                    "linkActive": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "default",
+                    "heading",
+                    "muted",
+                    "bgPage",
+                    "primary",
+                    "secondary",
+                    "accent",
+                    "info",
+                    "success",
+                    "warning",
+                    "error",
+                    "link",
+                    "linkActive"
+                  ]
+                },
+                "fonts": {
+                  "type": "object",
+                  "properties": {
+                    "sans": {
+                      "type": "string"
+                    },
+                    "serif": {
+                      "type": "string"
+                    },
+                    "heading": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["sans", "serif", "heading"]
+                }
+              },
+              "required": ["colors", "fonts"]
+            },
+            "dark": {
+              "type": "object",
+              "properties": {
+                "colors": {
+                  "type": "object",
+                  "properties": {
+                    "default": {
+                      "type": "string"
+                    },
+                    "heading": {
+                      "type": "string"
+                    },
+                    "muted": {
+                      "type": "string"
+                    },
+                    "bgPage": {
+                      "type": "string"
+                    },
+                    "primary": {
+                      "type": "string"
+                    },
+                    "secondary": {
+                      "type": "string"
+                    },
+                    "accent": {
+                      "type": "string"
+                    },
+                    "info": {
+                      "type": "string"
+                    },
+                    "success": {
+                      "type": "string"
+                    },
+                    "warning": {
+                      "type": "string"
+                    },
+                    "error": {
+                      "type": "string"
+                    },
+                    "link": {
+                      "type": "string"
+                    },
+                    "linkActive": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "default",
+                    "heading",
+                    "muted",
+                    "bgPage",
+                    "primary",
+                    "secondary",
+                    "accent",
+                    "info",
+                    "success",
+                    "warning",
+                    "error",
+                    "link",
+                    "linkActive"
+                  ]
+                },
+                "fonts": {
+                  "type": "object"
+                }
+              },
+              "required": ["colors", "fonts"]
+            }
+          },
+          "required": ["default", "dark"]
+        }
+      },
+      "required": ["theme", "classes", "tokens"]
+    }
+  },
+  "required": ["site", "metadata", "i18n", "apps", "analytics", "ui"]
+}
