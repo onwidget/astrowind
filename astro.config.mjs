@@ -12,23 +12,23 @@ import partytown from '@astrojs/partytown';
 import compress from 'astro-compress';
 import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs';
 
-import { SITE } from './src/config.mjs';
+import { SITE_CONFIG, ANALYTICS_CONFIG } from './src/utils/config.ts';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const whenExternalScripts = (items = []) =>
-  SITE.googleAnalyticsId ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
+  ANALYTICS_CONFIG.vendors.googleAnalytics.isEnabled
+    ? Array.isArray(items)
+      ? items.map((item) => item())
+      : [items()]
+    : [];
 
 export default defineConfig({
-  site: SITE.origin,
-  base: SITE.basePathname,
-  trailingSlash: SITE.trailingSlash ? 'always' : 'never',
+  site: SITE_CONFIG.site,
+  base: SITE_CONFIG.base,
+  trailingSlash: SITE_CONFIG.trailingSlash ? 'always' : 'never',
 
   output: 'static',
-
-  markdown: {
-    remarkPlugins: [readingTimeRemarkPlugin],
-  },
 
   integrations: [
     tailwind({
@@ -77,6 +77,10 @@ export default defineConfig({
       logger: 1,
     }),
   ],
+
+  markdown: {
+    remarkPlugins: [readingTimeRemarkPlugin],
+  },
 
   vite: {
     resolve: {
