@@ -1,7 +1,8 @@
 ---
 import { Picture } from '@astrojs/image/components';
+import type { ImageMetadata } from 'astro';
 
-import { BLOG } from '~/config.mjs';
+import { APP_BLOG_CONFIG } from '~/utils/config';
 import type { Post } from '~/types';
 
 import { findImage } from '~/utils/images';
@@ -12,7 +13,7 @@ export interface Props {
 }
 
 const { post } = Astro.props;
-const image = await findImage(post.image);
+const image = (await findImage(post.image)) as ImageMetadata | undefined;
 ---
 
 <article class="mb-6 transition">
@@ -38,7 +39,7 @@ const image = await findImage(post.image);
   </div>
   <h3 class="mb-2 text-xl font-bold leading-tight sm:text-2xl font-heading">
     {
-      BLOG?.post?.disabled ? (
+      !APP_BLOG_CONFIG?.post?.isEnabled ? (
         post.title
       ) : (
         <a
@@ -50,5 +51,5 @@ const image = await findImage(post.image);
       )
     }
   </h3>
-  <p class="text-muted dark:text-slate-400 text-lg">{post.excerpt || post.description}</p>
+  <p class="text-muted dark:text-slate-400 text-lg">{post.excerpt}</p>
 </article>

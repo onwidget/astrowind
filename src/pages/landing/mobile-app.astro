@@ -5,12 +5,12 @@ import Header from '~/components/widgets/Header.astro';
 import Hero2 from '~/components/widgets/Hero2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
-const meta = {
+const metadata = {
   title: "Mobile App Landing Page",
 };
 ---
 
-<Layout {meta}>
+<Layout metadata={metadata}>
   <Fragment slot="announcement"></Fragment>
   <Fragment slot="header">
     <Header

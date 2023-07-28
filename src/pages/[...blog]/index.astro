@@ -1,38 +1,39 @@
 ---
-import { BLOG } from '~/config.mjs';
-
+import merge from 'lodash.merge';
+import type { ImageMetadata } from 'astro';
 import Layout from '~/layouts/PageLayout.astro';
 import SinglePost from '~/components/blog/SinglePost.astro';
 import ToBlogLink from '~/components/blog/ToBlogLink.astro';
 
 import { getCanonical, getPermalink } from '~/utils/permalinks';
-import { fetchPosts } from '~/utils/blog';
+import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
 import { findImage } from '~/utils/images';
 
-export async function getStaticPaths() {
-  if (BLOG?.disabled || BLOG?.post?.disabled) return [];
-  return (await fetchPosts()).map((post) => ({
-    params: {
-      blog: post.permalink,
-    },
-    props: { post },
-  }));
-}
+export const getStaticPaths = getStaticPathsBlogPost();
 
 const { post } = Astro.props;
-const url = getCanonical(getPermalink(post.permalink, 'post'));
 
-const meta = {
-  title: post.title,
-  description: post.description,
-  canonical: post.canonical || url,
-  image: await findImage(post.image),
-  noindex: BLOG?.post?.noindex,
-  ogType: 'article',
-};
+const url = getCanonical(getPermalink(post.permalink, 'post'));
+const image = (await findImage(post.image)) as ImageMetadata | undefined;
+
+const metadata = merge(
+  {
+    title: post.title,
+    description: post.excerpt,
+    robots: {
+      index: blogPostRobots?.index,
+      follow: blogPostRobots?.follow,
+    },
+    openGraph: {
+      type: 'article',
+      ...(image ? { images: [{ url: image?.src, width: image?.width, height: image?.height }] } : {}),
+    },
+  },
+  { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
+);
 ---
 
-<Layout {meta}>
-  <SinglePost post={{ ...post, image: meta.image }} url={url} />
+<Layout metadata={metadata}>
+  <SinglePost post={{ ...post, image: image }} url={url} />
   <ToBlogLink />
 </Layout>

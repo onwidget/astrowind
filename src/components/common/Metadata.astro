@@ -1,0 +1,68 @@
+---
+import merge from 'lodash.merge';
+import { AstroSeo } from '@astrolib/seo';
+
+import type { AstroSeoProps } from '@astrolib/seo/src/types';
+
+import { SITE_CONFIG, METADATA_CONFIG, I18N_CONFIG } from '~/utils/config';
+import { MetaData } from '~/types';
+import { getCanonical } from '~/utils/permalinks';
+
+import { adaptOpenGraphImages } from '~/utils/images';
+
+export interface Props extends MetaData {
+  dontUseTitleTemplate?: boolean;
+}
+
+const {
+  title,
+  ignoreTitleTemplate = false,
+  canonical = String(getCanonical(String(Astro.url.pathname))),
+  robots = {},
+  description,
+  openGraph = {},
+  twitter = {},
+} = Astro.props;
+
+const seoProps: AstroSeoProps = merge(
+  {
+    title: '',
+    titleTemplate: '%s',
+    canonical: canonical,
+    noindex: true,
+    nofollow: true,
+    description: undefined,
+    openGraph: {
+      url: canonical,
+      siteName: SITE_CONFIG?.name,
+      images: [],
+      locale: I18N_CONFIG?.language || 'en',
+      type: 'website',
+    },
+    twitter: {
+      cardType: openGraph?.images?.length ? 'summary_large_image' : 'summary',
+    },
+  },
+  {
+    title: METADATA_CONFIG?.title?.default,
+    titleTemplate: METADATA_CONFIG?.title?.template,
+    noindex: typeof METADATA_CONFIG?.robots?.index !== 'undefined' ? !METADATA_CONFIG.robots.index : undefined,
+    nofollow: typeof METADATA_CONFIG?.robots?.follow !== 'undefined' ? !METADATA_CONFIG.robots.follow : undefined,
+    description: METADATA_CONFIG?.description,
+    openGraph: METADATA_CONFIG?.openGraph,
+    twitter: METADATA_CONFIG?.twitter,
+  },
+  {
+    title: title,
+    titleTemplate: ignoreTitleTemplate ? '%s' : undefined,
+    canonical: canonical,
+    noindex: typeof robots?.index !== 'undefined' ? !robots.index : undefined,
+    nofollow: typeof robots?.follow !== 'undefined' ? !robots.follow : undefined,
+    description: description,
+    openGraph: { url: canonical, ...openGraph },
+    twitter: twitter,
+  }
+);
+---
+
+<AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />

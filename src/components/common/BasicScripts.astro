@@ -1,8 +1,8 @@
 ---
-import { SITE } from '~/config.mjs';
+import { UI_CONFIG } from '~/utils/config';
 ---
 
-<script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
+<script is:inline define:vars={{ defaultTheme: UI_CONFIG.theme }}>
   function applyTheme(theme) {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');

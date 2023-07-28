@@ -9,12 +9,12 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 
 import { headerData } from '~/navigation';
 
-const meta = {
+const metadata = {
   title: 'Saas Landing Page',
 };
 ---
 
-<Layout {meta}>
+<Layout metadata={metadata}>
   <Fragment slot="header">
     <Header
       {...headerData}

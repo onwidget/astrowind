@@ -7,7 +7,8 @@ tags:
   - astro
   - tailwind css
   - theme
-canonical: https://astrowind.vercel.app/how-to-customize-astrowind-to-your-brand
+metadata:
+  canonical: https://astrowind.vercel.app/how-to-customize-astrowind-to-your-brand
 ---
 
 ## Congue justo vulputate nascetur convallis varius orci fringilla nulla pharetr

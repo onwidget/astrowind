@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-import { SITE } from '~/config.mjs';
+import { UI_CONFIG } from '~/utils/config';
 
 export interface Props {
   label?: string;
@@ -20,7 +20,7 @@ const {
 ---
 
 {
-  !(SITE?.defaultTheme && SITE.defaultTheme.endsWith(':only')) && (
+  !(UI_CONFIG.theme && UI_CONFIG.theme.endsWith(':only')) && (
     <button type="button" class={className} aria-label={label} data-aw-toggle-color-scheme>
       <Icon name={iconName} class={iconClass} />
     </button>

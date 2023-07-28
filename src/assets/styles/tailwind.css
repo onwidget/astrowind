@@ -6,6 +6,15 @@
   margin-top: 0;
 }
 
+@layer utilities {
+  .bg-page {
+    background-color: var(--aw-color-bg-page);
+  }
+  .bg-dark {
+    background-color: var(--aw-color-bg-page-dark);
+  }
+}
+
 @layer components {
   .text-page {
     color: var(--aw-color-text-page);
@@ -17,10 +26,6 @@
 
   .bg-light {
     background-color: var(--aw-color-bg-page);
-  }
-
-  .bg-dark {
-    @apply bg-slate-900;
   }
 
   .btn {

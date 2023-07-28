@@ -108,7 +108,7 @@ Inside AstroWind template, you'll see the following folders and files:
 │   │   ├-- rss.xml.ts
 │   │   └── ...
 │   ├── utils/
-│   ├── config.mjs
+│   ├── config.yaml
 │   └── navigation.js
 ├── package.json
 ├── astro.config.mjs
@@ -145,65 +145,79 @@ All commands are run from the root of the project, from a terminal:
 
 ### Configuration
 
-Basic configuration file: `./src/config.mjs`
+Basic configuration file: `./src/config.yaml`
 
-```javascript
-const CONFIG = {
-  name: 'Example',
+```yaml
+site:
+  name: AstroWind
+  site: 'https://astrowind.vercel.app'
+  base: '/' # Change this if you need to deploy to Github Pages, for example
+  trailingSlash: false # Generate permalinks with or without "/" at the end
 
-  origin: 'https://example.com',
-  basePathname: '/', // Change this if you need to deploy to Github Pages, for example
-  trailingSlash: false, // Generate permalinks with or without "/" at the end
+  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
 
-  title: 'Example - This is the homepage title of Example', // Default seo title
-  description: 'This is the homepage description of Example', // Default seo description
-  defaultImage: 'image.jpg', // Default seo image
+# Default SEO metadata
+metadata:
+  title:
+    default: AstroWind
+    template: '%s — AstroWind'
+  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+  robots:
+    index: true
+    follow: true
+  openGraph:
+    siteName: AstroWind
+    images:
+      - url: '~/assets/images/default.jpg'
+        width: 1200
+        height: 628
+    type: website
+  twitter:
+    handle: '@onwidget'
+    site: '@onwidget'
+    cardType: summary_large_image
 
-  defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+i18n:
+  language: en
+  textDirection: ltr
 
-  language: 'en', // Default language
-  textDirection: 'ltr', // Default html text direction
+apps:
+  blog:
+    isEnabled: true
+    postsPerPage: 6
 
-  dateFormatter: new Intl.DateTimeFormat('en', {
-    // Date format
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    timeZone: 'UTC',
-  }),
+    post:
+      isEnabled: true
+      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      robots:
+        index: true
 
-  googleAnalyticsId: false, // Or "G-XXXXXXXXXX",
-  googleSiteVerificationId: false, // Or some value,
+    list:
+      isEnabled: true
+      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
+      robots:
+        index: true
 
-  blog: {
-    disabled: false,
-    postsPerPage: 4,
+    category:
+      isEnabled: true
+      pathname: 'category' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
+      robots:
+        index: true
 
-    post: {
-      permalink: '/%slug%', // variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
-      noindex: false,
-      disabled: false,
-    },
+    tag:
+      isEnabled: true
+      pathname: 'tag' # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
+      robots:
+        index: false
 
-    list: {
-      pathname: 'blog', // Blog main path, you can change this to "articles" (/articles)
-      noindex: false,
-      disabled: false,
-    },
+analytics:
+  vendors:
+    googleAnalytics:
+      isEnabled: false
+      id: null # or "G-XXXXXXXXXX"
 
-    category: {
-      pathname: 'category', // Category main path /category/some-category
-      noindex: true,
-      disabled: false,
-    },
-
-    tag: {
-      pathname: 'tag', // Tag main path /tag/some-tag
-      noindex: true,
-      disabled: false,
-    },
-  },
-};
+ui:
+  theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 ```
 
 <br>

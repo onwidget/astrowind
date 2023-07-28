@@ -1,42 +1,83 @@
-import { AstroComponentFactory } from 'astro/dist/runtime/server';
-
 export interface Post {
+  /** A unique ID number that identifies a post. */
   id: string;
+
+  /** A post’s unique slug – part of the post’s URL based on its name, i.e. a post called “My Sample Page” has a slug “my-sample-page”. */
   slug: string;
 
-  publishDate: Date;
-  title: string;
-  description?: string;
+  /**  */
+  permalink: string;
 
+  /**  */
+  publishDate: Date;
+  /**  */
+  updateDate?: Date;
+
+  /**  */
+  title: string;
+  /** Optional summary of post content. */
+  excerpt?: string;
+  /**  */
   image?: string;
 
-  canonical?: string | URL;
-  permalink?: string;
-
-  draft?: boolean;
-
-  excerpt?: string;
+  /**  */
   category?: string;
+  /**  */
   tags?: Array<string>;
+  /**  */
   author?: string;
 
-  Content: AstroComponentFactory;
+  /**  */
+  metadata?: MetaData;
+
+  /**  */
+  draft?: boolean;
+
+  /**  */
+  Content?: unknown;
   content?: string;
 
+  /**  */
   readingTime?: number;
 }
 
-export interface MetaSEO {
+export interface MetaData {
   title?: string;
+  ignoreTitleTemplate?: boolean;
+
+  canonical?: string;
+
+  robots?: MetaDataRobots;
+
   description?: string;
-  image?: string;
 
-  canonical?: string | URL;
-  noindex?: boolean;
-  nofollow?: boolean;
+  openGraph?: MetaDataOpenGraph;
+  twitter?: MetaDataTwitter;
+}
 
-  ogTitle?: string;
-  ogType?: string;
+export interface MetaDataRobots {
+  index?: boolean;
+  follow?: boolean;
+}
+
+export interface MetaDataImage {
+  url: string;
+  width?: number;
+  height?: number;
+}
+
+export interface MetaDataOpenGraph {
+  url?: string;
+  siteName?: string;
+  images?: Array<MetaDataImage>;
+  locale?: string;
+  type?: string;
+}
+
+export interface MetaDataTwitter {
+  handle?: string;
+  site?: string;
+  cardType?: string;
 }
 
 export interface Image {
@@ -189,7 +230,7 @@ export interface Steps extends Headline, Widget {
     icon?: string;
     classes?: Record<string, string>;
   }>;
-  image?: string | any; // TODO: find HTMLElementProps
+  image?: string | Image;
   isReversed?: boolean;
 }
 

@@ -1,7 +1,7 @@
 ---
 import { getPermalink } from '~/utils/permalinks';
 
-import { BLOG } from '~/config.mjs';
+import {  APP_BLOG_CONFIG } from '~/utils/config';
 import type { Post } from '~/types';
 
 export interface Props {
@@ -23,7 +23,7 @@ const { tags, class: className = 'text-sm', title = undefined, isCategory = fals
       <ul class={className}>
         {tags.map((tag) => (
           <li class="bg-gray-100 dark:bg-slate-700 inline-block mr-2 mb-2 py-0.5 px-2 lowercase font-medium">
-            {BLOG?.tag?.disabled ? (
+            {!APP_BLOG_CONFIG?.tag?.isEnabled ? (
               tag
             ) : (
               <a
