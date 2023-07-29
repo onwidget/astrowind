@@ -149,32 +149,32 @@ Basic configuration file: `./src/config.yaml`
 
 ```yaml
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: 'Example'
+  site: 'https://example.com'
   base: '/' # Change this if you need to deploy to Github Pages, for example
   trailingSlash: false # Generate permalinks with or without "/" at the end
 
-  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
+  googleSiteVerificationId: false // Or some value,
 
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: 'Example'
+    template: '%s — Example'
+  description: 'This is the default meta description of Example website'
   robots:
     index: true
     follow: true
   openGraph:
-    siteName: AstroWind
+    siteName: 'Example'
     images:
       - url: '~/assets/images/default.jpg'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
+    handle: '@twitter_user'
+    site: '@twitter_user'
     cardType: summary_large_image
 
 i18n:
@@ -188,7 +188,7 @@ apps:
 
     post:
       isEnabled: true
-      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      permalink: '/blog/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
       robots:
         index: true
 
