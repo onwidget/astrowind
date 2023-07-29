@@ -94,7 +94,7 @@ Inside AstroWind template, you'll see the following folders and files:
 │   │   │   └── ...
 │   │   └-- config.ts
 │   ├── layouts/
-│   │   ├── BaseLayout.astro
+│   │   ├── Layout.astro
 │   │   ├── MarkdownLayout.astro
 │   │   └── PageLayout.astro
 │   ├── pages/
