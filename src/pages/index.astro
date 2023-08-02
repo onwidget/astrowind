@@ -23,13 +23,13 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    callToAction={{ text: 'Sign Up', href: '#signup', icon: 'tabler:firetruck' }}
+    callToAction={{ text: 'Sign Up', href: '/signup', icon: 'tabler:firetruck' }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
     image={{ src: import('~/assets/images/hero.png'), alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">
       Streamline your
-      <span class="text-accent dark:text-white highlight"> firefighting</span> operations with StationOne   </Fragment>
+      <span class="text-secondary dark:text-white highlight"> firefighting</span> operations with StationOne   </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
@@ -199,8 +199,8 @@ const metadata = {
     id='signup'
     callToAction={{
       text: 'Sign Up',
-      href: 'https://github.com/onwidget/astrowind',
-      icon: 'tabler:download',
+      href: '/signup',
+      icon: 'tabler:firetruck',
       //id='signup'
     }}
   >
@@ -209,7 +209,7 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      StationOne is still under active development, we are working hard to make our initial release available soon. <br><br>Register your interest below to receive updates about our initial release and early access to new features.
+      StationOne is still under active development, we are working hard to make our initial release available soon. <br><br>Join our waitlist to receive early access and updates about our initial release.
     </Fragment>
   </CallToAction>
 

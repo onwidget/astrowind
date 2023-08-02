@@ -18,7 +18,7 @@ export const headerData = {
       href: getPermalink('/#contact'),
     },
   ],
-  actions: [{ type: 'button', text: 'Sign Up', href: getPermalink('/#signup') }],
+  actions: [{ type: 'button', text: 'Sign Up', href: getPermalink('/signup') }],
 };
 
 export const footerData = {
