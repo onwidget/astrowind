@@ -1,10 +1,12 @@
 ---
 import { Icon } from 'astro-icon/components';
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
 
 export interface CallToAction {
   text: string;
   href: string;
   icon?: string;
+  id?:string;
 }
 
 export interface Props {
@@ -12,15 +14,19 @@ export interface Props {
   subtitle?: string;
   description?: string;
   callToAction?: string | CallToAction;
+  id?: string;
 }
 
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   callToAction = await Astro.slots.render('callToAction'),
+  id,
 } = Astro.props;
 ---
-
+<WidgetWrapper
+  id={id}
+>
 <section class="relative not-prose">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <div class="py-12 md:py-20">
@@ -62,3 +68,4 @@ const {
     </div>
   </div>
 </section>
+</WidgetWrapper>

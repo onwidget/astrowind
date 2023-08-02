@@ -23,7 +23,7 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    callToAction={{ text: 'Sign Up', href: '#', icon: 'tabler:firetruck' }}
+    callToAction={{ text: 'Sign Up', href: '#signup', icon: 'tabler:firetruck' }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
     image={{ src: import('~/assets/images/hero.png'), alt: 'AstroWind Hero Image' }}
   >
@@ -196,10 +196,12 @@ const metadata = {
   -->
 
   <CallToAction
+    id='signup'
     callToAction={{
       text: 'Sign Up',
       href: 'https://github.com/onwidget/astrowind',
       icon: 'tabler:download',
+      //id='signup'
     }}
   >
     <Fragment slot="title">
