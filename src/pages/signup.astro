@@ -1,0 +1,33 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: "Signup",
+};
+---
+
+<Layout metadata={metadata}>
+    <section>
+        <div class="container max-w-full">
+          <div class="row">
+            <div class="min-h-[980px] bg-white py-10 lg:col-6 lg:py-[114px]">
+              <div class="mx-auto w-full max-w-[480px]">
+                <img class="mb-8" src="/images/stationone-web.png" alt="" />
+                <h1 class="mb-4">Join the waitlist</h1>
+                <p>While we are still under development, you are welcome to join our waitlist to get early access to StationOne.</p>
+                <div class="flex p-4">
+                  <div class="md:col-10">
+                  <form action="https://submit-form.com/qG9iiQ47">
+                    <div class="row space-y-4">
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Email" required="" />
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

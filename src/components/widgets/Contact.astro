@@ -1,23 +1,40 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
+import Headline from "~/components/ui/Headline.astro";
+import type { Features } from "~/types";
 
-const metadata = {
-  title: "Contact",
-};
+const {
+  title = await Astro.slots.render("title"),
+  subtitle = await Astro.slots.render("subtitle"),
+  tagline = await Astro.slots.render("tagline"),
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render("bg"),
+} = Astro.props as Features;
 ---
 
-<Layout metadata={metadata}>
-  <div class="relative flex items-top justify-center min-h-screen bg-white dark:bg-gray-900 sm:items-center sm:pt-0">
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  containerClass={`max-w-5xl ${classes?.container ?? ""}`}
+  bg={bg}
+>
+  <Headline
+    title={title}
+    subtitle={subtitle}
+    tagline={tagline}
+    classes={classes?.headline}
+  />
+  <div class=" items-top bg-white dark:bg-gray-900 sm:items-center sm:pt-0">
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <div class="mt-8 overflow-hidden">
             <div class="grid grid-cols-1 md:grid-cols-2">
-                <div class="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
+                <div class="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg content-center">
                     <h1 class="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight">
-                        Get in touch
+                        StationOne
                     </h1>
-                    <p class="text-normal text-lg sm:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-2">
-                        Want to know more about StationOne?
-                    </p>
 
                     <div class="flex items-center mt-8 text-gray-600 dark:text-gray-400">
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500">
@@ -49,7 +66,7 @@ const metadata = {
                     </div>
                 </div>
 
-                <form class="p-6 flex flex-col justify-center">
+                <form class="p-6 flex flex-col justify-center" data-netlify="true">
                     <div class="flex flex-col">
                         <label for="name" class="hidden">Full Name</label>
                         <input type="text" name="name" id="name" placeholder="Full Name" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
@@ -62,7 +79,22 @@ const metadata = {
 
                     <div class="flex flex-col mt-2">
                         <label for="tel" class="hidden">Number</label>
-                        <input type="tel" name="tel" id="tel" placeholder="Telephone Number" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
+                        <input type="tel" name="tel" id="tel" placeholder="Phone Number" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
+                    </div>
+
+                    <div class="flex flex-col mt-2">
+                        <label for="org" class="hidden">Organisation</label>
+                        <input type="text" name="org" id="org" placeholder="Organisation or Company" class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
+                    </div>
+
+                    <div class="flex flex-col mt-2">
+                        <label for="reason" class="hidden">Reason</label>
+                        <select name="reason" id="reason" class="form-select w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none" required>
+                            <option value="" class="text-gray-800 font-semibold">Select reason/purpose</option>
+                            <option value="more info">Learn more about StationOne</option>
+                            <option value="investment">Invest in StationOne</option>
+                            <option value="something else">Something else</option>
+                          </select>
                     </div>
 
                     <div class="flex flex-col mt-2">
@@ -78,4 +110,4 @@ const metadata = {
         </div>
     </div>
 </div>
-</Layout>
+</WidgetWrapper>

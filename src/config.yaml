@@ -1,22 +1,22 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: StationOne
+  site: 'https://stationone.com.au'
   base: '/'
   trailingSlash: false
 
-  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
+  googleSiteVerificationId: false
 
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
+    default: StationOne
+    template: '%s — StationOne'
   description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
   robots:
     index: true
     follow: true
   openGraph:
-    siteName: AstroWind
+    siteName: StationOne
     images:
       - url: '~/assets/images/default.jpg'
         width: 1200

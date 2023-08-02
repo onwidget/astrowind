@@ -5,15 +5,16 @@ import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
+//import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
+//import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+//import FAQs from '~/components/widgets/FAQs.astro';
+//import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Contact from '~/components/widgets/Contact.astro';
 
 const metadata = {
-  title: "AstroWind — Free template for create a website with Astro + Tailwind CSS",
+  title: "StationOne - Streamline your firefighting operations.",
   dontUseTitleTemplate: true,
 };
 ---
@@ -22,21 +23,18 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    callToAction={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
+    callToAction={{ text: 'Sign Up', href: '#', icon: 'tabler:firetruck' }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
     image={{ src: import('~/assets/images/hero.png'), alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white highlight"> Astro 2.0</span> + Tailwind CSS    </Fragment>
+      Streamline your
+      <span class="text-accent dark:text-white highlight"> firefighting</span> operations with StationOne   </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0 +
-        Tailwind CSS.</span
+        <span class="font-semibold">StationOne</span> empowers firefighters by providing them with a digital platform that enhances their efficiency, safety, organisation, and access to information.</span
       >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span> Suitable for Startups,
-      Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
     </Fragment>
   </Hero>
 
@@ -48,45 +46,45 @@ const metadata = {
 
   <Features
     id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae."
+    tagline="Platform Overview"
+    title="Streamline your firefighting operations"
+    subtitle="StationOne offers a range of features and tools to assist firefighters in both daily operations and while managing large-scale complex incidents."
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: 'Planning',
         description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
+          'Pre-Plans are an integral part of fire fighting operations but easily become out of date. Pre-Plans are typically paper documents, manually reviewed and subject to damage or loss.',
         icon: 'tabler:brand-tailwind',
       },
       {
-        title: 'Ready-to-use Components',
+        title: 'Collaboration',
         description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
+          'Allow businesses, residents and stakeholders to update critical information regarding their fire plans that is shared with fire services in real-time.',
+        icon: 'tabler:message-dots',
       },
       {
-        title: 'Best Practices',
+        title: 'Operational & Briefings',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
+          'Paper based documentation is still widely used operationally. This creates an administrative burden and generates "information silos" risking crew safety.',
         icon: 'tabler:list-check',
       },
       {
-        title: 'Excellent Page Speed',
+        title: 'Command & Control',
         description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
+          'Ensure everyone is on the same page, a single source of truth is shared in real- time, up and down the chain of command.',
+        icon: 'tabler:chevrons-up',
       },
       {
-        title: 'Search Engine Optimization (SEO)',
+        title: 'Improved Efficiency',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
-        icon: 'tabler:arrows-right-left',
+          'Reduce time to complete required tasks, encouraging, introducing rigid process and automation of routine maintenance and compliance reporting.',
+        icon: 'tabler:alarm',
       },
       {
-        title: 'Open to new ideas and contributions',
+        title: 'Equipment Management',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla.',
-        icon: 'tabler:bulb',
+          'Equipment and Asset tracking is often done manually, this can be a time consuming process that is error prone. Leading to equipment getting lost or vital repairs getting overlooked.',
+        icon: 'tabler:firetruck',
       },
     ]}
   />
@@ -94,34 +92,33 @@ const metadata = {
   <!-- Content Widget **************** -->
 
   <Content
-    tagline="Inside template"
-    title="And what's inside? ..."
+    tagline="Be prepared"
+    title="Incident Pre-Plans"
     items={[
       {
-        title: 'Per ei quaeque sensibus',
+        title: 'Ensure everyone has the same information',
         description:
           'Ex usu illum iudico molestie. Pro ne agam facete mediocritatem, ridens labore facete mea ei. Pro id apeirian dignissim.',
       },
       {
-        title: 'Cu imperdiet posidonium sed',
+        title: 'Get an overview of the incident en-route',
         description:
           'Amet utinam aliquando ut mea, malis admodum ocurreret nec et, elit tibique cu nec. Nec ex maluisset inciderint, ex quis.',
       },
       {
-        title: 'Nulla omittam sadipscing mel ne',
+        title: 'Plan your initial attack',
         description:
           'At sed possim oporteat probatus, justo graece ne nec, minim commodo legimus ut vix. Ut eos iudico quando soleat, nam modus.',
       },
     ]}
     image={{
-      src: import('~/assets/images/caos.jpg'),
+      src: import('~/assets/images/feature-hero.png'),
       alt: 'Colorful Image',
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Ad vix debet docendi</h3>
-      Ne dicta praesent ocurreret has, diam theophrastus at pro. Eos etiam regione ut, persius eripuit quo id. Sit te euismod
-      tacimates.
+      StationOne arms firefighters with all the important information as soon as they are in the truck. StationOne builds comprehensive pre-plans for high risk properties with real-time property owner and stakeholder collaboration.
     </Fragment>
   </Content>
 
@@ -130,34 +127,41 @@ const metadata = {
   <Content
     isReversed
     isAfterContent
+    tagline="Engage your community"
+    title="CommunityHub"
     items={[
       {
-        title: 'Per ei quaeque sensibus',
+        title: 'Identify critical infrastructure on the property',
       },
       {
-        title: 'Cu imperdiet posidonium sed',
+        title: 'Locate utility and PV isolation points',
       },
       {
-        title: 'Nulla omittam sadipscing mel ne',
+        title: 'Understand occupancy and property use',
       },
       {
-        title: 'Per ei quaeque sensibus',
+        title: 'Ensure properties are prepared for fire',
       },
       {
-        title: 'Cu imperdiet posidonium sed',
+        title: 'Designate and Share areas of refuge',
       },
       {
-        title: 'Nulla omittam sadipscing mel ne',
+        title: 'Share key emergency contacts',
       },
     ]}
     image={{
       src: import('~/assets/images/vintage.jpg'),
       alt: 'Vintage Image',
     }}
-  />
+    >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Collaborate with your community</h3>
+      Community Hub enables brigades to obtain valuable information about private residence.<br>Residents can add information to their property portfolio to assist brigades with their emergency response.
+    </Fragment>
+    </Content>
 
   <!-- Steps Widget ****************** -->
-
+<!--
   <Steps
     title="Get your dream website up and running in no time with AstroWind."
     items={[
@@ -189,67 +193,85 @@ const metadata = {
       alt: 'Steps image',
     }}
   />
+  -->
+
+  <CallToAction
+    callToAction={{
+      text: 'Sign Up',
+      href: 'https://github.com/onwidget/astrowind',
+      icon: 'tabler:download',
+    }}
+  >
+    <Fragment slot="title">
+      Join our <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">waitlist</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      StationOne is still under active development, we are working hard to make our initial release available soon. <br><br>Register your interest below to receive updates about our initial release and early access to new features.
+    </Fragment>
+  </CallToAction>
 
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
+    title="StationOne Features"
+    subtitle="StationOne offers a range of features and tools to assist firefighters in both daily operations and while managing large-scale complex incidents."
+    tagline="Features"
+    id="details"
     items={[
       {
-        title: 'Headers',
+        title: 'Pre-Plans',
         description:
-          'In general, Headers contain information that makes it easier for visitors to interact with the website.',
-        icon: 'flat-color-icons:template',
+          'Develop, share and collaborate on pre-plans for significant risks.',
+        icon: 'flat-color-icons:reading-ebook',
       },
       {
-        title: 'Heros',
+        title: 'Community Hub',
         description:
-          'If you want your website to get more than its fair share of visitors, the Hero section needs to be stellar.',
-        icon: 'flat-color-icons:gallery',
+          'Engage with the community to ensure they are fire safe and prepared.',
+        icon: 'flat-color-icons:home',
       },
       {
-        title: 'Features',
+        title: 'Water Points',
         description:
-          'Display your product in action and how the Features actually create a solution for your target customer.',
-        icon: 'flat-color-icons:approval',
+          'Locate static water sources, maintained by brigades and property owners.',
+        icon: 'flat-color-icons:collect',
       },
       {
-        title: 'Content',
+        title: 'Hose Manager',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'flat-color-icons:document',
+          'Manage your hose inventory including full service history and locations.',
+        icon: 'flat-color-icons:neutral-trading',
       },
       {
-        title: 'Call-to-Action',
+        title: 'Inventory',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'flat-color-icons:advertising',
+          'Equipment inventory, auditing and fault reporting.',
+        icon: 'flat-color-icons:survey',
       },
       {
-        title: 'Pricing',
+        title: 'Radio Simulator',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'flat-color-icons:currency-exchange',
+          'Train new recruits in our advanced radio simulator.',
+        icon: 'flat-color-icons:assistant',
       },
       {
-        title: 'Testimonial',
+        title: 'Crew Manager',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+          'Roster and manage duty crews and their tasks or build task forces.',
         icon: 'flat-color-icons:voice-presentation',
       },
       {
-        title: 'Contact',
+        title: 'Briefings',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'flat-color-icons:business-contact',
+          'Generate and share industry standard briefings electronically.',
+        icon: 'flat-color-icons:briefcase',
       },
       {
-        title: 'Footers',
+        title: 'Firefighting Tools',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-        icon: 'flat-color-icons:database',
+          'A range of useful tools, checklists and calculators to assist firefighters.',
+        icon: 'flat-color-icons:support',
       },
     ]}
   >
@@ -258,17 +280,7 @@ const metadata = {
     </Fragment>
   </Features2>
 
-  <!-- HighlightedPosts Widget ******* -->
-
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
-  />
-
-  <!-- FAQs Widget ******************* -->
+  <!-- FAQs Widget *******************
 
   <FAQs
     title="Frequently Asked Questions"
@@ -307,8 +319,9 @@ const metadata = {
       },
     ]}
   />
+  -->
 
-  <!-- Stats Widget ****************** -->
+  <!-- Stats Widget ****************** 
 
   <Stats
     items={[
@@ -318,23 +331,13 @@ const metadata = {
       { name: 'Users', value: '48.4K' },
     ]}
   />
+-->
 
-  <!-- CallToAction Widget *********** -->
+  <Contact
+    id="contact"
+    tagline="Get in Touch"
+    title="Contact StationOne"
+    subtitle="Do you want to know more about StationOne? Have questions or feedback on StationOne features? Interested in investing? Let's talk!"
+    ></Contact>
 
-  <CallToAction
-    callToAction={{
-      text: 'Get template',
-      href: 'https://github.com/onwidget/astrowind',
-      icon: 'tabler:download',
-    }}
-  >
-    <Fragment slot="title">
-      Astro + <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
-    </Fragment>
-  </CallToAction>
 </Layout>
