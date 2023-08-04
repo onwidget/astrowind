@@ -154,7 +154,7 @@ export interface Testimonial {
 
 // COMPONENTS
 export interface CallToAction {
-  targetBlank: boolean;
+  targetBlank?: boolean;
   text?: string;
   icon?: string;
   href?: string;
