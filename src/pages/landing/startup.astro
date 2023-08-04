@@ -6,20 +6,18 @@ import Hero from '~/components/widgets/Hero.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 import { headerData } from '~/navigation';
+import Features2 from '~/components/widgets/Features2.astro';
+import Features from '~/components/widgets/Features.astro';
+import Stats from '~/components/widgets/Stats.astro';
 
 const metadata = {
-  title: "Startup Landing Page",
+  title: 'Startup Landing Page',
 };
 ---
 
 <Layout metadata={metadata}>
   <Fragment slot="header">
-    <Header
-      {...headerData}
-      showRssFeed
-      showToggleTheme
-      position="left"
-    />
+    <Header {...headerData} showRssFeed showToggleTheme position="left" />
   </Fragment>
 
   <!-- Hero2 Widget ******************* -->
@@ -35,17 +33,110 @@ const metadata = {
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0 +
-        Tailwind CSS.</span
+        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0
+        + Tailwind CSS.</span
       >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span> Suitable for Startups,
-      Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
+      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span> Suitable for
+      Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
     </Fragment>
 
     <Fragment slot="image">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/dsTXcSeAZq8" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width:100%"></iframe>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/dsTXcSeAZq8"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="width:100%"></iframe>
     </Fragment>
   </Hero>
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    items={[
+      { name: 'Templates', value: '56' },
+      { name: 'Downloads', value: '182K' },
+      { name: 'User Ratings', value: '4.8' },
+      { name: 'Satisfied Clients', value: '116K' },
+    ]}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="What services do we provide?"
+    subtitle="We offer a wide range of website templates that suit various industries and purposes such as business, portfolio, e-commerce, blog, etc."
+    items={[
+      {
+        title: 'Download and Installation Instructions',
+        description:
+          'Offer clear instructions on how to download the purchased templates and install them on various website platforms or content management systems.',
+        icon: 'flat-color-icons:document',
+      },
+      {
+        title: 'Demo and Previews',
+        description:
+          'Provide interactive demos and previews that allow customers to see how their chosen template will look and function before making a purchase.',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Technical Support',
+        description:
+          'Providing customer support for any technical issues related to the templates or their implementation.',
+        icon: 'flat-color-icons:voice-presentation',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="features"
+    title="Main features of our templates"
+    subtitle="Possess several key characteristics to effectively cater to the needs of startups and entrepreneurs."
+    columns={3}
+    items={[
+      {
+        title: 'Modern and Professional Design',
+        description:
+          'Have a contemporary design that reflects current design trends and gives a professional impression.',
+        icon: 'tabler:artboard',
+      },
+      {
+        title: 'Responsive and Mobile-Friendly',
+        description: 'Adapt seamlessly to different screen sizes and devices to ensure a consistent experience.',
+        icon: 'tabler:picture-in-picture',
+      },
+      {
+        title: 'Customizability',
+        description:
+          'Easily customizable, allowing users to adapt the design, colors, typography, and content to match their brand identity.',
+        icon: 'tabler:adjustments-horizontal',
+      },
+      {
+        title: 'Fast Loading Times',
+        description: 'Optimized for speed to ensure a smooth user experience and favorable search engine rankings.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Search Engine Optimization (SEO)',
+        description:
+          'Incorporate SEO best practices in template structure and code to improve visibility in search engine results.',
+        icon: 'tabler:arrows-right-left',
+      },
+      {
+        title: 'Compatibility',
+        description: 'The templates work seamlessly across various content management systems and website builders.',
+        icon: 'tabler:plug-connected',
+      },
+    ]}
+  />
 
   <!-- CallToAction Widget *********** -->
 
