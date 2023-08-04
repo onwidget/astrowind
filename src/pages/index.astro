@@ -11,9 +11,10 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import { SITE_CONFIG } from '~/utils/config';
 
 const metadata = {
-  title: "AstroWind — Free template for create a website with Astro + Tailwind CSS",
+  title: SITE_CONFIG.name,
   dontUseTitleTemplate: true,
 };
 ---
