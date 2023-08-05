@@ -9,6 +9,7 @@ import { headerData } from '~/navigation';
 import Features2 from '~/components/widgets/Features2.astro';
 import Features from '~/components/widgets/Features.astro';
 import Stats from '~/components/widgets/Stats.astro';
+import Features3 from '~/components/widgets/Features3.astro';
 
 const metadata = {
   title: 'Startup Landing Page',
@@ -142,6 +143,7 @@ const metadata = {
 
   <CallToAction
     callToAction={{
+      targetBlank: true,
       text: 'Get template',
       href: 'https://github.com/onwidget/astrowind',
       icon: 'tabler:download',
@@ -156,4 +158,54 @@ const metadata = {
       waste more time! :P
     </Fragment>
   </CallToAction>
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    title="Let us know how we can help"
+    subtitle="We’re here to help and answer any question you might have."
+    columns={4}
+    items={[
+      {
+        title: 'Phone',
+        icon: 'tabler:phone',
+        callToAction: {
+          targetBlank: true,
+          text: 'Call us',
+          href: '/',
+        },
+      },
+      {
+        title: 'Email',
+        icon: 'tabler:mail',
+        callToAction: {
+          targetBlank: true,
+          text: 'Write to us',
+          href: '/',
+        },
+      },
+      {
+        title: 'Chat with sales',
+        icon: 'tabler:message-circle',
+        callToAction: {
+          targetBlank: true,
+          text: 'Start chatting',
+          href: '/',
+        },
+      },
+      {
+        title: 'Chat with support',
+        icon: 'tabler:message-circle',
+        callToAction: {
+          targetBlank: true,
+          text: 'Start chatting',
+          href: '/',
+        },
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features3>
 </Layout>
