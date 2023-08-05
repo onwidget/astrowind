@@ -4,9 +4,11 @@ import Layout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Hero2 from '~/components/widgets/Hero2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Content from '~/components/widgets/Content.astro';
 
 const metadata = {
-  title: "Mobile App Landing Page",
+  title: 'Mobile App Landing Page',
 };
 ---
 
@@ -17,12 +19,12 @@ const metadata = {
       links={[]}
       actions={[
         {
-          type: "ghost",
+          type: 'ghost',
           text: 'Login',
           href: '#',
         },
         {
-          type: "primary",
+          type: 'primary',
           text: 'Sign Up',
           href: '#',
         },
@@ -33,7 +35,7 @@ const metadata = {
   <!-- Hero2 Widget ******************* -->
 
   <Hero2
-    callToAction={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
+    callToAction={{ text: 'Download App', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
     image={{ src: import('~/assets/images/hero.png'), alt: 'AstroWind Hero Image' }}
   >
@@ -44,19 +46,141 @@ const metadata = {
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0 +
-        Tailwind CSS.</span
+        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0
+        + Tailwind CSS.</span
       >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span> Suitable for Startups,
-      Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
+      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span> Suitable for
+      Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
     </Fragment>
   </Hero2>
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    subtitle="Tired of spending hours crafting documents from scratch? Our app offers an innovative solution. With a wide array of professionally designed templates, you can now create stunning documents in minutes. Save time, achieve a polished look, and customize templates to fit your style. Join thousands of satisfied users who've transformed their documents effortlessly. Explore our templates now and experience the difference."
+    tagline="Step-by-step guide on how to use our app"
+    columns={2}
+    items={[
+      {
+        title: 'Download and Install the App',
+        description:
+          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
+        icon: 'tabler:square-number-1',
+      },
+      {
+        title: 'Sign Up',
+        description:
+          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
+        icon: 'tabler:square-number-2',
+      },
+      {
+        title: 'Browse Templates',
+        description:
+          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
+        icon: 'tabler:square-number-3',
+      },
+      {
+        title: 'Preview and Select a Template',
+        description:
+          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
+        icon: 'tabler:square-number-4',
+      },
+    ]}
+    image={{
+      src: 'https://cdn.pixabay.com/photo/2023/07/18/21/40/astronaut-8135685_1280.jpg',
+      alt: 'Astronaut Image',
+    }}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    items={[
+      {
+        title: 'High-Quality Designs',
+        description: 'Pellentesque dui nibh, cursus ac eros eget, pharetra malesuada tortor.',
+        icon: 'tabler:wand',
+      },
+      {
+        title: 'Customization Tools',
+        description: 'Nulla vulputate sollicitudin massa, id rutrum tellus tristique et.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Pre-Designed Elements',
+        description: 'Mauris eget urna non leo fringilla auctor quis efficitur sem.',
+        icon: 'tabler:presentation',
+      },
+      {
+        title: 'Preview and Mockup Views',
+        description: ' Donec lorem metus, maximus vitae magna sed, tincidunt interdum magna.',
+        icon: 'tabler:carousel-horizontal',
+      },
+      {
+        title: 'Offline Access',
+        description:
+          'Sed accumsan, purus facilisis efficitur accumsan, lectus lacus vestibulum diam, in sollicitudin orci tellus in libero.',
+        icon: 'tabler:wifi-off',
+      },
+    ]}
+    image={{
+      src: 'https://cdn.pixabay.com/photo/2023/07/22/19/25/ai-generated-8144026_1280.jpg',
+      alt: 'Features Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: 'Time Savings',
+        description: 'Sed condimentum dui vel lorem cursus molestie duis id tristique justo.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Professional Appearance',
+        description: 'Cras purus velit, finibus quis dui nec, faucibus porttitor purus.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Accessibility for Non-Designers',
+        description: 'Morbi volutpat ultricies dictum. In eu nunc id odio congue porttitor.',
+        icon: 'tabler:accessible',
+      },
+      {
+        title: 'Cost-Efficiency',
+        description: 'Fusce vitae odio sed lacus tempor aliquam sit amet ut velit pellentesque sagittis cursus nisi.',
+        icon: 'tabler:coin',
+      },
+      {
+        title: 'Instant Download',
+        description:
+          'Sed semper tempus dolor, non pretium velit lacinia tristique, fusce hendrerit fermentum lorem dignissim convallis.',
+        icon: 'tabler:file-download',
+      },
+    ]}
+    image={{
+      src: 'https://cdn.pixabay.com/photo/2020/07/25/22/26/rocket-5438053_1280.jpg',
+      alt: 'Benefits Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Benefits</h3>
+    </Fragment>
+  </Content>
 
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
     callToAction={{
-      text: 'Get template',
+      text: 'Download App',
       href: 'https://github.com/onwidget/astrowind',
       icon: 'tabler:download',
     }}
