@@ -260,27 +260,6 @@
         "theme": {
           "type": "string"
         },
-        "classes": {
-          "type": "object",
-          "properties": {
-            "html": {
-              "type": "null"
-            },
-            "body": {
-              "type": "null"
-            },
-            "heading1": {
-              "type": "null"
-            },
-            "heading2": {
-              "type": "null"
-            },
-            "button": {
-              "type": "null"
-            }
-          },
-          "required": ["html", "body", "heading1", "heading2", "button"]
-        },
         "tokens": {
           "type": "object",
           "properties": {
@@ -436,7 +415,7 @@
           "required": ["default", "dark"]
         }
       },
-      "required": ["theme", "classes", "tokens"]
+      "required": ["theme", "tokens"]
     }
   },
   "required": ["site", "metadata", "i18n", "apps", "analytics", "ui"]
