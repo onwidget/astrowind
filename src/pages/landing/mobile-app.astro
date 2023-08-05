@@ -4,9 +4,10 @@ import Layout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Hero2 from '~/components/widgets/Hero2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features3 from '~/components/widgets/Features3.astro';
 
 const metadata = {
-  title: "Mobile App Landing Page",
+  title: 'Mobile App Landing Page',
 };
 ---
 
@@ -17,12 +18,12 @@ const metadata = {
       links={[]}
       actions={[
         {
-          type: "ghost",
+          type: 'ghost',
           text: 'Login',
           href: '#',
         },
         {
-          type: "primary",
+          type: 'primary',
           text: 'Sign Up',
           href: '#',
         },
@@ -33,7 +34,7 @@ const metadata = {
   <!-- Hero2 Widget ******************* -->
 
   <Hero2
-    callToAction={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
+    callToAction={{ text: 'Download App', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
     image={{ src: import('~/assets/images/hero.png'), alt: 'AstroWind Hero Image' }}
   >
@@ -44,19 +45,57 @@ const metadata = {
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0 +
-        Tailwind CSS.</span
+        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0
+        + Tailwind CSS.</span
       >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span> Suitable for Startups,
-      Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
+      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span> Suitable for
+      Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
     </Fragment>
   </Hero2>
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    subtitle="Tired of spending hours crafting documents from scratch? Our app offers an innovative solution. With a wide array of professionally designed templates, you can now create stunning documents in minutes. Save time, achieve a polished look, and customize templates to fit your style. Join thousands of satisfied users who've transformed their documents effortlessly. Explore our templates now and experience the difference."
+    tagline="Step-by-step guide on how to use our app"
+    columns={2}
+    items={[
+      {
+        title: 'Download and Install the App',
+        description:
+          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
+        icon: 'tabler:square-number-1',
+      },
+      {
+        title: 'Sign Up',
+        description:
+          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
+        icon: 'tabler:square-number-2',
+      },
+      {
+        title: 'Browse Templates',
+        description:
+          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
+        icon: 'tabler:square-number-3',
+      },
+      {
+        title: 'Preview and Select a Template',
+        description:
+          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
+        icon: 'tabler:square-number-4',
+      },
+    ]}
+    image={{
+      src: 'https://cdn.pixabay.com/photo/2023/07/18/21/40/astronaut-8135685_1280.jpg',
+      alt: 'Astronaut Image',
+    }}
+  />
 
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
     callToAction={{
-      text: 'Get template',
+      text: 'Download App',
       href: 'https://github.com/onwidget/astrowind',
       icon: 'tabler:download',
     }}
