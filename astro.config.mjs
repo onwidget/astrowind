@@ -29,6 +29,7 @@ export default defineConfig({
   trailingSlash: SITE_CONFIG.trailingSlash ? 'always' : 'never',
 
   output: 'static',
+  compressHTML: true,
 
   integrations: [
     tailwind({
