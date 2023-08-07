@@ -6,6 +6,7 @@ import Hero2 from '~/components/widgets/Hero2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Content from '~/components/widgets/Content.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
 
 const metadata = {
   title: 'Mobile App Landing Page',
@@ -175,6 +176,50 @@ const metadata = {
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Benefits</h3>
     </Fragment>
   </Content>
+
+  <!-- Testimonials Widget *********** -->
+
+  <Testimonials
+    tagline="What our users say about us?"
+    testimonials={[
+      {
+        testimonial:
+          'Vestibulum auctor dui vel nunc rutrum, quis elementum dui tristique. Sed hendrerit at lacus eget consectetur. In elementum scelerisque scelerisque. Nulla vel venenatis velit.',
+        name: 'Cary Kennedy',
+        job: 'Film director',
+        image: {
+          src: 'https://cdn.pixabay.com/photo/2023/07/22/19/25/ai-generated-8144026_1280.jpg',
+          alt: 'Cary Kennedy Image',
+        },
+      },
+      {
+        testimonial:
+          'Mauris condimentum at tellus eget lacinia. Integer at ipsum eget urna rhoncus tincidunt. Curabitur condimentum scelerisque lobortis. Cras semper purus egestas sem blandit, in volutpat nibh rutrum.',
+        name: 'Josh Wilkinson',
+        job: 'Product Manager',
+        image: {
+          src: 'https://cdn.pixabay.com/photo/2023/07/18/21/40/astronaut-8135685_1280.jpg',
+          alt: 'Josh Wilkinson Image',
+        },
+      },
+      {
+        testimonial:
+          'Praesent laoreet metus ac vehicula venenatis. Vivamus ullamcorper enim neque, sit amet eleifend sapien volutpat a. Proin quis varius metus. Etiam ut neque ipsum.',
+        name: 'Sidney Hansen',
+        job: 'Decorator',
+        image: {
+          src: 'https://cdn.pixabay.com/photo/2020/07/25/22/26/rocket-5438053_1280.jpg',
+          alt: 'Sidney Hansen Image',
+        },
+      },
+    ]}
+    callToAction={{
+      targetBlank: true,
+      text: 'Read more testimonials',
+      href: 'https://github.com/onwidget/astrowind',
+      icon: 'tabler:chevron-right',
+    }}
+  />
 
   <!-- CallToAction Widget *********** -->
 
