@@ -1,57 +1,46 @@
 ---
-interface Item {
-  name: string;
-  value: string;
-}
-
-export interface Props {
-  title?: string;
-  subtitle?: string;
-  tagline?: string;
-  items?: Array<Item>;
-}
+import { Stats } from '~/types';
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
+import Headline from '../ui/Headline.astro';
+import { Icon } from 'astro-icon/components';
 
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   tagline,
-  items = [],
-} = Astro.props;
+  stats = [],
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props as Stats;
 ---
 
-<div class="px-4 py-4 md:py-16 sm:px-6 mx-auto md:px-24 lg:px-8 lg:py-20 max-w-6xl not-prose">
-  {
-    (title || subtitle || tagline) && (
-      <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
-        {tagline && (
-          <p class="text-base text-primary dark:text-blue-200 font-semibold tracking-wide uppercase">
-            {tagline}
-          </p>
-        )}
-        {title && (
-          <h2
-            class="max-w-lg mb-4 text-3xl font-bold leading-none tracking-tight sm:text-4xl md:mx-auto font-heading"
-            set:html={title}
-          />
-        )}
-        {subtitle && (
-          <p class="max-w-3xl mx-auto text-center text-xl text-muted dark:text-slate-400" set:html={subtitle} />
-        )}
-      </div>
-    )
-  }
-  <div class="grid grid-cols-2 row-gap-8 md:grid-cols-4">
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} />
+  <div class="flex flex-wrap justify-center -m-4 text-center">
     {
-      items.map(({ name, value }) => (
-        <div class="text-center md:border-r md:last:border-none dark:md:border-slate-500 mb-12 md:mb-0">
-          <div class="text-[2.6rem] font-bold lg:text-5xl xl:text-6xl text-primary dark:text-blue-600 font-heading">
-            {value}
+      stats &&
+        stats.map(({ amount, title, icon }) => (
+          <div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] mb-12 text-center md:mb-0 md:border-r md:last:border-none dark:md:border-slate-500">
+            {icon && (
+              <div class="flex items-center justify-center mx-auto mb-4 text-primary">
+                <Icon name={icon} class="w-10 h-10" />
+              </div>
+            )}
+            {amount && (
+              <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl">
+                {amount}
+              </div>
+            )}
+            {title && (
+              <h6 class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base">
+                {title}
+              </h6>
+            )}
           </div>
-          <p class="text-sm font-medium tracking-widest text-gray-800 dark:text-slate-400 uppercase lg:text-base">
-            {name}
-          </p>
-        </div>
-      ))
+        ))
     }
   </div>
-</div>
+</WidgetWrapper>
