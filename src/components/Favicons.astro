@@ -1,8 +1,9 @@
 ---
 import favIcon from '~/assets/favicons/favicon.ico';
 import favIconSvg from '~/assets/favicons/favicon.svg';
+
 ---
 
 <link rel="shortcut icon" href={favIcon} />
-<link rel="icon" type="image/svg+xml" href={favIcon} />
-<link rel="mask-icon" href={String(favIconSvg)} color="#8D46E7" />
+<link rel="icon" type="image/svg+xml" href={favIconSvg.src} />
+<link rel="mask-icon" href={favIconSvg.src} color="#8D46E7" />
