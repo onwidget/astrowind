@@ -3,6 +3,7 @@ import Headline from '~/components/ui/Headline.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import type { Testimonials } from '~/types';
 import CTA from '../ui/CTA.astro';
+import { Picture } from '@astrojs/image/components';
 
 const {
   title = '',
@@ -37,12 +38,21 @@ const {
               <hr class="border-slate-200 dark:border-slate-600 my-4" />
 
               <div class="flex items-center">
-                {image && image.src && (
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600"
-                  />
+                {image && (
+                  <div class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600">
+                    {typeof image === 'string' ? (
+                      <Fragment set:html={image} />
+                    ) : (
+                      <Picture
+                        class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600"
+                        width={40}
+                        height={40}
+                        widths={[400, 768]}
+                        aspectRatio="1:1"
+                        {...(image as any)}
+                      />
+                    )}
+                  </div>
                 )}
 
                 <div class="grow ml-3">

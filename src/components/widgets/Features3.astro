@@ -1,4 +1,5 @@
 ---
+import { Picture } from '@astrojs/image/components';
 import Headline from '~/components/ui/Headline.astro';
 import ItemGrid from '~/components/ui/ItemGrid.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
@@ -22,8 +23,25 @@ const {
 <WidgetWrapper id={id} isDark={isDark} containerClass={classes?.container} bg={bg}>
   <Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline} />
 
-  <div class="aspect-w-16 aspect-h-7">
-    {image && image.src && <img src={image.src} alt={image.alt || ''} class="w-full h-80 object-cover rounded-xl" />}
+  <div aria-hidden="true" class="aspect-w-16 aspect-h-7">
+    {
+      image && (
+        <div class="w-full h-80 object-cover rounded-xl mx-auto bg-gray-500 shadow-lg">
+          {typeof image === 'string' ? (
+            <Fragment set:html={image} />
+          ) : (
+            <Picture
+              class="w-full h-80 object-cover rounded-xl mx-auto bg-gray-500 shadow-lg"
+              width={0}
+              height={320}
+              widths={[400, 768]}
+              aspectRatio="16:7"
+              {...(image as any)}
+            />
+          )}
+        </div>
+      )
+    }
   </div>
 
   <ItemGrid

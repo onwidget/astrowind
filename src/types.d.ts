@@ -149,7 +149,7 @@ export interface Testimonial {
   testimonial?: string;
   name?: string;
   job?: string;
-  image?: Image;
+  image?: string | unknown;
 }
 
 // COMPONENTS
@@ -207,7 +207,7 @@ export interface Clients extends Headline, Widget {
 }
 
 export interface Features extends Headline, Widget {
-  image?: Image;
+  image?: string | unknown;
   video?: Video;
   items: Array<Item>;
   columns: number;
@@ -235,8 +235,10 @@ export interface Steps extends Headline, Widget {
 }
 
 export interface Content extends Headline, Widget {
-  image?: string;
+  content?: string;
+  image?: string | unknown;
   items?: Array<Item>;
   columns?: number;
   isReversed?: boolean;
+  isAfterContent?: boolean;
 }
