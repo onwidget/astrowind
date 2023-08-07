@@ -69,6 +69,10 @@ export default defineConfig({
     remarkPlugins: [readingTimeRemarkPlugin],
   },
 
+  experimental: {
+    viewTransitions: true,
+  },
+
   vite: {
     resolve: {
       alias: {

@@ -22,7 +22,7 @@ const { metadata } = Astro.props;
   <slot name="header">
     <Header {...headerData} isSticky showRssFeed showToggleTheme />
   </slot>
-  <main>
+  <main transition:animate="morph">
     <slot />
   </main>
   <slot name="footer">

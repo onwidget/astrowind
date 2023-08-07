@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+
 import '~/assets/styles/tailwind.css';
 
 import { I18N_CONFIG } from "~/utils/config";
@@ -33,6 +35,7 @@ const { language, textDirection } = I18N_CONFIG;
     <Metadata {...metadata} />
     <SiteVerification />
     <Analytics />
+    <ViewTransitions />
   </head>
 
   <body class="antialiased text-default bg-page tracking-tight">
