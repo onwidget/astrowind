@@ -7,6 +7,8 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Content from '~/components/widgets/Content.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
 
 const metadata = {
   title: 'Mobile App Landing Page',
@@ -88,8 +90,8 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://cdn.pixabay.com/photo/2023/07/18/21/40/astronaut-8135685_1280.jpg',
-      alt: 'Astronaut Image',
+      src: import('~/assets/images/colors.jpg'),
+      alt: 'Colorful Image',
     }}
   />
 
@@ -125,8 +127,8 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://cdn.pixabay.com/photo/2023/07/22/19/25/ai-generated-8144026_1280.jpg',
-      alt: 'Features Image',
+      src: import('~/assets/images/caos.jpg'),
+      alt: 'Colorful Image',
     }}
   >
     <Fragment slot="content">
@@ -168,14 +170,24 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://cdn.pixabay.com/photo/2020/07/25/22/26/rocket-5438053_1280.jpg',
-      alt: 'Benefits Image',
+      src: import('~/assets/images/vintage.jpg'),
+      alt: 'Vintage Image',
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Benefits</h3>
     </Fragment>
   </Content>
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    stats={[
+      { amount: '20K', icon: 'tabler:download' },
+      { amount: '18.5K', icon: 'tabler:users' },
+      { amount: '4.7', icon: 'tabler:user-star' },
+    ]}
+  />
 
   <!-- Testimonials Widget *********** -->
 
@@ -188,7 +200,7 @@ const metadata = {
         name: 'Cary Kennedy',
         job: 'Film director',
         image: {
-          src: 'https://cdn.pixabay.com/photo/2023/07/22/19/25/ai-generated-8144026_1280.jpg',
+          src: import('~/assets/images/colors.jpg'),
           alt: 'Cary Kennedy Image',
         },
       },
@@ -198,7 +210,7 @@ const metadata = {
         name: 'Josh Wilkinson',
         job: 'Product Manager',
         image: {
-          src: 'https://cdn.pixabay.com/photo/2023/07/18/21/40/astronaut-8135685_1280.jpg',
+          src: import('~/assets/images/vintage.jpg'),
           alt: 'Josh Wilkinson Image',
         },
       },
@@ -208,7 +220,7 @@ const metadata = {
         name: 'Sidney Hansen',
         job: 'Decorator',
         image: {
-          src: 'https://cdn.pixabay.com/photo/2020/07/25/22/26/rocket-5438053_1280.jpg',
+          src: import('~/assets/images/caos.jpg'),
           alt: 'Sidney Hansen Image',
         },
       },
@@ -221,6 +233,42 @@ const metadata = {
     }}
   />
 
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Still have some doubts?"
+    items={[
+      {
+        title: 'What does this app do?',
+        description:
+          'Cras ac velit laoreet, congue enim nec, ultrices ante. Suspendisse aliquam mi id sollicitudin faucibus.',
+      },
+      {
+        title: 'How can this app solve my problem?',
+        description:
+          'Proin at turpis eget elit sagittis laoreet. Proin id nisl elit mi risus viverra eros. Aenean egestas arcu sed laoreet venenatis. Proin venenatis porta fermentum. Nulla ex lorem, aliquam sed volutpat sed, auctor vel libero.',
+      },
+      {
+        title: 'Is it available for my device?',
+        description:
+          'Sed malesuada nisl turpis, et aliquet ex facilisis a. Proin in tortor ante. Quisque congue, lacus eu feugiat feugia.',
+      },
+      {
+        title: 'What makes this app different from others?',
+        description: 'Sed nulla nibh, facilisis non volutpat non, dictum quis nunc. Nullam mollis tempus odio.',
+      },
+      {
+        title: 'Are there any costs involved?',
+        description:
+          'Proin aliquet, arcu in semper consectetur, ipsum urna pellentesque ipsum, sit amet aliquam odio nunc ac orci.',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </FAQs>
+
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
@@ -230,9 +278,7 @@ const metadata = {
       icon: 'tabler:download',
     }}
   >
-    <Fragment slot="title">
-      Astro + <br class="block sm:hidden" /><span class="sm:whitespace-nowrap"> Tailwind CSS</span>
-    </Fragment>
+    <Fragment slot="title">Get Started Now</Fragment>
 
     <Fragment slot="subtitle">
       Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't

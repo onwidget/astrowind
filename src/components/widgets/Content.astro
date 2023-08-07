@@ -1,23 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { Picture } from '@astrojs/image/components';
-
-interface Item {
-  title: string;
-  description?: string;
-  icon?: string;
-}
-
-export interface Props {
-  title?: string;
-  subtitle?: string;
-  tagline?: string;
-  content?: string;
-  items?: Array<Item>;
-  image?: string | any; // TODO: find HTMLElementProps
-  isReversed?: boolean;
-  isAfterContent?: boolean;
-}
+import type { Content } from '~/types';
 
 const {
   title = await Astro.slots.render('title'),
@@ -28,7 +12,7 @@ const {
   image = await Astro.slots.render('image'),
   isReversed = false,
   isAfterContent = false,
-} = Astro.props;
+} = Astro.props as Content;
 ---
 
 <section class:list={[{ 'pt-0 md:pt-0': isAfterContent }, 'bg-blue-50 dark:bg-page py-16 md:py-20 not-prose']}>
@@ -95,7 +79,7 @@ const {
                   widths={[400, 768]}
                   sizes="(max-width: 768px) 100vw, 432px"
                   aspectRatio="500:500"
-                  {...image}
+                  {...(image as any)}
                 />
               )}
             </div>
