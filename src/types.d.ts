@@ -233,6 +233,7 @@ export interface Steps extends Headline, Widget {
     icon?: string;
     classes?: Record<string, string>;
   }>;
+  callToAction?: string | CallToAction;
   image?: string | Image;
   isReversed?: boolean;
 }

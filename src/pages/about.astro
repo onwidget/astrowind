@@ -119,8 +119,37 @@ const metadata = {
   <!-- Steps2 Widget ****************** -->
 
   <Steps2
+    title="Our values"
+    subtitle="Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus. Nulla facilisi. Vestibulum malesuada lacus id nibh posuere feugiat."
+    items={[
+      {
+        title: 'Customer-centric approach',
+        description:
+          'Donec id nibh neque. Quisque et fermentum tortor. Fusce vitae dolor a mauris dignissim commodo. Ut eleifend luctus condimentum.',
+      },
+      {
+        title: 'Constant Improvement',
+        description:
+          'Phasellus laoreet fermentum venenatis. Vivamus dapibus pulvinar arcu eget mattis. Fusce eget mauris leo.',
+      },
+      {
+        title: 'Ethical Practices',
+        description:
+          'Vestibulum imperdiet libero et lectus molestie, et maximus augue porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+      },
+    ]}
+  />
+
+  <!-- Steps2 Widget ****************** -->
+
+  <Steps2
     title="Achievements"
     subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus."
+    isReversed={true}
+    callToAction={{
+      text: 'See more',
+      href: '/',
+    }}
     items={[
       {
         title: 'Global reach',
@@ -138,12 +167,6 @@ const metadata = {
         description:
           'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
         icon: 'tabler:award',
-      },
-      {
-        title: 'Market leadership',
-        description:
-          'Aliquam sem orci, varius pharetra tortor vel, ultricies elementum augue. Vestibulum ante ipsum primis in faucibus.',
-        icon: 'tabler:trophy',
       },
     ]}
   />
