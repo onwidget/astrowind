@@ -215,6 +215,8 @@ export interface Features extends Headline, Widget {
   callToAction1?: CallToAction;
   callToAction2?: CallToAction;
   isReversed?: boolean;
+  isBeforeContent?: boolean;
+  isAfterContent?: boolean;
 }
 
 export interface Faqs extends Headline, Widget {

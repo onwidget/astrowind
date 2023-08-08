@@ -12,6 +12,8 @@ const {
   image,
   items = [],
   columns,
+  isBeforeContent,
+  isAfterContent,
 
   id,
   isDark = false,
@@ -20,7 +22,14 @@ const {
 } = Astro.props as Features;
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={classes?.container} bg={bg}>
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  containerClass={`${isBeforeContent ? 'md:pb-8 lg:pb-12' : ''} ${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''} ${
+    classes?.container ?? ''
+  }`}
+  bg={bg}
+>
   <Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline} />
 
   <div aria-hidden="true" class="aspect-w-16 aspect-h-7">
@@ -48,7 +57,7 @@ const {
     items={items}
     columns={columns}
     classes={{
-      container: 'mt-5 lg:mt-16',
+      container: 'mt-12',
       panel: 'max-w-full sm:max-w-md',
       title: 'text-lg font-semibold',
       icon: 'flex-shrink-0 mt-1 text-primary w-6 h-6',
