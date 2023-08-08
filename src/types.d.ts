@@ -178,7 +178,8 @@ export interface Collapse {
 
 // WIDGETS
 export interface Hero extends Headline, Widget {
-  image?: Image;
+  content?: string;
+  image?: string | unknown;
   callToAction1?: CallToAction;
   callToAction2?: CallToAction;
   isReversed?: boolean;
@@ -214,6 +215,8 @@ export interface Features extends Headline, Widget {
   callToAction1?: CallToAction;
   callToAction2?: CallToAction;
   isReversed?: boolean;
+  isBeforeContent?: boolean;
+  isAfterContent?: boolean;
 }
 
 export interface Faqs extends Headline, Widget {
@@ -230,6 +233,7 @@ export interface Steps extends Headline, Widget {
     icon?: string;
     classes?: Record<string, string>;
   }>;
+  callToAction?: string | CallToAction;
   image?: string | Image;
   isReversed?: boolean;
 }
