@@ -178,7 +178,8 @@ export interface Collapse {
 
 // WIDGETS
 export interface Hero extends Headline, Widget {
-  image?: Image;
+  content?: string;
+  image?: string | unknown;
   callToAction1?: CallToAction;
   callToAction2?: CallToAction;
   isReversed?: boolean;

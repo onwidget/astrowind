@@ -1,16 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { Picture } from '@astrojs/image/components';
-import { CallToAction } from '~/types';
-
-export interface Props {
-  title?: string;
-  subtitle?: string;
-  content?: string;
-  callToAction?: string | CallToAction;
-  callToAction2?: string | CallToAction;
-  image?: string | any; // TODO: find HTMLElementProps
-}
 
 const {
   title = await Astro.slots.render('title'),
