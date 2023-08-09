@@ -16,7 +16,7 @@ metadata:
     index: true
     follow: true
   openGraph:
-    siteName: AstroWind
+    site_name: AstroWind
     images:
       - url: '~/assets/images/default.png'
         width: 1200
