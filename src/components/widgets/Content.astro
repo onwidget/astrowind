@@ -2,6 +2,8 @@
 import { Icon } from 'astro-icon/components';
 import { Picture } from '@astrojs/image/components';
 import type { Content } from '~/types';
+import Headline from '../ui/Headline.astro';
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
 
 const {
   title = await Astro.slots.render('title'),
@@ -12,34 +14,30 @@ const {
   image = await Astro.slots.render('image'),
   isReversed = false,
   isAfterContent = false,
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
 } = Astro.props as Content;
 ---
 
-<section class:list={[{ 'pt-0 md:pt-0': isAfterContent }, 'bg-blue-50 dark:bg-page py-16 md:py-20 not-prose']}>
-  <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
-    {
-      (title || subtitle || tagline) && (
-        <div class="mb-10 md:mx-auto text-center md:mb-12 max-w-3xl">
-          {tagline && (
-            <p
-              class="text-base text-primary dark:text-blue-200 font-semibold tracking-wide uppercase"
-              set:html={tagline}
-            />
-          )}
-          {title && (
-            <h2
-              class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
-              set:html={title}
-            />
-          )}
-
-          {subtitle && (
-            <p class="max-w-3xl mx-auto sm:text-center text-xl text-muted dark:text-slate-400" set:html={subtitle} />
-          )}
-        </div>
-      )
-    }
-  </div>
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  containerClass={`max-w-screen-xl mx-auto ${isAfterContent ? 'pt-0 md:pt-0 lg:pt-0' : ''} ${classes?.container ?? ''}`}
+  bg={bg}
+>
+  <Headline
+    title={title}
+    subtitle={subtitle}
+    tagline={tagline}
+    classes={{
+      container: 'max-w-xl sm:mx-auto lg:max-w-2xl',
+      title: 'text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading',
+      subtitle: 'max-w-3xl mx-auto sm:text-center text-xl text-muted dark:text-slate-400',
+    }}
+  />
   <div class="mx-auto max-w-7xl p-4 md:px-8">
     <div class={`md:flex ${isReversed ? 'md:flex-row-reverse' : ''} md:gap-16`}>
       <div class="md:basis-1/2 self-center">
@@ -88,4 +86,4 @@ const {
       </div>
     </div>
   </div>
-</section>
+</WidgetWrapper>

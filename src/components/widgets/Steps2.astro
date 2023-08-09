@@ -28,14 +28,14 @@ const {
         tagline={tagline}
         callToAction={callToAction}
         classes={{
-          container: 'text-left mb-4 md:mb-8',
+          container: 'text-center md:text-left mb-4 md:mb-8',
           title: 'mb-4 text-3xl lg:text-4xl font-bold font-heading',
           subtitle: 'mb-8 text-xl text-muted dark:text-slate-400',
           // ...((classes?.headline as {}) ?? {}),
         }}
       />
 
-      <div class="w-full">
+      <div class="w-full text-center md:text-left">
         {
           typeof callToAction === 'string' ? (
             <Fragment set:html={callToAction} />
@@ -52,7 +52,7 @@ const {
         }
       </div>
     </div>
-    <div class="w-full lg:w-1/2 px-8 sm:px-0">
+    <div class="w-full lg:w-1/2 px-0">
       <ul class="space-y-10">
         {
           items && items.length

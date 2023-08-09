@@ -60,8 +60,9 @@ const metadata = {
   <!-- Features3 Widget ************** -->
 
   <Features3
-    subtitle="Tired of spending hours crafting documents from scratch? Our app offers an innovative solution. With a wide array of professionally designed templates, you can now create stunning documents in minutes. Save time, achieve a polished look, and customize templates to fit your style. Join thousands of satisfied users who've transformed their documents effortlessly. Explore our templates now and experience the difference."
-    tagline="Step-by-step guide on how to use our app"
+    title="How to use our app?"
+    subtitle="Tired of spending hours crafting documents from scratch? Our app offers an innovative solution. With a wide array of professionally designed templates, you can now create stunning documents in minutes. Explore our templates now and experience the difference."
+    tagline="Step-by-step guide"
     columns={2}
     items={[
       {
@@ -182,6 +183,7 @@ const metadata = {
   <!-- Stats Widget ****************** -->
 
   <Stats
+    title="Statistics of our app"
     stats={[
       { amount: '20K', icon: 'tabler:download' },
       { amount: '18.5K', icon: 'tabler:users' },
@@ -192,7 +194,7 @@ const metadata = {
   <!-- Testimonials Widget *********** -->
 
   <Testimonials
-    tagline="What our users say about us?"
+    title="What our users say?"
     testimonials={[
       {
         testimonial:
@@ -263,11 +265,7 @@ const metadata = {
           'Proin aliquet, arcu in semper consectetur, ipsum urna pellentesque ipsum, sit amet aliquam odio nunc ac orci.',
       },
     ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </FAQs>
+  />
 
   <!-- CallToAction Widget *********** -->
 
