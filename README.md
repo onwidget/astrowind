@@ -166,7 +166,7 @@ metadata:
     index: true
     follow: true
   openGraph:
-    siteName: 'Example'
+    site_name: 'Example'
     images:
       - url: '~/assets/images/default.jpg'
         width: 1200
