@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Prices from '~/components/widgets/Pricing.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
 
 const metadata = {
   title: 'Pricing',
@@ -8,6 +9,8 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <!-- Pricing Widget ******************* -->
+
   <Prices
     title="Our prices"
     subtitle="Only pay for what you need"
@@ -33,7 +36,7 @@ const metadata = {
         ],
         callToAction: {
           targetBlank: true,
-          text: 'Free 7-day trial',
+          text: 'Get started',
           href: '#',
         },
       },
@@ -61,7 +64,7 @@ const metadata = {
         ],
         callToAction: {
           targetBlank: true,
-          text: 'Free 15-day trial',
+          text: 'Get started',
           href: '#',
         },
         hasRibbon: true,
@@ -88,9 +91,44 @@ const metadata = {
         ],
         callToAction: {
           targetBlank: true,
-          text: 'Free 30-day trial',
+          text: 'Get started',
           href: '#',
         },
+      },
+    ]}
+  />
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Pricing FAQs"
+    subtitle="Choosing the right plan is important, and we're here to answer your questions. If you have queries about our pricing options, you're in the right place."
+    columns={1}
+    items={[
+      {
+        title: 'Do the plans come with customer support?',
+        description:
+          'Absolutely, all plans include access to our dedicated customer support to assist you with any queries or concerns.',
+      },
+      {
+        title: 'Is there a trial period for the different plans?',
+        description:
+          "Unfortunately, we don't offer trial periods for the plans. However, you can check out our demo section to preview the quality of our templates.",
+      },
+      {
+        title: 'Can I switch between plans?',
+        description:
+          'Certainly! You can easily upgrade or downgrade your plan, at any time, to find the one that best suits your evolving requirements.',
+      },
+      {
+        title: 'What payment methods do you accept?',
+        description:
+          'We accept major credit cards and online payment methods to ensure a convenient and secure transaction process.',
+      },
+      {
+        title: 'Are there any hidden fees beyond the displayed cost?',
+        description:
+          'No, the subscription cost covers all the features and templates listed under each plan. There are no hidden fees or extra charges.',
       },
     ]}
   />
