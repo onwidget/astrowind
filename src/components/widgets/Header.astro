@@ -125,7 +125,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
     <div
       class:list={[
         { "ml-auto rtl:ml-0 rtl:mr-auto": position === "left" },
-        "hidden md:self-center flex md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 bottom-0 p-3 md:p-0",
+        "hidden md:self-center flex md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-3 md:p-0",
       ]}
     >
       <div class="items-center flex justify-between w-full md:w-auto">
@@ -145,7 +145,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
         </div>
         {
           actions?.length ? (
-            <span class="ml-4 rtl:ml-0 rtl:mr-0">
+            <span class="ml-4 rtl:ml-0 rtl:mr-4">
               {actions.map(({ text, href, class: className }) => (
                 <a class:list={["btn ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm", className]} href={href}>
                   <Fragment set:html={text} />
