@@ -4,6 +4,7 @@ import Prices from '~/components/widgets/Pricing.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Pricing',
@@ -219,5 +220,16 @@ const metadata = {
           'No, the subscription cost covers all the features and templates listed under each plan. There are no hidden fees or extra charges.',
       },
     ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    title="Ready to boost your projects?"
+    subtitle="Join our community of satisfied customers who have transformed their work with our templates."
+    callToAction={{
+      text: 'Get started now',
+      href: '/',
+    }}
   />
 </Layout>
