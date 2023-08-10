@@ -1,105 +1,235 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
-import Pricing from '~/components/widgets/Pricing.astro';
+import Prices from '~/components/widgets/Pricing.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: "Pricing",
+  title: 'Pricing',
 };
 ---
 
 <Layout metadata={metadata}>
-  <Pricing
-    title="Basic Pricing"
-    tagline="Pricing"
-    subtitle="Our prices"
+  <!-- Pricing Widget ******************* -->
+
+  <Prices
+    title="Our prices"
+    subtitle="Only pay for what you need"
     prices={[
       {
-        "title": "basic",
-        "price": 29,
-        "period": "Per Month",
-        "items": [
+        title: 'basic',
+        subtitle: 'Optimal choice for personal use',
+        price: 29,
+        period: 'per month',
+        items: [
           {
-            "description": "Etiam in libero",
-            "icon": "tabler:check"
+            description: 'Etiam in libero, et volutpat',
           },
           {
-            "description": "Aenean ac nunc",
-            "icon": "tabler:check"
+            description: 'Aenean ac nunc dolor tristique',
           },
           {
-            "description": "Cras scelerisque accumsan libero, et volutpat dolor tristique at",
-            "icon": "tabler:check"
+            description: 'Cras scelerisque accumsan lib',
           },
           {
-            "description": "In hac habitasse",
-            "icon": "tabler:check"
-          }
+            description: 'In hac habitasse',
+          },
         ],
-        "callToAction": {
-          "targetBlank": true,
-          "text": "Free 7-day trial",
-          "href": "#"
-        }
-      },
-      {
-        "title": "standard",
-        "price": 69,
-        "period": "Per Month",
-        "items": [
-          {
-            "description": "Proin vel laoreet",
-            "icon": "tabler:check"
-          },
-          {
-            "description": "Ut efficitur egestas",
-            "icon": "tabler:check"
-          },
-          {
-            "description": "Pellentesque ut nibh",
-            "icon": "tabler:check"
-          },
-          {
-            "description": "Donec fringilla sem",
-            "icon": "tabler:check"
-          }
-        ],
-        "callToAction": {
-          "targetBlank": true,
-          "text": "Free 15-day trial",
-          "href": "#"
+        callToAction: {
+          targetBlank: true,
+          text: 'Get started',
+          href: '#',
         },
-        "hasRibbon": true,
-        "ribbonTitle": "popular"
       },
       {
-        "title": "premium",
-        "price": 199,
-        "period": "Per Month",
-        "items": [
+        title: 'standard',
+        subtitle: 'Optimal choice for small teams',
+        price: 69,
+        period: 'Per Month',
+        items: [
           {
-            "description": "Curabitur suscipit risus",
-            "icon": "tabler:check"
+            description: 'Proin vel laoreet',
           },
           {
-            "description": "Aliquam blandit malesuada",
-            "icon": "tabler:check"
+            description: 'Ut efficitur habitasse egestas',
           },
           {
-            "description": "Suspendisse sit amet",
-            "icon": "tabler:check"
+            description: 'Volutpat hac curabitur',
           },
           {
-            "description": "Suspendisse auctor dui",
-            "icon": "tabler:check"
-          }
+            description: 'Pellentesque blandit ut nibh',
+          },
+          {
+            description: 'Donec fringilla sem',
+          },
         ],
-        "callToAction": {
-          "targetBlank": true,
-          "text": "Free 30-day trial",
-          "href": "#"
-        }
-      }
+        callToAction: {
+          targetBlank: true,
+          text: 'Get started',
+          href: '#',
+        },
+        hasRibbon: true,
+        ribbonTitle: 'popular',
+      },
+      {
+        title: 'premium',
+        subtitle: 'Optimal choice for companies',
+        price: 199,
+        period: 'Per Month',
+        items: [
+          {
+            description: 'Curabitur suscipit risus',
+          },
+          {
+            description: 'Aliquam habitasse malesuada',
+          },
+          {
+            description: 'Suspendisse sit amet blandit',
+          },
+          {
+            description: 'Suspendisse auctor blandit dui',
+          },
+        ],
+        callToAction: {
+          targetBlank: true,
+          text: 'Get started',
+          href: '#',
+        },
+      },
     ]}
+  />
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    title="Price-related features"
+    subtitle="To help you make informed decisions on the plans that best fit your budget and project requirements."
+    columns={3}
+    items={[
+      {
+        title: 'Tiered Pricing Plans',
+        description: 'Choose from a range of pricing plans designed to accommodate different budgets and requirements.',
+        icon: 'tabler:template',
+      },
+      {
+        title: 'Transparent Pricing',
+        description: 'Clearly displayed pricing details for each plan, with no hidden costs or unexpected charges.',
+        icon: 'tabler:template',
+      },
+      {
+        title: 'Secure Payment Methods',
+        description: 'Secure payment gateways to protect your financial information during transactions.',
+        icon: 'tabler:template',
+      },
+      {
+        title: 'Instant Access',
+        description: `Immediate access to your chosen plan's features and templates upon subscription.`,
+        icon: 'tabler:template',
+      },
+      {
+        title: 'Upgrade Value',
+        description: 'Upgrade to higher-tier plans to unlock more features and benefits for an enhanced experience.',
+        icon: 'tabler:template',
+      },
+      {
+        title: '24H support',
+        description: 'Questions answered via live chat, email or phone, every calendar day.',
+        icon: 'tabler:template',
+      },
+    ]}
+  />
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    title="A guided journey from plans to creativity"
+    tagline="simplified process"
+    isReversed={true}
+    items={[
+      {
+        title: 'Explore plans',
+        icon: 'tabler:number-1',
+      },
+      {
+        title: 'Select a plan',
+        icon: 'tabler:number-2',
+      },
+      {
+        title: 'Sign Up / Log In',
+        icon: 'tabler:number-3',
+      },
+      {
+        title: 'Review order',
+        icon: 'tabler:number-4',
+      },
+      {
+        title: 'Enter payment details',
+        icon: 'tabler:number-5',
+      },
+      {
+        title: 'Confirmation',
+        icon: 'tabler:number-6',
+      },
+      {
+        title: 'Confirmation',
+        icon: 'tabler:number-7',
+      },
+      {
+        title: 'Download and start using the template(s)',
+        icon: 'tabler:number-8',
+      },
+    ]}
+    image={{
+      src: import('~/assets/images/creativity.jpg'),
+      alt: 'Steps image',
+    }}
+  />
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Pricing FAQs"
+    subtitle="Choosing the right plan is important, and we're here to answer your questions. If you have queries about our pricing options, you're in the right place."
+    columns={1}
+    items={[
+      {
+        title: 'Do the plans come with customer support?',
+        description:
+          'Absolutely, all plans include access to our dedicated customer support to assist you with any queries or concerns.',
+      },
+      {
+        title: 'Is there a trial period for the different plans?',
+        description:
+          "Unfortunately, we don't offer trial periods for the plans. However, you can check out our demo section to preview the quality of our templates.",
+      },
+      {
+        title: 'Can I switch between plans?',
+        description:
+          'Certainly! You can easily upgrade or downgrade your plan, at any time, to find the one that best suits your evolving requirements.',
+      },
+      {
+        title: 'What payment methods do you accept?',
+        description:
+          'We accept major credit cards and online payment methods to ensure a convenient and secure transaction process.',
+      },
+      {
+        title: 'Are there any hidden fees beyond the displayed cost?',
+        description:
+          'No, the subscription cost covers all the features and templates listed under each plan. There are no hidden fees or extra charges.',
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    title="Ready to boost your projects?"
+    subtitle="Join our community of satisfied customers who have transformed their work with our templates."
+    callToAction={{
+      text: 'Get started now',
+      href: '/',
+    }}
   />
 </Layout>

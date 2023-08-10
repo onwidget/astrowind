@@ -135,6 +135,7 @@ export interface Item {
 
 export interface Price {
   title?: string;
+  subtitle?: string;
   description?: string;
   price?: number;
   period?: string;
