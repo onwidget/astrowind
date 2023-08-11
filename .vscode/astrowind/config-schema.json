@@ -57,7 +57,7 @@
         "openGraph": {
           "type": "object",
           "properties": {
-            "siteName": {
+            "site_name": {
               "type": "string"
             },
             "images": {
@@ -84,7 +84,7 @@
               "type": "string"
             }
           },
-          "required": ["siteName", "images", "type"]
+          "required": ["site_name", "images", "type"]
         },
         "twitter": {
           "type": "object",
@@ -240,7 +240,7 @@
               "type": "object",
               "properties": {
                 "id": {
-                  "type": "string"
+                  "type": ["string", "null"]
                 },
                 "partytown": {
                   "type": "boolean",
