@@ -2,7 +2,7 @@ import fs from 'fs';
 import yaml from 'js-yaml';
 import merge from 'lodash.merge';
 
-import type { MetaSEO } from '~/types';
+import type { MetaData } from '~/types';
 
 export interface SiteConfig {
   name: string;
@@ -11,7 +11,7 @@ export interface SiteConfig {
   trailingSlash?: boolean;
   googleSiteVerificationId?: string;
 }
-export interface MetaDataConfig extends Omit<MetaSEO, 'title'> {
+export interface MetaDataConfig extends Omit<MetaData, 'title'> {
   title?: {
     default: string;
     template: string;
@@ -61,8 +61,8 @@ export interface AppBlogConfig {
 export interface AnalyticsConfig {
   vendors: {
     googleAnalytics: {
-      isEnabled?: boolean;
       id?: string;
+      partytown?: boolean;
     };
   };
 }
@@ -187,8 +187,8 @@ const getAnalytics = () => {
   const _default = {
     vendors: {
       googleAnalytics: {
-        isEnabled: false,
         id: undefined,
+        partytown: true,
       },
     },
   };

@@ -17,7 +17,7 @@ import { SITE_CONFIG, ANALYTICS_CONFIG } from './src/utils/config.ts';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const whenExternalScripts = (items = []) =>
-  ANALYTICS_CONFIG.vendors.googleAnalytics.id
+  ANALYTICS_CONFIG.vendors.googleAnalytics.id && ANALYTICS_CONFIG.vendors.googleAnalytics.partytown
     ? Array.isArray(items)
       ? items.map((item) => item())
       : [items()]
@@ -33,7 +33,7 @@ export default defineConfig({
 
   integrations: [
     tailwind({
-      applyBaseStyles: false
+      applyBaseStyles: false,
     }),
     sitemap(),
     image({
