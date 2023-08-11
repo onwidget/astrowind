@@ -17,7 +17,7 @@ import { SITE_CONFIG, ANALYTICS_CONFIG } from './src/utils/config.ts';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const whenExternalScripts = (items = []) =>
-  ANALYTICS_CONFIG.vendors.googleAnalytics.isEnabled
+  ANALYTICS_CONFIG.vendors.googleAnalytics.id
     ? Array.isArray(items)
       ? items.map((item) => item())
       : [items()]
