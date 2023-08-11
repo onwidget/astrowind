@@ -27,7 +27,7 @@ const {
         title={title}
         subtitle={subtitle}
         tagline={tagline}
-        classes={{ container: "text-left", title: "text-3xl lg:text-4xl", ...((classes?.headline as {}) ?? {}) }}
+        classes={{ container: "text-left rtl:text-right", title: "text-3xl lg:text-4xl", ...((classes?.headline as {}) ?? {}) }}
       />
       <Timeline items={items} classes={classes?.items as {}} />
     </div>

@@ -29,7 +29,7 @@
     "@types/lodash.merge": "^4.6.7",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
-    "astro": "^2.10.3",
+    "astro": "^2.10.5",
     "astro-icon": "^1.0.0-next.2",
     "eslint": "^8.46.0",
     "eslint-plugin-astro": "^0.28.0",

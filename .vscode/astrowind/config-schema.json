@@ -239,14 +239,15 @@
             "googleAnalytics": {
               "type": "object",
               "properties": {
-                "isEnabled": {
-                  "type": "boolean"
-                },
                 "id": {
-                  "type": "null"
+                  "type": "string"
+                },
+                "partytown": {
+                  "type": "boolean",
+                  "default": true
                 }
               },
-              "required": ["isEnabled", "id"]
+              "required": ["id"]
             }
           },
           "required": ["googleAnalytics"]
