@@ -153,6 +153,24 @@ export interface Testimonial {
   image?: string | unknown;
 }
 
+export interface Input {
+  type: HTMLInputTypeAttribute;
+  name: string;
+  label?: string;
+  autocomplete?: string;
+  placeholder?: string;
+}
+
+export interface Textarea {
+  label?: string;
+  placeholder?: string;
+  rows?: number;
+}
+
+export interface Disclaimer {
+  label?: string;
+}
+
 // COMPONENTS
 export interface CallToAction {
   targetBlank?: boolean;
@@ -175,6 +193,14 @@ export interface Collapse {
   items?: Array<Item>;
   columns?: number;
   classes?: Record<string, string>;
+}
+
+export interface Form {
+  inputs?: Array<Input>;
+  textarea?: Textarea;
+  disclaimer?: Disclaimer;
+  button?: string;
+  description?: string;
 }
 
 // WIDGETS
@@ -247,3 +273,5 @@ export interface Content extends Headline, Widget {
   isReversed?: boolean;
   isAfterContent?: boolean;
 }
+
+export interface Contact extends Headline, Form, Widget {}
