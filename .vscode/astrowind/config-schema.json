@@ -239,14 +239,11 @@
             "googleAnalytics": {
               "type": "object",
               "properties": {
-                "isEnabled": {
-                  "type": "boolean"
-                },
                 "id": {
-                  "type": "null"
+                  "type": "string"
                 }
               },
-              "required": ["isEnabled", "id"]
+              "required": ["id"]
             }
           },
           "required": ["googleAnalytics"]

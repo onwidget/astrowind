@@ -213,7 +213,6 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      isEnabled: false
       id: null # or "G-XXXXXXXXXX"
 
 ui:

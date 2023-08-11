@@ -4,7 +4,7 @@ import { ANALYTICS_CONFIG } from '~/utils/config';
 ---
 
 {
-  ANALYTICS_CONFIG?.vendors?.googleAnalytics?.isEnabled && ANALYTICS_CONFIG?.vendors?.googleAnalytics?.id ? (
+  ANALYTICS_CONFIG?.vendors?.googleAnalytics?.id ? (
     <GoogleAnalytics id={String(ANALYTICS_CONFIG.vendors.googleAnalytics.id)} partytown={true} />
   ) : null
 }
