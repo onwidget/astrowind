@@ -9,7 +9,9 @@ import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
 import { findImage } from '~/utils/images';
 
-export const getStaticPaths = getStaticPathsBlogPost();
+export async function getStaticPaths () {
+  return await getStaticPathsBlogPost();
+}
 
 const { post } = Astro.props;
 
