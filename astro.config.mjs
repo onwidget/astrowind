@@ -9,6 +9,7 @@ import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
 import icon from 'astro-icon';
 import partytown from '@astrojs/partytown';
+import tasks from "./src/utils/tasks"
 
 import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs';
 
@@ -63,6 +64,8 @@ export default defineConfig({
         config: { forward: ['dataLayer.push'] },
       })
     ),
+
+    tasks()
   ],
 
   markdown: {
