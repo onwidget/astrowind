@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import os from "node:os";
+import os from 'node:os';
 
 const tasksIntegration = () => {
   let config;
@@ -9,14 +9,13 @@ const tasksIntegration = () => {
     hooks: {
       'astro:config:done': async ({ config: cfg }) => {
         config = cfg;
-        console.log(config);
       },
 
       'astro:build:done': async () => {
         try {
           const outDir = config.outDir;
           const publicDir = config.publicDir;
-          const sitemapName = "sitemap-index.xml";
+          const sitemapName = 'sitemap-index.xml';
           const sitemapFile = new URL(sitemapName, outDir);
           const robotsTxtFile = new URL('robots.txt', publicDir);
           const robotsTxtFileInOut = new URL('robots.txt', outDir);
@@ -28,14 +27,24 @@ const tasksIntegration = () => {
 
           if (hasIntegration && sitemapExists) {
             const robotsTxt = fs.readFileSync(robotsTxtFile, { encoding: 'utf8', flags: 'a+' });
+            const sitemapUrl = new URL(sitemapName, String(new URL(config.base, config.site)));
+            const pattern = /^Sitemap:(.*)$/m;
 
-            if (!robotsTxt.includes("Sitemap:")) {
-              const sitemapUrl = new URL(sitemapName, String(new URL(config.base, config.site)));
-              const content = `${os.EOL}${os.EOL}Sitemap: ${sitemapUrl}`
-              fs.appendFileSync(robotsTxtFileInOut, content, { encoding: 'utf8', flags: 'w' })
+            if (!pattern.test(robotsTxt)) {
+              fs.appendFileSync(robotsTxtFileInOut, `${os.EOL}${os.EOL}Sitemap: ${sitemapUrl}`, {
+                encoding: 'utf8',
+                flags: 'w',
+              });
+            } else {
+              fs.writeFileSync(robotsTxtFileInOut, robotsTxt.replace(pattern, `Sitemap: ${sitemapUrl}`), {
+                encoding: 'utf8',
+                flags: 'w',
+              });
             }
           }
-        } catch (err) { /* empty */ }
+        } catch (err) {
+          /* empty */
+        }
       },
     },
   };
