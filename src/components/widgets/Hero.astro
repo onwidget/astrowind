@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { Picture } from '@astrojs/image/components';
+import Image from '~/components/common/Image.astro';
 
 const {
   title = await Astro.slots.render('title'),
@@ -77,11 +77,10 @@ const {
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
-                <Picture
+                <Image
                   class="mx-auto rounded-md w-full"
                   widths={[400, 768, 1024, 2040]}
                   sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-                  aspectRatio={1024 / 576}
                   loading="eager"
                   width={1024}
                   height={576}

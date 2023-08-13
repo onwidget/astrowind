@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { Picture } from '@astrojs/image/components';
+import Image from '~/components/common/Image.astro';
 import { CallToAction } from '~/types';
 
 export interface Props {
@@ -88,11 +88,10 @@ const {
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
-                <Picture
+                <Image
                   class="mx-auto rounded-md w-full"
                   widths={[400, 768, 1024, 2040]}
                   sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-                  aspectRatio={600 / 600}
                   loading="eager"
                   width={600}
                   height={600}

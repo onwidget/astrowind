@@ -40,7 +40,7 @@ const metadata = {
   <Hero2
     callToAction={{ text: 'Download App', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
-    image={{ src: import('~/assets/images/hero.png'), alt: 'AstroWind Hero Image' }}
+    image={{ src: 'https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80', alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">
       Free template for <span class="hidden lg:inline">create your website <br />with</span>
@@ -91,7 +91,7 @@ const metadata = {
       },
     ]}
     image={{
-      src: import('~/assets/images/colors.jpg'),
+      src: 'https://images.unsplash.com/photo-1521517407911-565264e7d82d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80',
       alt: 'Colorful Image',
     }}
   />
@@ -99,6 +99,7 @@ const metadata = {
   <!-- Content Widget **************** -->
 
   <Content
+    isReversed  
     items={[
       {
         title: 'High-Quality Designs',
@@ -128,7 +129,7 @@ const metadata = {
       },
     ]}
     image={{
-      src: import('~/assets/images/caos.jpg'),
+      src: 'https://images.unsplash.com/photo-1576153192621-7a3be10b356e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80',
       alt: 'Colorful Image',
     }}
   >
@@ -140,7 +141,6 @@ const metadata = {
   <!-- Content Widget **************** -->
 
   <Content
-    isReversed
     isAfterContent
     items={[
       {
@@ -171,7 +171,7 @@ const metadata = {
       },
     ]}
     image={{
-      src: import('~/assets/images/vintage.jpg'),
+      src: 'https://images.unsplash.com/photo-1453738773917-9c3eff1db985?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       alt: 'Vintage Image',
     }}
   >
@@ -202,7 +202,7 @@ const metadata = {
         name: 'Cary Kennedy',
         job: 'Film director',
         image: {
-          src: import('~/assets/images/colors.jpg'),
+          src: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
           alt: 'Cary Kennedy Image',
         },
       },
@@ -212,7 +212,7 @@ const metadata = {
         name: 'Josh Wilkinson',
         job: 'Product Manager',
         image: {
-          src: import('~/assets/images/vintage.jpg'),
+          src: 'https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
           alt: 'Josh Wilkinson Image',
         },
       },
@@ -222,7 +222,7 @@ const metadata = {
         name: 'Sidney Hansen',
         job: 'Decorator',
         image: {
-          src: import('~/assets/images/caos.jpg'),
+          src: 'https://images.unsplash.com/photo-1512361436605-a484bdb34b5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
           alt: 'Sidney Hansen Image',
         },
       },

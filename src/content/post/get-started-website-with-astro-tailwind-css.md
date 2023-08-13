@@ -2,7 +2,7 @@
 publishDate: 2023-01-12T00:00:00Z
 title: Get started with AstroWind to create a website using Astro and Tailwind CSS
 excerpt: Sint sit cillum pariatur eiusmod nulla pariatur ipsum. Sit laborum anim qui mollit tempor pariatur.
-image: ~/assets/images/do-more.jpg
+image: https://images.unsplash.com/photo-1516216628859-9bccecab13ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80
 category: Tutorials
 tags:
   - astro

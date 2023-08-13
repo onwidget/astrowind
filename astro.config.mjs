@@ -5,7 +5,6 @@ import { defineConfig } from 'astro/config';
 
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
-import image from '@astrojs/image';
 import mdx from '@astrojs/mdx';
 import icon from 'astro-icon';
 import partytown from '@astrojs/partytown';
@@ -37,9 +36,7 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     sitemap(),
-    image({
-      serviceEntryPoint: '@astrojs/image/sharp',
-    }),
+
     mdx(),
     icon({
       include: {
@@ -70,6 +67,10 @@ export default defineConfig({
 
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin],
+  },
+
+  experimental:{
+    assets: true
   },
 
   vite: {

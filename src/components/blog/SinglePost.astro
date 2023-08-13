@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { Picture } from '@astrojs/image/components';
 
+import Image from '~/components/common/Image.astro';
 import PostTags from '~/components/blog/Tags.astro';
 import SocialShare from '~/components/common/SocialShare.astro';
 
@@ -53,19 +53,17 @@ const Content = post?.Content || null;
 
       {
         post.image ? (
-          <Picture
+          <Image
             src={post.image}
-            class="max-w-full lg:max-w-6xl mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
+            class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
             widths={[400, 900]}
             sizes="(max-width: 900px) 400px, 900px"
             alt={post?.excerpt || ''}
             loading="eager"
-            aspectRatio={16 / 9}
             width={900}
             height={506}
             loading="eager"
             decoding="async"
-            background={undefined}
           />
         ) : (
           <div class="max-w-3xl mx-auto px-4 sm:px-6">

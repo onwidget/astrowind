@@ -1,9 +1,9 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { Picture } from '@astrojs/image/components';
 import type { Content } from '~/types';
 import Headline from '../ui/Headline.astro';
 import WidgetWrapper from '../ui/WidgetWrapper.astro';
+import Image from '~/components/common/Image.astro';
 
 const {
   title = await Astro.slots.render('title'),
@@ -70,13 +70,13 @@ const {
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
-                <Picture
+                <Image
                   class="mx-auto w-full rounded-lg bg-gray-500 shadow-lg"
                   width={500}
                   height={500}
                   widths={[400, 768]}
                   sizes="(max-width: 768px) 100vw, 432px"
-                  aspectRatio="500:500"
+                  layout="responsive"
                   {...(image as any)}
                 />
               )}

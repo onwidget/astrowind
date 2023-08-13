@@ -28,7 +28,7 @@ const metadata = merge(
     },
     openGraph: {
       type: 'article',
-      ...(image ? { images: [{ url: image?.src, width: image?.width, height: image?.height }] } : {}),
+      ...(image ? { images: [{ url: image, width: image?.width, height: image?.height }] } : {}),
     },
   },
   { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
