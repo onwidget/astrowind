@@ -1,0 +1,25 @@
+---
+import Layout from '~/layouts/LandingLayout.astro';
+
+import Hero2 from '~/components/widgets/Hero2.astro';
+
+const metadata = {
+  title: 'Coming Soon Landing Page',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero2 Widget ******************* -->
+
+  <Hero2
+    tagline="Coming Soon Landing Demo"
+    title="Unlock the Secrets to an Effective Lead Generation Landing"
+    subtitle="Where every click is a potential lead waiting to happen. Your Hero should grab attention instantly. Use a powerful headline that speaks directly to your target audience."
+    callToAction={{ text: 'Download App', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
+    callToAction2={{ text: 'Learn more', href: '#features' }}
+    image={{
+      src: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'AstroWind Hero Image',
+    }}
+  />
+</Layout>

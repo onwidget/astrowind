@@ -3,19 +3,23 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Landing',
+      text: 'Homes',
       links: [
         {
           text: 'Sass',
-          href: getPermalink('/landing/saas'),
+          href: getPermalink('/homes/saas'),
         },
         {
           text: 'Startup',
-          href: getPermalink('/landing/startup'),
+          href: getPermalink('/homes/startup'),
         },
         {
-          text: 'Mobile App',
-          href: getPermalink('/landing/mobile-app'),
+          text: 'App Download',
+          href: getPermalink('/homes/mobile-app'),
+        },
+        {
+          text: 'Personal',
+          href: "#",
         },
       ],
     },
@@ -53,6 +57,35 @@ export const headerData = {
       ],
     },
     {
+      text: 'Landing',
+      links: [
+        {
+          text: 'Lead Generation',
+          href: getPermalink('/landing/lead-generation'),
+        },
+        {
+          text: 'Long-form Sales',
+          href: getPermalink('/landing/sales'),
+        },
+        {
+          text: 'Click-Through',
+          href: getPermalink('/landing/click-through'),
+        },
+        {
+          text: 'Squeeze',
+          href: getPermalink('/landing/squeeze'),
+        },
+        {
+          text: 'Product Details (or Services)',
+          href: getPermalink('/landing/product'),
+        },
+        {
+          text: 'Coming Soon or Pre-Launch',
+          href: getPermalink('/landing/pre-launch'),
+        },
+      ],
+    },
+    {
       text: 'Blog',
       links: [
         {
@@ -79,10 +112,6 @@ export const headerData = {
     },
     {
       text: 'Widgets',
-      href: '#',
-    },
-    {
-      text: 'Contact',
       href: '#',
     },
   ],

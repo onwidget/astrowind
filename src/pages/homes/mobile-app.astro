@@ -1,7 +1,6 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
+import Layout from '~/layouts/LandingLayout.astro';
 
-import Header from '~/components/widgets/Header.astro';
 import Hero2 from '~/components/widgets/Hero2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features3 from '~/components/widgets/Features3.astro';
@@ -11,39 +10,18 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 
 const metadata = {
-  title: 'Mobile App Landing Page',
+  title: 'Mobile App Homepage',
 };
 ---
 
 <Layout metadata={metadata}>
-  <Fragment slot="announcement"></Fragment>
-  <Fragment slot="header">
-    <Header
-      links={[]}
-      actions={[
-        {
-          type: 'ghost',
-          text: 'Login',
-          href: '#',
-        },
-        {
-          type: 'primary',
-          text: 'Sign Up',
-          href: '#',
-        },
-      ]}
-    />
-  </Fragment>
 
   <!-- Hero2 Widget ******************* -->
 
   <Hero2
     callToAction={{ text: 'Download App', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
-    image={{
-      src: 'https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'AstroWind Hero Image',
-    }}
+    image={{ src: 'https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80', alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">
       Free template for <span class="hidden lg:inline">create your website <br />with</span>
@@ -69,24 +47,27 @@ const metadata = {
     columns={2}
     items={[
       {
-        title: 'Download and install the app',
-        description: `Begin your journey by downloading our user-friendly app from your device's app store or our official website.`,
+        title: 'Download and Install the App',
+        description:
+          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
         icon: 'tabler:square-number-1',
       },
       {
-        title: 'Sign up',
+        title: 'Sign Up',
         description:
-          'Create your account by providing the necessary information, enabling you to access our full range of features.',
+          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
         icon: 'tabler:square-number-2',
       },
       {
-        title: 'Browse templates',
-        description: 'Explore our diverse collection of website templates, categorized for easy navigation.',
+        title: 'Browse Templates',
+        description:
+          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
         icon: 'tabler:square-number-3',
       },
       {
-        title: 'Preview and select a template',
-        description: `Visualize the potential of each template through previews, then choose the one that aligns best with your project's needs.`,
+        title: 'Preview and Select a Template',
+        description:
+          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
         icon: 'tabler:square-number-4',
       },
     ]}
@@ -99,31 +80,33 @@ const metadata = {
   <!-- Content Widget **************** -->
 
   <Content
-    isReversed
+    isReversed  
     items={[
       {
         title: 'High-Quality Designs',
-        description:
-          'Our templates feature top-tier designs that ensure a professional and polished appearance for your projects.',
+        description: 'Pellentesque dui nibh, cursus ac eros eget, pharetra malesuada tortor.',
         icon: 'tabler:wand',
       },
       {
         title: 'Customization Tools',
-        description:
-          'Tailor each template to your unique needs with user-friendly customization tools that let you personalize colors, fonts, and content.',
+        description: 'Nulla vulputate sollicitudin massa, id rutrum tellus tristique et.',
         icon: 'tabler:settings',
       },
       {
         title: 'Pre-Designed Elements',
-        description:
-          'Save time and effort with our ready-to-use elements, including graphics, icons, and layouts that enhance the visual appeal of your creations.',
+        description: 'Mauris eget urna non leo fringilla auctor quis efficitur sem.',
         icon: 'tabler:presentation',
       },
       {
         title: 'Preview and Mockup Views',
-        description:
-          'Visualize the final outcome before making any changes using our preview and mockup views, ensuring your projects meet your expectations.',
+        description: ' Donec lorem metus, maximus vitae magna sed, tincidunt interdum magna.',
         icon: 'tabler:carousel-horizontal',
+      },
+      {
+        title: 'Offline Access',
+        description:
+          'Sed accumsan, purus facilisis efficitur accumsan, lectus lacus vestibulum diam, in sollicitudin orci tellus in libero.',
+        icon: 'tabler:wifi-off',
       },
     ]}
     image={{
@@ -143,26 +126,28 @@ const metadata = {
     items={[
       {
         title: 'Time Savings',
-        description:
-          'Streamline your workflow, enabling you to create stunning materials efficiently and allocate more time to your core tasks.',
+        description: 'Sed condimentum dui vel lorem cursus molestie duis id tristique justo.',
         icon: 'tabler:clock',
       },
       {
         title: 'Professional Appearance',
-        description:
-          'Elevate your projects with the polished and sophisticated look that our templates provide, making a lasting impression on your audience.',
+        description: 'Cras purus velit, finibus quis dui nec, faucibus porttitor purus.',
         icon: 'tabler:school',
       },
       {
+        title: 'Accessibility for Non-Designers',
+        description: 'Morbi volutpat ultricies dictum. In eu nunc id odio congue porttitor.',
+        icon: 'tabler:accessible',
+      },
+      {
         title: 'Cost-Efficiency',
-        description:
-          'Benefit from cost savings by avoiding the need for custom design work, as our templates offer professional-grade designs at a fraction of the cost.',
+        description: 'Fusce vitae odio sed lacus tempor aliquam sit amet ut velit pellentesque sagittis cursus nisi.',
         icon: 'tabler:coin',
       },
       {
         title: 'Instant Download',
         description:
-          'Enjoy immediate access to your chosen templates upon purchase, enabling you to begin working on your projects without delay.',
+          'Sed semper tempus dolor, non pretium velit lacinia tristique, fusce hendrerit fermentum lorem dignissim convallis.',
         icon: 'tabler:file-download',
       },
     ]}
@@ -193,7 +178,8 @@ const metadata = {
     title="What our users say?"
     testimonials={[
       {
-        testimonial: `It's made exploring and downloading website templates a breeze. The interface is intuitive, and I had no trouble finding the perfect template for my project. It's an app that truly empowers users.`,
+        testimonial:
+          'Vestibulum auctor dui vel nunc rutrum, quis elementum dui tristique. Sed hendrerit at lacus eget consectetur. In elementum scelerisque scelerisque. Nulla vel venenatis velit.',
         name: 'Cary Kennedy',
         job: 'Film director',
         image: {
@@ -202,22 +188,23 @@ const metadata = {
         },
       },
       {
-        testimonial: `The app's seamless download process and intuitive layout have made selecting templates an enjoyable experience. Being able to preview and experiment with different designs before committing has saved me time and ensured I get the perfect look for my website.`,
-        name: 'Sidney Hansen',
-        job: 'Decorator',
-        image: {
-          src: 'https://images.unsplash.com/photo-1512361436605-a484bdb34b5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-          alt: 'Sidney Hansen Image',
-        },
-      },
-      {
         testimonial:
-          'I was able to download and use a professional website template within minutes. The step-by-step process and user-friendly interface made it easy for me to create a website that looks as if it was designed by a pro.',
+          'Mauris condimentum at tellus eget lacinia. Integer at ipsum eget urna rhoncus tincidunt. Curabitur condimentum scelerisque lobortis. Cras semper purus egestas sem blandit, in volutpat nibh rutrum.',
         name: 'Josh Wilkinson',
         job: 'Product Manager',
         image: {
           src: 'https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
           alt: 'Josh Wilkinson Image',
+        },
+      },
+      {
+        testimonial:
+          'Praesent laoreet metus ac vehicula venenatis. Vivamus ullamcorper enim neque, sit amet eleifend sapien volutpat a. Proin quis varius metus. Etiam ut neque ipsum.',
+        name: 'Sidney Hansen',
+        job: 'Decorator',
+        image: {
+          src: 'https://images.unsplash.com/photo-1512361436605-a484bdb34b5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+          alt: 'Sidney Hansen Image',
         },
       },
     ]}
@@ -237,26 +224,26 @@ const metadata = {
       {
         title: 'What does this app do?',
         description:
-          'This app provides a platform for you to easily browse, purchase, download, and use a wide range of website templates for your projects.',
+          'Cras ac velit laoreet, congue enim nec, ultrices ante. Suspendisse aliquam mi id sollicitudin faucibus.',
       },
       {
         title: 'How can this app solve my problem?',
         description:
-          'This app streamlines the process of finding and implementing professional website designs, saving you time and effort in creating visually appealing and functional websites.',
+          'Proin at turpis eget elit sagittis laoreet. Proin id nisl elit mi risus viverra eros. Aenean egestas arcu sed laoreet venenatis. Proin venenatis porta fermentum. Nulla ex lorem, aliquam sed volutpat sed, auctor vel libero.',
       },
       {
         title: 'Is it available for my device?',
-        description: `Our app is designed for compatibility across various devices and platforms, ensuring accessibility whether you're using a smartphone, tablet, or computer.`,
+        description:
+          'Sed malesuada nisl turpis, et aliquet ex facilisis a. Proin in tortor ante. Quisque congue, lacus eu feugiat feugia.',
       },
       {
         title: 'What makes this app different from others?',
-        description:
-          'Our app stands out for its user-friendly interface, extensive template collection, and seamless integration of the purchasing and downloading process, making it highly efficient.',
+        description: 'Sed nulla nibh, facilisis non volutpat non, dictum quis nunc. Nullam mollis tempus odio.',
       },
       {
         title: 'Are there any costs involved?',
         description:
-          'While the app itself may be free to download, there may be costs associated with purchasing specific templates based on your preferences and project requirements.',
+          'Proin aliquet, arcu in semper consectetur, ipsum urna pellentesque ipsum, sit amet aliquam odio nunc ac orci.',
       },
     ]}
   />
@@ -264,12 +251,17 @@ const metadata = {
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
-    title="Instant access to beautiful templates"
-    subtitle="Access a variety of stunning templates, simplify your creative process, and elevate your online presence."
     callToAction={{
       text: 'Download App',
       href: 'https://github.com/onwidget/astrowind',
       icon: 'tabler:download',
     }}
-  />
+  >
+    <Fragment slot="title">Get Started Now</Fragment>
+
+    <Fragment slot="subtitle">
+      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
+      waste more time! :P
+    </Fragment>
+  </CallToAction>
 </Layout>
