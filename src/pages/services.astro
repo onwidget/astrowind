@@ -1,4 +1,5 @@
 ---
+import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
@@ -12,7 +13,7 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
 
-  <Hero callToAction={{ text: 'Buy now', href: '/' }}>
+  <Hero callToAction={{ text: 'Start exploring', href: '/' }}>
     <Fragment slot="title">
       <span class="text-gray-200">Elevate your projects with our stunning templates</span>
     </Fragment>
@@ -132,5 +133,16 @@ const metadata = {
       href: 'https://github.com/onwidget/astrowind',
       icon: 'tabler:chevron-right',
     }}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    callToAction={{
+      text: 'Start exploring',
+      href: '/',
+    }}
+    title="Dive into our template collection"
+    subtitle="Whether you're in business, design, or education, our templates are here to elevate your projects."
   />
 </Layout>
