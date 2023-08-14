@@ -3,10 +3,10 @@ import { fileURLToPath } from 'url';
 
 import { defineConfig } from 'astro/config';
 
-import mdx from '@astrojs/mdx';
-import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
+import mdx from '@astrojs/mdx';
+import partytown from '@astrojs/partytown';
 import compress from 'astro-compress';
 import icon from 'astro-icon';
 import tasks from "./src/utils/tasks";
@@ -30,14 +30,12 @@ export default defineConfig({
   trailingSlash: SITE_CONFIG.trailingSlash ? 'always' : 'never',
 
   output: 'static',
-  compressHTML: true,
 
   integrations: [
     tailwind({
       applyBaseStyles: false,
     }),
     sitemap(),
-
     mdx(),
     icon({
       include: {
@@ -65,7 +63,17 @@ export default defineConfig({
 
     tasks(),
 
-    compress()
+    compress({
+      css: true,
+      html: {
+        removeAttributeQuotes: false,
+      },
+      img: false,
+      js: true,
+      svg: true,
+
+      logger: 1,
+    }),
   ],
 
   markdown: {
