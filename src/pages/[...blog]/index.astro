@@ -9,7 +9,9 @@ import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
 import { findImage } from '~/utils/images';
 
-export const getStaticPaths = getStaticPathsBlogPost();
+export async function getStaticPaths () {
+  return await getStaticPathsBlogPost();
+}
 
 const { post } = Astro.props;
 
@@ -26,7 +28,7 @@ const metadata = merge(
     },
     openGraph: {
       type: 'article',
-      ...(image ? { images: [{ url: image?.src, width: image?.width, height: image?.height }] } : {}),
+      ...(image ? { images: [{ url: image, width: image?.width, height: image?.height }] } : {}),
     },
   },
   { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }

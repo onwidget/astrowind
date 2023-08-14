@@ -16,7 +16,7 @@ export const get = async () => {
 
   return rss({
     title: `${SITE_CONFIG.name}’s Blog`,
-    description: METADATA_CONFIG?.description,
+    description: METADATA_CONFIG?.description || "",
     site: import.meta.env.SITE,
 
     items: posts.map((post) => ({

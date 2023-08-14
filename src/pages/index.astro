@@ -24,7 +24,7 @@ const metadata = {
   <Hero
     callToAction={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
-    image={{ src: import('~/assets/images/hero.png'), alt: 'AstroWind Hero Image' }}
+    image={{ src: '~/assets/images/hero.png', alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">
       Free template for <span class="hidden xl:inline">creating websites with</span>
@@ -96,8 +96,9 @@ const metadata = {
   <!-- Content Widget **************** -->
 
   <Content
+    isReversed
     tagline="Inside template"
-    title="And what's inside? ..."
+    title="AstroWind's Blueprint: Fun Meets Functionality!"
     items={[
       {
         title: 'Per ei quaeque sensibus',
@@ -116,8 +117,45 @@ const metadata = {
       },
     ]}
     image={{
-      src: import('~/assets/images/caos.jpg'),
+      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       alt: 'Colorful Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Ad vix debet docendi</h3>
+       Ne dicta praesent ocurreret has, diam theophrastus at pro. Eos etiam regione ut, persius eripuit quo id. Sit te
+      euismod tacimates.
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Per ei quaeque sensibus',
+        description:
+          'Ex usu illum iudico molestie. Pro ne agam facete mediocritatem, ridens labore facete mea ei. Pro id apeirian dignissim.',
+      },
+      {
+        title: 'Cu imperdiet posidonium sed',
+        description:
+          'Amet utinam aliquando ut mea, malis admodum ocurreret nec et, elit tibique cu nec. Nec ex maluisset inciderint, ex quis.',
+      },
+      {
+        title: 'Nulla omittam sadipscing mel ne',
+        description:
+          'At sed possim oporteat probatus, justo graece ne nec, minim commodo legimus ut vix. Ut eos iudico quando soleat, nam modus.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
+      alt: 'Blueprint Image',
     }}
   >
     <Fragment slot="content">
@@ -157,8 +195,8 @@ const metadata = {
       },
     ]}
     image={{
-      src: import('~/assets/images/vintage.jpg'),
-      alt: 'Vintage Image',
+      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Astronauts Image',
     }}
   >
     <Fragment slot="bg">
@@ -174,19 +212,19 @@ const metadata = {
       {
         title: 'Step 1: <span class="font-medium">Download</span>',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula.',
+          'Kickstart with GitHub! Either fork the AstroWind template or simply click \'Use this template\'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you\'ve already set the foundation.',
         icon: 'tabler:package',
       },
       {
         title: 'Step 2: <span class="font-medium">Add content</em>',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla.',
+          'Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it\'s the content that tells your story, so make it captivating.',
         icon: 'tabler:letter-case',
       },
       {
         title: 'Step 3: <span class="font-medium">Customize styles</span>',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mirisus tempus nulla, sed porttitor est nibh at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce sit amet dui tellus.',
+          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
         icon: 'tabler:paint',
       },
       {
@@ -195,7 +233,7 @@ const metadata = {
       },
     ]}
     image={{
-      src: import('~/assets/images/creativity.jpg'),
+      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
       alt: 'Steps image',
     }}
   />
@@ -210,55 +248,55 @@ const metadata = {
       {
         title: 'Headers',
         description:
-          'In general, Headers contain information that makes it easier for visitors to interact with the website.',
+          'Ever tried driving without GPS? Boom! That\'s why websites need headers for direction.',
         icon: 'flat-color-icons:template',
       },
       {
         title: 'Heros',
         description:
-          'If you want your website to get more than its fair share of visitors, the Hero section needs to be stellar.',
+          'Picture a superhero landing – epic, right? That\'s the job of a Hero section, making grand entrances!',
         icon: 'flat-color-icons:gallery',
       },
       {
         title: 'Features',
         description:
-          'Display your product in action and how the Features actually create a solution for your target customer.',
+          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
         icon: 'flat-color-icons:approval',
       },
       {
         title: 'Content',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+          'Dive into the meat and potatoes of a site; without it, you\'d just be window shopping. Content is king.',
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Call-to-Action',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
         icon: 'flat-color-icons:advertising',
       },
       {
         title: 'Pricing',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+          'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
         icon: 'flat-color-icons:currency-exchange',
       },
       {
         title: 'Testimonial',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+          'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
         icon: 'flat-color-icons:voice-presentation',
       },
       {
         title: 'Contact',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
         icon: 'flat-color-icons:business-contact',
       },
       {
         title: 'Footers',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
+          'The footer\'s like the credits of a movie but sprinkled with easter eggs. Time to hunt!',
         icon: 'flat-color-icons:database',
       },
     ]}
@@ -286,6 +324,11 @@ const metadata = {
     tagline="FAQs"
     items={[
       {
+        title: "Why AstroWind?",
+        description:
+          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+      },
+      {
         title: 'What do I need to start?',
         description:
           'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
@@ -299,11 +342,6 @@ const metadata = {
         title: "What's something that you don't understand?",
         description:
           "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: "What's an example of when you changed your mind?",
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
       },
       {
         title: 'What is something that you would like to try again?',

@@ -1,8 +1,8 @@
 ---
-import { Picture } from '@astrojs/image/components';
 import Headline from '~/components/ui/Headline.astro';
 import ItemGrid from '~/components/ui/ItemGrid.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Image from '~/components/common/Image.astro';
 import type { Features } from '~/types';
 
 const {
@@ -39,12 +39,12 @@ const {
           {typeof image === 'string' ? (
             <Fragment set:html={image} />
           ) : (
-            <Picture
+            <Image
               class="w-full h-80 object-cover rounded-xl mx-auto bg-gray-500 shadow-lg"
-              width={0}
+              width="auto"
               height={320}
               widths={[400, 768]}
-              aspectRatio="16:7"
+              layout="fullWidth"
               {...(image as any)}
             />
           )}

@@ -162,18 +162,16 @@ export const findLatestPosts = async ({ count }: { count?: number }): Promise<Ar
 };
 
 /** */
-export const getStaticPathsBlogList =
-  () =>
-  async ({ paginate }) => {
-    if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
-    return paginate(await fetchPosts(), {
-      params: { blog: BLOG_BASE || undefined },
-      pageSize: blogPostsPerPage,
-    });
-  };
+export const getStaticPathsBlogList = async ({ paginate }) => {
+  if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
+  return paginate(await fetchPosts(), {
+    params: { blog: BLOG_BASE || undefined },
+    pageSize: blogPostsPerPage,
+  });
+};
 
 /** */
-export const getStaticPathsBlogPost = () => async () => {
+export const getStaticPathsBlogPost = async () => {
   if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
   return (await fetchPosts()).map((post) => ({
     params: {
@@ -184,49 +182,45 @@ export const getStaticPathsBlogPost = () => async () => {
 };
 
 /** */
-export const getStaticPathsBlogCategory =
-  () =>
-  async ({ paginate }) => {
-    if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
+export const getStaticPathsBlogCategory = async ({ paginate }) => {
+  if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
-    const posts = await fetchPosts();
-    const categories = new Set();
-    posts.map((post) => {
-      typeof post.category === 'string' && categories.add(post.category.toLowerCase());
-    });
+  const posts = await fetchPosts();
+  const categories = new Set();
+  posts.map((post) => {
+    typeof post.category === 'string' && categories.add(post.category.toLowerCase());
+  });
 
-    return Array.from(categories).map((category: string) =>
-      paginate(
-        posts.filter((post) => typeof post.category === 'string' && category === post.category.toLowerCase()),
-        {
-          params: { category: category, blog: CATEGORY_BASE || undefined },
-          pageSize: blogPostsPerPage,
-          props: { category },
-        }
-      )
-    );
-  };
+  return Array.from(categories).map((category: string) =>
+    paginate(
+      posts.filter((post) => typeof post.category === 'string' && category === post.category.toLowerCase()),
+      {
+        params: { category: category, blog: CATEGORY_BASE || undefined },
+        pageSize: blogPostsPerPage,
+        props: { category },
+      }
+    )
+  );
+};
 
 /** */
-export const getStaticPathsBlogTag =
-  () =>
-  async ({ paginate }) => {
-    if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
+export const getStaticPathsBlogTag = async ({ paginate }) => {
+  if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
 
-    const posts = await fetchPosts();
-    const tags = new Set();
-    posts.map((post) => {
-      Array.isArray(post.tags) && post.tags.map((tag) => tags.add(tag.toLowerCase()));
-    });
+  const posts = await fetchPosts();
+  const tags = new Set();
+  posts.map((post) => {
+    Array.isArray(post.tags) && post.tags.map((tag) => tags.add(tag.toLowerCase()));
+  });
 
-    return Array.from(tags).map((tag: string) =>
-      paginate(
-        posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.toLowerCase() === tag)),
-        {
-          params: { tag: tag, blog: TAG_BASE || undefined },
-          pageSize: blogPostsPerPage,
-          props: { tag },
-        }
-      )
-    );
-  };
+  return Array.from(tags).map((tag: string) =>
+    paginate(
+      posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.toLowerCase() === tag)),
+      {
+        params: { tag: tag, blog: TAG_BASE || undefined },
+        pageSize: blogPostsPerPage,
+        props: { tag },
+      }
+    )
+  );
+};

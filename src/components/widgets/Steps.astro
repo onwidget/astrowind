@@ -1,8 +1,8 @@
 ---
-import { Picture } from '@astrojs/image/components';
 import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
 import Timeline from "~/components/ui/Timeline.astro";
 import Headline from "~/components/ui/Headline.astro";
+import Image from '~/components/common/Image.astro';
 import type { Steps } from "~/types";
 
 const {
@@ -37,13 +37,13 @@ const {
           (typeof image === 'string' ? (
             <Fragment set:html={image} />
           ) : (
-            <Picture
+            <Image
               class="inset-0 object-cover object-top w-full rounded-md shadow-lg md:absolute md:h-full bg-gray-400 dark:bg-slate-700"
               widths={[400, 768]}
               sizes="(max-width: 768px) 100vw, 432px"
-              aspectRatio="432:768"
               width={432}
               height={768}
+              layout="cover"
               src={image?.src}
               alt={image?.alt || ""}
             />

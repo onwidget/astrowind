@@ -6,7 +6,9 @@ import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
 
-export const getStaticPaths = getStaticPathsBlogCategory();
+export async function getStaticPaths ({ paginate }) {
+  return await getStaticPathsBlogCategory({ paginate });
+}
 
 const { page, category } = Astro.props;
 
