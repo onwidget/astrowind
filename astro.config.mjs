@@ -3,16 +3,17 @@ import { fileURLToPath } from 'url';
 
 import { defineConfig } from 'astro/config';
 
-import tailwind from '@astrojs/tailwind';
-import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
-import icon from 'astro-icon';
 import partytown from '@astrojs/partytown';
-import tasks from "./src/utils/tasks"
+import sitemap from '@astrojs/sitemap';
+import tailwind from '@astrojs/tailwind';
+import compress from 'astro-compress';
+import icon from 'astro-icon';
+import tasks from "./src/utils/tasks";
 
 import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs';
 
-import { SITE_CONFIG, ANALYTICS_CONFIG } from './src/utils/config.ts';
+import { ANALYTICS_CONFIG, SITE_CONFIG } from './src/utils/config.ts';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -62,7 +63,9 @@ export default defineConfig({
       })
     ),
 
-    tasks()
+    tasks(),
+
+    compress()
   ],
 
   markdown: {
