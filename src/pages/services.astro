@@ -1,5 +1,6 @@
 ---
 import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
@@ -8,6 +9,27 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero callToAction={{ text: 'Buy now', href: '/' }}>
+    <Fragment slot="title">
+      <span class="text-gray-200">Elevate your projects with our stunning templates</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="text-gray-300"
+        >Explore our meticulously crafted templates tailored to various industries and purposes. From captivating
+        presentations to functional website designs, we offer the tools you need to succeed.</span
+      >
+    </Fragment>
+
+    <div
+      slot="bg"
+      class="absolute inset-0 bg-dark overflow-hidden brightness-[0.25] bg-cover bg-[url('~/assets/images/hero.png')]"
+    >
+    </div>
+  </Hero>
+
   <!-- Features2 Widget ************** -->
 
   <Features2
