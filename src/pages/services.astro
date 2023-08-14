@@ -14,24 +14,15 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
 
-  <Hero callToAction={{ text: 'Start exploring', href: '/' }}>
-    <Fragment slot="title">
-      <span class="text-gray-200">Elevate your projects with our stunning templates</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      <span class="text-gray-300"
-        >Explore our meticulously crafted templates tailored to various industries and purposes. From captivating
-        presentations to functional website designs, we offer the tools you need to succeed.</span
-      >
-    </Fragment>
-
-    <div
-      slot="bg"
-      class="absolute inset-0 bg-dark overflow-hidden brightness-[0.25] bg-cover bg-[url('https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')]"
-    >
-    </div>
-  </Hero>
+  <Hero
+    title="Elevate your projects with our stunning templates"
+    subtitle="Explore our meticulously crafted templates tailored to various industries and purposes. From captivating presentations to functional website designs, we offer the tools you need to succeed."
+    callToAction={{ text: 'Start exploring', href: '/' }}
+    image={{
+      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      alt: 'AstroWind Hero Image',
+    }}
+  />
 
   <!-- Features2 Widget ************** -->
 

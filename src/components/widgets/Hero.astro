@@ -1,7 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Image from '~/components/common/Image.astro';
-import WidgetWrapper from '../ui/WidgetWrapper.astro';
 
 const {
   title = await Astro.slots.render('title'),
@@ -10,20 +9,10 @@ const {
   callToAction = await Astro.slots.render('callToAction'),
   callToAction2 = await Astro.slots.render('callToAction2'),
   image = await Astro.slots.render('image'),
-
-  id,
-  isDark = false,
-  classes = {},
-  bg = await Astro.slots.render('bg'),
 } = Astro.props;
 ---
 
-<WidgetWrapper
-  id={id}
-  isDark={isDark}
-  containerClass={`relative md:-mt-[76px] not-prose py-0 md:py-0 lg:py-0 ${classes?.container ?? ''}`}
-  bg={bg}
->
+<section class="relative md:-mt-[76px] not-prose">
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
     <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
@@ -104,4 +93,4 @@ const {
       </div>
     </div>
   </div>
-</WidgetWrapper>
+</section>
