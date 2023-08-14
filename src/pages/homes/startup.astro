@@ -1,11 +1,9 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
-import Header from '~/components/widgets/Header.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
-import { headerData } from '~/navigation';
 import Features2 from '~/components/widgets/Features2.astro';
 import Features from '~/components/widgets/Features.astro';
 import Stats from '~/components/widgets/Stats.astro';
@@ -18,10 +16,6 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <Fragment slot="header">
-    <Header {...headerData} showRssFeed showToggleTheme position="left" />
-  </Fragment>
-
   <!-- Hero Widget ******************* -->
 
   <Hero
