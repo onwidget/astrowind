@@ -1,6 +1,7 @@
 ---
 import Features2 from '~/components/widgets/Features2.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
@@ -90,5 +91,46 @@ const metadata = {
         icon: 'tabler:tie',
       },
     ]}
+  />
+
+  <!-- Testimonials Widget *********** -->
+
+  <Testimonials
+    title="Words from real customers"
+    testimonials={[
+      {
+        testimonial: `The designs are not only visually appealing but also highly professional. The templates have saved me a significant amount of time while helping me make a lasting impression on my clients.`,
+        name: 'Emily Kennedy',
+        job: 'Front-end developer',
+        image: {
+          src: import('~/assets/images/colors.jpg'),
+          alt: 'Emily Kennedy Image',
+        },
+      },
+      {
+        testimonial: `It beautifully showcases my work, with its clean and elegant design that lets my photographs shine. Customization was a breeze, even for a non-tech person like me. The result is a professional and immersive portfolio that's garnered numerous compliments.`,
+        name: 'Sarah Hansen',
+        job: 'Photographer',
+        image: {
+          src: import('~/assets/images/caos.jpg'),
+          alt: 'Sarah Hansen Image',
+        },
+      },
+      {
+        testimonial: `I discovered these templates and I'm impressed by their variety and quality. They've helped me establish a consistent brand image across my marketing and social platforms, elevating my business's overall appearance.`,
+        name: 'Mark Wilkinson',
+        job: 'Small business owner',
+        image: {
+          src: import('~/assets/images/vintage.jpg'),
+          alt: 'Mark Wilkinson Image',
+        },
+      },
+    ]}
+    callToAction={{
+      targetBlank: true,
+      text: 'More testimonials...',
+      href: 'https://github.com/onwidget/astrowind',
+      icon: 'tabler:chevron-right',
+    }}
   />
 </Layout>
