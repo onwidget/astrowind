@@ -1,5 +1,6 @@
 ---
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
@@ -94,6 +95,86 @@ const metadata = {
     ]}
   />
 
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    items={[
+      {
+        title: 'High-Quality Designs',
+        description:
+          'Our templates feature top-tier designs that ensure a professional and polished appearance for your projects.',
+        icon: 'tabler:wand',
+      },
+      {
+        title: 'Customization Tools',
+        description:
+          'Tailor each template to your unique needs with user-friendly customization tools that let you personalize colors, fonts, and content.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Pre-Designed Elements',
+        description:
+          'Save time and effort with our ready-to-use elements, including graphics, icons, and layouts that enhance the visual appeal of your creations.',
+        icon: 'tabler:presentation',
+      },
+      {
+        title: 'Preview and Mockup Views',
+        description:
+          'Visualize the final outcome before making any changes using our preview and mockup views, ensuring your projects meet your expectations.',
+        icon: 'tabler:carousel-horizontal',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+      alt: 'Features Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Time Savings',
+        description:
+          'Streamline your workflow, enabling you to create stunning materials efficiently and allocate more time to your core tasks.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Professional Appearance',
+        description:
+          'Elevate your projects with the polished and sophisticated look that our templates provide, making a lasting impression on your audience.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Cost-Efficiency',
+        description:
+          'Benefit from cost savings by avoiding the need for custom design work, as our templates offer professional-grade designs at a fraction of the cost.',
+        icon: 'tabler:coin',
+      },
+      {
+        title: 'Instant Download',
+        description:
+          'Enjoy immediate access to your chosen templates upon purchase, enabling you to begin working on your projects without delay.',
+        icon: 'tabler:file-download',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      alt: 'Benefits Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Benefits</h3>
+    </Fragment>
+  </Content>
+
   <!-- Testimonials Widget *********** -->
 
   <Testimonials
@@ -104,7 +185,7 @@ const metadata = {
         name: 'Emily Kennedy',
         job: 'Front-end developer',
         image: {
-          src: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+          src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
           alt: 'Emily Kennedy Image',
         },
       },
@@ -113,7 +194,7 @@ const metadata = {
         name: 'Sarah Hansen',
         job: 'Photographer',
         image: {
-          src: 'https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+          src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
           alt: 'Sarah Hansen Image',
         },
       },
@@ -122,7 +203,7 @@ const metadata = {
         name: 'Mark Wilkinson',
         job: 'Small business owner',
         image: {
-          src: 'https://images.unsplash.com/photo-1512361436605-a484bdb34b5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+          src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
           alt: 'Mark Wilkinson Image',
         },
       },
