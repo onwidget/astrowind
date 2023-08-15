@@ -2,14 +2,16 @@
 import PageLayout from '~/layouts/PageLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 
-import { headerData } from '~/navigation';
+import { getHeaderData } from '~/navigation';
 import { MetaData } from '~/types';
+import { getLocaleFromUrl } from '~/i18n/translator';
 
 export interface Props {
   metadata?: MetaData;
 }
 
 const { metadata } = Astro.props;
+const headerData = getHeaderData(getLocaleFromUrl(Astro.url));
 ---
 
 <PageLayout metadata={metadata}>

@@ -8,7 +8,10 @@ import Steps2 from '~/components/widgets/Steps2.astro';
 import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
-import { headerData } from '~/navigation';
+import { getHeaderData } from '~/navigation';
+import { getLocaleFromUrl } from '~/i18n/translator';
+
+const headerData = getHeaderData(getLocaleFromUrl(Astro.url));
 
 const metadata = {
   title: 'Saas Landing Page',

@@ -4,10 +4,12 @@ import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
 
-import { headerData, footerData } from '~/navigation';
-
+import { getHeaderData, getFooterData } from '~/navigation';
 import { MetaData } from '~/types';
+import { getLocaleFromUrl } from '~/i18n/translator';
 
+const headerData = getHeaderData(getLocaleFromUrl(Astro.url));
+const footerData = getFooterData(getLocaleFromUrl(Astro.url));
 export interface Props {
   metadata?: MetaData;
 }
