@@ -363,8 +363,7 @@ export const it = {
     },
   },
   blog: {
-    title: 'The Blog',
-    subtitle:
-      'A statically generated blog example with news, tutorials, resources and other interesting content related to AstroWind',
+    title: 'Il Blog',
+    subtitle: 'Un esempio di blog generato staticamente con notizie, tutorial, risorse e altri contenuti interessanti correlati ad AstroWind',
   },
 };
