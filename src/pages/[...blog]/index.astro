@@ -8,20 +8,22 @@ import ToBlogLink from '~/components/blog/ToBlogLink.astro';
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
 import { findImage } from '~/utils/images';
+import { getLocaleFromUrl } from '~/i18n/translator';
 
 export async function getStaticPaths () {
   return await getStaticPathsBlogPost();
 }
 
 const { post } = Astro.props;
+const localizedPost = post.locales[getLocaleFromUrl(Astro.url)];
 
-const url = getCanonical(getPermalink(post.permalink, 'post'));
-const image = (await findImage(post.image)) as ImageMetadata | undefined;
+const url = getCanonical(getPermalink(localizedPost.permalink, 'post'));
+const image = (await findImage(localizedPost.image)) as ImageMetadata | undefined;
 
 const metadata = merge(
   {
-    title: post.title,
-    description: post.excerpt,
+    title: localizedPost.title,
+    description: localizedPost.excerpt,
     robots: {
       index: blogPostRobots?.index,
       follow: blogPostRobots?.follow,
@@ -31,11 +33,11 @@ const metadata = merge(
       ...(image ? { images: [{ url: image, width: image?.width, height: image?.height }] } : {}),
     },
   },
-  { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
+  { ...(localizedPost?.metadata ? { ...localizedPost.metadata, canonical: post.metadata?.canonical || url } : {}) }
 );
 ---
 
 <Layout metadata={metadata}>
-  <SinglePost post={{ ...post, image: image }} url={url} />
+  <SinglePost post={{ ...localizedPost, image: image }} url={url} />
   <ToBlogLink />
 </Layout>
