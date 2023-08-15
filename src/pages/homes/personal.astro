@@ -3,10 +3,10 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Header from '~/components/widgets/Header.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import Features from '~/components/widgets/Features.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features3 from '~/components/widgets/Features3.astro';
 
 const metadata = {
   title: 'Personal Homepage Demo',
@@ -42,13 +42,13 @@ const metadata = {
 
   <!-- Hero2 Widget ******************* -->
 
-  <Hero
-    id="hero"
-    title="Some name"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu."
-    callToAction={{ text: 'Hire me', href: '', icon: 'tabler:download' }}
-    callToAction2={{ text: 'Learn more', href: '#about' }}
-  />
+  <Hero id="hero" title="Sarah Johnson" callToAction={{ text: 'Hire me', href: '', icon: 'tabler:download' }}>
+    <Fragment slot="subtitle">
+      I'm a Graphic Designer passionate about crafting visual stories. <br /> With 5 years of experience and a degree
+      from New York University's School of Design. I infuse vitality into brands and designs, transforming concepts into
+      captivating realities.
+    </Fragment>
+  </Hero>
 
   <!-- Content Widget **************** -->
 
@@ -56,30 +56,36 @@ const metadata = {
     id="about"
     items={[
       {
-        title: 'Per ei quaeque sensibus',
-        description:
-          'Ex usu illum iudico molestie. Pro ne agam facete mediocritatem, ridens labore facete mea ei. Pro id apeirian dignissim.',
+        title: 'Dribbble',
+        icon: 'tabler:brand-dribbble',
       },
       {
-        title: 'Cu imperdiet posidonium sed',
-        description:
-          'Amet utinam aliquando ut mea, malis admodum ocurreret nec et, elit tibique cu nec. Nec ex maluisset inciderint, ex quis.',
+        title: 'Behance',
+        icon: 'tabler:brand-behance',
       },
       {
-        title: 'Nulla omittam sadipscing mel ne',
-        description:
-          'At sed possim oporteat probatus, justo graece ne nec, minim commodo legimus ut vix. Ut eos iudico quando soleat, nam modus.',
+        title: 'Pinterest',
+        icon: 'tabler:brand-pinterest',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1531973486364-5fa64260d75b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1658&q=80',
+      src: 'https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
       alt: 'Colorful Image',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Ad vix debet docendi</h3>
-       Ne dicta praesent ocurreret has, diam theophrastus at pro. Eos etiam regione ut, persius eripuit quo id. Sit te
-      euismod tacimates.
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h3>
+      <p>
+        Welcome to my creative journey. My work is a testament to my commitment to bringing ideas to life, where each
+        pixel becomes a brushstroke in the canvas of imagination.
+      </p>
+      <br />
+      <p>
+        I find inspiration in the world around me, whether through the pages of a captivating novel, the intricate
+        details of typography, or the vibrant hues of nature during my outdoor escapades.
+      </p>
+      <br />
+      <p>If you're curious to dive deeper into my work, you can follow me:</p>
     </Fragment>
 
     <Fragment slot="bg">
@@ -87,47 +93,58 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Features Widget *************** -->
+  <!-- Features3 Widget ************** -->
 
-  <Features
+  <Features3
     id="resume"
-    tagline="Features"
-    title="Main features of our templates"
-    subtitle="Possess several key characteristics to effectively cater to the needs of startups and entrepreneurs."
+    title="Skills"
+    subtitle="Discover the proficiencies that allow me to bring imagination to life through design."
     columns={3}
     items={[
       {
-        title: 'Modern and Professional Design',
-        description:
-          'Have a contemporary design that reflects current design trends and gives a professional impression.',
-        icon: 'tabler:artboard',
+        title: 'Graphic design',
+        description: 'Proficient in crafting visually appealing designs that convey messages effectively.',
+        icon: 'tabler:point-filled',
       },
       {
-        title: 'Responsive and Mobile-Friendly',
-        description: 'Adapt seamlessly to different screen sizes and devices to ensure a consistent experience.',
-        icon: 'tabler:picture-in-picture',
+        title: 'Branding and identity',
+        description: 'Skilled at developing cohesive brand identities, including logos and brand guidelines.',
+        icon: 'tabler:point-filled',
       },
       {
-        title: 'Customizability',
-        description:
-          'Easily customizable, allowing users to adapt the design, colors, typography, and content to match their brand identity.',
-        icon: 'tabler:adjustments-horizontal',
+        title: 'User-centered design',
+        description: 'Experienced in creating user-friendly interfaces and optimizing user experiences.',
+        icon: 'tabler:point-filled',
       },
       {
-        title: 'Fast Loading Times',
-        description: 'Optimized for speed to ensure a smooth user experience and favorable search engine rankings.',
-        icon: 'tabler:rocket',
+        title: 'Adobe Creative Suite',
+        description: 'Skilled in using Photoshop, Illustrator, and InDesign to create and edit visual elements.',
+        icon: 'tabler:point-filled',
       },
       {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          'Incorporate SEO best practices in template structure and code to improve visibility in search engine results.',
-        icon: 'tabler:arrows-right-left',
+        title: 'Typography',
+        description: 'Adept in selecting and manipulating typefaces to enhance design aesthetics.',
+        icon: 'tabler:point-filled',
       },
       {
-        title: 'Compatibility',
-        description: 'The templates work seamlessly across various content management systems and website builders.',
-        icon: 'tabler:plug-connected',
+        title: 'Color theory',
+        description: 'Proficient in using color to evoke emotions and enhance visual harmony.',
+        icon: 'tabler:point-filled',
+      },
+      {
+        title: 'Print and digital design',
+        description: 'Knowledgeable in designing for both print materials and digital platforms.',
+        icon: 'tabler:point-filled',
+      },
+      {
+        title: 'Attention to detail',
+        description: 'Diligent in maintaining precision and quality in all design work.',
+        icon: 'tabler:point-filled',
+      },
+      {
+        title: 'Adaptability',
+        description: 'Quick to adapt to new design trends, technologies, and client preferences.',
+        icon: 'tabler:point-filled',
       },
     ]}
   />
@@ -136,33 +153,30 @@ const metadata = {
 
   <Content
     id="porfolio"
+    title="Elevating visual narratives"
+    subtitle="Embark on a design journey that surpasses pixels, entering a realm of imagination. Explore my portfolio, where passion and creativity converge to shape enthralling visual narratives."
     isReversed
     items={[
       {
-        title: 'Per ei quaeque sensibus',
+        title: 'Description:',
         description:
-          'Ex usu illum iudico molestie. Pro ne agam facete mediocritatem, ridens labore facete mea ei. Pro id apeirian dignissim.',
+          'Developed a comprehensive brand identity for a tech startup, Tech Innovators, specializing in disruptive innovations. The goal was to convey a modern yet approachable image that resonated with both corporate clients and tech enthusiasts.',
       },
       {
-        title: 'Cu imperdiet posidonium sed',
+        title: 'Role:',
         description:
-          'Amet utinam aliquando ut mea, malis admodum ocurreret nec et, elit tibique cu nec. Nec ex maluisset inciderint, ex quis.',
-      },
-      {
-        title: 'Nulla omittam sadipscing mel ne',
-        description:
-          'At sed possim oporteat probatus, justo graece ne nec, minim commodo legimus ut vix. Ut eos iudico quando soleat, nam modus.',
+          'Led the entire branding process from concept to execution. Created a dynamic logo that symbolized innovation, selected a vibrant color palette, and I designed corporate stationery, website graphics, and social media assets.',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1620558138198-cfb9b4f3c294?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1671&q=80',
-      alt: 'Colorful Image',
+      src: 'https://images.unsplash.com/photo-1658248165252-71e116af1b34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=928&q=80',
+      alt: 'Tech Design Image',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Ad vix debet docendi</h3>
-       Ne dicta praesent ocurreret has, diam theophrastus at pro. Eos etiam regione ut, persius eripuit quo id. Sit te
-      euismod tacimates.
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 1: <br /><span class="text-2xl">Brand identity for tech innovators</span>
+      </h3>
     </Fragment>
 
     <Fragment slot="bg">
@@ -173,35 +187,59 @@ const metadata = {
   <!-- Content Widget **************** -->
 
   <Content
-    id="blog"
     isReversed
     isAfterContent={true}
     items={[
       {
-        title: 'Per ei quaeque sensibus',
+        title: 'Description:',
         description:
-          'Ex usu illum iudico molestie. Pro ne agam facete mediocritatem, ridens labore facete mea ei. Pro id apeirian dignissim.',
+          'Designed a captivating event poster for an art and music festival, "ArtWave Fusion," aiming to showcase the synergy between visual art and music genres.',
       },
       {
-        title: 'Cu imperdiet posidonium sed',
-        description:
-          'Amet utinam aliquando ut mea, malis admodum ocurreret nec et, elit tibique cu nec. Nec ex maluisset inciderint, ex quis.',
-      },
-      {
-        title: 'Nulla omittam sadipscing mel ne',
-        description:
-          'At sed possim oporteat probatus, justo graece ne nec, minim commodo legimus ut vix. Ut eos iudico quando soleat, nam modus.',
+        title: 'Role:',
+        description: `Translated the festival's creative theme into a visually striking poster. Used bold typography, vibrant colors, and abstract elements to depict the fusion of art and music. Ensured the design captured the festival's vibrant atmosphere.`,
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
+      src: 'https://images.unsplash.com/photo-1619983081563-430f63602796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      alt: 'Art and Music Poster Image',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Ad vix debet docendi</h3>
-       Ne dicta praesent ocurreret has, diam theophrastus at pro. Eos etiam regione ut, persius eripuit quo id. Sit te
-      euismod tacimates.
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 2: <br /><span class="text-2xl">Event poster for art & music festival</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: `Redesigned the e-commerce website for an eco-conscious fashion brand, GreenVogue. The objective was to align the brand's online presence with its sustainable ethos and improve user experience.`,
+      },
+      {
+        title: 'Role:',
+        description: `Conducted a thorough analysis of the brand's values and customer base to inform the design direction. Created a visually appealing interface with intuitive navigation, highlighting sustainable materials, and integrating a user-friendly shopping experience.`,
+      },
+    ]}
+    image={{
+      src: 'https://plus.unsplash.com/premium_photo-1683288295841-782fa47e4770?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+      alt: 'Fashion e-commerce Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 3: <br /><span class="text-2xl">E-commerce website redesign for fashion brand</span>
+      </h3>
     </Fragment>
 
     <Fragment slot="bg">
