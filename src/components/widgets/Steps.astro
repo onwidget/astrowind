@@ -20,7 +20,7 @@ const {
 } = Astro.props as Steps;
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl ${classes?.container ?? ""}`} bg={bg}>
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-5xl ${classes?.container ?? ""}`} bg={bg}>
   <div class:list={["flex flex-col gap-8 md:gap-12 md:flex-row", { "md:flex-row-reverse": isReversed }]}>
     <div class="md:py-4 md:basis-1/2 md:self-center">
       <Headline

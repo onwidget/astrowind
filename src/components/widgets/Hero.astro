@@ -5,6 +5,7 @@ import Image from '~/components/common/Image.astro';
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
+  tagline,
   content = await Astro.slots.render('content'),
   callToAction = await Astro.slots.render('callToAction'),
   callToAction2 = await Astro.slots.render('callToAction2'),
@@ -18,6 +19,12 @@ const {
     <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
     <div class="py-12 md:py-20">
       <div class="text-center pb-10 md:pb-16 max-w-screen-lg mx-auto">
+        {tagline && (
+          <p
+            class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase"
+            set:html={tagline}
+          />
+        )}
         {
           title && (
             <h1
