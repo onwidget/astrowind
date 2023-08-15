@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { defineConfig } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
+import { i18n, defaultLocaleSitemapFilter } from "astro-i18n-aut/integration";
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
@@ -13,7 +14,7 @@ import tasks from "./src/utils/tasks";
 
 import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs';
 
-import { ANALYTICS_CONFIG, SITE_CONFIG } from './src/utils/config.ts';
+import { ANALYTICS_CONFIG, SITE_CONFIG, I18N_CONFIG } from './src/utils/config.ts';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -35,7 +36,17 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    sitemap(),
+    i18n({
+      locales : I18N_CONFIG.locales,
+      defaultLocale : I18N_CONFIG.defaultLocale,
+    }),
+    sitemap({
+      i18n: {
+        locales : I18N_CONFIG.locales,
+        defaultLocale : I18N_CONFIG.defaultLocale,
+      },
+      filter: defaultLocaleSitemapFilter({ defaultLocale : I18N_CONFIG.defaultLocale }),
+    }),
     mdx(),
     icon({
       include: {

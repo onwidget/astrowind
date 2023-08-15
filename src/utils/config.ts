@@ -18,7 +18,8 @@ export interface MetaDataConfig extends Omit<MetaData, 'title'> {
   };
 }
 export interface I18NConfig {
-  language: string;
+  defaultLocale: string;
+  locales: { [key: string]: string };
   textDirection: string;
   dateFormatter: unknown;
 }
@@ -116,14 +117,17 @@ const getMetadata = () => {
 
 const getI18N = () => {
   const _default = {
-    language: 'en',
+    defaultLocale: 'en',
+    locales: {
+      en: 'en-US',  // the `defaultLocale` value must present in `locales` keys
+    },
     textDirection: 'ltr',
   };
 
   const value = merge({}, _default, config?.i18n ?? {});
 
   return Object.assign(value, {
-    dateFormatter: new Intl.DateTimeFormat(value.language, {
+    dateFormatter: new Intl.DateTimeFormat(value.defaultLocale, {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
