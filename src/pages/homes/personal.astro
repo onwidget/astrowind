@@ -8,6 +8,7 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
 const metadata = {
   title: 'Personal Homepage Demo',
@@ -356,6 +357,18 @@ const metadata = {
       },
     ]}
   />
+
+  <!-- HighlightedPosts Widget ******* -->
+
+  <BlogLatestPosts
+    id="blog"
+    title="Explore my insightful articles on my blog"
+    information={`Dive into a realm of design wisdom and creative inspiration, where you'll find invaluable insights, practical tips, and captivating narratives that elevate and enrich your creative journey.`}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </BlogLatestPosts>
 
   <!-- CallToAction Widget *********** -->
 
