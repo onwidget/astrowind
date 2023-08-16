@@ -1,7 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 
 const metadata = {
@@ -10,6 +10,13 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+    <!-- HeroText Widget ******************* -->
+
+    <HeroText
+    tagline="Contact"
+    title="Let's Connect!"
+  />
+
   <ContactUs
     title="Drop us a message today!"
     subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
@@ -68,43 +75,6 @@ const metadata = {
         title: 'Location',
         description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
         icon: 'tabler:map-pin',
-      },
-    ]}
-  />
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    items={[
-      {
-        title: 'Do you provide instructions on how to use and edit the templates?',
-        description:
-          'Absolutely! We understand the importance of providing clear guidance. Each template comes with comprehensive instructions on how to use and customize it effectively.',
-      },
-      {
-        title: 'How can I download the templates after purchasing?',
-        description:
-          "Downloading your purchased templates is a simple process. Once you've completed the purchase, you'll receive an email containing a link to your personal download area.",
-      },
-      {
-        title: 'Are updates included with the templates?',
-        description:
-          'Yes, we are committed to continually improving and enhancing our templates to ensure they meet the latest design standards and technological advancements.',
-      },
-      {
-        title: 'How often do you release new templates?',
-        description:
-          'The exact frequency of releases may vary, our team works diligently to introduce new templates every quarter, depending on design trends, industry developments, and customer demand.',
-      },
-      {
-        title: 'Can I request custom templates to be developed?',
-        description: `Absolutely, we offer a custom template development service to cater to your specific needs. If you have a particular design idea, concept, or functionality in mind, we'd be more than happy to discuss creating a custom template for you.`,
-      },
-      {
-        title: 'What payment methods do you accept?',
-        description:
-          'Currently, we accept major credit and debit cards, including Visa, MasterCard, American Express, and Discover. Additionally, we facilitate payments through trusted online payment platforms such as PayPal and Apple Pay.',
       },
     ]}
   />
