@@ -16,6 +16,7 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <Fragment slot="announcement"></Fragment>
   <Fragment slot="header">
     <Header
       links={[
@@ -28,23 +29,18 @@ const metadata = {
       ]}
       actions={[
         {
-          type: 'ghost',
-          text: 'Login',
-          href: '#',
-        },
-        {
-          type: 'primary',
-          text: 'Sign Up',
+          text: 'Hire me',
           href: '#',
         },
       ]}
       isSticky
+      showToggleTheme
     />
   </Fragment>
 
   <!-- Hero2 Widget ******************* -->
 
-  <Hero id="hero" title="Sarah Johnson" callToAction={{ text: 'Hire me', href: '/' }}>
+  <Hero id="hero" title="Sarah Johnson" tagline="Personal Web Demo" callToAction={{ text: 'Hire me', href: '/' }}>
     <Fragment slot="subtitle">
       I'm a Graphic Designer passionate about crafting visual stories. <br /> With 5 years of experience and a degree
       from New York University's School of Design. I infuse vitality into brands and designs, transforming concepts into
@@ -100,7 +96,6 @@ const metadata = {
   <Steps
     id="resume"
     title="Work experience"
-    isReversed={true}
     items={[
       {
         title:
@@ -115,10 +110,7 @@ const metadata = {
         icon: 'tabler:briefcase',
       },
     ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1557672172-298e090bd0f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Steps image',
-    }}
+    classes={{ container: 'max-w-3xl' }}
   />
 
   <!-- Steps Widget ****************** -->
@@ -136,10 +128,7 @@ const metadata = {
         icon: 'tabler:school',
       },
     ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1557672172-298e090bd0f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Steps image',
-    }}
+    classes={{ container: 'max-w-3xl' }}
   />
 
   <!-- Features3 Widget ************** -->
@@ -148,51 +137,43 @@ const metadata = {
     title="Skills"
     subtitle="Discover the proficiencies that allow me to bring imagination to life through design."
     columns={3}
+    defaultIcon="tabler:point-filled"
     items={[
       {
         title: 'Graphic design',
         description: 'Proficient in crafting visually appealing designs that convey messages effectively.',
-        icon: 'tabler:point-filled',
       },
       {
         title: 'Branding and identity',
         description: 'Skilled at developing cohesive brand identities, including logos and brand guidelines.',
-        icon: 'tabler:point-filled',
       },
       {
         title: 'User-centered design',
         description: 'Experienced in creating user-friendly interfaces and optimizing user experiences.',
-        icon: 'tabler:point-filled',
       },
       {
         title: 'Adobe Creative Suite',
         description: 'Skilled in using Photoshop, Illustrator, and InDesign to create and edit visual elements.',
-        icon: 'tabler:point-filled',
       },
       {
         title: 'Typography',
         description: 'Adept in selecting and manipulating typefaces to enhance design aesthetics.',
-        icon: 'tabler:point-filled',
       },
       {
         title: 'Color theory',
         description: 'Proficient in using color to evoke emotions and enhance visual harmony.',
-        icon: 'tabler:point-filled',
       },
       {
         title: 'Print and digital design',
         description: 'Knowledgeable in designing for both print materials and digital platforms.',
-        icon: 'tabler:point-filled',
       },
       {
         title: 'Attention to detail',
         description: 'Diligent in maintaining precision and quality in all design work.',
-        icon: 'tabler:point-filled',
       },
       {
         title: 'Adaptability',
         description: 'Quick to adapt to new design trends, technologies, and client preferences.',
-        icon: 'tabler:point-filled',
       },
     ]}
   />
@@ -380,4 +361,11 @@ const metadata = {
       href: '/',
     }}
   />
+
+  <!-- BlogLatestPost Widget **************** -->
+  <BlogLatestPosts id="blog" title="My blog">
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </BlogLatestPosts>
 </Layout>

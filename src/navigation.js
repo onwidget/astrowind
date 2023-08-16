@@ -14,7 +14,7 @@ export const headerData = {
           href: getPermalink('/homes/startup'),
         },
         {
-          text: 'App Download',
+          text: 'Mobile App',
           href: getPermalink('/homes/mobile-app'),
         },
         {
@@ -72,16 +72,16 @@ export const headerData = {
           href: getPermalink('/landing/click-through'),
         },
         {
-          text: 'Squeeze',
-          href: getPermalink('/landing/squeeze'),
-        },
-        {
           text: 'Product Details (or Services)',
           href: getPermalink('/landing/product'),
         },
         {
           text: 'Coming Soon or Pre-Launch',
           href: getPermalink('/landing/pre-launch'),
+        },
+        {
+          text: 'Subscription',
+          href: getPermalink('/landing/subscription'),
         },
       ],
     },
