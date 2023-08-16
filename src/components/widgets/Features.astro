@@ -11,6 +11,8 @@ const {
   items = [],
   columns = 2,
 
+  defaultIcon,
+
   id,
   isDark = false,
   classes = {},
@@ -33,6 +35,7 @@ const {
   <ItemGrid
     items={items}
     columns={columns}
+    defaultIcon={defaultIcon}
     classes={{
       container: "",
       title: "md:text-[1.3rem]",
