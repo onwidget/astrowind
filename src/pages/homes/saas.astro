@@ -7,8 +7,10 @@ import Features from '~/components/widgets/Features.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
 
 import { headerData } from '~/navigation';
+import FAQs from '~/components/widgets/FAQs.astro';
 
 const metadata = {
   title: 'Saas Landing Page',
@@ -41,64 +43,65 @@ const metadata = {
     tagline="SaaS Web Demo"
     callToAction={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
-    image={{ src: 'https://images.unsplash.com/photo-1580481072645-022f9a6dbf27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80', alt: 'AstroWind Hero Image' }}
+    image={{
+      src: 'https://images.unsplash.com/photo-1580481072645-022f9a6dbf27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'AstroWind Hero Image',
+    }}
   >
     <Fragment slot="title">
-      Free template for <br />
-      <span class="text-accent dark:text-white highlight"> Astro 2.0</span> + Tailwind CSS
+      Simplify web design with Astrowind: <br /> your ultimate <span class="text-accent dark:text-white highlight"
+        >SaaS</span
+      > companion<br />
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 2.0
-        + Tailwind CSS.</span
+        Elevate your website creation process with <span class="font-semibold">AstroWind</span>'s SaaS solutions.</span
       >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span> Suitable for
-      Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs.
+       Seamlessly blend the power of Astro 2.0 and Tailwind CSS to craft websites that resonate with your brand and
+      audience.
     </Fragment>
   </Hero2>
 
-    <!-- Features Widget *************** -->
+  <!-- Features Widget *************** -->
 
-    <Features
+  <Features
     id="features"
-    tagline="Features"
-    title="Main features of our templates"
-    subtitle="Possess several key characteristics to effectively cater to the needs of startups and entrepreneurs."
-    columns={3}
+    title="Why choose AstroWind?"
+    subtitle="Each of the following features enhances AstroWind's value proposition."
+    columns={2}
     items={[
       {
-        title: 'Modern and Professional Design',
+        title: 'Integration of Astro 2.0 and Tailwind CSS',
         description:
-          'Have a contemporary design that reflects current design trends and gives a professional impression.',
+          'Offers a powerful combination that enhances both the development process and the end-user experience. Also, allows to build dynamic and visually stunning websites with optimized performance.',
+        icon: 'tabler:layers-union',
+      },
+      {
+        title: 'Versatile design for startups, small businesses, and more',
+        description: `Easily customize AstroWind to harmonize with the unique branding and identity of your venture. AstroWind's versatile design adapts to suit your needs.`,
         icon: 'tabler:artboard',
       },
       {
-        title: 'Responsive and Mobile-Friendly',
-        description: 'Adapt seamlessly to different screen sizes and devices to ensure a consistent experience.',
-        icon: 'tabler:picture-in-picture',
-      },
-      {
-        title: 'Customizability',
+        title: 'Effortless customization for portfolios and marketing sites',
         description:
-          'Easily customizable, allowing users to adapt the design, colors, typography, and content to match their brand identity.',
-        icon: 'tabler:adjustments-horizontal',
+          'With intuitive customization, easily showcase portfolio pieces, case studies, project highlights, and relevant content. Ideal for creative professionals and businesses looking to highlight their expertise.',
+        icon: 'tabler:writing',
       },
       {
-        title: 'Fast Loading Times',
-        description: 'Optimized for speed to ensure a smooth user experience and favorable search engine rankings.',
+        title: 'Optimized landing pages and engaging blogs',
+        description: `Landing pages are strategically designed to captivate visitors and prompt specific actions. Additionally, the blog creation feature empowers sharing insights, engaging the audience.`,
+        icon: 'tabler:podium',
+      },
+      {
+        title: 'Fast loading times and production-ready code',
+        description: `Using Astro 2.0 ensures fast loading and seamless rendering, enhancing browsing. The code follows best practices, improving user experience, SEO, and reducing bounce rates.`,
         icon: 'tabler:rocket',
       },
       {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          'Incorporate SEO best practices in template structure and code to improve visibility in search engine results.',
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Compatibility',
-        description: 'The templates work seamlessly across various content management systems and website builders.',
-        icon: 'tabler:plug-connected',
+        title: 'SEO-optimized structure for enhanced visibility',
+        description: `Follows SEO best practices with clean code, semantic HTML markup, and fast loading, enhancing search engine rankings. AstroWind's SEO structure ensures visibility to potential customers and clients.`,
+        icon: 'tabler:eyeglass',
       },
     ]}
   />
@@ -214,6 +217,83 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
+
+  <!-- Pricing Widget ******************* -->
+
+  <Pricing
+    title="Flexible pricing plans for AstroWind"
+    prices={[
+      {
+        title: 'free',
+        subtitle: 'Access to core features and a wide range of templates',
+        price: '0',
+        period: '/ month',
+        callToAction: {
+          targetBlank: true,
+          text: 'Get Started for Free',
+          href: '#',
+        },
+      },
+      {
+        title: 'pro',
+        subtitle: 'Premium templates and advanced customization',
+        price: 15,
+        period: '/ Month',
+        callToAction: {
+          targetBlank: true,
+          text: 'Upgrade to Pro',
+          href: '#',
+        },
+        hasRibbon: true,
+        ribbonTitle: 'popular',
+      },
+      {
+        title: 'Enterprise',
+        subtitle: 'Tailored solutions for large-scale projects',
+        price: 45,
+        period: '/ Month',
+        callToAction: {
+          targetBlank: true,
+          text: 'Unlock Enterprise Features',
+          href: '#',
+        },
+      },
+    ]}
+  />
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Frequently Asked Questions"
+    items={[
+      {
+        title: 'Is AstroWind compatible with the latest versions of Astro and Tailwind CSS?',
+        description:
+          'Yes, AstroWind is designed to be compatible with the latest versions of both Astro and Tailwind CSS. This ensures that you can harness the full capabilities of these technologies while benefiting from the features offered by AstroWind.',
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'Can I use AstroWind for both personal and commercial projects?',
+        description: `Certainly! AstroWind is versatile and can be used for a wide range of projects, including both personal and commercial endeavors. Whether you're building a professional portfolio, launching a startup, or creating a marketing website, AstroWind has you covered.`,
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'What level of coding knowledge is required to use AstroWind?',
+        description:
+          'While some familiarity with HTML, CSS, and web development concepts is helpful, the user-friendly interface and customization options allow those with limited coding experience to create impressive websites. For more advanced users, AstroWind offers extensive customization capabilities.',
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'Is customer support available for AstroWind users seeking guidance?',
+        description: `Absolutely, our dedicated customer support team is here to assist you with any questions or challenges you may encounter. Feel free to reach out to us through our support channels, and we'll be happy to provide the help you need.`,
+        icon: 'tabler:chevrons-right',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </FAQs>
 
   <!-- Steps2 Widget ****************** -->
 
