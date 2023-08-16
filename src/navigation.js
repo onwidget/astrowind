@@ -14,7 +14,7 @@ export const headerData = {
           href: getPermalink('/homes/startup'),
         },
         {
-          text: 'App Download',
+          text: 'Mobile App',
           href: getPermalink('/homes/mobile-app'),
         },
         {
