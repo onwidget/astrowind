@@ -1,7 +1,8 @@
 ---
 import Layout from '~/layouts/LandingLayout.astro';
 
-import Hero2 from '~/components/widgets/Hero2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Product Details Landing Page Demo',
@@ -11,15 +12,25 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero2 Widget ******************* -->
 
-  <Hero2
-    tagline="Product Details Landing Demo"
-    title="Unlock the Secrets to an Effective Lead Generation Landing"
-    subtitle="Where every click is a potential lead waiting to happen. Your Hero should grab attention instantly. Use a powerful headline that speaks directly to your target audience."
-    callToAction={{ text: 'Download App', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
-    callToAction2={{ text: 'Learn more', href: '#features' }}
+  <Hero
+    tagline="Product Details Demo"
+    title="Product Landing Page: Showcase with Precision and Passion!"
+    subtitle="Step-by-step guide to designing a Landing Page that highlights every facet of your product or service."
+    callToAction={{ text: 'Call to Action', href: '#', icon: 'tabler:square-rounded-arrow-right' }}
+    callToAction2={{ text: 'Learn more', href: '#' }}
     image={{
-      src: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'AstroWind Hero Image',
+      src: 'https://images.unsplash.com/photo-1473188588951-666fce8e7c68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2174&q=80',
+      alt: 'A spotlight on a product. Product Details Landing Page Demo',
+    }}
+  />
+
+  <CallToAction
+    title="Coming soon"
+    subtitle="We are working on the content of these demo pages. You will see them very soon. Stay tuned Stay tuned!"
+    callToAction={{
+      text: 'Get template',
+      href: 'https://github.com/onwidget/astrowind',
+      icon: 'tabler:download',
     }}
   />
 </Layout>
