@@ -7,6 +7,7 @@ import Features from '~/components/widgets/Features.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
 
 import { headerData } from '~/navigation';
 
@@ -215,6 +216,49 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
+
+  <!-- Pricing Widget ******************* -->
+
+  <Pricing
+    title="Flexible pricing plans for AstroWind"
+    prices={[
+      {
+        title: 'free',
+        subtitle: 'Access to core features and a wide range of templates',
+        price: '0',
+        period: '/ month',
+        callToAction: {
+          targetBlank: true,
+          text: 'Get Started for Free',
+          href: '#',
+        },
+      },
+      {
+        title: 'pro',
+        subtitle: 'Premium templates and advanced customization',
+        price: 15,
+        period: '/ Month',
+        callToAction: {
+          targetBlank: true,
+          text: 'Upgrade to Pro',
+          href: '#',
+        },
+        hasRibbon: true,
+        ribbonTitle: 'popular',
+      },
+      {
+        title: 'Enterprise',
+        subtitle: 'Tailored solutions for large-scale projects',
+        price: 45,
+        period: '/ Month',
+        callToAction: {
+          targetBlank: true,
+          text: 'Unlock Enterprise Features',
+          href: '#',
+        },
+      },
+    ]}
+  />
 
   <!-- Steps2 Widget ****************** -->
 
