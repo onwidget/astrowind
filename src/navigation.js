@@ -6,115 +6,115 @@ export const getHeaderData = (lang) => {
   return {
     links: [
       {
-        text: t('header.homes.title'),
+        text: 'Homes',
         links: [
           {
-            text: t('header.homes.saas'),
+            text: 'Sass',
             href: getPermalink('/homes/saas'),
           },
           {
-            text: t('header.homes.startup'),
+            text: 'Startup',
             href: getPermalink('/homes/startup'),
           },
           {
-            text: t('header.homes.app'),
+            text: 'Mobile App',
             href: getPermalink('/homes/mobile-app'),
           },
           {
-            text: t('header.homes.personal'),
+            text: 'Personal',
             href: getPermalink('/homes/personal'),
           },
         ],
       },
       {
-        text: t('header.pages.title'),
+        text: 'Pages',
         links: [
           {
-            text: t('header.pages.features'),
+            text: 'Features (Anchor Link)',
             href: getPermalink('/#features'),
           },
           {
-            text: t('header.pages.services'),
+            text: 'Services',
             href: getPermalink('/services'),
           },
           {
-            text: t('header.pages.pricing'),
+            text: 'Pricing',
             href: getPermalink('/pricing'),
           },
           {
-            text: t('header.pages.aboutUs'),
+            text: 'About us',
             href: getPermalink('/about'),
           },
           {
-            text: t('header.pages.contactUs'),
+            text: 'Contact',
             href: getPermalink('/contact'),
           },
           {
-            text: t('header.pages.terms'),
+            text: 'Terms',
             href: getPermalink('/terms'),
           },
           {
-            text: t('header.pages.privacyPolicy'),
+            text: 'Privacy policy',
             href: getPermalink('/privacy'),
           },
         ],
       },
       {
-        text: t('header.landing.title'),
+        text: 'Landing',
         links: [
           {
-            text: t('header.landing.leadGeneration'),
+            text: 'Lead Generation',
             href: getPermalink('/landing/lead-generation'),
           },
           {
-            text: t('header.landing.sales'),
+            text: 'Long-form Sales',
             href: getPermalink('/landing/sales'),
           },
           {
-            text: t('header.landing.clickThrough'),
+            text: 'Click-Through',
             href: getPermalink('/landing/click-through'),
           },
           {
-            text: t('header.landing.squeeze'),
-            href: getPermalink('/landing/squeeze'),
-          },
-          {
-            text: t('header.landing.product'),
+            text: 'Product Details (or Services)',
             href: getPermalink('/landing/product'),
           },
           {
-            text: t('header.landing.comingSoon'),
+            text: 'Coming Soon or Pre-Launch',
             href: getPermalink('/landing/pre-launch'),
+          },
+          {
+            text: 'Subscription',
+            href: getPermalink('/landing/subscription'),
           },
         ],
       },
       {
-        text: t('header.blog.title'),
+        text: 'Blog',
         links: [
           {
-            text: t('header.blog.blogList'),
+            text: 'Blog List',
             href: getBlogPermalink(),
           },
           {
-            text: t('header.blog.article'),
+            text: 'Article',
             href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
           },
           {
-            text: t('header.blog.articleMdx'),
+            text: 'Article (with MDX)',
             href: getPermalink('markdown-elements-demo-post', 'post'),
           },
           {
-            text: t('header.blog.category'),
+            text: 'Category Page',
             href: getPermalink('tutorials', 'category'),
           },
           {
-            text: t('header.blog.tag'),
+            text: 'Tag Page',
             href: getPermalink('astro', 'tag'),
           },
         ],
       },
       {
-        text: t('header.widgets'),
+        text: 'Widgets',
         href: '#',
       },
     ],
