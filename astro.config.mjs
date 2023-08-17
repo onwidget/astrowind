@@ -62,7 +62,8 @@ export default defineConfig({
           'briefcase',
           'ruler',
           'survey',
-          'neutral-trading'
+          'neutral-trading',
+          'process'
         ],
         ri: ['twitter-fill', 'facebook-box-fill', 'linkedin-box-fill', 'whatsapp-fill', 'mail-fill'],
       },

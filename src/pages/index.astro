@@ -71,7 +71,7 @@ const metadata = {
       {
         title: 'Command & Control',
         description:
-          'Ensure everyone is on the same page, a single source of truth is shared in real- time, up and down the chain of command.',
+          'Size up your incident and ensure everyone is on the same page, a single source of truth is shared in real- time, up and down the chain of command.',
         icon: 'tabler:chevrons-up',
       },
       {
@@ -156,9 +156,40 @@ const metadata = {
     >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Collaborate with your community</h3>
-      Community Hub enables first responders to obtain valuable information about private and it risk residence.<br>Residents can add information to their property portfolio empowering local property owners to assist in hazard assessment and response capabilities.
+      Community Hub enables first responders to obtain valuable information about private and it risk residence.<br>Residents can add information to their property portfolio empowering local property owners to assist in hazard assessment and response capabilities. 
     </Fragment>
     </Content>
+
+    <Content
+    tagline="Be Informed"
+    title="Size Up"
+    items={[
+      {
+        title: 'LiDAR Technology',
+        description:
+          'Size Up leverages your device LiDAR Sensors to scan the incident scene, coupled with AI to process the data and paint a realistic overview of the incident scene.',
+      },
+      {
+        title: 'Leverage your pre-plans',
+        description:
+          'StationOne will leverage data about the site that may be captured in incident pre-plans or CommunityHub and pair this with realtime data obtained on scene.',
+      },
+      {
+        title: 'Make Strategic Decisions',
+        description:
+          'Combine all your data together to make strategic decisions to combat the incident, knowing all other crews responding to the incident have the same information in real-time.',
+      },
+    ]}
+    image={{
+      src: import('~/assets/images/sizeup.png'),
+      alt: 'Colorful Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Provide a detailed incident overview</h3>
+      Leverage LiDAR and AI Technology to scan an incident scene and dynamically build your size up, recognise hazards, obtain measurements, flag exposures and share the size up with your crew in real time. 
+    </Fragment>
+  </Content>
 
   <!-- Steps Widget ****************** -->
 <!--
@@ -234,6 +265,12 @@ const metadata = {
         icon: 'flat-color-icons:home',
       },
       {
+        title: 'Size Up',
+        description:
+          'Use LiDAR and AI Technology to perform an incident size up and share with your crews.',
+        icon: 'flat-color-icons:process',
+      },
+      {
         title: 'Water Points',
         description:
           'Locate static water sources, maintained by fire stations and property owners.',
@@ -269,12 +306,12 @@ const metadata = {
           'Generate and share industry standard briefings electronically.',
         icon: 'flat-color-icons:briefcase',
       },
-      {
-        title: 'Firefighting Tools',
-        description:
-          'A range of useful tools, checklists and calculators to assist firefighters.',
-        icon: 'flat-color-icons:support',
-      },
+      //{
+      //  title: 'Firefighting Tools',
+      //  description:
+      //    'A range of useful tools, checklists and calculators to assist firefighters.',
+      //  icon: 'flat-color-icons:support',
+      //},
     ]}
   >
     <Fragment slot="bg">
