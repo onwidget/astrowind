@@ -41,6 +41,13 @@ export interface Post {
   readingTime?: number;
 }
 
+export interface LocalizedPost {
+  common_slug: string;
+  locales: {
+    [locale: string]: Post;
+  };
+}
+
 export interface MetaData {
   title?: string;
   ignoreTitleTemplate?: boolean;

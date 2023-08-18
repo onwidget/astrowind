@@ -1,8 +1,8 @@
 ---
-import { UI_CONFIG } from '~/utils/config';
+import { UI_CONFIG, I18N_CONFIG, SITE_CONFIG } from '~/utils/config';
 ---
 
-<script is:inline define:vars={{ defaultTheme: UI_CONFIG.theme }}>
+<script is:inline define:vars={{ defaultTheme: UI_CONFIG.theme, locales:I18N_CONFIG.locales, trailingSlash:SITE_CONFIG.trailingSlash }}>
   function applyTheme(theme) {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -60,6 +60,22 @@ import { UI_CONFIG } from '~/utils/config';
       }
       document.documentElement.classList.toggle('dark');
       localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    });
+
+
+    attachEvent('[data-aw-select-language]', 'click', function (_, elem) {
+      const newLang = elem.value;
+      const oldUrl = window.location.href;
+      const supportedLangs = Object.keys(locales);
+
+      const urlWithoutOrigin = oldUrl.replace(window.location.origin, '');
+      const urlWithoutOriginLang = supportedLangs.reduce((acc, lang) => {
+        return acc.replace(`/${lang}`, '');
+      }, urlWithoutOrigin)
+      const newUrlWithoutTrailingSlash = urlWithoutOriginLang.replace(/\/$/, '');
+
+      const newUrl = `/${newLang}${newUrlWithoutTrailingSlash}${trailingSlash ? '/' : ''}`;
+      window.location.pathname = newUrl;
     });
 
     attachEvent('[data-aw-social-share]', 'click', function (_, elem) {

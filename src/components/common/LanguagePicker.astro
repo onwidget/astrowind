@@ -1,0 +1,19 @@
+---
+import { getLocale } from 'astro-i18n-aut';
+import { I18N_CONFIG } from '~/utils/config';
+const currentLocale = getLocale(Astro.url);
+---
+
+<select
+  id="languagePicker"
+  class="px-4 py-2 rounded-md text-sm font-medium bg-white dark:bg-dark text-gray-700 dark:text-gray-300 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-150 ease-in-out"
+  data-aw-select-language
+>
+  {
+    Object.keys(I18N_CONFIG.locales).map((locale) => (
+      <option value={locale} selected={locale === currentLocale} class="py-1">
+        {locale.replace(/^([a-z])/, (match) => match.toUpperCase())}
+      </option>
+    ))
+  }
+</select>

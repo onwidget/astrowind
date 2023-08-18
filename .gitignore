@@ -23,3 +23,4 @@ package-lock.json
 pnpm-lock.yaml
 
 .astro
+astro_tmp_pages_*

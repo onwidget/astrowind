@@ -1,0 +1,209 @@
+---
+publishDate: 2023-07-17T00:00:00Z
+title: Approfondimento sul template AstroWind
+excerpt: Sebbene sia facile iniziare, AstroWind è abbastanza complesso internamente. Questa pagina fornisce la documentazione su alcune delle parti più intricate.
+image: https://images.unsplash.com/photo-1534307671554-9a6d81f4d629?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1651&q=80
+category: Documentation
+tags:
+  - astro
+  - tailwind css
+  - front-end
+metadata:
+  canonical: https://astrowind.vercel.app/it/astrowind-template-in-depth
+---
+
+
+import DListItem from '~/components/ui/DListItem.astro';
+import ToggleTheme from '~/components/common/ToggleTheme.astro';
+
+## Panoramica
+
+Può essere un compito piuttosto imponente cercare di capire le componenti interne di _AstroWind_, e in particolare vari punti di utilizzo.
+
+Questa pagina descrive e chiarisce alcune delle tecniche trovate in _AstroWind_. Utilizzala come guida per ulteriori modifiche o come istruzione per le tecniche da utilizzare nei tuoi progetti.
+
+## Stile
+
+Come suggerisce il nome, _AstroWind_ si basa su _TailWind_ per lo stile. Inoltre, _AstroWind_ definisce impostazioni di stile personalizzate a basso livello, che vengono incorporate in _TailWind_ in modo uniforme, fornendo coerenza per le costruzioni di stile di livello superiore e consentendo anche la modalità scura.
+
+Il meccanismo di stile è composto dai seguenti file (tutti i percorsi sono preceduti da `/src/`):
+
+<DListItem dt="assets/styles/tailwind.css">
+  Questo file è essenzialmente un'estensione di base.css di _TailWind_. Gli stili dei componenti di alto livello sono definiti qui. Nota
+  anche lo stile sugli elementi selezionati dai selettori 'attributo' alla fine dei file, in particolare quelli selezionati da
+  attributi 'data'.
+</DListItem>
+<DListItem dt="components/CustomStyles.astro">
+  Definisce colori e caratteri personalizzati. Per far sì che questi abbiano effetto nel file 'base.css', devono essere caricati nella sezione
+  dell'intestazione html. Vedi sotto.
+</DListItem>
+<DListItem dt="layouts/Layout.astro">
+  Questo layout è utilizzato per tutte le pagine renderizzate da _AstroWind_. I contenuti di _tailwind.css_ e del componente _CustomStyles.astro_,
+  descritti sopra, vengono iniettati nell'intestazione html.
+</DListItem>
+
+### Modalità scura
+
+La _Modalità scura_ viene attivata dall'icona del 'sole': <ToggleTheme/>nell'intestazione della pagina. È definita in _components/common/ToggleTheme.astro_, ma l'evento è collegato e l'azione è definita in _components/common/BasicScripts.astro_ nel seguente snippet:
+
+```javascript
+attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
+  if (defaultTheme.endsWith(':only')) {
+    return;
+  }
+  document.documentElement.classList.toggle('dark');
+  localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+});
+```
+
+Nota che questo è un evento lato client. _BasicScripts.astro_ definisce anche diverse altre funzionalità lato client oltre a questa.
+
+## Utilizzo avanzato degli slot
+
+_Gli slot_ fanno parte dell'implementazione del componente, che è un concetto comune in molti framework, inclusi _Astrojs_. La tipica definizione di uno slot in un componente appare così:
+
+```astro
+---
+// (file: MyComponent.astro)
+const { title } = Astro.props;
+export interface Props {
+  title: string;
+}
+---
+
+<div>
+  <h2>{title}</h2>
+  <slot />
+  <!-- qui verranno iniettati i contenuti dello slot -->
+  <div></div>
+</div>
+```
+
+E nell'uso altrove:
+
+```astro
+import MyComponent from "~/components/MyComponent"; ...
+<MyComponent someArg="Un esempio di slot">
+  <p>Questo contenuto verrà visualizzato nello slot</p>
+</MyComponent>
+```
+
+### Utilizzo alternativo
+
+C'è un altro modo in cui possiamo utilizzare gli slot, particolarmente utile quando un componente può contenere del contenuto in markdown, come segue (studiare attentamente...):
+
+```astro
+---
+// (file: MyComponent.astro)
+
+const { title } = Astro.props;
+export interface Props {
+  title: string;
+}
+const content: string = await Astro.props.render('default');
+---
+
+// renderizza l'HTML nella variabile 'content'
+<div>
+  <h2>{title}</h2>
+  <div set:html={content} />
+  <!-- qui verranno iniettati i contenuti dello slot -->
+  <div></div>
+</div>
+```
+
+Whoa!! Cosa sta succendendo qui?
+
+Nota che non c'è una definizione di slot nella parte HTML del componente. Invece, quello che facciamo è far sì che _Astro_ renda il contenuto dello slot (qui, il contenuto 'default', ma è possibile anche rendere slot con nomi) in una variabile e quindi utilizzare quel contenuto in un _div_ (ad esempio).
+
+Pertanto, se l'uso è in un file markdown, come segue:
+
+```mdx
+import MyComponent from '../../components/MyComponent';
+
+# Utilizzando il componente sopra in un file .mdx (che può accettare componenti)
+
+{' '}
+
+<MyComponent title="Questo è un implementatore di slot">### Ecco un po' di contenuto in markdown - Con un elemento elenco.</MyComponent>
+```
+
+_MyComponent_ rende il markdown in HTML e poi lo inietta nel div.
+
+Questo ha effettivamente un grande vantaggio: considera che con l'uso normale non hai accesso ai contenuti dello slot: _Astro_ semplicemente posiziona il contenuto nel tag _&lt;slot/&gt;_. Utilizzando questo metodo, tuttavia, puoi accedere al contenuto e manipolarlo ulteriormente prima che venga inserito nell'HTML.
+
+Ciò permette una grande flessibilità nella progettazione dei componenti.
+
+### Un Altro Passo Avanti
+
+Ora, arriviamo alle tecniche utilizzate in _AstroWind_, useremo il file _pages/index.astro_ per illustrare.
+
+Noterai che il file index importa molti componenti, ciascuno approssimativamente analogo a un pannello nella pagina index. Ciascuno di questi componenti, a sua volta, viene istanziato sequenzialmente in tutta la pagina. Ma noterai che alcuni di essi usano questa struttura (useremo l'ultima sezione, _CallToAction_, poiché è la più illustrativa della tecnica):
+
+```astro
+<CallToAction
+  callToAction={{
+    text: 'Ottieni il template',
+    href: 'https://github.com/onwidget/astrowind',
+    icon: 'tabler:download',
+  }}
+>
+  <Fragment slot="title">
+    Astro + <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+  </Fragment>
+
+  <Fragment slot="subtitle">
+    Sorprenditi molto da questi enormi numeri falsi che stai vedendo in questa pagina. <br class="hidden md:inline" />Non perdere
+    altro tempo! :P
+  </Fragment>
+</CallToAction>
+```
+
+Alcuni punti da notare qui:
+
+<DListItem dt="L'argomento <em>callToAction</em>">
+  Questo argomento viene effettivamente passato come un oggetto JavaScript, non come una stringa. (Tuttavia, nella definizione in TS, potrebbe
+  essere una stringa...)
+</DListItem>
+<DListItem dt="Ci sono diversi elementi <em>Fragment</em> figli">
+  Inoltre, questi elementi &lt;Fragment/&gt; hanno ciascuno uno specificatore _slot="(valore)"_.
+</DListItem>
+
+Quest'ultimo sembra strano, perché &lt;Fragment/&gt; è un componente integrato su cui non hai controllo e non ha una disposizione per il rendering degli slot, <em>di per sé</em>.
+
+La risposta si trova in un paragrafo nella sezione degli slot della documentazione di _Astro_, che afferma:
+
+> Utilizza l'attributo `slot="my-slot"` sull'elemento figlio che vuoi far passare a uno slot corrispondente `name="my-slot" />` nel componente.
+
+È abbastanza conciso e potrebbe sembrare un po' complicato da comprendere, ma fondamentalmente dice quanto segue:
+
+1. Data una componente che definisce uno slot:
+1. puoi fare riferimento a uno slot da un elemento figlio di quella componente e,
+1. fornire contenuto allo slot del componente genitore dal figlio nominando lo slot nel figlio con l'assegnazione della proprietà `slot="<nome-slot>"`, dove il _nome-slot_ è lo slot del genitore.
+
+Quindi, nell'esempio sopra, il componente _CallToAction_ definisce lo slot _subtitle_, e il seguente _&lt;Fragment slot="subtitle"&gt;_ popola lo slot con il seguente contenuto:
+
+```astro
+<Fragment slot="subtitle">
+  Sorprenditi molto da questi enormi numeri falsi che stai vedendo in questa pagina. <br class="hidden md:inline" />Non perdere
+  altro tempo! :P
+</Fragment>
+```
+
+E, il componente _CallToAction_ lo definisce e lo renderizza in questo modo:
+
+
+```astro
+---
+//...
+const { subtitle = await Astro.slots.render('subtitle') } = Astro.props;
+---
+
+//...
+{subtitle && <p class="text-xl text-muted dark:text-slate-400" set:html={subtitle} />}
+ //...
+```
+
+C'è molto da capire qui.
+
+Nota innanzitutto che _subtitle_ è definito come un argomento prop/argomento, ma viene elaborato come uno slot. È interessante notare che gli argomenti prop/argomenti e gli slot sembrano essere in qualche modo interscambiabili: se _subtitle_ fosse semplicemente una stringa, prenderebbe semplicemente quell'assegnazione. La principale differenza è che se li renderizzi in modo indipendente, devi chiamare il render con un modificatore _await_.
