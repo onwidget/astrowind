@@ -86,6 +86,10 @@ export const getHeaderData = (lang) => {
             text: 'Subscription',
             href: getPermalink('/landing/subscription'),
           },
+          {
+            text: 'I18N Support',
+            href: getPermalink('/landing/i18n'),
+          },
         ],
       },
       {
