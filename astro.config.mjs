@@ -36,17 +36,26 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    i18n({
-      locales : I18N_CONFIG.locales,
-      defaultLocale : I18N_CONFIG.defaultLocale,
-    }),
-    sitemap({
-      i18n: {
-        locales : I18N_CONFIG.locales,
-        defaultLocale : I18N_CONFIG.defaultLocale,
-      },
-      filter: defaultLocaleSitemapFilter({ defaultLocale : I18N_CONFIG.defaultLocale }),
-    }),
+    
+    // Conditionally add i18n and sitemap based on I18N_CONFIG.isEnabled
+    ...(I18N_CONFIG.isEnabled
+      ? [
+          i18n({
+            locales: I18N_CONFIG.locales,
+            defaultLocale: I18N_CONFIG.defaultLocale,
+          }),
+          sitemap({
+            i18n: {
+              locales: I18N_CONFIG.locales,
+              defaultLocale: I18N_CONFIG.defaultLocale,
+            },
+            filter: defaultLocaleSitemapFilter({ defaultLocale: I18N_CONFIG.defaultLocale }),
+          }),
+        ]
+      : [
+          sitemap({}),
+        ]),
+    
     mdx(),
     icon({
       include: {

@@ -28,6 +28,7 @@ metadata:
     cardType: summary_large_image
 
 i18n:
+  isEnabled: false
   defaultLocale: en
   locales:
     en: en-US

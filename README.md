@@ -16,7 +16,7 @@
 - ✅ Generation of **project sitemap** based on your routes ([@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)).
 - ✅ **Open Graph tags** for social media sharing.
 - ✅ **Analytics** built-in Google Analytics, and Splitbee integration.
-
+- ✅ **(Optional) I18N support** for multi-language websites.
 <br>
 
 <img src="https://raw.githubusercontent.com/onwidget/.github/main/resources/astrowind/screenshot-astro2.jpg" alt="AstroWind Theme Screenshot">
@@ -34,17 +34,22 @@
 <details open>
 <summary>Table of Contents</summary>
 
-- [Demo](#demo)
-- [Getting started](#getting-started)
-  - [Project structure](#project-structure)
-  - [Commands](#commands)
-  - [Configuration](#configuration)
-  - [Deploy](#deploy)
-- [Frequently Asked Questions](#frequently-asked-questions)
-- [Related Projects](#related-projects)
-- [Contributing](#contributing)
-- [Acknowledgements](#acknowledgements)
-- [License](#license)
+- [🚀 AstroWind](#-astrowind)
+  - [Features](#features)
+  - [Demo](#demo)
+  - [Getting started](#getting-started)
+    - [Project structure](#project-structure)
+    - [Commands](#commands)
+    - [Configuration](#configuration)
+    - [Deploy](#deploy)
+      - [Deploy to production (manual)](#deploy-to-production-manual)
+      - [Deploy to Netlify](#deploy-to-netlify)
+      - [Deploy to Vercel](#deploy-to-vercel)
+  - [Frequently Asked Questions](#frequently-asked-questions)
+  - [Related projects](#related-projects)
+  - [Contributing](#contributing)
+  - [Acknowledgements](#acknowledgements)
+  - [License](#license)
 
 </details>
 
@@ -178,7 +183,11 @@ metadata:
     cardType: summary_large_image
 
 i18n:
-  language: en
+  isEnabled: false
+  defaultLocale: en
+  locales:
+    en: en-US
+    it: it-IT
   textDirection: ltr
 
 apps:
