@@ -8,7 +8,7 @@ import { getPermalink } from '~/utils/permalinks';
 // i18n RSS feed
 
 export function getStaticPaths() {
-  if (!APP_BLOG_CONFIG.isEnabled) {
+  if (!APP_BLOG_CONFIG.isEnabled || !I18N_CONFIG.isEnabled) {
     return [];
   }
 

@@ -18,6 +18,7 @@ export interface MetaDataConfig extends Omit<MetaData, 'title'> {
   };
 }
 export interface I18NConfig {
+  isEnabled: boolean;
   defaultLocale: string;
   locales: { [key: string]: string };
   textDirection: string;
@@ -117,6 +118,7 @@ const getMetadata = () => {
 
 const getI18N = () => {
   const _default = {
+    isEnabled: false,
     defaultLocale: 'en',
     locales: {
       en: 'en-US',  // the `defaultLocale` value must present in `locales` keys

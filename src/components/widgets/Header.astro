@@ -33,6 +33,7 @@ export interface Props {
   isFullWidth?: boolean;
   showToggleTheme?: boolean;
   showRssFeed?: boolean;
+  showLanguagePicker?: boolean;
   position?: string;
 }
 
@@ -45,6 +46,7 @@ const {
   isFullWidth = false,
   showToggleTheme = false,
   showRssFeed = false,
+  showLanguagePicker = false,
   position = "center",
 } = Astro.props;
 
@@ -143,7 +145,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
               </a>
             )
           }
-          <LanguagePicker />
+          {showLanguagePicker && <LanguagePicker className="ml-4" />}
         </div>
         {
           actions?.length ? (
