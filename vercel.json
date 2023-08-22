@@ -11,5 +11,22 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    { 
+      "source": "/landing/mobile-app",
+      "destination": "https://astrowind.vercel.app/homes/mobile-app", 
+      "statusCode": 301
+    },
+    { 
+      "source": "/landing/saas",
+      "destination": "https://astrowind.vercel.app/homes/saas", 
+      "statusCode": 301
+    },
+    { 
+      "source": "/landing/startup",
+      "destination": "https://astrowind.vercel.app/homes/startup", 
+      "statusCode": 301
+    }
   ]
 }
