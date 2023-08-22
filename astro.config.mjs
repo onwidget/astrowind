@@ -51,7 +51,6 @@ export default defineConfig({
           'business-contact',
           'database',
         ],
-        ri: ['twitter-fill', 'facebook-box-fill', 'linkedin-box-fill', 'whatsapp-fill', 'mail-fill'],
       },
     }),
 
