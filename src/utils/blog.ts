@@ -173,7 +173,7 @@ export const getStaticPathsBlogList = async ({ paginate }) => {
 /** */
 export const getStaticPathsBlogPost = async () => {
   if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
-  return (await fetchPosts()).map((post) => ({
+  return (await fetchPosts()).flatMap((post) => ({
     params: {
       blog: post.permalink,
     },
@@ -191,7 +191,7 @@ export const getStaticPathsBlogCategory = async ({ paginate }) => {
     typeof post.category === 'string' && categories.add(post.category.toLowerCase());
   });
 
-  return Array.from(categories).map((category: string) =>
+  return Array.from(categories).flatMap((category: string) =>
     paginate(
       posts.filter((post) => typeof post.category === 'string' && category === post.category.toLowerCase()),
       {
@@ -213,7 +213,7 @@ export const getStaticPathsBlogTag = async ({ paginate }) => {
     Array.isArray(post.tags) && post.tags.map((tag) => tags.add(tag.toLowerCase()));
   });
 
-  return Array.from(tags).map((tag: string) =>
+  return Array.from(tags).flatMap((tag: string) =>
     paginate(
       posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.toLowerCase() === tag)),
       {

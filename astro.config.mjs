@@ -31,6 +31,10 @@ export default defineConfig({
 
   output: 'static',
 
+  build: {
+    inlineStylesheets: 'auto'
+  },
+
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -76,10 +80,6 @@ export default defineConfig({
 
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin],
-  },
-
-  experimental:{
-    assets: true
   },
 
   vite: {

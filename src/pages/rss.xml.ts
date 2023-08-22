@@ -4,7 +4,7 @@ import { SITE_CONFIG, METADATA_CONFIG, APP_BLOG_CONFIG } from '~/utils/config';
 import { fetchPosts } from '~/utils/blog';
 import { getPermalink } from '~/utils/permalinks';
 
-export const get = async () => {
+export const GET = async () => {
   if (!APP_BLOG_CONFIG.isEnabled) {
     return new Response(null, {
       status: 404,
@@ -14,7 +14,7 @@ export const get = async () => {
 
   const posts = await fetchPosts();
 
-  return rss({
+  const { body = "" } = await rss({
     title: `${SITE_CONFIG.name}’s Blog`,
     description: METADATA_CONFIG?.description || "",
     site: import.meta.env.SITE,
@@ -27,5 +27,12 @@ export const get = async () => {
     })),
 
     trailingSlash: SITE_CONFIG.trailingSlash,
+  })
+
+  return new Response(body, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/xml"
+    }
   });
 };
