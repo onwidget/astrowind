@@ -1,10 +1,10 @@
 ---
-import { UI_CONFIG } from "~/utils/config";
+import { UI } from "~/utils/config";
 
 // TODO: This code is temporary
 ---
 
-<script is:inline define:vars={{ defaultTheme: UI_CONFIG.theme || "system" }}>
+<script is:inline define:vars={{ defaultTheme: UI.theme || "system" }}>
   function applyTheme(theme) {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");

@@ -1,7 +1,7 @@
 ---
 import '~/assets/styles/tailwind.css';
 
-import { I18N_CONFIG } from "~/utils/config";
+import { I18N } from "~/utils/config";
 
 import CommonMeta from '~/components/common/CommonMeta.astro';
 import Favicons from '~/components/Favicons.astro';
@@ -19,7 +19,7 @@ export interface Props {
 }
 
 const { metadata = {} } = Astro.props;
-const { language, textDirection } = I18N_CONFIG;
+const { language, textDirection } = I18N;
 ---
 
 <!DOCTYPE html>

@@ -1,6 +1,6 @@
 import slugify from 'limax';
 
-import { SITE_CONFIG, APP_BLOG_CONFIG } from '~/utils/config';
+import { SITE, APP_BLOG } from '~/utils/config';
 
 import { trim } from '~/utils/utils';
 
@@ -10,10 +10,10 @@ const createPath = (...params: string[]) => {
     .map((el) => trimSlash(el))
     .filter((el) => !!el)
     .join('/');
-  return '/' + paths + (SITE_CONFIG.trailingSlash && paths ? '/' : '');
+  return '/' + paths + (SITE.trailingSlash && paths ? '/' : '');
 };
 
-const BASE_PATHNAME = SITE_CONFIG.base || '/';
+const BASE_PATHNAME = SITE.base || '/';
 
 export const cleanSlug = (text = '') =>
   trimSlash(text)
@@ -21,18 +21,18 @@ export const cleanSlug = (text = '') =>
     .map((slug) => slugify(slug))
     .join('/');
 
-export const BLOG_BASE = cleanSlug(APP_BLOG_CONFIG?.list?.pathname);
-export const CATEGORY_BASE = cleanSlug(APP_BLOG_CONFIG?.category?.pathname);
-export const TAG_BASE = cleanSlug(APP_BLOG_CONFIG?.tag?.pathname) || 'tag';
+export const BLOG_BASE = cleanSlug(APP_BLOG?.list?.pathname);
+export const CATEGORY_BASE = cleanSlug(APP_BLOG?.category?.pathname);
+export const TAG_BASE = cleanSlug(APP_BLOG?.tag?.pathname) || 'tag';
 
-export const POST_PERMALINK_PATTERN = trimSlash(APP_BLOG_CONFIG?.post?.permalink || `${BLOG_BASE}/%slug%`);
+export const POST_PERMALINK_PATTERN = trimSlash(APP_BLOG?.post?.permalink || `${BLOG_BASE}/%slug%`);
 
 /** */
 export const getCanonical = (path = ''): string | URL => {
-  const url = String(new URL(path, SITE_CONFIG.site));
-  if (SITE_CONFIG.trailingSlash == false && path && url.endsWith('/')) {
+  const url = String(new URL(path, SITE.site));
+  if (SITE.trailingSlash == false && path && url.endsWith('/')) {
     return url.slice(0, -1);
-  } else if (SITE_CONFIG.trailingSlash == true && path && !url.endsWith('/')) {
+  } else if (SITE.trailingSlash == true && path && !url.endsWith('/')) {
     return url + '/';
   }
   return url;

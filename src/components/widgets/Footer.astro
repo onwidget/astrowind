@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { SITE_CONFIG } from '~/utils/config';
+import { SITE } from '~/utils/config';
 import { getHomePermalink } from '~/utils/permalinks';
 
 interface Link {
@@ -32,7 +32,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
     <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
       <div class="col-span-12 lg:col-span-4">
         <div class="mb-2">
-          <a class="inline-block font-bold text-xl" href={getHomePermalink()}>{SITE_CONFIG?.name}</a>
+          <a class="inline-block font-bold text-xl" href={getHomePermalink()}>{SITE?.name}</a>
         </div>
         <div class="text-sm text-muted">
           {

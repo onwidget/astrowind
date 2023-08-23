@@ -4,8 +4,8 @@ import { AstroSeo } from '@astrolib/seo';
 
 import type { AstroSeoProps } from '@astrolib/seo/src/types';
 
-import { SITE_CONFIG, METADATA_CONFIG, I18N_CONFIG } from '~/utils/config';
-import { MetaData } from '~/types';
+import { SITE, METADATA, I18N } from '~/utils/config';
+import type { MetaData } from '~/types';
 import { getCanonical } from '~/utils/permalinks';
 
 import { adaptOpenGraphImages } from '~/utils/images';
@@ -34,9 +34,9 @@ const seoProps: AstroSeoProps = merge(
     description: undefined,
     openGraph: {
       url: canonical,
-      site_name: SITE_CONFIG?.name,
+      site_name: SITE?.name,
       images: [],
-      locale: I18N_CONFIG?.language || 'en',
+      locale: I18N?.language || 'en',
       type: 'website',
     },
     twitter: {
@@ -44,13 +44,13 @@ const seoProps: AstroSeoProps = merge(
     },
   },
   {
-    title: METADATA_CONFIG?.title?.default,
-    titleTemplate: METADATA_CONFIG?.title?.template,
-    noindex: typeof METADATA_CONFIG?.robots?.index !== 'undefined' ? !METADATA_CONFIG.robots.index : undefined,
-    nofollow: typeof METADATA_CONFIG?.robots?.follow !== 'undefined' ? !METADATA_CONFIG.robots.follow : undefined,
-    description: METADATA_CONFIG?.description,
-    openGraph: METADATA_CONFIG?.openGraph,
-    twitter: METADATA_CONFIG?.twitter,
+    title: METADATA?.title?.default,
+    titleTemplate: METADATA?.title?.template,
+    noindex: typeof METADATA?.robots?.index !== 'undefined' ? !METADATA.robots.index : undefined,
+    nofollow: typeof METADATA?.robots?.follow !== 'undefined' ? !METADATA.robots.follow : undefined,
+    description: METADATA?.description,
+    openGraph: METADATA?.openGraph,
+    twitter: METADATA?.twitter,
   },
   {
     title: title,

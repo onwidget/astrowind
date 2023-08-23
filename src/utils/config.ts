@@ -196,9 +196,9 @@ const getAnalytics = () => {
   return merge({}, _default, config?.analytics ?? {}) as AnalyticsConfig;
 };
 
-export const SITE_CONFIG = getSite();
-export const I18N_CONFIG = getI18N();
-export const METADATA_CONFIG = getMetadata();
-export const APP_BLOG_CONFIG = getAppBlog();
-export const UI_CONFIG = getUI();
-export const ANALYTICS_CONFIG = getAnalytics();
+export const SITE = getSite();
+export const I18N = getI18N();
+export const METADATA = getMetadata();
+export const APP_BLOG = getAppBlog();
+export const UI = getUI();
+export const ANALYTICS = getAnalytics();
