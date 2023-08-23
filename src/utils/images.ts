@@ -21,7 +21,9 @@ export const fetchLocalImages = async () => {
 };
 
 /** */
-export const findImage = async (imagePath?: string | ImageMetadata | null): Promise<string | ImageMetadata | undefined | null> => {
+export const findImage = async (
+  imagePath?: string | ImageMetadata | null
+): Promise<string | ImageMetadata | undefined | null> => {
   // Not string
   if (typeof imagePath !== 'string') {
     return imagePath;

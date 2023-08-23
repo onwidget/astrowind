@@ -14,9 +14,9 @@ export const GET = async () => {
 
   const posts = await fetchPosts();
 
-  const { body = "" } = await rss({
+  const { body = '' } = await rss({
     title: `${SITE.name}’s Blog`,
-    description: METADATA?.description || "",
+    description: METADATA?.description || '',
     site: import.meta.env.SITE,
 
     items: posts.map((post) => ({
@@ -27,12 +27,12 @@ export const GET = async () => {
     })),
 
     trailingSlash: SITE.trailingSlash,
-  })
+  });
 
   return new Response(body, {
     status: 200,
     headers: {
-      "Content-Type": "application/xml"
-    }
+      'Content-Type': 'application/xml',
+    },
   });
 };
