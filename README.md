@@ -5,7 +5,7 @@
 
 🌟 _Most *starred* & *forked* Astro theme in 2022_. 🌟
 
-**AstroWind** is a free and open-source template to make your website using **[Astro 3.0](https://astro.build/blog/astro-2/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account web best practices.
+**AstroWind** is a free and open-source template to make your website using **[Astro 3.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account web best practices.
 
 ## Features
 
@@ -58,7 +58,7 @@
 
 ## Getting started
 
-**AstroWind** tries to give you quick access to creating a website using [Astro 3.0](https://astro.build/blog/astro-2/) + [Tailwind CSS](https://tailwindcss.com/). It's a free theme focuses on simplicity, good practices and high performance.
+**AstroWind** tries to give you quick access to creating a website using [Astro 3.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/). It's a free theme focuses on simplicity, good practices and high performance.
 
 Very little vanilla javascript is used only to provide basic functionality so that each developer decides which framework (React, Vue, Svelte, Solid JS...) to use and how to approach their goals..
 
