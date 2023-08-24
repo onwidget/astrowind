@@ -273,6 +273,7 @@ export interface Content extends Headline, Widget {
   columns?: number;
   isReversed?: boolean;
   isAfterContent?: boolean;
+  callToAction?: CallToAction;
 }
 
 export interface Contact extends Headline, Form, Widget {}
