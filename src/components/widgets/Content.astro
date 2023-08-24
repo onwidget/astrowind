@@ -1,10 +1,10 @@
 ---
-import { Icon } from 'astro-icon/components';
 import type { Content } from '~/types';
 import Headline from '../ui/Headline.astro';
 import WidgetWrapper from '../ui/WidgetWrapper.astro';
 import Image from '~/components/common/Image.astro';
 import CTA from '../ui/CTA.astro';
+import ItemGrid from '../ui/ItemGrid.astro';
 
 const {
   title = await Astro.slots.render('title'),
@@ -13,6 +13,7 @@ const {
   content = await Astro.slots.render('content'),
   callToAction,
   items = [],
+  columns,
   image = await Astro.slots.render('image'),
   isReversed = false,
   isAfterContent = false,
@@ -53,25 +54,19 @@ const {
           )
         }
 
-        {
-          items && (
-            <div class="space-y-8">
-              {items.map(({ title: title2, description, icon }) => (
-                <div class="flex">
-                  <div class="flex-shrink-0">
-                    <div class="flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50">
-                      <Icon name={icon ? icon : 'tabler:check'} class="w-5 h-5" />
-                    </div>
-                  </div>
-                  <div class="ml-4 rtl:ml-0 rtl:mr-4">
-                    {title2 && <h3 class="text-lg font-medium leading-6 dark:text-white">{title2}</h3>}
-                    {description && <p class="mt-2 text-muted dark:text-slate-400" set:html={description} />}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )
-        }
+        <ItemGrid
+          items={items}
+          columns={columns}
+          defaultIcon="tabler:check"
+          classes={{
+            container: `gap-y-4 md:gap-y-8`,
+            panel: 'max-w-none',
+            title: 'text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2',
+            description: 'text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2',
+            icon: 'flex h-7 w-7 items-center justify-center rounded-full bg-green-600 dark:bg-green-700 text-gray-50 p-1',
+            action: 'text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2',
+          }}
+        />
       </div>
       <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2">
         {
