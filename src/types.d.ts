@@ -229,7 +229,7 @@ export interface Testimonials extends Headline, Widget {
   callToAction?: CallToAction;
 }
 
-export interface Clients extends Headline, Widget {
+export interface Brands extends Headline, Widget {
   icons?: Array<string>;
   images?: Array<Image>;
 }
