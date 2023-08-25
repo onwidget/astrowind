@@ -229,7 +229,7 @@ export interface Testimonials extends Headline, Widget {
   callToAction?: CallToAction;
 }
 
-export interface Clients extends Headline, Widget {
+export interface Brands extends Headline, Widget {
   icons?: Array<string>;
   images?: Array<Image>;
 }
@@ -273,6 +273,7 @@ export interface Content extends Headline, Widget {
   columns?: number;
   isReversed?: boolean;
   isAfterContent?: boolean;
+  callToAction?: CallToAction;
 }
 
 export interface Contact extends Headline, Form, Widget {}
