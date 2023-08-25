@@ -7,6 +7,8 @@ import Pagination from '~/components/blog/Pagination.astro';
 
 import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
 
+export const prerender = true;
+
 export async function getStaticPaths ({ paginate }) {
   return await getStaticPathsBlogList({ paginate });
 }
