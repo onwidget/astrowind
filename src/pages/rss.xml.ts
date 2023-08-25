@@ -1,4 +1,4 @@
-import rss from '@astrojs/rss';
+import { getRssString } from '@astrojs/rss';
 
 import { SITE, METADATA, APP_BLOG } from '~/utils/config';
 import { fetchPosts } from '~/utils/blog';
@@ -14,7 +14,7 @@ export const GET = async () => {
 
   const posts = await fetchPosts();
 
-  const { body = '' } = await rss({
+  const rss = await getRssString({
     title: `${SITE.name}’s Blog`,
     description: METADATA?.description || '',
     site: import.meta.env.SITE,
@@ -29,8 +29,7 @@ export const GET = async () => {
     trailingSlash: SITE.trailingSlash,
   });
 
-  return new Response(body, {
-    status: 200,
+  return new Response(rss, {
     headers: {
       'Content-Type': 'application/xml',
     },
