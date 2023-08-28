@@ -1,6 +1,6 @@
 ---
-import { Icon } from 'astro-icon/components';
 import Image from '~/components/common/Image.astro';
+import CTA from '../ui/CTA.astro';
 
 const {
   title = await Astro.slots.render('title'),
@@ -19,12 +19,14 @@ const {
     <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
     <div class="py-12 md:py-20">
       <div class="text-center pb-10 md:pb-16 max-w-screen-lg mx-auto">
-        {tagline && (
-          <p
-            class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase"
-            set:html={tagline}
-          />
-        )}
+        {
+          tagline && (
+            <p
+              class="text-base text-secondary dark:text-blue-200 font-bold tracking-wide uppercase"
+              set:html={tagline}
+            />
+          )
+        }
         {
           title && (
             <h1
@@ -42,14 +44,9 @@ const {
                   {typeof callToAction === 'string' ? (
                     <Fragment set:html={callToAction} />
                   ) : (
-                    <a class="btn btn-primary sm:mb-0 w-full" href={callToAction?.href} target="_blank" rel="noopener">
-                      {callToAction?.icon && (
-                        <>
-                          <Icon name={callToAction.icon} class="w-5 h-5 mr-1 -ml-1.5 rtl:-mr-1.5 rtl:ml-1" />
-                        </>
-                      )}
-                      {callToAction?.text}
-                    </a>
+                    <div class="btn btn-primary sm:mb-0 w-full">
+                      <CTA callToAction={callToAction} />
+                    </div>
                   )}
                 </div>
               )
@@ -60,15 +57,9 @@ const {
                   {typeof callToAction2 === 'string' ? (
                     <Fragment set:html={callToAction2} />
                   ) : (
-                    <a class="btn w-full" href={callToAction2?.href}>
-                      {callToAction2?.icon && (
-                        <>
-                          <Icon name={callToAction2.icon} class="w-5 h-5 mr-1 -ml-1.5" />
-                          &nbsp;
-                        </>
-                      )}
-                      {callToAction2.text}
-                    </a>
+                    <div class="btn w-full">
+                      <CTA callToAction={callToAction2} />
+                    </div>
                   )}
                 </div>
               )

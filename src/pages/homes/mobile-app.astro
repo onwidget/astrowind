@@ -19,7 +19,12 @@ const metadata = {
 
   <Hero2
     tagline="Mobile App Web Demo"
-    callToAction={{ text: 'Download App', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
+    callToAction={{
+      targetBlank: true,
+      text: 'Download App',
+      href: 'https://github.com/onwidget/astrowind',
+      icon: 'tabler:download',
+    }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
     image={{
       src: 'https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
@@ -42,6 +47,7 @@ const metadata = {
   <!-- Features3 Widget ************** -->
 
   <Features3
+    id="features"
     title="How to use our app?"
     subtitle="Tired of spending hours crafting documents from scratch? Our app offers an innovative solution. With a wide array of professionally designed templates, you can now create stunning documents in minutes. Explore our templates now and experience the difference."
     tagline="Step-by-step guide"

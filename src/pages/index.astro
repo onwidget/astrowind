@@ -22,7 +22,12 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    callToAction={{ text: 'Get template', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
+    callToAction={{
+      targetBlank: true,
+      text: 'Get template',
+      href: 'https://github.com/onwidget/astrowind',
+      icon: 'tabler:download',
+    }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
     image={{ src: '~/assets/images/hero.png', alt: 'AstroWind Hero Image' }}
   >
@@ -320,7 +325,7 @@ const metadata = {
     title="Frequently Asked Questions"
     subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
     tagline="FAQs"
-    classes={{ container: 'max-w-6xl'}}
+    classes={{ container: 'max-w-6xl' }}
     items={[
       {
         title: 'Why AstroWind?',
