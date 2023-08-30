@@ -1,3 +1,5 @@
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
+
 export interface Post {
   /** A unique ID number that identifies a post. */
   id: string;
@@ -34,7 +36,7 @@ export interface Post {
   draft?: boolean;
 
   /**  */
-  Content?: unknown;
+  Content?: AstroComponentFactory;
   content?: string;
 
   /**  */

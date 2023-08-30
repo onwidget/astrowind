@@ -31,10 +31,6 @@ export default defineConfig({
 
   output: 'static',
 
-  build: {
-    inlineStylesheets: 'auto',
-  },
-
   integrations: [
     tailwind({
       applyBaseStyles: false,
