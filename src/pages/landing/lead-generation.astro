@@ -1,10 +1,8 @@
 ---
 import Layout from '~/layouts/LandingLayout.astro';
 
-import Hero2 from '~/components/widgets/Hero2.astro';
-import Contact from '~/components/widgets/Contact.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
-import Features from '~/components/widgets/Features.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Lead Generation Landing Page Demo',
@@ -14,150 +12,25 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero2 Widget ******************* -->
 
-  <Hero2
+  <Hero
     tagline="Lead Generation Landing Demo"
-    title="Unlock your website's potential with a Free SEO Audit!"
-    callToAction={{ text: 'Get your Free Audit', href: '#contact' }}
+    title="Effective Lead Generation Landing Page: Unlock the Secrets"
+    subtitle="Discover the secrets to creating a Landing Page that turns curious visitors into eager leads. (Your Hero should grab attention instantly. Use a powerful headline that speaks directly to your target audience.)"
+    callToAction={{ text: 'Call to Action', href: '#', icon: 'tabler:square-rounded-arrow-right' }}
+    callToAction2={{ text: 'Learn more', href: '#' }}
     image={{
-      src: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80',
-      alt: 'People receiving a Free SEO Audit',
+      src: 'https://images.unsplash.com/photo-1597423498219-04418210827d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80',
+      alt: 'Magnet attracting screws. Lead generation landing page demo',
     }}
-  >
-    <Fragment slot="subtitle">
-      Discover hidden opportunities to rank higher, drive more traffic, and boost conversions. <span
-        class="hidden sm:inline"
-        >Sign up for our free SEO audit, and you'll receive a comprehensive analysis of your website's current
-        performance.</span
-      >
-    </Fragment>
-  </Hero2>
-
-  <!-- Features Widget *************** -->
-
-  <Features
-    title="What you'll get"
-    subtitle="Are you struggling to rank higher on search engines? Is your website not attracting the traffic it deserves? Our digital marketing agency will provide you with:"
-    items={[
-      {
-        title: 'In-depth SEO assessment tailored to your business',
-        description:
-          'Receive a thorough evaluation tailored to your business, pinpointing optimization opportunities and paving the way for improved search visibility and performance.',
-        icon: 'tabler:gift',
-      },
-      {
-        title: 'Identification of critical optimization opportunities',
-        description:
-          'Uncover key areas for enhancement, ensuring your website is finely tuned to attract organic traffic and engage potential customers effectively.',
-        icon: 'tabler:gift',
-      },
-      {
-        title: `Personalized suggestions to boost your website's search visibility`,
-        description: `Benefit from custom recommendations designed to enhance your website's search engine rankings, resulting in increased online presence and better chances of attracting quality leads.`,
-        icon: 'tabler:gift',
-      },
-      {
-        title: 'Detailed report highlighting areas for improvement',
-        description: `Get a comprehensive report highlighting areas for refinement, enabling you to fine-tune your online strategy and elevate your website's overall effectiveness.`,
-        icon: 'tabler:gift',
-      },
-    ]}
   />
 
-  <Features
-    title="Benefits of the offer"
-    subtitle="Our free SEO audit is your first step towards online success. By identifying and addressing your website's SEO gaps, you'll experience:"
-    columns={2}
-    items={[
-      {
-        title: 'Improved search engine rankings for targeted keywords',
-        description: `Through a comprehensive SEO audit, the agency identifies relevant keywords and offers optimization guidance for your website's content, structure, and meta tags. This boosts the likelihood of higher search engine rankings for those keywords.`,
-        icon: 'tabler:thumb-up',
-      },
-      {
-        title: 'Enhanced organic traffic and visibility',
-        description:
-          'The SEO audit reveals optimization opportunities for higher organic traffic by addressing technical issues, guiding content creation, and improving search visibility to attract relevant visitors interested in your offerings.',
-        icon: 'tabler:thumb-up',
-      },
-      {
-        title: 'Increased chances of attracting quality leads and conversions',
-        description:
-          'Higher search rankings draw "high-intent" users seeking your offerings, with greater conversion potential. The SEO audit optimizes your site, boosting lead engagement and conversions.',
-        icon: 'tabler:thumb-up',
-      },
-      {
-        title: 'A solid foundation for future digital marketing strategies',
-        description: `Insights from the SEO audit guide future marketing efforts. Addressing optimizations enhances site health, setting a strong base for content, ads, and social campaigns. Boosting your site's SEO amplifies broader marketing strategies' impact.`,
-        icon: 'tabler:thumb-up',
-      },
-    ]}
-  />
-
-  <!-- Contact Widget ******************* -->
-
-  <Contact
-    id="contact"
-    title="Sign up now!"
-    subtitle="You'll receive a free comprehensive SEO audit report for your website, highlighting areas for improvement and growth."
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
-      },
-      {
-        type: 'text',
-        name: 'company',
-        label: 'Company',
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-      },
-      {
-        type: 'email',
-        name: 'website',
-        label: 'Website URL',
-      },
-    ]}
-    button="Get your Free Audit"
-    description="We use your information exclusively for the free SEO audit and do not share it with third parties."
-  />
-
-  <!-- Testimonials Widget *********** -->
-
-  <Testimonials
-    title="Results speak louder"
-    subtitle="Hear from those who took their SEO to the next level."
-    testimonials={[
-      {
-        testimonial: `Their expertise in SEO helped us increase our organic traffic by 200% within just a few months. The free SEO audit was the first step that led to remarkable results!`,
-        name: 'John Smith',
-        job: 'CEO of ABC Company',
-        image: {
-          src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'John Smith',
-        },
-      },
-      {
-        testimonial: `I was amazed by the insights provided in the free SEO audit. Their team's recommendations were practical and easy to implement. As a result, our website's organic traffic increased by 50% in just a few months.`,
-        name: 'Jane Doe',
-        job: 'Marketing Manager at DEF Corporation',
-        image: {
-          src: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=772&q=80',
-          alt: 'Jane Doe',
-        },
-      },
-      {
-        testimonial: `In-depth analysis and personalized suggestions helped us identify and fix critical SEO issues. Since then, our search rankings have improved significantly, driving more targeted leads to our site.`,
-        name: 'Mark Johnson',
-        job: 'Owner of XYZ Solutions',
-        image: {
-          src: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Mark Johnson',
-        },
-      },
-    ]}
+  <CallToAction
+    title="Coming soon"
+    subtitle="We are working on the content of these demo pages. You will see them very soon. Stay tuned Stay tuned!"
+    callToAction={{
+      text: 'Get template',
+      href: 'https://github.com/onwidget/astrowind',
+      icon: 'tabler:download',
+    }}
   />
 </Layout>
