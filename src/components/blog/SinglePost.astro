@@ -16,7 +16,7 @@ export interface Props {
 }
 
 const { post, url } = Astro.props;
-const Content = post?.Content || null;
+const { Content } = post;
 ---
 
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
@@ -79,7 +79,7 @@ const Content = post?.Content || null;
         Content ? (
           <Content />
         ) : (
-          <Fragment set:html={post.content} />
+          <Fragment set:html={post.content || ""} />
         )
       }
     </div>
