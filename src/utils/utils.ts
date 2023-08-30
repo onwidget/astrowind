@@ -23,7 +23,7 @@ export const trim = (str = '', ch?: string) => {
 export const toUiAmount = (amount: number) => {
   if (!amount) return 0;
 
-  let value;
+  let value: string;
 
   if (amount >= 1000000000) {
     const formattedNumber = (amount / 1000000000).toFixed(1);
