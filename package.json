@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@astrojs/rss": "^3.0.0",
+    "@astrojs/sitemap": "^3.0.0",
     "@astrolib/analytics": "^0.4.2",
     "@astrolib/seo": "^1.0.0-beta.4",
     "@fontsource-variable/inter": "^5.0.8",
@@ -26,7 +27,6 @@
   "devDependencies": {
     "@astrojs/mdx": "^1.0.0",
     "@astrojs/partytown": "^2.0.0",
-    "@astrojs/sitemap": "^3.0.0",
     "@astrojs/tailwind": "5.0.0",
     "@iconify-json/flat-color-icons": "^1.1.7",
     "@iconify-json/tabler": "^1.1.89",
