@@ -21,7 +21,12 @@ const metadata = {
 
   <Hero
     tagline="Startup Web Demo"
-    callToAction={{ text: 'Get templates', href: 'https://github.com/onwidget/astrowind', icon: 'tabler:download' }}
+    callToAction={{
+      targetBlank: true,
+      text: 'Get templates',
+      href: 'https://github.com/onwidget/astrowind',
+      icon: 'tabler:download',
+    }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
   >
     <Fragment slot="title">
