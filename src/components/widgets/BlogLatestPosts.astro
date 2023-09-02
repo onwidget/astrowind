@@ -7,6 +7,7 @@ import { getBlogPermalink } from "~/utils/permalinks";
 import { findLatestPosts } from "~/utils/blog";
 import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
 import type { Widget } from "~/types";
+import Button from "../ui/Button.astro";
 
 export interface Props extends Widget {
   title?: string;
@@ -43,12 +44,7 @@ const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
               set:html={title}
             />
             {APP_BLOG.list.isEnabled && linkText && linkUrl && (
-              <a
-                class="text-muted dark:text-slate-400 hover:text-primary transition ease-in duration-200 block mb-6 lg:mb-0"
-                href={linkUrl}
-              >
-                {linkText} »
-              </a>
+              <Button variant="link" href={linkUrl}> {linkText} »</Button>
             )}
           </div>
         )}

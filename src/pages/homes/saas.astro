@@ -13,7 +13,7 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
 const metadata = {
-  title: 'Saas Landing Page',
+  title: 'SaaS Landing Page',
 };
 ---
 
@@ -23,12 +23,12 @@ const metadata = {
       {...headerData}
       actions={[
         {
-          type: 'ghost',
+          variant: 'secondary',
           text: 'Login',
           href: '#',
         },
         {
-          type: 'primary',
+          variant: 'primary',
           text: 'Sign Up',
           href: '#',
         },
@@ -41,8 +41,10 @@ const metadata = {
 
   <Hero2
     tagline="SaaS Web Demo"
-    callToAction={{ targetBlank: true, text: 'Get Started', href: 'https://github.com/onwidget/astrowind' }}
-    callToAction2={{ text: 'Learn more', href: '#features' }}
+    actions={[
+      { variant: "primary", target: '_blank', text: 'Get Started', href: 'https://github.com/onwidget/astrowind' },
+      { text: 'Learn more', href: '#features' },
+    ]}
     image={{
       src: 'https://images.unsplash.com/photo-1580481072645-022f9a6dbf27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       alt: 'AstroWind Hero Image',
@@ -240,7 +242,7 @@ const metadata = {
         price: '0',
         period: '/ month',
         callToAction: {
-          targetBlank: true,
+          target: '_blank',
           text: 'Get Started for Free',
           href: '#',
         },
@@ -251,7 +253,7 @@ const metadata = {
         price: 15,
         period: '/ Month',
         callToAction: {
-          targetBlank: true,
+          target: '_blank',
           text: 'Upgrade to Pro',
           href: '#',
         },
@@ -264,7 +266,7 @@ const metadata = {
         price: 45,
         period: '/ Month',
         callToAction: {
-          targetBlank: true,
+          target: '_blank',
           text: 'Unlock Enterprise Features',
           href: '#',
         },

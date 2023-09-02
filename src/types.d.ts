@@ -1,4 +1,5 @@
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
+import type { HTMLAttributes } from 'astro/types';
 
 export interface Post {
   /** A unique ID number that identifies a post. */
@@ -174,11 +175,10 @@ export interface Disclaimer {
 }
 
 // COMPONENTS
-export interface CallToAction {
-  targetBlank?: boolean;
+export interface CallToAction extends HTMLAttributes<a> {
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
   text?: string;
   icon?: string;
-  href?: string;
   classes?: Record<string, string>;
 }
 

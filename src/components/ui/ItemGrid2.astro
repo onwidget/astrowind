@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 import { twMerge } from "tailwind-merge";
 import type { ItemGrid } from "~/types";
-import CTA from "./CTA.astro";
+import Button from "./Button.astro";
 
 const {
   items = [],
@@ -82,8 +82,8 @@ const {
               />
             )}
             {callToAction && (
-              <div class="mt-2 text-primary cursor-pointer">
-                <CTA callToAction={callToAction} />
+              <div class="mt-2">
+                <Button {...callToAction} />
               </div>
             )}
           </div>

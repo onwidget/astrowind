@@ -1,8 +1,9 @@
 ---
 import { Icon } from 'astro-icon/components';
-import Headline from '../ui/Headline.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+import Button from '~/components/ui/Button.astro';
 import type { Steps } from '~/types';
-import WidgetWrapper from '../ui/WidgetWrapper.astro';
 
 const {
   title = await Astro.slots.render('title'),
@@ -42,10 +43,7 @@ const {
             callToAction &&
             callToAction.text &&
             callToAction.href && (
-              <a class="btn btn-primary mb-12" href={callToAction.href} target="_blank" rel="noopener">
-                {callToAction.icon && <Icon name={callToAction.icon} class="w-5 h-5 mr-1 -ml-1.5  rtl:-mr-1.5 rtl:ml-1" />}
-                {callToAction.text}
-              </a>
+              <Button variant="primary" {...callToAction} class="mb-12 w-auto"/>
             )
           )
         }

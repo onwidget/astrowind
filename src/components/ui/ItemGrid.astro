@@ -1,7 +1,7 @@
 ---
 import { twMerge } from 'tailwind-merge';
 import type { ItemGrid } from '~/types';
-import CTA from './CTA.astro';
+import Button from './Button.astro';
 import { Icon } from 'astro-icon/components';
 
 const { items = [], columns, defaultIcon = '', classes = {} } = Astro.props as ItemGrid;
@@ -54,12 +54,12 @@ const {
               {callToAction && (
                 <div
                   class={twMerge(
-                    `${title || description ? 'mt-3' : ''} text-primary cursor-pointer`,
+                    `${title || description ? 'mt-3' : ''}`,
                     actionClass,
                     itemClasses?.actionClass
                   )}
                 >
-                  <CTA callToAction={callToAction} />
+                  <Button variant="link" {...callToAction} />
                 </div>
               )}
             </div>

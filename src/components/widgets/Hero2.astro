@@ -1,15 +1,14 @@
 ---
 import Image from '~/components/common/Image.astro';
 import type { CallToAction } from '~/types';
-import CTA from '../ui/CTA.astro';
+import Button from '~/components/ui/Button.astro';
 
 export interface Props {
   title?: string;
   subtitle?: string;
   tagline?: string;
   content?: string;
-  callToAction?: string | CallToAction;
-  callToAction2?: string | CallToAction;
+  actions?: string | CallToAction[];
   image?: string | any; // TODO: find HTMLElementProps
 }
 
@@ -18,8 +17,7 @@ const {
   subtitle = await Astro.slots.render('subtitle'),
   tagline,
   content = await Astro.slots.render('content'),
-  callToAction = await Astro.slots.render('callToAction'),
-  callToAction2 = await Astro.slots.render('callToAction2'),
+  actions = await Astro.slots.render('actions'),
   image = await Astro.slots.render('image'),
 } = Astro.props;
 ---
@@ -48,36 +46,22 @@ const {
         }
         <div class="max-w-3xl mx-auto lg:max-w-none">
           {subtitle && <p class="text-xl text-muted mb-6 dark:text-slate-300" set:html={subtitle} />}
-          <div
-            class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 lg:justify-start lg:m-0 lg:max-w-7xl"
-          >
-            {
-              callToAction && (
-                <div class="flex w-full sm:w-auto">
-                  {typeof callToAction === 'string' ? (
-                    <Fragment set:html={callToAction} />
-                  ) : (
-                    <div class="btn btn-primary sm:mb-0 w-full">
-                      <CTA callToAction={callToAction} />
+
+          {
+            actions && (
+              <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 lg:justify-start lg:m-0 lg:max-w-7xl">
+                {Array.isArray(actions) ? (
+                  actions.map((action) => (
+                    <div class="flex w-full sm:w-auto">
+                      <Button {...(action || {})} class="w-full sm:mb-0" />
                     </div>
-                  )}
-                </div>
-              )
-            }
-            {
-              callToAction2 && (
-                <div class="flex w-full sm:w-auto">
-                  {typeof callToAction2 === 'string' ? (
-                    <Fragment set:html={callToAction2} />
-                  ) : (
-                    <div class="btn w-full">
-                      <CTA callToAction={callToAction2} />
-                    </div>
-                  )}
-                </div>
-              )
-            }
-          </div>
+                  ))
+                ) : (
+                  <Fragment set:html={actions} />
+                )}
+              </div>
+            )
+          }
         </div>
         {content && <Fragment set:html={content} />}
       </div>

@@ -1,7 +1,7 @@
 ---
 import Headline from '~/components/ui/Headline.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import CTA from '~/components/ui/CTA.astro';
+import Button from '~/components/ui/Button.astro';
 import Image from '~/components/common/Image.astro';
 import type { Testimonials } from '~/types';
 
@@ -68,8 +68,8 @@ const {
   </div>
   {
     callToAction && (
-      <div class="btn flex justify-center mx-auto w-fit mt-8 md:mt-12 font-medium">
-        <CTA callToAction={callToAction} />
+      <div class="flex justify-center mx-auto w-fit mt-8 md:mt-12 font-medium">
+        <Button {...callToAction} />
       </div>
     )
   }

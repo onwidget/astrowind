@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import CTA from '~/components/ui/CTA.astro';
+import Button from '~/components/ui/Button.astro';
 import Headline from '~/components/ui/Headline.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import type { Pricing } from '~/types';
@@ -64,11 +64,11 @@ const {
                     )}
                   </div>
                   {callToAction && (
-                    <div class={`flex justify-center btn ${hasRibbon ? 'btn-primary' : ''}`}>
+                    <div class={`flex justify-center`}>
                       {typeof callToAction === 'string' ? (
                         <Fragment set:html={callToAction} />
                       ) : (
-                        callToAction && callToAction.text && callToAction.href && <CTA callToAction={callToAction} />
+                        callToAction && callToAction.text && callToAction.href && <Button {...hasRibbon ? { variant:'primary' } : {}} {...callToAction}/>
                       )}
                     </div>
                   )}
