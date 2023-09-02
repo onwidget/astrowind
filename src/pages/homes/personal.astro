@@ -25,7 +25,7 @@ const metadata = {
         { text: 'Resume', href: '#resume' },
         { text: 'Porfolio', href: '#porfolio' },
         { text: 'Blog', href: '#blog' },
-        { text: 'Github', href: '#' },
+        { text: 'Github', href: 'https://github.com/onwidget' },
       ]}
       actions={[
         {
@@ -44,7 +44,7 @@ const metadata = {
     id="hero"
     title="Sarah Johnson"
     tagline="Personal Web Demo"
-    callToAction={{ targetBlank: true, text: 'Hire me', href: '/' }}
+    actions={[{ variant: "primary", target: '_blank', text: 'Hire me', href: '/' }]}
   >
     <Fragment slot="subtitle">
       I'm a Graphic Designer passionate about crafting visual stories. <br /> With 5 years of experience and a degree
@@ -62,7 +62,7 @@ const metadata = {
       {
         icon: 'tabler:brand-dribbble',
         callToAction: {
-          targetBlank: true,
+          target: '_blank',
           text: 'Dribbble',
           href: '#',
         },
@@ -70,7 +70,7 @@ const metadata = {
       {
         icon: 'tabler:brand-behance',
         callToAction: {
-          targetBlank: true,
+          target: '_blank',
           text: 'Behance',
           href: '#',
         },
@@ -78,7 +78,7 @@ const metadata = {
       {
         icon: 'tabler:brand-pinterest',
         callToAction: {
-          targetBlank: true,
+          target: '_blank',
           text: 'Pinterest',
           href: '#',
         },
@@ -220,7 +220,7 @@ const metadata = {
       alt: 'Tech Design Image',
     }}
     callToAction={{
-      targetBlank: true,
+      target: '_blank',
       text: 'Go to the project',
       icon: 'tabler:chevron-right',
       href: '#',
@@ -258,7 +258,7 @@ const metadata = {
       alt: 'Art and Music Poster Image',
     }}
     callToAction={{
-      targetBlank: true,
+      target: '_blank',
       text: 'Go to the project',
       icon: 'tabler:chevron-right',
       href: '#',
@@ -295,7 +295,7 @@ const metadata = {
       alt: 'Fashion e-commerce Image',
     }}
     callToAction={{
-      targetBlank: true,
+      target: '_blank',
       text: 'Go to the project',
       icon: 'tabler:chevron-right',
       href: '#',

@@ -1,5 +1,6 @@
 ---
 import type { Form } from '~/types';
+import Button from '~/components/ui/Button.astro';
 
 const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props as Form;
 ---
@@ -69,9 +70,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
   {
     button && (
       <div class="mt-10 grid">
-        <button type="submit" class="btn btn-primary cursor-pointer">
-          {button}
-        </button>
+        <Button variant="primary" type="submit">{button}</Button>
       </div>
     )
   }

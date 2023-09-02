@@ -21,13 +21,16 @@ const metadata = {
 
   <Hero
     tagline="Startup Web Demo"
-    callToAction={{
-      targetBlank: true,
-      text: 'Get templates',
-      href: 'https://github.com/onwidget/astrowind',
-      icon: 'tabler:download',
-    }}
-    callToAction2={{ text: 'Learn more', href: '#features' }}
+    actions={[
+      {
+        variant: 'primary',
+        target: '_blank',
+        text: 'Get templates',
+        href: 'https://github.com/onwidget/astrowind',
+        icon: 'tabler:download',
+      },
+      { text: 'Learn more', href: '#features' },
+    ]}
   >
     <Fragment slot="title">
       Improve <span class="hidden sm:inline">the online presence of</span> your <span
@@ -255,36 +258,40 @@ const metadata = {
         title: 'Phone',
         icon: 'tabler:phone',
         callToAction: {
-          targetBlank: true,
+          target: '_blank',
           text: 'Call us',
           href: '/',
+          variant: 'link',
         },
       },
       {
         title: 'Email',
         icon: 'tabler:mail',
         callToAction: {
-          targetBlank: true,
+          target: '_blank',
           text: 'Write to us',
           href: '/',
+          variant: 'link',
         },
       },
       {
         title: 'Chat with sales',
         icon: 'tabler:message-circle',
         callToAction: {
-          targetBlank: true,
+          target: '_blank',
           text: 'Start chatting',
           href: '/',
+          variant: 'link',
         },
       },
       {
         title: 'Chat with support',
         icon: 'tabler:message-circle',
         callToAction: {
-          targetBlank: true,
+          target: '_blank',
           text: 'Start chatting',
           href: '/',
+          variant: 'link',
         },
       },
     ]}
@@ -294,7 +301,7 @@ const metadata = {
 
   <CallToAction
     callToAction={{
-      targetBlank: true,
+      target: '_blank',
       text: 'Get templates',
       href: 'https://github.com/onwidget/astrowind',
       icon: 'tabler:download',

@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
+import Button from '~/components/ui/Button.astro';
 
 const {
   title = await Astro.slots.render('title'),
@@ -40,14 +40,7 @@ const {
                   {typeof callToAction === 'string' ? (
                     <Fragment set:html={callToAction} />
                   ) : (
-                    <a class="btn btn-primary sm:mb-0 w-full" href={callToAction?.href} target="_blank" rel="noopener">
-                      {callToAction?.icon && (
-                        <>
-                          <Icon name={callToAction.icon} class="w-5 h-5 mr-1 -ml-1.5 rtl:-mr-1.5 rtl:ml-1" />
-                        </>
-                      )}
-                      {callToAction?.text}
-                    </a>
+                    <Button variant="primary" {...callToAction} />
                   )}
                 </div>
               )
@@ -58,15 +51,7 @@ const {
                   {typeof callToAction2 === 'string' ? (
                     <Fragment set:html={callToAction2} />
                   ) : (
-                    <a class="btn w-full" href={callToAction2?.href}>
-                      {callToAction2?.icon && (
-                        <>
-                          <Icon name={callToAction2.icon} class="w-5 h-5 mr-1 -ml-1.5" />
-                          &nbsp;
-                        </>
-                      )}
-                      {callToAction2.text}
-                    </a>
+                    <Button {...callToAction2} />
                   )}
                 </div>
               )

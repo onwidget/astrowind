@@ -3,7 +3,7 @@ import type { Content } from '~/types';
 import Headline from '../ui/Headline.astro';
 import WidgetWrapper from '../ui/WidgetWrapper.astro';
 import Image from '~/components/common/Image.astro';
-import CTA from '../ui/CTA.astro';
+import Button from '~/components/ui/Button.astro';
 import ItemGrid from '../ui/ItemGrid.astro';
 
 const {
@@ -48,8 +48,8 @@ const {
 
         {
           callToAction && (
-            <div class="mt-[-40px] mb-8 text-primary cursor-pointer">
-              <CTA callToAction={callToAction} />
+            <div class="mt-[-40px] mb-8 text-primary">
+              <Button variant="link" {...callToAction} />
             </div>
           )
         }

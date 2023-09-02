@@ -1,8 +1,8 @@
 ---
-import { Icon } from 'astro-icon/components';
 import WidgetWrapper from '../ui/WidgetWrapper.astro';
 import type { CallToAction, Widget } from '~/types';
-import Headline from '../ui/Headline.astro';
+import Headline from '~/components/ui/Headline.astro';
+import Button from "~/components/ui/Button.astro"
 
 interface Props extends Widget {
   title?: string;
@@ -43,13 +43,9 @@ const {
         <Fragment set:html={callToAction} />
       ) : (
         callToAction &&
-        callToAction.text &&
-        callToAction.href && (
+        callToAction.text && (
           <div class="mt-6 max-w-xs mx-auto">
-            <a class="btn btn-primary w-full sm:w-auto" href={callToAction.href} target="_blank" rel="noopener">
-              {callToAction.icon && <Icon name={callToAction.icon} class="w-5 h-5 mr-1 -ml-1.5 rtl:-mr-1.5 rtl:ml-1" />}
-              {callToAction.text}
-            </a>
+            <Button variant="primary" {...callToAction} class="w-full sm:w-auto" />
           </div>
         )
       )

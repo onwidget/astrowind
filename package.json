@@ -1,7 +1,7 @@
 {
   "name": "@onwidget/astrowind",
-  "description": "A template to make your website using Astro + Tailwind CSS.",
-  "version": "1.0.0-beta.1",
+  "description": "AstroWind: A free template using Astro 3.0 and Tailwind CSS. Astro starter theme.",
+  "version": "1.0.0-beta.2",
   "private": true,
   "scripts": {
     "dev": "astro dev",
