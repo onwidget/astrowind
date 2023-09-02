@@ -45,7 +45,8 @@ import { UI } from '~/utils/config';
       document.querySelector("#header > div > div:last-child")?.classList.add("hidden");
     });
 
-    attachEvent('[data-aw-toggle-menu]', 'click', function () {
+    attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
+      elem.classList.toggle("expanded");
       document.body.classList.toggle("overflow-hidden");
       document.getElementById("header")?.classList.toggle("h-screen");
       document.getElementById("header")?.classList.toggle("expanded");
