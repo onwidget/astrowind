@@ -9,13 +9,14 @@ interface Props extends Widget {
   subtitle?: string;
   tagline?: string;
   callToAction?: CallToAction;
+  actions?: string | CallToAction[];
 }
 
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   tagline = await Astro.slots.render('tagline'),
-  callToAction = await Astro.slots.render('callToAction'),
+  actions = await Astro.slots.render('actions'),
 
   id,
   isDark = false,
@@ -39,15 +40,18 @@ const {
       }}
     />
     {
-      typeof callToAction === 'string' ? (
-        <Fragment set:html={callToAction} />
-      ) : (
-        callToAction &&
-        callToAction.text && (
-          <div class="mt-6 max-w-xs mx-auto">
-            <Button variant="primary" {...callToAction} class="w-full sm:w-auto" />
-          </div>
-        )
+      actions && (
+        <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 mt-6">
+          {Array.isArray(actions) ? (
+            actions.map((action) => (
+              <div class="flex w-full sm:w-auto">
+                <Button {...(action || {})} class="w-full sm:mb-0" />
+              </div>
+            ))
+          ) : (
+            <Fragment set:html={actions} />
+          )}
+        </div>
       )
     }
   </div>

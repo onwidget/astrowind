@@ -1,6 +1,8 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
+import Header from '~/components/widgets/Header.astro';
+
 import Hero2 from '~/components/widgets/Hero2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features3 from '~/components/widgets/Features3.astro';
@@ -9,34 +11,54 @@ import Testimonials from '~/components/widgets/Testimonials.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 
+import Button from '~/components/ui/Button.astro';
+import Image from '~/components/common/Image.astro';
+
+import appStoreImg from '~/assets/images/app-store.png';
+import googlePlayImg from '~/assets/images/google-play.png';
+
+const appStoreDownloadLink = 'https://github.com/onwidget/astrowind';
+const googlePlayDownloadLink = 'https://github.com/onwidget/astrowind';
+
 const metadata = {
   title: 'Mobile App Homepage',
 };
 ---
 
 <Layout metadata={metadata}>
+  <Fragment slot="announcement"></Fragment>
+  <Fragment slot="header">
+    <Header
+      position="left"
+      links={[
+        { text: 'Services', href: '#' },
+        { text: 'Features', href: '#' },
+        { text: 'About', href: '#' },
+      ]}
+      actions={[
+        {
+          text: 'Download',
+          href: '#download',
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+
   <!-- Hero2 Widget ******************* -->
 
   <Hero2
     tagline="Mobile App Web Demo"
-    actions={[
-      {
-        variant:"primary",
-        target: '_blank',
-        text: 'Download App',
-        href: 'https://github.com/onwidget/astrowind',
-        icon: 'tabler:download',
-      },
-      { text: 'Learn more', href: '#features' },
-    ]}
     image={{
       src: 'https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
       alt: 'AstroWind Hero Image',
     }}
   >
     <Fragment slot="title">
-      AstroWind <span class="text-accent dark:text-white highlight">App</span>: <br /> building professional websites
-      made easy
+      <span class="text-accent dark:text-white highlight">AstroWind App</span>: <br /> professional websites <span
+        class="hidden xl:inline">made easy</span
+      >
     </Fragment>
 
     <Fragment slot="subtitle">
@@ -45,6 +67,16 @@ const metadata = {
       </span>
        Download now and embark on a journey to elevate your projects like never before.
     </Fragment>
+
+    <div slot="actions" class="flex max-w-sm gap-4">
+      <Button variant="link" href={appStoreDownloadLink}>
+        <Image src={appStoreImg} alt="App Store Image" width={200} />
+      </Button>
+
+      <Button variant="link" href={googlePlayDownloadLink}>
+        <Image src={googlePlayImg} alt="Google Play Image" width={200} />
+      </Button>
+    </div>
   </Hero2>
 
   <!-- Features3 Widget ************** -->
@@ -248,12 +280,18 @@ const metadata = {
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
-    title="Instant access to beautiful templates"
+    id="download"
+    title="Download our app now!"
     subtitle="Access a variety of stunning templates, simplify your creative process, and elevate your online presence."
-    callToAction={{
-      text: 'Download App',
-      href: 'https://github.com/onwidget/astrowind',
-      icon: 'tabler:download',
-    }}
-  />
+  >
+    <div slot="actions" class="flex max-w-sm gap-4">
+      <Button variant="link" href={appStoreDownloadLink}>
+        <Image src={appStoreImg} alt="App Store Image" width={200} />
+      </Button>
+
+      <Button variant="link" href={googlePlayDownloadLink}>
+        <Image src={googlePlayImg} alt="Google Play Image" width={200} />
+      </Button>
+    </div>
+  </CallToAction>
 </Layout>
