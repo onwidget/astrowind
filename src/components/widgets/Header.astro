@@ -5,8 +5,12 @@ import ToggleTheme from "~/components/common/ToggleTheme.astro";
 import ToggleMenu from "~/components/common/ToggleMenu.astro";
 import LanguagePicker from "../common/LanguagePicker.astro";
 
-import { getHomePermalink } from "~/utils/permalinks";
+import { getLocalizedHomePermalink } from "~/utils/permalinks";
 import { trimSlash, getAsset } from "~/utils/permalinks";
+
+import { getLocaleFromUrl } from '~/i18n/translator';
+
+const locale = getLocaleFromUrl(Astro.url);
 
 interface Link {
   text?: string;
@@ -70,7 +74,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
     ]}
   >
     <div class:list={[{ "mr-auto rtl:mr-0 rtl:ml-auto": position === "right" }, "flex justify-between"]}>
-      <a class="flex items-center" href={getHomePermalink()}>
+      <a class="flex items-center" href={getLocalizedHomePermalink(locale)}>
         <Logo />
       </a>
       <div class="flex items-center md:hidden">

@@ -1,8 +1,8 @@
 ---
-import { UI_CONFIG, I18N_CONFIG, SITE_CONFIG } from '~/utils/config';
+import { UI, I18N, SITE } from '~/utils/config';
 ---
 
-<script is:inline define:vars={{ defaultTheme: UI_CONFIG.theme, locales:I18N_CONFIG.locales, trailingSlash:SITE_CONFIG.trailingSlash }}>
+<script is:inline define:vars={{ defaultTheme: UI.theme, locales:I18N.locales, trailingSlash:SITE.trailingSlash }}>
   function applyTheme(theme) {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -63,7 +63,7 @@ import { UI_CONFIG, I18N_CONFIG, SITE_CONFIG } from '~/utils/config';
     });
 
 
-    attachEvent('[data-aw-select-language]', 'click', function (_, elem) {
+    attachEvent('[data-aw-select-language]', 'change', function (_, elem) {
       const newLang = elem.value;
       const oldUrl = window.location.href;
       const supportedLangs = Object.keys(locales);

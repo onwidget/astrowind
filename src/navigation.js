@@ -1,8 +1,8 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getLocalizedPermalink, getLocalizedBlogPermalink, getAsset } from './utils/permalinks';
 import { useTranslations } from '~/i18n/translator';
 
-export const getHeaderData = (lang) => {
-  const { t } = useTranslations(lang);
+export const getHeaderData = (locale) => {
+  const { t } = useTranslations(locale);
   return {
     links: [
       {
@@ -10,19 +10,19 @@ export const getHeaderData = (lang) => {
         links: [
           {
             text: 'Sass',
-            href: getPermalink('/homes/saas'),
+            href: getLocalizedPermalink(locale, '/homes/saas'),
           },
           {
             text: 'Startup',
-            href: getPermalink('/homes/startup'),
+            href: getLocalizedPermalink(locale, '/homes/startup'),
           },
           {
             text: 'Mobile App',
-            href: getPermalink('/homes/mobile-app'),
+            href: getLocalizedPermalink(locale, '/homes/mobile-app'),
           },
           {
             text: 'Personal',
-            href: getPermalink('/homes/personal'),
+            href: getLocalizedPermalink(locale, '/homes/personal'),
           },
         ],
       },
@@ -31,31 +31,31 @@ export const getHeaderData = (lang) => {
         links: [
           {
             text: 'Features (Anchor Link)',
-            href: getPermalink('/#features'),
+            href: getLocalizedPermalink(locale, '/#features'),
           },
           {
             text: 'Services',
-            href: getPermalink('/services'),
+            href: getLocalizedPermalink(locale, '/services'),
           },
           {
             text: 'Pricing',
-            href: getPermalink('/pricing'),
+            href: getLocalizedPermalink(locale, '/pricing'),
           },
           {
             text: 'About us',
-            href: getPermalink('/about'),
+            href: getLocalizedPermalink(locale, '/about'),
           },
           {
             text: 'Contact',
-            href: getPermalink('/contact'),
+            href: getLocalizedPermalink(locale, '/contact'),
           },
           {
             text: 'Terms',
-            href: getPermalink('/terms'),
+            href: getLocalizedPermalink(locale, '/terms'),
           },
           {
             text: 'Privacy policy',
-            href: getPermalink('/privacy'),
+            href: getLocalizedPermalink(locale, '/privacy'),
           },
         ],
       },
@@ -64,31 +64,31 @@ export const getHeaderData = (lang) => {
         links: [
           {
             text: 'Lead Generation',
-            href: getPermalink('/landing/lead-generation'),
+            href: getLocalizedPermalink(locale, '/landing/lead-generation'),
           },
           {
             text: 'Long-form Sales',
-            href: getPermalink('/landing/sales'),
+            href: getLocalizedPermalink(locale, '/landing/sales'),
           },
           {
             text: 'Click-Through',
-            href: getPermalink('/landing/click-through'),
+            href: getLocalizedPermalink(locale, '/landing/click-through'),
           },
           {
             text: 'Product Details (or Services)',
-            href: getPermalink('/landing/product'),
+            href: getLocalizedPermalink(locale, '/landing/product'),
           },
           {
             text: 'Coming Soon or Pre-Launch',
-            href: getPermalink('/landing/pre-launch'),
+            href: getLocalizedPermalink(locale, '/landing/pre-launch'),
           },
           {
             text: 'Subscription',
-            href: getPermalink('/landing/subscription'),
+            href: getLocalizedPermalink(locale, '/landing/subscription'),
           },
           {
             text: 'I18N Support',
-            href: getPermalink('/landing/i18n'),
+            href: getLocalizedPermalink(locale, '/landing/i18n'),
           },
         ],
       },
@@ -97,23 +97,23 @@ export const getHeaderData = (lang) => {
         links: [
           {
             text: 'Blog List',
-            href: getBlogPermalink(),
+            href: getLocalizedBlogPermalink(locale),
           },
           {
             text: 'Article',
-            href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
+            href: getLocalizedPermalink(locale, 'get-started-website-with-astro-tailwind-css', 'post'),
           },
           {
             text: 'Article (with MDX)',
-            href: getPermalink('markdown-elements-demo-post', 'post'),
+            href: getLocalizedPermalink(locale, 'markdown-elements-demo-post', 'post'),
           },
           {
             text: 'Category Page',
-            href: getPermalink('tutorials', 'category'),
+            href: getLocalizedPermalink(locale, 'tutorials', 'category'),
           },
           {
             text: 'Tag Page',
-            href: getPermalink('astro', 'tag'),
+            href: getLocalizedPermalink(locale, 'astro', 'tag'),
           },
         ],
       },
@@ -126,8 +126,8 @@ export const getHeaderData = (lang) => {
   };
 };
 
-export const getFooterData = (lang) => {
-  const { t } = useTranslations(lang);
+export const getFooterData = (locale) => {
+  const { t } = useTranslations(locale);
   
   return {
     links: [
@@ -177,8 +177,8 @@ export const getFooterData = (lang) => {
       },
     ],
     secondaryLinks: [
-      { text: t('footer.legal.terms'), href: getPermalink('/terms') },
-      { text: t('footer.legal.privacy'), href: getPermalink('/privacy') },
+      { text: t('footer.legal.terms'), href: getLocalizedPermalink(locale, '/terms') },
+      { text: t('footer.legal.privacy'), href: getLocalizedPermalink(locale, '/privacy') },
     ],
     socialLinks: [
       { ariaLabel: 'Twitter', icon: 'tabler:brand-twitter', href: '#' },

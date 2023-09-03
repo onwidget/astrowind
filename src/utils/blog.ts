@@ -1,7 +1,7 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Post, LocalizedPost } from '~/types';
-import { APP_BLOG_CONFIG, I18N_CONFIG } from '~/utils/config';
+import { APP_BLOG, I18N } from '~/utils/config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
 
 const generatePermalink = async ({
@@ -67,7 +67,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   return {
     id: id,
     slug: slug,
-    permalink: locale === I18N_CONFIG.defaultLocale ? permalink.split('/')[1] : permalink,
+    permalink: locale === I18N.defaultLocale ? permalink.split('/')[1] : permalink,
 
     publishDate: publishDate,
     updateDate: updateDate,
@@ -107,18 +107,18 @@ let _postsLocalized : Array<LocalizedPost>;
 export const paginatedPostsByLang = new Map<string, Array<Post>>();
 
 /** */
-export const isBlogEnabled = APP_BLOG_CONFIG.isEnabled;
-export const isBlogListRouteEnabled = APP_BLOG_CONFIG.list.isEnabled;
-export const isBlogPostRouteEnabled = APP_BLOG_CONFIG.post.isEnabled;
-export const isBlogCategoryRouteEnabled = APP_BLOG_CONFIG.category.isEnabled;
-export const isBlogTagRouteEnabled = APP_BLOG_CONFIG.tag.isEnabled;
+export const isBlogEnabled = APP_BLOG.isEnabled;
+export const isBlogListRouteEnabled = APP_BLOG.list.isEnabled;
+export const isBlogPostRouteEnabled = APP_BLOG.post.isEnabled;
+export const isBlogCategoryRouteEnabled = APP_BLOG.category.isEnabled;
+export const isBlogTagRouteEnabled = APP_BLOG.tag.isEnabled;
 
-export const blogListRobots = APP_BLOG_CONFIG.list.robots;
-export const blogPostRobots = APP_BLOG_CONFIG.post.robots;
-export const blogCategoryRobots = APP_BLOG_CONFIG.category.robots;
-export const blogTagRobots = APP_BLOG_CONFIG.tag.robots;
+export const blogListRobots = APP_BLOG.list.robots;
+export const blogPostRobots = APP_BLOG.post.robots;
+export const blogCategoryRobots = APP_BLOG.category.robots;
+export const blogTagRobots = APP_BLOG.tag.robots;
 
-export const blogPostsPerPage = APP_BLOG_CONFIG?.postsPerPage;
+export const blogPostsPerPage = APP_BLOG?.postsPerPage;
 
 /** */
 export const fetchLocalizedPosts = async (): Promise<Array<LocalizedPost>> => {
@@ -127,7 +127,7 @@ export const fetchLocalizedPosts = async (): Promise<Array<LocalizedPost>> => {
 
     const common_slugs = [...new Set(_posts.map((post) => post.slug.split('/')[1]))];
     _postsLocalized = common_slugs.map((id) => {
-      const postsLocalizedMap = Object.keys(I18N_CONFIG.locales).reduce((map, locale) => {
+      const postsLocalizedMap = Object.keys(I18N.locales).reduce((map, locale) => {
         const post = _posts.find((post) => post.slug === `${locale}/${id}`);
         map[locale] = post;
         return map;
@@ -224,7 +224,7 @@ export const getStaticPathsBlogCategory = async ({ paginate }) => {
     )
   );
 
-  return Array.from(categoriesSet).map(category =>
+  return Array.from(categoriesSet).flatMap(category =>
     paginate(
       _postsLocalized.filter(post =>
         Object.values(post.locales).some(
@@ -257,7 +257,7 @@ export const getStaticPathsBlogTag = async ({ paginate }) => {
     )
   );
 
-  return Array.from(tagsSet).map(tag =>
+  return Array.from(tagsSet).flatMap(tag =>
     paginate(
       _postsLocalized.filter(post =>
         Object.values(post.locales).some(

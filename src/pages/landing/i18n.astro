@@ -12,7 +12,6 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import { getLocaleFromUrl, useTranslations } from '~/i18n/translator';
-import { I18N_CONFIG } from '~/utils/config';
 
 const { t, tList } = useTranslations(getLocaleFromUrl(Astro.url));
 
@@ -20,11 +19,9 @@ const metadata = {
   title: t('index.metadata.title'),
   ignoreTitleTemplate: true,
 };
-
-const showLanguagePicker = I18N_CONFIG.isEnabled;
 ---
 
-<Layout metadata={metadata} showLanguagePicker={showLanguagePicker}>
+<Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
 
   <Hero
@@ -34,7 +31,7 @@ const showLanguagePicker = I18N_CONFIG.isEnabled;
   >
     <Fragment slot="title">
       {t('index.hero.title.part1')} <span class="hidden xl:inline">{t('index.hero.title.part2')}</span>
-      <span class="text-accent dark:text-white highlight"> Astro 2.0</span> + Tailwind CSS
+      <span class="text-accent dark:text-white highlight"> Astro 3.0</span> + Tailwind CSS
     </Fragment>
 
     <Fragment slot="subtitle">

@@ -7,7 +7,7 @@ import Announcement from '~/components/widgets/Announcement.astro';
 import { getHeaderData, getFooterData } from '~/navigation';
 import { MetaData } from '~/types';
 import { getLocaleFromUrl } from '~/i18n/translator';
-import { I18N_CONFIG } from '~/utils/config';
+import { I18N } from '~/utils/config';
 
 const headerData = getHeaderData(getLocaleFromUrl(Astro.url));
 const footerData = getFooterData(getLocaleFromUrl(Astro.url));
@@ -16,7 +16,7 @@ export interface Props {
 }
 
 const { metadata } = Astro.props;
-const showLanguagePicker = I18N_CONFIG.isEnabled;
+const showLanguagePicker = I18N.isEnabled;
 ---
 
 <Layout metadata={metadata}>

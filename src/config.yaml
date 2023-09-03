@@ -1,8 +1,8 @@
 site:
   name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  site: 'https://astrowind-i18n.vercel.app'
   base: '/'
-  trailingSlash: false
+  trailingSlash: true
 
   googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
 
@@ -13,8 +13,8 @@ metadata:
     template: '%s — AstroWind'
   description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
   robots:
-    index: true
-    follow: true
+    index: false
+    follow: false
   openGraph:
     site_name: AstroWind
     images:
@@ -28,7 +28,7 @@ metadata:
     cardType: summary_large_image
 
 i18n:
-  isEnabled: false
+  isEnabled: true
   defaultLocale: en
   locales:
     en: en-US
@@ -44,19 +44,19 @@ apps:
       isEnabled: true
       permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
       robots:
-        index: true
+        index: false
 
     list:
       isEnabled: true
       pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
       robots:
-        index: true
+        index: false
 
     category:
       isEnabled: true
       pathname: 'category' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
       robots:
-        index: true
+        index: false
 
     tag:
       isEnabled: true

@@ -92,7 +92,7 @@ export const en = {
         part1: 'Free template for ',
         part2: 'creating websites with',
       },
-      subtitle: 'is a free, customizable and production-ready template for Astro 2.0 ',
+      subtitle: 'is a free, customizable and production-ready template for Astro 3.0 ',
       description:
         'Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages & Blogs.',
     },
@@ -148,7 +148,7 @@ export const en = {
       additionalDescription: 'Gain a competitive advantage by incorporating industry leading practices',
       items: [
         {
-          title: 'Built on top of Astro 2.0',
+          title: 'Built on top of Astro 3.0',
           description:
             'Benefiting from the performance and developer-friendly features of this modern static site generator.',
         },

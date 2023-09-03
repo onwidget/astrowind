@@ -92,7 +92,7 @@ export const it = {
         part1: 'Modello gratuito per ',
         part2: 'la creazione di siti web con',
       },
-      subtitle: 'è un modello gratuito, personalizzabile e pronto per la produzione per Astro 2.0 ',
+      subtitle: 'è un modello gratuito, personalizzabile e pronto per la produzione per Astro 3.0 ',
       description:
         'Adatto per Startups, Piccole Imprese, siti SaaS, Portafogli Professionali, Siti di Marketing, Pagine di Atterraggio e Blog.',
     },
@@ -148,7 +148,7 @@ export const it = {
       additionalDescription: 'Ottenere un vantaggio competitivo incorporando pratiche leader del settore',
       items: [
         {
-          title: 'Costruito su Astro 2.0',
+          title: 'Costruito su Astro 3.0',
           description:
             'Beneficiando delle prestazioni e delle funzionalità sviluppatore di questo moderno generatore di siti statici.',
         },

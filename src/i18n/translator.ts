@@ -1,4 +1,4 @@
-import { I18N_CONFIG } from '~/utils/config';
+import { I18N } from '~/utils/config';
 import { getLocale } from 'astro-i18n-aut';
 
 import { en } from './en';
@@ -6,7 +6,7 @@ import { it } from './it';
 
 type Translations = typeof en;
 
-const { defaultLocale, locales } = I18N_CONFIG;
+const { defaultLocale, locales } = I18N;
 
 interface NestedObject {
   [key: string]: NestedObject | string | NestedObject[];
@@ -46,7 +46,7 @@ export function getLocaleFromUrl(url: URL) {
   const lang = getLocale(url) || defaultLocale;
 
   if (!Object.keys(locales).includes(lang)) {
-    console.error('The identified lang' + lang + ' is not in the I18N_CONFIG');
+    console.error('The identified lang' + lang + ' is not in the I18N');
   }
   return lang;
 }
