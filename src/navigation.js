@@ -6,7 +6,7 @@ export const headerData = {
       text: 'Homes',
       links: [
         {
-          text: 'Sass',
+          text: 'SaaS',
           href: getPermalink('/homes/saas'),
         },
         {
