@@ -7,3 +7,7 @@ Although attempts are made to update frequently, this branch `i18n` may not have
 By default, the robot configurations have been updated so that the Demo cannot be indexed in search engines. You can update these settings in `public/robots.txt` and in `src/config.yml` at various levels.
 
 This branch has been possible thanks to the great work of @reuseman.
+
+## Demo
+
+📌 [https://astrowind-i18n.vercel.app/](https://astrowind-i18n.vercel.app/)
