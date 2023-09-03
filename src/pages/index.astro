@@ -25,9 +25,9 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        target: '_blank',
         text: 'Get template',
         href: 'https://github.com/onwidget/astrowind',
+        target: '_blank',
         icon: 'tabler:download',
       },
       { text: 'Learn more', href: '#features' },
@@ -377,11 +377,15 @@ const metadata = {
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
-    actions={[{
-      text: 'Get template',
-      href: 'https://github.com/onwidget/astrowind',
-      icon: 'tabler:download',
-    }]}
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get template',
+        href: 'https://github.com/onwidget/astrowind',
+        target: '_blank',
+        icon: 'tabler:download',
+      },
+    ]}
   >
     <Fragment slot="title">
       Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
