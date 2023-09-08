@@ -55,10 +55,10 @@ const {
           {
             items.map(({ title, description, icon }) => (
               <div class="flex flex-col opacity-0 entrada-animations">
-                <dt class="flex items-center gap-x-3 text-xl text-third font-bold leading-7 dark:text-white">
-                  {icon && <Icon name={icon} class="w-6 h-6 flex-none text-secondary dark:text-secondary" />}
-                  {title}
-                </dt>
+                <div class="flex flex-col items-left">
+                  {icon && <Icon name={icon} class="w-20 h-20 mb-1" />}
+                  <dt class="text-xl text-third font-bold leading-7 dark:text-white">{title}</dt>
+                </div>
                 <dd class="mt-4 flex flex-auto flex-col leading-7 text-muted dark:text-slate-400">
                   <p class="flex-auto text-base">{description}</p>
                 </dd>

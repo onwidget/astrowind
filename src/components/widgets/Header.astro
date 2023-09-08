@@ -75,8 +75,8 @@ const {
                     {links.map(({ text: text2, href: href2, desc, icon }) => (
                       <li class="p-1">
                         <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-base leading-6 hover:bg-blue-50 dark:hover:bg-gray-800">
-                          <div class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 dark:bg-gray-800">
-                            {icon && <Icon name={icon} class="h-6 w-6 text-third dark:text-secondary" />}
+                          <div class="flex h-11 w-11 flex-none items-center justify-center">
+                            {icon && <Icon name={icon} class="h-11 w-11" />}
                           </div>
                           <div class="flex-auto">
                             <a href={href2} class="block font-medium text-third text-sm text-gray-900 dark:text-white">

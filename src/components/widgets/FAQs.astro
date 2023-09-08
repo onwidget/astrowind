@@ -25,10 +25,8 @@ const {
   <div class="max-w-xl sm:mx-auto lg:max-w-2xl">
     {
       (title || subtitle || highlight) && (
-        <div class="max-w-xl mb-10 md:mx-auto md:text-center lg:max-w-2xl md:mb-12">
-          {highlight && (
-            <p class="text-base text-secondary font-semibold tracking-wide uppercase" set:html={highlight} />
-          )}
+        <div class="flex flex-col items-center max-w-xl mb-10 md:mx-auto md:text-center lg:max-w-2xl md:mb-12">
+          <Icon name="preguntas-frecuentes" class="h-40 w-40" />
           {title && (
             <h2
               class="max-w-lg mb-4 text-3xl font-bold leading-none md:tracking-tight sm:text-4xl md:mx-auto font-heading text-third dark:text-white"
