@@ -15,6 +15,18 @@ module.exports = {
         serif: ['var(--aw-font-serif)', ...defaultTheme.fontFamily.serif],
         heading: ['var(--aw-font-heading)', ...defaultTheme.fontFamily.sans],
       },
+      fontSize: {
+        xs: '.675rem', // 90% de 12px
+        sm: '.7875rem', // 90% de 14px
+        base: '.9rem', // 90% de 16px
+        lg: '1.0125rem', // 90% de 18px
+        xl: '1.125rem', // 90% de 20px
+        '2xl': '1.35rem', // 90% de 24px
+        '3xl': '1.6875rem', // 90% de 30px
+        '4xl': '2.025rem', // 90% de 36px
+        '5xl': '2.7rem', // 90% de 48px
+        '6xl': '3.6rem', // 90% de 64px
+      },
       animation: {
         'fade-slide-in': 'fade-in 1s forwards, slide-in 1s ease-out',
         'fade-slide-in-left': 'fade-in 1s forwards, slide-in-from-left 1s ease-out',

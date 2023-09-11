@@ -7,8 +7,10 @@ import FAQs from '~/components/widgets/FAQs.astro';
 
 import configuracionAMedida from '~/assets/images/configuracion-a-medida.png';
 import administracionDeUsuarios from '~/assets/images/administracion-de-usuarios.png';
-import notificaciones from '~/assets/images/notificaciones.png';
-import confirmacionWhatsapp from '~/assets/images/confirmacion-whatsapp.png';
+import personalizaPermisos from '~/assets/images/personaliza-permisos.png';
+import controlAbsolutoAranceles from '~/assets/images/control-absoluto-aranceles.png';
+import conveniosYDescuentos from '~/assets/images/convenios-y-descuentos.png';
+import calendarioYAgenda from '~/assets/images/calendario-y-agenda.png';
 
 const meta = {
   dontUseTitleTemplate: true,
@@ -166,49 +168,55 @@ const meta = {
     </div>
   </div>
 
-  <!-- Notificaciones en tiempo real -->
+  <!-- Personaliza Permisos a la Perfección -->
   <div class="overflow-hidden py-12 sm:py-16">
     <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
       <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
         <div class="px-6 lg:px-0 lg:pr-4 lg:pt-4 left-col">
           <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
-            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">Notificaciones en tiempo real</p>
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">
+              Personaliza Permisos a la Perfección
+            </p>
             <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
-              El dashboard de CIMADent muestra notificaciones sobre citas y cambios en tiempo real, manteniendo a los
-              profesionales siempre informados.
+              Asegura el acceso adecuado a las funcionalidades e información de la clínica con la configuración de
+              permisos específicos para diferentes usuarios en CIMADent.
             </p>
             <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
               <div class="relative pl-9">
                 <dt class="inline font-semibold text-gray-900 dark:text-white">
                   <Icon
-                    name="ph:repeat-bold"
+                    name="ph:arrow-circle-right-bold"
                     class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
                   />
-                  Información al día.
+                  Acceso Inteligente.
                 </dt>
                 <dd class="inline text-muted dark:text-slate-400">
-                  Siempre estarás al tanto de los cambios en tus citas.
+                  Establece qué usuarios pueden acceder a ciertas funcionalidades, maximizando la seguridad.
                 </dd>
               </div>
               <div class="relative pl-9">
                 <dt class="inline font-semibold text-gray-900 dark:text-white">
                   <Icon
-                    name="ph:bounding-box-bold"
+                    name="ph:selection-foreground-bold"
                     class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
                   />
-                  Organización optimizada.
+                  Adaptabilidad.
                 </dt>
                 <dd class="inline text-muted dark:text-slate-400">
-                  Las notificaciones te permiten gestionar mejor tu tiempo y recursos.
+                  Personaliza los permisos para satisfacer las necesidades específicas de tu clínica y equipo.
                 </dd>
               </div>
               <div class="relative pl-9">
                 <dt class="inline font-semibold text-gray-900 dark:text-white">
-                  <Icon name="ph:graph-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
-                  Decisiones informadas.
+                  <Icon
+                    name="ph:folder-simple-lock-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Seguridad Total.
                 </dt>
                 <dd class="inline text-muted dark:text-slate-400">
-                  Con información actualizada, podrás tomar decisiones acertadas sobre tu agenda.
+                  Protege la información de tu clínica al limitar el acceso según el rol del usuario, evitando riesgos
+                  innecesarios.
                 </dd>
               </div>
             </dl>
@@ -222,62 +230,60 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src={notificaciones}
-            alt="Notificaciones en tiempo real"
+            src={personalizaPermisos}
+            alt="Personaliza Permisos a la Perfección"
           />
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Calendario y Agenda flexible -->
+  <!-- Control Absoluto de Aranceles y Tipos de Citas -->
   <div class="overflow-hidden py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
         <div class="lg:ml-auto lg:pl-4 lg:pt-4 right-col">
           <div class="lg:max-w-lg">
             <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">
-              Mensajes personalizados vía WhatsApp
+              Control Absoluto de Aranceles y Tipos de Citas
             </p>
             <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
-              Envía mensajes personalizados a pacientes a través de WhatsApp, incluyendo un enlace para confirmar la
-              cita, facilitando la comunicación.
+              Administra aranceles clínicos y de laboratorio, así como diferentes tipos de citas, con la solución
+              completa de CIMADent que te brinda control total sobre servicios y precios.
             </p>
             <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
               <div class="relative pl-9">
                 <dt class="inline font-semibold text-gray-900 dark:text-white">
-                  <Icon
-                    name="ph:whatsapp-logo-bold"
-                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
-                  />
-                  Comunicación instantánea.
+                  <Icon name="ph:money-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Flexibilidad Total.
                 </dt>
                 <dd class="inline text-muted dark:text-slate-400">
-                  WhatsApp permite una rápida conexión con los pacientes.
+                  Adapta los servicios y precios para cumplir con las necesidades específicas de tu clínica.
                 </dd>
               </div>
               <div class="relative pl-9">
                 <dt class="inline font-semibold text-gray-900 dark:text-white">
                   <Icon
-                    name="ph:tree-structure-bold"
+                    name="ph:chalkboard-teacher-bold"
                     class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
                   />
-                  Respuestas más ágiles.
+                  Consistencia y Claridad.
                 </dt>
                 <dd class="inline text-muted dark:text-slate-400">
-                  Los pacientes suelen responder más rápido a WhatsApp que a emails.
+                  Crea una estructura de precios y servicios coherente para facilitar la toma de decisiones.
                 </dd>
               </div>
               <div class="relative pl-9">
                 <dt class="inline font-semibold text-gray-900 dark:text-white">
                   <Icon
-                    name="ph:circle-wavy-check-bold"
+                    name="ph:gradient-bold"
                     class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
                   />
-                  Confirmaciones sencillas.
+                  Gestión Financiera Eficaz.
                 </dt>
                 <dd class="inline text-muted dark:text-slate-400">
-                  El enlace en el mensaje facilita a los pacientes confirmar sus citas.
+                  Mantén un registro actualizado de tus tarifas y servicios, permitiendo una administración financiera
+                  óptima.
                 </dd>
               </div>
             </dl>
@@ -291,8 +297,139 @@ const meta = {
             widths={[400, 768]}
             sizes="(max-width: 768px)"
             aspectRatio="500:500"
-            src={confirmacionWhatsapp}
-            alt="Mensajes personalizados vía WhatsApp"
+            src={controlAbsolutoAranceles}
+            alt="Control Absoluto de Aranceles y Tipos de Citas"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Personaliza Permisos a la Perfección -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl md:px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="px-6 lg:px-0 lg:pr-4 lg:pt-4 left-col">
+          <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">Convenios y Descuentos</p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              CIMADent simplifica la administración de convenios y planes de descuento, brindándote la posibilidad de
+              ofrecer opciones de pago atractivas y accesibles para tus pacientes.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:user-focus-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Capta más Pacientes.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Atrae a nuevos pacientes al ofrecer opciones de pago y descuentos atractivos.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:person-simple-walk-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Facilita el Acceso a Tratamientos.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Con convenios y descuentos, los pacientes encuentran mayor accesibilidad a los tratamientos dentales.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon name="ph:star-bold" class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary" />
+                  Fideliza a tus Pacientes.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Los convenios y descuentos aumentan la satisfacción del paciente, fomentando la lealtad y el retorno.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center sm:px-6 lg:px-0">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src={conveniosYDescuentos}
+            alt="Personaliza Permisos a la Perfección"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Domina tu Calendario y Agenda -->
+  <div class="overflow-hidden py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+        <div class="lg:ml-auto lg:pl-4 lg:pt-4 right-col">
+          <div class="lg:max-w-lg">
+            <p class="mt-2 text-3xl font-bold text-third dark:text-white sm:text-4xl">Domina tu Calendario y Agenda</p>
+            <p class="mt-6 text-base leading-8 text-muted dark:text-slate-400">
+              CIMADent te permite configurar completamente tu calendario y agenda online, mejorando la gestión de citas
+              y la disponibilidad de los profesionales.
+            </p>
+            <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:sidebar-simple-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Organización Superior.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Administra tu agenda de manera efectiva y evita conflictos en la programación de citas.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:user-circle-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Ajusta la Disponibilidad.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Establece y modifica la disponibilidad de profesionales según las necesidades de la clínica.
+                </dd>
+              </div>
+              <div class="relative pl-9">
+                <dt class="inline font-semibold text-gray-900 dark:text-white">
+                  <Icon
+                    name="ph:record-bold"
+                    class="absolute left-1 top-1 h-5 w-5 text-secondary dark:text-secondary"
+                  />
+                  Información en Tiempo Real.
+                </dt>
+                <dd class="inline text-muted dark:text-slate-400">
+                  Mantén a tu equipo actualizado sobre la agenda y las citas en tiempo real, mejorando la eficiencia.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+        <div class="flex items-center justify-end lg:order-first">
+          <Picture
+            class="mx-auto w-full cursor-pointer"
+            width={500}
+            height={500}
+            widths={[400, 768]}
+            sizes="(max-width: 768px)"
+            aspectRatio="500:500"
+            src={calendarioYAgenda}
+            alt="Domina tu Calendario y Agenda"
           />
         </div>
       </div>
@@ -305,7 +442,8 @@ const meta = {
       <div class="mx-auto max-w-2xl text-center">
         <h2 class="text-3xl font-bold text-white sm:text-4xl">¡No esperes más!</h2>
         <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-slate-200 dark:text-slate-400">
-          Prueba CIMADent gratis por 7 días y transforma la comunicación con tus pacientes. ¡Regístrate ahora!
+          Descubre cómo CIMADent puede revolucionar la administración de tu clínica dental. ¡Regístrate ahora y prueba
+          todas las funcionalidades gratis por 7 días!
         </p>
         <div class="mt-10 flex items-center justify-center gap-x-6">
           <a
@@ -326,36 +464,36 @@ const meta = {
     items={[
       [
         {
-          question: '¿Se envían automáticamente las notificaciones a todos los pacientes?',
+          question: '¿Cómo puedo agregar nuevos usuarios a mi clínica en CIMADent?',
           answer:
-            'Las notificaciones se envían automáticamente a los pacientes con correo electrónico y/o teléfono registrado en su perfil. Asegúrate de mantener actualizada la información de contacto para garantizar una comunicación efectiva.',
+            'Para agregar nuevos usuarios a tu clínica en CIMADent, ve al panel de administración de usuarios y utiliza el sistema de invitación por correo electrónico. Los nuevos usuarios recibirán un enlace para registrarse y unirse a tu clínica.',
         },
         {
-          question: '¿Qué pasa si un paciente no tiene correo o teléfono registrado?',
+          question: '¿Cómo personalizo los permisos de los usuarios en CIMADent?',
           answer:
-            'Si un paciente carece de correo o teléfono registrado, las notificaciones no se enviarán. Es crucial mantener actualizada la información de contacto de los pacientes para asegurar una comunicación efectiva.',
+            'En el panel de configuración de CIMADent, puedes establecer permisos específicos para cada usuario, permitiendo o restringiendo el acceso a ciertas funcionalidades e información según su rol dentro de la clínica.',
         },
         {
-          question: '¿Qué tipo de notificaciones recibo como profesional en el dashboard de CIMADent?',
+          question: '¿Puedo configurar diferentes tipos de citas y servicios en CIMADent?',
           answer:
-            'En el dashboard de CIMADent, recibirás notificaciones sobre agendamientos y cambios en el estado de las citas, permitiéndote estar siempre informado y mantener una organización eficiente.',
+            'Sí, CIMADent te permite agregar y gestionar diferentes tipos de citas y servicios, como controles, exámenes y tratamientos, facilitando la organización de la agenda y la gestión de precios.',
         },
       ],
       [
         {
-          question: '¿Hay límites en la cantidad de notificaciones que se pueden enviar?',
+          question: '¿Cómo administro los aranceles y precios en CIMADent?',
           answer:
-            'No hay límites en la cantidad de notificaciones que puedes enviar con CIMADent. Nuestro sistema está diseñado para facilitar la comunicación entre profesionales y pacientes sin restricciones.',
+            'En CIMADent, puedes agregar y gestionar aranceles clínicos y de laboratorio desde el panel de administración. Esto te permite mantener un registro actualizado de tus tarifas y servicios para una gestión financiera eficiente.',
         },
         {
-          question: '¿Qué sucede si un paciente responde a un correo electrónico de recordatorio?',
+          question: '¿Cómo configuro convenios y planes de descuento en CIMADent?',
           answer:
-            'Si un paciente responde a un correo electrónico de recordatorio, la respuesta se enviará a la dirección de correo electrónico asociada con la cuenta del profesional en CIMADent. Esto permite a los profesionales manejar cualquier consulta o inquietud del paciente de manera oportuna.',
+            'En el panel de administración de CIMADent, puedes gestionar convenios y planes de descuento, permitiendo ofrecer opciones de pago y facilidades a tus pacientes. Esto puede ayudar a atraer nuevos pacientes y fidelizar a los actuales.',
         },
         {
-          question: '¿Puedo enviar mensajes de WhatsApp a pacientes que no tienen esta aplicación?',
+          question: '¿Cómo personalizo el calendario y la agenda online en CIMADent?',
           answer:
-            'No, los mensajes de WhatsApp solo se pueden enviar a pacientes que tienen la aplicación instalada en sus dispositivos móviles y han registrado un número de teléfono válido. Es importante confirmar esta información antes de enviar mensajes a través de WhatsApp.',
+            'CIMADent ofrece una configuración completa del calendario y la agenda online. Puedes establecer y ajustar la disponibilidad de los profesionales, asignar tipos de citas y servicios, y gestionar las citas de los pacientes en tiempo real.',
         },
       ],
     ]}
