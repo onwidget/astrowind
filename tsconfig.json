@@ -1,11 +1,27 @@
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
+    "target": "ESNext",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext",
+      "WebWorker"
+    ],
+    "module": "ESNext",
     "strictNullChecks": true,
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"]
-    }
-  }
+      "~/*": [
+        "src/*"
+      ]
+    },
+    "plugins": [],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  },
+  "include": [
+    "src"
+  ]
 }

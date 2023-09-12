@@ -1,20 +1,59 @@
 {
-  "css.customData": ["./vscode.tailwind.json"],
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "astro", // Enable .astro
-    "typescript", // Enable .ts
-    "typescriptreact" // Enable .tsx
-  ],
-  "files.associations": {
-    "*.mdx": "markdown"
-  },
-  "prettier.documentSelectors": ["**/*.astro"],
-  "[astro]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "yaml.schemas": {
-    "./.vscode/astrowind/config-schema.json": "/src/config.yaml"
-  }
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "editor.formatOnSave": true,
+    "eslint.format.enable": true,
+    "editor.rulers": [100],
+    "files.trimTrailingWhitespace": true,
+    "prettier.printWidth": 100,
+    "javascript.preferences.importModuleSpecifier": "project-relative",
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.preferences.importModuleSpecifier": "project-relative",
+    "typescript.preferences.quoteStyle": "single",
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "astro", // Enable .astro
+        "typescript", // Enable .ts
+        "typescriptreact" // Enable .tsx
+    ],
+    "files.associations": {
+        "*.mdx": "markdown"
+    },
+    "prettier.documentSelectors": ["**/*.astro"],
+    "yaml.schemas": {
+        "./.vscode/astrowind/config-schema.json": "/src/config.yaml"
+    },
+    "[astro]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+        "editor.detectIndentation": false,
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2
+    },
+    "[json]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+        "editor.detectIndentation": false,
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2
+    },
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 4
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+        "editor.tabSize": 4
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+        "editor.tabSize": 4
+    },
 }

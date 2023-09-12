@@ -1,0 +1,19 @@
+---
+import { Box } from '@hackinggrowth/hui';
+import { SampleBox } from '~/components/react';
+import Layout from '~/layouts/PageLayout.astro';
+
+const title = 'Sample Page';
+
+---
+
+<Layout>
+    <SampleBox title={title ?? 'lorem ipsum'} client:only="react">
+        <Box sx={{
+            border: '5px solid #fff',
+            color: 'primary.light',
+        }}>
+            Welcome Hackinggrowth sample page.
+        </Box>
+    </SampleBox>
+</Layout>

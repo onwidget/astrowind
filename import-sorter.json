@@ -1,0 +1,9 @@
+{
+  "groupRules": [
+    ["^react(-dom)?$", "^astro(:)?", "^[a-z]", "^@(?!hkg)[a-z]"],
+    ["^node:"],
+    ["^@hkg\\/"],
+    ["^~\\/", "^\\."]
+  ],
+  "quoteMark": "single"
+}

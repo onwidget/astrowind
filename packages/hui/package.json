@@ -1,0 +1,23 @@
+{
+  "name": "@hackinggrowth/hui",
+  "version": "1.0.0",
+  "description": "Hackinggrowth UI",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.8",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "@typescript-eslint/parser": "^6.5.0"
+  },
+  "peerDependencies": {
+    "eslint": "^8.48.0"
+  }
+}
