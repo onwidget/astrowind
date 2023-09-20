@@ -4,8 +4,8 @@ import Button from '~/components/ui/Button.astro';
 
 const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props as Form;
 ---
-
-<form>
+  <!-- You can create a free endpoint at https://fabform.io to collect form submissions. -->
+<form action="https://fabform.io/f/{form-id}" method="post" >
   {
     inputs &&
       inputs.map(
