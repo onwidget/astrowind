@@ -240,7 +240,7 @@ export const unpicOptimizer: ImagesOptimizer = async (image, breakpoints, width,
   return Promise.all(
     breakpoints.map(async (w: number) => {
       const url =
-        (await transformUrl({
+        (transformUrl({
           url: image,
           width: w,
           height: width && height ? computeHeight(w, width / height) : height,
