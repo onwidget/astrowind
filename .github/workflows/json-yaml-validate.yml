@@ -21,3 +21,4 @@ jobs:
         uses: GrantBirki/json-yaml-validate@v2.3.1
         with:
           comment: "true" # enable comment mode
+          exclude_file: .github/config/exclude.txt
