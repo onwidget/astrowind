@@ -25,12 +25,14 @@
     "unpic": "^3.10.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.2.0",
     "@astrojs/mdx": "^1.1.0",
     "@astrojs/partytown": "^2.0.0",
     "@astrojs/tailwind": "5.0.0",
     "@iconify-json/flat-color-icons": "^1.1.7",
     "@iconify-json/tabler": "^1.1.91",
     "@tailwindcss/typography": "^0.5.10",
+    "@types/js-yaml": "^4.0.6",
     "@types/lodash.merge": "^4.6.7",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
