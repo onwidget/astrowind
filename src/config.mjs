@@ -5,8 +5,8 @@ export const SITE = {
 	basePathname: '/',
 	trailingSlash: false,
 
-	title: 'Bioinformatics Open Days 2023',
-	description: 'Bioinformatics Open Days | 16-18 March 2023',
+	title: 'Bioinformatics Open Days 2024',
+	description: 'Bioinformatics Open Days | 14-16 March 2024',
 
 	googleAnalyticsId: false, // or "G-XXXXXXXXXX",
 	googleSiteVerificationId: '3TtTSQ03yD-yOur3_FX1BiweBR_j2IrtmxheAHbMkAk',
