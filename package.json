@@ -22,6 +22,7 @@
     "astro-icon": "^1.0.0-next.2",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
+    "typescript-esbuild": "^0.2.22",
     "unpic": "^3.10.0"
   },
   "devDependencies": {
