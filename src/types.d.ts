@@ -180,6 +180,7 @@ export interface CallToAction extends HTMLAttributes<a> {
   text?: string;
   icon?: string;
   classes?: Record<string, string>;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export interface ItemGrid {
