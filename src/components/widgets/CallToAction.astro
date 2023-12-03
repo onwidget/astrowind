@@ -1,15 +1,15 @@
 ---
-import WidgetWrapper from '../ui/WidgetWrapper.astro';
-import type { CallToAction, Widget } from '~/types';
-import Headline from '~/components/ui/Headline.astro';
-import Button from "~/components/ui/Button.astro"
+import WidgetWrapper from '../ui/WidgetWrapper.astro'
+import type { CallToAction, Widget } from '~/types'
+import Headline from '~/components/ui/Headline.astro'
+import Button from '~/components/ui/Button.astro'
 
 interface Props extends Widget {
-  title?: string;
-  subtitle?: string;
-  tagline?: string;
-  callToAction?: CallToAction;
-  actions?: string | CallToAction[];
+  title?: string
+  subtitle?: string
+  tagline?: string
+  callToAction?: CallToAction
+  actions?: string | CallToAction[]
 }
 
 const {
@@ -22,7 +22,7 @@ const {
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
-} = Astro.props as Props;
+} = Astro.props as Props
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>

@@ -1,19 +1,18 @@
 ---
-import { APP_BLOG } from '~/utils/config';
-import type { Post } from '~/types';
+import { APP_BLOG } from '~/utils/config'
+import type { Post } from '~/types'
 
-import Image from '~/components/common/Image.astro';
+import Image from '~/components/common/Image.astro'
 
-import { findImage } from '~/utils/images';
-import { getPermalink } from '~/utils/permalinks';
-
+import { findImage } from '~/utils/images'
+import { getPermalink } from '~/utils/permalinks'
 
 export interface Props {
-  post: Post;
+  post: Post
 }
 
-const { post } = Astro.props;
-const image = (await findImage(post.image));
+const { post } = Astro.props
+const image = await findImage(post.image)
 ---
 
 <article class="mb-6 transition">

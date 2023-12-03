@@ -1,10 +1,10 @@
 ---
-import type { Content } from '~/types';
-import Headline from '../ui/Headline.astro';
-import WidgetWrapper from '../ui/WidgetWrapper.astro';
-import Image from '~/components/common/Image.astro';
-import Button from '~/components/ui/Button.astro';
-import ItemGrid from '../ui/ItemGrid.astro';
+import type { Content } from '~/types'
+import Headline from '../ui/Headline.astro'
+import WidgetWrapper from '../ui/WidgetWrapper.astro'
+import Image from '~/components/common/Image.astro'
+import Button from '~/components/ui/Button.astro'
+import ItemGrid from '../ui/ItemGrid.astro'
 
 const {
   title = await Astro.slots.render('title'),
@@ -22,7 +22,7 @@ const {
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
-} = Astro.props as Content;
+} = Astro.props as Content
 ---
 
 <WidgetWrapper

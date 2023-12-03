@@ -1,8 +1,8 @@
 ---
-import Headline from '~/components/ui/Headline.astro';
-import ItemGrid from '~/components/ui/ItemGrid.astro';
-import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import type { Faqs } from '~/types';
+import Headline from '~/components/ui/Headline.astro'
+import ItemGrid from '~/components/ui/ItemGrid.astro'
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro'
+import type { Faqs } from '~/types'
 
 const {
   title = '',
@@ -15,7 +15,7 @@ const {
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
-} = Astro.props as Faqs;
+} = Astro.props as Faqs
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>

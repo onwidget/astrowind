@@ -1,8 +1,8 @@
 ---
-import type { Stats } from '~/types';
-import WidgetWrapper from '../ui/WidgetWrapper.astro';
-import Headline from '../ui/Headline.astro';
-import { Icon } from 'astro-icon/components';
+import type { Stats } from '~/types'
+import WidgetWrapper from '../ui/WidgetWrapper.astro'
+import Headline from '../ui/Headline.astro'
+import { Icon } from 'astro-icon/components'
 
 const {
   title = await Astro.slots.render('title'),
@@ -14,7 +14,7 @@ const {
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
-} = Astro.props as Stats;
+} = Astro.props as Stats
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
@@ -23,7 +23,7 @@ const {
     {
       stats &&
         stats.map(({ amount, title, icon }) => (
-        <div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">
+          <div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500">
             {icon && (
               <div class="flex items-center justify-center mx-auto mb-4 text-primary">
                 <Icon name={icon} class="w-10 h-10" />

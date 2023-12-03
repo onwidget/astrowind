@@ -1,9 +1,9 @@
 ---
-import { Icon } from 'astro-icon/components';
-import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import Headline from '~/components/ui/Headline.astro';
-import Button from '~/components/ui/Button.astro';
-import type { Steps } from '~/types';
+import { Icon } from 'astro-icon/components'
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro'
+import Headline from '~/components/ui/Headline.astro'
+import Button from '~/components/ui/Button.astro'
+import type { Steps } from '~/types'
 
 const {
   title = await Astro.slots.render('title'),
@@ -17,7 +17,7 @@ const {
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
-} = Astro.props as Steps;
+} = Astro.props as Steps
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
@@ -42,9 +42,7 @@ const {
           ) : (
             callToAction &&
             callToAction.text &&
-            callToAction.href && (
-              <Button variant="primary" {...callToAction} class="mb-12 w-auto"/>
-            )
+            callToAction.href && <Button variant="primary" {...callToAction} class="mb-12 w-auto" />
           )
         }
       </div>

@@ -1,17 +1,17 @@
 ---
-import merge from 'lodash.merge';
-import { AstroSeo } from '@astrolib/seo';
+import merge from 'lodash.merge'
+import { AstroSeo } from '@astrolib/seo'
 
-import type { Props as AstroSeoProps } from '@astrolib/seo';
+import type { Props as AstroSeoProps } from '@astrolib/seo'
 
-import { SITE, METADATA, I18N } from '~/utils/config';
-import type { MetaData } from '~/types';
-import { getCanonical } from '~/utils/permalinks';
+import { SITE, METADATA, I18N } from '~/utils/config'
+import type { MetaData } from '~/types'
+import { getCanonical } from '~/utils/permalinks'
 
-import { adaptOpenGraphImages } from '~/utils/images';
+import { adaptOpenGraphImages } from '~/utils/images'
 
 export interface Props extends MetaData {
-  dontUseTitleTemplate?: boolean;
+  dontUseTitleTemplate?: boolean
 }
 
 const {
@@ -22,7 +22,7 @@ const {
   description,
   openGraph = {},
   twitter = {},
-} = Astro.props;
+} = Astro.props
 
 const seoProps: AstroSeoProps = merge(
   {
@@ -62,7 +62,7 @@ const seoProps: AstroSeoProps = merge(
     openGraph: { url: canonical, ...openGraph },
     twitter: twitter,
   }
-);
+)
 ---
 
 <AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />

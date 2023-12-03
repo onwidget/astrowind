@@ -1,16 +1,16 @@
 ---
-import Image from '~/components/common/Image.astro';
-import Button from '~/components/ui/Button.astro';
-import type { CallToAction } from '~/types';
+import Image from '~/components/common/Image.astro'
+import Button from '~/components/ui/Button.astro'
+import type { CallToAction } from '~/types'
 
 export interface Props {
-  id?: string;
-  title?: string;
-  subtitle?: string;
-  tagline?: string;
-  content?: string;
-  actions?: string | CallToAction[];
-  image?: string | any; // TODO: find HTMLElementProps
+  id?: string
+  title?: string
+  subtitle?: string
+  tagline?: string
+  content?: string
+  actions?: string | CallToAction[]
+  image?: string | any // TODO: find HTMLElementProps
 }
 
 const {
@@ -21,7 +21,7 @@ const {
   content = await Astro.slots.render('content'),
   actions = await Astro.slots.render('actions'),
   image = await Astro.slots.render('image'),
-} = Astro.props;
+} = Astro.props
 ---
 
 <section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>

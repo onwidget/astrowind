@@ -1,19 +1,19 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
+import Layout from '~/layouts/PageLayout.astro'
 
-import Hero from '~/components/widgets/Hero.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import Hero from '~/components/widgets/Hero.astro'
+import CallToAction from '~/components/widgets/CallToAction.astro'
 
-import Features2 from '~/components/widgets/Features2.astro';
-import Features from '~/components/widgets/Features.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Brands from '~/components/widgets/Brands.astro';
+import Features2 from '~/components/widgets/Features2.astro'
+import Features from '~/components/widgets/Features.astro'
+import Stats from '~/components/widgets/Stats.astro'
+import Features3 from '~/components/widgets/Features3.astro'
+import FAQs from '~/components/widgets/FAQs.astro'
+import Brands from '~/components/widgets/Brands.astro'
 
 const metadata = {
   title: 'Startup Landing Page',
-};
+}
 ---
 
 <Layout metadata={metadata}>
@@ -300,13 +300,15 @@ const metadata = {
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
-    actions={[{
-      variant: "primary",
-      target: '_blank',
-      text: 'Get templates',
-      href: 'https://github.com/onwidget/astrowind',
-      icon: 'tabler:download',
-    }]}
+    actions={[
+      {
+        variant: 'primary',
+        target: '_blank',
+        text: 'Get templates',
+        href: 'https://github.com/onwidget/astrowind',
+        icon: 'tabler:download',
+      },
+    ]}
   >
     <Fragment slot="title">Be a part of our vision</Fragment>
 

@@ -1,4 +1,4 @@
-import { z, defineCollection } from 'astro:content';
+import { z, defineCollection } from 'astro:content'
 
 const metadataDefinition = () =>
   z
@@ -43,7 +43,7 @@ const metadataDefinition = () =>
         })
         .optional(),
     })
-    .optional();
+    .optional()
 
 const postCollection = defineCollection({
   schema: z.object({
@@ -61,8 +61,8 @@ const postCollection = defineCollection({
 
     metadata: metadataDefinition(),
   }),
-});
+})
 
 export const collections = {
   post: postCollection,
-};
+}

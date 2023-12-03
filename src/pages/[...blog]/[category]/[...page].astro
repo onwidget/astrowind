@@ -1,20 +1,20 @@
 ---
-import { blogCategoryRobots, getStaticPathsBlogCategory } from '~/utils/blog';
+import { blogCategoryRobots, getStaticPathsBlogCategory } from '~/utils/blog'
 
-import Layout from '~/layouts/PageLayout.astro';
-import BlogList from '~/components/blog/List.astro';
-import Headline from '~/components/blog/Headline.astro';
-import Pagination from '~/components/blog/Pagination.astro';
+import Layout from '~/layouts/PageLayout.astro'
+import BlogList from '~/components/blog/List.astro'
+import Headline from '~/components/blog/Headline.astro'
+import Pagination from '~/components/blog/Pagination.astro'
 
-export const prerender = true;
+export const prerender = true
 
-export async function getStaticPaths ({ paginate }) {
-  return await getStaticPathsBlogCategory({ paginate });
+export async function getStaticPaths({ paginate }) {
+  return await getStaticPathsBlogCategory({ paginate })
 }
 
-const { page, category } = Astro.props;
+const { page, category } = Astro.props
 
-const currentPage = page.currentPage ?? 1;
+const currentPage = page.currentPage ?? 1
 
 const metadata = {
   title: `Category '${category}' ${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
@@ -22,7 +22,7 @@ const metadata = {
     index: blogCategoryRobots?.index,
     follow: blogCategoryRobots?.follow,
   },
-};
+}
 ---
 
 <Layout metadata={metadata}>

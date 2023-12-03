@@ -1,30 +1,29 @@
 ---
-import '~/assets/styles/tailwind.css';
+import '~/assets/styles/tailwind.css'
 
-import { I18N } from "~/utils/config";
+import { I18N } from '~/utils/config'
 
-import CommonMeta from '~/components/common/CommonMeta.astro';
-import Favicons from '~/components/Favicons.astro';
-import CustomStyles from "~/components/CustomStyles.astro"
-import ApplyColorMode from "~/components/common/ApplyColorMode.astro"
-import Metadata from '~/components/common/Metadata.astro';
-import SiteVerification  from "~/components/common/SiteVerification.astro"
-import Analytics  from "~/components/common/Analytics.astro"
-import BasicScripts from '~/components/common/BasicScripts.astro';
+import CommonMeta from '~/components/common/CommonMeta.astro'
+import Favicons from '~/components/Favicons.astro'
+import CustomStyles from '~/components/CustomStyles.astro'
+import ApplyColorMode from '~/components/common/ApplyColorMode.astro'
+import Metadata from '~/components/common/Metadata.astro'
+import SiteVerification from '~/components/common/SiteVerification.astro'
+import Analytics from '~/components/common/Analytics.astro'
+import BasicScripts from '~/components/common/BasicScripts.astro'
 
-import type { MetaData as MetaDataType } from '~/types';
+import type { MetaData as MetaDataType } from '~/types'
 
 export interface Props {
-  metadata?: MetaDataType;
+  metadata?: MetaDataType
 }
 
-const { metadata = {} } = Astro.props;
-const { language, textDirection } = I18N;
+const { metadata = {} } = Astro.props
+const { language, textDirection } = I18N
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={language} dir={textDirection} class="2xl:text-[20px]">
-
   <head>
     <CommonMeta />
     <Favicons />

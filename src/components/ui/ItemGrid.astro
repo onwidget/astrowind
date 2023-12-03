@@ -1,10 +1,10 @@
 ---
-import { twMerge } from 'tailwind-merge';
-import type { ItemGrid } from '~/types';
-import Button from './Button.astro';
-import { Icon } from 'astro-icon/components';
+import { twMerge } from 'tailwind-merge'
+import type { ItemGrid } from '~/types'
+import Button from './Button.astro'
+import { Icon } from 'astro-icon/components'
 
-const { items = [], columns, defaultIcon = '', classes = {} } = Astro.props as ItemGrid;
+const { items = [], columns, defaultIcon = '', classes = {} } = Astro.props as ItemGrid
 
 const {
   container: containerClass = '',
@@ -13,7 +13,7 @@ const {
   description: descriptionClass = '',
   icon: defaultIconClass = 'text-primary',
   action: actionClass = '',
-} = classes;
+} = classes
 ---
 
 {
@@ -24,10 +24,10 @@ const {
           columns === 4
             ? 'lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2'
             : columns === 3
-            ? 'lg:grid-cols-3 sm:grid-cols-2'
-            : columns === 2
-            ? 'sm:grid-cols-2 '
-            : ''
+              ? 'lg:grid-cols-3 sm:grid-cols-2'
+              : columns === 2
+                ? 'sm:grid-cols-2 '
+                : ''
         }`,
         containerClass
       )}
@@ -52,13 +52,7 @@ const {
                 />
               )}
               {callToAction && (
-                <div
-                  class={twMerge(
-                    `${title || description ? 'mt-3' : ''}`,
-                    actionClass,
-                    itemClasses?.actionClass
-                  )}
-                >
+                <div class={twMerge(`${title || description ? 'mt-3' : ''}`, actionClass, itemClasses?.actionClass)}>
                   <Button variant="link" {...callToAction} />
                 </div>
               )}

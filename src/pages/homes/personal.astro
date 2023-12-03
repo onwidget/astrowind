@@ -1,18 +1,18 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
+import Layout from '~/layouts/PageLayout.astro'
 
-import Header from '~/components/widgets/Header.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Content from '~/components/widgets/Content.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import Header from '~/components/widgets/Header.astro'
+import Hero from '~/components/widgets/Hero.astro'
+import Content from '~/components/widgets/Content.astro'
+import CallToAction from '~/components/widgets/CallToAction.astro'
+import Features3 from '~/components/widgets/Features3.astro'
+import Testimonials from '~/components/widgets/Testimonials.astro'
+import Steps from '~/components/widgets/Steps.astro'
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro'
 
 const metadata = {
   title: 'Personal Homepage Demo',
-};
+}
 ---
 
 <Layout metadata={metadata}>
@@ -44,7 +44,7 @@ const metadata = {
     id="hero"
     title="Sarah Johnson"
     tagline="Personal Web Demo"
-    actions={[{ variant: "primary", target: '_blank', text: 'Hire me', href: '/' }]}
+    actions={[{ variant: 'primary', target: '_blank', text: 'Hire me', href: '/' }]}
   >
     <Fragment slot="subtitle">
       I'm a Graphic Designer passionate about crafting visual stories. <br /> With 5 years of experience and a degree
@@ -380,11 +380,13 @@ const metadata = {
   <CallToAction
     title="Let's create together"
     subtitle="Ready to transform your vision into captivating designs?"
-    actions={[{
-      variant:"primary",
-      text: 'Hire me',
-      href: '/',
-    }]}
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Hire me',
+        href: '/',
+      },
+    ]}
   />
 
   <!-- BlogLatestPost Widget **************** -->

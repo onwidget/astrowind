@@ -1,20 +1,20 @@
 ---
-import { blogTagRobots, getStaticPathsBlogTag } from '~/utils/blog';
+import { blogTagRobots, getStaticPathsBlogTag } from '~/utils/blog'
 
-import Layout from '~/layouts/PageLayout.astro';
-import BlogList from '~/components/blog/List.astro';
-import Headline from '~/components/blog/Headline.astro';
-import Pagination from '~/components/blog/Pagination.astro';
+import Layout from '~/layouts/PageLayout.astro'
+import BlogList from '~/components/blog/List.astro'
+import Headline from '~/components/blog/Headline.astro'
+import Pagination from '~/components/blog/Pagination.astro'
 
-export const prerender = true;
+export const prerender = true
 
-export async function getStaticPaths ({ paginate }) {
-  return await getStaticPathsBlogTag({ paginate });
+export async function getStaticPaths({ paginate }) {
+  return await getStaticPathsBlogTag({ paginate })
 }
 
-const { page, tag } = Astro.props;
+const { page, tag } = Astro.props
 
-const currentPage = page.currentPage ?? 1;
+const currentPage = page.currentPage ?? 1
 
 const metadata = {
   title: `Posts by tag '${tag}'${currentPage > 1 ? ` — Page ${currentPage} ` : ''}`,
@@ -22,7 +22,7 @@ const metadata = {
     index: blogTagRobots?.index,
     follow: blogTagRobots?.follow,
   },
-};
+}
 ---
 
 <Layout metadata={metadata}>

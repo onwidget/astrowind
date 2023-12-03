@@ -12,8 +12,8 @@ metadata:
   canonical: https://astrowind.vercel.app/astrowind-template-in-depth
 ---
 
-import DListItem from '~/components/ui/DListItem.astro';
-import ToggleTheme from '~/components/common/ToggleTheme.astro';
+import DListItem from '~/components/ui/DListItem.astro'
+import ToggleTheme from '~/components/common/ToggleTheme.astro'
 
 ## Overview
 
@@ -48,11 +48,11 @@ _Dark Mode_ is triggered by the little 'sunlight' icon:<ToggleTheme/>in the page
 ```javascript
 attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
   if (defaultTheme.endsWith(':only')) {
-    return;
+    return
   }
-  document.documentElement.classList.toggle('dark');
-  localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-});
+  document.documentElement.classList.toggle('dark')
+  localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+})
 ```
 
 Note that this is a client event. _BasicScripts.astro_ defines several other client-side functionality as well as this one.
@@ -64,9 +64,9 @@ _slots_ are part of the component implementation, which is a common concept amon
 ```astro
 ---
 // (file: MyComponent.astro)
-const { title } = Astro.props;
+const { title } = Astro.props
 export interface Props {
-  title: string;
+  title: string
 }
 ---
 
@@ -95,11 +95,11 @@ There's another way we can use slots, useful particularly when a component can h
 ---
 // (file: MyComponent.astro)
 
-const { title } = Astro.props;
+const { title } = Astro.props
 export interface Props {
-  title: string;
+  title: string
 }
-const content: string = await Astro.props.render('default');
+const content: string = await Astro.props.render('default')
 ---
 
 // renders the html to the 'content' variable
@@ -118,7 +118,7 @@ Notice there is no slot definition in the html portion of the component. Instead
 So, if the usage is in a markdown file, like so:
 
 ```mdx
-import MyComponent from '../../components/MyComponent';
+import MyComponent from '../../components/MyComponent'
 
 # Using the above component in a .mdx file (that can take components)
 
@@ -194,7 +194,7 @@ And, the _CallToAction_ component defines and renders it thusly:
 ```astro
 ---
 //...
-const { subtitle = await Astro.slots.render('subtitle') } = Astro.props;
+const { subtitle = await Astro.slots.render('subtitle') } = Astro.props
 ---
 
 //...

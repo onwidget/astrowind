@@ -1,7 +1,6 @@
 {
-  "name": "@onwidget/astrowind",
+  "name": "Wensite Thom Veldpaus",
   "description": "AstroWind: A free template using Astro 3.0 and Tailwind CSS. Astro starter theme.",
-  "version": "1.0.0-beta.8",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -10,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier -w .",
-    "lint:eslint": "eslint . --ext .js,.ts,.astro"
+    "lint:eslint": "eslint . --fix --ext .js,.ts,.astro"
   },
   "dependencies": {
     "@astro-community/astro-embed-youtube": "^0.4.3",
