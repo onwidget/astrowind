@@ -3,6 +3,12 @@ import { UI } from '~/utils/config';
 ---
 
 <script is:inline define:vars={{ defaultTheme: UI.theme }}>
+  if (window.basic_script) {
+    return;
+  }
+
+  window.basic_script = true;
+
   function applyTheme(theme) {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -11,16 +17,19 @@ import { UI } from '~/utils/config';
     }
   }
 
-  if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
-    applyTheme(defaultTheme.replace(':only', ''));
-  } else if (
-    localStorage.theme === 'dark' ||
-    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-  ) {
-    applyTheme('dark');
-  } else {
-    applyTheme('light');
-  }
+  const initTheme = function () {
+    if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
+      applyTheme(defaultTheme.replace(':only', ''));
+    } else if (
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      applyTheme('dark');
+    } else {
+      applyTheme('light');
+    }
+  };
+  initTheme();
 
   function attachEvent(selector, event, fn) {
     const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
@@ -31,28 +40,28 @@ import { UI } from '~/utils/config';
     }
   }
 
-  window.onload = function () {
+  const onLoad = function () {
     let lastKnownScrollPosition = window.scrollY;
     let ticking = true;
 
     attachEvent('#header nav', 'click', function () {
-      document.querySelector("[data-aw-toggle-menu]")?.classList.remove("expanded");
-      document.body.classList.remove("overflow-hidden");
-      document.getElementById("header")?.classList.remove("h-screen");
-      document.getElementById("header")?.classList.remove("expanded");
-      document.getElementById("header")?.classList.remove("bg-page");
-      document.querySelector("#header nav")?.classList.add("hidden");
-      document.querySelector("#header > div > div:last-child")?.classList.add("hidden");
+      document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
+      document.body.classList.remove('overflow-hidden');
+      document.getElementById('header')?.classList.remove('h-screen');
+      document.getElementById('header')?.classList.remove('expanded');
+      document.getElementById('header')?.classList.remove('bg-page');
+      document.querySelector('#header nav')?.classList.add('hidden');
+      document.querySelector('#header > div > div:last-child')?.classList.add('hidden');
     });
 
     attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
-      elem.classList.toggle("expanded");
-      document.body.classList.toggle("overflow-hidden");
-      document.getElementById("header")?.classList.toggle("h-screen");
-      document.getElementById("header")?.classList.toggle("expanded");
-      document.getElementById("header")?.classList.toggle("bg-page");
-      document.querySelector("#header nav")?.classList.toggle("hidden");
-      document.querySelector("#header > div > div:last-child")?.classList.toggle("hidden");
+      elem.classList.toggle('expanded');
+      document.body.classList.toggle('overflow-hidden');
+      document.getElementById('header')?.classList.toggle('h-screen');
+      document.getElementById('header')?.classList.toggle('expanded');
+      document.getElementById('header')?.classList.toggle('bg-page');
+      document.querySelector('#header nav')?.classList.toggle('hidden');
+      document.querySelector('#header > div > div:last-child')?.classList.toggle('hidden');
     });
 
     attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
@@ -97,7 +106,7 @@ import { UI } from '~/utils/config';
     });
 
     function appyHeaderStylesOnScroll() {
-      const header = document.getElementById('header');
+      const header = document.querySelector('#header[data-aw-sticky-header]');
       if (lastKnownScrollPosition > 60 && !header.classList.contains('scroll')) {
         document.getElementById('header').classList.add('scroll');
       } else if (lastKnownScrollPosition <= 60 && header.classList.contains('scroll')) {
@@ -118,16 +127,24 @@ import { UI } from '~/utils/config';
       }
     });
   };
-
-  window.onpageshow = function () {
+  const onPageShow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');
     const elem = document.querySelector('[data-aw-toggle-menu]');
     if (elem) {
       elem.classList.remove('expanded');
     }
-    document.body.classList.remove("overflow-hidden");
-    document.getElementById("header")?.classList.remove("h-screen");
-    document.getElementById("header")?.classList.remove("expanded");
-    document.querySelector("#header nav")?.classList.add("hidden");
+    document.body.classList.remove('overflow-hidden');
+    document.getElementById('header')?.classList.remove('h-screen');
+    document.getElementById('header')?.classList.remove('expanded');
+    document.querySelector('#header nav')?.classList.add('hidden');
   };
+
+  window.onload = onLoad;
+  window.onpageshow = onPageShow;
+
+  document.addEventListener('astro:after-swap', () => {
+    initTheme();
+    onLoad();
+    onPageShow();
+  });
 </script>

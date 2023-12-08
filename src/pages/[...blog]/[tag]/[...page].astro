@@ -1,4 +1,5 @@
 ---
+import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
 import { blogTagRobots, getStaticPathsBlogTag } from '~/utils/blog';
 
 import Layout from '~/layouts/PageLayout.astro';
@@ -8,11 +9,13 @@ import Pagination from '~/components/blog/Pagination.astro';
 
 export const prerender = true;
 
-export async function getStaticPaths ({ paginate }) {
+export const getStaticPaths = (async ({ paginate }) => {
   return await getStaticPathsBlogTag({ paginate });
-}
+}) satisfies GetStaticPaths;
 
-const { page, tag } = Astro.props;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { page, tag } = Astro.props as Props;
 
 const currentPage = page.currentPage ?? 1;
 
