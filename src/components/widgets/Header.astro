@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import Image from '~/components/common/Image.astro';
 import Logo from "~/components/Logo.astro";
 import ToggleTheme from "~/components/common/ToggleTheme.astro";
 import ToggleMenu from "~/components/common/ToggleMenu.astro";
@@ -154,6 +155,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
           )
         }
       </div>
+      <Button variant="secondary" href="/comingsoon"> Book Tickets</Button>
     </div>
   </div>
 </header>

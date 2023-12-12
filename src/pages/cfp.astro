@@ -1,0 +1,87 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Call for Papers',
+};
+---
+
+<Layout metadata={metadata}>
+
+  <Features2
+    title="Explore our diverse topics of intersts"
+    subtitle="It's important to emphasize that the subjects of interest don't need to be limited to a specific security domain. They can also contribute to a broader understanding of the current landscape, shedding light on challenges faced by government, industry, and academia both domestically and internationally."
+    columns={3}
+    items={[
+      {
+        title: 'Internet of Things (IoT)',
+        description:
+          'IoT security focuses on protecting connected devices and networks from cyber threats by ensuring data integrity, confidentiality, and preventing unauthorized access.',
+        icon: 'tabler:cpu',
+      },
+      {
+        title: 'Cryptocurrency / Blockchain',
+        description:
+          'Cryptocurrency and blockchain security involve safeguarding digital assets and decentralized ledgers.',
+        icon: 'tabler:currency-bitcoin',
+      },
+      {
+        title: 'Darkweb / OSINT',
+        description: `Dark Web security addresses risks in illicit online spaces, while OSINT security focuses on gathering intelligence from public sources.`,
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Generative AI / LLM',
+        description:
+          'Generative AI security ensures safe use of AI models that generate content; LLM (Large Language Models) security focuses on securing advanced language models.',
+        icon: 'tabler:brain',
+      },
+      {
+        title: '5G / Edge / Cloud Security',
+        description:
+          '5G ensures network integrity, Edge protects data at its source, and Cloud safeguards data and applications in cloud environments. Together, they create a robust digital defense.',
+        icon: 'tabler:cloud',
+      },
+      {
+        title: 'Zero Trust Security Model',
+        description:
+          'Trust no one and verify everyone. It assumes no inherent trust, requiring constant authentication and authorization for all devices and users, enhancing overall cybersecurity.',
+        icon: 'tabler:lock',
+      },
+      {
+        title: 'Red Team and Blue Team',
+        description:
+          'Red Team tests security by simulating attacks, while Blue Team defends and responds to those attacks. Together, they improve overall cybersecurity.',
+        icon: 'tabler:shield',
+      },
+      {
+        title: 'Digital Forensics / Incident Response',
+        description: `From presentations to patient forms, these tools enhance communication effectiveness for healthcare professionals. Ideal for medical practices and research pursuits.`,
+        icon: 'tabler:lock-question',
+      },
+      {
+        title: 'Malware Analysis & Dev',
+        description:
+          'Malware Analysis studies malicious software to understand its behavior and mitigate threats, while Malware Development involves creating malicious software to exploit vulnerabilities for nefarious purposes.',
+        icon: 'tabler:bug',
+      },
+      {
+        title: 'Appsec / DevSecOps',
+        description:
+          'Appsec focuses on securing applications, while DevSecOps integrates security practices throughout the entire development process, ensuring continuous security.',
+        icon: 'tabler:settings-cog',
+      },
+      {
+        title: 'and many more..',
+        description:
+          'If you feel that you have a topic that might be interesting to talk about, please feel free to submit that as well. The talks are not only limited to topics mentioned here.',
+        icon: '',
+      },
+    ]}
+  />
+</Layout>
