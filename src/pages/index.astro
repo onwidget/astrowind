@@ -2,7 +2,6 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
@@ -13,7 +12,7 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'BSides Chennai',
   ignoreTitleTemplate: true,
 };
 ---
@@ -22,106 +21,86 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-      { text: 'Learn more', href: '#features' },
-    ]}
-    image={{ src: '~/assets/images/hero.png', alt: 'AstroWind Hero Image' }}
+    actions={[]}
+    image={{ src: '~/assets/images/chennai.svg', alt: 'Chennai', width: 1400, height: 550 }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white highlight"> Astro 4.0</span> + Tailwind CSS
+    BSides Chennai - 2024
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 4.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-       Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages
-      & Blogs.
+        <span class="font-semibold">BSides Chennai</span> is a community-led framework for people in chennai who are interested in the world of <span class="font-semibold">Cybersecurity</span>.</span>
     </Fragment>
   </Hero>
-
-  <!-- Note Widget ******************* -->
-
-  <Note />
 
   <!-- Features Widget *************** -->
 
   <Features
     id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022."
+    tagline=""
+    title="What you can expect at Conference"
+    subtitle="From one of the most professional and collaborative community in Chennai."
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: 'Technical Talks',
         description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
+          'Brief discussions and presentations on cutting edge technologies delivered by SMEs from cyber security industry.',
+        icon: 'tabler:microphone-2',
       },
       {
-        title: 'Ready-to-use Components',
+        title: 'CxO Panel Discussion',
         description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
+          'Top-tier industry experts with backgrounds as CISOs, CEOs, VPs, and SVPs are engaged in discussions regarding diverse security challenges prevalent in the industry.',
+        icon: 'tabler:heart-handshake',
       },
       {
-        title: 'Best Practices',
+        title: 'Vendor Booths',
         description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
+          'A one stop market place where you can connect with various vendors of cybersecurity technologies / solutions available in the industry',
+        icon: 'tabler:building-store',
       },
       {
-        title: 'Excellent Page Speed',
+        title: 'Capture The Flag',
         description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
+          'A cool way to showcase your cybersecurity skills by participating and hunting down the flags in our challenges across multiple levels and categories.',
+        icon: 'tabler:flag',
       },
       {
-        title: 'Search Engine Optimization (SEO)',
+        title: 'Security Trainings',
         description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
+          "At BSides, we strive to give back to the community by equipping the participants to provide with the right skills with hands-on knowledge through various sessions.",
+        icon: 'tabler:school',
       },
       {
-        title: 'Open to new ideas and contributions',
+        title: 'Security Villages',
         description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
+          'An ultimate environment to discuss on various topics like career consulting, lockpicking, social engineering, hardware hacking and etc.',
+        icon: 'tabler:speakerphone',
       },
     ]}
   />
 
-  <!-- Content Widget **************** -->
-
+  <!-- 
   <Content
     isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
+    tagline=""
+    title="Call for papers [ 2024 ]"
     items={[
       {
-        title: 'Built on top of Astro 4.0',
+        title: '01 January 2024',
         description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+          'Call for paper opens',
       },
       {
-        title: 'Styled using Tailwind CSS',
+        title: '15 April 2024',
         description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+          'Call for papers closes',
       },
       {
-        title: 'Cross-browser compatibility',
+        title: '30 April 2024',
         description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
+          'Speakers will be announced publicly',
       },
     ]}
     image={{
@@ -130,8 +109,8 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-       Gain a competitive advantage by incorporating industry leading practices
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2"></h3>
+       Now is the time to submit your talk for consideration at this early next year’s event. Whether you are a seasoned pro or first-time speaker looking for the opportunity to level up, we can’t wait to hear from you!
     </Fragment>
 
     <Fragment slot="bg">
@@ -139,106 +118,34 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+  -->
 
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      },
-      {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
 
   <!-- Steps Widget ****************** -->
 
   <Steps
-    title="Get your dream website up and running in no time with AstroWind."
+    title="Call For Papers - Timeline"
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Download</span>',
+        title: '<span class="font-medium">01 January 2024</span>',
         description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
+          "Call for paper will be open for hackers to submit their abstract.",
+        icon: 'tabler:speakerphone',
       },
       {
-        title: 'Step 2: <span class="font-medium">Add content</em>',
+        title: '<span class="font-medium">15 April 2024</em>',
         description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
+          "Call for papers will be closed and we will be evaluating the submissions.",
+        icon: 'tabler:search',
       },
       {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        title: '<span class="font-medium">10 May 2024</span>',
         description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
+          'Speakers list will be announced publicly.',
+        icon: 'tabler:news',
       },
       {
-        title: 'Ready!',
+        title: 'Get Ready !',
         icon: 'tabler:check',
       },
     ]}
@@ -249,7 +156,7 @@ const metadata = {
   />
 
   <!-- Features2 Widget ************** -->
-
+  <!--
   <Features2
     title="Most used widgets"
     subtitle="Provides frequently used components for building websites using Tailwind CSS"
@@ -312,8 +219,10 @@ const metadata = {
     </Fragment>
   </Features2>
 
+  -->
   <!-- HighlightedPosts Widget ******* -->
 
+  <!--
   <BlogLatestPosts
     title="Find out more content in our Blog"
     information={`The blog is used to display AstroWind documentation.
@@ -321,9 +230,11 @@ const metadata = {
                         Astro is a very interesting technology. Thanks.
                 `}
   />
+  -->
+
 
   <!-- FAQs Widget ******************* -->
-
+  <!--
   <FAQs
     title="Frequently Asked Questions"
     subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
@@ -362,38 +273,17 @@ const metadata = {
       },
     ]}
   />
+  -->
 
   <!-- Stats Widget ****************** -->
 
   <Stats
     stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
+      { title: 'Followers', amount: '100+' },
+      { title: 'Registrations', amount: '0' },
+      { title: 'Workshops', amount: '0' },
+      { title: 'Vilages', amount: '0' },
     ]}
   />
 
-  <!-- CallToAction Widget *********** -->
-
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
-    </Fragment>
-  </CallToAction>
 </Layout>
