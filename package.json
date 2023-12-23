@@ -52,6 +52,9 @@
     "astro/sharp": "0.33.1",
     "astro-compress/sharp": "0.33.1"
   },
+  "overrides": {
+    "sharp": "0.33.1"
+  },
   "engines": {
     "node": ">=18.14.1"
   }
