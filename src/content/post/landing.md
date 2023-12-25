@@ -7,6 +7,8 @@ tags:
   - landing-pages
   - front-end
   - resources
+metadata:
+  canonical: https://astrowind.vercel.app/landing
 ---
 
 In the vast digital landscape, standing out is more than a desire—it's a necessity. Enter the world of Landing Pages, the unsung heroes of digital marketing. With the power of the AstroWind template, developed using Astro and Tailwind CSS, crafting these pages becomes even more intuitive. Let's dive deep into understanding, creating, and optimizing them.
