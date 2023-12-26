@@ -3,13 +3,17 @@ import { fileURLToPath } from 'url';
 
 import { defineConfig, squooshImageService } from 'astro/config';
 
+import storyblok from '@storyblok/astro'
+import { loadEnv } from 'vite'
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import tasks from './src/utils/tasks';
-
+import basicSsl from '@vitejs/plugin-basic-ssl'
+const env = loadEnv("", process.cwd(), 'STORYBLOK')
+ 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin } from './src/utils/frontmatter.mjs';
 
 import { ANALYTICS, SITE } from './src/utils/config.ts';
@@ -33,6 +37,9 @@ export default defineConfig({
   integrations: [
     tailwind({
       applyBaseStyles: false,
+    }),
+    storyblok({
+      accessToken: env.STORYBLOK_TOKEN,
     }),
     sitemap(),
     mdx(),
@@ -77,5 +84,9 @@ export default defineConfig({
         '~': path.resolve(__dirname, './src'),
       },
     },
+    // plugins: [basicSsl()],
+    // server: {
+    //   https: true,
+    // },
   },
 });
