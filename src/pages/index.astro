@@ -13,7 +13,7 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'Aurora Accounting London – Your Path to Financial Clarity',
   ignoreTitleTemplate: true,
 };
 ---
@@ -23,30 +23,19 @@ const metadata = {
 
   <Hero
     actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-      { text: 'Learn more', href: '#features' },
+      { text: 'Discover Our Services', href: '#services' },
+      { text: 'Contact Us', href: '/contact' },
     ]}
     image={{ src: '~/assets/images/hero.png', alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white highlight"> Astro 4.0</span> + Tailwind CSS
+      Expert Accounting for Modern Businesses in <span class="text-accent dark:text-white highlight">London</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 4.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-       Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages
-      & Blogs.
+      At <span class="font-semibold">Aurora Accounting London</span>, we combine traditional expertise with modern
+      solutions to navigate your financial landscape. Our services are tailor-made for Startups, SMEs, and individual
+      entrepreneurs.
     </Fragment>
   </Hero>
 
@@ -57,46 +46,33 @@ const metadata = {
   <!-- Features Widget *************** -->
 
   <Features
-    id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022."
+    id="services"
+    tagline="Our Expertise"
+    title="Tailored Accounting Solutions"
+    subtitle="Delivering unparalleled accounting services with a personal touch. Our team of experts is dedicated to your financial success."
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: 'Comprehensive Tax Management',
         description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
+          'Navigate the complexities of taxation with our bespoke solutions, ensuring efficiency and compliance.',
+        icon: 'tabler:calculator',
       },
       {
-        title: 'Ready-to-use Components',
-        description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
+        title: 'Innovative Financial Planning',
+        description: 'Strategic financial advice to propel your business growth and secure your financial future.',
+        icon: 'tabler:chart-bar',
       },
       {
-        title: 'Best Practices',
+        title: 'Reliable Compliance & Auditing',
         description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
+          'Rigorous auditing and compliance services to maintain the integrity and accuracy of your financial records.',
         icon: 'tabler:list-check',
       },
       {
-        title: 'Excellent Page Speed',
+        title: 'Streamlined Reporting & Bookkeeping',
         description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
+          'Simplify your financial journey with our streamlined year-end reporting and meticulous bookkeeping services, ensuring accuracy and peace of mind for all your accounting needs.',
+        icon: 'tabler:report',
       },
     ]}
   />
@@ -105,23 +81,22 @@ const metadata = {
 
   <Content
     isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
+    tagline="Why Choose Us"
+    title="Experience the Aurora Difference"
     items={[
       {
-        title: 'Built on top of Astro 4.0',
+        title: 'Client-Centric Approach',
         description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+          'Every client is unique. We offer personalized services tailored to your specific financial needs and goals.',
       },
       {
-        title: 'Styled using Tailwind CSS',
-        description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+        title: 'Advanced Technology Integration',
+        description: 'Utilizing the latest accounting technology to provide efficient and innovative services.',
       },
       {
-        title: 'Cross-browser compatibility',
+        title: 'Expert Team',
         description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
+          'Our experienced and qualified professionals are dedicated to delivering excellence in all aspects of accounting.',
       },
     ]}
     image={{
@@ -130,8 +105,10 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-       Gain a competitive advantage by incorporating industry leading practices
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Leading the Way in Accounting Excellence
+      </h3>
+       Elevate your business with Aurora Accounting London's expertise and innovative financial solutions.
     </Fragment>
 
     <Fragment slot="bg">
@@ -145,23 +122,23 @@ const metadata = {
     isAfterContent
     items={[
       {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
+        title: 'Bespoke Accounting Services',
+        description: `Every business is unique. That's why we offer tailored accounting solutions that align with your specific financial goals and requirements.`,
       },
       {
-        title: 'Multiple layout possibilities',
+        title: 'Comprehensive Financial Analysis',
         description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
+          'Dive deep into your financials with our thorough analysis, ensuring you have all the insights needed to make informed decisions.',
       },
       {
-        title: 'Fully responsive design',
+        title: 'State-of-the-Art Technology',
         description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
+          'Leverage the latest in accounting technology for efficient and accurate financial management, accessible anywhere, anytime.',
       },
       {
-        title: 'Integration of media',
+        title: 'Proactive Financial Planning',
         description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
+          'Stay ahead with our proactive approach to financial planning, helping you anticipate challenges and seize opportunities.',
       },
     ]}
     image={{
@@ -176,133 +153,95 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
   <!-- Steps Widget ****************** -->
 
   <Steps
-    title="Get your dream website up and running in no time with AstroWind."
+    title="Aurora Accounting London - Your Partner in Financial Excellence"
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Download</span>',
+        title: 'Step 1: <span class="font-medium">Discover</span>',
         description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
+          'Begin your journey with Aurora Accounting. Connect with us to explore how we can transform your financial landscape with our expert accounting services.',
+        icon: 'tabler:search',
       },
       {
-        title: 'Step 2: <span class="font-medium">Add content</em>',
+        title: 'Step 2: <span class="font-medium">Engage</span>',
         description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
+          "Engage with our team of seasoned accountants and financial advisors. We'll work closely with you to tailor our services to your specific needs.",
+        icon: 'tabler:user-plus',
       },
       {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        title: 'Step 3: <span class="font-medium">Achieve</span>',
         description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
+          'Experience the impact of professional accounting. Watch your business thrive as we implement strategic financial solutions tailored to your growth.',
+        icon: 'tabler:rocket',
       },
       {
-        title: 'Ready!',
+        title: 'Success!',
         icon: 'tabler:check',
       },
     ]}
     image={{
       src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
+      alt: 'Aurora Accounting Steps image',
     }}
   />
 
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
+    title="Our Expertise"
+    subtitle="Delivering top-notch accounting services tailored to your needs"
+    tagline="Services"
     items={[
       {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
+        title: 'Comprehensive Accounting',
+        description:
+          'From bookkeeping to financial reporting, we cover all aspects of accounting to keep your business on track.',
         icon: 'flat-color-icons:template',
       },
       {
-        title: 'Heros',
+        title: 'Tax Advisory',
         description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
+          'Navigate the complexities of taxation with our expert advice, ensuring compliance and maximizing savings.',
         icon: 'flat-color-icons:gallery',
       },
       {
-        title: 'Features',
+        title: 'Business Consulting',
         description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
+          'Our strategic business consulting helps you make informed decisions, driving growth and profitability.',
         icon: 'flat-color-icons:approval',
       },
       {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
+        title: 'Financial Planning',
+        description: "Secure your business's future with our personalized financial planning services.",
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
+        title: 'Audit and Compliance',
+        description: 'Ensure accuracy and compliance with our thorough auditing services, giving you peace of mind.',
         icon: 'flat-color-icons:advertising',
       },
       {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
+        title: 'Cloud Accounting',
+        description:
+          'Leverage the latest technology with our cloud accounting solutions for efficiency and accessibility.',
         icon: 'flat-color-icons:currency-exchange',
       },
       {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
+        title: 'Client Testimonials',
+        description: 'Hear from our satisfied clients and understand the impact of our partnership.',
         icon: 'flat-color-icons:voice-presentation',
       },
       {
-        title: 'Contact',
+        title: 'Get in Touch',
         description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
+          'Ready to elevate your financials? Contact us today and take the first step towards financial clarity and success.',
         icon: 'flat-color-icons:business-contact',
       },
       {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
+        title: 'About Us',
+        description: 'Learn more about Aurora Accounting London and our commitment to your financial success.',
         icon: 'flat-color-icons:database',
       },
     ]}
@@ -326,39 +265,39 @@ const metadata = {
 
   <FAQs
     title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
+    subtitle="Find answers to common questions about Aurora Accounting London's services and how we can help enhance your financial strategy."
     tagline="FAQs"
     classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'Why AstroWind?',
+        title: 'Why Choose Aurora Accounting London?',
         description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+          "Aurora Accounting London stands out for its blend of traditional accounting expertise and innovative financial strategies, ensuring your business stays ahead in today's dynamic economic landscape.",
       },
       {
-        title: 'What do I need to start?',
+        title: 'What Accounting Services Do We Offer?',
         description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+          'From comprehensive tax planning to efficient bookkeeping, we offer a wide range of services designed to streamline your financial processes and maximize your business’s growth potential.',
       },
       {
-        title: 'How to install the Astro + Tailwind CSS template?',
+        title: 'How Can Our Accounting Services Benefit You?',
         description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
+          'Our tailored approach ensures that each client receives personalized solutions, offering clarity in financial decision-making and unlocking opportunities for growth and savings.',
       },
       {
-        title: "What's something that you don't understand?",
+        title: 'What Makes Our Team Qualified?',
         description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+          'Led by a CIMA-certified accountant, our team brings a wealth of experience and a commitment to excellence in every aspect of our service.',
       },
       {
-        title: 'What is something that you would like to try again?',
+        title: 'How Do We Ensure Client Satisfaction?',
         description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
+          "We prioritize transparent communication and a client-centric approach, ensuring our solutions align perfectly with your business's unique financial needs.",
       },
       {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
+        title: 'Can We Tailor Services to Your Specific Needs?',
         description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+          "Absolutely! We believe every business is unique, and we're dedicated to providing bespoke accounting solutions that align with your specific goals and challenges.",
       },
     ]}
   />
@@ -367,10 +306,10 @@ const metadata = {
 
   <Stats
     stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
+      { title: 'Years in Business', amount: '10+' },
+      { title: 'Satisfied Clients', amount: '200+' },
+      { title: 'Successful Projects', amount: '300+' },
+      { title: 'Professional Awards', amount: '15' },
     ]}
   />
 
@@ -380,20 +319,17 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
+        text: 'Contact Us',
+        href: '/contact',
+        icon: 'tabler:mail',
       },
     ]}
   >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
+    <Fragment slot="title">Ready to Transform Your Financial Future?</Fragment>
 
     <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
+      Discover how Aurora Accounting London can elevate your business's financial health. <br />Reach out to us for a
+      consultation today!
     </Fragment>
   </CallToAction>
 </Layout>

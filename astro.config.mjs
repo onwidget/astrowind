@@ -11,7 +11,7 @@ import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import tasks from './src/utils/tasks';
-import basicSsl from '@vitejs/plugin-basic-ssl'
+// import basicSsl from '@vitejs/plugin-basic-ssl'
 const env = loadEnv("", process.cwd(), 'STORYBLOK')
  
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin } from './src/utils/frontmatter.mjs';
@@ -53,6 +53,7 @@ export default defineConfig({
         config: 'storyblok/Config',
         article: 'storyblok/Article',
         body: 'storyblok/Body',
+      },
     }),
     sitemap(),
     mdx(),
@@ -97,9 +98,6 @@ export default defineConfig({
         '~': path.resolve(__dirname, './src'),
       },
     },
-    // plugins: [basicSsl()],
-    // server: {
-    //   https: true,
-    // },
+
   },
 });

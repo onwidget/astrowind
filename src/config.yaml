@@ -1,5 +1,5 @@
 site:
-  name: AstroWind
+  name: Aurora Accounts
   site: 'https://astrowind.vercel.app'
   base: '/'
   trailingSlash: false
@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Aurora Accounting London
+    template: '%s — Empowering Financial Success'
+  description: "🌟 Aurora Accounting London - Specializing in Tax, Financial Planning, and Compliance for Businesses and Individuals. Your Partner in Financial Growth and Stability."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Aurora Accounting London
     images:
       - url: '~/assets/images/default.png'
         width: 1200
@@ -66,7 +66,7 @@ analytics:
       id: null # or "G-XXXXXXXXXX"
 
 ui:
-  theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  theme: 'dark' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 
   tokens:
     default:
