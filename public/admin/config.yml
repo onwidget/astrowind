@@ -1,9 +1,13 @@
 backend:
   name: git-gateway
   branch: main
+  repo: HusainMkd/AstroAccountantsLondon # change this to your repo
+  site_domain: www-auroraaccountantslondon.netlify.app # change this to your domain
+  base_url: https://www-auroraaccountantslondon.netlify.app/ # change this to your prod URL
+  auth_endpoint: oauth # the oauth route provided by the integration
 
 media_folder: 'src/assets/images'
-public_folder: '/_astro'
+public_folder: '/assets/images'
 
 collections:
   - name: 'post'
@@ -27,3 +31,6 @@ collections:
       - { label: 'Publish Date', name: 'publishDate', widget: 'datetime', required: false }
       - { label: 'Author', name: 'author', widget: 'string' }
       - { label: 'Content', name: 'body', widget: 'markdown' }
+      - { label: 'Metadata', name: 'metadata', widget: 'object', fields: [
+          { label: 'Canonical', name: 'canonical', widget: 'string' },
+        ] }
