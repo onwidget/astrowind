@@ -4,5 +4,16 @@ import Image from '~/components/common/Image.astro';
 ---
 
 <span class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white">
-  BSides Cheன்னை
+  <Image
+    src='~/assets/images/bsides.png'
+    class="w-full md:h-full rounded"
+    widths={[400, 900]}
+    width={400}
+    sizes="(max-width: 150px) 130px, 130px"
+    alt="BSides Cheன்னை"
+    aspectRatio="16:10"
+    layout="responsive"
+    loading="lazy"
+    decoding="async"
+  />
 </span>
