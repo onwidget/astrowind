@@ -1,8 +1,11 @@
 ---
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
+import { Icon } from 'astro-icon/components';
 import Features2 from '~/components/widgets/Features2.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import Button from '~/components/ui/Button.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
@@ -84,4 +87,14 @@ const metadata = {
       },
     ]}
   />
+  <center>
+    <div class="row" style="margin-bottom: 50px;">
+      <Button variant="primary" class={`md:px-3 px-3`} href="https://forms.gle/" target="_blank">
+              <span class="mr-2">Submit Paper</span>
+      </Button>
+    </div>
+  </center>
+
+  <Note />
+
 </Layout>

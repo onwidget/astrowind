@@ -1,5 +1,7 @@
 ---
+import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
 import Layout from '~/layouts/PageLayout.astro';
+import ItemGrid from "~/components/ui/ItemGrid.astro";
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
@@ -7,72 +9,53 @@ import Features2 from '~/components/widgets/Features2.astro';
 const metadata = {
   title: 'Contact',
 };
+
+const isDark = false;
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  <HeroText tagline="" title="Let's Connect!" />
+  <WidgetWrapper
+  id=""
+  isDark={isDark}
+  containerClass={`max-w-xl mx-auto`}
+  bg=""
+  >
+    <ItemGrid
+      items={[
+        {
+          title: 'Discord',
+          description:
+            `
 
-  <ContactUs
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-      },
-    ]}
-    textarea={{
-      label: 'Message',
-    }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="Our support team typically responds within 24 business hours."
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="We are here to help!"
-    items={[
-      {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
-      },
-      {
-        title: 'Contact sales',
-        description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
-      },
-      {
-        title: 'Technical support',
-        description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
-      },
-      {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
-      },
-      {
-        title: 'Email',
-        description: 'contact@support.com',
-        icon: 'tabler:mail',
-      },
-      {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
-      },
-    ]}
-  />
+            We are always looking forward to expand our hood, please feel free to join the discord server to become a volunteer/member of the fast-paced growing community of Chennai
+            <br>
+            <button class="btn-primary" style="margin-top: 10%">Join Us</button>
+            
+            `,
+          icon: 'tabler:brand-discord-filled',
+        },
+        {
+          title: 'Email',
+          description:
+          `
+          We are also looking out for sponsors to make this event a great success. For more information about the sponsorship, please feel free to
+          <br>
+          <a href="mailto:contact@bsideschennai.in" target="_blank"><button class="btn-primary" style="margin-top: 10%">Write Us</button></a>
+          
+          `,
+          icon: 'tabler:mail-filled',
+        },
+      ]},
+      columns=4
+      defaultIcon=""
+      classes={{
+        container: "",
+        title: "md:text-[1.3rem]",
+        icon: "text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0",
+      }}
+    />
+    
+  <WidgetWrapper/>
 </Layout>

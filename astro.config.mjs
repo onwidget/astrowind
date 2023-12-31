@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
-import compress from 'astro-compress';
+// import compress from 'astro-compress';
 import icon from 'astro-icon';
 import tasks from './src/utils/tasks';
 
@@ -62,14 +62,14 @@ export default defineConfig({
 
     tasks(),
 
-    compress({
-      CSS: true,
-      HTML: false,
-      Image: false,
-      JavaScript: true,
-      SVG: true,
-      Logger: 1,
-    }),
+    // compress({
+    //   CSS: true,
+    //   HTML: false,
+    //   Image: false,
+    //   JavaScript: true,
+    //   SVG: true,
+    //   Logger: 1,
+    // }),
   ],
 
   markdown: {

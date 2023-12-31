@@ -227,6 +227,17 @@ export interface Pricing extends Headline, Widget {
   prices?: Array<Price>;
 }
 
+export interface Sponsor {
+  sponsorName?: string;
+  sponsorLogo?: string;
+}
+
+
+export interface SponsorDetails extends Headline, Widget {
+  sponsors?: Array<Sponsor>;
+  sponsorType?: string;
+}
+
 export interface Testimonials extends Headline, Widget {
   testimonials?: Array<Testimonial>;
   callToAction?: CallToAction;

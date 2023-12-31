@@ -1,0 +1,38 @@
+---
+import { Icon } from 'astro-icon/components';
+import Button from '~/components/ui/Button.astro';
+import Headline from '~/components/ui/Headline.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import type { SponsorDetails } from '~/types';
+
+const {
+  sponsors = [],
+  sponsorType = "",
+} = Astro.props as SponsorDetails;
+
+const isDark = false;
+---
+
+<WidgetWrapper id="" isDark={isDark} containerClass={`max-w-7xl mx-auto`} bg="">
+    <Headline title={sponsorType} subtitle="" tagline="" />
+    <div class="flex items-stretch justify-center">
+      <div class="grid grid-cols-3 gap-2 border-gray dark:text-white sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+          {sponsors.map(({sponsorLogo, sponsorName}) => (
+                <div class="col-span-3 mx-auto flex w-full sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1">
+                    <div class="rounded-lg backdrop-blur dark:border-gray-700 bg-white px-6 py-8 flex w-full max-w-sm flex-col justify-between text-center">
+                        <div class="px-2 py-0">
+                            <h3 class="text-center text-xl font-bold sm:text-lg text-gray-600 dark:text-slate-400 uppercase leading-6 tracking-wider mb-2">{sponsorName}</h3>
+                            <div class="my-8">
+                                <div class="flex items-center justify-center text-center mb-1">
+                                    <img src={sponsorLogo}>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+            )}
+      </div>
+      </div>
+    </div>
+</WidgetWrapper>

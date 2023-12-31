@@ -3,23 +3,23 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
+      text: `Home`,
+      href: getPermalink("/"),
+    },
+    {
       text: 'Call For Papers',
       href: getPermalink("/cfp"),
     },
     {
-      text: 'Events',
-      href: getPermalink("/comingsoon"),
-    },
-    {
       text: 'Sponsors',
-      href: getPermalink("/comingsoon"),
+      href: getPermalink("/sponsors"),
     },
     {
-      text: 'Contact',
+      text: 'Contact Us',
       href: getPermalink("/contact"),
     },
     {
-      text: 'The TEAM',
+      text: 'Team',
       href: getPermalink("/comingsoon"),
     }
   ],

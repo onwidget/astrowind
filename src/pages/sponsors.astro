@@ -1,0 +1,35 @@
+---
+import HeroText from '~/components/widgets/HeroText.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import { getHomePermalink } from '~/utils/permalinks';
+import Sponsors from '~/components/widgets/Sponsor.astro';
+
+const title = `Sponsors`;
+---
+
+<Layout metadata={{ title }}>
+  <Sponsors
+    sponsorType="Partners"
+    sponsors={[
+        {
+            sponsorName: "",
+            sponsorLogo: ""
+        },
+        {
+            sponsorName: "",
+            sponsorLogo: ""
+        }
+    ]
+    }
+    ></Sponsors>
+  <Sponsors
+    sponsorType="Gold Sponsors"
+    sponsors={ [
+        {
+            sponsorName: "",
+            sponsorLogo: ""
+        }
+    ]
+    }
+  ></Sponsors>
+</Layout>
