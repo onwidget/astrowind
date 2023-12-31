@@ -1,13 +1,16 @@
 ---
 import HeroText from '~/components/widgets/HeroText.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import Layout from '~/layouts/PageLayout.astro';
 import { getHomePermalink } from '~/utils/permalinks';
 import Sponsors from '~/components/widgets/Sponsor.astro';
 
 const title = `Sponsors`;
+const isDark = false;
 ---
 
 <Layout metadata={{ title }}>
+<WidgetWrapper id="" isDark={isDark} containerClass={`flex flex-col max-w-xl mx-auto`} bg="">
   <Sponsors
     sponsorType="Partners"
     sponsors={[
@@ -32,4 +35,5 @@ const title = `Sponsors`;
     ]
     }
   ></Sponsors>
+</WidgetWrapper>
 </Layout>

@@ -60,6 +60,15 @@
   padding: 0 5px;
 }
 
+.relative.px-4.md\:px-6.py-12.md\:py-16.lg\:py-20.text-default.max-w-xl.mx-auto.contactpage {
+  padding: inherit;
+  margin-top: 10px;
+}
+
+.grid.grid-cols-12.gap-4.gap-y-8.sm\:gap-8.py-8.md\:py-12 {
+  padding: 0;
+}
+
 .dropdown:hover .dropdown-menu {
   display: block;
 }

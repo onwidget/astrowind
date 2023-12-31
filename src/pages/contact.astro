@@ -16,10 +16,11 @@ const isDark = false;
 <Layout metadata={metadata}>
 
   <HeroText tagline="" title="Let's Connect!" />
+  <div class="flex flex-wrap justify-center gap-x-6 sm:gap-x-12 lg:gap-x-24">
   <WidgetWrapper
   id=""
   isDark={isDark}
-  containerClass={`max-w-xl mx-auto`}
+  containerClass={`max-w-xl mx-auto contactpage`}
   bg=""
   >
     <ItemGrid
@@ -56,6 +57,6 @@ const isDark = false;
         icon: "text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0",
       }}
     />
-    
+    </div>
   <WidgetWrapper/>
 </Layout>
