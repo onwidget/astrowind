@@ -1,5 +1,5 @@
 site:
-  name: BSides Cheன்னை
+  name: BSides Chennai
   site: 'https://bsideschennai.in'
   base: '/'
   trailingSlash: false
@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: BSides Cheன்னை
+    default: BSides Chennai
     template: '%s'
   description: ""
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: BSides Cheன்னை
+    site_name: BSides Chennai
     images:
       - url: '~/assets/images/default.png'
         width: 1200

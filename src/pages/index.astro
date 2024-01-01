@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import Image from '~/components/common/Image.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
@@ -12,7 +13,7 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'BSides Cheன்னை',
+  title: 'BSides Chennai',
   ignoreTitleTemplate: true,
 };
 ---
@@ -25,7 +26,7 @@ const metadata = {
     image={{ src: '~/assets/images/website-hero.svg', alt: 'Chennai', width:3000, height: 800, class: 'hero'}}
   >
     <Fragment slot="title">
-    BSides Cheன்னை - 2024
+    BSides Chennai - 2024
     </Fragment>
 
     <Fragment slot="subtitle">
