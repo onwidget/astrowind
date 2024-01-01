@@ -232,7 +232,6 @@ export interface Sponsor {
   sponsorLogo?: string;
 }
 
-
 export interface SponsorDetails extends Headline, Widget {
   sponsors?: Array<Sponsor>;
   sponsorType?: string;

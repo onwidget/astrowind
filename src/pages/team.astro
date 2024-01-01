@@ -1,0 +1,52 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Person from '~/components/widgets/Person.astro';
+
+const metadata = {
+  title: 'Team',
+};
+
+const isDark = false;
+---
+
+<Layout metadata={metadata}>
+    <HeroText tagline="" title="Meet the Team" />
+    <article class="mb-6 transition text-center">
+    <p></p> 
+    </article>
+    <div class="flex flex-wrap flex-col lg:flex-row lg:px-40" style="">
+      <Person
+        photoPath = "https://cdn.hashnode.com/res/hashnode/image/upload/v1684152260182/oYAesPQTc.jpg?w=500&h=500&fit=crop&crop=entropy&auto=compress,format&format=webp"
+        socialLinks = {[
+          {
+              text: "LinkedIn",
+              href: "https://discord.com/",
+              ariaLabel: "string",
+              icon: "tabler:brand-linkedin"
+          },
+        ]},
+        name = 'Boominathan Sundaram',
+        title = 'Founder',
+      />
+      
+      <Person
+        photoPath = "https://cdn.hashnode.com/res/hashnode/image/upload/v1684152260182/oYAesPQTc.jpg?w=500&h=500&fit=crop&crop=entropy&auto=compress,format&format=webp"
+        socialLinks = {[
+          {
+              text: "Website",
+              href: "https://binarsouljour.me",
+              ariaLabel: "string",
+              icon: "tabler:world"
+          },{
+              text: "LinkedIn",
+              href: "https://discord.com/",
+              ariaLabel: "string",
+              icon: "tabler:brand-linkedin"
+          },
+        ]},
+        name = 'Mohanraj R',
+        title = 'Co Founder'
+      />
+    </div>
+</Layout>

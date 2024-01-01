@@ -7,7 +7,7 @@ export const headerData = {
       href: getPermalink("/"),
     },
     {
-      text: 'Call For Papers',
+      text: 'CFP',
       href: getPermalink("/cfp"),
     },
     {
@@ -15,13 +15,13 @@ export const headerData = {
       href: getPermalink("/sponsors"),
     },
     {
-      text: 'Contact Us',
+      text: 'Contact',
       href: getPermalink("/contact"),
     },
-    {
-      text: 'Team',
-      href: getPermalink("/comingsoon"),
-    }
+    // {
+    //   text: 'Team',
+    //   href: getPermalink("/team"),
+    // }
   ],
   actions: [],
 };
