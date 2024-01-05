@@ -101,13 +101,24 @@ const getMetadata = () => {
       default: siteConfig?.name || DEFAULT_SITE_NAME,
       template: '%s',
     },
-    description: '',
+    description: 'BSides Chennai is a community-led framework for people in chennai who are interested in exploring the world of Cybersecurity.',
     robots: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
     },
     openGraph: {
       type: 'website',
+      site_name: SITE?.name,
+      images: [
+        {
+        url: '/src/assets/images/bsides.png',
+        width: 800,
+        height: 600,
+        alt: 'BsidesChennai Logo',
+        type: 'image/jpeg',
+      }
+      ],
+      locale: I18N?.language || 'en',
     },
   };
 
