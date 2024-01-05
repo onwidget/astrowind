@@ -1,13 +1,14 @@
 ---
 import { getAsset } from '~/utils/permalinks';
+import ogImage from '~/assets/images/bsides.png';
 ---
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="BSides Chennai is a community-led framework for people in chennai who are interested in exploring the world of Cybersecurity." />
 <meta property="og:site_name" content="Bsides Chennai">
 <meta property="og:title" content="Bsides Chennai" />
-<meta property="og:description" content="BSides Chennai is a community-led framework for people in chennai who are interested in exploring the world of Cybersecurity." />
-<meta property="og:image" itemprop="image" content="~/assets/images/bsides.png">
+<meta property="og:image" itemprop="image" content={ogImage}>
 <meta property="og:type" content="website" />
 
 <link rel="sitemap" href={getAsset('/sitemap-index.xml')} />
