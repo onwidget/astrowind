@@ -1,5 +1,6 @@
 ---
 import merge from 'lodash.merge';
+import { getAsset } from '~/utils/permalinks';
 import { AstroSeo } from '@astrolib/seo';
 
 import type { Props as AstroSeoProps } from '@astrolib/seo';
@@ -29,13 +30,21 @@ const seoProps: AstroSeoProps = merge(
     title: '',
     titleTemplate: '%s',
     canonical: canonical,
-    noindex: true,
-    nofollow: true,
+    noindex: false,
+    nofollow: false,
     description: undefined,
     openGraph: {
       url: canonical,
       site_name: SITE?.name,
-      images: [],
+      images: [
+        {
+        url: {getAsset('~/assets/images/bsides.png')},
+        width: 800,
+        height: 600,
+        alt: 'Og Image Alt',
+        type: 'image/jpeg',
+      }
+      ],
       locale: I18N?.language || 'en',
       type: 'website',
     },
