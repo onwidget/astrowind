@@ -115,16 +115,16 @@ export const headerData = {
       href: getPermalink('/about'),
     },
     {
-      text: 'Our Work',
+      text: 'Our work',
       href: getPermalink('/landing/sales'),
     },
     {
-      text: 'Our Services',
+      text: 'Our services',
       href: getPermalink('/services'),
     },
     {
-      text: 'Why Choose us',
-      href: getPermalink('/services'),
+      text: 'Why choose us',
+      href: getPermalink('/pricing'),
     },
     {
       text: 'Contact us',
