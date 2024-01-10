@@ -111,7 +111,7 @@ export const headerData = {
     //   ],
     // },
     {
-      text: 'About Us',
+      text: 'About us',
       href: getPermalink('/about'),
     },
     {
@@ -123,11 +123,11 @@ export const headerData = {
       href: getPermalink('/services'),
     },
     {
-      text: 'Why Choose Us',
+      text: 'Why Choose us',
       href: getPermalink('/services'),
     },
     {
-      text: 'Contact Us',
+      text: 'Contact us',
       href: getPermalink('/contact'),
     },
   ],
