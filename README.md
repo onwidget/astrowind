@@ -9,7 +9,7 @@
 
 - ✅ **Production-ready** scores in **PageSpeed Insights** reports.
 - ✅ Integration with **Tailwind CSS** supporting **Dark mode** and **_RTL_**.
-- ✅ **Fast and SEO friendly blog** with automatic **RSS feed**, **MDX** support, **Categories & Tags**, **Social Share**, ...
+- ✅ **Fast and SEO friendly work** with automatic **RSS feed**, **MDX** support, **Categories & Tags**, **Social Share**, ...
 - ✅ **Image Optimization** (using new **Astro Assets** and **Unpic** for Universal image CDN).
 - ✅ Generation of **project sitemap** based on your routes.
 - ✅ **Open Graph tags** for social media sharing.
@@ -76,7 +76,7 @@ Inside **AstroWind** template, you'll see the following folders and files:
 │   │   └── styles/
 │   │       └── tailwind.css
 │   ├── components/
-│   │   ├── blog/
+│   │   ├── work/
 │   │   ├── common/
 │   │   ├── ui/
 │   │   ├── widgets/
@@ -96,7 +96,7 @@ Inside **AstroWind** template, you'll see the following folders and files:
 │   │   ├── MarkdownLayout.astro
 │   │   └── PageLayout.astro
 │   ├── pages/
-│   │   ├── [...blog]/
+│   │   ├── [...work]/
 │   │   │   ├── [category]/
 │   │   │   ├── [tag]/
 │   │   │   ├── [...page].astro
@@ -181,19 +181,19 @@ i18n:
   textDirection: ltr
 
 apps:
-  blog:
+  work:
     isEnabled: true
     postsPerPage: 6
 
     post:
       isEnabled: true
-      permalink: '/blog/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      permalink: '/work/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
       robots:
         index: true
 
     list:
       isEnabled: true
-      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
+      pathname: 'work' # Work main path, you can change this to "articles" (/articles)
       robots:
         index: true
 

@@ -11,7 +11,7 @@ metadata:
   title:
     default: Axen
     template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Works."
   robots:
     index: true
     follow: true
@@ -32,7 +32,7 @@ i18n:
   textDirection: ltr
 
 apps:
-  blog:
+  work:
     isEnabled: true
     postsPerPage: 6
 
@@ -44,7 +44,7 @@ apps:
 
     list:
       isEnabled: true
-      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
+      pathname: 'work' # Work main path, you can change this to "articles" (/articles)
       robots:
         index: true
 

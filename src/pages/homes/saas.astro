@@ -10,7 +10,7 @@ import Pricing from '~/components/widgets/Pricing.astro';
 
 import { headerData } from '~/navigation';
 import FAQs from '~/components/widgets/FAQs.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import WorkLatestPosts from '~/components/widgets/WorkLatestPosts.astro';
 
 const metadata = {
   title: 'SaaS Landing Page',
@@ -91,8 +91,8 @@ const metadata = {
         icon: 'tabler:writing',
       },
       {
-        title: 'Optimized landing pages and engaging blogs',
-        description: `Landing pages are strategically designed to captivate visitors and prompt specific actions. Additionally, the blog creation feature empowers sharing insights, engaging the audience.`,
+        title: 'Optimized landing pages and engaging works',
+        description: `Landing pages are strategically designed to captivate visitors and prompt specific actions. Additionally, the work creation feature empowers sharing insights, engaging the audience.`,
         icon: 'tabler:podium',
       },
       {
@@ -336,15 +336,15 @@ const metadata = {
     ]}
   />
 
-  <!-- BlogLatestPost Widget **************** -->
+  <!-- WorkLatestPost Widget **************** -->
 
-  <BlogLatestPosts
-    id="blog"
-    title="Stay informed with AstroWind's blog"
+  <WorkLatestPosts
+    id="work"
+    title="Stay informed with AstroWind's work"
     information={`Explore our collection of articles, guides, and tutorials on web development, design trends, and using AstroWind effectively for your projects.`}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </BlogLatestPosts>
+  </WorkLatestPosts>
 </Layout>

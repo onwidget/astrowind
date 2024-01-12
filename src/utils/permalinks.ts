@@ -1,6 +1,6 @@
 import slugify from 'limax';
 
-import { SITE, APP_BLOG } from '~/utils/config';
+import { SITE, APP_WORK } from '~/utils/config';
 
 import { trim } from '~/utils/utils';
 
@@ -21,11 +21,11 @@ export const cleanSlug = (text = '') =>
     .map((slug) => slugify(slug))
     .join('/');
 
-export const BLOG_BASE = cleanSlug(APP_BLOG?.list?.pathname);
-export const CATEGORY_BASE = cleanSlug(APP_BLOG?.category?.pathname);
-export const TAG_BASE = cleanSlug(APP_BLOG?.tag?.pathname) || 'tag';
+export const WORK_BASE = cleanSlug(APP_WORK?.list?.pathname);
+export const CATEGORY_BASE = cleanSlug(APP_WORK?.category?.pathname);
+export const TAG_BASE = cleanSlug(APP_WORK?.tag?.pathname) || 'tag';
 
-export const POST_PERMALINK_PATTERN = trimSlash(APP_BLOG?.post?.permalink || `${BLOG_BASE}/%slug%`);
+export const POST_PERMALINK_PATTERN = trimSlash(APP_WORK?.post?.permalink || `${WORK_BASE}/%slug%`);
 
 /** */
 export const getCanonical = (path = ''): string | URL => {
@@ -68,7 +68,7 @@ export const getPermalink = (slug = '', type = 'page'): string => {
 export const getHomePermalink = (): string => getPermalink('/');
 
 /** */
-export const getBlogPermalink = (): string => getPermalink(BLOG_BASE);
+export const getWorkPermalink = (): string => getPermalink(WORK_BASE);
 
 /** */
 export const getAsset = (path: string): string =>

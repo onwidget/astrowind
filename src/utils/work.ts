@@ -2,8 +2,8 @@ import type { PaginateFunction } from 'astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
-import { APP_BLOG } from '~/utils/config';
-import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
+import { APP_WORK } from '~/utils/config';
+import { cleanSlug, trimSlash, WORK_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
 
 const generatePermalink = async ({
   id,
@@ -104,18 +104,18 @@ const load = async function (): Promise<Array<Post>> {
 let _posts: Array<Post>;
 
 /** */
-export const isBlogEnabled = APP_BLOG.isEnabled;
-export const isBlogListRouteEnabled = APP_BLOG.list.isEnabled;
-export const isBlogPostRouteEnabled = APP_BLOG.post.isEnabled;
-export const isBlogCategoryRouteEnabled = APP_BLOG.category.isEnabled;
-export const isBlogTagRouteEnabled = APP_BLOG.tag.isEnabled;
+export const isWorkEnabled = APP_WORK.isEnabled;
+export const isWorkListRouteEnabled = APP_WORK.list.isEnabled;
+export const isWorkPostRouteEnabled = APP_WORK.post.isEnabled;
+export const isWorkCategoryRouteEnabled = APP_WORK.category.isEnabled;
+export const isWorkTagRouteEnabled = APP_WORK.tag.isEnabled;
 
-export const blogListRobots = APP_BLOG.list.robots;
-export const blogPostRobots = APP_BLOG.post.robots;
-export const blogCategoryRobots = APP_BLOG.category.robots;
-export const blogTagRobots = APP_BLOG.tag.robots;
+export const workListRobots = APP_WORK.list.robots;
+export const workPostRobots = APP_WORK.post.robots;
+export const workCategoryRobots = APP_WORK.category.robots;
+export const workTagRobots = APP_WORK.tag.robots;
 
-export const blogPostsPerPage = APP_BLOG?.postsPerPage;
+export const workPostsPerPage = APP_WORK?.postsPerPage;
 
 /** */
 export const fetchPosts = async (): Promise<Array<Post>> => {
@@ -163,28 +163,28 @@ export const findLatestPosts = async ({ count }: { count?: number }): Promise<Ar
 };
 
 /** */
-export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateFunction }) => {
-  if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
+export const getStaticPathsWorkList = async ({ paginate }: { paginate: PaginateFunction }) => {
+  if (!isWorkEnabled || !isWorkListRouteEnabled) return [];
   return paginate(await fetchPosts(), {
-    params: { blog: BLOG_BASE || undefined },
-    pageSize: blogPostsPerPage,
+    params: { work: WORK_BASE || undefined },
+    pageSize: workPostsPerPage,
   });
 };
 
 /** */
-export const getStaticPathsBlogPost = async () => {
-  if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
+export const getStaticPathsWorkPost = async () => {
+  if (!isWorkEnabled || !isWorkPostRouteEnabled) return [];
   return (await fetchPosts()).flatMap((post) => ({
     params: {
-      blog: post.permalink,
+      work: post.permalink,
     },
     props: { post },
   }));
 };
 
 /** */
-export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: PaginateFunction }) => {
-  if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
+export const getStaticPathsWorkCategory = async ({ paginate }: { paginate: PaginateFunction }) => {
+  if (!isWorkEnabled || !isWorkCategoryRouteEnabled) return [];
 
   const posts = await fetchPosts();
   const categories = new Set<string>();
@@ -196,8 +196,8 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
     paginate(
       posts.filter((post) => typeof post.category === 'string' && category === post.category.toLowerCase()),
       {
-        params: { category: category, blog: CATEGORY_BASE || undefined },
-        pageSize: blogPostsPerPage,
+        params: { category: category, work: CATEGORY_BASE || undefined },
+        pageSize: workPostsPerPage,
         props: { category },
       }
     )
@@ -205,8 +205,8 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
 };
 
 /** */
-export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFunction }) => {
-  if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
+export const getStaticPathsWorkTag = async ({ paginate }: { paginate: PaginateFunction }) => {
+  if (!isWorkEnabled || !isWorkTagRouteEnabled) return [];
 
   const posts = await fetchPosts();
   const tags = new Set<string>();
@@ -218,8 +218,8 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
     paginate(
       posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.toLowerCase() === tag)),
       {
-        params: { tag: tag, blog: TAG_BASE || undefined },
-        pageSize: blogPostsPerPage,
+        params: { tag: tag, work: TAG_BASE || undefined },
+        pageSize: workPostsPerPage,
         props: { tag },
       }
     )

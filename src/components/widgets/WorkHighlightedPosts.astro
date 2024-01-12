@@ -1,10 +1,10 @@
 ---
-import { APP_BLOG } from "~/utils/config";
+import { APP_WORK } from "~/utils/config";
 
-import Grid from "~/components/blog/Grid.astro";
+import Grid from "~/components/work/Grid.astro";
 
-import { getBlogPermalink } from "~/utils/permalinks";
-import { findPostsByIds } from "~/utils/blog";
+import { getWorkPermalink } from "~/utils/permalinks";
+import { findPostsByIds } from "~/utils/work";
 import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
 import type { Widget } from "~/types";
 
@@ -19,7 +19,7 @@ export interface Props extends Widget {
 const {
   title = await Astro.slots.render("title"),
   linkText = "View all posts",
-  linkUrl = getBlogPermalink(),
+  linkUrl = getWorkPermalink(),
   information = await Astro.slots.render("information"),
   postIds = [],
 
@@ -29,11 +29,11 @@ const {
   bg = await Astro.slots.render("bg"),
 } = Astro.props;
 
-const posts = APP_BLOG.isEnabled ? await findPostsByIds(postIds) : [];
+const posts = APP_WORK.isEnabled ? await findPostsByIds(postIds) : [];
 ---
 
 {
-  APP_BLOG.isEnabled ? (
+  APP_WORK.isEnabled ? (
     <WidgetWrapper id={id} isDark={isDark} containerClass={classes?.container} bg={bg}>
       <div class="flex flex-col lg:justify-between lg:flex-row mb-8">
         {title && (
@@ -42,7 +42,7 @@ const posts = APP_BLOG.isEnabled ? await findPostsByIds(postIds) : [];
               class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2"
               set:html={title}
             />
-            {APP_BLOG.list.isEnabled && linkText && linkUrl && (
+            {APP_WORK.list.isEnabled && linkText && linkUrl && (
               <a
                 class="text-muted dark:text-slate-400 hover:text-primary transition ease-in duration-200 block mb-6 lg:mb-0"
                 href={linkUrl}

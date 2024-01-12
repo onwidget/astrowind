@@ -1,4 +1,4 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getWorkPermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {
   links: [
@@ -86,11 +86,11 @@ export const headerData = {
     //   ],
     // },
     // {
-    //   text: 'Blog',
+    //   text: 'Work',
     //   links: [
     //     {
-    //       text: 'Blog List',
-    //       href: getBlogPermalink(),
+    //       text: 'Work List',
+    //       href: getWorkPermalink(),
     //     },
     //     {
     //       text: 'Article',
@@ -116,7 +116,7 @@ export const headerData = {
     },
     {
       text: 'Our work',
-      href: getPermalink('/landing/sales'),
+      href: getWorkPermalink(),
     },
     {
       text: 'Our services',
@@ -172,7 +172,7 @@ export const footerData = {
       title: 'Company',
       links: [
         { text: 'About', href: '#' },
-        { text: 'Blog', href: '#' },
+        { text: 'Work', href: '#' },
         { text: 'Careers', href: '#' },
         { text: 'Press', href: '#' },
         { text: 'Inclusion', href: '#' },

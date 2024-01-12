@@ -22,7 +22,7 @@ export interface I18NConfig {
   textDirection: string;
   dateFormatter?: Intl.DateTimeFormat;
 }
-export interface AppBlogConfig {
+export interface AppWorkConfig {
   isEnabled: boolean;
   postsPerPage: number;
   post: {
@@ -72,7 +72,7 @@ const config = yaml.load(fs.readFileSync('src/config.yaml', 'utf8')) as {
   metadata?: MetaDataConfig;
   i18n?: I18NConfig;
   apps?: {
-    blog?: AppBlogConfig;
+    work?: AppWorkConfig;
   };
   ui?: unknown;
   analytics?: unknown;
@@ -132,13 +132,13 @@ const getI18N = () => {
   }) as I18NConfig;
 };
 
-const getAppBlog = () => {
+const getAppWork = () => {
   const _default = {
     isEnabled: false,
     postsPerPage: 6,
     post: {
       isEnabled: true,
-      permalink: '/blog/%slug%',
+      permalink: '/work/%slug%',
       robots: {
         index: true,
         follow: true,
@@ -146,7 +146,7 @@ const getAppBlog = () => {
     },
     list: {
       isEnabled: true,
-      pathname: 'blog',
+      pathname: 'work',
       robots: {
         index: true,
         follow: true,
@@ -170,7 +170,7 @@ const getAppBlog = () => {
     },
   };
 
-  return merge({}, _default, config?.apps?.blog ?? {}) as AppBlogConfig;
+  return merge({}, _default, config?.apps?.work ?? {}) as AppWorkConfig;
 };
 
 const getUI = () => {
@@ -199,6 +199,6 @@ const getAnalytics = () => {
 export const SITE = getSite();
 export const I18N = getI18N();
 export const METADATA = getMetadata();
-export const APP_BLOG = getAppBlog();
+export const APP_WORK = getAppWork();
 export const UI = getUI();
 export const ANALYTICS = getAnalytics();

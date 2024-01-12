@@ -2,9 +2,9 @@
 import type { ImageMetadata } from 'astro';
 import { Icon } from 'astro-icon/components';
 import Image from '~/components/common/Image.astro';
-import PostTags from '~/components/blog/Tags.astro';
+import PostTags from '~/components/work/Tags.astro';
 
-import { APP_BLOG } from '~/utils/config';
+import { APP_WORK } from '~/utils/config';
 import type { Post } from '~/types';
 
 import { getPermalink } from '~/utils/permalinks';
@@ -18,7 +18,7 @@ export interface Props {
 const { post } = Astro.props;
 const image = (await findImage(post.image)) as ImageMetadata | undefined;
 
-const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : '';
+const link = APP_WORK?.post?.isEnabled ? getPermalink(post.permalink, 'post') : '';
 ---
 
 <article class={`max-w-md mx-auto md:max-w-none grid gap-6 md:gap-8 ${image ? 'md:grid-cols-2' : ''}`}>
