@@ -25,6 +25,8 @@ export interface I18NConfig {
 export interface AppBlogConfig {
   isEnabled: boolean;
   postsPerPage: number;
+  isRelatedPostsEnabled: boolean;
+  relatedPostsCount: number;
   post: {
     isEnabled: boolean;
     permalink: string;
