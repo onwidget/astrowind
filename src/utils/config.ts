@@ -4,7 +4,7 @@ import merge from 'lodash.merge';
 
 import type { MetaData } from '~/types';
 
-export const VolunteerForm = "https://forms.zoho.in/bsideschennai/form/BSidesChennaiVolunteerForm";
+export const VolunteerForm = "https://forms.zohopublic.in/bsideschennai/form/BSidesChennaiVolunteerForm/formperma/MkGJJ5AQCNLIHQTf1eDYv5RmxsomDgTb_UgI6SQTJto";
 
 export interface SiteConfig {
   name: string;
