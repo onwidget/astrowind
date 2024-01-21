@@ -2,15 +2,6 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Restorative Body Work',
@@ -26,22 +17,20 @@ const metadata = {
       {
         variant: 'primary',
         text: 'Book an appointment',
-        href: 'https://restorativebodyworkatx.com',
-        target: '_blank',
+        href: 'https://my-business-restorativebodyworkatx.square.site/',
         icon: 'tabler:calendar-plus',
       },
       // { text: 'Learn more', href: '#features' },
     ]}
   >
-    <Fragment slot="title">
-      Restorative Body Work
-    </Fragment>
+    <Fragment slot="title">Restorative Body Work</Fragment>
 
     <Fragment slot="subtitle">
       <span class="sm:inline text-green-800">
-        Revitalize your well-being with <span class="font-semibold">Restorative Body Work</span> - where tranquility meets therapeutic excellence. </span
-      >
-      <span class="block mb-1 font-bold text-green-800">More details coming soon!</span>
+        Revitalize your well-being with <span class="font-semibold">Restorative Body Work</span> - where tranquility meets
+        therapeutic excellence.
+      </span>
+      <span class="block mb-1 font-bold text-green-800">More details coming soon.</span>
     </Fragment>
   </Hero>
 
@@ -172,7 +161,7 @@ const metadata = {
   </Content> -->
 
   <!-- Content Widget **************** -->
-<!-- 
+  <!--
   <Content
     isReversed
     isAfterContent
@@ -210,7 +199,7 @@ const metadata = {
   </Content> -->
 
   <!-- Steps Widget ****************** -->
-<!-- 
+  <!--
   <Steps
     title="Get your dream website up and running in no time with AstroWind."
     items={[
