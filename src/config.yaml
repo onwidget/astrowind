@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Restorative Body Work
+  site: 'https://restorativebodyworkatx.com'
   base: '/'
   trailingSlash: false
 
@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Restorative Body Work
+    template: '%s — Restorative Body Work'
+  description: "Restorative Body Work, massages and treatments to restore your body - coming soon in South Austin"
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Restorative Body Work
     images:
       - url: '~/assets/images/default.png'
         width: 1200

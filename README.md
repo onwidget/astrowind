@@ -1,3 +1,10 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e1abe77a-40de-4a03-b2af-1d0d4aeeaef8/deploy-status)](https://app.netlify.com/sites/restorativebodyworkco/deploys)
+
+# restorativebodywork.co
+
+This was created using [astrowind](https://github.com/onwidget/astrowind)
+
+
 # 🚀 AstroWind
 
 <img src="https://raw.githubusercontent.com/onwidget/.github/main/resources/astrowind/lighthouse-score.png" align="right"
