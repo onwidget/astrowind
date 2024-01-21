@@ -11,7 +11,7 @@ metadata:
   title:
     default: Restorative Body Work
     template: '%s — Restorative Body Work'
-  description: "Restorative Body Work, massages and treatments to restore your body - coming soon in South Austin"
+  description: 'Restorative Body Work, massages and treatments to restore your body - coming soon in South Austin'
   robots:
     index: true
     follow: true
@@ -94,8 +94,8 @@ ui:
         default: rgb(247, 248, 248)
         heading: rgb(247, 248, 248)
         muted: rgb(200, 188, 208)
-        bgPage: rgb(3 6 32)
-        primary: rgb(29 78 216)
+        bgPage: rgb(237 244 237)
+        primary: rgb(121 183 145)
         secondary: rgb(30 58 138)
         accent: rgb(135 77 2267)
         info: rgb(58 191 248)

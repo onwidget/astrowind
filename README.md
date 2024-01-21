@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/e1abe77a-40de-4a03-b2af-1d0d4aeeaef8/deploy-status)](https://app.netlify.com/sites/restorativebodyworkco/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e1abe77a-40de-4a03-b2af-1d0d4aeeaef8/deploy-status)](https://app.netlify.com/sites/restorativebodyworkatxcom/deploys)
 
 # restorativebodywork.co
 
