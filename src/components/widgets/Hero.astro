@@ -1,6 +1,8 @@
 ---
 import { Icon } from 'astro-icon';
-import { Picture } from '@astrojs/image/components';
+import { YouTube } from 'astro-embed';
+
+import imageParaYoutube from '~/assets/images/imagen-youtube-v2.png';
 
 interface CallToAction {
   text: string;
@@ -88,26 +90,8 @@ const {
         </div>
         {content && <Fragment set:html={content} />}
       </div>
-      <div>
-        {
-          image && (
-            <div class="relative m-auto max-w-5xl">
-              {typeof image === 'string' ? (
-                <Fragment set:html={image} />
-              ) : (
-                <Picture
-                  class="mx-auto rounded-md w-full"
-                  widths={[2040]}
-                  sizes="(max-width: 2039px) 2040px"
-                  loading="eager"
-                  width={1024}
-                  height={576}
-                  {...image}
-                />
-              )}
-            </div>
-          )
-        }
+      <div class="relative m-auto max-w-7xl">
+        <YouTube id="hPl9O5eBKdg" poster={imageParaYoutube.src} class="mx-auto max-w-7xl" />
       </div>
     </div>
   </div>
