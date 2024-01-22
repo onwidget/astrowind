@@ -17,15 +17,15 @@ metadata:
     follow: true
   openGraph:
     site_name: Restorative Body Work
-    images:
-      - url: '~/assets/images/default.png'
-        width: 1200
-        height: 628
+    # images:
+    #   - url: '~/assets/images/default.png'
+    #     width: 1200
+    #     height: 628
     type: website
-  twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
-    cardType: summary_large_image
+  # twitter:
+  #   handle: '@onwidget'
+  #   site: '@onwidget'
+  #   cardType: summary_large_image
 
 i18n:
   language: en
