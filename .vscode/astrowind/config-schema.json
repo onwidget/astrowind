@@ -128,6 +128,12 @@
             "postsPerPage": {
               "type": "integer"
             },
+            "isRelatedPostsEnabled": {
+              "type": "boolean"
+            },
+            "relatedPostsCount": {
+              "type": "integer"
+            },
             "post": {
               "type": "object",
               "properties": {

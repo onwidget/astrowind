@@ -138,6 +138,8 @@ const getAppBlog = () => {
   const _default = {
     isEnabled: false,
     postsPerPage: 6,
+    isRelatedPostsEnabled: false,
+    relatedPostsCount: 4,
     post: {
       isEnabled: true,
       permalink: '/blog/%slug%',
