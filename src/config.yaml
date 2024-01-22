@@ -1,5 +1,5 @@
 site:
-  name: Restorative Body Work
+  name: Restorative Bodywork
   site: 'https://restorativebodyworkatx.com'
   base: '/'
   trailingSlash: false
@@ -9,18 +9,18 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: Restorative Body Work
-    template: '%s — Restorative Body Work'
-  description: 'Restorative Body Work, massages and treatments to restore your body - coming soon in South Austin'
+    default: Restorative Bodywork
+    template: '%s — Restorative Bodywork'
+  description: 'Restorative Bodywork, South Austin based therapists offering a blend of soothing massages and targeted physical therapy treatments to enhance your overall health and vitality.'
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: Restorative Body Work
-    # images:
-    #   - url: '~/assets/images/default.png'
-    #     width: 1200
-    #     height: 628
+    site_name: Restorative Bodywork
+    images:
+      - url: '~/assets/images/generic-spa-generated.jpg'
+        width: 1200
+        height: 628
     type: website
   # twitter:
   #   handle: '@onwidget'
