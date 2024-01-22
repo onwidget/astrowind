@@ -11,6 +11,7 @@ import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
 import { findImage } from '~/utils/images';
 import type { MetaData } from '~/types';
+import RelatedPosts from '~/components/blog/RelatedPosts.astro';
 
 export const prerender = true;
 
@@ -45,4 +46,5 @@ const metadata = merge(
 <Layout metadata={metadata}>
   <SinglePost post={{ ...post, image: image }} url={url} />
   <ToBlogLink />
+  <RelatedPosts post={post} />
 </Layout>

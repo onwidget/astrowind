@@ -90,6 +90,18 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   };
 };
 
+const getRandomizedPosts = (array: Post[], num: number) => {
+  const newArray: Post[] = [];
+
+  while (newArray.length < num && array.length > 0) {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    newArray.push(array[randomIndex]);
+    array.splice(randomIndex, 1);
+  }
+
+  return newArray;
+};
+
 const load = async function (): Promise<Array<Post>> {
   const posts = await getCollection('post');
   const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
@@ -105,6 +117,7 @@ let _posts: Array<Post>;
 
 /** */
 export const isBlogEnabled = APP_BLOG.isEnabled;
+export const isRelatedPostsEnabled = APP_BLOG.isRelatedPostsEnabled;
 export const isBlogListRouteEnabled = APP_BLOG.list.isEnabled;
 export const isBlogPostRouteEnabled = APP_BLOG.post.isEnabled;
 export const isBlogCategoryRouteEnabled = APP_BLOG.category.isEnabled;
@@ -225,3 +238,23 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
     )
   );
 };
+
+/** */
+export function getRelatedPosts(allPosts: Post[], currentSlug: string, currentTags: string[]) {
+  if (!isBlogEnabled || !isRelatedPostsEnabled) return [];
+
+  const relatedPosts = getRandomizedPosts(
+    allPosts.filter((post) => post.slug !== currentSlug && post.tags?.some((tag) => currentTags.includes(tag))),
+    APP_BLOG.relatedPostsCount
+  );
+
+  if (relatedPosts.length < APP_BLOG.relatedPostsCount) {
+    const morePosts = getRandomizedPosts(
+      allPosts.filter((post) => post.slug !== currentSlug && !post.tags?.some((tag) => currentTags.includes(tag))),
+      APP_BLOG.relatedPostsCount - relatedPosts.length
+    );
+    relatedPosts.push(...morePosts);
+  }
+
+  return relatedPosts;
+}

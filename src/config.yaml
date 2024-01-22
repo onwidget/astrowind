@@ -35,6 +35,8 @@ apps:
   blog:
     isEnabled: true
     postsPerPage: 6
+    isRelatedPostsEnabled: true
+    relatedPostsCount: 4
 
     post:
       isEnabled: true
