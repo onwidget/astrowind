@@ -13,7 +13,7 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: "Build high quality search and RAG with Trieve's retrieval API",
   ignoreTitleTemplate: true,
 };
 ---
@@ -26,7 +26,7 @@ const metadata = {
       {
         variant: 'primary',
         text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
+        href: 'https://github.com/devflowinc/trieve',
         target: '_blank',
         icon: 'tabler:download',
       },
@@ -35,18 +35,17 @@ const metadata = {
     image={{ src: '~/assets/images/hero.png', alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white highlight"> Astro 4.0</span> + Tailwind CSS
+      API for <span class="hidden xl:inline">building better</span>
+      <span class="text-accent dark:text-white highlight"> AI search and RAG</span> at scale
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 4.0
-        + Tailwind CSS.</span
+        <span class="font-semibold">Trieve</span> is a performant, customizable and production-ready API for vector search, full-text search RAG
+        + Relevance tuning.</span
       >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-       Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages
-      & Blogs.
+      <span class="block mb-1 sm:hidden font-bold text-blue-600">Trieve: Production-ready.</span>
+      Use Trieve to show users what they're looking for every time.
     </Fragment>
   </Hero>
 
@@ -59,43 +58,43 @@ const metadata = {
   <Features
     id="features"
     tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022."
+    title="What you get with Trieve"
+    subtitle="Everything you could expect from a powerful modern API for search and RAG"
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: 'Managed Embedding models',
         description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
+          'Bring your own embedding model or use one of our available open source defaults.',
+        icon: 'tabler:3d-cube-sphere',
       },
       {
-        title: 'Ready-to-use Components',
+        title: 'SPLADE full-text search',
         description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
+          'BM25 is great, but SPLADE is better. SPLADE is a state-of-the-art retrieval model for full-text search.',
+        icon: 'tabler:file-typography',
       },
       {
-        title: 'Best Practices',
+        title: 'Semantic Vector Search',
         description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
+          'Sometimes you need more than just full-text search. Trieve supports semantic vector search out of the box.',
+        icon: 'tabler:file-vector',
       },
       {
-        title: 'Excellent Page Speed',
+        title: 'Hybrid Search',
         description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
+          'Get the best of both worlds. Trieve supports hybrid search, combining full-text search and semantic vector search.',
         icon: 'tabler:rocket',
       },
       {
-        title: 'Search Engine Optimization (SEO)',
+        title: 'Re-Rankers for Relevance tuning',
         description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
+          "Use open source re-ranking models or build and tune your own to get the most relevant results possible.",
         icon: 'tabler:arrows-right-left',
       },
       {
-        title: 'Open to new ideas and contributions',
+        title: 'Date Recency Biasing',
         description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
+          'Relevance tuning is not just about the query. Trieve supports date recency biasing to ensure the most recent results are shown first.',
         icon: 'tabler:bulb',
       },
     ]}
