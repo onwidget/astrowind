@@ -22,24 +22,23 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/devflowinc/trieve',
+        text: 'Get Started',
+        href: 'https://dashboard.trieve.ai',
         target: '_blank',
-        icon: 'tabler:download',
+        icon: 'tabler:external-link',
       },
-      { text: 'Learn more', href: '#features' },
     ]}
     image={{ src: '~/assets/images/hero.png', alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">
       API for <span class="hidden xl:inline">building better</span>
-      <span class="text-accent dark:text-white highlight"> AI search and RAG</span> at scale
+      <span class="text-accent dark:text-white highlight"> semantic search and RAG</span> experiences
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">Trieve</span> is a performant, customizable and production-ready API for vector and full-text
-        search, RAG, and relevance tuning.</span
+        <span class="font-semibold">Trieve</span> is a performant, customizable and production-ready API for semantic and full-text
+        search, RAG, plus relevance tuning.</span
       >
       <span class="block mb-1 sm:hidden font-bold text-blue-600">Trieve: Production-ready.</span>
       Use Trieve to show users what they're looking for every time.
@@ -79,19 +78,19 @@ const metadata = {
         title: 'Hybrid Search',
         description:
           'Get the best of both worlds. Trieve supports hybrid search, combining full-text search and semantic vector search.',
-        icon: 'tabler:rocket',
+        icon: 'tabler:arrows-join',
       },
       {
         title: 'Re-Rankers for Relevance tuning',
         description:
           'Use open source re-ranking models or build and tune your own to get the most relevant results possible.',
-        icon: 'tabler:arrows-right-left',
+        icon: 'tabler:military-rank',
       },
       {
         title: 'Date Recency Biasing',
         description:
           'Relevance tuning is not just about the query. Trieve supports date recency biasing to ensure the most recent results are shown first.',
-        icon: 'tabler:bulb',
+        icon: 'tabler:calendar',
       },
     ]}
   />
@@ -104,15 +103,16 @@ const metadata = {
     title="Trieve handles search and RAG so you can focus on building your unique features"
     items={[
       {
-        title: 'Built on Qdrant',
-        description: 'Benefiting from the performance and developer-friendly features of the best vector database.',
+        title: 'Open Source Models',
+        description: "Both our default embedding model and LLM are open source, we don't share your data.",
       },
       {
-        title: 'RAG with all the LLMs of OpenRouter',
-        description: "Quickly experiment and test with all the latest LLM's.",
+        title: 'Batteries Included',
+        description:
+          "Our API surface is large, the features are many, and the documentation is thorough. We've got you covered.",
       },
       {
-        title: 'Host in your own cloud or on-prem',
+        title: 'Host Yourself',
         description:
           "Sensitive data? Don't worry about vendor agreements, host yourself with terraform templates and no external dependencies.",
       },
@@ -124,7 +124,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Built on the best foundations</h3>
-      Gain a competitive advantage by incorporating AI powered search
+      Gain a competitive advantage by incorporating AI powered search and RAG
     </Fragment>
 
     <Fragment slot="bg">
@@ -140,20 +140,19 @@ const metadata = {
       {
         title: 'Step 1: <span class="font-medium">Add Existing Data</span>',
         description:
-          "Send your data to the API. Either upload individual chunks or entire documents that get chunked by our algorithms.",
-        icon: 'tabler:package',
+          'Send your data to the API. Either upload individual chunks or entire documents that get chunked by our algorithms.',
+        icon: 'tabler:database-export',
       },
       {
         title: 'Step 2: <span class="font-medium">Integrate our API</em>',
-        description:
-          "Add calls to our API on your create and update routes to keep your data up to date.",
-        icon: 'tabler:letter-case',
+        description: 'Add calls to our API on your create and update routes to keep your data up to date.',
+        icon: 'tabler:git-merge',
       },
       {
         title: 'Step 3: <span class="font-medium">Search, Recommend, or Generate</span>',
         description:
           'Start testing search quality with our management Search UI and then integrate the search or RAG API calls into your product.',
-        icon: 'tabler:paint',
+        icon: 'tabler:telescope',
       },
       {
         title: 'Ready!',
@@ -175,37 +174,38 @@ const metadata = {
     items={[
       {
         title: 'Search',
-        description: "Full-text search with an index built by SPLADE and semantic vector search with your choice of embedding model.",
-        icon: 'flat-color-icons:template',
+        description:
+          'Full-text search with an index built by SPLADE and semantic vector search with your choice of embedding model.',
+        icon: 'flat-color-icons:search',
       },
       {
         title: 'RAG',
         description:
-          "Build RAG experiences with our API that returns generated outputs with citations and manages message history.",
-        icon: 'flat-color-icons:gallery',
+          'Build RAG experiences with our API that returns generated outputs with citations and manages message history.',
+        icon: 'flat-color-icons:collaboration',
       },
       {
         title: 'Recommendations',
         description:
           'Recommendations are a great way to keep users engaged. Trieve supports recommendations based on user history and content similarity.',
-        icon: 'flat-color-icons:approval',
+        icon: 'flat-color-icons:multiple-inputs',
       },
       {
         title: 'Duplicate Handling',
         description:
-          "Duplicate content is a common problem in knowledge management. Trieve has a novel approach to duplicate detection and merging.",
+          'Duplicate content is a common problem in knowledge management. Trieve has a novel approach to duplicate detection and merging.',
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Sub-sentence Highlighting',
         description:
           'Search results can be paragraphs long. Trieve supports sub-sentence highlighting to show users exactly what they are looking for.',
-        icon: 'flat-color-icons:advertising',
+        icon: 'flat-color-icons:binoculars',
       },
       {
         title: 'Recency Biasing',
         description: 'Relevance tuning is not just about the query. Trieve supports date recency biasing.',
-        icon: 'flat-color-icons:currency-exchange',
+        icon: 'flat-color-icons:calendar',
       },
     ]}
   >
@@ -220,19 +220,15 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
+        text: 'Get Started',
+        href: 'https://dashboard.trieve.ai',
         target: '_blank',
-        icon: 'tabler:download',
+        icon: 'tabler:external-link',
       },
     ]}
   >
-    <Fragment slot="title">
-     The Best Search API
-    </Fragment>
+    <Fragment slot="title">The Best Search API</Fragment>
 
-    <Fragment slot="subtitle">
-      Use Trieve to show users what they're looking for every time.
-    </Fragment>
+    <Fragment slot="subtitle">Use Trieve to show users what they're looking for every time.</Fragment>
   </CallToAction>
 </Layout>
