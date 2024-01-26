@@ -26,7 +26,7 @@
   }
 
   .btn-primary {
-    @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
+    @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
   }
 
   .btn-secondary {
@@ -87,4 +87,10 @@
 
 .dd *:first-child {
   margin-top: 0;
+}
+
+@layer base {
+  html {
+    font-family: "Maven Pro", system-ui, sans-serif;
+  }
 }

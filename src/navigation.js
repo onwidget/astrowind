@@ -4,12 +4,20 @@ export const headerData = {
       text: 'Contact',
       links: [
         {
-          text: '+1 512-123-0000',
-          href: 'tel:+15121230000',
+          text: '+1 628-222-4090',
+          href: 'tel:+16282224090',
         },
         {
           text: 'humans@trieve.ai',
           href: 'mailto:humans@trieve.ai',
+        },
+        {
+          text: 'Matrix',
+          href: 'https://matrix.to/#/#trieve-general:matrix.zerodao.gg',
+        },
+        {
+          text: 'Discord',
+          href: 'https://discord.gg/E9sPRZqpDT',
         },
       ],
     },
@@ -23,6 +31,7 @@ export const headerData = {
     },
   ],
   actions: [{ text: 'Get Started', href: 'https://dashboard.trieve.ai', target: '_blank' }],
+  showRssFeed: false,
 };
 
 export const footerData = {
@@ -30,12 +39,12 @@ export const footerData = {
     {
       title: 'Support',
       links: [
-        { text: 'Docs', href: '#' },
-        { text: 'Matrix', href: '#' },
-        { text: 'Discord', href: '#' },
+        { text: 'Docs', href: 'https://docs.trieve.ai' },
+        { text: 'Matrix', href: 'https://matrix.to/#/#trieve-general:matrix.zerodao.gg' },
+        { text: 'Discord', href: 'https://discord.gg/E9sPRZqpDT' },
         {
-          text: '+1 512-123-0000',
-          href: 'tel:+15121230000',
+          text: '+1 628-222-4090',
+          href: 'tel:+16282224090',
         },
         {
           text: 'humans@trieve.ai',
@@ -47,14 +56,15 @@ export const footerData = {
       title: 'Company',
       links: [
         { text: 'About', href: '/about' },
-        { text: 'Admin Dashboard', href: '#' },
+        { text: 'Admin Dashboard', href: 'https://dashboard.trieve.ai' },
       ],
     },
   ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
+    { ariaLabel: 'X', icon: 'tabler:brand-x', href: 'https://x.com/trieveai' },
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/devflowinc/trieve' },
-    { ariaLabel: 'Matrix', icon: 'tabler:brand-matrix', href: '#' },
-    { ariaLabel: 'Discord', icon: 'tabler:brand-discord', href: '#' },
+    { ariaLabel: 'Matrix', icon: 'tabler:brand-matrix', href: 'https://matrix.to/#/#trieve-general:matrix.zerodao.gg' },
+    { ariaLabel: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/E9sPRZqpDT' },
   ],
+  secondaryLinks: [],
 };

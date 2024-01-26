@@ -1,6 +1,6 @@
 ---
+import Content from '~/components/widgets/Content.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
@@ -14,23 +14,24 @@ const metadata = {
   <Hero
     tagline="About us"
     image={{
-      src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      src: 'https://cdn.trieve.ai/trieve-team.png',
       alt: 'Caos Image',
     }}
   >
     <Fragment slot="title">
       Democratizing high quality<br />
-      <span class="text-accent dark:text-white highlight"> Retrieval</span>
+      <span class="text-accent highlight"> Retrieval</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Search optimization is an incredibly difficult problem for most companies. We are here to help you with that. Everyone should be able to have a great search experience.
+      Search optimization is an incredibly difficult problem for most companies. We are here to help you with that.
+      Everyone should be able to have a great search experience.
     </Fragment>
   </Hero>
 
   <!-- Steps2 Widget ****************** -->
 
-  <Steps2
+  <Content
     title="Our values"
     subtitle="We believe in transparency."
     items={[
@@ -50,5 +51,9 @@ const metadata = {
           'Call us and we will answer the phone. Especially while we are a small company, we will make it easy to talk to us like humans.',
       },
     ]}
+    image={{
+      src: 'https://cdn.trieve.ai/trieve-logo.png',
+      alt: 'Open source principles',
+    }}
   />
 </Layout>
