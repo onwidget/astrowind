@@ -41,7 +41,7 @@ const {
         {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
+              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-black"
               set:html={title}
             />
           )
@@ -54,7 +54,7 @@ const {
                 {Array.isArray(actions) ? (
                   actions.map((action) => (
                     <div class="flex w-full sm:w-auto">
-                      <Button {...(action || {})} class="w-full sm:mb-0" />
+                      <Button {...(action || {})} class="w-full sm:mb-0 text-black" />
                     </div>
                   ))
                 ) : (

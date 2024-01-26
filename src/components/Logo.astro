@@ -1,8 +1,16 @@
 ---
+import { Image } from 'astro:assets';
 import { SITE } from '~/utils/config';
+import image from '../assets/images/logo/ResBodWork-logo-symbol-color-01.png';
 ---
-
-<span class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white">
-  <!-- TODO: Logo/text -->
+<!-- Note the text size diff on screens can cause image to warp on mobile or desktop. 32x32 seems to work with current CSS. -->
+<span class="flex self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white">
+  <Image
+    src={image}
+    alt={'logo'}
+    width={32}
+    height={32}
+    class="mr-2"
+  />
   {SITE?.name}
 </span>
