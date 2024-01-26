@@ -21,8 +21,8 @@ const {
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-5xl ${classes?.container ?? ''}`} bg={bg}>
-  <div class:list={['flex flex-col gap-8 md:gap-12', { 'md:flex-row-reverse': isReversed }, { 'md:flex-row': image}]}>
-    <div class:list={["md:py-4 md:self-center", { 'md:basis-1/2': image }, { "w-full": !image}]}>
+  <div class:list={['flex flex-col gap-8 md:gap-12', { 'md:flex-row-reverse': isReversed }, { 'md:flex-row': image }]}>
+    <div class:list={['md:py-4 md:self-center', { 'md:basis-1/2': image }, { 'w-full': !image }]}>
       <Headline
         title={title}
         subtitle={subtitle}
@@ -38,20 +38,19 @@ const {
     {
       image && (
         <div class="relative md:basis-1/2">
-          {(typeof image === 'string' ? (
-          <Fragment set:html={image} />
+          {typeof image === 'string' ? (
+            <Fragment set:html={image} />
           ) : (
-          <Image
-            class="inset-0 object-cover object-top w-full rounded-md shadow-lg md:absolute md:h-full"
-            widths={[400, 768]}
-            sizes="(max-width: 768px) 100vw, 432px"
-            width={432}
-            height={768}
-            layout="cover"
-            src={image?.src}
-            alt={image?.alt || ''}
-          />
-          ))}
+            <Image
+              class="mx-auto w-full rounded-lg bg-none shadow-lg"
+              width={500}
+              height={500}
+              widths={[400, 768]}
+              sizes="(max-width: 768px) 100vw, 432px"
+              layout="responsive"
+              {...(image as any)}
+            />
+          )}
         </div>
       )
     }
