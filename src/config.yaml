@@ -11,14 +11,14 @@ metadata:
   title:
     default: Trieve
     template: '%s — Trieve'
-  description: "\U0001F680 Build high quality search and RAG with Trieve's retrieval API."
+  description: "Build better, faster, and more relevant search and RAG with Trieve's Open Source API. Date recency biasing, re-ranker models, dense vector search, sub-sentence highlighting, and more all on one endpoint that you can host yourself."
   robots:
     index: true
     follow: true
   openGraph:
     site_name: Trieve
     images:
-      - url: '~/assets/images/default.png'
+      - url: 'https://cdn.trieve.ai/trieve-og.png'
         width: 1200
         height: 628
     type: website
