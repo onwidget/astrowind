@@ -1,7 +1,7 @@
 {
   "name": "@onwidget/astrowind",
   "description": "AstroWind: A free template using Astro 4.0 and Tailwind CSS. Astro starter theme.",
-  "version": "1.0.0-beta.15",
+  "version": "1.0.0-beta.16",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -35,6 +35,7 @@
     "@types/lodash.merge": "^4.6.9",
     "@typescript-eslint/eslint-plugin": "^6.19.0",
     "@typescript-eslint/parser": "^6.19.0",
+    "astro-compress": "^2.2.8",
     "eslint": "^8.56.0",
     "eslint-plugin-astro": "^0.31.3",
     "eslint-plugin-jsx-a11y": "^6.8.0",
