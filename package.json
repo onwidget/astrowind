@@ -56,6 +56,10 @@
       "sharp": "0.33.0"
     }
   },
+  "resolutions": {
+    "astro/sharp": "0.33.0",
+    "astro-compress/sharp": "0.33.0"
+  },
   "engines": {
     "node": ">=18.14.1"
   }
