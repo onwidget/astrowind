@@ -49,9 +49,6 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
   },
-  "optionalDependencies": {
-    "@img/sharp-linux-x64": "0.33.2"
-  },
   "engines": {
     "node": ">=18.14.1"
   }
