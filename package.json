@@ -35,7 +35,7 @@
     "@types/lodash.merge": "^4.6.9",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
-    "astro-compress": "^2.2.8",
+    "astro-compress": "2.2.8",
     "eslint": "^8.56.0",
     "eslint-plugin-astro": "^0.31.3",
     "eslint-plugin-jsx-a11y": "^6.8.0",
@@ -47,6 +47,14 @@
     "tailwind-merge": "^2.2.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
+  },
+  "overrides": {
+    "astro": {
+      "sharp": "0.33.0"
+    },
+    "astro-compress": {
+      "sharp": "0.33.0"
+    }
   },
   "engines": {
     "node": ">=18.14.1"
