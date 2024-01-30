@@ -16,9 +16,9 @@ interface Links {
 }
 
 export interface Props {
-  links: Array<Links>;
-  secondaryLinks: Array<Link>;
-  socialLinks: Array<Link>;
+  links?: Array<Links>;
+  secondaryLinks?: Array<Link>;
+  socialLinks?: Array<Link>;
   footNote?: string;
   theme?: string;
 }
@@ -29,7 +29,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
 <footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800 not-prose']}>
   <div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300">
-    <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
+    <!-- <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
       <div class="col-span-12 lg:col-span-4">
         <div class="mb-2">
           <a class="inline-block font-bold text-xl" href={getHomePermalink()}>{SITE?.name}</a>
@@ -68,7 +68,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
           </div>
         ))
       }
-    </div>
+    </div> -->
     <div class="md:flex md:items-center md:justify-between py-6 md:py-8">
       {
         socialLinks?.length ? (
@@ -91,7 +91,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
         )
       }
 
-      <div class="text-sm mr-4 dark:text-slate-400">
+      <div class="text-xs mr-4 dark:text-slate-400">
         <Fragment set:html={footNote} />
       </div>
     </div>

@@ -4,14 +4,14 @@ site:
   base: '/'
   trailingSlash: false
 
-  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
+  googleSiteVerificationId: kmkHW_W3a6t9LZdK_e208kkR_bkQx-ZUYQ5zUIbyfHc
 
 # Default SEO metadata
 metadata:
   title:
     default: Restorative Bodywork
     template: '%s — Restorative Bodywork'
-  description: 'Restorative Bodywork, South Austin based therapists offering a blend of soothing massages and targeted physical therapy treatments to enhance your overall health and vitality.'
+  description: 'Restorative Bodywork, South Austin based therapists offering therapeutic massages to enhance your overall health and vitality.'
   robots:
     index: true
     follow: true

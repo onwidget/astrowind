@@ -12,11 +12,12 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  <!-- <HeroText tagline="Contact" title="Let's Connect!" /> -->
 
-  <ContactUs
+  <!-- TODO: hook up form to server, otherwise hide it. -->
+  <!-- <ContactUs
     title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
+  subtitle=`Explore our FAQ section for answers to common questions. If you still have questions, please contact us using the form below. If you'd like to book an appointment, please visit our <a href="https://my-business-restorativebodyworkatx.square.site/" class="text-blue-500 hover:underline">booking site</a>.`
     inputs={[
       {
         type: 'text',
@@ -32,45 +33,35 @@ const metadata = {
     textarea={{
       label: 'Message',
     }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="Our support team typically responds within 24 business hours."
-  />
-
-  <!-- Features2 Widget ************** -->
+    description="We will typically respond within 24 business hours. Thank you!"
+  /> -->
 
   <Features2
-    title="We are here to help!"
+    title="Contact information, location, and hours."
     items={[
       {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
+        title: 'Hours',
+        description: `
+          <i>By appointment only.</i></br>
+          Sunday: 10am - 5pm</br>
+          Monday: 10am - 7pm</br>
+          Tuesday: Closed</br>
+          Wednesday: Closed</br>
+          Thursday: Closed</br>
+          Friday: Closed</br>
+          Saturday: 10am - 5pm</br>
+          `,
+          icon: 'tabler:clock'
       },
+
       {
-        title: 'Contact sales',
-        description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
-      },
-      {
-        title: 'Technical support',
-        description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
-      },
-      {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
-      },
-      {
-        title: 'Email',
-        description: 'contact@support.com',
+        title: 'Contact',
+        description: '<a href="tel:+15129203103">(512) 920-3103</a></br><a href="mailto:info@restorativebodyworkatx.com">info@restorativebodyworkatx.com</a>',
         icon: 'tabler:mail',
       },
       {
         title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
+        description: '<a href="https://www.google.com/maps?q=2111+Dickson+Drive+%2314,+Austin,+TX+78704">2111 Dicken Drive #14, Austin, TX 78704</a>',
         icon: 'tabler:map-pin',
       },
     ]}

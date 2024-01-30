@@ -2,7 +2,9 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
-
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { faqData } from '~/data';
 const metadata = {
   title: 'Restorative Bodywork',
   ignoreTitleTemplate: true,
@@ -28,10 +30,15 @@ const metadata = {
 
     <Fragment slot="subtitle">
       <span class="sm:inline text-black">
-        Revitalize your well-being with <span class="font-semibold">Restorative Bodywork</span> - where tranquility meets
-        therapeutic excellence.
+        Revitalize your well-being with <span class="font-semibold">Restorative Bodywork</span> - located at <span class="font-semibold">
+          <a href="https://www.google.com/maps?q=2111+Dickson+Drive+%2314,+Austin,+TX+78704"
+            >2111 Dicken Drive #14, Austin, TX 78704</a
+          ></span
+        > in South Austin. Where tranquility meets
+        therapeutic excellence.<span class="block mb-1 text-black text-sm"
+        > By appointment only.</span
+      >
       </span>
-      <span class="block mb-1 font-bold text-black">More details coming soon.</span>
     </Fragment>
   </Hero>
 
@@ -309,44 +316,14 @@ const metadata = {
 
   <!-- FAQs Widget ******************* -->
 
-  <!-- <FAQs
+  <FAQs
+    id="faq"
     title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
+    subtitle="Questions about your therapeutic experience? Find answers here. If you don't see what you're looking for, please do not hesitate to contact us."
     tagline="FAQs"
     classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'Why AstroWind?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
-      },
-      {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
-      },
-      {
-        title: 'How to install the Astro + Tailwind CSS template?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
-      },
-      {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
-      },
-    ]}
-  /> -->
+    items={[...faqData]}
+  />
 
   <!-- Stats Widget ****************** -->
 
