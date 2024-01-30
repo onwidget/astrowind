@@ -10,7 +10,7 @@ import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Advanced Relevance Semantic Search and RAG API',
+  title: 'Advanced Relevance Semantic Search, Recommendation, and RAG API',
   ignoreTitleTemplate: true,
 };
 ---
@@ -34,18 +34,25 @@ const metadata = {
         target: '_blank',
         icon: 'tabler:external-link',
       },
+      {
+        variant: 'secondary',
+        text: 'Book a Demo',
+        href: 'https://cal.com/nick.k/meet',
+        target: '_blank',
+        icon: 'tabler:calendar',
+      }
     ]}
     image={{ src: 'https://cdn.trieve.ai/trieve-team.png', alt: 'Trieve Team Doing a Podcast' }}
   >
     <Fragment slot="title">
-      API for <span class="hidden xl:inline">building better</span>
-      <span class="text-accent highlight"> semantic search and RAG</span> experiences
+      Advanced relevance API for
+      <span class="text-accent highlight">hybrid search</span>, recommendations, and RAG
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
         <span class="font-semibold">Trieve</span> is a performant, customizable and production-ready API for semantic and full-text
-        search, RAG, plus relevance tuning.</span
+        search with re-ranker models, RAG, plus relevance tuning.</span
       >
       <span class="block mb-1 sm:hidden font-bold text-blue-600">Trieve: Production-ready.</span>
       Use Trieve to show users what they're looking for every time.
@@ -70,7 +77,7 @@ const metadata = {
         icon: 'tabler:3d-cube-sphere',
       },
       {
-        title: 'SPLADE full-text search',
+        title: 'SPLADE full-text neural search',
         description:
           'BM25 is great, but SPLADE is better. SPLADE is a state-of-the-art retrieval model for full-text search.',
         icon: 'tabler:file-typography',
@@ -84,13 +91,13 @@ const metadata = {
       {
         title: 'Hybrid Search',
         description:
-          'Get the best of both worlds. Trieve supports hybrid search, combining full-text search and semantic vector search.',
+          'Get the best of both worlds. Trieve supports hybrid search, combining full-text search and semantic vector search with cross-encoder re-ranker models.',
         icon: 'tabler:arrows-join',
       },
       {
-        title: 'Re-Rankers for Relevance tuning',
+        title: 'Merchandising Relevance tuning',
         description:
-          'Use open source re-ranking models or build and tune your own to get the most relevant results possible.',
+          'Boost search results based on sales or popularity to show users what you know works.',
         icon: 'tabler:military-rank',
       },
       {
@@ -232,6 +239,13 @@ const metadata = {
         target: '_blank',
         icon: 'tabler:external-link',
       },
+      {
+        variant: 'secondary',
+        text: 'Book a Demo',
+        href: 'https://cal.com/nick.k/meet',
+        target: '_blank',
+        icon: 'tabler:calendar',
+      }
     ]}
   >
     <Fragment slot="title">The Best Search API</Fragment>

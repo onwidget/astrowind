@@ -12,6 +12,15 @@ export const headerData = {
           href: 'mailto:humans@trieve.ai',
         },
         {
+          text: 'book a demo',
+          href: 'https://cal.com/nick.k/meet'
+        }
+      ],
+    },
+    {
+      text: 'Community',
+      links: [
+        {
           text: 'Matrix',
           href: 'https://matrix.to/#/#trieve-general:matrix.zerodao.gg',
         },
