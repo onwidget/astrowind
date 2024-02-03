@@ -1,0 +1,41 @@
+{
+  "home": {
+    "title": "Your <0>Holistic</0> Wealth Management Software",
+    "subtitle": "Welcome to a new era of financial empowerment, where sophistication meets simplicity. <0>Sofistic.AI</0> is not just a software; it's your gateway to comprehensive and proactive wealth management, right at your fingertips.",
+    "headline": {
+      "title": "Discover the Power of Sofistic.AI",
+      "text": "Embark on a seamless financial journey with our user-friendly software designed to empower individuals and financial advisors alike. Sofistic.AI leverages cutting-edge AI technology to offer a 360 Holistic View of financial landscapes, providing insights, connecting investors, wealth managers and institutions, as well as next best actions to optimize your customers' wealth."
+    },
+    "features": {
+      "title": "Key Features",
+      "subtitle": "",
+      "360view": {
+        "title": "360° Holistic View",
+        "description": "360 dashboard, complete with dynamic insights and real-time updates"
+      },
+      "dataAggregation": {
+        "title": "Data Aggregation",
+        "description": "Comprehensive data aggregation to avoid fractured management systems"
+      },
+      "cashFlowManagement": {
+        "title": "Cash Flow Management",
+        "description": "Harnessing AI for optimized financial flows in wealth portfolio management."
+      },
+      "insights": {
+        "title": "Smart Insights & Call to Action",
+        "description": "Harnessing the power of generative AI to produce smart, real-time insights"
+      },
+      "scenarioModeling": {
+        "title": "Scenario Modeling",
+        "description": "Create model scenarios and visualize financial impacts."
+      },
+      "bizDev": {
+        "title": "Business Development",
+        "description": "Cross-selling & retention opportunities via comprehensive knowledge of wealth"
+      }
+    }
+  },
+  "common": {
+    "learnMore": "Learn more"
+  }
+}

@@ -1,21 +1,17 @@
 ---
-import { t, changeLanguage } from 'i18next';
-import { Trans } from 'astro-i18next/components';
-import Layout from '~/layouts/PageLayout.astro';
-import Hero2 from '~/components/widgets/Hero2.astro';
-import Features from '~/components/widgets/Features.astro';
-import Content from '~/components/widgets/Content.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
-import { getPermalink } from '~/utils/permalinks';
+import { t, changeLanguage } from "i18next";
+import { Trans } from "astro-i18next/components";
+import Layout from "~/layouts/PageLayout.astro";
+import Hero2 from "~/components/widgets/Hero2.astro";
+import Features from "~/components/widgets/Features.astro";
+import Content from "~/components/widgets/Content.astro";
+import Steps2 from "~/components/widgets/Steps2.astro";
 
-import projections from '~/assets/images/projections.svg';
-import Headline from '~/components/ui/Headline.astro';
-
-changeLanguage('en');
+changeLanguage("fr");
 
 const metadata = {
-  title: 'AstroWind \u2014 Free template for creating websites with Astro + Tailwind CSS',
-  ignoreTitleTemplate: true,
+    title: "AstroWind \u2014 Free template for creating websites with Astro + Tailwind CSS",
+    ignoreTitleTemplate: true,
 };
 ---
 
@@ -23,16 +19,13 @@ const metadata = {
   <!-- Hero2 Widget ******************* -->
 
   <Hero2
+    tagline="Sofistic.AI"
     actions={[
-      {
-        variant: 'primary',
-        target: '_blank',
-        text: t('common.learnMore') ?? 'Learn more',
-        href: getPermalink('/about'),
-      },
+      { variant: 'primary', target: '_blank', text: 'Get Started', href: 'https://github.com/onwidget/astrowind' },
+      { text: 'Learn more', href: '#features' },
     ]}
     image={{
-      src: projections,
+      src: 'https://images.unsplash.com/photo-1580481072645-022f9a6dbf27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       alt: 'AstroWind Hero Image',
     }}
   >
@@ -43,52 +36,52 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      <Trans i18nKey="home.subtitle">
-        Welcome to a new era of financial empowerment, where sophistication meets simplicity. <b>Sofistic.AI</b> is not just
-        a software; it's your gateway to comprehensive and proactive wealth management, right at your fingertips.
-      </Trans>
+      <span class="hidden sm:inline">
+        Elevate your website creation process with <span class="font-semibold">AstroWind</span>'s SaaS solutions.</span
+      >
+      Seamlessly blend the power of Astro 4.0 and Tailwind CSS to craft websites that resonate with your brand and audience.
     </Fragment>
   </Hero2>
-
-  <Headline title={t('home.headline.title')} subtitle={t('home.headline.text')} />
 
   <!-- Features Widget *************** -->
 
   <Features
     id="features"
-    title={t('home.features.title')}
-    subtitle={t('home.features.subtitle')}
+    title="Why choose AstroWind?"
+    subtitle="Each of the following features enhances AstroWind's value proposition."
     columns={2}
     items={[
       {
-        title: t('home.features.360view.title'),
-        description: t('home.features.360view.description'),
-        icon: 'tabler:360-view',
+        title: 'Integration of Astro 4.0 and Tailwind CSS',
+        description:
+          'Offers a powerful combination that enhances both the development process and the end-user experience. Also, allows to build dynamic and visually stunning websites with optimized performance.',
+        icon: 'tabler:layers-union',
       },
       {
-        title: t('home.features.dataAggregation.title'),
-        description: t('home.features.dataAggregation.description'),
-        icon: 'tabler:chart-pie-4',
+        title: 'Versatile design for startups, small businesses, and more',
+        description: `Easily customize AstroWind to harmonize with the unique branding and identity of your venture. AstroWind's versatile design adapts to suit your needs.`,
+        icon: 'tabler:artboard',
       },
       {
-        title: t('home.features.cashFlowManagement.title'),
-        description: t('home.features.dataAggregation.description'),
-        icon: 'tabler:cash-banknote',
+        title: 'Effortless customization for portfolios and marketing sites',
+        description:
+          'With intuitive customization, easily showcase portfolio pieces, case studies, project highlights, and relevant content. Ideal for creative professionals and businesses looking to highlight their expertise.',
+        icon: 'tabler:writing',
       },
       {
-        title: t('home.features.insights.title'),
-        description: t('home.features.dataAggregation.description'),
-        icon: 'tabler:bulb',
+        title: 'Optimized landing pages and engaging blogs',
+        description: `Landing pages are strategically designed to captivate visitors and prompt specific actions. Additionally, the blog creation feature empowers sharing insights, engaging the audience.`,
+        icon: 'tabler:podium',
       },
       {
-        title: t('home.features.scenarioModeling.title'),
-        description: t('home.features.dataAggregation.description'),
-        icon: 'tabler:chart-histogram',
+        title: 'Fast loading times and production-ready code',
+        description: `Using Astro 4.0 ensures fast loading and seamless rendering, enhancing browsing. The code follows best practices, improving user experience, SEO, and reducing bounce rates.`,
+        icon: 'tabler:rocket',
       },
       {
-        title: t('home.features.bizDev.title'),
-        description: t('home.features.dataAggregation.description'),
-        icon: 'tabler:home-stats',
+        title: 'SEO-optimized structure for enhanced visibility',
+        description: `Follows SEO best practices with clean code, semantic HTML markup, and fast loading, enhancing search engine rankings. AstroWind's SEO structure ensures visibility to potential customers and clients.`,
+        icon: 'tabler:eyeglass',
       },
     ]}
   />

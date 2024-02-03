@@ -1,5 +1,6 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
+import astroI18next from 'astro-i18next';
 
 import { defineConfig, squooshImageService } from 'astro/config';
 
@@ -36,6 +37,7 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     sitemap(),
+    astroI18next(),
     mdx(),
     icon({
       include: {
@@ -53,13 +55,11 @@ export default defineConfig({
         ],
       },
     }),
-
     ...whenExternalScripts(() =>
       partytown({
         config: { forward: ['dataLayer.push'] },
       })
     ),
-
     compress({
       CSS: true,
       HTML: {
@@ -72,7 +72,6 @@ export default defineConfig({
       SVG: false,
       Logger: 1,
     }),
-
     tasks(),
   ],
 

@@ -1,30 +1,27 @@
 ---
-import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
-import { blogTagRobots, getStaticPathsBlogTag } from '~/utils/blog';
+import { changeLanguage } from "i18next";
+import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
+import { blogTagRobots, getStaticPathsBlogTag } from "~/utils/blog";
+import Layout from "~/layouts/PageLayout.astro";
+import BlogList from "~/components/blog/List.astro";
+import Headline from "~/components/blog/Headline.astro";
+import Pagination from "~/components/blog/Pagination.astro";
 
-import Layout from '~/layouts/PageLayout.astro';
-import BlogList from '~/components/blog/List.astro';
-import Headline from '~/components/blog/Headline.astro';
-import Pagination from '~/components/blog/Pagination.astro';
+changeLanguage("en");
 
 export const prerender = true;
-
 export const getStaticPaths = (async ({ paginate }) => {
-  return await getStaticPathsBlogTag({ paginate });
+    return await getStaticPathsBlogTag({ paginate });
 }) satisfies GetStaticPaths;
-
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-
 const { page, tag } = Astro.props as Props;
-
 const currentPage = page.currentPage ?? 1;
-
 const metadata = {
-  title: `Posts by tag '${tag}'${currentPage > 1 ? ` — Page ${currentPage} ` : ''}`,
-  robots: {
-    index: blogTagRobots?.index,
-    follow: blogTagRobots?.follow,
-  },
+    title: `Posts by tag '${tag}'${currentPage > 1 ? ` — Page ${currentPage} ` : ""}`,
+    robots: {
+        index: blogTagRobots?.index,
+        follow: blogTagRobots?.follow,
+    },
 };
 ---
 
