@@ -85,24 +85,9 @@
             }
           },
           "required": ["site_name", "images", "type"]
-        },
-        "twitter": {
-          "type": "object",
-          "properties": {
-            "handle": {
-              "type": "string"
-            },
-            "site": {
-              "type": "string"
-            },
-            "cardType": {
-              "type": "string"
-            }
-          },
-          "required": ["handle", "site", "cardType"]
         }
       },
-      "required": ["title", "description", "robots", "openGraph", "twitter"]
+      "required": ["title", "description", "robots", "openGraph"]
     },
     "i18n": {
       "type": "object",

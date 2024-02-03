@@ -48,7 +48,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
       </div>
       {
         links.map(({ title, links }) => (
-          <div class="col-span-6 md:col-span-3 lg:col-span-2">
+          <div class="col-span-6 md:col-span-6 lg:col-span-4">
             <div class="dark:text-gray-300 font-medium mb-2">{title}</div>
             {links && Array.isArray(links) && links.length > 0 && (
               <ul class="text-sm">
