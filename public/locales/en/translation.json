@@ -33,9 +33,37 @@
         "title": "Business Development",
         "description": "Cross-selling & retention opportunities via comprehensive knowledge of wealth"
       }
+    },
+    "benefits": {
+      "title": "Benefits",
+      "subtitle": "Discover how Sofistic.AI's platform can help you achieve scalable, high quality wealth management without compromise with the power of data and AI.",
+      "smartInsights": {
+        "title": "Smart Insights",
+        "description": "Track business opportunities and provide differentiated advice to high-net worth individuals."
+      },
+      "consolidatedSystem": {
+        "title": "Consolidated System",
+        "description": "All-in-one automated wealth management tools - 360 Holistic View that helps uncover growth opportunities and HNW retention"
+      },
+      "timeOptimization": {
+        "title": "Optimize your Time",
+        "description": "Leverage automated systems to free up time for high-value tasks."
+      }
+    },
+    "contactUs": {
+      "title": "Reach out to us",
+      "subtitle": "Have questions? Feel free to send us an email. We're here to help!",
+      "email": "Email us",
+      "call": "Call us"
     }
   },
   "common": {
-    "learnMore": "Learn more"
+    "learnMore": "Learn more",
+    "contactUs": "Contact us",
+    "home": "Home",
+    "product": "Product",
+    "features": "Features",
+    "security": "Security",
+    "bisdev": "Business Development"
   }
 }

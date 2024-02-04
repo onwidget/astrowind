@@ -11,6 +11,7 @@ module.exports = {
         default: 'var(--aw-color-text-default)',
         muted: 'var(--aw-color-text-muted)',
         pop: 'var(--aw-color-pop)',
+        link: 'var(--aw-color-primary)',
       },
       fontFamily: {
         sans: ['var(--aw-font-sans)', ...defaultTheme.fontFamily.sans],

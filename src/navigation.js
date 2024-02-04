@@ -25,9 +25,27 @@ export const headerData = {
     },
     {
       text: 'About',
-      href: getPermalink('/about'),
+      links: [
+        {
+          text: 'Sofistic.AI',
+          href: getPermalink('/about'),
+        },
+        {
+          text: 'The Team',
+          href: getPermalink('/about/team'),
+        },
+        {
+          text: 'Board & Strategic Advisors',
+          href: getPermalink('/about/advisors'),
+        },
+        {
+          text: 'Investment Partners',
+          href: getPermalink('/about/partners'),
+        },
+      ],
     },
   ],
+  actions: [{ text: 'Contact', href: getPermalink('/#contact') }],
 };
 
 export const footerData = {
