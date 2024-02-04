@@ -18,7 +18,7 @@ const {
   image = await Astro.slots.render('image'),
   isReversed = false,
   isAfterContent = false,
-
+  withoutIcons = false,
   id,
   isDark = false,
   classes = {},
@@ -58,7 +58,7 @@ const {
         <ItemGrid
           items={items}
           columns={columns}
-          defaultIcon="tabler:check"
+          defaultIcon={withoutIcons ? null : 'tabler:check'}
           classes={{
             container: `gap-y-4 md:gap-y-8`,
             panel: 'max-w-none',
@@ -77,7 +77,7 @@ const {
                 <Fragment set:html={image} />
               ) : (
                 <Image
-                  class="mx-auto w-full rounded-lg bg-gray-500 shadow-lg"
+                  class="mx-auto w-full rounded-lg bg-gray-100 shadow-lg"
                   width={500}
                   height={500}
                   widths={[400, 768]}

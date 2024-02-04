@@ -57,6 +57,24 @@
       "call": "Call us"
     }
   },
+  "about": {
+    "title": "About <0>Sofistic.AI</0>",
+    "origin": {
+      "title": "Our Origin",
+      "description": "Founded in 2022, Sofistic.AI emerged from a vision to revolutionize wealth management. We recognized a gap in traditional solutions and set out to create an AI-powered platform that caters to the dynamic needs of high-net-worth individuals and clients."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description1": "Empowering Financial Excellence Through AI & Data-Driven Wealth Maximization. Sofistic.AI is committed to ethically harness the power of artificial intelligence and data analytics to drive superior financial decision-making, leading to the maximization of client wealth.",
+      "description2": "Sofistic.AI provides innovative, data-driven solutions that empower individual clients, wealth managers and financial institutions to make informed financial decisions.",
+      "description3": "By prioritizing AI & data driven strategies, Sofistic.AI aims to set new standards in financial excellence and establish itself as a trusted partner in navigating complex financial landscapes and securing long-term prosperity for clients and all stakeholders."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "quote": "To optimize financial decision-making and advising through ethical AI & data-driven solutions, ensuring clients & stakeholders prosper through secured technologies in an ever-evolving financial landscape.",
+      "description": "Sofistic.AI is dedicated to leveraging innovative AI technology and data analyics to redefine how financial decisions are made, with the overarching goal of maximizing client wealth and ensuring their financial well-being. Sofistic.AI is committed to staying at the forefront of technological advancements and continuously adapting to changes in the financial industry to provide clients with secure, efficient and effective solutions."
+    }
+  },
   "common": {
     "learnMore": "Learn more",
     "contactUs": "Contact us",

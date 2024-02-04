@@ -277,6 +277,7 @@ export interface Content extends Headline, Widget {
   isReversed?: boolean;
   isAfterContent?: boolean;
   callToAction?: CallToAction;
+  withoutIcons?: boolean;
 }
 
 export interface Contact extends Headline, Form, Widget {}
