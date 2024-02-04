@@ -1,25 +1,23 @@
 ---
-import { t, changeLanguage } from 'i18next';
-import { Trans } from 'astro-i18next/components';
-import { Image } from 'astro:assets';
+import { t, changeLanguage } from "i18next";
+import { Trans } from "astro-i18next/components";
+import { Image } from "astro:assets";
+import Features from "~/components/widgets/Features.astro";
+import Features2 from "~/components/widgets/Features2.astro";
+import Features3 from "~/components/widgets/Features3.astro";
+import Hero from "~/components/widgets/Hero.astro";
+import Stats from "~/components/widgets/Stats.astro";
+import Steps2 from "~/components/widgets/Steps2.astro";
+import Layout from "~/layouts/PageLayout.astro";
+import Headline from "~/components/ui/Headline.astro";
+import laptop from "~/assets/images/laptop.png";
+import successFactors from "~/assets/images/success-factors.svg";
+import Content from "~/components/widgets/Content.astro";
 
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
-import Layout from '~/layouts/PageLayout.astro';
-import Headline from '~/components/ui/Headline.astro';
-
-import laptop from '~/assets/images/laptop.png';
-import successFactors from '~/assets/images/success-factors.svg';
-import Content from '~/components/widgets/Content.astro';
-
-changeLanguage('en');
+changeLanguage("en");
 
 const metadata = {
-  title: 'About us',
+    title: "About us",
 };
 ---
 

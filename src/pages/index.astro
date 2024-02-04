@@ -1,23 +1,21 @@
 ---
-import { t, changeLanguage } from 'i18next';
-import { Trans } from 'astro-i18next/components';
-import Layout from '~/layouts/PageLayout.astro';
-import Hero2 from '~/components/widgets/Hero2.astro';
-import Features from '~/components/widgets/Features.astro';
-import Content from '~/components/widgets/Content.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
-import Headline from '~/components/ui/Headline.astro';
+import { t, changeLanguage } from "i18next";
+import { Trans } from "astro-i18next/components";
+import Layout from "~/layouts/PageLayout.astro";
+import Hero2 from "~/components/widgets/Hero2.astro";
+import Features from "~/components/widgets/Features.astro";
+import Content from "~/components/widgets/Content.astro";
+import Steps2 from "~/components/widgets/Steps2.astro";
+import Headline from "~/components/ui/Headline.astro";
+import { getPermalink } from "~/utils/permalinks";
+import projections from "~/assets/images/projections.svg";
+import dashboard from "~/assets/images/dashboard-screen.png";
 
-import { getPermalink } from '~/utils/permalinks';
-
-import projections from '~/assets/images/projections.svg';
-import dashboard from '~/assets/images/dashboard-screen.png';
-
-changeLanguage('en');
+changeLanguage("en");
 
 const metadata = {
-  title: 'AstroWind \u2014 Free template for creating websites with Astro + Tailwind CSS',
-  ignoreTitleTemplate: true,
+    title: "AstroWind \u2014 Free template for creating websites with Astro + Tailwind CSS",
+    ignoreTitleTemplate: true,
 };
 ---
 
