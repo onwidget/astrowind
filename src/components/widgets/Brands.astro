@@ -3,6 +3,8 @@ import { Icon } from 'astro-icon/components';
 import type { Brands } from '~/types';
 import Headline from '~/components/ui/Headline.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Image from '~/components/common/Image.astro';
+
 const {
   title = '',
   subtitle = '',
@@ -27,7 +29,16 @@ const {
           (image) =>
             image.src && (
               <div class="flex justify-center col-span-1 my-2 lg:my-4 py-1 px-3 rounded-md dark:bg-gray-200">
-                <img src={image.src} alt={image.alt || ''} class="max-h-12" />
+                <Image
+                  class="max-h-12 rounded-md"
+                  // widths={[400, 768, 1024, 2040]}
+                  // sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+                  loading="eager"
+                  // width={600}
+                  // height={600}
+                  {...image}
+                />
+
               </div>
             )
         )

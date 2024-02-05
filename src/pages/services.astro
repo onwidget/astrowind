@@ -1,0 +1,58 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Brands from '~/components/widgets/Brands.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Content from '~/components/widgets/Content.astro';
+
+const metadata = {
+  title: 'Services',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- HeroText Widget ******************* -->
+  <Hero2
+    title="Services"
+    subtitle="We offer a variety of services to help personalize your treatment."
+    image={{ src: '~/assets/images/closeups/knife-back.jpeg', alt: 'Restorative Bodywork IASTM' }}
+    actions={[
+{
+        variant: 'primary',
+        text: 'Book an appointment',
+        href: 'https://my-business-restorativebodyworkatx.square.site/',
+        icon: 'tabler:calendar-plus',
+      },
+    ]}
+  />
+
+  <Brands
+    title="Deep Tissue Massage"
+    subtitle="Revitalize muscles with our expert deep tissue massage for lasting relief and relaxation."
+    images={[
+      // { src: '~/assets/images/closeups/hands-back.jpeg', alt: 'Deep tissue - back' },
+      { src: '~/assets/images/closeups/hands-back1.jpeg', alt: 'Deep tissue - back' },
+      { src: '~/assets/images/closeups/hands-back2.jpeg', alt: 'Deep tissue - back' },
+      { src: '~/assets/images/closeups/hands-hand.jpeg', alt: 'Deep tissue - hands' },
+      // { src: '~/assets/images/closeups/hands-leg.jpeg', alt: 'Deep tissue - legs' },
+    ]}
+  />
+
+  <Brands
+    title="Cupping Therapy"
+    subtitle="Enhance healing and release tension through our rejuvenating cupping therapy sessions."
+    images={[
+      // { src: '~/assets/images/closeups/cupping-back.jpeg', alt: 'Cupping therapy - back' },
+      { src: '~/assets/images/closeups/cupping-back1.jpeg', alt: 'Cupping therapy - back' },
+      { src: '~/assets/images/closeups/cupping-back2.jpeg', alt: 'Cupping therapy - back' },
+    ]}
+  />
+  <Brands
+    title="Instrument-assisted soft tissue mobilization (IASTM)"
+    subtitle="Optimize recovery with our precise Instrument-Assisted Soft Tissue Mobilization (IASTM), promoting tissue health and flexibility."
+    images={[
+      { src: '~/assets/images/closeups/knife-back.jpeg', alt: 'IASTM - back' },
+      { src: '~/assets/images/closeups/knife-leg.jpeg', alt: 'IASTM - legs' },
+    ]}
+  />
+</Layout>
