@@ -54,7 +54,7 @@ const {
                 {Array.isArray(actions) ? (
                   actions.map((action) => (
                     <div class="flex w-full sm:w-auto">
-                      <Button {...(action || {})} class="w-full sm:mb-0 text-black" />
+                      <Button class="w-full sm:mb-0 text-black" {...(action || {})} />
                     </div>
                   ))
                 ) : (

@@ -13,6 +13,7 @@ export const headerData = {
       text: 'Book now!',
       href: 'https://my-business-restorativebodyworkatx.square.site/',
       target: '_blank',
+      icon: 'tabler:calendar-plus',
     },
   ],
 };
