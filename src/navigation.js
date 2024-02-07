@@ -1,3 +1,5 @@
+import { getPermalink, getBlogPermalink } from './utils/permalinks';
+
 export const headerData = {
   links: [
     {
@@ -33,6 +35,10 @@ export const headerData = {
     {
       text: 'API Docs',
       href: 'https://docs.trieve.ai',
+    },
+    {
+      text: 'Blog',
+      href: getBlogPermalink(),
     },
     {
       text: 'Github',
