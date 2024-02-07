@@ -36,10 +36,10 @@ export const headerData = {
       text: 'API Docs',
       href: 'https://docs.trieve.ai',
     },
-    {
-      text: 'Blog',
-      href: getBlogPermalink(),
-    },
+    // {
+    //   text: 'Blog',
+    //   href: getBlogPermalink(),
+    // },
     {
       text: 'Github',
       href: 'https://github.com/devflowinc/trieve',
