@@ -1,5 +1,3 @@
-import { getPermalink, getBlogPermalink } from './utils/permalinks';
-
 export const headerData = {
   links: [
     {
@@ -15,8 +13,8 @@ export const headerData = {
         },
         {
           text: 'book a demo',
-          href: 'https://cal.com/nick.k/meet'
-        }
+          href: 'https://cal.com/nick.k/meet',
+        },
       ],
     },
     {
@@ -41,8 +39,8 @@ export const headerData = {
     //   href: getBlogPermalink(),
     // },
     {
-      text: 'Github',
-      href: 'https://github.com/devflowinc/trieve',
+      text: 'Pricing',
+      href: '/pricing',
     },
   ],
   actions: [{ text: 'Get Started', href: 'https://dashboard.trieve.ai', target: '_blank' }],
@@ -72,6 +70,15 @@ export const footerData = {
       links: [
         { text: 'About', href: '/about' },
         { text: 'Admin Dashboard', href: 'https://dashboard.trieve.ai' },
+        { text: 'Github', href: 'https://github.com/devflowinc/trieve' },
+      ],
+    },
+    {
+      title: 'Product',
+      links: [
+        { text: 'Pricing', href: '/pricing' },
+        { text: 'API Docs', href: 'https://docs.trieve.ai' },
+        { text: 'YC Directory Demo', href: 'https://yc.trieve.ai' },
       ],
     },
   ],
