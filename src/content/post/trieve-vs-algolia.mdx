@@ -1,0 +1,44 @@
+---
+publishDate: 2024-02-10T08:45:00Z
+author: skeptrune (Nick K)
+title: Trieve vs. Algolia
+excerpt: Compared to Algolia, Trieve offers a more powerful source available search platform with dense-vector semantic capabilities, RAG support, and a human fine-tuning admin dashboard for document expansion plus relevance weighting.
+image: https://cdn.trieve.ai/trieve-og.png
+category: Comparisons
+tags:
+  - trieve
+  - comparison
+  - algolia
+  - resources
+---
+
+import ComparisonTable from '~/components/blog/TrieveVsAlgoliaTable.astro';
+
+## Introduction
+
+Want to learn about this from a human? Book a meeting with a core Trieve engineer [here on cal.com](https://cal.com/nick.k/meet).
+
+This blog post is going to highlight Trieve relative to Algolia and explain which kinds of problems each are respectively better suited to solve. If we can highlight anything, it is that [Trieve is source-available and built in public on Github](https://github.com/devflowinc/trieve) whereas Algolia is fully closed. You can buy a license and host Trieve in your own cloud or on-premise which is something that Algolia explicity [does not offer](https://support.algolia.com/hc/en-us/articles/4406975236625-Can-I-run-Algolia-on-premises-on-my-own-servers). 
+
+## When to Use Trieve Over Algolia
+
+- self-hosting on-premise or in your own cloud for privacy and security is valuable for your use-case
+- you want to tune search with techniques like document expansion and relevance weighting (merchandising)
+- taking advantage of the latest advancements in dense vector semantic search to create a better baseline is important to you
+- you have your own dense/sparse-vector encoding or re-ranker models which you would like to use
+- high quality recommendations are critical to your discovery problems
+- you intend to integrate gen-AI capability in your discovery UX through RAG or search-before-generate patterns
+
+## When to Use Algolia Over Trieve
+
+- built in analytics are necessary for your solution
+- you need ~100ms latency or less; Trieve is currently ~250ms
+- Algolia's prebuilt integrations for your UI framework are very important
+
+## Comparison Summary
+
+Trieve sets itself apart by being BSL-licensed self-hostable and built in public at [github.com/devflowinc/trieve](https://github.com/devflowinc/trieve) whereas Algolia is fully closed, having support for dense vector semantic search and recommendations while Algolia is only neural full-text, supporting gen-AI RAG, and shipping with an Admin UI for document expansion and weighting (AKA merchandising).
+
+However, Trieve currently has latency times of ~250ms whereas Algolia is relatively consistent at ~100ms or less. The only time the Trieve team would say to use Algolia, given their closed-source and non self-hostable status, would be if you absolutely need sub-100ms latency times, built-in analytics, or their UI integrations. At Trieve, we are hard at work building these features to reach full parity with Algolia see for yourself on [Trieve's Github](https://github.com/devflowinc/trieve).
+
+<ComparisonTable />

@@ -16,5 +16,8 @@
   },
   "yaml.schemas": {
     "./.vscode/astrowind/config-schema.json": "/src/config.yaml"
-  }
+  },
+  "editor.stickyScroll.scrollWithEditor": false,
+  "editor.hover.sticky": true,
+  "editor.stickyScroll.enabled": false
 }

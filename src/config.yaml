@@ -11,7 +11,7 @@ metadata:
   title:
     default: Trieve
     template: '%s — Trieve'
-  description: "Build better, faster, and more relevant search and RAG with Trieve's Open Source API. Date recency biasing, re-ranker models, dense vector search, sub-sentence highlighting, and more all on one endpoint that you can host yourself."
+  description: "Build better, faster, and more relevant search and RAG with Trieve's platform. Date recency biasing, re-ranker models, semantic search, sub-sentence highlighting, document expansion, and more all in one service that you can host yourself."
   robots:
     index: true
     follow: true

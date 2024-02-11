@@ -1,3 +1,5 @@
+import { getBlogPermalink } from './utils/permalinks';
+
 export const headerData = {
   links: [
     {
@@ -12,7 +14,7 @@ export const headerData = {
           href: 'mailto:humans@trieve.ai',
         },
         {
-          text: 'book a demo',
+          text: 'Meet with Us',
           href: 'https://cal.com/nick.k/meet',
         },
       ],
@@ -34,17 +36,17 @@ export const headerData = {
       text: 'API Docs',
       href: 'https://docs.trieve.ai',
     },
-    // {
-    //   text: 'Blog',
-    //   href: getBlogPermalink(),
-    // },
     {
       text: 'Pricing',
       href: '/pricing',
     },
+    {
+      text: 'Blog',
+      href: getBlogPermalink(),
+    },
   ],
   actions: [{ text: 'Get Started', href: 'https://dashboard.trieve.ai', target: '_blank' }],
-  showRssFeed: false,
+  showRssFeed: true,
 };
 
 export const footerData = {
@@ -80,6 +82,10 @@ export const footerData = {
         { text: 'API Docs', href: 'https://docs.trieve.ai' },
         { text: 'YC Directory Demo', href: 'https://yc.trieve.ai' },
       ],
+    },
+    {
+      title: 'Comparisons',
+      links: [{ text: 'Trieve vs. Algolia', href: '/trieve-vs-algolia' }],
     },
   ],
   socialLinks: [
