@@ -47,6 +47,7 @@ export default defineConfig({
           'binoculars',
           'calendar',
         ],
+        ri: ['*'],
       },
     }),
 
