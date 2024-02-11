@@ -2,6 +2,28 @@
 import { Icon } from 'astro-icon/components';
 ---
 
+<script>
+  try {
+    void fetch(`https://api.github.com/repos/devflowinc/trieve`, {
+      headers: {
+        Accept: 'application/vnd.github+json',
+      },
+    }).then((response) => {
+      if (!response.ok) {
+        return;
+      }
+      void response.json().then((data) => {
+        const starCount = data.stargazers_count;
+        const starCountElement = document.querySelector('#trieve-starcount');
+        if (starCountElement) {
+          starCountElement.textContent = starCount;
+        }
+      });
+    });
+  } catch (e) {
+    console.error(e);
+  }
+</script>
 <div
   class="flex flex-row justify-between items-center text-muted bg-fuchsia-100 dark:bg-transparent dark:border-b dark:border-slate-800 dark:text-slate-400 overflow-hidden px-3 py-2 relative text-ellipsis whitespace-nowrap"
 >
@@ -21,6 +43,6 @@ import { Icon } from 'astro-icon/components';
     title="If you like Trieve, give us a star."
     href="https://github.com/devflowinc/trieve"
   >
-    <Icon name="ri:github-line" class="w-4 h-4 mr-1" /> Star Us | 281
+    <Icon name="ri:github-line" class="w-4 h-4 mr-1" /> Star Us | <span id="trieve-starcount">281</span>
   </a>
 </div>
