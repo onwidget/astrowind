@@ -85,7 +85,7 @@ export const footerData = {
     },
     {
       title: 'Comparisons',
-      links: [{ text: 'Trieve vs. Algolia', href: '/trieve-vs-algolia' }],
+      links: [{ text: 'vs Algolia', href: '/trieve-vs-algolia' }],
     },
   ],
   socialLinks: [
