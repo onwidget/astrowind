@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
+import { fetch } from 'astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
@@ -16,10 +16,47 @@ const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
   ignoreTitleTemplate: true,
 };
----
 
+export const load = async () => {
+  try {
+    const response = await fetch(
+      'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=f1fdffd7710f4351b7260ffa9affc760'
+    );
+
+    if (!response.ok) {
+      throw new Error(`API request failed with status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const newsData = data || {};
+    const firstArticle = newsData.articles && newsData.articles.length > 0 ? newsData.articles[0] : null;
+
+    console.log(firstArticle);
+
+    return {
+      props: {
+        metadata,
+        firstArticle,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return {
+      props: {
+        metadata,
+        firstArticle: null, // or handle the error as needed
+      },
+    };
+  }
+};
+
+
+
+export default function Index(props) {
+  const { firstArticle } = props;
+  return(
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  
 
   <Hero
     actions={[
@@ -45,17 +82,18 @@ const metadata = {
         + Tailwind CSS.</span
       >
       <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-       Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages
-      & Blogs.
+      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
+      Blogs.
     </Fragment>
   </Hero>
 
-  <!-- Note Widget ******************* -->
+  
 
   <Note />
 
-  <!-- Features Widget *************** -->
+  
 
+  
   <Features
     id="features"
     tagline="Features"
@@ -101,7 +139,7 @@ const metadata = {
     ]}
   />
 
-  <!-- Content Widget **************** -->
+  
 
   <Content
     isReversed
@@ -131,7 +169,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-       Gain a competitive advantage by incorporating industry leading practices
+      Gain a competitive advantage by incorporating industry leading practices
     </Fragment>
 
     <Fragment slot="bg">
@@ -139,7 +177,7 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+  
 
   <Content
     isAfterContent
@@ -176,7 +214,7 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+  
 
   <Content
     isReversed
@@ -214,8 +252,7 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Steps Widget ****************** -->
-
+  
   <Steps
     title="Get your dream website up and running in no time with AstroWind."
     items={[
@@ -248,8 +285,7 @@ const metadata = {
     }}
   />
 
-  <!-- Features2 Widget ************** -->
-
+  
   <Features2
     title="Most used widgets"
     subtitle="Provides frequently used components for building websites using Tailwind CSS"
@@ -322,7 +358,7 @@ const metadata = {
                 `}
   />
 
-  <!-- FAQs Widget ******************* -->
+  
 
   <FAQs
     title="Frequently Asked Questions"
@@ -363,8 +399,7 @@ const metadata = {
     ]}
   />
 
-  <!-- Stats Widget ****************** -->
-
+  
   <Stats
     stats={[
       { title: 'Downloads', amount: '132K' },
@@ -374,7 +409,7 @@ const metadata = {
     ]}
   />
 
-  <!-- CallToAction Widget *********** -->
+ 
 
   <CallToAction
     actions={[
@@ -397,3 +432,9 @@ const metadata = {
     </Fragment>
   </CallToAction>
 </Layout>
+
+  );
+
+}
+
+
