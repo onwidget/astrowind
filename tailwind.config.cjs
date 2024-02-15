@@ -12,6 +12,7 @@ module.exports = {
         muted: 'var(--aw-color-text-muted)',
         pop: 'var(--aw-color-pop)',
         link: 'var(--aw-color-primary)',
+        darkHover: 'var(--aw-color-bg-page-dark)',
       },
       fontFamily: {
         sans: ['var(--aw-font-sans)', ...defaultTheme.fontFamily.sans],

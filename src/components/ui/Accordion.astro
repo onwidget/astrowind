@@ -1,0 +1,93 @@
+---
+import { Icon } from 'astro-icon/components';
+import { twMerge } from 'tailwind-merge';
+import type { Widget } from '~/types';
+
+interface Props extends Widget {
+  title: string;
+  details?: string;
+}
+
+const { title, details = await Astro.slots.render('details'), classes = {} } = Astro.props as Props;
+
+const { container: containerClass } = classes;
+---
+
+<div
+  class={twMerge(
+    'accordion group relative rounded-md bg-slate-50 hover:bg-slate-100 dark:bg-transparent dark:hover:bg-darkHover',
+    containerClass
+  )}
+>
+  <button
+    class="accordion__button flex w-full flex-1 items-center justify-between gap-2 p-3 text-left font-medium transition light:hover:text-primary sm:px-4"
+    type="button"
+    id={`${title} accordion menu button`}
+    aria-expanded="false"
+    aria-controls={`${title} accordion menu content`}
+  >
+    {title}
+
+    <!-- if using astro and the astro-icon package -->
+    <Icon
+      name="tabler:chevron-down"
+      aria-hidden="true"
+      class="accordion__chevron h-7 w-7 shrink-0 transition-transform"
+    />
+  </button>
+
+  <div
+    id={`${title} accordion menu content`}
+    aria-labelledby={`${title} accordion menu button`}
+    class="accordion__content hidden max-h-0 overflow-hidden px-3 pb-3 transition-all duration-300 ease-in-out sm:px-4"
+    set:html={details}
+  />
+</div>
+
+<script>
+  function accordionSetup() {
+    const accordionMenus = document.querySelectorAll('.accordion') as NodeListOf<HTMLElement>;
+    accordionMenus.forEach((accordionMenu) => {
+      const accordionButton = accordionMenu.querySelector('.accordion__button') as HTMLElement;
+      const accordionChevron = accordionMenu.querySelector('.accordion__chevron') as HTMLElement;
+      const accordionContent = accordionMenu.querySelector('.accordion__content') as HTMLElement;
+
+      if (accordionButton && accordionContent && accordionChevron) {
+        accordionButton.addEventListener('click', (event) => {
+          if (!accordionMenu.classList.contains('active')) {
+            // if accordion is currently closed, so open it
+            accordionMenu.classList.add('active');
+            accordionButton.setAttribute('aria-expanded', 'true');
+
+            // set max-height to the height of the accordion content
+            // this makes it animate properly
+            accordionContent.classList.remove('hidden');
+            accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+            accordionChevron.classList.add('rotate-180');
+          } else {
+            // accordion is currently open, so close it
+            accordionMenu.classList.remove('active');
+            accordionButton.setAttribute('aria-expanded', 'false');
+
+            // set max-height to the height of the accordion content
+            // this makes it animate properly
+            accordionContent.style.maxHeight = '0px';
+            accordionChevron.classList.remove('rotate-180');
+            // delay to allow close animation
+            setTimeout(() => {
+              accordionContent.classList.add('hidden');
+            }, 300);
+          }
+          event.preventDefault();
+          return false;
+        });
+      }
+    });
+  }
+
+  // runs on initial page load
+  accordionSetup();
+
+  // runs on view transitions navigation
+  document.addEventListener('astro:after-swap', accordionSetup);
+</script>

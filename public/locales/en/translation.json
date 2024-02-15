@@ -3,7 +3,7 @@
     "title": "Your <0>Holistic</0> Wealth Management Software",
     "subtitle": "Welcome to a new era of financial empowerment, where sophistication meets simplicity. <0>Sofistic.AI</0> is not just a software; it's your gateway to comprehensive and proactive wealth management, right at your fingertips.",
     "headline": {
-      "title": "Discover the Power of Sofistic.AI",
+      "title": "Discover the Power of <0>Sofistic.AI</0>",
       "text": "Embark on a seamless financial journey with our user-friendly software designed to empower individuals and financial advisors alike. Sofistic.AI leverages cutting-edge AI technology to offer a 360 Holistic View of financial landscapes, providing insights, connecting investors, wealth managers and institutions, as well as next best actions to optimize your customers' wealth."
     },
     "features": {
@@ -75,6 +75,37 @@
       "description": "Sofistic.AI is dedicated to leveraging innovative AI technology and data analyics to redefine how financial decisions are made, with the overarching goal of maximizing client wealth and ensuring their financial well-being. Sofistic.AI is committed to staying at the forefront of technological advancements and continuously adapting to changes in the financial industry to provide clients with secure, efficient and effective solutions."
     }
   },
+  "404": {
+    "title": "Sorry, we couldn't find this page.",
+    "subtitle": "But dont worry, you can find plenty of other things on our homepage.",
+    "backLabel": "Back to homepage"
+  },
+  "product": {
+    "title": "Features",
+    "features": {
+      "title": "Fully-integrated wealth management from advisor to client",
+      "adviser": {
+        "title": "Wealth Manager",
+        "description1": "Visualize business books and client asset allocation",
+        "description2": "New client onboarding workflow and asset allocation",
+        "description3": "360 view for each client asset allocation and firm wide",
+        "description4": "Discover new business opportunities thanks to pre-built smart insights"
+      },
+      "institution": {
+        "title": "Financial Institution",
+        "description1": "Combine data with institution end infrastructure",
+        "description2": "Better evaluate & understand customers' opportunity and risk",
+        "description3": "Leverage AI for firm-wide client asset allocations and customizable smart insights"
+      },
+      "client": {
+        "title": "Client",
+        "description1": "Simple & intuitive user interface",
+        "description2": "Allows 360 view of asset allocations, dashboards & net worth analysis",
+        "description3": "Create tailored reports and data exports",
+        "description4": "Simulate market scenarios for insightful decision making"
+      }
+    }
+  },
   "common": {
     "learnMore": "Learn more",
     "contactUs": "Contact us",
@@ -82,6 +113,7 @@
     "product": "Product",
     "features": "Features",
     "security": "Security",
-    "bisdev": "Business Development"
+    "bisdev": "Business Development",
+    "more": "Learn more"
   }
 }

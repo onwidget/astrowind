@@ -48,7 +48,13 @@ const metadata = {
     </Fragment>
   </Hero2>
 
-  <Headline title={t('home.headline.title')} subtitle={t('home.headline.text')} />
+  <Headline subtitle={t('home.headline.text')}>
+    <Fragment slot="title">
+      <Trans i18nKey="home.headline.title">
+        Discover the Power of <span class="text-accent highlight">Sofistic.AI</span>
+      </Trans>
+    </Fragment>
+  </Headline>
 
   <Features
     id="features"

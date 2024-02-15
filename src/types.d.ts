@@ -136,6 +136,15 @@ export interface Item {
   image?: Image;
 }
 
+export interface Accordion {
+  features: string[];
+  businessValue: string[];
+}
+
+export interface ItemWithAccordion extends Item {
+  accordion: Accordion
+}
+
 export interface Price {
   title?: string;
   subtitle?: string;
@@ -183,8 +192,8 @@ export interface CallToAction extends HTMLAttributes<a> {
   type?: 'button' | 'submit' | 'reset';
 }
 
-export interface ItemGrid {
-  items?: Array<Item>;
+export interface ItemGrid<T = Item> {
+  items?: Array<T>;
   columns?: number;
   defaultIcon?: string;
   classes?: Record<string, string>;
@@ -237,10 +246,10 @@ export interface Brands extends Headline, Widget {
   images?: Array<Image>;
 }
 
-export interface Features extends Headline, Widget {
+export interface Features<T = Item> extends Headline, Widget {
   image?: string | unknown;
   video?: Video;
-  items: Array<Item>;
+  items: Array<T>;
   columns: number;
   defaultIcon?: string;
   callToAction1?: CallToAction;
@@ -281,3 +290,13 @@ export interface Content extends Headline, Widget {
 }
 
 export interface Contact extends Headline, Form, Widget {}
+
+export interface TeamMember {
+  name: string;
+  role: string;
+  photo: string;
+  linkedInHref?: string;
+}
+export interface Team extends Headline, Widget {
+  members: TeamMember[];
+}

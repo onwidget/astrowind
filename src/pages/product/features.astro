@@ -1,45 +1,71 @@
 ---
-import { changeLanguage } from "i18next";
-import CallToAction from "~/components/widgets/CallToAction.astro";
-import Content from "~/components/widgets/Content.astro";
-import Features2 from "~/components/widgets/Features2.astro";
-import Hero from "~/components/widgets/Hero.astro";
-import Testimonials from "~/components/widgets/Testimonials.astro";
-import Layout from "~/layouts/PageLayout.astro";
+import { t, changeLanguage } from 'i18next';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Integrated from '~/components/widgets/Integrated.astro';
+import FeaturesWithAccordion from '~/components/widgets/FeaturesWithAccordion.astro';
 
-changeLanguage("en");
+changeLanguage('en');
 
 const metadata = {
-    title: "Features",
+  title: 'Features',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
   <Hero
-    tagline="Services"
-    title="Elevate your projects with our stunning templates"
-    subtitle="Explore our meticulously crafted templates tailored to various industries and purposes. From captivating presentations to functional website designs, we offer the tools you need to succeed."
-    actions={[{ variant: 'primary', target: '_blank', text: 'Start exploring', href: '/' }]}
+    tagline="Product"
+    title={t('product.title') ?? ''}
     image={{
       src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
       alt: 'AstroWind Hero Image',
     }}
   />
 
-  <!-- Features2 Widget ************** -->
+  <Integrated
+    title={t('product.features.title')}
+    items={[
+      {
+        title: t('product.features.adviser.title') ?? '',
+        description:
+          `${t('product.features.adviser.description1')}<br/><br/>${t('product.features.adviser.description2')}<br/><br/>${t('product.features.adviser.description3')}<br/><br/>${t('product.features.adviser.description4')}` ??
+          '',
+        icon: 'tabler:user',
+      },
+      {
+        title: t('product.features.institution.title') ?? '',
+        description:
+          `${t('product.features.institution.description1')}<br/><br/>${t('product.features.institution.description2')}<br/><br/>${t('product.features.institution.description3')}` ??
+          '',
+        icon: 'tabler:building-bank',
+      },
+      {
+        title: t('product.features.client.title') ?? '',
+        description:
+          `${t('product.features.client.description1')}<br/><br/>${t('product.features.client.description2')}<br/><br/>${t('product.features.client.description3')}<br/><br/>${t('product.features.client.description4')}` ??
+          '',
+        icon: 'tabler:users-group',
+      },
+    ]}
+  />
 
-  <Features2
+  <FeaturesWithAccordion
     title="Explore our diverse templates"
     subtitle="Discover our selection below to streamline and elevate your projects."
-    columns={3}
+    columns={2}
     items={[
       {
         title: 'Educational',
         description:
           'By harmonizing instructional design and visual appeal, templates streamline content creation for varied materials, expediting development and cultivating engaging educational spaces.',
         icon: 'tabler:school',
+        accordion: {
+          features: ["Assess client's financial status", 'Review net worth and cash flow projection'],
+          businessValue: ['Increases client satisfaction and retention', 'Increases debt products sold'],
+        },
       },
       {
         title: 'Interior Design',
@@ -81,55 +107,12 @@ const metadata = {
         description: `From presentations to patient forms, these tools enhance communication effectiveness for healthcare professionals. Ideal for medical practices and research pursuits.`,
         icon: 'tabler:vaccine',
       },
-      {
-        title: 'Fashion Design',
-        description:
-          'With attention to detail, customization, and contemporary design, they empower designers to showcase ideas cohesively. Ideal for all levels of designers.',
-        icon: 'tabler:tie',
-      },
     ]}
-  />
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'High-Quality Designs',
-        description:
-          'Our templates feature top-tier designs that ensure a professional and polished appearance for your projects.',
-        icon: 'tabler:wand',
-      },
-      {
-        title: 'Customization Tools',
-        description:
-          'Tailor each template to your unique needs with user-friendly customization tools that let you personalize colors, fonts, and content.',
-        icon: 'tabler:settings',
-      },
-      {
-        title: 'Pre-Designed Elements',
-        description:
-          'Save time and effort with our ready-to-use elements, including graphics, icons, and layouts that enhance the visual appeal of your creations.',
-        icon: 'tabler:presentation',
-      },
-      {
-        title: 'Preview and Mockup Views',
-        description:
-          'Visualize the final outcome before making any changes using our preview and mockup views, ensuring your projects meet your expectations.',
-        icon: 'tabler:carousel-horizontal',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-      alt: 'Features Image',
-    }}
   >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </Content>
-
+  </FeaturesWithAccordion>
   <!-- Content Widget **************** -->
 
   <Content

@@ -1,0 +1,70 @@
+---
+import { t } from 'i18next';
+import { Icon } from 'astro-icon/components';
+import { twMerge } from 'tailwind-merge';
+import type { ItemGrid, ItemWithAccordion } from '~/types';
+import Button from './Button.astro';
+import Accordion from './Accordion.astro';
+
+const { items = [], columns, defaultIcon = '', classes = {} } = Astro.props as ItemGrid<ItemWithAccordion>;
+
+const {
+  container: containerClass = '',
+  panel: panelClass = '',
+  title: titleClass = '',
+  description: descriptionClass = '',
+  icon: defaultIconClass = 'text-primary',
+} = classes;
+---
+
+{
+  items && (
+    <div
+      class={twMerge(
+        `grid gap-8 gap-x-12 sm:gap-y-8 ${
+          columns === 4
+            ? 'lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2'
+            : columns === 3
+              ? 'lg:grid-cols-3 sm:grid-cols-2'
+              : columns === 2
+                ? 'sm:grid-cols-2 '
+                : ''
+        }`,
+        containerClass
+      )}
+    >
+      {items.map(({ title, description, icon, accordion, callToAction, classes: itemClasses = {} }) => (
+        <div class={twMerge('relative flex flex-col', panelClass, itemClasses?.panel)}>
+          {(icon || defaultIcon) && (
+            <Icon name={icon || defaultIcon} class={twMerge('mb-2 w-10 h-10', defaultIconClass, itemClasses?.icon)} />
+          )}
+          <div class={twMerge('text-xl font-bold', titleClass, itemClasses?.title)}>{title}</div>
+          {description && (
+            <p class={twMerge('text-muted mt-2', descriptionClass, itemClasses?.description)} set:html={description} />
+          )}
+          {accordion && (
+            <Accordion title={t('common.more')} classes={{ container: 'mt-4' }}>
+              <Fragment slot="details">
+                <div class="flex gap-2 flex-col md:lg:flex-row">
+                  <div>
+                    <h4 class="font-bold mb-2">{t('common.features')}</h4>
+                    <p>{accordion.features}</p>
+                  </div>
+                  <div>
+                    <h4 class="font-bold mb-2">{t('common.businessValue')}</h4>
+                    <p>{accordion.businessValue}</p>
+                  </div>
+                </div>
+              </Fragment>
+            </Accordion>
+          )}
+          {callToAction && (
+            <div class="mt-2">
+              <Button {...callToAction} />
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
