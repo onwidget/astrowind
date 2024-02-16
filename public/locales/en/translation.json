@@ -7,32 +7,7 @@
       "text": "Embark on a seamless financial journey with our user-friendly software designed to empower individuals and financial advisors alike. Sofistic.AI leverages cutting-edge AI technology to offer a 360 Holistic View of financial landscapes, providing insights, connecting investors, wealth managers and institutions, as well as next best actions to optimize your customers' wealth."
     },
     "features": {
-      "title": "Key Features",
-      "subtitle": "",
-      "360view": {
-        "title": "360° Holistic View",
-        "description": "360 dashboard, complete with dynamic insights and real-time updates"
-      },
-      "dataAggregation": {
-        "title": "Data Aggregation",
-        "description": "Comprehensive data aggregation to avoid fractured management systems"
-      },
-      "cashFlowManagement": {
-        "title": "Cash Flow Management",
-        "description": "Harnessing AI for optimized financial flows in wealth portfolio management."
-      },
-      "insights": {
-        "title": "Smart Insights & Call to Action",
-        "description": "Harnessing the power of generative AI to produce smart, real-time insights"
-      },
-      "scenarioModeling": {
-        "title": "Scenario Modeling",
-        "description": "Create model scenarios and visualize financial impacts."
-      },
-      "bizDev": {
-        "title": "Business Development",
-        "description": "Cross-selling & retention opportunities via comprehensive knowledge of wealth"
-      }
+      "title": "Key Features"
     },
     "benefits": {
       "title": "Benefits",
@@ -82,7 +57,7 @@
   },
   "product": {
     "title": "Features",
-    "features": {
+    "integrated": {
       "title": "Fully-integrated wealth management from advisor to client",
       "adviser": {
         "title": "Wealth Manager",
@@ -104,6 +79,147 @@
         "description3": "Create tailored reports and data exports",
         "description4": "Simulate market scenarios for insightful decision making"
       }
+    },
+    "features": {
+      "title": "Key Features",
+      "subtitle": "Explore our key features and how they can improve your business.",
+      "360view": {
+        "title": "360° Holistic View",
+        "description": "360 dashboard, complete with dynamic insights and real-time updates",
+        "features": [
+          "Assess client’s financial status",
+          "Review net worth and cash flow projection",
+          "Tailor reports for growth"
+        ],
+        "businessValue": [
+          "Increases client satisfaction and retention",
+          "Increases debt products sold",
+          "Increases percentage of assets held internally",
+          "Uncovers business opportunities such as mortgages, loans and insurance"
+        ]
+      },
+      "dataAggregation": {
+        "title": "Data Aggregation",
+        "description": "Comprehensive data aggregation to avoid fractured management systems",
+        "features": [
+          "Maps flexibility ownership views",
+          "Imports data from various sources",
+          "Covers public and private assets"
+        ],
+        "businessValue": [
+          "Reduced time spent creating reports",
+          "Increased data accuracy",
+          "Increase client retention",
+          "Increase debt and insurance products sold"
+        ]
+      },
+      "cashFlowManagement": {
+        "title": "Cash Flow Management",
+        "description": "Harnessing AI for optimized financial flows in wealth portfolio management.",
+        "features": [
+          "Initial categorization into cash inflow and outflow, projecting up to five years ahead",
+          "Customizable options to incorporate specific inflow/outflow categories tailored to the client's circumstances.",
+          "Identification of liquidity gaps resulting from inflows and outflows",
+          "Comprehensive cash flow analysis enabling advisors and clients to anticipate funding requirements for personal and financial endeavors.",
+          "Flexibility to include distinctive categories reflecting the unique circumstances of each client.",
+          "Visual representation, through tables and graphs, of clients' current and future liquidity needs based on anticipated activities."
+        ],
+        "businessValue": [
+          "Enhanced ability to project and manage cash flow effectively, leading to better financial decisions",
+          "Improved client satisfaction through personalized and accurate cash flow forecasting",
+          "Increased advisor-client collaboration, fostering stronger long-term relationships",
+          "Greater insights into clients' financial health, enabling proactive financial planning and risk management"
+        ]
+      },
+      "insights": {
+        "title": "Smart Insights & Call to Action",
+        "description": "Harnessing the power of generative AI to produce smart, real-time insights",
+        "features": [
+          "Optimizes industry-specific metrics",
+          "Uncovers portfolio risks and sales opportunities with smart alerts",
+          "Generate debt leverage insights automatically"
+        ],
+        "businessValue": [
+          "Increased client retention",
+          "Increased percentage of assets held internally",
+          "Uncover further client needs and business opportunities"
+        ]
+      },
+      "scenarioModeling": {
+        "title": "Scenario Modeling",
+        "description": "Create model scenarios and visualize financial impacts.",
+        "structuredData": {
+          "title": "Structured Data",
+          "description": "Experience the power of structured data with Sofistic.AI. We provide comprehensive solutions for all your cash-flow and liquidity projecting needs. Our advanced tools ensure a detailed and accurate analysis, giving you unparalleled insights into your financial landscape."
+        },
+        "modellingTools": {
+          "title": "Modelling Tools",
+          "description": "Introducing real-time modeling tools that go beyond the ordinary. Stress test and optimize leverage on your assets with precision. Our tools provide a dynamic approach to asset management, ensuring you make informed decisions in a rapidly changing financial landscape."
+        },
+        "realTimeSimulation":  {
+          "title": "Real-time Simulation",
+          "description": "Dive into the future with our real-time simulation capabilities. Witness the dynamic simulation of your net worth based on return assumptions and more. Stay ahead of the curve with accurate projections and strategic planning for financial success."
+        },
+        "reporting": {
+          "title": "Reporting",
+          "description": "Sofistic.AI empowers you to run custom scenarios at scale, transforming data into powerful reports instantly. Unleash the potential of your financial strategies with our user-friendly interface and data-driven insights."
+        }
+      },
+      "bizDev": {
+        "title": "Business Development",
+        "description": "Cross-selling & retention opportunities via comprehensive knowledge of wealth",
+        "financialInstitutions": {
+          "title": "Financial Institutions",
+          "items": [
+            "Increase client retention with higher NPS score",
+            "Opportunity to expand cross provincial border",
+            "Increase mortgage consolidation following renewals",
+            "Increase credit opportunities by virtue of a better understanding of a client's situation",
+            "Gain insight into clients' wallet share within household",
+            "Understand credit risk firm-wide",
+            "Uncover new business opportunities"
+          ]
+        },
+        "wealthManagers": {
+          "title": "Modelling Tools",
+          "items": [
+            "Consolidate financial assets",
+            "Higher client retention through “call to action” advice",
+            "Utilize Smart Insights for business opportunities such as loans and insurance policies",
+            "Gain insight into client asset allocation and rebalancing opportunities"
+          ]
+        }
+      },
+      "security": {
+        "title": "Security Features",
+        "description": "Secured via third party cloud application & SOC 2 Type II compliant",
+        "items": [
+          "Meets the security, privacy, and regulatory requirements of the EU General Data Protection",
+          "Regulation that intends to strengthen and unify data protection for individuals. Mindful of Quebec's privacy legislation (Law 25)",
+          "Sophisticated e-commerce application with secure and PCI-compliant payment processing"
+        ]
+      },
+      "onboarding": {
+        "title": "Seamless Customer Onboarding",
+        "description": "Investment policy statement onboarding that follows a goal-based approach",
+        "data": {
+          "title": "Data",
+          "items": [
+            "Investment goals",
+            "Tolerance & willingness to take on risk",
+            "Future life events",
+            "Personal information"
+          ]
+        },
+        "businessValue": {
+          "items": [
+            "Facilitates KYC integration",
+            "Increases “Best-of-use-next-dollar”",
+            "Value-add personal recommendations",
+            "Automatically generates insights and next best actions recommendations"
+          ]
+        }
+      }
     }
   },
   "common": {
@@ -114,6 +230,7 @@
     "features": "Features",
     "security": "Security",
     "bisdev": "Business Development",
-    "more": "Learn more"
+    "more": "Learn more",
+    "businessValue": "Business Value"
   }
 }

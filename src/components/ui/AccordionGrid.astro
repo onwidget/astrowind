@@ -5,6 +5,7 @@ import { twMerge } from 'tailwind-merge';
 import type { ItemGrid, ItemWithAccordion } from '~/types';
 import Button from './Button.astro';
 import Accordion from './Accordion.astro';
+import ItemLists from './ItemLists.astro';
 
 const { items = [], columns, defaultIcon = '', classes = {} } = Astro.props as ItemGrid<ItemWithAccordion>;
 
@@ -34,7 +35,7 @@ const {
       )}
     >
       {items.map(({ title, description, icon, accordion, callToAction, classes: itemClasses = {} }) => (
-        <div class={twMerge('relative flex flex-col', panelClass, itemClasses?.panel)}>
+        <div class={twMerge('relative flex flex-col h-fit', panelClass, itemClasses?.panel)}>
           {(icon || defaultIcon) && (
             <Icon name={icon || defaultIcon} class={twMerge('mb-2 w-10 h-10', defaultIconClass, itemClasses?.icon)} />
           )}
@@ -45,16 +46,12 @@ const {
           {accordion && (
             <Accordion title={t('common.more')} classes={{ container: 'mt-4' }}>
               <Fragment slot="details">
-                <div class="flex gap-2 flex-col md:lg:flex-row">
-                  <div>
-                    <h4 class="font-bold mb-2">{t('common.features')}</h4>
-                    <p>{accordion.features}</p>
-                  </div>
-                  <div>
-                    <h4 class="font-bold mb-2">{t('common.businessValue')}</h4>
-                    <p>{accordion.businessValue}</p>
-                  </div>
-                </div>
+                <ItemLists
+                  allItems={[
+                    { title: t('common.features'), items: accordion.features },
+                    { title: t('common.businessValue'), items: accordion.businessValue },
+                  ]}
+                />
               </Fragment>
             </Accordion>
           )}

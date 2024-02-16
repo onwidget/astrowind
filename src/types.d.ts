@@ -199,6 +199,15 @@ export interface ItemGrid<T = Item> {
   classes?: Record<string, string>;
 }
 
+export interface ItemList {
+  title: string;
+  items: string[];
+}
+
+export interface ItemLists {
+  allItems: ItemList[];
+}
+
 export interface Collapse {
   iconUp?: string;
   iconDown?: string;

@@ -1,0 +1,54 @@
+---
+import { t } from 'i18next';
+import { twMerge } from 'tailwind-merge';
+import { Icon } from 'astro-icon/components';
+
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import type { Widget } from '~/types';
+import Accordion from '../ui/Accordion.astro';
+
+interface Props extends Widget {
+  title: string;
+  description: string;
+  details?: string;
+  icon?: string;
+  defaultIcon?: string;
+  classes?: Record<string, string>;
+}
+
+const {
+  title = await Astro.slots.render('title'),
+  details = await Astro.slots.render('details'),
+  icon,
+  description,
+  defaultIcon,
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props as Props;
+
+const {
+  container: containerClass = '',
+  panel: panelClass = '',
+  title: titleClass = '',
+  description: descriptionClass = '',
+  icon: defaultIconClass = 'text-primary',
+} = classes;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${containerClass ?? ''}`} bg={bg}>
+  <div
+    class="rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-white dark:bg-slate-900 p-6"
+  >
+    <div class={twMerge('relative flex flex-col h-fit', panelClass)}>
+      {(icon || defaultIcon) && <Icon name={icon || defaultIcon} class={twMerge('mb-2 w-10 h-10', defaultIconClass)} />}
+      <div class={twMerge('text-xl font-bold', titleClass)}>{title}</div>
+      {description && <p class={twMerge('text-muted mt-2', descriptionClass)} set:html={description} />}
+      <Accordion title={t('common.more')} classes={{ container: 'mt-4' }}>
+        <Fragment slot="details" set:html={details} />
+      </Accordion>
+    </div>
+  </div>
+</WidgetWrapper>

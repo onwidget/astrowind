@@ -85,9 +85,36 @@ const { container: containerClass } = classes;
     });
   }
 
+  function checkHash() {
+    const accordionClass = '.accordion';
+    const hash = location.hash;
+
+    if (!hash) {
+      return;
+    }
+
+    const match = document.querySelector(hash);
+    if (!match) {
+      return;
+    }
+
+    if (match.querySelectorAll(accordionClass)?.length > 1) {
+      return;
+    }
+
+    const accordionMenu = match.querySelector(accordionClass);
+    if (!accordionMenu || accordionMenu?.classList.contains('active')) {
+      return;
+    }
+    match.querySelector('.accordion__button')?.dispatchEvent(new Event('click'));
+  }
+
   // runs on initial page load
   accordionSetup();
 
   // runs on view transitions navigation
   document.addEventListener('astro:after-swap', accordionSetup);
+
+  window.onhashchange = checkHash;
+  checkHash();
 </script>

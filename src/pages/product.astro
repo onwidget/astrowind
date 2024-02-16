@@ -1,0 +1,276 @@
+---
+import { t, changeLanguage } from 'i18next';
+import Hero from '~/components/widgets/Hero.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Integrated from '~/components/widgets/Integrated.astro';
+import FeaturesWithAccordion from '~/components/widgets/FeaturesWithAccordion.astro';
+import AccordionCard from '~/components/widgets/AccordionCard.astro';
+import ItemLists from '~/components/ui/ItemLists.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+
+import desktopSofistic from '~/assets/images/desktop-sofistic.png';
+
+changeLanguage('en');
+
+const metadata = {
+  title: 'Product',
+};
+---
+
+<Layout metadata={metadata}>
+  <Hero
+    tagline="Product"
+    title={t('product.title') ?? ''}
+    image={{
+      src: desktopSofistic,
+      alt: 'AstroWind Hero Image',
+    }}
+  />
+
+  <Integrated
+    title={t('product.integrated.title')}
+    items={[
+      {
+        title: t('product.integrated.adviser.title') ?? '',
+        description:
+          `${t('product.integrated.adviser.description1')}<br/><br/>${t('product.integrated.adviser.description2')}<br/><br/>${t('product.integrated.adviser.description3')}<br/><br/>${t('product.integrated.adviser.description4')}` ??
+          '',
+        icon: 'tabler:user',
+      },
+      {
+        title: t('product.integrated.institution.title') ?? '',
+        description:
+          `${t('product.integrated.institution.description1')}<br/><br/>${t('product.integrated.institution.description2')}<br/><br/>${t('product.integrated.institution.description3')}` ??
+          '',
+        icon: 'tabler:building-bank',
+      },
+      {
+        title: t('product.integrated.client.title') ?? '',
+        description:
+          `${t('product.integrated.client.description1')}<br/><br/>${t('product.integrated.client.description2')}<br/><br/>${t('product.integrated.client.description3')}<br/><br/>${t('product.integrated.client.description4')}` ??
+          '',
+        icon: 'tabler:users-group',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Integrated>
+
+  <FeaturesWithAccordion
+    id="features"
+    title={t('product.features.title')}
+    subtitle={t('product.features.subtitle')}
+    columns={2}
+    classes={{
+      container: '!pb-6',
+    }}
+    items={[
+      {
+        title: t('product.features.360view.title'),
+        description: t('product.features.360view.description'),
+        icon: 'tabler:360-view',
+        accordion: {
+          features: [
+            t('product.features.360view.features.0'),
+            t('product.features.360view.features.1'),
+            t('product.features.360view.features.2'),
+          ],
+          businessValue: [
+            t('product.features.360view.businessValue.0'),
+            t('product.features.360view.businessValue.1'),
+            t('product.features.360view.businessValue.2'),
+            t('product.features.360view.businessValue.3'),
+          ],
+        },
+      },
+      {
+        title: t('product.features.dataAggregation.title'),
+        description: t('product.features.dataAggregation.description'),
+        icon: 'tabler:chart-pie-4',
+        accordion: {
+          features: [
+            t('product.features.dataAggregation.features.0'),
+            t('product.features.dataAggregation.features.1'),
+            t('product.features.dataAggregation.features.2'),
+          ],
+          businessValue: [
+            t('product.features.dataAggregation.businessValue.0'),
+            t('product.features.dataAggregation.businessValue.1'),
+            t('product.features.dataAggregation.businessValue.2'),
+            t('product.features.dataAggregation.businessValue.3'),
+          ],
+        },
+      },
+      {
+        title: t('product.features.cashFlowManagement.title'),
+        description: t('product.features.dataAggregation.description'),
+        icon: 'tabler:cash-banknote',
+        accordion: {
+          features: [
+            t('product.features.cashFlowManagement.features.0'),
+            t('product.features.cashFlowManagement.features.1'),
+            t('product.features.cashFlowManagement.features.2'),
+            t('product.features.cashFlowManagement.features.3'),
+            t('product.features.cashFlowManagement.features.4'),
+            t('product.features.cashFlowManagement.features.5'),
+          ],
+          businessValue: [
+            t('product.features.cashFlowManagement.businessValue.0'),
+            t('product.features.cashFlowManagement.businessValue.1'),
+            t('product.features.cashFlowManagement.businessValue.2'),
+            t('product.features.cashFlowManagement.businessValue.3'),
+          ],
+        },
+      },
+      {
+        title: t('product.features.insights.title'),
+        description: t('product.features.insights.description'),
+        icon: 'tabler:bulb',
+        accordion: {
+          features: [
+            t('product.features.insights.features.0'),
+            t('product.features.insights.features.1'),
+            t('product.features.insights.features.2'),
+          ],
+          businessValue: [
+            t('product.features.insights.businessValue.0'),
+            t('product.features.insights.businessValue.1'),
+            t('product.features.insights.businessValue.2'),
+          ],
+        },
+      },
+    ]}
+  />
+  <AccordionCard
+    id="scenario-modelling"
+    title={t('product.features.scenarioModeling.title')}
+    description={t('product.features.scenarioModeling.description')}
+    icon="tabler:adjustments"
+    classes={{
+      container: '!pt-0 !pb-6',
+    }}
+  >
+    <Fragment slot="details">
+      <div class="flex gap-5 flex-col md:lg:flex-row">
+        <div class="grow basis-0">
+          <h4 class="font-bold mb-2">{t('product.features.scenarioModeling.structuredData.title')}</h4>
+          <p>{t('product.features.scenarioModeling.structuredData.description')}</p>
+        </div>
+        <div class="grow basis-0">
+          <h4 class="font-bold mb-2">{t('product.features.scenarioModeling.modellingTools.title')}</h4>
+          <p>{t('product.features.scenarioModeling.modellingTools.description')}</p>
+        </div>
+      </div>
+      <div class="flex gap-2 flex-col md:lg:flex-row mt-5">
+        <div class="grow basis-0">
+          <h4 class="font-bold mb-2">{t('product.features.scenarioModeling.realTimeSimulation.title')}</h4>
+          <p>{t('product.features.scenarioModeling.realTimeSimulation.description')}</p>
+        </div>
+        <div class="grow basis-0">
+          <h4 class="font-bold mb-2">{t('product.features.scenarioModeling.reporting.title')}</h4>
+          <p>{t('product.features.scenarioModeling.reporting.description')}</p>
+        </div>
+      </div>
+    </Fragment>
+  </AccordionCard>
+  <AccordionCard
+    id="bizdev"
+    title={t('product.features.bizDev.title')}
+    description={t('product.features.bizDev.description')}
+    icon="tabler:home-stats"
+    classes={{
+      container: '!pt-0 !pb-6',
+    }}
+  >
+    <Fragment slot="details">
+      <ItemLists
+        allItems={[
+          {
+            title: t('product.features.bizDev.financialInstitutions.title'),
+            items: [
+              t('product.features.bizDev.financialInstitutions.items.0'),
+              t('product.features.bizDev.financialInstitutions.items.1'),
+              t('product.features.bizDev.financialInstitutions.items.2'),
+              t('product.features.bizDev.financialInstitutions.items.3'),
+              t('product.features.bizDev.financialInstitutions.items.4'),
+              t('product.features.bizDev.financialInstitutions.items.5'),
+              t('product.features.bizDev.financialInstitutions.items.6'),
+            ],
+          },
+          {
+            title: t('product.features.bizDev.wealthManagers.title'),
+            items: [
+              t('product.features.bizDev.wealthManagers.items.0'),
+              t('product.features.bizDev.wealthManagers.items.1'),
+              t('product.features.bizDev.wealthManagers.items.2'),
+              t('product.features.bizDev.wealthManagers.items.3'),
+            ],
+          },
+        ]}
+      />
+    </Fragment>
+  </AccordionCard>
+  <WidgetWrapper containerClass="max-w-7xl mx-auto !pt-0">
+    <div class="grid gap-6 sm:grid-cols-2">
+      <AccordionCard
+        id="security"
+        title={t('product.features.security.title')}
+        description={t('product.features.security.description')}
+        icon="tabler:lock"
+        classes={{
+          container: '!p-0',
+        }}
+      >
+        <Fragment slot="details">
+          <ItemLists
+            allItems={[
+              {
+                items: [
+                  t('product.features.security.items.0'),
+                  t('product.features.security.items.1'),
+                  t('product.features.security.items.2'),
+                ],
+              },
+            ]}
+          />
+        </Fragment>
+      </AccordionCard>
+      <AccordionCard
+        id="onboarding"
+        title={t('product.features.onboarding.title')}
+        description={t('product.features.onboarding.description')}
+        icon="tabler:speedboat"
+        classes={{
+          container: '!p-0',
+        }}
+      >
+        <Fragment slot="details">
+          <ItemLists
+            allItems={[
+              {
+                title: t('product.features.onboarding.data.title'),
+                items: [
+                  t('product.features.onboarding.data.items.0'),
+                  t('product.features.onboarding.data.items.1'),
+                  t('product.features.onboarding.data.items.2'),
+                  t('product.features.onboarding.data.items.3'),
+                ],
+              },
+              {
+                title: t('common.businessValue'),
+                items: [
+                  t('product.features.onboarding.businessValue.items.0'),
+                  t('product.features.onboarding.businessValue.items.1'),
+                  t('product.features.onboarding.businessValue.items.2'),
+                  t('product.features.onboarding.businessValue.items.3'),
+                ],
+              },
+            ]}
+          />
+        </Fragment>
+      </AccordionCard>
+    </div>
+  </WidgetWrapper>
+</Layout>

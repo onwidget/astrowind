@@ -1,0 +1,21 @@
+---
+import type { ItemLists } from '~/types';
+
+const { allItems } = Astro.props as ItemLists;
+---
+
+<div class="flex gap-4 flex-col md:lg:flex-row">
+  {
+    allItems.length &&
+      allItems.map((list, index) => (
+        <div class="grow basis-0">
+          <h4 class="font-bold mb-2">{list.title}</h4>
+          <ul class="list-disc pl-3">
+            {list.items.map((item) => (
+              <li class="[&:not(:last-child)]:mb-2">{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+  }
+</div>
