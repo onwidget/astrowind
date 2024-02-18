@@ -10,7 +10,7 @@ import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Advanced Relevance Semantic Search, Recommendation, and RAG API',
+  title: 'AI search infrastructure that combines language models with tools for human fine tuning',
   ignoreTitleTemplate: true,
 };
 ---
@@ -46,14 +46,15 @@ const metadata = {
     image={{ src: 'https://cdn.trieve.ai/trieve-team.png', alt: 'Trieve Team Doing a Podcast' }}
   >
     <Fragment slot="title">
-      Advanced relevance API for
+      Advanced relevance infrastructure for
       <span class="text-accent highlight">hybrid search</span> and RAG
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">Trieve</span> is a performant, customizable and production-ready API for semantic and
-        full-text search with re-ranker models, recommendations, RAG, and merchandise tuning.</span
+        <span class="font-semibold">Trieve</span> combines powerful language models with tools for human fine tuning. Get
+        features like dense vector semantic search, sparse vector full-text search, cross encoder re-ranker models, RAG endpoints,
+        relevance weighting, and more in a single service.</span
       >
       <span class="block mb-1 sm:hidden font-bold text-blue-600">Trieve: Production-ready.</span>
       <span class="block sm:hidden"> Use Trieve to show users what they're looking for every time.</span>
@@ -70,7 +71,7 @@ const metadata = {
     id="features"
     tagline="Features"
     title="What you get with Trieve"
-    subtitle="Everything you could expect from a powerful modern API for search and RAG"
+    subtitle="Everything you could expect from modern AI infrastructure for search and RAG"
     items={[
       {
         title: 'Private Managed Embedding models',
@@ -118,7 +119,8 @@ const metadata = {
     items={[
       {
         title: 'Private Open Source Models',
-        description: "When requested we use open source embedding models and LLMs ran in our own servers, so data is never leaked.",
+        description:
+          'When requested we use open source embedding models and LLMs ran in our own servers, so data is never leaked.',
       },
       {
         title: 'Batteries Included',

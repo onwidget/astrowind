@@ -17,11 +17,6 @@ export const headerData = {
           text: 'Meet with Us',
           href: 'https://cal.com/nick.k/meet',
         },
-      ],
-    },
-    {
-      text: 'Community',
-      links: [
         {
           text: 'Matrix',
           href: 'https://matrix.to/#/#trieve-general:matrix.zerodao.gg',
@@ -31,6 +26,10 @@ export const headerData = {
           href: 'https://discord.gg/E9sPRZqpDT',
         },
       ],
+    },
+    {
+      text: 'For Lawyers',
+      href: '/for-lawyers',
     },
     {
       text: 'API Docs',
