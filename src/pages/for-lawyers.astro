@@ -3,11 +3,10 @@ import CallToAction from '../components/widgets/CallToAction.astro';
 import Content from '../components/widgets/Content.astro';
 import Features2 from '../components/widgets/Features2.astro';
 import Hero from '../components/widgets/Hero.astro';
-import Testimonials from '../components/widgets/Testimonials.astro';
 import Layout from '../layouts/PageLayout.astro';
 
 const metadata = {
-  title: 'Services',
+  title: 'Trieve Legal - search platform for litigation teams and firms',
 };
 ---
 
@@ -15,74 +14,45 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    tagline="Services"
-    title="Elevate your projects with our stunning templates"
-    subtitle="Explore our meticulously crafted templates tailored to various industries and purposes. From captivating presentations to functional website designs, we offer the tools you need to succeed."
-    actions={[{ variant:"primary", target: '_blank', text: 'Start exploring', href: '/' }]}
+    tagline="Trieve Legal"
+    title="Trusted and leveraged by Big Law, Boutiques, and Fortune 500 In-House Counsel"
+    subtitle="Trieve Legal is a simple and powerful search platform for querying datasets without the time-draining complications."
+    actions={[{ variant: 'primary', target: '_blank', text: 'Book Demo', href: 'https://cal.com/nick.k/meet' }]}
     image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'AstroWind Hero Image',
+      src: 'https://cdn.trieve.ai/trieve-team.png',
+      alt: 'Trieve Standard Hero Image',
     }}
   />
 
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="Explore our diverse templates"
-    subtitle="Discover our selection below to streamline and elevate your projects."
+    title="Trieve Legal Is The Ultimate Search Platform For Litigation Teams And Firms"
+    subtitle="Powered by AI, Trieve indexes and organizes your data, making it easy to search, analyze, and share."
     columns={3}
     items={[
       {
-        title: 'Educational',
+        title: 'Imperative Enough for Senior Partners',
         description:
-          'By harmonizing instructional design and visual appeal, templates streamline content creation for varied materials, expediting development and cultivating engaging educational spaces.',
-        icon: 'tabler:school',
+          'Trieve is Ideal for senior attorneys who value powerful tools without the learning curve. Our tool respects your expertise, demanding no workarounds or jargon for it to work.',
+        icon: 'tabler:rocket',
       },
       {
-        title: 'Interior Design',
+        title: 'Speed Through Load Files',
         description:
-          'Crafting functional, visually appealing spaces for residential and commercial use. Templates emphasize layout, colors, and furniture setups, offering a versatile toolkit for your design vision.',
-        icon: 'tabler:home-star',
+          "Quickly navigate through opposing counsel's load files and find all the best exhibits and themes, for informed, timely decisions, maintaining momentum and building advantages.",
+        icon: 'tabler:run',
       },
       {
-        title: 'Photography',
-        description: `Empowering photographers, our templates facilitate captivating storytelling. With a keen focus on layout, galleries, and typography, they cater to both professionals and enthusiasts.`,
-        icon: 'tabler:photo',
+        title: 'Right Tool for the Job',
+        description: `Fundamentally different from eDiscovery platforms, Trieve is designed specificaly for searching through production load files and not for document review.`,
+        icon: 'tabler:check',
       },
       {
-        title: 'E-commerce',
+        title: 'Secure and Compliant',
         description:
-          'Developing engaging online stores, our E-commerce templates ensure a dynamic presence to effectively showcase products. Ideal for startups or revamps.',
-        icon: 'tabler:shopping-cart',
-      },
-      {
-        title: 'Blog',
-        description:
-          'With attention to typography, these templates empower effective content presentation for writers at any stage, ensuring visually engaging and user-friendly blogs.',
-        icon: 'tabler:article',
-      },
-      {
-        title: 'Business',
-        description:
-          'Providing polished options for effective visual communication, these templates empower both startups and established companies for a professional brand presence.',
-        icon: 'tabler:building-store',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Offering pre-designed elements for a consistent brand identity, including logos and marketing materials. Ideal for new ventures or revamps.',
-        icon: 'tabler:arrow-big-up-lines',
-      },
-      {
-        title: 'Medical',
-        description: `From presentations to patient forms, these tools enhance communication effectiveness for healthcare professionals. Ideal for medical practices and research pursuits.`,
-        icon: 'tabler:vaccine',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'With attention to detail, customization, and contemporary design, they empower designers to showcase ideas cohesively. Ideal for all levels of designers.',
-        icon: 'tabler:tie',
+          'Host your data on-premise or in your own private cloud or have Trieve host it for you. We follow SOC 2, ISO27001, and HIPAA compliance standards and requirements and commit to a robust DPA with all of our customers.',
+        icon: 'tabler:lock',
       },
     ]}
   />
@@ -93,130 +63,54 @@ const metadata = {
     isReversed
     items={[
       {
-        title: 'High-Quality Designs',
+        title: 'Sovereignty Assured',
         description:
-          'Our templates feature top-tier designs that ensure a professional and polished appearance for your projects.',
-        icon: 'tabler:wand',
+          'Your data remains under your domain, on-premise. Intuitive Search: Delve into the depths with semantic search that understands the nuance of your query.',
+        icon: 'tabler:key',
       },
       {
-        title: 'Customization Tools',
+        title: 'Confidential Collaboration',
         description:
-          'Tailor each template to your unique needs with user-friendly customization tools that let you personalize colors, fonts, and content.',
+          'We offer enterprise-grade access controls and audit trails, ensuring that datasets are properly accessible to only the correct members of your teams, upholding confidentiality.',
         icon: 'tabler:settings',
       },
       {
-        title: 'Pre-Designed Elements',
-        description:
-          'Save time and effort with our ready-to-use elements, including graphics, icons, and layouts that enhance the visual appeal of your creations.',
+        title: 'Organized Insights',
+        description: 'Navigate your findings and keep information organized and accessible within your team.',
         icon: 'tabler:presentation',
       },
       {
-        title: 'Preview and Mockup Views',
-        description:
-          'Visualize the final outcome before making any changes using our preview and mockup views, ensuring your projects meet your expectations.',
+        title: '24/7 Support',
+        description: 'Our US-based team is your silent partner, available 24/7, ensuring seamless continuity.',
         icon: 'tabler:carousel-horizontal',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+      src: 'https://cdn.trieve.ai/national-corporate-team.jpeg',
       alt: 'Features Image',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Standard Features</h3>
     </Fragment>
   </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'Time Savings',
-        description:
-          'Streamline your workflow, enabling you to create stunning materials efficiently and allocate more time to your core tasks.',
-        icon: 'tabler:clock',
-      },
-      {
-        title: 'Professional Appearance',
-        description:
-          'Elevate your projects with the polished and sophisticated look that our templates provide, making a lasting impression on your audience.',
-        icon: 'tabler:school',
-      },
-      {
-        title: 'Cost-Efficiency',
-        description:
-          'Benefit from cost savings by avoiding the need for custom design work, as our templates offer professional-grade designs at a fraction of the cost.',
-        icon: 'tabler:coin',
-      },
-      {
-        title: 'Instant Download',
-        description:
-          'Enjoy immediate access to your chosen templates upon purchase, enabling you to begin working on your projects without delay.',
-        icon: 'tabler:file-download',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Benefits Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Benefits</h3>
-    </Fragment>
-  </Content>
-
-  <!-- Testimonials Widget *********** -->
-
-  <Testimonials
-    title="Words from real customers"
-    testimonials={[
-      {
-        testimonial: `The designs are not only visually appealing but also highly professional. The templates have saved me a significant amount of time while helping me make a lasting impression on my clients.`,
-        name: 'Emily Kennedy',
-        job: 'Front-end developer',
-        image: {
-          src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
-          alt: 'Emily Kennedy Image',
-        },
-      },
-      {
-        testimonial: `It beautifully showcases my work, with its clean and elegant design that lets my photographs shine. Customization was a breeze, even for a non-tech person like me. The result is a professional and immersive portfolio that's garnered numerous compliments.`,
-        name: 'Sarah Hansen',
-        job: 'Photographer',
-        image: {
-          src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Sarah Hansen Image',
-        },
-      },
-      {
-        testimonial: `I discovered these templates and I'm impressed by their variety and quality. They've helped me establish a consistent brand image across my marketing and social platforms, elevating my business's overall appearance.`,
-        name: 'Mark Wilkinson',
-        job: 'Small business owner',
-        image: {
-          src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
-          alt: 'Mark Wilkinson Image',
-        },
-      },
-    ]}
-    callToAction={{
-      target: '_blank',
-      text: 'More testimonials...',
-      href: 'https://github.com/onwidget/astrowind',
-      icon: 'tabler:chevron-right',
-    }}
-  />
 
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
-    actions={[{
-      variant: "primary",
-      text: 'Start exploring',
-      href: '/',
-    }]}
-    title="Dive into our template collection"
-    subtitle="Whether you're in business, design, or education, our templates are here to elevate your projects."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book a Demo',
+        href: 'https://cal.com/nick.k/meet',
+      },
+      {
+        variant: 'secondary',
+        text: 'See in Action',
+        href: 'https://enron-search.arguflow.ai',
+      },
+    ]}
+    title="Chat with us"
+    subtitle="Ask us questions, learn about how our software functions, and see if we are a good fit for your firm."
   />
 </Layout>
