@@ -32,6 +32,7 @@
     "@iconify-json/flat-color-icons": "^1.1.10",
     "@iconify-json/tabler": "^1.1.105",
     "@tailwindcss/typography": "^0.5.10",
+    "@types/js-yaml": "^4.0.9",
     "@types/lodash.merge": "^4.6.9",
     "@typescript-eslint/eslint-plugin": "^7.0.1",
     "@typescript-eslint/parser": "^7.0.1",
