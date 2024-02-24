@@ -79,9 +79,9 @@ export const adaptOpenGraphImages = async (
 
         if (typeof _image === 'object') {
           return {
-            url: typeof _image.src === 'string' ? String(new URL(_image.src, astroSite)) : 'pepe',
-            width: typeof _image.width === 'number' ? _image.width : undefined,
-            height: typeof _image.height === 'number' ? _image.height : undefined,
+            url: 'src' in _image && typeof _image.src === 'string' ? String(new URL(_image.src, astroSite)) : 'pepe',
+            width: 'width' in _image && typeof _image.width === 'number' ? _image.width : undefined,
+            height: 'height' in _image && typeof _image.height === 'number' ? _image.height : undefined,
           };
         }
         return {
