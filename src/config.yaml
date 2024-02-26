@@ -18,7 +18,7 @@ metadata:
   openGraph:
     site_name: Restorative Bodywork
     images:
-      - url: '~/assets/images/generic-spa-generated.jpg'
+      - url: '~/assets/images/closeups/hands-back1.jpeg'
         width: 1200
         height: 628
     type: website

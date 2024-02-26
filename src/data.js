@@ -3,10 +3,10 @@ import { getAsset, getPermalink } from './utils/permalinks';
 export const headerData = {
   links: [
     { text: 'Home', href: getPermalink('/#') },
-    // { text: 'About', href: getPermalink('/about') },
     { text: 'Services', href: getPermalink('/services') },
-    { text: 'Contact', href: getPermalink('/contact') },
+    { text: 'About', href: getPermalink('/about') },
     { text: 'FAQ', href: getPermalink('/#faq') },
+    { text: 'Contact', href: getPermalink('/contact') },
   ],
   actions: [
     {
