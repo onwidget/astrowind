@@ -17,7 +17,7 @@
 
 <br>
 
-<img src="https://raw.githubusercontent.com/onwidget/.github/main/resources/astrowind/screenshot-astro4.png" alt="AstroWind Theme Screenshot">
+<img src="https://raw.githubusercontent.com/onwidget/.github/main/resources/astrowind/screenshot-astro4-4.png" alt="AstroWind Theme Screenshot">
 
 [![onWidget](https://custom-icon-badges.demolab.com/badge/made%20by%20-onWidget-556bf2?style=flat-square&logo=onwidget&logoColor=white&labelColor=101827)](https://onwidget.com)
 [![License](https://img.shields.io/github/license/onwidget/astrowind?style=flat-square&color=dddddd&labelColor=000000)](https://github.com/onwidget/astrowind/blob/main/LICENSE.md)
