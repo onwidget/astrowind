@@ -30,7 +30,7 @@ const { Content } = post;
             post.author && (
               <>
                 {' '}
-                ·{' '}<Icon name="tabler:user" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
+                · <Icon name="tabler:user" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
                 <span class="inline-block">{post.author}</span>
               </>
             )
@@ -46,7 +46,13 @@ const { Content } = post;
               </>
             )
           }
-          {post.readingTime && <> · {post.readingTime} min read</>}
+          {
+            post.readingTime && (
+              <>
+                &nbsp;· <span>{post.readingTime}</span> min read
+              </>
+            )
+          }
         </p>
       </div>
 
