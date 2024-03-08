@@ -58,7 +58,9 @@
 
 **AstroWind** tries to give you quick access to creating a website using [Astro 4.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/). It's a free theme which focuses on simplicity, good practices and high performance.
 
-Very little vanilla javascript is used only to provide basic functionality so that each developer decides which framework (React, Vue, Svelte, Solid JS...) to use and how to approach their goals..
+Very little vanilla javascript is used only to provide basic functionality so that each developer decides which framework (React, Vue, Svelte, Solid JS...) to use and how to approach their goals.
+
+In this version the template only supports the `static` and `hybrid` options in the `output` configuration (not SSR). We are working on the next version that, among other features, will be compatible with SSR.
 
 ### Project structure
 
