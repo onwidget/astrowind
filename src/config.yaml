@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Psikopop
+  site: 'https://psikopop.my.id'
   base: '/'
   trailingSlash: false
 
@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Psikopop
+    template: '%s — Psikopop'
+  description: "Psikopop adalah situs untuk mengenali diri lebih baik dan lebih jauh, melalui psikologi."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Psikopop
     images:
       - url: '~/assets/images/default.png'
         width: 1200
@@ -28,13 +28,13 @@ metadata:
     cardType: summary_large_image
 
 i18n:
-  language: en
+  language: id
   textDirection: ltr
 
 apps:
   blog:
     isEnabled: true
-    postsPerPage: 6
+    postsPerPage: 12
 
     post:
       isEnabled: true
@@ -66,7 +66,7 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
+      id: null # or "G-4800VLKF2C"
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"

@@ -3,85 +3,60 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Homes',
+      text: 'Tes Kepribadian',
       links: [
         {
-          text: 'SaaS',
-          href: getPermalink('/homes/saas'),
-        },
-        {
-          text: 'Startup',
-          href: getPermalink('/homes/startup'),
-        },
-        {
-          text: 'Mobile App',
-          href: getPermalink('/homes/mobile-app'),
-        },
-        {
-          text: 'Personal',
-          href: getPermalink('/homes/personal'),
-        },
-      ],
-    },
-    {
-      text: 'Pages',
-      links: [
-        {
-          text: 'Features (Anchor Link)',
+          text: 'MBTI',
           href: getPermalink('/#features'),
         },
         {
-          text: 'Services',
+          text: 'DISC',
           href: getPermalink('/services'),
         },
         {
-          text: 'Pricing',
+          text: 'Simulasi Papi Kostick',
           href: getPermalink('/pricing'),
         },
         {
-          text: 'About us',
+          text: 'Simulasi EPPS',
           href: getPermalink('/about'),
         },
         {
-          text: 'Contact',
+          text: 'Simulasi Keswa',
           href: getPermalink('/contact'),
-        },
-        {
-          text: 'Terms',
-          href: getPermalink('/terms'),
-        },
-        {
-          text: 'Privacy policy',
-          href: getPermalink('/privacy'),
-        },
+        }
       ],
     },
     {
-      text: 'Landing',
+      text: 'Tes Kompetensi',
       links: [
         {
-          text: 'Lead Generation',
-          href: getPermalink('/landing/lead-generation'),
+          text: 'Tes Angka Hilang',
+          href: getPermalink('/#features'),
         },
         {
-          text: 'Long-form Sales',
-          href: getPermalink('/landing/sales'),
+          text: 'Tes Huruf Hilang',
+          href: getPermalink('/services'),
         },
         {
-          text: 'Click-Through',
-          href: getPermalink('/landing/click-through'),
+          text: 'Tes Simbol Hilang',
+          href: getPermalink('/pricing'),
         },
         {
-          text: 'Product Details (or Services)',
-          href: getPermalink('/landing/product'),
+          text: 'Tes Koran Online / Pauli',
+          href: getPermalink('/about'),
         },
         {
-          text: 'Coming Soon or Pre-Launch',
-          href: getPermalink('/landing/pre-launch'),
+          text: 'Tes Kraeplin Online',
+          href: getPermalink('/contact'),
         },
         {
-          text: 'Subscription',
-          href: getPermalink('/landing/subscription'),
+          text: 'Tes Gaya Belajar',
+          href: getPermalink('/terms'),
+        },
+        {
+          text: '',
+          href: getPermalink('/privacy'),
         },
       ],
     },
@@ -89,7 +64,7 @@ export const headerData = {
       text: 'Blog',
       links: [
         {
-          text: 'Blog List',
+          text: 'Artikel Terbaru',
           href: getBlogPermalink(),
         },
         {
@@ -101,83 +76,109 @@ export const headerData = {
           href: getPermalink('markdown-elements-demo-post', 'post'),
         },
         {
-          text: 'Category Page',
-          href: getPermalink('tutorials', 'category'),
+          text: 'Kategori',
+          href: getPermalink('category'),
         },
         {
-          text: 'Tag Page',
-          href: getPermalink('astro', 'tag'),
+          text: 'Tags',
+          href: getPermalink('tag'),
         },
       ],
     },
     {
-      text: 'Widgets',
+      text: 'Kamus Psikologi',
       href: '#',
     },
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  
 };
 
 export const footerData = {
   links: [
     {
-      title: 'Product',
+      title: '',
+      links: [],
+    },
+    {
+      title: 'Tes Kepribadian',
       links: [
-        { text: 'Features', href: '#' },
-        { text: 'Security', href: '#' },
-        { text: 'Team', href: '#' },
-        { text: 'Enterprise', href: '#' },
-        { text: 'Customer stories', href: '#' },
-        { text: 'Pricing', href: '#' },
-        { text: 'Resources', href: '#' },
+        {
+          text: 'MBTI',
+          href: getPermalink('/#features'),
+        },
+        {
+          text: 'DISC',
+          href: getPermalink('/services'),
+        },
+        {
+          text: 'Simulasi Papi Kostick',
+          href: getPermalink('/pricing'),
+        },
+        {
+          text: 'Simulasi EPPS',
+          href: getPermalink('/about'),
+        },
+        {
+          text: 'Simulasi Keswa',
+          href: getPermalink('/contact'),
+        },
       ],
     },
     {
-      title: 'Platform',
+      title: 'Tes Kompetensi',
       links: [
-        { text: 'Developer API', href: '#' },
-        { text: 'Partners', href: '#' },
-        { text: 'Atom', href: '#' },
-        { text: 'Electron', href: '#' },
-        { text: 'AstroWind Desktop', href: '#' },
+        {
+          text: 'Tes Angka Hilang',
+          href: getPermalink('/#features'),
+        },
+        {
+          text: 'Tes Huruf Hilang',
+          href: getPermalink('/services'),
+        },
+        {
+          text: 'Tes Simbol Hilang',
+          href: getPermalink('/pricing'),
+        },
+        {
+          text: 'Tes Koran Online / Pauli',
+          href: getPermalink('/about'),
+        },
+        {
+          text: 'Tes Kraeplin Online',
+          href: getPermalink('/contact'),
+        },
+        {
+          text: 'Tes Gaya Belajar',
+          href: getPermalink('/terms'),
+        },
+        {
+          text: '',
+          href: getPermalink('/privacy'),
+        },
       ],
     },
     {
-      title: 'Support',
+      title: 'About Us',
       links: [
-        { text: 'Docs', href: '#' },
-        { text: 'Community Forum', href: '#' },
-        { text: 'Professional Services', href: '#' },
-        { text: 'Skills', href: '#' },
-        { text: 'Status', href: '#' },
-      ],
-    },
-    {
-      title: 'Company',
-      links: [
-        { text: 'About', href: '#' },
-        { text: 'Blog', href: '#' },
-        { text: 'Careers', href: '#' },
-        { text: 'Press', href: '#' },
-        { text: 'Inclusion', href: '#' },
-        { text: 'Social Impact', href: '#' },
-        { text: 'Shop', href: '#' },
+        { text: 'FAQ', href: getPermalink ('/faq') },
+        { text: 'Privacy Policy', href: getPermalink ('/privacy-policy') },
+        { text: 'Terms', href: getPermalink ('/kebijakan') },
+        { text: 'Tentang Kami', href: getPermalink ('/tentang-kami') },
+        { text: 'Status', href: getPermalink ('/') },
       ],
     },
   ],
   secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
+    { text: '' },
+    { text: '' },
   ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
+    { ariaLabel: 'X', icon: 'tabler:brand-x', href: 'https://x.com/psikopop'},
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://instagram.com/hellopsikopop' },
+    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://facebook.com' },
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
   ],
   footNote: `
-    <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"></span>
-    Made by <a class="text-blue-600 underline dark:text-muted" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
+    Made with ❤️ by <a class="text-blue-600 underline dark:text-muted" href="https://onwidget.com/"> Team Psikopop </a> · All rights reserved.
   `,
 };
