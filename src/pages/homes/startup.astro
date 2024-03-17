@@ -21,19 +21,7 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
 
-  <Hero
-    tagline="Startup Web Demo"
-    actions={[
-      {
-        variant: 'primary',
-        target: '_blank',
-        text: 'Get templates',
-        href: 'https://github.com/onwidget/astrowind',
-        icon: 'tabler:download',
-      },
-      { text: 'Learn more', href: '#features' },
-    ]}
-  >
+  <Hero tagline="Startup Web Demo" actions={[{ text: 'Learn more', href: '#features' }]}>
     <Fragment slot="title">
       Improve <span class="hidden sm:inline">the online presence of</span> your <span
         class="text-accent dark:text-white highlight">Startup</span
