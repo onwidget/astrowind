@@ -33,6 +33,7 @@
 <summary>Table of Contents</summary>
 
 - [Demo](#demo)
+- [Upcoming: AstroWind 2.0 – We Need Your Vision!](#-upcoming-astrowind-20--we-need-your-vision)
 - [Getting started](#getting-started)
   - [Project structure](#project-structure)
   - [Commands](#commands)
@@ -51,6 +52,14 @@
 ## Demo
 
 📌 [https://astrowind.vercel.app/](https://astrowind.vercel.app/)
+
+<br>
+
+## 🔔 Upcoming: AstroWind 2.0 – We Need Your Vision!
+
+We're embarking on an exciting journey with **AstroWind 2.0**, and we want you to be a part of it! We're currently taking the first steps in developing this new version and your insights are invaluable. Join the discussion and share your feedback, ideas, and suggestions to help shape the future of **AstroWind**. Let's make **AstroWind 2.0** even better, together!
+
+[Share Your Feedback in Our Discussion!](https://github.com/onwidget/astrowind/discussions/392)
 
 <br>
 
