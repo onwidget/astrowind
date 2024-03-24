@@ -1,0 +1,80 @@
+{
+  "$schema": "https://beta.frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.taxonomy.contentTypes": [{
+    "name": "default",
+    "pageBundle": false,
+    "previewPath": null,
+    "filePrefix": null,
+    "clearEmpty": true,
+    "fields": [{
+        "title": "Title",
+        "name": "title",
+        "type": "string",
+        "single": true
+      },
+      {
+        "title": "Description",
+        "name": "description",
+        "type": "string"
+      },
+      {
+        "name": "divider",
+        "type": "divider"
+      },
+      {
+        "name": "heading",
+        "title": "Optional configuration",
+        "type": "heading"
+      },
+      {
+        "title": "Edit URL",
+        "name": "editUrl",
+        "type": "string",
+        "single": true
+      },
+      {
+        "name": "banner",
+        "title": "Banner",
+        "type": "fields",
+        "fields": [{
+          "name": "content",
+          "title": "Banner content",
+          "type": "string"
+        }]
+      },
+      {
+        "name": "template",
+        "title": "Page template",
+        "type": "choice",
+        "choices": [
+          "doc",
+          "splash"
+        ]
+      },
+      {
+        "name": "tableOfContents",
+        "title": "Table of content settings",
+        "type": "fields",
+        "fields": [{
+            "name": "minHeadingLevel",
+            "title": "Minimum heading level",
+            "type": "number",
+            "numberOptions": {
+              "min": 2,
+              "max": 6
+            }
+          },
+          {
+            "name": "maxHeadingLevel",
+            "title": "Maximum heading level",
+            "type": "number",
+            "numberOptions": {
+              "min": 2,
+              "max": 6
+            }
+          }
+        ]
+      }
+    ]
+  }]
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://beta.frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.content.snippets": {
+    "Aside": {
+      "description": "Create an admonitions or callout",
+      "body": [
+        ":::<<type>><<#label>>[<<label>>]<</label>>",
+        "<<&content>>",
+        ":::"
+      ],
+      "openingTags": "<<",
+      "closingTags": ">>",
+      "fields": [{
+          "name": "type",
+          "title": "type",
+          "type": "choice",
+          "choices": [
+            "note",
+            "tip",
+            "caution",
+            "danger"
+          ],
+          "default": "note"
+        },
+        {
+          "name": "label",
+          "title": "label",
+          "type": "string",
+          "single": true
+        },
+        {
+          "name": "content",
+          "title": "content",
+          "type": "string",
+          "single": false,
+          "default": "FM_SELECTED_TEXT"
+        }
+      ]
+    }
+  }
+}

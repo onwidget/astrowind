@@ -1,0 +1,33 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "astro",
+  "frontMatter.preview.host": "http://localhost:4321",
+  "frontMatter.content.publicFolder": {
+    "path": "src/assets",
+    "relative": true
+  },
+  "frontMatter.extends": [
+    ".frontmatter/starlight/contenttypes.json",
+    ".frontmatter/starlight/pagefolders.json",
+    ".frontmatter/starlight/aside.json"
+  ],
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "post",
+      "path": "[[workspace]]/src/content/post",
+      "contentTypes": [
+        "post"
+      ]
+    }
+  ],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "post",
+      "previewPath": "'post'",
+      "pageBundle": false,
+      "clearEmpty": true,
+      "fields": []
+    }
+  ],
+  "frontMatter.git.enabled": true
+}

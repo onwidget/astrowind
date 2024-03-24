@@ -1,0 +1,14 @@
+{
+  "$schema": "https://beta.frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.content.pageFolders": [{
+      "title": "Guides",
+      "path": "[[workspace]]/src/content/docs/guides",
+      "previewPath": "guides"
+    },
+    {
+      "title": "References",
+      "path": "[[workspace]]/src/content/docs/reference",
+      "previewPath": "reference"
+    }
+  ]
+}

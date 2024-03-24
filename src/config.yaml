@@ -11,7 +11,7 @@ metadata:
   title:
     default: Psikopop
     template: '%s — Psikopop'
-  description: "Psikopop adalah situs untuk mengenali diri lebih baik dan lebih jauh, melalui psikologi."
+  description: 'Psikopop adalah situs untuk mengenali diri lebih baik dan lebih jauh, melalui psikologi.'
   robots:
     index: true
     follow: true
