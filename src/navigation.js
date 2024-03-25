@@ -28,8 +28,8 @@ export const headerData = {
       ],
     },
     {
-      text: 'For Lawyers',
-      href: '/for-lawyers',
+      text: 'Live Demo',
+      href: 'https://yc.trieve.ai',
     },
     {
       text: 'API Docs',
