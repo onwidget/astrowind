@@ -38,7 +38,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
         </label>
         <textarea
           id="textarea"
-          name="textarea"
+          name={textarea.name ? textarea.name : 'message'}
           rows={textarea.rows ? textarea.rows : 4}
           placeholder={textarea.placeholder}
           class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
@@ -70,7 +70,9 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
   {
     button && (
       <div class="mt-10 grid">
-        <Button variant="primary" type="submit">{button}</Button>
+        <Button variant="primary" type="submit">
+          {button}
+        </Button>
       </div>
     )
   }
