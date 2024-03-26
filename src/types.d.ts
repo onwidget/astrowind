@@ -176,7 +176,7 @@ export interface Disclaimer {
 }
 
 // COMPONENTS
-export interface CallToAction extends HTMLAttributes<a> {
+export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
   text?: string;
   icon?: string;
