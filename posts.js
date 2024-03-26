@@ -14,35 +14,33 @@ async function main() {
     // Add a filter here.
   })
 
+  const results = pages.results
 
-  const page = pages.results[1]
-  console.log(page)
+  results.forEach(page => {
 
-  const FeaturedImage = page.properties.FeaturedImage.files[0].file.url
-  console.log({ FeaturedImage })
+    const FeaturedImage = page.properties.FeaturedImage.files[0].file.url
+    console.log({ FeaturedImage })
 
-  const Title = page.properties.Page.title.map((richText) => richText.plain_text).join('')
-  console.log({ Title })
+    const Title = page.properties.Page.title.map((richText) => richText.plain_text).join('')
+    console.log({ Title })
 
-  const Excerpt = page.properties.Excerpt.rich_text.map((richText) => richText.plain_text).join('')
-  console.log({ Excerpt })
+    const Excerpt = page.properties.Excerpt.rich_text.map((richText) => richText.plain_text).join('')
+    console.log({ Excerpt })
 
-  const Tags = page.properties.Tags.multi_select
-  console.log({ Tags })
+    const Tags = page.properties.Tags.multi_select
+    console.log({ Tags })
 
-  let _Tags = ''
-  Tags.forEach(Tag => {
-    _Tags += "\n" + `  - ${Tag.name}`
-  })
-  console.log({ _Tags })
+    let _Tags = ''
+    Tags.forEach(Tag => {
+      _Tags += "\n" + `  - ${Tag.name}`
+    })
+    console.log({ _Tags })
 
-  const _Date = page.properties.Date.date.start
-  console.log({ _Date })
+    const _Date = page.properties.Date.date.start
+    console.log({ _Date })
 
 
-  console.log('1 ...')
-
-  const content = `---
+    const content = `---
 publishDate: ${_Date}
 author: Diter Evan
 title: ${Title}
@@ -72,16 +70,15 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit proin, aenean litora volu
 
 Duis maecenas massa habitasse inceptos imperdiet scelerisque at condimentum ultrices, nam dui leo enim taciti varius cras habitant pretium rhoncus, ut hac euismod nostra metus sagittis mi aenean. Quam eleifend aliquet litora eget a tempor, ultricies integer vestibulum non felis sodales, eros diam massa libero iaculis.`
 
-  fs.writeFile(process.cwd() + '/src/content/post/test.md', content, err => {
-    if (err) {
-      console.error(err);
-    } else {
-      // file written successfully
-    }
-  });
+    fs.writeFile(process.cwd() + `/src/content/post/${page.id}.md`, content, err => {
+      if (err) {
+        console.error(err);
+      } else {
+        // file written successfully
+      }
+    })
 
-  // await delay(3000)
-  console.log('2 ...')
+  })
 }
 
 main()
