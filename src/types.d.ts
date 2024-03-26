@@ -122,7 +122,7 @@ interface Social {
 }
 
 export interface Stat {
-  amount?: number;
+  amount?: number | string;
   title?: string;
   icon?: string;
 }
@@ -140,7 +140,7 @@ export interface Price {
   title?: string;
   subtitle?: string;
   description?: string;
-  price?: number;
+  price?: number | string;
   period?: string;
   items?: Array<Item>;
   callToAction?: CallToAction;
