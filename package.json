@@ -4,8 +4,9 @@
   "version": "1.0.0-beta.20",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
+    "dev": "npm run prebuild && astro dev",
     "start": "astro dev",
+    "prebuild": "node posts.js",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -31,6 +32,7 @@
     "@astrojs/tailwind": "5.1.0",
     "@iconify-json/flat-color-icons": "^1.1.10",
     "@iconify-json/tabler": "^1.1.106",
+    "@notionhq/client": "^2.2.14",
     "@tailwindcss/typography": "^0.5.10",
     "@types/js-yaml": "^4.0.9",
     "@types/lodash.merge": "^4.6.9",
