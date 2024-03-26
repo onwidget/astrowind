@@ -166,7 +166,7 @@ export interface Input {
 
 export interface Textarea {
   label?: string;
-  name: string;
+  name?: string;
   placeholder?: string;
   rows?: number;
 }
@@ -241,8 +241,8 @@ export interface Brands extends Headline, Widget {
 export interface Features extends Headline, Widget {
   image?: string | unknown;
   video?: Video;
-  items: Array<Item>;
-  columns: number;
+  items?: Array<Item>;
+  columns?: number;
   defaultIcon?: string;
   callToAction1?: CallToAction;
   callToAction2?: CallToAction;
