@@ -14,20 +14,42 @@ async function main() {
     // Add a filter here.
   })
 
-  // console.log(pages.results)
+
+  const page = pages.results[1]
+  console.log(page)
+
+  const FeaturedImage = page.properties.FeaturedImage.files[0].file.url
+  console.log({ FeaturedImage })
+
+  const Title = page.properties.Page.title.map((richText) => richText.plain_text).join('')
+  console.log({ Title })
+
+  const Excerpt = page.properties.Excerpt.rich_text.map((richText) => richText.plain_text).join('')
+  console.log({ Excerpt })
+
+  const Tags = page.properties.Tags.multi_select
+  console.log({ Tags })
+
+  let _Tags = ''
+  Tags.forEach(Tag => {
+    _Tags += "\n" + `  - ${Tag.name}`
+  })
+  console.log({ _Tags })
+
+  const _Date = page.properties.Date.date.start
+  console.log({ _Date })
+
 
   console.log('1 ...')
 
   const content = `---
-publishDate: 2024-02-12T00:00:00Z
+publishDate: ${_Date}
 author: Diter Evan
-title: TEXT
-excerpt: TEXT TEXT TEXT TEXT.
-image: https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80
+title: ${Title}
+excerpt: ${Excerpt}
+image: ${FeaturedImage}
 category: Tutorials
-tags:
-  - astro
-  - tailwind css
+tags: ${_Tags}
 metadata:
   canonical: https://astrowind.vercel.app/get-started-website-with-astro-tailwind-css
 ---
@@ -58,7 +80,7 @@ Duis maecenas massa habitasse inceptos imperdiet scelerisque at condimentum ultr
     }
   });
 
-  await delay(3000)
+  // await delay(3000)
   console.log('2 ...')
 }
 
