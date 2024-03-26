@@ -2,7 +2,7 @@
 import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
 import Headline from "~/components/ui/Headline.astro";
 import ItemGrid2 from "~/components/ui/ItemGrid2.astro";
-import type { Features } from "~/types";
+import type { Features as Props } from "~/types";
 
 const {
   title = await Astro.slots.render("title"),
@@ -16,7 +16,7 @@ const {
   isDark = false,
   classes = {},
   bg = await Astro.slots.render("bg"),
-} = Astro.props as Features;
+} = Astro.props;
 ---
 
 <WidgetWrapper

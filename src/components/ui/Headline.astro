@@ -1,5 +1,5 @@
 ---
-import type { Headline } from "~/types";
+import type { Headline as Props } from "~/types";
 import { twMerge } from "tailwind-merge";
 
 const {
@@ -7,7 +7,7 @@ const {
   subtitle = await Astro.slots.render("subtitle"),
   tagline,
   classes = {},
-} = Astro.props as Headline;
+} = Astro.props;
 
 const {
   container: containerClass = "max-w-3xl",

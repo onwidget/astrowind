@@ -1,8 +1,8 @@
 ---
-import type { Form } from '~/types';
+import type { Form as Props } from '~/types';
 import Button from '~/components/ui/Button.astro';
 
-const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props as Form;
+const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props;
 ---
 
 <form>
