@@ -1,5 +1,15 @@
 ---
+import type { CallToAction } from '~/types';
 import Button from '~/components/ui/Button.astro';
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  tagline?: string;
+  content?: string;
+  callToAction?: string | CallToAction;
+  callToAction2?: string | CallToAction;
+}
 
 const {
   title = await Astro.slots.render('title'),

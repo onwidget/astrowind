@@ -122,7 +122,7 @@ interface Social {
 }
 
 export interface Stat {
-  amount?: number;
+  amount?: number | string;
   title?: string;
   icon?: string;
 }
@@ -140,7 +140,7 @@ export interface Price {
   title?: string;
   subtitle?: string;
   description?: string;
-  price?: number;
+  price?: number | string;
   period?: string;
   items?: Array<Item>;
   callToAction?: CallToAction;
@@ -166,7 +166,7 @@ export interface Input {
 
 export interface Textarea {
   label?: string;
-  name: string;
+  name?: string;
   placeholder?: string;
   rows?: number;
 }
@@ -176,7 +176,7 @@ export interface Disclaimer {
 }
 
 // COMPONENTS
-export interface CallToAction extends HTMLAttributes<a> {
+export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
   text?: string;
   icon?: string;
@@ -241,8 +241,8 @@ export interface Brands extends Headline, Widget {
 export interface Features extends Headline, Widget {
   image?: string | unknown;
   video?: Video;
-  items: Array<Item>;
-  columns: number;
+  items?: Array<Item>;
+  columns?: number;
   defaultIcon?: string;
   callToAction1?: CallToAction;
   callToAction2?: CallToAction;

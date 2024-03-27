@@ -3,7 +3,7 @@ import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import Timeline from '~/components/ui/Timeline.astro';
 import Headline from '~/components/ui/Headline.astro';
 import Image from '~/components/common/Image.astro';
-import type { Steps } from '~/types';
+import type { Steps as Props } from '~/types';
 
 const {
   title = await Astro.slots.render('title'),
@@ -17,7 +17,7 @@ const {
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
-} = Astro.props as Steps;
+} = Astro.props;
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-5xl ${classes?.container ?? ''}`} bg={bg}>

@@ -1,5 +1,5 @@
 ---
-import type { Content } from '~/types';
+import type { Content as Props } from '~/types';
 import Headline from '../ui/Headline.astro';
 import WidgetWrapper from '../ui/WidgetWrapper.astro';
 import Image from '~/components/common/Image.astro';
@@ -22,7 +22,7 @@ const {
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
-} = Astro.props as Content;
+} = Astro.props;
 ---
 
 <WidgetWrapper

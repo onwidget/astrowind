@@ -1,7 +1,7 @@
 ---
+import type { ItemGrid as Props } from "~/types";
 import { Icon } from "astro-icon/components";
 import { twMerge } from "tailwind-merge";
-import type { ItemGrid } from "~/types";
 import Button from "./Button.astro";
 
 const {
@@ -9,7 +9,7 @@ const {
   columns,
   defaultIcon = "",
   classes = {},
-} = Astro.props as ItemGrid;
+} = Astro.props;
 
 const {
   container: containerClass = "",
