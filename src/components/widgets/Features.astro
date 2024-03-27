@@ -30,7 +30,7 @@ const {
     title={title}
     subtitle={subtitle}
     tagline={tagline}
-    classes={classes?.headline}
+    classes={classes?.headline as Record<string, string>}
   />
   <ItemGrid
     items={items}

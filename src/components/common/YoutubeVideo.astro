@@ -158,17 +158,23 @@ const {
       //   We'd want to only do this for in-viewport or near-viewport ones: https://github.com/ampproject/amphtml/pull/5003
       this.addEventListener('click', this.addIframe);
 
+      // Detect Safari
+      const isSafari = navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome');
+
+      // Detect mobile browser
+      const isMobile = navigator.userAgent.includes('Mobi') || navigator.userAgent.includes('Android');
+
       // Chrome & Edge desktop have no problem with the basic YouTube Embed with ?autoplay=1
       // However Safari desktop and most/all mobile browsers do not successfully track the user gesture of clicking through the creation/loading of the iframe,
       // so they don't autoplay automatically. Instead we must load an additional 2 sequential JS files (1KB + 165KB) (un-br) for the YT Player API
       // TODO: Try loading the the YT API in parallel with our iframe and then attaching/playing it. #82
-      this.needsYTApiForAutoplay = navigator.vendor.includes('Apple') || navigator.userAgent.includes('Mobi');
+      this.needsYTApiForAutoplay = isSafari || isMobile;
     }
 
     /**
      * Add a <link rel={preload | preconnect} ...> to the head
      */
-    static addPrefetch(kind, url, as) {
+    static addPrefetch(kind: string, url: string, as: string | undefined) {
       const linkEl = document.createElement('link');
       linkEl.rel = kind;
       linkEl.href = url;
@@ -217,7 +223,7 @@ const {
       });
     }
 
-    async addYTPlayerIframe(params) {
+    async addYTPlayerIframe(params: any[] | URLSearchParams) {
       this.fetchYTPlayerApi();
       await this.ytApiPromise;
 
@@ -231,7 +237,7 @@ const {
         videoId: this.videoId,
         playerVars: paramsObj,
         events: {
-          onReady: (event) => {
+          onReady: (event: { target: { playVideo: () => void; }; }) => {
             event.target.playVideo();
           },
         },
