@@ -1,4 +1,6 @@
 ---
+import { UI } from 'astrowind:config';
+
 import '@fontsource-variable/inter';
 
 // 'DM Sans'
@@ -17,44 +19,53 @@ import '@fontsource-variable/inter';
 // Oswald
 // 'Space Grotesk'
 // Urbanist
+
+const { tokens } = UI;
+
+const html = `
+  <style>
+    :root {
+      --aw-font-sans: ${tokens.default.fonts.sans ? `'${tokens.default.fonts.sans}'` : '""'};
+      --aw-font-serif: ${tokens.default.fonts.serif ? `'${tokens.default.fonts.serif}'` : 'var(--aw-font-sans)'};
+      --aw-font-heading: ${tokens.default.fonts.heading ? `'${tokens.default.fonts.heading}'` : 'var(--aw-font-sans)'};
+
+      --aw-color-primary: ${tokens.default.colors.primary};
+      --aw-color-secondary: ${tokens.default.colors.secondary};
+      --aw-color-accent: ${tokens.default.colors.accent};
+
+      --aw-color-text-heading: ${tokens.default.colors.heading};
+      --aw-color-text-default: ${tokens.default.colors.default};
+      --aw-color-text-muted: ${tokens.default.colors.muted};
+      --aw-color-bg-page: ${tokens.default.colors.bgPage};
+
+      --aw-color-bg-page-dark: ${tokens.dark.colors.bgPage};
+
+      ::selection {
+        background-color: lavender;
+      }
+    }
+
+    .dark {
+      ${tokens.dark.fonts.sans ? `--aw-font-sans: '${tokens.dark.fonts.sans}';` : ''}
+      ${tokens.dark.fonts.serif ? `--aw-font-serif: '${tokens.dark.fonts.serif};'` : ''}
+      ${tokens.dark.fonts.heading ? `--aw-font-heading: '${tokens.dark.fonts.heading}';` : ''}
+
+      --aw-color-primary: ${tokens.dark.colors.primary};
+      --aw-color-secondary: ${tokens.dark.colors.secondary};
+      --aw-color-accent: ${tokens.dark.colors.accent};
+
+      --aw-color-text-heading: ${tokens.dark.colors.heading};
+      --aw-color-text-default: ${tokens.dark.colors.default};
+      --aw-color-text-muted: ${tokens.dark.colors.muted};
+      --aw-color-bg-page: ${tokens.dark.colors.bgPage};
+
+      ::selection {
+        background-color: black;
+        color: snow;
+      }
+    }
+  </style>
+`;
 ---
 
-<style is:inline is:global>
-  :root {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: var(--aw-font-sans);
-    --aw-font-heading: var(--aw-font-sans);
-
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
-
-    --aw-color-text-heading: rgb(0 0 0); 
-    --aw-color-text-default: rgb(16 16 16);
-    --aw-color-text-muted: rgb(16 16 16 / 66%);
-    --aw-color-bg-page: rgb(255 255 255);
-
-    --aw-color-bg-page-dark: rgb(3 6 32);
-
-    ::selection {background-color: lavender;}
-
-  }
-
-  .dark {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: var(--aw-font-sans);
-    --aw-font-heading: var(--aw-font-sans);
-
-    --aw-color-primary: rgb(1 97 239);
-    --aw-color-secondary: rgb(1 84 207);
-    --aw-color-accent: rgb(109 40 217);
-
-    --aw-color-text-heading: rgb(0 0 0); 
-    --aw-color-text-default: rgb(229 236 246);
-    --aw-color-text-muted: rgb(229 236 246 / 66%);
-    --aw-color-bg-page: var(--aw-color-bg-page-dark);
-
-    ::selection {background-color: black; color: snow}
-
-  }
-</style>
+<Fragment set:html={html} />
