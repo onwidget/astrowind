@@ -9,26 +9,22 @@ import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import compress from 'astro-compress';
-import tasks from './src/utils/tasks';
+
+import astrowind from './src/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin } from './src/utils/frontmatter.mjs';
 
-import { ANALYTICS, SITE } from './src/utils/config.ts';
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const hasExternalScripts = false;
 const whenExternalScripts = (items = []) =>
-  ANALYTICS.vendors.googleAnalytics.id && ANALYTICS.vendors.googleAnalytics.partytown
+  hasExternalScripts
     ? Array.isArray(items)
       ? items.map((item) => item())
       : [items()]
     : [];
 
 export default defineConfig({
-  site: SITE.site,
-  base: SITE.base,
-  trailingSlash: SITE.trailingSlash ? 'always' : 'never',
-
   output: 'static',
 
   integrations: [
@@ -73,7 +69,7 @@ export default defineConfig({
       Logger: 1,
     }),
 
-    tasks(),
+    astrowind(),
   ],
 
   image: {
