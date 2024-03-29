@@ -69,7 +69,7 @@ We're embarking on an exciting journey with **AstroWind 2.0**, and we want you t
 
 Very little vanilla javascript is used only to provide basic functionality so that each developer decides which framework (React, Vue, Svelte, Solid JS...) to use and how to approach their goals.
 
-In this version the template only supports the `static` and `hybrid` options in the `output` configuration (not SSR). We are working on the next version that, among other features, will be compatible with SSR.
+In this version the template supports all the options in the `output` configuration, `static`, `hybrid` and `server`, but the blog only works with `prerender = true`. We are working on the next version that, among other features, will totally be compatible with SSR.
 
 ### Project structure
 
@@ -177,7 +177,7 @@ metadata:
   openGraph:
     site_name: 'Example'
     images:
-      - url: '~/assets/images/default.jpg'
+      - url: '~/assets/images/default.png'
         width: 1200
         height: 628
     type: website
@@ -229,6 +229,31 @@ analytics:
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+
+  tokens:
+    default:
+      fonts:
+        sans: InterVariable
+        serif: InterVariable
+        heading: InterVariable
+      colors:
+        default: rgb(16 16 16)
+        heading: rgb(0 0 0)
+        muted: rgb(16 16 16 / 66%)
+        bgPage: rgb(255 255 255)
+        primary: rgb(1 97 239)
+        secondary: rgb(1 84 207)
+        accent: rgb(109 40 217)
+    dark:
+      fonts: {}
+      colors:
+        default: rgb(229 236 246)
+        heading: rgb(247, 248, 248)
+        muted: rgb(229 236 246 / 66%)
+        bgPage: rgb(3 6 32)
+        primary: rgb(1 97 239)
+        secondary: rgb(1 84 207)
+        accent: rgb(109 40 217)
 ```
 
 <br>
