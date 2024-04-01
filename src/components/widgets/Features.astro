@@ -2,7 +2,7 @@
 import WidgetWrapper from "~/components/ui/WidgetWrapper.astro";
 import ItemGrid from "~/components/ui/ItemGrid.astro";
 import Headline from "~/components/ui/Headline.astro";
-import type { Features } from "~/types";
+import type { Features as Props } from "~/types";
 
 const {
   title = await Astro.slots.render("title"),
@@ -17,7 +17,7 @@ const {
   isDark = false,
   classes = {},
   bg = await Astro.slots.render("bg"),
-} = Astro.props as Features;
+} = Astro.props;
 ---
 
 <WidgetWrapper
@@ -30,7 +30,7 @@ const {
     title={title}
     subtitle={subtitle}
     tagline={tagline}
-    classes={classes?.headline}
+    classes={classes?.headline as Record<string, string>}
   />
   <ItemGrid
     items={items}
