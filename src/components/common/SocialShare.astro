@@ -11,7 +11,7 @@ const { text, url, class: className = 'inline-block' } = Astro.props;
 ---
 
 <div class={className}>
-  <span class="align-super font-bold text-gray-400 dark:text-slate-400">Share:</span>
+  <span class="align-super font-bold text-slate-500 dark:text-slate-400">Share:</span>
   <button class="ml-2 rtl:ml-0 rtl:mr-2" title="Twitter Share" data-aw-social-share="twitter" data-aw-url={url} data-aw-text={text}
     ><Icon
       name="tabler:brand-x"
