@@ -62,7 +62,22 @@ async function main() {
       if(block.type == 'paragraph') {
         const paragraph = block.paragraph.rich_text[0]?.text.content
         // console.log({ paragraph })
-        body += "\n" + `${paragraph || ''}`
+        // body += "\n" + `${paragraph || ''}`
+
+        const url = block.paragraph.rich_text[0]?.text.link?.url
+
+        if(url) {
+          body += "\n" + `[${paragraph}](${url})`
+
+        } else {
+          body += "\n" + `${paragraph || ''}`
+        }
+      }
+
+      if(block.type == 'image') {
+        const image = block.image.file.url
+        // console.log({ image })
+        body += "\n" + `![](${image})`
       }
     })
 
