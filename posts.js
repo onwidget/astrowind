@@ -79,6 +79,12 @@ async function main() {
         // console.log({ image })
         body += "\n" + `![](${image})`
       }
+
+      if(block.type == 'quote') {
+        const quote = block.quote.rich_text[0].text.content
+        console.log({ quote })
+        body += "\n" + `> ${quote}`
+      }
     })
 
 
@@ -117,7 +123,9 @@ tags: ${_Tags}
 metadata:
   canonical: https://astrowind.vercel.app/get-started-website-with-astro-tailwind-css
 ---
-${body}`
+${body}
+
+> Block Quote section`
 
     fs.writeFile(process.cwd() + `/src/content/post/${page.id}.md`, content, err => {
       if (err) {
