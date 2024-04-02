@@ -123,9 +123,7 @@ tags: ${_Tags}
 metadata:
   canonical: https://astrowind.vercel.app/get-started-website-with-astro-tailwind-css
 ---
-${body}
-
-> Block Quote section`
+${body}`
 
     fs.writeFile(process.cwd() + `/src/content/post/${page.id}.md`, content, err => {
       if (err) {
