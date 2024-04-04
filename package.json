@@ -1,7 +1,7 @@
 {
   "name": "@onwidget/astrowind",
   "description": "AstroWind: A free template using Astro 4.0 and Tailwind CSS. Astro starter theme.",
-  "version": "1.0.0-beta.21",
+  "version": "1.0.0-beta.22",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -18,14 +18,14 @@
     "@astrolib/analytics": "^0.5.0",
     "@astrolib/seo": "^1.0.0-beta.5",
     "@fontsource-variable/inter": "^5.0.17",
-    "astro": "^4.5.12",
+    "astro": "^4.5.15",
     "astro-icon": "^1.1.0",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
     "unpic": "^3.18.0"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^2.2.2",
+    "@astrojs/mdx": "^2.2.3",
     "@astrojs/partytown": "^2.0.4",
     "@astrojs/tailwind": "5.1.0",
     "@iconify-json/flat-color-icons": "^1.1.10",
@@ -33,9 +33,9 @@
     "@tailwindcss/typography": "^0.5.12",
     "@types/js-yaml": "^4.0.9",
     "@types/lodash.merge": "^4.6.9",
-    "@typescript-eslint/eslint-plugin": "^7.4.0",
-    "@typescript-eslint/parser": "^7.4.0",
-    "astro-compress": "2.2.20",
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.5.0",
+    "astro-compress": "2.2.21",
     "eslint": "^8.57.0",
     "eslint-plugin-astro": "^0.33.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
