@@ -136,7 +136,7 @@ export const headerData = {
     // },
   ],
   // actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
-  actions: [{ text: 'Suscríbete', href: '', target: '_blank' }],
+  actions: [{ text: 'Suscríbete', href: '', target: '_blank', variant: 'white' }],
 };
 
 export const footerData = {
