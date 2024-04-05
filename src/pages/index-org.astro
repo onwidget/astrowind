@@ -2,7 +2,6 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
-import Hero2 from '~/components/widgets/Hero2.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
@@ -14,35 +13,12 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Clery Neyra',
+  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero2 Widget ******************* -->
-
-  <Hero2
-    actions={[
-      { variant: 'primary', target: '_blank', text: 'Leer Blog', href: '/blog' },
-      // { text: 'Learn more', href: '#features' },
-    ]}
-    image={{
-      src: '/Clery.png',
-      alt: 'Clery Neyra',
-    }}
-  >
-    <Fragment slot="title">
-      Clery Neyra: <br />
-      <span class="text-accent dark:text-white highlight">Dirección humana</span> <br />
-      en TI
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Directora de tecnología, mamá y experta en transformación digital
-    </Fragment>
-  </Hero2>
-
   <!-- Hero Widget ******************* -->
 
   <Hero

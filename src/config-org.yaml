@@ -1,5 +1,5 @@
 site:
-  name: Clery Neyra
+  name: AstroWind
   site: 'https://astrowind.vercel.app'
   base: '/'
   trailingSlash: false
@@ -69,7 +69,7 @@ analytics:
       id: null # or "G-XXXXXXXXXX"
 
 ui:
-  theme: 'light:only' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
 
   tokens:
     default:

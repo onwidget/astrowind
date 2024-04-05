@@ -38,14 +38,8 @@
   }
 }
 
-#header {
-  background-color: #99C6D6;
-}
-
 #header.scroll > div:first-child {
-/*  @apply bg-page md:bg-white/90 md:backdrop-blur-md;*/
-  @apply bg-page md:backdrop-blur-md;
-  background-color: #99C6D6;
+  @apply bg-page md:bg-white/90 md:backdrop-blur-md;
   box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
 }
 .dark #header.scroll > div:first-child,
@@ -93,9 +87,4 @@
 
 .dd *:first-child {
   margin-top: 0;
-}
-
-
-#footer {
-  background-color: #1E293B;
 }
