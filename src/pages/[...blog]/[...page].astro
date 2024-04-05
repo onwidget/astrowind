@@ -5,6 +5,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
+import Hero3 from '~/components/widgets/Hero3.astro';
 // import PostTags from "~/components/blog/Tags.astro";
 
 import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
@@ -36,12 +37,27 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+
+  <!-- Hero3 Widget ******************* -->
+
+  <Hero3
+    title="Bienvenido a mi Blog"
+    subtitle="Un blog dedicado a todos los seguidores e innovadores de la educación."
+    image={{
+      src: '/Clery3.png',
+      alt: 'AstroWind Hero Image',
+      width: 250,
+      height: 250,
+    }}
+  />
+
   <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-    <Headline
-      subtitle="A statically generated blog example with news, tutorials, resources and other interesting content related to AstroWind"
+    <!-- <Headline
+      subtitle="Un blog dedicado a todos los seguidores e innovadores de la educación."
     >
-      The Blog
-    </Headline>
+      Bienvenido a mi Blog
+    </Headline> -->
+
     <BlogList posts={page.data} />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
     <!--
