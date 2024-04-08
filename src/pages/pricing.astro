@@ -35,6 +35,9 @@ const metadata = {
             description: '100,000 vectorized and stored chunks',
           },
           {
+            description: 'Unlimited search queries at 10/s rate limit',
+          },
+          {
             description: '2 datasets',
           },
           {
@@ -54,52 +57,26 @@ const metadata = {
         },
       },
       {
-        title: 'enterprise',
-        subtitle: 'Buy a license to host Trieve on your own servers. Ideal for large organizations and agencies',
-        price: 500,
-        period: 'Per Month',
-        items: [
-          {
-            description: 'Terraform templates for AWS, GCP, and Azure',
-          },
-          {
-            description: 'Run securely on your own servers or cloud',
-          },
-          {
-            description: 'Multi-tenant so can be used by multiple teams within your organization',
-          },
-          {
-            description: 'Unlimited usage',
-          },
-          {
-            description: 'Do whatever you want besides reselling',
-          },
-          {
-            description: '1 year of updates, 24/7 support, and a dedicated account manager',
-          },
-        ],
-        callToAction: {
-          target: '_blank',
-          text: 'Book Meeting',
-          href: 'https://cal.com/nick.k/meet',
-        },
-        hasRibbon: true,
-        ribbonTitle: 'serious',
-      },
-      {
         title: 'pro',
-        subtitle: 'Highest tier for our hosted service. Book a meeting if your usage exceeds these limits',
-        price: 600,
-        period: 'Per Month',
+        subtitle:
+          'Highest tier for our hosted service. Book a meeting for additional usage, limits, and/or SLA/SLO add-ons',
+        price: 500,
+        period: 'Per Month - Starting',
         items: [
           {
-            description: 'SLA available',
+            description: 'SLO add-on available - 300ms 99th percentile and 75ms 50th percentile latency',
+          },
+          {
+            description: 'SLA add-on available - 99.9% uptime',
           },
           {
             description: 'SOC 2, ISO 27001, and HIPAA compliance',
           },
           {
             description: '1,000,000 vectorized and stored chunks',
+          },
+          {
+            description: 'Unlimited search queries at 25/s rate limit',
           },
           {
             description: '10 datasets',
@@ -119,6 +96,46 @@ const metadata = {
           text: 'Get started free',
           href: 'https://dashboard.trieve.ai',
         },
+        callToAction2: {
+          target: '_blank',
+          text: 'Book a Meeting',
+          href: 'https://cal.com/nick.k/meet',
+        },
+        hasRibbon: true,
+        ribbonTitle: 'flagship',
+      },
+      {
+        title: 'sovereign',
+        subtitle: 'Buy a license to host Trieve on your own servers. Ideal for large organizations and agencies',
+        price: 1000,
+        period: 'Per Month - Starting',
+        items: [
+          {
+            description: 'Terraform templates',
+          },
+          {
+            description: 'Helm charts',
+          },
+          {
+            description: 'Run securely on your own servers or cloud',
+          },
+          {
+            description: 'Multi-tenant so can be used by multiple teams within your organization',
+          },
+          {
+            description: 'Unlimited usage - Do whatever you want besides reselling',
+          },
+          {
+            description: 'Dedicated support contracts available',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Book Meeting',
+          href: 'https://cal.com/nick.k/meet',
+        },
+        hasRibbon: true,
+        ribbonTitle: 'freedom',
       },
     ]}
   />
