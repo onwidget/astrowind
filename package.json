@@ -1,8 +1,12 @@
 {
   "name": "@onwidget/astrowind",
-  "description": "AstroWind: A free template using Astro 4.0 and Tailwind CSS. Astro starter theme.",
   "version": "1.0.0-beta.22",
+  "description": "AstroWind: A free template using Astro 4.0 and Tailwind CSS. Astro starter theme.",
+  "type": "module",
   "private": true,
+  "engines": {
+    "node": ">=20.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -18,26 +22,28 @@
     "@astrolib/analytics": "^0.5.0",
     "@astrolib/seo": "^1.0.0-beta.5",
     "@fontsource-variable/inter": "^5.0.17",
-    "astro": "^4.5.15",
+    "astro": "^4.5.16",
     "astro-icon": "^1.1.0",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
     "unpic": "^3.18.0"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^2.2.3",
+    "@astrojs/mdx": "^2.2.4",
     "@astrojs/partytown": "^2.0.4",
     "@astrojs/tailwind": "5.1.0",
+    "@eslint/js": "^9.0.0",
     "@iconify-json/flat-color-icons": "^1.1.10",
     "@iconify-json/tabler": "^1.1.109",
+    "@playform/compress": "0.0.3",
     "@tailwindcss/typography": "^0.5.12",
     "@types/js-yaml": "^4.0.9",
     "@types/lodash.merge": "^4.6.9",
-    "@typescript-eslint/eslint-plugin": "^7.5.0",
-    "@typescript-eslint/parser": "^7.5.0",
-    "@playform/compress": "0.0.3",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
+    "astro-eslint-parser": "^0.17.0",
     "eslint": "^8.57.0",
-    "eslint-plugin-astro": "^0.33.1",
+    "eslint-plugin-astro": "^0.34.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "js-yaml": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
@@ -48,9 +54,7 @@
     "sharp": "0.33.3",
     "tailwind-merge": "^2.2.2",
     "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.3"
-  },
-  "engines": {
-    "node": ">=18.14.1"
+    "typescript": "^5.4.4",
+    "typescript-eslint": "^7.6.0"
   }
 }
