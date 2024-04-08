@@ -14,7 +14,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier -w .",
-    "lint:eslint": "eslint . --ext .js,.ts,.astro"
+    "lint:eslint": "eslint ."
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.5",
@@ -42,9 +42,10 @@
     "@typescript-eslint/eslint-plugin": "^7.6.0",
     "@typescript-eslint/parser": "^7.6.0",
     "astro-eslint-parser": "^0.17.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "eslint-plugin-astro": "^0.34.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
+    "globals": "^15.0.0",
     "js-yaml": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
     "prettier": "^3.2.5",
