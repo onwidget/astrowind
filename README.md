@@ -3,7 +3,7 @@
   <a href="mailto:miq_qedquinn@yahoo.com" target="_blank">Matthias Quinn</a>
 </h2>
 <div align="center">
-  <img alt="Demo" src="./Images/Quinn_Recent Picture.jpeg" />
+  <img alt="AstroWind" src="src/assets/images/hero-image.png" />
 </div>
 
 <br/>
