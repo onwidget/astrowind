@@ -1,0 +1,71 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Image from '~/components/common/Image.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import { Fragment } from 'astro/compiler-runtime';
+
+const metadata = {
+  title: 'Resume',
+};
+
+const image = {
+  src: '/Images/xkcd - Machine Learning Joke.png',
+  alt: 'Hero Image',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero -->
+  <Hero tagline="Resume" title="Breaking Me Down" subtitle="(Not Mentally)" />
+  <div class="relative m-auto max-w-5xl">
+    {
+      typeof image === 'string' ? (
+        <Fragment set:html={image} />
+      ) : (
+        <Image
+          class="mx-auto rounded-md w-full"
+          widths={[400, 768, 1024, 2040]}
+          sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+          loading="eager"
+          width={1024}
+          height={1024}
+          {...image}
+        />
+      )
+    }
+  </div>
+
+  <!-- Features about me -->
+  <Features2
+    title="Proficiencies"
+    subtitle="I have at least 3 years in all of the below skillsets and technologies."
+    columns={2}
+    items={[
+      {
+        title: 'Teaching',
+        description:
+          "I enjoy learning and teaching others. I was a graduate assistant at my university during my master's degree and a tutor before that.",
+        icon: 'tabler:pencil',
+      },
+      {
+        title: 'Learning',
+        description: 'I am always learning new things. Take learning how to build this website as an example.',
+        icon: 'tabler:apple',
+      },
+      {
+        title: 'Data Analysis',
+        description:
+          'Analyzing and communicating data and patterns in an effective manner is a skill I have been working on for a long time.',
+        icon: 'tabler:chart-bar',
+      },
+      {
+        title: 'Machine Learning',
+        description:
+          'I have been working with machine learning for a few years now. I have experience with both supervised and unsupervised learning techniques and have seen multiple models through the model lifecycle.',
+        icon: 'tabler:robot',
+      },
+    ]}
+  />
+</Layout>
