@@ -1,0 +1,66 @@
+---
+import type { ItemGrid as Props } from '~/types';
+import { twMerge } from 'tailwind-merge';
+import { Icon } from 'astro-icon/components';
+import Headline from '~/components/ui/Headline.astro';
+
+const { items = [], columns, defaultIcon = '', classes = {} } = Astro.props;
+
+const {
+  container: containerClass = '',
+  panel: panelClass = '',
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+  description: descriptionClass = '',
+  icon: defaultIconClass = 'text-primary',
+  action: actionClass = '',
+  titleClass = {}
+} = classes;
+---
+
+<div
+  class={twMerge(
+    `grid mx-auto gap-8 md:gap-y-12 ${
+      columns === 4
+        ? 'lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2'
+        : columns === 3
+        ? 'lg:grid-cols-3 sm:grid-cols-2'
+        : columns === 2
+        ? 'sm:grid-cols-2 '
+        : ''
+    }`,
+    containerClass
+  )}
+>
+
+<Headline title={title} subtitle={subtitle} classes={titleClass?.headline as Record<string, string>} />
+
+  {items.map(({ image, title, description, icon, callToAction, classes: itemClasses = {} }) => (
+    <div>
+      <div class={twMerge('flex flex-col max-w-md', panelClass, itemClasses?.panel)}>
+        <div class="flex justify-center">
+          {image && <img src={image} alt={title} class="w-full" style="width:200px;height:200px;overflow:hidden"/>}
+        </div>
+        <div class="mt-2">
+          {title && <h3 class={twMerge('text-xl font-bold text-center', itemClasses?.title)}>{title}</h3>}
+          {description && (
+            <p
+              class={twMerge(`${title ? 'mt-3' : ''} text-muted text-center`, descriptionClass, itemClasses?.description)}
+              set:html={description}
+            />
+          )}
+          {callToAction && (
+            <div
+              class={twMerge(
+                `${title || description ? 'mt-3' : ''}`,
+                actionClass,
+                itemClasses?.actionClass
+              )}
+            >
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>

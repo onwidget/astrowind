@@ -4,7 +4,10 @@ import Hero from '~/components/widgets/Hero.astro';
 import Image from '~/components/common/Image.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
 import { Fragment } from 'astro/compiler-runtime';
+import Steps from '~/components/widgets/Steps.astro';
+import Photos from '~/components/widgets/Photos.astro';
 
 const metadata = {
   title: 'Resume',
@@ -37,10 +40,10 @@ const image = {
     }
   </div>
 
-  <!-- Features about me -->
+  <!-- General Proficiencies: -->
   <Features2
-    title="Proficiencies"
-    subtitle="I have at least 3 years in all of the below skillsets and technologies."
+    title="General Proficiencies"
+    subtitle="I try to exemplify these skillsets within my everyday life."
     columns={2}
     items={[
       {
@@ -68,4 +71,44 @@ const image = {
       },
     ]}
   />
+
+  <Photos
+    title="Technical Proficiencies"
+    items={[
+      {
+        image: '/Images/Python-Logo.png',
+        title: 'Python',
+        description: 'Best',
+        callToAction: {}
+      },
+      {
+        image: '/Images/R-Logo.png',
+        title: 'R',
+        description: 'Better',
+        callToAction: {}
+      },
+      {
+        image: '/Images/SQL-Logo.png',
+        title: 'SQL',
+        description: 'Most Important',
+        callToAction: {}
+      },
+      {
+        image: '/Images/AWS-Logo.jpg',
+        title: 'AWS',
+        description: 'Most Novel',
+        callToAction: {}
+      }
+    ]}
+    columns={4}
+    classes={{
+      container: 'my-container-class',
+      panel: 'my-panel-class',
+      title: 'bold',
+      description: 'my-description-class',
+      icon: 'my-icon-class',
+      action: 'my-action-class',
+    }}
+  />
+
 </Layout>
