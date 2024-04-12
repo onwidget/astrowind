@@ -1,12 +1,11 @@
 import fs from 'node:fs';
 import os from 'node:os';
 
-import yaml from 'js-yaml';
-
 import configBuilder from "./utils/configBuilder"
+import loadConfig from './utils/loadConfig';
 
-const tasksIntegration = () => {
-  let config;
+const tasksIntegration = ({ config: _themeConfig = 'src/config.yaml' } = {}) => {
+  let cfg;
   return {
     name: 'AstroWind:tasks',
 
@@ -26,8 +25,8 @@ const tasksIntegration = () => {
         const virtualModuleId = 'astrowind:config';
         const resolvedVirtualModuleId = '\0' + virtualModuleId;
 
-        const fileConfig = yaml.load(fs.readFileSync('src/config.yaml', 'utf8'));
-        const { SITE, I18N, METADATA, APP_BLOG, UI, ANALYTICS } = configBuilder(fileConfig);
+        const rawJsonConfig = await loadConfig(_themeConfig);
+        const { SITE, I18N, METADATA, APP_BLOG, UI, ANALYTICS } = configBuilder(rawJsonConfig);
 
         updateConfig({
           site: SITE.site,
@@ -61,12 +60,16 @@ const tasksIntegration = () => {
           },
         });
 
-        addWatchFile(new URL('./src/config.yaml', config.root));
+        if (typeof _themeConfig === "string") {
+          addWatchFile(new URL(_themeConfig, config.root));
 
-        buildLogger.info("Astrowind `src/config.yaml` has been loaded.")
+          buildLogger.info(`Astrowind \`${_themeConfig}\` has been loaded.`)
+        } else {
+          buildLogger.info(`Astrowind config has been loaded.`)
+        }
       },
-      'astro:config:done': async ({ config: cfg }) => {
-        config = cfg;
+      'astro:config:done': async ({ config }) => {
+        cfg = config;
       },
 
       'astro:build:done': async ({ logger }) => {
@@ -75,21 +78,21 @@ const tasksIntegration = () => {
         buildLogger.info("Updating `robots.txt` with `sitemap-index.xml` ...")
 
         try {
-          const outDir = config.outDir;
-          const publicDir = config.publicDir;
+          const outDir = cfg.outDir;
+          const publicDir = cfg.publicDir;
           const sitemapName = 'sitemap-index.xml';
           const sitemapFile = new URL(sitemapName, outDir);
           const robotsTxtFile = new URL('robots.txt', publicDir);
           const robotsTxtFileInOut = new URL('robots.txt', outDir);
 
           const hasIntegration =
-            Array.isArray(config?.integrations) &&
-            config.integrations?.find((e) => e?.name === '@astrojs/sitemap') !== undefined;
+            Array.isArray(cfg?.integrations) &&
+            cfg.integrations?.find((e) => e?.name === '@astrojs/sitemap') !== undefined;
           const sitemapExists = fs.existsSync(sitemapFile);
 
           if (hasIntegration && sitemapExists) {
             const robotsTxt = fs.readFileSync(robotsTxtFile, { encoding: 'utf8', flags: 'a+' });
-            const sitemapUrl = new URL(sitemapName, String(new URL(config.base, config.site)));
+            const sitemapUrl = new URL(sitemapName, String(new URL(cfg.base, cfg.site)));
             const pattern = /^Sitemap:(.*)$/m;
 
             if (!pattern.test(robotsTxt)) {

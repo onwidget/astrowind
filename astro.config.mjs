@@ -69,7 +69,9 @@ export default defineConfig({
       Logger: 1,
     }),
 
-    astrowind(),
+    astrowind({
+      config: "./src/config.yaml"
+    }),
   ],
 
   image: {
