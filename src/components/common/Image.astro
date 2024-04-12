@@ -4,15 +4,16 @@ import {
   getImagesOptimized,
   astroAsseetsOptimizer,
   unpicOptimizer,
+  isUnpicCompatible,
   type ImageProps,
-  type AttributesProps
+  type AttributesProps,
 } from '~/utils/images-optimization';
 
 type Props = ImageProps;
 type ImageType = {
   src: string;
   attributes: AttributesProps;
-}
+};
 
 const props = Astro.props;
 
@@ -40,13 +41,21 @@ const _image = await findImage(props.src);
 
 let image: ImageType | undefined = undefined;
 
-if (_image !== null && typeof _image === 'object') {
-  image = await getImagesOptimized(_image, props, astroAsseetsOptimizer);
-} else if (typeof _image === 'string' && (_image.startsWith('http://') || _image.startsWith('https://'))) {
+if (
+  typeof _image === 'string' &&
+  (_image.startsWith('http://') || _image.startsWith('https://')) &&
+  isUnpicCompatible(_image)
+) {
   image = await getImagesOptimized(_image, props, unpicOptimizer);
 } else if (_image) {
-  image = await getImagesOptimized(_image, props);
+  image = await getImagesOptimized(_image, props, astroAsseetsOptimizer);
 }
 ---
 
-{!image ? <Fragment /> : <img src={image.src} crossorigin="anonymous" referrerpolicy="no-referrer" {...image.attributes} />}
+{
+  !image ? (
+    <Fragment />
+  ) : (
+    <img src={image.src} crossorigin="anonymous" referrerpolicy="no-referrer" {...image.attributes} />
+  )
+}

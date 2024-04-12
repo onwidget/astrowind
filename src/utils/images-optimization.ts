@@ -210,20 +210,24 @@ const getBreakpoints = ({
 };
 
 /* ** */
-export const astroAsseetsOptimizer: ImagesOptimizer = async (image, breakpoints) => {
-  if (!image || typeof image === 'string') {
+export const astroAsseetsOptimizer: ImagesOptimizer = async (image, breakpoints, width, height) => {
+  if (!image) {
     return [];
   }
 
   return Promise.all(
     breakpoints.map(async (w: number) => {
-      const url = (await getImage({ src: image, width: w })).src;
+      const url = (await getImage({ src: image, width: w, inferSize: true })).src;
       return {
         src: url,
         width: w,
       };
     })
   );
+};
+
+export const isUnpicCompatible = (image: string) => {
+  return typeof parseUrl(image) !== 'undefined';
 };
 
 /* ** */
