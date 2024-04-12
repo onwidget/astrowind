@@ -118,10 +118,11 @@ import { UI } from 'astrowind:config';
 
     function applyHeaderStylesOnScroll() {
       const header = document.querySelector('#header[data-aw-sticky-header]');
+      if (!header) return;
       if (lastKnownScrollPosition > 60 && !header.classList.contains('scroll')) {
-        document.getElementById('header').classList.add('scroll');
+        header.classList.add('scroll');
       } else if (lastKnownScrollPosition <= 60 && header.classList.contains('scroll')) {
-        document.getElementById('header').classList.remove('scroll');
+        header.classList.remove('scroll');
       }
       ticking = false;
     }
