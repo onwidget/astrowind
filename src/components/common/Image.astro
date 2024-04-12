@@ -49,4 +49,4 @@ if (_image !== null && typeof _image === 'object') {
 }
 ---
 
-{!image ? <Fragment /> : <img src={image.src} {...image.attributes} />}
+{!image ? <Fragment /> : <img src={image.src} crossorigin="anonymous" referrerpolicy="no-referrer" {...image.attributes} />}
