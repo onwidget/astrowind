@@ -323,13 +323,7 @@
                     "bgPage",
                     "primary",
                     "secondary",
-                    "accent",
-                    "info",
-                    "success",
-                    "warning",
-                    "error",
-                    "link",
-                    "linkActive"
+                    "accent"
                   ]
                 },
                 "fonts": {
@@ -403,13 +397,7 @@
                     "bgPage",
                     "primary",
                     "secondary",
-                    "accent",
-                    "info",
-                    "success",
-                    "warning",
-                    "error",
-                    "link",
-                    "linkActive"
+                    "accent"
                   ]
                 },
                 "fonts": {
