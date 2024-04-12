@@ -1,11 +1,11 @@
 {
   "name": "@onwidget/astrowind",
-  "version": "1.0.0-beta.26",
+  "version": "1.0.0-beta.27",
   "description": "AstroWind: A free template using Astro 4.0 and Tailwind CSS. Astro starter theme.",
   "type": "module",
   "private": true,
   "engines": {
-    "node": ">=18.14.1"
+    "node": "^18.17.1 || ^20.3.0 || >= 21.0.0"
   },
   "scripts": {
     "dev": "astro dev",
@@ -23,19 +23,19 @@
     "@astrolib/analytics": "^0.5.0",
     "@astrolib/seo": "^1.0.0-beta.5",
     "@fontsource-variable/inter": "^5.0.17",
-    "astro": "^4.5.18",
+    "astro": "^4.6.1",
     "astro-icon": "^1.1.0",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
     "unpic": "^3.18.0"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^2.2.4",
+    "@astrojs/mdx": "^2.3.0",
     "@astrojs/partytown": "^2.0.4",
     "@astrojs/tailwind": "5.1.0",
     "@eslint/js": "^9.0.0",
     "@iconify-json/flat-color-icons": "^1.1.10",
-    "@iconify-json/tabler": "^1.1.109",
+    "@iconify-json/tabler": "^1.1.110",
     "@playform/compress": "0.0.3",
     "@tailwindcss/typography": "^0.5.12",
     "@types/js-yaml": "^4.0.9",
