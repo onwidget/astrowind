@@ -42,7 +42,29 @@ export const getCanonical = (path = ''): string | URL => {
 export const getPermalink = (slug = '', type = 'page'): string => {
   let permalink: string;
 
+  if (
+    slug.startsWith('https://') ||
+    slug.startsWith('http://') ||
+    slug.startsWith('://') ||
+    slug.startsWith('#') ||
+    slug.startsWith('javascript:')
+  ) {
+    return slug;
+  }
+
   switch (type) {
+    case 'home':
+      permalink = getHomePermalink();
+      break;
+
+    case 'blog':
+      permalink = getBlogPermalink();
+      break;
+
+    case 'asset':
+      permalink = getAsset(slug);
+      break;
+
     case 'category':
       permalink = createPath(CATEGORY_BASE, trimSlash(slug));
       break;
@@ -80,3 +102,33 @@ export const getAsset = (path: string): string =>
 
 /** */
 const definitivePermalink = (permalink: string): string => createPath(BASE_PATHNAME, permalink);
+
+/** */
+export const applyGetPermalinks = (menu: object = {}) => {
+  if (Array.isArray(menu)) {
+    return menu.map((item) => applyGetPermalinks(item));
+  } else if (typeof menu === 'object' && menu !== null) {
+    const obj = {};
+    for (let key in menu) {
+      if (key === 'href') {
+        if (typeof menu[key] === 'string') {
+          obj[key] = getPermalink(menu[key]);
+        } else if (typeof menu[key] === 'object') {
+          if (menu[key].type === 'home') {
+            obj[key] = getHomePermalink();
+          } else if (menu[key].type === 'blog') {
+            obj[key] = getBlogPermalink();
+          } else if (menu[key].type === 'asset') {
+            obj[key] = getAsset(menu[key].url);
+          } else if (menu[key].url) {
+            obj[key] = getPermalink(menu[key].url, menu[key].type);
+          }
+        }
+      } else {
+        obj[key] = applyGetPermalinks(menu[key]);
+      }
+    }
+    return obj;
+  }
+  return menu;
+};
