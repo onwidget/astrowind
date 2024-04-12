@@ -34,14 +34,17 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
         <div class="mb-2">
           <a class="inline-block font-bold text-xl" href={getHomePermalink()}>{SITE?.name}</a>
         </div>
-        <div class="text-sm text-muted">
+        <div class="text-sm text-muted flex gap-1">
           {
-            secondaryLinks.map(({ text, href }) => (
+            secondaryLinks.map(({ text, href }, index) => (
+              <>
+              {index !== 0 ? ' · ' : ''}
               <a
-                class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out mr-2 rtl:mr-0 rtl:ml-2"
+                class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
                 href={href}
                 set:html={text}
               />
+              </>
             ))
           }
         </div>
