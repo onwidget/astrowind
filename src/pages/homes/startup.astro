@@ -11,7 +11,7 @@ import Features3 from '~/components/widgets/Features3.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Brands from '~/components/widgets/Brands.astro';
 
-import YoutubeVideo from '~/components/common/YoutubeVideo.astro';
+import { YouTube } from '@astro-community/astro-embed-youtube';
 
 const metadata = {
   title: 'Startup Landing Page',
@@ -46,7 +46,8 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="image">
-      <YoutubeVideo videoId="gxBkghlglTg" title="Astro just Launched.... Could it be the ultimate web framework?" />
+      <YouTube id="gxBkghlglTg" title="Astro just Launched.... Could it be the ultimate web framework?" />
+      <style is:inline>lite-youtube { margin: 0 auto; max-width: 100%; }</style>
     </Fragment>
   </Hero>
 
