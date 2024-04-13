@@ -1,6 +1,6 @@
 {
   "name": "@onwidget/astrowind",
-  "version": "1.0.0-beta.27",
+  "version": "1.0.0-beta.28",
   "description": "AstroWind: A free template using Astro 4.0 and Tailwind CSS. Astro starter theme.",
   "type": "module",
   "private": true,
@@ -17,13 +17,13 @@
     "lint:eslint": "eslint ."
   },
   "dependencies": {
-    "@astro-community/astro-embed-youtube": "^0.5.2",
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.2",
     "@astrolib/analytics": "^0.5.0",
     "@astrolib/seo": "^1.0.0-beta.5",
     "@fontsource-variable/inter": "^5.0.17",
     "astro": "^4.6.1",
+    "astro-embed": "^0.7.1",
     "astro-icon": "^1.1.0",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
