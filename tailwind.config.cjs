@@ -13,8 +13,6 @@ module.exports = {
         background: 'var(--aw-color-background)',
         'on-background': 'var(--aw-color-on-background)',
         'on-background-muted': 'var(--aw-color-on-background-muted)',
-
-        muted: 'var(--aw-color-text-muted)' /* TODO: remove later */,
       },
       fontFamily: {
         sans: ['var(--aw-font-sans, ui-sans-serif)', ...defaultTheme.fontFamily.sans],

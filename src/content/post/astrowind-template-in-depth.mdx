@@ -198,8 +198,8 @@ const { subtitle = await Astro.slots.render('subtitle') } = Astro.props;
 ---
 
 //...
-{subtitle && <p class="text-xl text-muted dark:text-slate-400" set:html={subtitle} />}
- //...
+{subtitle && <p class="text-xl text-on-background-muted" set:html={subtitle} />}
+//...
 ```
 
 There's a lot to wrap your head around, here.

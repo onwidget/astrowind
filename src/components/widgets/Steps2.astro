@@ -30,7 +30,7 @@ const {
         classes={{
           container: 'text-center md:text-left rtl:md:text-right mb-4 md:mb-8',
           title: 'mb-4 text-3xl lg:text-4xl font-bold font-heading',
-          subtitle: 'mb-8 text-xl text-muted dark:text-slate-400',
+          subtitle: 'mb-8 text-xl text-on-background-muted',
           // ...((classes?.headline as {}) ?? {}),
         }}
       />
@@ -60,7 +60,7 @@ const {
                   </div>
                   <div class="pl-4 rtl:pl-0 rtl:pr-4">
                     <h3 class="mb-4 text-xl font-semibold font-heading" set:html={title2} />
-                    <p class="text-muted dark:text-gray-400" set:html={description} />
+                    <p class="text-on-background-muted" set:html={description} />
                   </div>
                 </li>
               ))
