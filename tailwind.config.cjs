@@ -7,9 +7,16 @@ module.exports = {
     extend: {
       colors: {
         primary: 'var(--aw-color-primary)',
+        'on-primary': 'var(--aw-color-on-primary)',
         secondary: 'var(--aw-color-secondary)',
+        'on-secondary': 'var(--aw-color-on-secondary)',
         accent: 'var(--aw-color-accent)',
-        default: 'var(--aw-color-text-default)',
+        'on-accent': 'var(--aw-color-on-accent)',
+        background: 'var(--aw-color-background)',
+        'on-background': 'var(--aw-color-on-background)',
+        'on-background-muted': 'var(--aw-color-on-background-muted)',
+
+        default: 'var(--aw-color-text-default)' /* TODO: remove later */,
         muted: 'var(--aw-color-text-muted)',
       },
       fontFamily: {
