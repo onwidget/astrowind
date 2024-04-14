@@ -64,8 +64,8 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
               <>
                 {' '}
                 ·{' '}
-                <a class="capitalize hover:underline" href={getPermalink(post.category, 'category')}>
-                  {post.category.replaceAll('-', ' ')}
+                <a class="hover:underline" href={getPermalink(post.category.slug, 'category')}>
+                  {post.category.title}
                 </a>
               </>
             )
@@ -87,8 +87,14 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
     </header>
 
     {post.excerpt && <p class="flex-grow text-muted dark:text-slate-400 text-lg">{post.excerpt}</p>}
-    <footer class="mt-5">
-      <PostTags tags={post.tags} />
-    </footer>
+    {
+      post.tags && Array.isArray(post.tags) ? (
+        <footer class="mt-5">
+          <PostTags tags={post.tags} />
+        </footer>
+      ) : (
+        <Fragment />
+      )
+    }
   </div>
 </article>

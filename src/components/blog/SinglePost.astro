@@ -40,8 +40,8 @@ const { Content } = post;
               <>
                 {' '}
                 ·{' '}
-                <a class="capitalize hover:underline inline-block" href={getPermalink(post.category, 'category')}>
-                  {post.category.replaceAll('-', ' ')}
+                <a class="hover:underline inline-block" href={getPermalink(post.category.slug, 'category')}>
+                  {post.category.title}
                 </a>
               </>
             )

@@ -24,9 +24,9 @@ export interface Post {
   image?: ImageMetadata | string;
 
   /**  */
-  category?: string;
+  category?: Taxonomy
   /**  */
-  tags?: Array<string>;
+  tags?: Taxonomy[];
   /**  */
   author?: string;
 
@@ -42,6 +42,11 @@ export interface Post {
 
   /**  */
   readingTime?: number;
+}
+
+export interface Taxonomy {
+  slug: string;
+  title: string;
 }
 
 export interface MetaData {

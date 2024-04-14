@@ -13,14 +13,14 @@ export const getStaticPaths = (async ({ paginate }) => {
   return await getStaticPathsBlogCategory({ paginate });
 }) satisfies GetStaticPaths;
 
-type Props = InferGetStaticPropsType<typeof getStaticPaths> & { category: string };
+type Props = InferGetStaticPropsType<typeof getStaticPaths> & { category: Record<string, string> };
 
 const { page, category } = Astro.props as Props;
 
 const currentPage = page.currentPage ?? 1;
 
 const metadata = {
-  title: `Category '${category}' ${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
+  title: `Category '${category.title}' ${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
   robots: {
     index: blogCategoryRobots?.index,
     follow: blogCategoryRobots?.follow,
@@ -30,7 +30,7 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-    <Headline><span class="capitalize">{category.replaceAll('-', ' ')}</span></Headline>
+    <Headline>{category.title}</Headline>
     <BlogList posts={page.data} />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
   </section>
