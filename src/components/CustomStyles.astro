@@ -27,7 +27,6 @@ import '@fontsource-variable/inter';
     --aw-default-font-heading: 'InterVariable';
 
     /* light default tokens */
-
     --aw-color-light-primary: rgb(1 97 239);
     --aw-color-light-on-primary: rgb(255, 255, 255);
     --aw-color-light-accent: rgb(109 40 217);
@@ -36,6 +35,7 @@ import '@fontsource-variable/inter';
     --aw-color-light-on-background: rgb(16 16 16);
     --aw-color-light-on-background-muted: rgb(16 16 16 / 66%);
 
+    /* dark default tokens */
     --aw-color-dark-primary: rgb(1 97 239);
     --aw-color-dark-on-primary: rgb(255, 255, 255);
     --aw-color-dark-accent: rgb(109 40 217);
@@ -45,18 +45,11 @@ import '@fontsource-variable/inter';
     --aw-color-dark-on-background-muted: rgb(229 236 246 / 66%);
   }
 
-  /* light theme */
-
+  /* default light theme */
   :root {
     --aw-font-sans: var(--aw-default-font-sans);
     --aw-font-serif: var(--aw-default-font-serif);
     --aw-font-heading: var(--aw-default-font-heading);
-
-    --aw-color-primary: red;
-    --aw-color-accent: red;
-    --aw-color-text-default: red;
-    --aw-color-bg-page: red;
-    --aw-color-bg-page-dark: red;
 
     --aw-color-primary: var(--aw-color-light-primary);
     --aw-color-on-primary: var(--aw-color-light-on-primary);
@@ -70,19 +63,9 @@ import '@fontsource-variable/inter';
       background-color: var(--aw-color-on-accent);
     }
   }
+
   /* dark theme */
-
   .dark {
-    --aw-font-sans: 'InterVariable';
-    --aw-font-serif: 'InterVariable';
-    --aw-font-heading: 'InterVariable';
-
-    --aw-color-primary: red; /* TODO: remove later */
-    --aw-color-accent: red;
-    --aw-color-text-default: red;
-    --aw-color-bg-page: red;
-    --aw-color-bg-page-dark: red;
-
     --aw-color-primary: var(--aw-color-dark-primary);
     --aw-color-on-primary: var(--aw-color-dark-on-primary);
     --aw-color-accent: var(--aw-color-dark-accent);
@@ -97,11 +80,8 @@ import '@fontsource-variable/inter';
     }
   }
 
+  /* light theme */
   .light {
-    --aw-color-text-default: red;
-    --aw-color-bg-page: red;
-    --aw-color-bg-page-dark: red;
-
     --aw-color-primary: var(--aw-color-light-primary);
     --aw-color-on-primary: var(--aw-color-light-on-primary);
     --aw-color-accent: var(--aw-color-light-accent);
