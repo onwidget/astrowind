@@ -100,29 +100,6 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   };
 };
 
-const getRandomizedPosts = (array: Post[], num: number) => {
-  const newArray: Post[] = [];
-
-  while (newArray.length < num && array.length > 0) {
-    const randomIndex = Math.floor(Math.random() * array.length);
-    newArray.push(array[randomIndex]);
-    array.splice(randomIndex, 1);
-  }
-
-  return newArray;
-};
-
-function hasMatchingTaxonomies(
-  arr1?: Taxonomy[],
-  arr2?: Taxonomy[]
-): boolean {
-  if (!arr1 || !arr2) {
-    return false;
-  }
-  const slugsSet = new Set(arr1.map((item) => item.slug));
-  return arr2.some((item) => slugsSet.has(item.slug));
-}
-
 const load = async function (): Promise<Array<Post>> {
   const posts = await getCollection('post');
   const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
@@ -245,7 +222,10 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
   const posts = await fetchPosts();
   const tags = {};
   posts.map((post) => {
-    Array.isArray(post.tags) && post.tags.map((tag) => { tags[tag?.slug] = tag; });
+    Array.isArray(post.tags) &&
+      post.tags.map((tag) => {
+        tags[tag?.slug] = tag;
+      });
   });
 
   return Array.from(Object.keys(tags)).flatMap((tagSlug) =>
@@ -261,21 +241,38 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
 };
 
 /** */
-export function getRelatedPosts(allPosts: Post[], currentSlug: string, currentTags: Array<Taxonomy>) {
-  if (!isBlogEnabled || !isRelatedPostsEnabled) return [];
+export async function getRelatedPosts(originalPost: Post, maxResults: number = 4): Promise<Post[]> {
+  const allPosts = await fetchPosts();
+  const originalTagsSet = new Set(originalPost.tags ? originalPost.tags.map(tag => tag.slug) : []);
 
-  const relatedPosts = getRandomizedPosts(
-    allPosts.filter((post) => post.slug !== currentSlug && hasMatchingTaxonomies(post.tags, currentTags)),
-    APP_BLOG.relatedPostsCount
-  );
+  const postsWithScores = allPosts.reduce((acc: { post: Post; score: number }[], iteratedPost: Post) => {
+    if (iteratedPost.slug === originalPost.slug) return acc;
 
-  if (relatedPosts.length < APP_BLOG.relatedPostsCount) {
-    const morePosts = getRandomizedPosts(
-      allPosts.filter((post) => post.slug !== currentSlug && hasMatchingTaxonomies(post.tags, currentTags)),
-      APP_BLOG.relatedPostsCount - relatedPosts.length
-    );
-    relatedPosts.push(...morePosts);
+    let score = 0;
+    if (iteratedPost.category && originalPost.category && iteratedPost.category.slug === originalPost.category.slug) {
+      score += 5;
+    }
+
+    if (iteratedPost.tags) {
+      iteratedPost.tags.forEach(tag => {
+        if (originalTagsSet.has(tag.slug)) {
+          score += 1;
+        }
+      });
+    }
+
+    acc.push({ post: iteratedPost, score });
+    return acc;
+  }, []);
+
+  postsWithScores.sort((a, b) => b.score - a.score);
+
+  const selectedPosts: Post[] = [];
+  let i = 0;
+  while (selectedPosts.length < maxResults && i < postsWithScores.length) {
+    selectedPosts.push(postsWithScores[i].post);
+    i++;
   }
 
-  return relatedPosts;
+  return selectedPosts;
 }

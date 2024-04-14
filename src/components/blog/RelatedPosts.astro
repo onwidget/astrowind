@@ -11,8 +11,8 @@ export interface Props {
 }
 
 const { post } = Astro.props;
-const fetchedPosts = await fetchPosts();
-const relatedPosts = post.tags ? getRelatedPosts(fetchedPosts, post.slug, post.tags) : [];
+
+const relatedPosts = post.tags ? await getRelatedPosts(post, 4) : [];
 ---
 
 {
