@@ -140,7 +140,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
           {
             showRssFeed && (
               <a
-                class="text-on-background-muted focus:outline-none focus:ring-4 rounded-lg text-sm p-2.5 inline-flex items-center"
+                class="text-on-background-muted hover:bg-slate-50 dark:hover:bg-slate-800 focus:outline-none focus:ring-4 rounded-lg text-sm p-2.5 inline-flex items-center"
                 aria-label="RSS Feed"
                 href={getAsset('/rss.xml')}
               >

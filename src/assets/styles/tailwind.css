@@ -8,11 +8,11 @@
   }
 
   .btn-primary {
-    @apply btn font-semibold bg-primary text-on-primary border-primary;
+    @apply btn font-semibold bg-primary text-on-primary hover:brightness-90 border-primary;
   }
 
   .btn-outline {
-    @apply btn;
+    @apply btn hover:bg-slate-50 dark:hover:bg-slate-800;
   }
 }
 #header.scroll > div:first-child {
