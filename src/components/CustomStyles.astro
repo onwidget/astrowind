@@ -17,14 +17,22 @@ import '@fontsource-variable/inter';
 // Oswald
 // 'Space Grotesk'
 // Urbanist
-
 ---
 
 <style is:inline>
+  /* tokens */
   :root {
-    --aw-font-sans: 'InterVariable';
-    --aw-font-serif: 'InterVariable';
-    --aw-font-heading: 'InterVariable';
+    --aw-default-font-sans: 'InterVariable';
+    --aw-default-font-serif: 'InterVariable';
+    --aw-default-font-heading: 'InterVariable';
+  }
+
+  /* light theme */
+
+  :root {
+    --aw-font-sans: var(--aw-default-font-sans);
+    --aw-font-serif: var(--aw-default-font-serif);
+    --aw-font-heading: var(--aw-default-font-heading);
 
     --aw-color-primary: rgb(1 97 239);
     --aw-color-secondary: rgb(1 84 207);
@@ -41,6 +49,7 @@ import '@fontsource-variable/inter';
       background-color: lavender;
     }
   }
+  /* dark theme */
 
   .dark {
     --aw-font-sans: 'InterVariable';
