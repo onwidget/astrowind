@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 import type { CallToAction as Props } from '~/types';
 
 const {
-  variant = 'secondary',
+  variant = 'outline',
   target,
   text = Astro.slots.render('default'),
   icon = '',
@@ -15,7 +15,7 @@ const {
 
 const variants = {
   primary: 'btn-primary',
-  secondary: 'btn-secondary',
+  outline: 'btn-outline',
   tertiary: 'btn btn-tertiary',
   link: 'cursor-pointer hover:text-primary',
 };

@@ -7,13 +7,12 @@ import Image from '~/components/common/Image.astro';
 import { findImage } from '~/utils/images';
 import { getPermalink } from '~/utils/permalinks';
 
-
 export interface Props {
   post: Post;
 }
 
 const { post } = Astro.props;
-const image = (await findImage(post.image));
+const image = await findImage(post.image);
 ---
 
 <article class="mb-6 transition">
