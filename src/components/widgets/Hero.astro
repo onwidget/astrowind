@@ -30,21 +30,17 @@ const {
     <div class="pt-0 md:pt-[76px] pointer-events-none"></div>
     <div class="py-12 md:py-20">
       <div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">
-        {
-          tagline && (
-            <p class="text-base text-primary dark:text-blue-200 font-bold tracking-wide uppercase" set:html={tagline} />
-          )
-        }
+        {tagline && <p class="text-base text-primary font-bold tracking-wide uppercase" set:html={tagline} />}
         {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
+              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading "
               set:html={title}
             />
           )
         }
         <div class="max-w-3xl mx-auto">
-          {subtitle && <p class="text-xl  mb-6 text-on-background-muted" set:html={subtitle} />}
+          {subtitle && <p class="text-xl mb-6 text-on-background-muted" set:html={subtitle} />}
           {
             actions && (
               <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
