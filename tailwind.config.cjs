@@ -16,8 +16,7 @@ module.exports = {
         'on-background': 'var(--aw-color-on-background)',
         'on-background-muted': 'var(--aw-color-on-background-muted)',
 
-        default: 'var(--aw-color-text-default)' /* TODO: remove later */,
-        muted: 'var(--aw-color-text-muted)',
+        muted: 'var(--aw-color-text-muted)' /* TODO: remove later */,
       },
       fontFamily: {
         sans: ['var(--aw-font-sans, ui-sans-serif)', ...defaultTheme.fontFamily.sans],

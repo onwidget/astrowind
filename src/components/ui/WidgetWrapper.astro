@@ -1,15 +1,15 @@
 ---
-import type { HTMLTag } from "astro/types";
-import type { Widget } from "~/types";
-import { twMerge } from "tailwind-merge";
-import Background from "./Background.astro";
+import type { HTMLTag } from 'astro/types';
+import type { Widget } from '~/types';
+import { twMerge } from 'tailwind-merge';
+import Background from './Background.astro';
 
 export interface Props extends Widget {
   containerClass?: string;
-  ["as"]?: HTMLTag;
+  ['as']?: HTMLTag;
 }
 
-const { id, isDark = false, containerClass = "", bg, as = "section" } = Astro.props;
+const { id, isDark = false, containerClass = '', bg, as = 'section' } = Astro.props;
 
 const WrapperTag = as;
 ---
@@ -22,7 +22,7 @@ const WrapperTag = as;
   </div>
   <div
     class:list={[
-      twMerge("relative mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default", containerClass),
+      twMerge('relative mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 lg:py-20 text-on-background', containerClass),
       { dark: isDark },
     ]}
   >
