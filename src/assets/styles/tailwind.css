@@ -60,6 +60,8 @@
   padding: 0 5px;
 }
 
+.dropdown:focus .dropdown-menu,
+.dropdown:focus-within .dropdown-menu,
 .dropdown:hover .dropdown-menu {
   display: block;
 }
