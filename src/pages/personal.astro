@@ -1,0 +1,224 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Header from '~/components/widgets/Header.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Steps from '~/components/widgets/Steps.astro';
+const QuinnHeadshotImage = '~/assets/images/Quinn_Recent Picture.jpeg';
+
+import { getPermalink } from '../utils/permalinks';
+
+const metadata = {
+  title: 'Personal Portfolio',
+};
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="announcement"></Fragment>
+  <Fragment slot="header">
+    <Header
+      links={[
+        { text: 'Home', href: getPermalink('/') },
+        { text: 'About', href: '#about' },
+        { text: 'Resume', href: '#resume' },
+        { text: 'Github', href: 'https://github.com/N3uralN3twork' },
+      ]}
+      actions={[
+        {
+          text: 'Howdy!',
+          href: '#',
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+
+  <!-- Hero2 Widget ******************* -->
+
+  <Hero
+    id="hero"
+    title="Matthias Quinn"
+    tagline="Personal Portfolio"
+    actions={[{ variant: 'primary', target: '_blank', text: 'Say Hello', href: '/' }]}
+  >
+    <Fragment slot="subtitle">
+      I am an analytically minded developer with 5 years of experience in data analysis and 2 years of experience in
+      model building. I hold a Master of Science in mathematics with a specialization in statistics, where I created
+      software in Python for analyzing the validity of clustering models.
+    </Fragment>
+  </Hero>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="about"
+    columns={3}
+    items={[
+      {
+        icon: 'tabler:brand-linkedin',
+        callToAction: {
+          target: '_blank',
+          text: 'LinkedIn',
+          href: 'https://www.linkedin.com/in/matthiasquinn',
+        },
+      },
+      {
+        icon: 'tabler:brand-github',
+        callToAction: {
+          target: '_blank',
+          text: 'Github',
+          href: 'https://github.com/N3uralN3twork',
+        },
+      },
+      {
+        icon: 'tabler:mail',
+        callToAction: {
+          target: '_blank',
+          text: 'Email',
+          href: 'mailto:miq_qedquinn@yahoo.com',
+        },
+      },
+    ]}
+    image={{
+      src: QuinnHeadshotImage,
+      alt: 'Personal Image',
+      loading: 'eager',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About Me</h2>
+      <p>I am currently a data scientist working in the insurance industry.</p>
+      <br />
+      <p>
+        I have a passion for data analysis and model building. I am always looking for new ways to improve my skills and
+        learn new technologies.
+      </p>
+      <br />
+      <p>Check out the links below if you want to reach out to me!</p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    id="resume"
+    title="Work experience"
+    items={[
+      {
+        title:
+          'Senior Data Scientist <br /> <span class="font-normal">Progressive Insurance - Mayfield, OH</span> <br /> <span class="text-sm font-normal">Feb. 2023 - Present</span>',
+        description: `•	Lead architect of multiple production models to explain and make underwriting decisions. <br />
+                      •	Developed a model to predict the likelihood of a claim being fraudulent. <br />
+                      •	Oversaw modelling projects from inception to deployment and communication. <br />`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Data Analyst <br /> <span class="font-normal">Progressive Insurance - Mayfield, OH</span> <br /> <span class="text-sm font-normal">2021 - Feb. 2023</span>',
+        description: `•	Utilized applied statistics to quantify project-specific effects on claims. <br />
+                      •	Reviewed large amounts of data across multiple sources to determine operational impacts and recommended actions. <br />
+                      •	Developed and modelled internal metrics using SQL, Python, Tableau, and PowerBI.`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title: `Graduate Assistant <br /> <span class="font-normal">Cleveland State University - Cleveland, OH</span> <br /> <span class="text-sm font-normal">Aug. 2019 - Jul. 2021</span>`,
+        description: `•	Provided walk-in tutoring for statistics courses at all levels at C.S.U. <br />
+                      •	Utilized different teaching strategies to best assist student clientele.`,
+        icon: 'tabler:backpack',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    id="resume"
+    title="Education"
+    items={[
+      {
+        title: `Master of Science in Mathematics and Statistics <br /> <span class="font-normal">Cleveland State University</span> <br /> <span class="text-sm font-normal">2020 - 2021</span>`,
+        icon: 'tabler:school',
+      },
+      {
+        title: `Bachelor of Arts in Finance <br /> <span class="font-normal">Cleveland State University</span> <br /> <span class="text-sm font-normal">2016 - 2020</span>`,
+        icon: 'tabler:school',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    title="Skills"
+    subtitle="All of these skillsets are built through years of experience and a passion for learning."
+    columns={3}
+    defaultIcon="tabler:point-filled"
+    items={[
+      {
+        title: 'Data Analysis',
+        description: 'Being able to tell a story with data.',
+      },
+      {
+        title: 'Data Science',
+        description: 'Going from ideation to production with models.',
+      },
+      {
+        title: 'Effectively Communicating Processes and Results',
+        description: 'Being able to explain complex processes in a manner adept to the audience.',
+      },
+      {
+        title: 'Python',
+        description: 'Proficient in Python for data analysis and model building.',
+      },
+      {
+        title: 'R',
+        description: 'Knowledgeable in R for statistical analysis and data visualization.',
+      },
+      {
+        title: 'Tableau',
+        description: 'Proficient in Tableau for data visualization and dashboard creation.',
+      },
+      {
+        title: 'React.js',
+        description: 'Fairly new to React and other JS frameworks, but they look cool.',
+      },
+      {
+        title: 'SQL',
+        description: 'Garbage In, Garbage Out. SQL is the backbone of data analysis and science.',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <!-- Testimonials Widget *********** -->
+
+  <Testimonials />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    title="Let's Work Together!"
+    subtitle="Who needs subtitles?"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Inquire Within',
+        href: '/',
+      },
+    ]}
+  />
+
+  <!-- BlogLatestPost Widget **************** -->
+</Layout>

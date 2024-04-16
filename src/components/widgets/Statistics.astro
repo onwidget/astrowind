@@ -1,0 +1,330 @@
+---
+const {
+  image,
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+} = Astro.props;
+---
+
+<li class="cs-faq-item active=False">
+  <button class="cs-button">
+    <img
+      class="cs-icon"
+      aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+      src={image}
+      alt="icon"
+      width="32"
+      height="32"
+    />
+    <span class="cs-button-text">{title}</span>
+    <span class="cs-indicator" aria-hidden="true"></span>
+  </button>
+  <p class="cs-item-p">{subtitle}</p>
+</li>
+
+<style>
+/*-- -------------------------- -->
+<---         Services           -->
+<--- -------------------------- -*/
+
+  /* Mobile - 360px */
+  @media only screen and (min-width: 0rem) {
+     {
+      padding: var(--sectionPadding);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+     .cs-container {
+      width: 100%;
+      /* changes to 1280px at small desktop */
+      max-width: 36.5rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* 40px - 64px */
+      gap: clamp(2.5rem, 3.9vw, 4rem);
+    }
+     .cs-image-group {
+      width: 100%;
+      height: auto;
+      margin: 0;
+      position: relative;
+    }
+     .cs-picture {
+      width: 100%;
+      min-height: 20.5rem;
+      display: block;
+      position: relative;
+    }
+     .cs-picture img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+     .cs-floater {
+      width: clamp(20.125rem, 40vw, 28.1875rem);
+      height: clamp(20.1875rem, 40vw, 28.25rem);
+      position: absolute;
+      bottom: 0rem;
+      z-index: 1;
+      mix-blend-mode: soft-light;
+    }
+     .cs-content {
+      text-align: left;
+      width: 100%;
+      max-width: 40.625rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      flex: none;
+    }
+     .cs-title {
+      /* 16px - 24px */
+      margin: 0 0 clamp(1rem, 1.96vw, 1.5rem) 0;
+    }
+     .cs-text {
+      /* 16px - 24px */
+      margin: 0 0 clamp(1rem, 1.96vw, 1.5rem) 0;
+    }
+     .cs-faq-group {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      /* 16px - 20px */
+      gap: clamp(1rem, 2.4vw, 1.25rem);
+    }
+     .cs-faq-item {
+      list-style: none;
+      width: 100%;
+      padding: 0;
+      box-sizing: border-box;
+      transition: border-bottom 0.3s;
+    }
+     .cs-faq-item.active .cs-indicator:before {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+     .cs-faq-item.active .cs-indicator:after {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+     .cs-faq-item.active .cs-item-p {
+      height: auto;
+      padding-top: 1rem;
+      opacity: 1;
+      transform: scaleY(1);
+    }
+     .cs-faq-item:hover {
+      cursor: pointer;
+    }
+     .cs-button {
+      /* 16px - 20px */
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      line-height: 1.2em;
+      text-align: left;
+      font-weight: bold;
+      width: 100%;
+      padding: 1rem 1rem 0 1rem;
+      border-color: cyan;
+      background: transparent;
+      color: var(--headerColor);
+      overflow: hidden;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      /* 16px - 24px */
+      gap: clamp(1rem, 2.5vw, 1.5rem);
+      position: relative;
+      transition:
+        background-color 0.3s,
+        color 0.3s;
+    }
+     .cs-button:hover {
+      cursor: pointer;
+    }
+     .cs-indicator {
+      width: 1.5rem;
+      height: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+     .cs-indicator:before {
+      /* left line */
+      content: '';
+      width: 1rem;
+      height: 0.125rem;
+      background-color: #767676;
+      opacity: 1;
+      border-radius: 2px;
+      position: absolute;
+      display: block;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.5s;
+    }
+     .cs-indicator:after {
+      /* right line */
+      content: '';
+      width: 1rem;
+      height: 0.125rem;
+      background-color: #767676;
+      opacity: 1;
+      border-radius: 2px;
+      position: absolute;
+      display: block;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(90deg);
+      transition: transform 0.5s;
+    }
+     .cs-button-text {
+      width: 90%;
+      padding: 0;
+      display: block;
+    }
+     .cs-item-p {
+      font-size: 0.875rem;
+      line-height: 1.5em;
+      width: 100%;
+      max-width: none;
+      height: 0;
+      margin: 0;
+      /* 16px - 24px */
+      padding: 0 1rem 1rem 1rem;
+      /* prevents padding and border from affecting height and width */
+      box-sizing: border-box;
+      opacity: 0;
+      color: var(--bodyTextColor);
+      /* clips the text so it doesn't show up */
+      overflow: hidden;
+      position: relative;
+      transition:
+        opacity 0.3s,
+        padding-bottom 0.3s,
+        padding-top 0.3s;
+    }
+     .cs-icon {
+      width: 2rem;
+      height: 2rem;
+      display: block;
+    }
+     .cs-button-solid {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+      text-align: center;
+      text-decoration: none;
+      width: clamp(11.625rem, 23vw, 13.625rem);
+      /* 28px - 40px */
+      margin: clamp(1.75rem, 3.9vw, 2.5rem) 0 0 0;
+      /* prevents padding from affecting height and width */
+      box-sizing: border-box;
+      padding: 0 1.5rem;
+      color: #fff;
+      background-color: var(--primary);
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+    }
+     .cs-button-solid:before {
+      content: '';
+      width: 0%;
+      height: 100%;
+      background: #000;
+      opacity: 1;
+      /* add a border radius below this to round corners */
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transition: width 0.3s;
+    }
+     .cs-button-solid:hover:before {
+      width: 100%;
+    }
+  }
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+     .cs-picture {
+      height: 100%;
+      min-width: 36.5rem;
+      width: 48vw;
+      right: 0;
+      top: 0;
+    }
+  }
+  /* Small Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+     .cs-container {
+      max-width: 80rem;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: stretch;
+    }
+     .cs-content {
+      width: 55%;
+    }
+     .cs-image-group {
+      width: 100%;
+      max-width: 33.875rem;
+    }
+     .cs-picture {
+      width: 100%;
+      min-width: 100%;
+    }
+     .cs-floater {
+      width: 28.1875rem;
+      right: clamp(50%, 18vw, 75%);
+      bottom: -6.25rem;
+    }
+  }
+  /* Dark Mode */
+  @media only screen and (min-width: 0rem) {
+    body.dark-mode  {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    body.dark-mode  .cs-title,
+    body.dark-mode  .cs-text,
+    body.dark-mode  .cs-button-text,
+    body.dark-mode  .cs-item-p,
+    body.dark-mode  .cs-h3 {
+      color: var(--bodyTextColorWhite);
+    }
+    body.dark-mode  .cs-faq-item {
+      background-color: rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    body.dark-mode  .cs-faq-item.active {
+      border-color: var(--primary);
+    }
+    body.dark-mode  .cs-faq-item.active .cs-button {
+      color: var(--secondary);
+    }
+    body.dark-mode  .cs-faq-item.active .cs-button:before,
+    body.dark-mode  .cs-faq-item.active .cs-button:after {
+      background-color: var(--secondary);
+    }
+    body.dark-mode  .cs-button {
+      color: var(--bodyTextColorWhite);
+    }
+    body.dark-mode  .cs-button:before,
+    body.dark-mode  .cs-button:after {
+      background-color: var(--bodyTextColorWhite);
+    }
+    body.dark-mode  .cs-floater {
+      opacity: 0.1;
+    }
+  }
+</style>
+

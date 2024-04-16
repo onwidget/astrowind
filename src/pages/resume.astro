@@ -2,12 +2,11 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Image from '~/components/common/Image.astro';
-import Note from '~/components/widgets/Note.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-import Features3 from '~/components/widgets/Features3.astro';
 import { Fragment } from 'astro/compiler-runtime';
-import Steps from '~/components/widgets/Steps.astro';
-import Photos from '~/components/widgets/Photos.astro';
+import { twMerge } from 'tailwind-merge';
+import Statistics from '~/components/widgets/Statistics.astro';
+import Steps3 from '~/components/widgets/Steps3.astro';
 
 const metadata = {
   title: 'Resume',
@@ -72,43 +71,361 @@ const image = {
     ]}
   />
 
-  <Photos
-    title="Technical Proficiencies"
-    items={[
-      {
-        image: '/Images/Python-Logo.png',
-        title: 'Python',
-        description: 'Best',
-        callToAction: {}
-      },
-      {
-        image: '/Images/R-Logo.png',
-        title: 'R',
-        description: 'Better',
-        callToAction: {}
-      },
-      {
-        image: '/Images/SQL-Logo.png',
-        title: 'SQL',
-        description: 'Most Important',
-        callToAction: {}
-      },
-      {
-        image: '/Images/AWS-Logo.jpg',
-        title: 'AWS',
-        description: 'Most Novel',
-        callToAction: {}
-      }
-    ]}
-    columns={4}
-    classes={{
-      container: 'my-container-class',
-      panel: 'my-panel-class',
-      title: 'bold',
-      description: 'my-description-class',
-      icon: 'my-icon-class',
-      action: 'my-action-class',
-    }}
-  />
-
+  <!-- Technical Proficiencies: -->
+  <section id="services-1666">
+    <h2
+      class={twMerge(
+        'font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl',
+        'text-3xl md:text-4xl text-center mb-8'
+      )}
+    >
+      Technical Proficiencies
+    </h2>
+    <div class="cs-container">
+      <div class="cs-image-group">
+        <picture class="cs-picture">
+          <!--Mobile Image-->
+          <source media="(max-width: 600px)" srcset="/Images/Technical Skills Photo.jpg" />
+          <!--Tablet and above Image-->
+          <source media="(min-width: 601px)" srcset="/Images/Technical Skills Photo.jpg" />
+          <img
+            loading="lazy"
+            decoding="async"
+            src="/Images/Technical-Skills-Logo.png"
+            alt="people standing"
+            width="605"
+            height="690"
+          />
+        </picture>
+      </div>
+      <div class="cs-content">
+        <p class="cs-text">
+          I have experience with a variety of tools and languages. Here are a few of the most important ones that I use
+          on a daily basis. I have at least 2 years experience with all of the following tools and languages.
+        </p>
+        <ul class="cs-faq-group">
+          <Statistics image="/Images/Python-Logo.png" title="Python" subtitle="Best" />
+          <Statistics image="/Images/R-Logo.png" title="R" subtitle="Better" />
+          <Statistics image="/Images/SQL-Logo.png" title="SQL" subtitle="Most Important" />
+          <Statistics image="/Images/AWS-Logo.jpg" title="AWS" subtitle="Most Novel" />
+        </ul>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  /*-- -------------------------- -->
+<---         Services           -->
+<--- -------------------------- -*/
+
+  /* Mobile - 360px */
+  @media only screen and (min-width: 0rem) {
+    #services-1666 {
+      padding: var(--sectionPadding);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    #services-1666 .cs-container {
+      width: 100%;
+      /* changes to 1280px at small desktop */
+      max-width: 36.5rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* 40px - 64px */
+      gap: clamp(2.5rem, 3.9vw, 4rem);
+    }
+    #services-1666 .cs-image-group {
+      width: 100%;
+      height: auto;
+      margin: 0;
+      position: relative;
+    }
+    #services-1666 .cs-picture {
+      width: 100%;
+      min-height: 20.5rem;
+      display: block;
+      position: relative;
+    }
+    #services-1666 .cs-picture img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #services-1666 .cs-floater {
+      width: clamp(20.125rem, 40vw, 28.1875rem);
+      height: clamp(20.1875rem, 40vw, 28.25rem);
+      position: absolute;
+      bottom: 0rem;
+      z-index: 1;
+      mix-blend-mode: soft-light;
+    }
+    #services-1666 .cs-content {
+      text-align: left;
+      width: 100%;
+      max-width: 40.625rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      flex: none;
+    }
+    #services-1666 .cs-title {
+      /* 16px - 24px */
+      margin: 0 0 clamp(1rem, 1.96vw, 1.5rem) 0;
+    }
+    #services-1666 .cs-text {
+      /* 16px - 24px */
+      margin: 0 0 clamp(1rem, 1.96vw, 1.5rem) 0;
+    }
+    #services-1666 .cs-faq-group {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      /* 16px - 20px */
+      gap: clamp(1rem, 2.4vw, 1.25rem);
+    }
+    #services-1666 .cs-faq-item {
+      list-style: none;
+      width: 100%;
+      background-color: transparent;
+      border: 1px solid #e8e8e8;
+      padding: 0;
+      box-sizing: border-box;
+      transition: border-bottom 0.3s;
+    }
+    #services-1666 .cs-faq-item.active .cs-indicator:before {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+    #services-1666 .cs-faq-item.active .cs-indicator:after {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    #services-1666 .cs-faq-item.active .cs-item-p {
+      height: auto;
+      padding-top: 1rem;
+      opacity: 1;
+      transform: scaleY(1);
+    }
+    #services-1666 .cs-faq-item:hover {
+      cursor: pointer;
+    }
+    #services-1666 .cs-button {
+      /* 16px - 20px */
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      line-height: 1.2em;
+      text-align: left;
+      font-weight: bold;
+      width: 100%;
+      padding: 1rem 1rem 0 1rem;
+      border: none;
+      background: transparent;
+      color: var(--headerColor);
+      overflow: hidden;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      /* 16px - 24px */
+      gap: clamp(1rem, 2.5vw, 1.5rem);
+      position: relative;
+      transition:
+        background-color 0.3s,
+        color 0.3s;
+    }
+    #services-1666 .cs-button:hover {
+      cursor: pointer;
+    }
+    #services-1666 .cs-indicator {
+      width: 1.5rem;
+      height: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    #services-1666 .cs-indicator:before {
+      /* left line */
+      content: '';
+      width: 1rem;
+      height: 0.125rem;
+      background-color: #767676;
+      opacity: 1;
+      border-radius: 2px;
+      position: absolute;
+      display: block;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.5s;
+    }
+    #services-1666 .cs-indicator:after {
+      /* right line */
+      content: '';
+      width: 1rem;
+      height: 0.125rem;
+      background-color: #767676;
+      opacity: 1;
+      border-radius: 2px;
+      position: absolute;
+      display: block;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(90deg);
+      transition: transform 0.5s;
+    }
+    #services-1666 .cs-button-text {
+      width: 90%;
+      padding: 0;
+      display: block;
+    }
+    #services-1666 .cs-item-p {
+      font-size: 0.875rem;
+      line-height: 1.5em;
+      width: 100%;
+      max-width: none;
+      height: 0;
+      margin: 0;
+      /* 16px - 24px */
+      padding: 0 1rem 1rem 1rem;
+      /* prevents padding and border from affecting height and width */
+      box-sizing: border-box;
+      opacity: 0;
+      color: var(--bodyTextColor);
+      /* clips the text so it doesn't show up */
+      overflow: hidden;
+      position: relative;
+      transition:
+        opacity 0.3s,
+        padding-bottom 0.3s,
+        padding-top 0.3s;
+    }
+    #services-1666 .cs-icon {
+      width: 2rem;
+      height: 2rem;
+      display: block;
+    }
+    #services-1666 .cs-button-solid {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+      text-align: center;
+      text-decoration: none;
+      width: clamp(11.625rem, 23vw, 13.625rem);
+      /* 28px - 40px */
+      margin: clamp(1.75rem, 3.9vw, 2.5rem) 0 0 0;
+      /* prevents padding from affecting height and width */
+      box-sizing: border-box;
+      padding: 0 1.5rem;
+      color: #fff;
+      background-color: var(--primary);
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+    }
+    #services-1666 .cs-button-solid:before {
+      content: '';
+      width: 0%;
+      height: 100%;
+      background: #000;
+      opacity: 1;
+      /* add a border radius below this to round corners */
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transition: width 0.3s;
+    }
+    #services-1666 .cs-button-solid:hover:before {
+      width: 100%;
+    }
+  }
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+    #services-1666 .cs-picture {
+      height: 100%;
+      min-width: 36.5rem;
+      width: 48vw;
+      right: 0;
+      top: 0;
+    }
+  }
+  /* Small Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+    #services-1666 .cs-container {
+      max-width: 80rem;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: stretch;
+    }
+    #services-1666 .cs-content {
+      width: 55%;
+    }
+    #services-1666 .cs-image-group {
+      width: 100%;
+      max-width: 33.875rem;
+    }
+    #services-1666 .cs-picture {
+      width: 100%;
+      min-width: 100%;
+    }
+    #services-1666 .cs-floater {
+      width: 28.1875rem;
+      right: clamp(50%, 18vw, 75%);
+      bottom: -6.25rem;
+    }
+  }
+  /* Dark Mode */
+  @media only screen and (min-width: 0rem) {
+    body.dark-mode #services-1666 {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    body.dark-mode #services-1666 .cs-title,
+    body.dark-mode #services-1666 .cs-text,
+    body.dark-mode #services-1666 .cs-button-text,
+    body.dark-mode #services-1666 .cs-item-p,
+    body.dark-mode #services-1666 .cs-h3 {
+      color: var(--bodyTextColorWhite);
+    }
+    body.dark-mode #services-1666 .cs-faq-item {
+      background-color: rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    body.dark-mode #services-1666 .cs-faq-item.active {
+      border-color: var(--primary);
+    }
+    body.dark-mode #services-1666 .cs-faq-item.active .cs-button {
+      color: var(--secondary);
+    }
+    body.dark-mode #services-1666 .cs-faq-item.active .cs-button:before,
+    body.dark-mode #services-1666 .cs-faq-item.active .cs-button:after {
+      background-color: var(--secondary);
+    }
+    body.dark-mode #services-1666 .cs-button {
+      color: var(--bodyTextColorWhite);
+    }
+    body.dark-mode #services-1666 .cs-button:before,
+    body.dark-mode #services-1666 .cs-button:after {
+      background-color: var(--bodyTextColorWhite);
+    }
+    body.dark-mode #services-1666 .cs-floater {
+      opacity: 0.1;
+    }
+  }
+</style>
+
+<script>
+  const faqItems = Array.from(document.querySelectorAll('.cs-faq-item'));
+  for (const item of faqItems) {
+    const onClick = () => {
+      item.classList.toggle('active');
+    };
+    item.addEventListener('click', onClick);
+  }
+</script>

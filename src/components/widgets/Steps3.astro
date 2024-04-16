@@ -1,0 +1,192 @@
+---
+const {
+  image,
+  title = await Astro.slots.render('title'),
+  subtitle = await Astro.slots.render('subtitle'),
+} = Astro.props;
+---
+
+<li class="cs-item">
+  <picture class="cs-picture">
+    <img
+      class="cs-icon"
+      src={image}
+      alt="icon"
+      width="40"
+      height="40"
+      loading="lazy"
+      decoding="async"
+      aria-hidden="true"
+    />
+  </picture>
+  <h3 class="cs-h3">{title}</h3>
+  <p class="cs-item-p">
+    {subtitle}
+  </p>
+</li>
+
+<style>
+  /*-- -------------------------- -->
+<---           Steps            -->
+<--- -------------------------- -*/
+
+  /* Mobile - 360px */
+  @media only screen and (min-width: 0rem) {
+     {
+      padding: var(--sectionPadding);
+      background-color: #1a1a1a;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+     .cs-container {
+      width: 100%;
+      /* changes to 1280px at desktop */
+      max-width: 44rem;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* 48px - 64px */
+      gap: clamp(3rem, 6vw, 4rem);
+    }
+     .cs-content {
+      /* set text align to left if content needs to be left aligned */
+      text-align: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      /* centers content horizontally, set to flex-start to left align */
+      align-items: center;
+    }
+
+     .cs-topper {
+      color: var(--secondary);
+    }
+     .cs-title,
+     .cs-text {
+      color: var(--bodyTextColorWhite);
+    }
+     .cs-text {
+      opacity: 0.8;
+    }
+     .cs-card-group {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.25rem;
+    }
+     .cs-item {
+      text-align: center;
+      list-style: none;
+      display: flex;
+      grid-column: span 12;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+     .cs-item:last-of-type:after {
+      display: none;
+    }
+     .cs-item:nth-of-type(even):after {
+      /* scaleX -1 flips it horizontally */
+      transform: rotate(-135deg) scaleX(-1);
+    }
+     .cs-item:after {
+      content: '';
+      position: relative;
+      display: block;
+      /* 54px - 84px */
+      width: clamp(3.375rem, 6vw, 5.25rem);
+      height: clamp(3.375rem, 6vw, 5.25rem);
+      margin-top: 1.25rem;
+      background: url('https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons/curved-arrow.svg');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 1;
+      transform: rotate(135deg);
+    }
+     .cs-picture {
+      margin-bottom: 1.5rem;
+      width: 5.5rem;
+      height: 5.5rem;
+      border: 1px solid rgba(255, 252, 243, 0.5);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+     .cs-icon {
+      width: 2.5rem;
+      height: auto;
+      display: block;
+    }
+     .cs-h3 {
+      font-size: 1.25rem;
+      line-height: 1.2em;
+      text-align: inherit;
+      margin: 0 0 0.75rem 0;
+      color: var(--bodyTextColorWhite);
+    }
+     .cs-item-p {
+      font-size: 1rem;
+      line-height: 1.5em;
+      text-align: inherit;
+      max-width: 21.375rem;
+      margin: 0;
+      color: var(--bodyTextColorWhite);
+      opacity: 0.8;
+    }
+     .cs-graphic {
+      width: 52.5rem;
+      height: auto;
+      opacity: 0.05;
+      position: absolute;
+      top: -5rem;
+      left: -5rem;
+      transform: rotate(-10deg);
+    }
+  }
+  /* Tablet - 768px */
+  @media only screen and (min-width: 48rem) {
+     .cs-item {
+      grid-column: span 6;
+    }
+     .cs-item:nth-of-type(2):after {
+      display: none;
+    }
+     .cs-item:nth-of-type(1):after {
+      transform: rotate(135deg) scaleX(-1);
+    }
+     .cs-item:after {
+      margin: 0;
+      position: absolute;
+      right: -2.5rem;
+      top: 0;
+      transform: rotate(45deg);
+    }
+  }
+  /* Desktop - 1024px */
+  @media only screen and (min-width: 64rem) {
+     .cs-container {
+      max-width: 80rem;
+    }
+     .cs-item {
+      grid-column: span 3;
+    }
+     .cs-item:nth-of-type(2):after {
+      display: block;
+      transform: rotate(45deg);
+    }
+     .cs-item:nth-of-type(3):after {
+      display: block;
+      transform: rotate(135deg) scaleX(-1);
+    }
+     .cs-item:after {
+      right: -3rem;
+    }
+  }
+</style>
