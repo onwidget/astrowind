@@ -4,10 +4,10 @@ const { Client } = require('@notionhq/client')
 
 async function main() {
 
-  const notion = new Client({ auth: 'secret_T2lAHd4C2pyGUHg4abEWHS2TrfSPy4xxYiGN0tRs8IC' })
+  const notion = new Client({ auth: 'secret_tpXyBisnVVMgocTJI4hOlj5qHOLuPqejWGHx9KwThEC' })
 
   const pages = await notion.databases.query({
-    database_id: '7b41f133006f439fbe62fc4c3e3422b4',
+    database_id: '50e2767f417b4bd0b640cb366a20add8',
     // Add a filter here.
 
     filter: {

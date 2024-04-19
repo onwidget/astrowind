@@ -109,3 +109,7 @@
 .btn-white {
   background-color: white;
 }
+.btn-gray {
+  background-color: #2B3238;
+  border: 0;
+}
