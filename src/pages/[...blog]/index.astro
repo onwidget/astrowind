@@ -36,7 +36,9 @@ const metadata = merge(
     },
     openGraph: {
       type: 'article',
-      ...(image ? { images: [{ url: image, width: (image as ImageMetadata)?.width, height: (image as ImageMetadata)?.height }] } : {}),
+      ...(image
+        ? { images: [{ url: image, width: (image as ImageMetadata)?.width, height: (image as ImageMetadata)?.height }] }
+        : {}),
     },
   },
   { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
@@ -48,3 +50,11 @@ const metadata = merge(
   <ToBlogLink />
   <RelatedPosts post={post} />
 </Layout>
+
+{/* You must add a stylesheet, else the Katex math will show up twice! */}
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+  integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"
+  crossorigin="anonymous"
+/>

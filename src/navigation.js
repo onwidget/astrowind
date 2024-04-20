@@ -24,17 +24,8 @@ export const headerData = {
       href: getPermalink('/contact'),
     },
     {
-      text: 'Blog',
-      links: [
-        {
-          text: 'Blog List',
-          href: getBlogPermalink(),
-        },
-        {
-          text: 'Article (with MDX)',
-          href: getPermalink('markdown-elements-demo-post', 'post'),
-        },
-      ],
+      text: 'Projects',
+      href: getBlogPermalink(),
     },
   ],
   actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],

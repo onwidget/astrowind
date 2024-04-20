@@ -1,0 +1,151 @@
+---
+author: Matthias Quinn
+title: Naive Bayes
+excerpt: A quick notebook on how to create and interpret naive bayes models.
+image: /Images/NaiveBayesImage.jpg
+publishDate: 2020-01-29T00:00:00Z
+---
+
+[Source](https://uc-r.github.io/naive_bayes)
+
+```r
+library(modeldata)
+library(klaR)
+library(rsample)
+library(dplyr)
+library(caret)
+```
+
+Naive Bayes is a supervised machine learning algorithm base on Bayes Theorem.
+
+Naive because it assumes all of the predictor variables to be completely independent of each other.
+
+Bayes Rule:
+
+$P(A|B) = \frac{P(B|A)P(A)}{P(B}$
+
+- $P(A|B)$: Conditional probability of event A occuring, given event B
+
+- $P(A)$: Probability of event A occuring
+
+- $P(B)$: Probability of event B occuring
+
+- $P(B|A)$: Conditional probability of event B occuring, given event A
+
+In Naive Bayes, there are multiple predictor variables and more than 1 output class.
+
+The objective of a Naive Bayes algorithm is to measure the conditional probability of an event with a feature vector
+
+**Problem Statement:**
+
+Predict employee attrition
+
+```r
+data("attrition")
+attrition <- attrition %>%
+                mutate(JobLevel = factor(JobLevel),
+                       StockOptionLevel = factor(StockOptionLevel),
+                       TrainingTimesLastYear = factor(TrainingTimesLastYear))
+```
+
+Create training (70%) and test (30%) sets and utilize reproducibility.
+
+```r
+set.seed(123)
+split <- initial_split(data = attrition, prop = 0.7, strata = "Attrition")
+
+train <- training(split)
+test  <- testing(split)
+```
+
+Distribution of Attrition rates across train and test sets.
+
+```r
+prop.table(table(train$Attrition))
+
+prop.table(table(test$Attrition))
+```
+
+Notice that they are very similar.
+
+# A Naive Overview
+
+The Naive Bayes classifier is founded on Bayesian probability, which incorporates the concept of conditional probability.
+
+In our attrition data set, we are seeking the probability of an employee belonging to attrition class $C_{k}$ given the predictor variables $x_{1}, x_{2}, ... x_{n}$
+
+A posterior:
+
+$Posterior = \frac{Prior * Likelihood}{Evidence}$
+
+Assumption:
+
+The Naive Bayes classifier assumes that the predictor variables are conditionally **independent** of each other, with no correlation.
+
+An assumption of normality is often used for continuous variables.
+
+But you can see that normality assumption is not always held:
+
+```r
+train %>%
+  select(Age, DailyRate, DistanceFromHome, HourlyRate, MonthlyIncome, MonthlyRate) %>%
+  gather(metric, value) %>%
+  ggplot(aes(value, fill = metric)) +
+  geom_density(show.legend = FALSE) +
+  facet_wrap(~ metric, scales = "free")
+```
+
+## **Advantages and Shortcoming**
+
+The Naive Bayes classifier is simple, fast, and scales well to large n.
+
+A major disadvantage is that it relies on the often-wrong assumption of equally important and independent features.
+
+## **Implementation**
+
+We will utilize the _caret_ package in R.
+
+1. Create response and feature data
+
+```r
+features <- setdiff(names(train), "Attrition")
+x <- train[, features]
+y <- train$Attrition
+```
+
+Initialize 10-fold cross validation using caret's trainControl function.
+
+```r
+trControl <- trainControl(method = "cv", number = 10)
+```
+
+Training the Naive Bayes model:
+
+```r
+nb.fit <- train(
+  x = x,
+  y = y,
+  method = "nb",
+  trControl = trControl
+)
+```
+
+#Confusion Matrix to analyze our results:
+
+```r
+confusionMatrix(nb.fit)
+```
+
+```r
+plot(nb.fit)
+```
+
+To test the accuracy on our test data set:
+
+```r
+preds <- predict(nb.fit, newdata = test)
+```
+
+```r
+confusionMatrix(preds, reference = test$Attrition)
+```

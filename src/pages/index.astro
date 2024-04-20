@@ -4,6 +4,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Stats from '~/components/widgets/Stats.astro';
+import { getPermalink } from '../utils/permalinks';
 
 const metadata = {
   title: 'Quinn - Portfolio Website with Astro + Tailwind CSS',
@@ -19,7 +20,7 @@ const metadata = {
       {
         variant: 'primary',
         text: 'Dive In!',
-        href: '',
+        href: getPermalink('/personal'),
         target: '_blank',
         icon: 'tabler:home-star',
       },
