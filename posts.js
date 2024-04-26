@@ -114,7 +114,7 @@ async function main() {
 
     const content = `---
 publishDate: ${_Date}
-author: Diter Evan
+author: Clery Neyra
 title: ${Title}
 excerpt: ${Excerpt}
 image: ${FeaturedImage}
