@@ -16,7 +16,7 @@ library(dplyr)
 library(caret)
 ```
 
-Naive Bayes is a supervised machine learning algorithm base on Bayes Theorem.
+Naive Bayes is a supervised machine learning algorithm based on Bayes Theorem.
 
 Naive because it assumes all of the predictor variables to be completely independent of each other.
 
@@ -32,7 +32,7 @@ $P(A|B) = \frac{P(B|A)P(A)}{P(B}$
 
 - $P(B|A)$: Conditional probability of event B occuring, given event A
 
-In Naive Bayes, there are multiple predictor variables and more than 1 output class.
+In Naive Bayes, there are multiple predictor variables and more than $1$ output class.
 
 The objective of a Naive Bayes algorithm is to measure the conditional probability of an event with a feature vector
 
@@ -97,7 +97,7 @@ train %>%
 
 ## **Advantages and Shortcoming**
 
-The Naive Bayes classifier is simple, fast, and scales well to large n.
+The Naive Bayes classifier is simple, fast, and scales well to large $N$.
 
 A major disadvantage is that it relies on the often-wrong assumption of equally important and independent features.
 
@@ -130,7 +130,7 @@ nb.fit <- train(
 )
 ```
 
-#Confusion Matrix to analyze our results:
+## **Confusion Matrix to analyze our results:**
 
 ```r
 confusionMatrix(nb.fit)
