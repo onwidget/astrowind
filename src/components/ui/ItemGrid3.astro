@@ -34,7 +34,7 @@ const {
     >
       {items.map(({ title, description, icon, callToAction, classes: itemClasses = {} }, i) => (
         <div>
-          <p class="text-xl text-center">{ i + 1 }</p>
+          <p class="text-xl text-center" style="color: #66A9C2; font-weight: 500;">0{ i + 1 }</p>
           <br/>
 
           <div class={twMerge('flex flex-row max-w-md', panelClass, itemClasses?.panel)}>

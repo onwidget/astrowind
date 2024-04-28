@@ -113,3 +113,11 @@
   background-color: #2B3238;
   border: 0;
 }
+
+
+@import url('https://fonts.cdnfonts.com/css/general-sans');
+
+*{
+  font-family: 'General Sans', sans-serif !important;
+  letter-spacing: 0.0em;
+}
