@@ -23,6 +23,7 @@
     "astro-icon": "^1.1.0",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
+    "notion-to-md": "^3.1.1",
     "typescript-esbuild": "^0.3.10",
     "unpic": "^3.17.0"
   },

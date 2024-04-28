@@ -4,10 +4,10 @@ const { Client } = require('@notionhq/client')
 
 async function main() {
 
-  const notion = new Client({ auth: 'secret_T2lAHd4C2pyGUHg4abEWHS2TrfSPy4xxYiGN0tRs8IC' })
+  const notion = new Client({ auth: 'secret_tpXyBisnVVMgocTJI4hOlj5qHOLuPqejWGHx9KwThEC' })
 
   const pages = await notion.databases.query({
-    database_id: '7b41f133006f439fbe62fc4c3e3422b4',
+    database_id: '50e2767f417b4bd0b640cb366a20add8',
     // Add a filter here.
 
     filter: {
@@ -48,20 +48,42 @@ async function main() {
     _results.forEach(block => {
 
       if(block.type == 'heading_1') {
-
         const heading_1 = block.heading_1.rich_text[0].text.content
-        console.log({ heading_1 })
-
-
+        // console.log({ heading_1 })
         body += "\n" + `## ${heading_1}`
       }
 
+      if(block.type == 'heading_2') {
+        const heading_2 = block.heading_2.rich_text[0].text.content
+        // console.log({ heading_2 })
+        body += "\n" + `## ${heading_2}`
+      }
+
       if(block.type == 'paragraph') {
+        const paragraph = block.paragraph.rich_text[0]?.text.content
+        // console.log({ paragraph })
+        // body += "\n" + `${paragraph || ''}`
 
-        const paragraph = block.paragraph.rich_text[0].text.content
-        console.log({ paragraph })
+        const url = block.paragraph.rich_text[0]?.text.link?.url
 
-        body += "\n" + `${paragraph}`
+        if(url) {
+          body += "\n" + `[${paragraph}](${url})`
+
+        } else {
+          body += "\n" + `${paragraph || ''}`
+        }
+      }
+
+      if(block.type == 'image') {
+        const image = block.image.file.url
+        // console.log({ image })
+        body += "\n" + `![](${image})`
+      }
+
+      if(block.type == 'quote') {
+        const quote = block.quote.rich_text[0].text.content
+        console.log({ quote })
+        body += "\n" + `> ${quote}`
       }
     })
 
@@ -92,7 +114,7 @@ async function main() {
 
     const content = `---
 publishDate: ${_Date}
-author: Diter Evan
+author: Clery Neyra
 title: ${Title}
 excerpt: ${Excerpt}
 image: ${FeaturedImage}
@@ -101,38 +123,7 @@ tags: ${_Tags}
 metadata:
   canonical: https://astrowind.vercel.app/get-started-website-with-astro-tailwind-css
 ---
-
-${body}
-
-### [enlace de prueba](https://www.google.com/)
-
-[enlace de prueba](https://www.google.com/)
-
-este es un nuevo parrafo con un [enlace de prueba](https://www.google.com/) en medio
-
-
-![Target](https://images.unsplash.com/photo-1596008194705-2091cd6764d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1639&q=80)
-
-![](https://images.unsplash.com/photo-1596008194705-2091cd6764d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1639&q=80)
-
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-## Nostra torquent consequat volutpat aliquet neque
-
-Lorem ipsum dolor sit amet consectetur adipiscing elit proin, aenean litora volutpat urna egestas magnis arcu non, cras ut cursus et sed morbi lectus. Integer faucibus sagittis eu nunc urna aliquet a laoreet torquent, suspendisse penatibus nulla sollicitudin congue rutrum dictum. Ornare mi habitasse fermentum phasellus dui et morbi litora sodales dictum id erat, nibh purus class ligula aenean lectus venenatis euismod cras torquent ac. Senectus sagittis conubia hendrerit at egestas porta venenatis nisi metus gravida tempor, aenean facilisis nisl ante facilisi lacus integer hac iaculis purus. Scelerisque libero torquent egestas curae tellus viverra inceptos imperdiet urna, porta suspendisse interdum primis odio morbi tempor commodo dictumst, suscipit ornare habitasse semper feugiat cras quisque lobortis.
-
-## Praesent tellus ad sapien erat or
-
-- Quam orci nostra mi nulla, hac a.
-
-- Interdum iaculis quis tellus sociis orci nulla, quam rutrum conubia tortor primis.
-
-- Non felis sem placerat aenean duis, ornare turpis nostra.
-
-- Habitasse duis sociis sagittis cursus, ante dictumst commodo.
-
-Duis maecenas massa habitasse inceptos imperdiet scelerisque at condimentum ultrices, nam dui leo enim taciti varius cras habitant pretium rhoncus, ut hac euismod nostra metus sagittis mi aenean. Quam eleifend aliquet litora eget a tempor, ultricies integer vestibulum non felis sodales, eros diam massa libero iaculis.`
+${body}`
 
     fs.writeFile(process.cwd() + `/src/content/post/${page.id}.md`, content, err => {
       if (err) {
