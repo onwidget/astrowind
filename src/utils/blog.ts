@@ -243,7 +243,7 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
 /** */
 export async function getRelatedPosts(originalPost: Post, maxResults: number = 4): Promise<Post[]> {
   const allPosts = await fetchPosts();
-  const originalTagsSet = new Set(originalPost.tags ? originalPost.tags.map(tag => tag.slug) : []);
+  const originalTagsSet = new Set(originalPost.tags ? originalPost.tags.map((tag) => tag.slug) : []);
 
   const postsWithScores = allPosts.reduce((acc: { post: Post; score: number }[], iteratedPost: Post) => {
     if (iteratedPost.slug === originalPost.slug) return acc;
@@ -254,7 +254,7 @@ export async function getRelatedPosts(originalPost: Post, maxResults: number = 4
     }
 
     if (iteratedPost.tags) {
-      iteratedPost.tags.forEach(tag => {
+      iteratedPost.tags.forEach((tag) => {
         if (originalTagsSet.has(tag.slug)) {
           score += 1;
         }

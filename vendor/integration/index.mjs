@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 
-import configBuilder from "./utils/configBuilder"
+import configBuilder from './utils/configBuilder';
 import loadConfig from './utils/loadConfig';
 
 const tasksIntegration = ({ config: _themeConfig = 'src/config.yaml' } = {}) => {
@@ -17,10 +17,9 @@ const tasksIntegration = ({ config: _themeConfig = 'src/config.yaml' } = {}) => 
         // isRestart,
         logger,
         updateConfig,
-        addWatchFile
+        addWatchFile,
       }) => {
-
-        const buildLogger = logger.fork("astrowind");
+        const buildLogger = logger.fork('astrowind');
 
         const virtualModuleId = 'astrowind:config';
         const resolvedVirtualModuleId = '\0' + virtualModuleId;
@@ -60,12 +59,12 @@ const tasksIntegration = ({ config: _themeConfig = 'src/config.yaml' } = {}) => 
           },
         });
 
-        if (typeof _themeConfig === "string") {
+        if (typeof _themeConfig === 'string') {
           addWatchFile(new URL(_themeConfig, config.root));
 
-          buildLogger.info(`Astrowind \`${_themeConfig}\` has been loaded.`)
+          buildLogger.info(`Astrowind \`${_themeConfig}\` has been loaded.`);
         } else {
-          buildLogger.info(`Astrowind config has been loaded.`)
+          buildLogger.info(`Astrowind config has been loaded.`);
         }
       },
       'astro:config:done': async ({ config }) => {
@@ -73,9 +72,8 @@ const tasksIntegration = ({ config: _themeConfig = 'src/config.yaml' } = {}) => 
       },
 
       'astro:build:done': async ({ logger }) => {
-
-        const buildLogger = logger.fork("astrowind");
-        buildLogger.info("Updating `robots.txt` with `sitemap-index.xml` ...")
+        const buildLogger = logger.fork('astrowind');
+        buildLogger.info('Updating `robots.txt` with `sitemap-index.xml` ...');
 
         try {
           const outDir = cfg.outDir;

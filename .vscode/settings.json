@@ -1,12 +1,6 @@
 {
   "css.customData": ["./vscode.tailwind.json"],
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "astro",
-    "typescript",
-    "typescriptreact"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "astro", "typescript", "typescriptreact"],
   "files.associations": {
     "*.mdx": "markdown"
   },
