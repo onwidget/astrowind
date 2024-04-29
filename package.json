@@ -21,6 +21,7 @@
     "@fontsource-variable/inter": "^5.0.16",
     "astro": "^4.4.9",
     "astro-icon": "^1.1.0",
+    "imagekit": "^5.0.1",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
     "notion-to-md": "^3.1.1",

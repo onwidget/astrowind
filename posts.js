@@ -2,6 +2,16 @@ const   fs       = require('fs')
 const { Client } = require('@notionhq/client')
 const { NotionToMarkdown } = require("notion-to-md")
 
+
+var ImageKit = require("imagekit");
+
+var imagekit = new ImageKit({
+    publicKey : "public_OuvSlcRRRmZdbD5qCET4m+Gjdno=",
+    privateKey : "private_zBEoQ806Js9/4YyOYlotTVxudho=",
+    urlEndpoint : "https://ik.imagekit.io/cleryneyra/"
+});
+
+
 async function main() {
 
   const notion = new Client({ auth: 'secret_tpXyBisnVVMgocTJI4hOlj5qHOLuPqejWGHx9KwThEC' })
@@ -30,17 +40,36 @@ async function main() {
   })
 
 
+  const folder = (new Date()).toLocaleString().replaceAll('/', '-')
+                                              .replaceAll(':', '-')
+                                              .replaceAll(' ', '')
+                                              .replaceAll(',', '-')
+  console.log({ folder })
+
+
   const results = pages.results
 
   results.forEach(async page => {
 
     const mdblocks = await n2m.pageToMarkdown(page.id)
 
-    const mdString = n2m.toMarkdownString(mdblocks);
-    console.log(mdString)
+    const mdString = n2m.toMarkdownString(mdblocks)
+    // console.log(mdString)
 
 
-    const FeaturedImage = page.properties.FeaturedImage.files[0].file?.url  || page.properties.FeaturedImage.files[0].external?.url
+    let FeaturedImage = page.properties.FeaturedImage.files[0].file?.url  || page.properties.FeaturedImage.files[0].external?.url
+
+    const name = FeaturedImage.substring(FeaturedImage.lastIndexOf("/") + 1, FeaturedImage.lastIndexOf("."))
+    console.log({ name })
+
+    const file = await imagekit.upload({
+      file: FeaturedImage,
+      fileName : `${name}.jpg`,
+      folder: '4-29-2024-5-35-38-AM',
+    })
+    console.log(file.url)
+
+    FeaturedImage = file.url
 
     const Title = page.properties.Page.title.map((richText) => richText.plain_text).join('')
 
