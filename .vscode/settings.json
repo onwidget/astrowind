@@ -16,5 +16,6 @@
   },
   "yaml.schemas": {
     "./.vscode/astrowind/config-schema.json": "/src/config.yaml"
-  }
+  },
+  "eslint.experimental.useFlatConfig": true
 }
