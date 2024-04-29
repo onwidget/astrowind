@@ -1,6 +1,6 @@
 {
   "name": "@onwidget/astrowind",
-  "version": "1.0.0-beta.32",
+  "version": "1.0.0-beta.33",
   "description": "AstroWind: A free template using Astro 4.0 and Tailwind CSS. Astro starter theme.",
   "type": "module",
   "private": true,
@@ -38,6 +38,7 @@
     "@iconify-json/tabler": "^1.1.110",
     "@playform/compress": "0.0.3",
     "@tailwindcss/typography": "^0.5.13",
+    "@types/eslint__js": "^8.42.3",
     "@types/js-yaml": "^4.0.9",
     "@types/lodash.merge": "^4.6.9",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
