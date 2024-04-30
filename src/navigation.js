@@ -10,13 +10,13 @@ export const headerData = {
       text: 'Blog',
       href: '/blog',
     },
-    {
-      text: 'Portafolio',
-      href: '/',
-    },
+    // {
+    //   text: 'Portafolio',
+    //   href: '/',
+    // },
     {
       text: 'Sobre mí',
-      href: '/',
+      href: '/sobre-mi',
     },
     {
       text: 'Contáctame',
