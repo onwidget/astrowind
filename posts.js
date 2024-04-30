@@ -1,25 +1,22 @@
-const   fs       = require('fs')
-const { Client } = require('@notionhq/client')
+const   fs                 = require('fs')
+const { Client }           = require('@notionhq/client')
 const { NotionToMarkdown } = require("notion-to-md")
+const   ImageKit           = require("imagekit")
 
-
-var ImageKit = require("imagekit");
-
-var imagekit = new ImageKit({
+const imagekit = new ImageKit({
     publicKey : "public_OuvSlcRRRmZdbD5qCET4m+Gjdno=",
     privateKey : "private_zBEoQ806Js9/4YyOYlotTVxudho=",
-    urlEndpoint : "https://ik.imagekit.io/cleryneyra/"
-});
+    urlEndpoint : "https://ik.imagekit.io/cleryneyra/",
+})
+
+const notion = new Client({ auth: 'secret_tpXyBisnVVMgocTJI4hOlj5qHOLuPqejWGHx9KwThEC' })
+const n2m    = new NotionToMarkdown({ notionClient: notion })
 
 
 async function main() {
 
-  const notion = new Client({ auth: 'secret_tpXyBisnVVMgocTJI4hOlj5qHOLuPqejWGHx9KwThEC' })
-  const n2m = new NotionToMarkdown({ notionClient: notion })
-
   const pages = await notion.databases.query({
     database_id: '50e2767f417b4bd0b640cb366a20add8',
-    // Add a filter here.
 
     filter: {
       and: [
@@ -44,14 +41,46 @@ async function main() {
                                               .replaceAll(':', '-')
                                               .replaceAll(' ', '')
                                               .replaceAll(',', '-')
-  console.log({ folder })
+  // console.log({ folder })
 
 
-  const results = pages.results
-
-  results.forEach(async page => {
+  for(page of pages.results) {
 
     const mdblocks = await n2m.pageToMarkdown(page.id)
+
+    for (block of mdblocks) {
+
+      if(block.type == 'image') {
+
+        const parent = block.parent
+        // console.log({ parent })
+
+        const url = parent.match(/!\[.*?\]\((.*?)\)/)[1]
+        // console.log({ url })
+
+        const name = url.substring(url.lastIndexOf("/") + 1, url.lastIndexOf("."))
+        // console.log({ name })
+
+        const i = parent.indexOf('(')
+        // console.log({ i })
+
+        const file = await imagekit.upload({
+          file: url,
+          fileName : `${name}.jpg`,
+          folder: folder,
+        })
+        // console.log({file})
+
+        const newUrl = file.url
+        // console.log({ newUrl })
+
+        const newParent = parent.substring(0, i + 1) + newUrl + ')'
+        // console.log({ newParent })
+
+        block.parent = newParent
+        // console.log('')
+      }
+    }
 
     const mdString = n2m.toMarkdownString(mdblocks)
     // console.log(mdString)
@@ -60,14 +89,14 @@ async function main() {
     let FeaturedImage = page.properties.FeaturedImage.files[0].file?.url  || page.properties.FeaturedImage.files[0].external?.url
 
     const name = FeaturedImage.substring(FeaturedImage.lastIndexOf("/") + 1, FeaturedImage.lastIndexOf("."))
-    console.log({ name })
+    // console.log({ name })
 
     const file = await imagekit.upload({
       file: FeaturedImage,
       fileName : `${name}.jpg`,
-      folder: '4-29-2024-5-35-38-AM',
+      folder: folder,
     })
-    console.log(file.url)
+    // console.log(file.url)
 
     FeaturedImage = file.url
 
@@ -105,7 +134,7 @@ ${mdString.parent}`
       }
     })
 
-  })
+  }
 }
 
 main()
