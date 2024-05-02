@@ -15,7 +15,7 @@
     "astro": "astro",
     "format": "prettier -w .",
     "lint:eslint": "eslint .",
-    "prepare": "husky"
+    "prepare": "is-ci || husky"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.5",
@@ -50,6 +50,7 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "globals": "^15.0.0",
     "husky": "^9.0.11",
+    "is-ci": "^3.0.1",
     "js-yaml": "^4.1.0",
     "lint-staged": "^15.2.2",
     "mdast-util-to-string": "^4.0.0",
