@@ -1,34 +1,34 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: MS Foam
+  site: 'https://msfoam.id'
   base: '/'
   trailingSlash: false
 
-  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
+  googleSiteVerificationId: QNqHg2XhwxyaIcuZlhwTegdr482MN0NUkT7YfZDJa
 
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Pabrik Busa Tangerang & Jakarta | MS Foam
+    template: '%s — MS Foam'
+  description: "Pabrik busa berkualitas ekspor dengan ukuran standar dan custom. Pelayanan premium dan pengiriman cepat."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Multi Sukses Foam
     images:
-      - url: '~/assets/images/default.png'
+      - url: '~/assets/images/msfoam-hero.webp'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
+    handle: '@msfoam_id'
+    site: '@msfoam_id'
     cardType: summary_large_image
 
 i18n:
-  language: en
+  language: id
   textDirection: ltr
 
 apps:
