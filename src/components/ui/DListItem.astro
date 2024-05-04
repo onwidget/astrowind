@@ -10,14 +10,13 @@
 // closing tags - it's simply contained in an enclosing div with a
 // margin left.  No need for 'dd' items.
 //
-const {
-  dt
-} = Astro.props;
+const { dt } = Astro.props;
 interface Props {
-  dt:string
+  dt: string;
 }
 
-const content:string = await Astro.slots.render('default');
+const content: string = await Astro.slots.render('default');
 ---
-<h6 set:html={dt}></h6>
-<div class="dd ml-8" set:html={content}/>
+
+<h6 set:html={dt} />
+<div class="dd ml-8" set:html={content} />

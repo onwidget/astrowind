@@ -48,7 +48,7 @@ const {
                       <span class="text-base leading-6 lowercase text-gray-600 dark:text-slate-400">{period}</span>
                     </div>
                     {items && (
-                      <ul role="list" class="my-8 md:my-10 space-y-2 text-left">
+                      <ul class="my-8 md:my-10 space-y-2 text-left">
                         {items.map(
                           ({ description, icon }) =>
                             description && (
@@ -68,7 +68,8 @@ const {
                       {typeof callToAction === 'string' ? (
                         <Fragment set:html={callToAction} />
                       ) : (
-                        callToAction && callToAction.href && <Button {...hasRibbon ? { variant:'primary' } : {}} {...callToAction}/>
+                        callToAction &&
+                        callToAction.href && <Button {...(hasRibbon ? { variant: 'primary' } : {})} {...callToAction} />
                       )}
                     </div>
                   )}
