@@ -4,10 +4,10 @@ import os from 'node:os';
 import configBuilder from './utils/configBuilder';
 import loadConfig from './utils/loadConfig';
 
-const tasksIntegration = ({ config: _themeConfig = 'src/config.yaml' } = {}) => {
+export default ({ config: _themeConfig = 'src/config.yaml' } = {}) => {
   let cfg;
   return {
-    name: 'AstroWind:tasks',
+    name: 'astrowind-integration',
 
     hooks: {
       'astro:config:setup': async ({
@@ -112,5 +112,3 @@ const tasksIntegration = ({ config: _themeConfig = 'src/config.yaml' } = {}) => 
     },
   };
 };
-
-export default tasksIntegration;
