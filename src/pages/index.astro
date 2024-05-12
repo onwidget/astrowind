@@ -1,18 +1,26 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-
-import Hero from '~/components/widgets/Hero.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Main from '~/components/widgets/Main.astro';
 import { faqData } from '~/data';
+import Layout from '~/layouts/PageLayout.astro';
 const metadata = {
   title: 'Restorative Bodywork',
   ignoreTitleTemplate: true,
 };
+
+export interface Props {
+  image?: string | any; // TODO: find HTMLElementProps
+}
+
+const { image = await Astro.slots.render('image') } = Astro.props;
+debugger;
+console.log(image);
 ---
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
-
+  <Main image={{ src: '~/assets/images/logo/ResBodWork-logo-color.png', alt: 'Restorative Bodywork Logo' }} />
   <Hero
     actions={[
       {
@@ -21,23 +29,24 @@ const metadata = {
         href: 'https://my-business-restorativebodyworkatx.square.site/',
         icon: 'tabler:calendar-plus',
       },
-      { text: 'Our services', href: '/services', class: 'lg:hidden flex w-full'},
+      { text: 'Our services', href: '/services', class: 'lg:hidden flex w-full' },
       { text: 'Contact Information & Location', href: '/contact', class: 'lg:hidden flex w-full' },
     ]}
     image={{ src: '~/assets/images/closeups/hands-back1.jpeg', alt: 'Restorative Bodywork Hero' }}
   >
     <Fragment slot="title">Restorative Bodywork</Fragment>
-
+    <!-- src/assets/images/logo/ResBodWork-logo-color.png -->
     <Fragment slot="subtitle">
       <span class="sm:inline text-black">
-        Revitalize your well-being with <span class="font-semibold">Restorative Bodywork</span> - located at <span class="font-semibold">
+        Revitalize your well-being with <span class="font-semibold">Restorative Bodywork</span> - located at <span
+          class="font-semibold"
+        >
           <a href="https://www.google.com/maps?q=2111+Dickson+Drive+%2314,+Austin,+TX+78704"
             >2111 Dicken Drive #14, Austin, TX 78704</a
           ></span
-        > in South Austin. Where tranquility meets
-        therapeutic excellence.<span class="block mb-1 text-black text-sm"
-        > By appointment only.</span
-      >
+        > in South Austin. Where tranquility meets therapeutic excellence.<span class="block mb-1 text-black text-sm">
+          By appointment only.</span
+        >
       </span>
     </Fragment>
   </Hero>
