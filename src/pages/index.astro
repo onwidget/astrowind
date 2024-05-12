@@ -9,18 +9,15 @@ const metadata = {
   ignoreTitleTemplate: true,
 };
 
-export interface Props {
-  image?: string | any; // TODO: find HTMLElementProps
-}
+import { headerData } from '~/data';
+import Header from '~/components/widgets/Header.astro';
 
-const { image = await Astro.slots.render('image') } = Astro.props;
-debugger;
-console.log(image);
 ---
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
   <Main image={{ src: '~/assets/images/logo/ResBodWork-logo-color.png', alt: 'Restorative Bodywork Logo' }} />
+  <Header {...headerData} />
   <Hero
     actions={[
       {
@@ -29,14 +26,13 @@ console.log(image);
         href: 'https://my-business-restorativebodyworkatx.square.site/',
         icon: 'tabler:calendar-plus',
       },
-      { text: 'Our services', href: '/services', class: 'lg:hidden flex w-full' },
-      { text: 'Contact Information & Location', href: '/contact', class: 'lg:hidden flex w-full' },
+      // { text: 'Our services', href: '/services', class: 'lg:hidden flex w-full' },
+      // { text: 'Contact Information & Location', href: '/contact', class: 'lg:hidden flex w-full' },
     ]}
     image={{ src: '~/assets/images/closeups/hands-back1.jpeg', alt: 'Restorative Bodywork Hero' }}
   >
-    <Fragment slot="title">Restorative Bodywork</Fragment>
-    <!-- src/assets/images/logo/ResBodWork-logo-color.png -->
-    <Fragment slot="subtitle">
+
+    <!-- <Fragment slot="subtitle">
       <span class="sm:inline text-black">
         Revitalize your well-being with <span class="font-semibold">Restorative Bodywork</span> - located at <span
           class="font-semibold"
@@ -48,21 +44,29 @@ console.log(image);
           By appointment only.</span
         >
       </span>
-    </Fragment>
+    </Fragment> -->
   </Hero>
-
+  <div class="w-full p-8">
+    <h2 class="text-2xl font-semibold mb-4 text-center">Our Rates</h2>
+    <!-- Add your rates content here -->
+    <div class="grid grid-flow-col w-full justify-items-center">
+      <div>60</div>
+      <div>75</div>
+      <div>90</div>
+    </div>
+  </div>
   <!-- Note Widget ******************* -->
 
   <!-- <Note /> -->
 
   <!-- FAQs Widget ******************* -->
 
-  <FAQs
+  <!-- <FAQs
     id="faq"
     title="Frequently Asked Questions"
     subtitle="Questions about your therapeutic experience? Find answers here. If you don't see what you're looking for, please do not hesitate to contact us."
     tagline="FAQs"
     classes={{ container: 'max-w-6xl' }}
     items={[...faqData]}
-  />
+  /> -->
 </Layout>

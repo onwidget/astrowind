@@ -60,15 +60,16 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
   <div class="absolute inset-0"></div>
   <div
     class:list={[
-      "relative text-default py-3 px-3 md:px-6 mx-auto w-full md:flex md:justify-between",
+      "text-default py-3 px-3 md:px-6 mx-auto w-full md:flex md:justify-between",
       {
         "max-w-7xl": !isFullWidth,
       },
     ]}
   >
     <div class:list={[{ "mr-auto rtl:mr-0 rtl:ml-auto": position === "right" }, "flex justify-between"]}>
-      <a class="flex items-center" href={getHomePermalink()}>
-        <Logo />
+      <a class="flex md:hidden items-center text-[#3d785c] text-xl font-bold" href={getHomePermalink()}>
+        <!-- <Logo /> -->
+        Restorative Bodywork ATX
       </a>
       <div class="flex items-center md:hidden">
         <ToggleMenu />
@@ -108,7 +109,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
               ) : (
                 <a
                   class:list={[
-                    "hover:text-link dark:hover:text-white px-4 py-3 flex items-centers",
+                    "hover:underline hover:text-link dark:hover:text-white px-4 py-3 flex items-centers",
                     { "aw-link-active": href === currentPath }
                   ]}
                   href={href}

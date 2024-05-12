@@ -2,23 +2,27 @@ import { getAsset, getPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
-    { text: 'Home', href: getPermalink('/#') },
+    { text: 'Book Now', href: 'https://my-business-restorativebodyworkatx.square.site/', target: '_blank' },
+    // { text: 'Home', href: getPermalink('/#') },
     { text: 'Services', href: getPermalink('/services') },
     { text: 'About', href: getPermalink('/about') },
     { text: 'FAQ', href: getPermalink('/#faq') },
-    { text: 'Contact', href: getPermalink('/contact') },
+    // { text: 'Contact', href: getPermalink('/contact') },
   ],
   actions: [
-    {
-      text: 'Book now!',
-      href: 'https://my-business-restorativebodyworkatx.square.site/',
-      target: '_blank',
-      icon: 'tabler:calendar-plus',
-    },
+    // {
+    //   text: 'Book now!',
+    //   href: 'https://my-business-restorativebodyworkatx.square.site/',
+    //   target: '_blank',
+    //   icon: 'tabler:calendar-plus',
+    // },
   ],
 };
 
 export const footerData = {
+  // links: [
+  //   // { text: 'Contact', href: getPermalink('/contact') },
+  // ]
   // links: [
   //   {
   //     title: 'Product',

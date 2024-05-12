@@ -6,23 +6,22 @@ export interface Props {
 }
 
 const { image = await Astro.slots.render('image') } = Astro.props;
----
 
-console.log('image');
+---
 <div>
   {
     image && (
-      <div class="relative m-auto max-w-5xl">
+      <div class="relative m-auto max-w-md p-5 md:px-0 hidden md:flex">
         {typeof image === 'string' ? (
           <Fragment set:html={image} />
         ) : (
           <Image
             class="mx-auto rounded-md w-full"
-            widths={[400, 768, 1024, 2040]}
-            sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+            // widths={[400, 768, 1024, 2040]}
+            // sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
             loading="eager"
-            width={1024}
-            height={576}
+            width={1533}
+            height={596}
             {...image}
           />
         )}
