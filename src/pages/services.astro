@@ -1,10 +1,7 @@
 ---
-import CallToAction from '~/components/widgets/CallToAction.astro';
-import Content from '~/components/widgets/Content.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import Button from '~/components/ui/Button.astro';
+import Header from '~/components/widgets/Header.astro';
 
 const metadata = {
   title: 'Services',
@@ -12,211 +9,166 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  <Fragment slot="header">
+    <Header
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+  <div class="grid grid-cols-1 sm:max-xl:grid-cols-2 col-custom gap-2 md:gap-3  m-auto w-full h-full p-3 xs:p-6 md:p-12 md:pt-0 max-w-[1920px]">
+    <div class="grid col-span-1 row-span-2 grid-cols-1 lg:grid-cols-2 gap-3">
+      <div class="rounded-md md:rounded-xl overflow-hidden lg:col-span-2 bg-purple-300  dark:bg-purple-800/40 p-3 md:p-6 flex flex-col gap-2 justify-between">
+        <div class="flex flex-col gap-2">
+          <h2 class="text-5xl text-purple-950 dark:text-purple-200 font-bold">MVP</h2>
+        <p>Valida tu idea en tiempo récord. Construye solo lo que importa, al mínimo costo y máxima velocidad.</p>
+        <p class="font-bold text-2xl text-purple-700 dark:text-purple-300">Desde 4000 USD</p>
+        </div>
+        <div class="flex w-full justify-end">
+          <Button {...{
+            variant: 'primary',
+            type: 'button',
+            text: 'Agendar una llamada',
+            href: 'https://github.com/onwidget/astrowind',
+            target: '_blank',
+            icon: "tabler:calendar-event",
+          } || {}}
+          class="rounded-md md:rounded-xl text-lg font-medium px-4 py-2">
+  
+          </Button>
+        </div>
+      </div>
+      <div class="rounded-md md:rounded-xl overflow-hidden bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 p-3 md:p-6 flex flex-col gap-2 justify-end">
+        <div class="flex flex-col gap-2">
+          <h2 class="text-2xl text-purple-950 dark:text-purple-200  font-bold">Auditoría UX </h2>
+        <p class="text-muted text" >Revisión exhaustiva de la experiencia de usuario en tu sitio o aplicación. Identifica áreas de mejora.</p>
+        <p class="font-bold text-purple-700 dark:text-purple-300">20 USD/h</p>
+        </div>
+        <div class="flex justify-end w-full">
+          <Button {...{
+            variant: 'secondary',
+            type: 'icon',
+            href: 'https://github.com/onwidget/astrowind',
+            target: '_blank',
+            icon: "tabler:calendar-event",
+          } || {}}
+          class="rounded-md md:rounded-xl text-lg font-medium px-2 py-2 mr-2">
+    
+          </Button>
+        </div>
+      </div>
+      <div class="rounded-md md:rounded-xl overflow-hidden bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 p-3 md:p-6 flex flex-col gap-2 justify-end">
+        <div class="flex flex-col gap-2">
+          <h2 class="text-2xl text-purple-950 dark:text-purple-200  font-bold">Consultoría UX</h2>
+        <p class="text-muted" >Asesoramiento personalizado para optimizar la experiencia de usuario en tus proyectos.</p>
+        <p class="font-bold text-purple-700 dark:text-purple-300">20 USD/h</p>
+        </div>
+        <div class="flex justify-end w-full">
+          <Button {...{
+            variant: 'secondary',
+            type: 'icon',
+            href: 'https://github.com/onwidget/astrowind',
+            target: '_blank',
+            icon: "tabler:calendar-event",
+          } || {}}
+          class="rounded-md md:rounded-xl text-lg font-medium px-2 py-2">
+    
+          </Button>
+        </div>
+      </div>
+    </div>
 
-  <Hero
-    tagline="Services"
-    title="Elevate your projects with our stunning templates"
-    subtitle="Explore our meticulously crafted templates tailored to various industries and purposes. From captivating presentations to functional website designs, we offer the tools you need to succeed."
-    actions={[{ variant:"primary", target: '_blank', text: 'Start exploring', href: '/' }]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'AstroWind Hero Image',
-    }}
-  />
+    <div class="grid col-span-1 row-span-2 gap-3">
+      <div class="rounded-md md:rounded-xl overflow-hidden bg-purple-300   dark:bg-purple-800/40 p-3 md:p-6 flex flex-col gap-2 justify-between">
+        <div class="flex flex-col gap-2">
+          <h2 class="text-5xl text-purple-950 dark:text-purple-200 font-bold max-w-52">Diseño de páginas web</h2>
+        <p>Sitios web atractivos, con una experiencia satisfactoria. Adaptados a tus necesidades y objetivos específicos.</p>
+        <p class="font-bold text-2xl text-purple-700 dark:text-purple-300">Desde 500 USD</p>
+        </div>
+        <div class="flex justify-end w-full">
+          <Button {...{
+            variant: 'primary',
+            type: 'button',
+            text: 'Agendar una llamada',
+            href: 'https://github.com/onwidget/astrowind',
+            target: '_blank',
+            icon: "tabler:calendar-event",
+          } || {}}
+          class="rounded-md md:rounded-xl text-lg font-medium px-4 py-2">
+    
+          </Button>
+        </div>
+      </div>
+      <div class="rounded-md md:rounded-xl overflow-hidden bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 p-3 md:p-6 flex flex-col gap-2 justify-between">
+        <div class="flex flex-col gap-2">
+         <h2 class="text-3xl text-purple-950 dark:text-purple-200  font-bold w-4/5">Diseño y desarrollo de páginas web</h2>
+         <p class="text-muted" >Creación de sitios web a medida, con diseño atractivo y funcionalidad personalizada.</p>
+         <p class="font-bold text-2xl text-purple-700 dark:text-purple-300">Desde 1000 USD</p>
+        </div>
+         <div class="flex justify-end w-full">
+           <Button {...{
+             variant: 'secondary',
+             type: 'button',
+             text: 'Agendar una llamada',
+             href: 'https://github.com/onwidget/astrowind',
+             target: '_blank',
+             icon: "tabler:calendar-event",
+           } || {}}
+           class="rounded-md md:rounded-xl text-lg font-medium px-4 py-2">
+     
+           </Button>
+         </div>
+       </div>
+    </div>
+    <div class="rounded-md md:rounded-xl overflow-hidden bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 p-3 md:p-6 flex flex-col gap-2 justify-between">
+      <div class="flex flex-col gap-2">
+        <h2 class="text-3xl text-purple-950 dark:text-purple-200  font-bold w-4/5">Diseño y desarrollo no-code de apps</h2>
+      <p class="text-muted" >Idea y prototipo a una aplicación funcional sin escribir código. Ideal para proyectos rápidos.</p>
+      <p class="font-bold text-2xl text-purple-700 dark:text-purple-300">Desde 2000 USD</p>
+      </div>
+     <div class="flex justify-end w-full">
+      <Button {...{
+        variant: 'secondary',
+        type: 'button',
+        text: 'Agendar una llamada',
+        href: 'https://github.com/onwidget/astrowind',
+        target: '_blank',
+        icon: "tabler:calendar-event",
+      } || {}}
+      class="rounded-md md:rounded-xl text-lg font-medium px-4 py-2">
 
-  <!-- Features2 Widget ************** -->
+      </Button>
+     </div>
+    </div>
+   
+    <div class="rounded-md md:rounded-xl overflow-hidden bg-purple-300   dark:bg-purple-800/40 p-3 md:p-6 flex flex-col gap-2 justify-between ">
+      <div class="flex flex-col gap-2">
+        <h2 class="text-5xl text-purple-950 dark:text-purple-200 font-bold">Diseño de apps</h2>
+      <p>Diseño de interfaces de usuario intuitivas y atractivas para aplicaciones móviles y web.</p>
+      <p class="font-bold text-2xl text-purple-700 dark:text-purple-300">Desde 1000 USD</p>
+      </div>
+      <div class="flex justify-end w-full">
+        <Button {...{
+          variant: 'primary',
+          type: 'button',
+          text: 'Agendar una llamada',
+          href: 'https://github.com/onwidget/astrowind',
+          target: '_blank',
+          icon: "tabler:calendar-event",
+        } || {}}
+        class="rounded-md md:rounded-xl text-lg font-medium px-4 py-2">
+  
+        </Button>
+      </div>
+    </div>
+    
+  </div>
+  <style>
+    @media screen and (min-width: 1280px){
+      .col-custom {
+        grid-template-columns: 40% repeat(2, minmax(280px, 1fr));
 
-  <Features2
-    title="Explore our diverse templates"
-    subtitle="Discover our selection below to streamline and elevate your projects."
-    columns={3}
-    items={[
-      {
-        title: 'Educational',
-        description:
-          'By harmonizing instructional design and visual appeal, templates streamline content creation for varied materials, expediting development and cultivating engaging educational spaces.',
-        icon: 'tabler:school',
-      },
-      {
-        title: 'Interior Design',
-        description:
-          'Crafting functional, visually appealing spaces for residential and commercial use. Templates emphasize layout, colors, and furniture setups, offering a versatile toolkit for your design vision.',
-        icon: 'tabler:home-star',
-      },
-      {
-        title: 'Photography',
-        description: `Empowering photographers, our templates facilitate captivating storytelling. With a keen focus on layout, galleries, and typography, they cater to both professionals and enthusiasts.`,
-        icon: 'tabler:photo',
-      },
-      {
-        title: 'E-commerce',
-        description:
-          'Developing engaging online stores, our E-commerce templates ensure a dynamic presence to effectively showcase products. Ideal for startups or revamps.',
-        icon: 'tabler:shopping-cart',
-      },
-      {
-        title: 'Blog',
-        description:
-          'With attention to typography, these templates empower effective content presentation for writers at any stage, ensuring visually engaging and user-friendly blogs.',
-        icon: 'tabler:article',
-      },
-      {
-        title: 'Business',
-        description:
-          'Providing polished options for effective visual communication, these templates empower both startups and established companies for a professional brand presence.',
-        icon: 'tabler:building-store',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Offering pre-designed elements for a consistent brand identity, including logos and marketing materials. Ideal for new ventures or revamps.',
-        icon: 'tabler:arrow-big-up-lines',
-      },
-      {
-        title: 'Medical',
-        description: `From presentations to patient forms, these tools enhance communication effectiveness for healthcare professionals. Ideal for medical practices and research pursuits.`,
-        icon: 'tabler:vaccine',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'With attention to detail, customization, and contemporary design, they empower designers to showcase ideas cohesively. Ideal for all levels of designers.',
-        icon: 'tabler:tie',
-      },
-    ]}
-  />
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'High-Quality Designs',
-        description:
-          'Our templates feature top-tier designs that ensure a professional and polished appearance for your projects.',
-        icon: 'tabler:wand',
-      },
-      {
-        title: 'Customization Tools',
-        description:
-          'Tailor each template to your unique needs with user-friendly customization tools that let you personalize colors, fonts, and content.',
-        icon: 'tabler:settings',
-      },
-      {
-        title: 'Pre-Designed Elements',
-        description:
-          'Save time and effort with our ready-to-use elements, including graphics, icons, and layouts that enhance the visual appeal of your creations.',
-        icon: 'tabler:presentation',
-      },
-      {
-        title: 'Preview and Mockup Views',
-        description:
-          'Visualize the final outcome before making any changes using our preview and mockup views, ensuring your projects meet your expectations.',
-        icon: 'tabler:carousel-horizontal',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-      alt: 'Features Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'Time Savings',
-        description:
-          'Streamline your workflow, enabling you to create stunning materials efficiently and allocate more time to your core tasks.',
-        icon: 'tabler:clock',
-      },
-      {
-        title: 'Professional Appearance',
-        description:
-          'Elevate your projects with the polished and sophisticated look that our templates provide, making a lasting impression on your audience.',
-        icon: 'tabler:school',
-      },
-      {
-        title: 'Cost-Efficiency',
-        description:
-          'Benefit from cost savings by avoiding the need for custom design work, as our templates offer professional-grade designs at a fraction of the cost.',
-        icon: 'tabler:coin',
-      },
-      {
-        title: 'Instant Download',
-        description:
-          'Enjoy immediate access to your chosen templates upon purchase, enabling you to begin working on your projects without delay.',
-        icon: 'tabler:file-download',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Benefits Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Benefits</h3>
-    </Fragment>
-  </Content>
-
-  <!-- Testimonials Widget *********** -->
-
-  <Testimonials
-    title="Words from real customers"
-    testimonials={[
-      {
-        testimonial: `The designs are not only visually appealing but also highly professional. The templates have saved me a significant amount of time while helping me make a lasting impression on my clients.`,
-        name: 'Emily Kennedy',
-        job: 'Front-end developer',
-        image: {
-          src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
-          alt: 'Emily Kennedy Image',
-        },
-      },
-      {
-        testimonial: `It beautifully showcases my work, with its clean and elegant design that lets my photographs shine. Customization was a breeze, even for a non-tech person like me. The result is a professional and immersive portfolio that's garnered numerous compliments.`,
-        name: 'Sarah Hansen',
-        job: 'Photographer',
-        image: {
-          src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Sarah Hansen Image',
-        },
-      },
-      {
-        testimonial: `I discovered these templates and I'm impressed by their variety and quality. They've helped me establish a consistent brand image across my marketing and social platforms, elevating my business's overall appearance.`,
-        name: 'Mark Wilkinson',
-        job: 'Small business owner',
-        image: {
-          src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
-          alt: 'Mark Wilkinson Image',
-        },
-      },
-    ]}
-    callToAction={{
-      target: '_blank',
-      text: 'More testimonials...',
-      href: 'https://github.com/onwidget/astrowind',
-      icon: 'tabler:chevron-right',
-    }}
-  />
-
-  <!-- CallToAction Widget *********** -->
-
-  <CallToAction
-    actions={[{
-      variant: "primary",
-      text: 'Start exploring',
-      href: '/',
-    }]}
-    title="Dive into our template collection"
-    subtitle="Whether you're in business, design, or education, our templates are here to elevate your projects."
-  />
+      }
+    }
+  </style>
+  
 </Layout>

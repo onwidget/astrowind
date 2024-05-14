@@ -1,0 +1,80 @@
+---
+import { useState } from "react";
+import type { Testimonials } from '~/types';
+import Button from 'src/components/ui/Button.astro';
+
+const [currentSlide, setCurrentSlide] = useState(0);
+
+const {
+  testimonials = [],
+} = Astro.props as Testimonials;
+
+const totalSlides = testimonials.length;
+
+const prevSlide = () => {
+    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : totalSlides - 1));
+};
+
+const nextSlide = () => {
+    setCurrentSlide((prev) => (prev < totalSlides - 1 ? prev + 1 : 0));
+};
+---
+
+<div class="relative w-80 h-40 mx-auto">
+    <div class="flex transition-transform duration-500 ease-in-out"
+        style={`transform: translateX(-${currentSlide * 100}%);`}>
+        {testimonials.map(({ title, testimonial, name, job, image }, index) => (
+            <div class="flex">
+                {index=index+1}
+            <div class="flex flex-col p-4 md:p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600">
+              {title && <h2 class="text-lg font-medium leading-6 pb-4">{title}</h2>}
+              {testimonial && (
+                <blockquote class="flex-auto">
+                  <p class="text-muted">" {testimonial} "</p>
+                </blockquote>
+              )}
+              <div class="flex items-center">
+                {image && (
+                  <div class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600">
+                    {typeof image === 'string' ? (
+                      <Fragment set:html={image} />
+                    ) : (
+                      <Image
+                        class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600 min-w-full min-h-full"
+                        width={40}
+                        height={40}
+                        widths={[400, 768]}
+                        layout="fixed"
+                        {...(image as any)}
+                      />
+                    )}
+                  </div>
+                )}
+
+                <div class="grow ml-3 rtl:ml-0 rtl:mr-3">
+                  {name && <p class="text-base font-semibold">{name}</p>}
+                  {job && <p class="text-xs text-muted">{job}</p>}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+    </div>
+    <!-- Botones de navegación -->
+    <Button {...{
+        variant: 'tertiary',
+        text: 'Prev',
+        href: 'https://github.com/onwidget/astrowind',
+        target: '_blank',
+      } || {}} onClick={prevSlide} class="absolute top-1/2 transform -translate-y-1/2 left-4 bg-gray-700 bg-opacity-50 text-white rounded-full p-2">
+       
+    </Button>
+    <Button  {...{
+        variant: 'tertiary',
+        text: 'Next',
+        href: 'https://github.com/onwidget/astrowind',
+        target: '_blank',
+      } || {}} onClick={nextSlide} class="absolute top-1/2 transform -translate-y-1/2 right-4 bg-gray-700 bg-opacity-50 text-white rounded-full p-2">
+       
+    </Button>
+</div>

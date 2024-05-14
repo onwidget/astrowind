@@ -1,0 +1,236 @@
+---
+import Post from 'src/components/widgets/BlogLatestSinglePost.astro';
+import { Icon } from 'astro-icon/components';
+import ToggleTheme from '~/components/common/ToggleTheme.astro';
+import Button from 'src/components/ui/Button.astro';
+import SingleTestimonial from './SingleTestimonial.astro';
+import ProjectSlide from './ProyectSlide.astro';
+import CopyToClipboard from './CopyToClipboard.astro';
+
+interface Props {
+  text?: string;
+}
+
+const { text } = Astro.props;
+---
+
+<section
+  id={text}
+  class="grid gap-2 md:gap-3 m-auto w-full h-full p-3 xs:p-6 md:p-12 md:pt-0 grid-custom-col max-w-[1920px]"
+>
+  <div class="row-span-1 col-span-1 grid grid-cols-80-auto gap-2 md:gap-3">
+    <div
+      class="p-3 items-center row-start-3 sm:row-span-full justify-start row-span-2 rounded-md md:rounded-xl bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10"
+    >
+      <ul class="w-full flex flex-row sm:flex-col gap-2 sm:gap-6 xl:gap-3">
+        <CopyToClipboard value="carolain.hernandez27605@gmail.com" iconName="tabler:mail" />
+        <li
+          class="bg-purple-200 hover:bg-purple-300 dark:bg-purple-800/10 hover:dark:bg-purple-800/30 rounded-md w-full sm:aspect-square"
+        >
+          <a
+            href="https://www.instagram.com/uxbycarol"
+            target="_blank"
+            class="flex items-center justify-center sm:h-full h-12"
+          >
+            <Icon class="sm:w-10 sm:h-10 w-8 h-8 text-purple-500 dark:text-purple-300" name="tabler:brand-instagram" />
+          </a>
+        </li>
+        <li
+          class="bg-purple-200 hover:bg-purple-300 dark:bg-purple-800/10 hover:dark:bg-purple-800/30 rounded-md w-full sm:aspect-square"
+        >
+          <a
+            href="https://dribbble.com/uxbycarol"
+            target="_blank"
+            class="flex items-center justify-center sm:h-full h-12"
+          >
+            <Icon class="sm:w-10 sm:h-10 w-8 h-8 text-purple-500 dark:text-purple-300" name="tabler:brand-dribbble" />
+          </a>
+        </li>
+        <li
+          class="bg-purple-200 hover:bg-purple-300 dark:bg-purple-800/10 hover:dark:bg-purple-800/30 rounded-md w-full sm:aspect-square sm:list-item hidden"
+        >
+          <a
+            href="https://www.linkedin.com/in/uxbycarol/"
+            target="_blank"
+            class="flex items-center justify-center sm:h-full h-12"
+          >
+            <Icon class="sm:w-10 sm:h-10 w-8 h-8 text-purple-500 dark:text-purple-300" name="tabler:brand-linkedin" />
+          </a>
+        </li>
+        <li
+          class="bg-purple-200 hover:bg-purple-300 dark:bg-purple-800/10 hover:dark:bg-purple-800/30 rounded-md w-full sm:aspect-square"
+        >
+          <a
+            href="src/assets/cv/Carol-Hernandez.pdf"
+            target="_blank"
+            class="flex items-center justify-center sm:h-full h-12"
+          >
+            <Icon name="tabler:file-cv" class="sm:w-10 sm:h-10 w-8 h-8 text-purple-500 dark:text-purple-300" />
+          </a>
+        </li>
+        <li
+          class="flex items-center justify-center sm:h-full h-12 bg-purple-200 hover:bg-purple-300/70 dark:bg-purple-800/10 hover:dark:bg-purple-800/20 rounded-md w-full sm:aspect-square sm:mt-6"
+        >
+          <ToggleTheme iconClass="text-purple-400 dark:text-purple-700 sm:w-10 sm:h-10 w-8 h-8 " />
+        </li>
+      </ul>
+    </div>
+    <div
+      class="col-span-1 rounded-md md:rounded-xl bg-purple-100 border dark:border-purple-950 border-purple-200 dark:bg-purple-800/10 p-3 md:p-6 flex gap-2 md:gap-3"
+    >
+      <div class="bg-purple-400 h-20 rounded-md md:h-24 aspect-square"></div>
+      <h1 class="font-semibold text-4xl">Carol Hernandez</h1>
+    </div>
+    <div
+      class="col-span-1 rounded-md md:rounded-xl p-3 md:p-6 bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 flex flex-col gap-2"
+    >
+      <h2 class="text-xl font-semibold">Sobre mí</h2>
+      <p class="text-xl text-gray-500 dark:text-gray-400">
+        Una mente creativa con una chispa de energía. Combino mi pasión por el diseño UX/UI con mi formación en
+        ingeniería eléctrica para entender y desarrollar soluciones innovadoras que contribuyan a un futuro más
+        sostenible.
+      </p>
+      <p class="text-xl text-gray-500  dark:text-gray-400">
+        Mi objetivo es crear experiencias de usuario intuitivas y atractivas para startups del sector energético.
+      </p>
+    </div>
+  </div>
+  <div
+    class="rounded-md md:rounded-xl overflow-hidden bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 row-span-1 lg:aspect-auto aspect-[8/5] col-span-1"
+  >
+    <ProjectSlide
+      projects={[
+        {
+          excerpt: `She took our vague concept and turned it into a visual masterpiece thatas into compelling visuals exceeded our expectations.`,
+          title: 'Mar ofngoankfvokna n',
+
+          image: {
+            src: 'src/assets/images/Mask-group.png',
+            alt: 'Mark Thompson Image',
+          },
+        },
+        {
+          excerpt: `She took our vague concept and turned it into a visual masterpiece th translate ideas into compelling visuals exceeded our expectations.`,
+          title: 'Mark Thompson',
+          image: {
+            src: 'src/assets/images/Image.png',
+            alt: 'Mark Thompson Image',
+          },
+        },
+        {
+          excerpt: `She took our vague concept and turned it into a visual masterpy to translate ideas into compelling visuals exceeded our expectations.`,
+          title: 'Mark Thompson',
+          image: {
+            src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+            alt: 'Mark Thompson Image',
+          },
+        },
+      ]}
+    />
+  </div>
+  <div
+    class="rounded-md md:rounded-xl bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 row-span-1 col-span-1 p-6"
+  >
+    <Post title="Artículo más reciente" linkText="ver todos" linkUrl="/blog" />
+  </div>
+  <div class="row-span-1 col-span-1 grid gap-2 md:gap-3 grid-cols-2 row-3-custom">
+    <Button
+      {...{
+        variant: 'primary',
+        text: 'Services',
+        href: '/services',
+        target: '',
+      } || {}}
+      class="rounded-md md:rounded-xl text-3xl"
+    />
+    <div
+      class="rounded-md md:rounded-xl bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 row-span-2 overflow-hidden"
+    >
+      <SingleTestimonial
+        title="Client testimonials"
+        subtitle="Discover what clients have to say about their experiences working with me."
+        testimonials={[
+          {
+            testimonial: `She took our vague concept and turned it into a visual masterpiece that perfectly aligned with our goals. Her attention to detail and ability to translate ideas into compelling visuals exceeded our expectations.`,
+            name: 'Mark Thompson',
+            job: 'Creative director',
+            image: {
+              src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+              alt: 'Mark Thompson Image',
+            },
+          },
+          {
+            testimonial: `She transformed our brand identity with her creative finesse, capturing our essence in every element. Her dedication and talent truly shine through her work.`,
+            name: 'Emily Martinez',
+            job: 'CEO',
+            image: {
+              src: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=772&q=80',
+              alt: 'Emily Martinez Image',
+            },
+          },
+          {
+            testimonial: `She has an uncanny ability to communicate emotions and stories. Her professionalism and commitment make her a designer of exceptional caliber.`,
+            name: 'Laura Simmons',
+            job: 'Founder of an NGO',
+            image: {
+              src: 'https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+              alt: 'Laura Simmons Image',
+            },
+          },
+          {
+            testimonial: `We entrusted Sarah with revamping our website's user interface, and the results were astounding. She's a designer who truly understands the synergy of aesthetics and functionality.`,
+            name: 'Alex Foster',
+            job: 'Director of web services',
+            image: {
+              src: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+              alt: 'Alex Foster Image',
+            },
+          },
+        ]}
+      />
+    </div>
+    <div
+      class="flex flex-col items-center justify-center gap-3 rounded-md md:rounded-xl bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 row-span-2"
+    >
+      <p class="text-2xl font-semibold">Experiments</p>
+      <p class="text-lg text-secondary">Cooming soon!</p>
+    </div>
+
+    <Button
+      {...{
+        variant: 'secondary',
+        text: 'Book a Call',
+        href: 'https://calendar.app.google/hf6gFWyyTUaZiMwG9',
+        target: '_blank',
+      } || {}}
+      class="rounded-md md:rounded-xl text-3xl"
+    />
+  </div>
+</section>
+<style>
+  .grid-cols-80-auto {
+    grid-template-columns: minmax(80px, min(120px, 6vw)) minmax(200px, 1fr);
+    grid-template-rows: max-content 1fr;
+  }
+  .row-3-custom {
+    grid-template-rows: 120px minmax(120px, 1fr) 120px;
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+  }
+  .grid-custom-col {
+    grid-template-columns: minmax(400px, 40%) minmax(500px, 1fr);
+  }
+  @media screen and (max-width: 1024px) {
+    .grid-custom-col {
+      grid-template-columns: minmax(280px, 1fr);
+    }
+  }
+  @media screen and (max-width: 640px) {
+    .row-3-custom {
+      grid-template-columns: minmax(250px, 1fr);
+      grid-template-rows: repeat(auto-fill, minmax(max-content, 1fr));
+    }
+    .grid-cols-80-auto {
+      grid-template-columns: 100%;
+    }
+  }
+</style>

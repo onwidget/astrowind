@@ -3,10 +3,10 @@ import { Icon } from "astro-icon/components";
 import Logo from "~/components/Logo.astro";
 import ToggleTheme from "~/components/common/ToggleTheme.astro";
 import ToggleMenu from "~/components/common/ToggleMenu.astro";
-import Button from "~/components/ui/Button.astro"
+import Button from "~/components/ui/Button.astro";
 
 import { getHomePermalink } from "~/utils/permalinks";
-import { trimSlash, getAsset } from "~/utils/permalinks";
+import { trimSlash } from "~/utils/permalinks";
 import type { CallToAction } from "~/types";
 
 interface Link {
@@ -40,11 +40,12 @@ const {
   actions = [],
   isSticky = false,
   isDark = false,
-  isFullWidth = false,
+  isFullWidth = true,
   showToggleTheme = false,
-  showRssFeed = false,
   position = "center",
 } = Astro.props;
+
+
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
 ---
@@ -60,7 +61,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
   <div class="absolute inset-0"></div>
   <div
     class:list={[
-      "relative text-default py-3 px-3 md:px-6 mx-auto w-full md:flex md:justify-between",
+      "relative text-default py-3 px-3 md:px-12 mx-auto w-full md:flex md:justify-between",
       {
         "max-w-7xl": !isFullWidth,
       },
@@ -130,17 +131,6 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
       <div class="items-center flex justify-between w-full md:w-auto">
         <div class="flex">
           {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
-          {
-            showRssFeed && (
-              <a
-                class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-                aria-label="RSS Feed"
-                href={getAsset('/rss.xml')}
-              >
-                <Icon name="tabler:rss" class="w-5 h-5" />
-              </a>
-            )
-          }
         </div>
         {
           actions?.length ? (

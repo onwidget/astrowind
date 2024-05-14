@@ -1,7 +1,7 @@
 ---
 import { APP_BLOG } from "~/utils/config";
 
-import Grid from "~/components/blog/Grid.astro";
+import Grid from "~/components/blog/GridOnePost.astro";
 
 import { getBlogPermalink } from "~/utils/permalinks";
 import { findLatestPosts } from "~/utils/blog";
@@ -21,7 +21,7 @@ const {
   linkText = "View all posts",
   linkUrl = getBlogPermalink(),
   information = await Astro.slots.render("information"),
-  count = 3,
+  count = 1,
 } = Astro.props;
 
 const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
@@ -30,11 +30,11 @@ const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
 {
   APP_BLOG.isEnabled ? (
     <>
-      <div class="flex flex-col lg:justify-between lg:flex-row">
+      <div class="flex flex-col mb-3">
         {title && (
-          <div class="md:max-w-sm">
+          <div class=" flex justify-between">
             <h2
-              class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading"
+              class="text-xl font-bold tracking-tight sm:text-xl sm:leading-none group font-heading mb-2"
               set:html={title}
             />
             {APP_BLOG.list.isEnabled && linkText && linkUrl && (
@@ -47,7 +47,7 @@ const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
       </div>
 
       <Grid posts={posts} />
-      </>
+    </>
   ) : (
     <Fragment />
   )

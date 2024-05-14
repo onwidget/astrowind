@@ -1,0 +1,102 @@
+---
+import type { Projects } from '~/types';
+import { Icon } from 'astro-icon/components';
+import Image from '~/components/common/Image.astro';
+import { getPermalink } from '~/utils/permalinks';
+const { projects = [] } = Astro.props as Projects;
+---
+
+<div class="flex flex-col w-full h-full gap-4 xl:gap-6">
+  <div class="grid grid-flow-col grid-cols-[repeat(6,100%)] w-full h-full" id="projects">
+    {
+      projects &&
+        projects.map(({ title, excerpt, image, permalink }) => (
+          <section class="relative project w-full h-full flex  items-start justify-end not-prose ">
+            <div class="w-full">
+              {image && (
+                <div class="relative m-auto max-w-5xl">
+                  {typeof image === 'string' ? (
+                    <Fragment set:html={image} />
+                  ) : (
+                    <Image
+                      class="mx-auto rounded-md w-full aspect-[1.6!important] lg:aspect-[1!important] xl:aspect-[1.6!important]"
+                      widths={[400, 768, 1024, 2040]}
+                      sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+                      loading="eager"
+                      width={1200}
+                      height={720}
+                      {...image}
+                    />
+                  )}
+                  <Fragment></Fragment>
+                </div>
+              )}
+            </div>
+            <div class=" absolute bottom-0 left-0 p-4 sm:p-6 ">
+              <div>
+                {title && (
+                  <h2 class="text-5xl md:text-4xl font-semibold leading-none leading-tighter tracking-tighter mb-2 font-heading dark:text-gray-200 hover:text-primary dark:hover:text-purple-400">
+                    <a  href={getPermalink(permalink)}>{title}</a>
+                  </h2>
+                )}
+                {excerpt && (
+                  <p class="text-xl text-secondary max-w-xl dark:text-blue-200 tracking-wide" set:html={excerpt} />
+                )}
+              </div>
+            </div>
+          </section>
+        ))
+    }
+  </div>
+  <div class="absolute pl-6 pt-6">
+    <button
+      id="prev"
+      class="p-3 bg-purple-500/30 mr-2 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 rounded-full hover:bg-purple-500/50 project-btn"
+    >
+      <Icon name="tabler:chevron-left" class="text-purple-500 dark:text-purple-300 w-6 h-6" />
+    </button>
+
+    <button
+      id="next"
+      class="p-3 bg-purple-500/30 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 rounded-full hover:bg-purple-500/50 project-btn"
+    >
+      <Icon name="tabler:chevron-right" class="text-purple-500 dark:text-purple-300 w-6 h-6" />
+    </button>
+  </div>
+</div>
+<script>
+  const reviewsSlider = document.getElementById('projects');
+  const reviewBtns = document.querySelectorAll('.project-btn');
+  const reviews = [...document.querySelectorAll('.project')];
+  let isMoving;
+  let currentIndex = 1;
+
+  function moveSlider() {
+    reviewsSlider.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  function handleReviewBtnClick(e) {
+    if (isMoving) {
+      return;
+    }
+    isMoving = true;
+    e.currentTarget.id === 'next' ? currentIndex++ : currentIndex--;
+    moveSlider();
+    isMoving = false;
+    if (currentIndex < 0) {
+      currentIndex = reviews.length - 1;
+      reviewsSlider.style.transitionDuration = '300ms';
+      return moveSlider();
+    }
+    if (currentIndex >= reviews.length) {
+      currentIndex = 0;
+      reviewsSlider.style.transitionDuration = '300ms';
+      return moveSlider();
+    }
+  }
+
+  // Event Listeners
+  reviewBtns.forEach((btn) => {
+    btn.addEventListener('click', handleReviewBtnClick);
+  });
+</script>

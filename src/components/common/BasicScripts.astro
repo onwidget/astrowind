@@ -10,13 +10,15 @@ import { UI } from '~/utils/config';
   window.basic_script = true;
 
   function applyTheme(theme) {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark");
     }
   }
 
+    const iconlight = document.getElementById("ai:tabler:sun");
+    const icondark = document.getElementById("ai:tabler:moon-2");
   const initTheme = function () {
     if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
       applyTheme(defaultTheme.replace(':only', ''));
@@ -25,8 +27,12 @@ import { UI } from '~/utils/config';
       (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
       applyTheme('dark');
+       iconlight.classList.add("opacity-0");
+      icondark.classList.remove("opacity-0");
     } else {
       applyTheme('light');
+      iconlight.classList.remove("opacity-0");
+      icondark.classList.add("opacity-0");
     }
   };
   initTheme();
@@ -70,6 +76,8 @@ import { UI } from '~/utils/config';
       }
       document.documentElement.classList.toggle('dark');
       localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        iconlight.classList.toggle("opacity-0", document.documentElement.classList.contains('dark'));
+        icondark.classList.toggle("opacity-0", !document.documentElement.classList.contains('dark'));
     });
 
     attachEvent('[data-aw-social-share]', 'click', function (_, elem) {

@@ -1,0 +1,63 @@
+---
+import { Icon } from 'astro-icon/components';
+interface Props {
+  value?: string;
+  iconName?: string;
+}
+
+const { value, iconName } = Astro.props;
+---
+
+<li
+  class="copy-text bg-purple-200 hover:bg-purple-300 flex items-center justify-center sm:h-full h-12 dark:bg-purple-800/10 hover:dark:bg-purple-800/30 rounded-md w-full sm:aspect-square"
+>
+<input type="text" class="text absolute opacity-0 w-1 h-1" value={value} />
+<button class="relative">
+  <Icon name={iconName} class="sm:w-10 sm:h-10 w-8 h-8 text-purple-500 dark:text-purple-300" />
+</button>
+</li>
+<script>
+  let copyText = document.querySelector('.copy-text');
+  copyText.querySelector('button').addEventListener('click', function () {
+    let input = copyText.querySelector('input.text') as HTMLInputElement;
+    input.select();
+    document.execCommand('copy');
+    copyText.classList.add('active');
+    window.getSelection().removeAllRanges();
+     setTimeout(function () {
+      copyText.classList.remove('active');
+     }, 2500);
+  });
+</script>
+<style>
+  .copy-text button:before {
+    content: 'Copied';
+    color: #ffffff;
+    position: absolute;
+    top: 50%; 
+    left: 140%; 
+    transform: translateY(-50%);
+    background: #c087f9;
+    padding: 8px 10px;
+    box-shadow: 4px 4px 12px -2px rgba(53, 52, 55, 0.15);
+    border-radius: 12px;
+    font-size: 12px;
+    display: none;
+  }
+  .copy-text button:after {
+    content: '';
+    position: absolute;
+    top: 40%; 
+    left: 130%; 
+    transform: translateY(-40%);
+    width: 10px;
+    height: 10px;
+    background: #c087f9;
+    transform: rotate(45deg);
+    display: none;
+  }
+  .copy-text.active button:before,
+  .copy-text.active button:after {
+    display: block;
+  }
+</style>

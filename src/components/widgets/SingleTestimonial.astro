@@ -1,0 +1,86 @@
+---
+import type { Testimonials } from '~/types';
+import { Icon } from 'astro-icon/components';
+
+const {
+  testimonials = [],
+} = Astro.props as Testimonials;
+---
+<div class="flex flex-col w-full h-full gap-4 xl:gap-6 ">
+  <h2 class="text-purple-400 text-xl font-bold px-3 md:px-6 pt-3 md:pt-6">Clientes</h2>
+  <div class="grid grid-flow-col grid-cols-[repeat(6,100%)]  w-full h-full" id="testimonials">
+    {
+      testimonials &&
+        testimonials.map(({ testimonial, name, job, }) => (
+          <div class="flex review px-3 md:px-6">
+            <div class="flex flex-col w-full">
+              {testimonial && (
+                <blockquote class="flex-auto ">
+                  <p class="text-muted text-xl">" {testimonial} "</p>
+                </blockquote>
+              )}
+              <div class="flex items-start">
+                            <div class="grow ml-1 rtl:ml-0 rtl:mr-3">
+                  {name && <p class="text-base font-semibold">{name}</p>}
+                  {job && <p class="text-xs text-muted">{job}</p>}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+    }
+  </div>
+  <div class="flex justify-between px-6 pb-6">
+    <button id="prev"
+    class="p-3 bg-purple-200 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 rounded-full hover:bg-purple-300 review-btn"
+    >
+         <Icon name="tabler:chevron-left" class="text-purple-500 dark:text-purple-300 w-6 h-6">
+        </Icon>
+    </button>
+
+    <button id="next"
+        class="p-3 bg-purple-200 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 rounded-full hover:bg-purple-300 review-btn"
+    >
+        <Icon name="tabler:chevron-right" class="text-purple-500 dark:text-purple-300 w-6 h-6">
+        </Icon>
+    </button>
+</div>
+</div>
+<script>
+  
+ const reviewsSlider = document.getElementById('testimonials');
+const reviewBtns = document.querySelectorAll('.review-btn');
+const reviews = [...document.querySelectorAll('.review')];
+let isMoving;
+let currentIndex = 1;
+
+
+function moveSlider(){
+  reviewsSlider.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
+
+function handleReviewBtnClick(e){
+  if(isMoving){ return }
+  isMoving = true;
+  e.currentTarget.id === 'next'
+    ? currentIndex++
+    : currentIndex--;
+  moveSlider();
+  isMoving = false;
+  if(currentIndex < 0){
+     currentIndex  = reviews.length - 1;
+   reviewsSlider.style.transitionDuration = '300ms';
+  return moveSlider();
+  }
+   if(currentIndex >= reviews.length){
+    currentIndex = 0;
+    reviewsSlider.style.transitionDuration = '300ms';
+    return moveSlider();
+    }
+}
+
+// Event Listeners
+reviewBtns.forEach(btn => {
+  btn.addEventListener('click', handleReviewBtnClick);
+})
+</script>

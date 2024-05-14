@@ -10,6 +10,7 @@ const {
   icon = '',
   class: className = '',
   type,
+  onClick,
   ...rest
 } = Astro.props as CallToAction;
 
@@ -17,24 +18,28 @@ const variants = {
   primary: 'btn-primary',
   secondary: 'btn-secondary',
   tertiary: 'btn btn-tertiary',
-  link: 'cursor-pointer hover:text-primary',
+  link: 'cursor-pointer hover:text-purple-600 dark:hover:text-purple-300',
 };
 ---
 
 {
   type === 'button' || type === 'submit' || type === 'reset' ? (
-    <button type={type} class={twMerge(variants[variant] || '', className)} {...rest}>
+    <button type={type} onclick={onClick}  class={twMerge(variants[variant] || '', className)} {...rest}>
       <Fragment set:html={text} />
-      {icon && <Icon name={icon} class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" />}
+      {icon && <Icon name={icon} class="w-6 h-6 ml-2 -mr-2  rtl:mr-1 rtl:-ml-1.5 inline-block" />}
     </button>
-  ) : (
+  ) : type === 'icon' ? (
+  <button type={type} onclick={onClick}  class={twMerge(variants[variant] || '', className)} {...rest}>
+      {icon && <Icon name={icon} class="w-6 h-6  inline-block" />}
+    </button>
+  ): (
     <a
       class={twMerge(variants[variant] || '', className)}
       {...(target ? { target: target, rel: 'noopener noreferrer' } : {})}
       {...rest}
     >
       <Fragment set:html={text} />
-      {icon && <Icon name={icon} class="w-5 h-5 ml-1 -mr-1.5 rtl:mr-1 rtl:-ml-1.5 inline-block" />}
+      {icon && <Icon name={icon} class="w-6 h-6 ml-2 -mr-2 rtl:mr-1 rtl:-ml-1.5 inline-block" />}
     </a>
   )
 }
