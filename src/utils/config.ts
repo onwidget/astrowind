@@ -60,6 +60,37 @@ export interface AppBlogConfig {
     };
   };
 }
+export interface AppProjectsConfig {
+  isEnabled: boolean;
+  projectsPerPage: number;
+  isRelatedProjectsEnabled: boolean;
+  relatedProjectsCount: number;
+  project: {
+    isEnabled: boolean;
+    permalink: string;
+    robots: {
+      index: boolean;
+      follow: boolean;
+    };
+  };
+  list: {
+    isEnabled: boolean;
+    pathname: string;
+    robots: {
+      index: boolean;
+      follow: boolean;
+    };
+  };
+  category: {
+    isEnabled: boolean;
+    pathname: string;
+    robots: {
+      index: boolean;
+      follow: boolean;
+    };
+  };
+}
+
 export interface AnalyticsConfig {
   vendors: {
     googleAnalytics: {
@@ -75,12 +106,13 @@ const config = yaml.load(fs.readFileSync('src/config.yaml', 'utf8')) as {
   i18n?: I18NConfig;
   apps?: {
     blog?: AppBlogConfig;
+    projects?: AppProjectsConfig;
   };
   ui?: unknown;
   analytics?: unknown;
 };
 
-const DEFAULT_SITE_NAME = 'Website';
+const DEFAULT_SITE_NAME = 'Uxbycarol';
 
 const getSite = () => {
   const _default = {
@@ -142,7 +174,7 @@ const getAppBlog = () => {
     relatedPostsCount: 4,
     post: {
       isEnabled: true,
-      permalink: '/blog/%slug%',
+      permalink: 'blog/%slug%',
       robots: {
         index: true,
         follow: true,
@@ -158,7 +190,7 @@ const getAppBlog = () => {
     },
     category: {
       isEnabled: true,
-      pathname: 'category',
+      pathname: 'blog/category',
       robots: {
         index: true,
         follow: true,
@@ -166,7 +198,7 @@ const getAppBlog = () => {
     },
     tag: {
       isEnabled: true,
-      pathname: 'tag',
+      pathname: 'blog/tag',
       robots: {
         index: false,
         follow: true,
@@ -175,6 +207,41 @@ const getAppBlog = () => {
   };
 
   return merge({}, _default, config?.apps?.blog ?? {}) as AppBlogConfig;
+};
+
+const getAppProjects = () => {
+  const _default = {
+    isEnabled: false,
+    projectsPerPage: 6,
+    isRelatedProjectsEnabled: false,
+    relatedProjectsCount: 4,
+    project: {
+      isEnabled: true,
+      permalink: 'projects/%slug%',
+      robots: {
+        index: true,
+        follow: true,
+      },
+    },
+    list: {
+      isEnabled: true,
+      pathname: 'projects',
+      robots: {
+        index: true,
+        follow: true,
+      },
+    },
+    category: {
+      isEnabled: true,
+      pathname: 'projects/category',
+      robots: {
+        index: true,
+        follow: true,
+      },
+    },
+  };
+
+  return merge({}, _default, config?.apps?.projects ?? {}) as AppProjectsConfig;
 };
 
 const getUI = () => {
@@ -204,5 +271,6 @@ export const SITE = getSite();
 export const I18N = getI18N();
 export const METADATA = getMetadata();
 export const APP_BLOG = getAppBlog();
+export const APP_PROJECTS = getAppProjects();
 export const UI = getUI();
 export const ANALYTICS = getAnalytics();

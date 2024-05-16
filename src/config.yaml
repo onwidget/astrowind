@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Carol Hernandez  | UX/UI Designer
+  site: 'https://uxbycarol.me'
   base: '/'
   trailingSlash: false
 
@@ -9,26 +9,25 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Carol Hernandez | UX/UI Designer
+  description: "Soy Carol Hernandez, una diseñadora UX/UI con mas de 3 años de experiencia creando interfaces intuitivas y atractivas para aplicaciones web y móviles."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Carol Hernandez | UX/UI Designer
     images:
       - url: '~/assets/images/default.png'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
+    handle: '@uxbycarol'
+    site: '@uxbycarol'
     cardType: summary_large_image
 
 i18n:
-  language: en
+  language: es
   textDirection: ltr
 
 apps:
@@ -38,7 +37,7 @@ apps:
 
     post:
       isEnabled: true
-      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      permalink: 'blog/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
       robots:
         index: true
 
@@ -50,19 +49,43 @@ apps:
 
     category:
       isEnabled: true
-      pathname: 'category' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
+      pathname: 'blog/category' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
       robots:
         index: true
 
     tag:
       isEnabled: true
-      pathname: 'tag' # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
+      pathname: 'blog/tag' # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
       robots:
         index: false
 
     isRelatedPostsEnabled: true
     relatedPostsCount: 4
+  projects:
+    isEnabled: true
+    projectsPerPage: 6
 
+    project:
+      isEnabled: true
+      permalink: 'projects/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      robots:
+        index: true
+
+    list:
+      isEnabled: true
+      pathname: 'projects' # projects main path
+      robots:
+        index: true
+
+    category:
+      isEnabled: true
+      pathname: 'projects/category' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
+      robots:
+        index: true
+
+    isRelatedProjectsEnabled: true
+    relatedProjectsCount: 4
+    
 analytics:
   vendors:
     googleAnalytics:

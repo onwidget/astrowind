@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
 import { APP_BLOG } from '~/utils/config';
-import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
+import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, BLOG_CATEGORY_BASE, BLOG_TAG_BASE } from './permalinks';
 
 const generatePermalink = async ({
   id,
@@ -209,7 +209,7 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
     paginate(
       posts.filter((post) => typeof post.category === 'string' && category === post.category.toLowerCase()),
       {
-        params: { category: category, blog: CATEGORY_BASE || undefined },
+        params: { category: category, blog:  BLOG_CATEGORY_BASE || undefined },
         pageSize: blogPostsPerPage,
         props: { category },
       }
@@ -231,7 +231,7 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
     paginate(
       posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.toLowerCase() === tag)),
       {
-        params: { tag: tag, blog: TAG_BASE || undefined },
+        params: { tag: tag, blog:  BLOG_TAG_BASE || undefined },
         pageSize: blogPostsPerPage,
         props: { tag },
       }

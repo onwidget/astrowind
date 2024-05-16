@@ -1,6 +1,6 @@
 import slugify from 'limax';
 
-import { SITE, APP_BLOG } from '~/utils/config';
+import { SITE, APP_BLOG, APP_PROJECTS } from '~/utils/config';
 
 import { trim } from '~/utils/utils';
 
@@ -21,11 +21,18 @@ export const cleanSlug = (text = '') =>
     .map((slug) => slugify(slug))
     .join('/');
 
+    /********* BLOG RELATE PERMALINKS  ********/
 export const BLOG_BASE = cleanSlug(APP_BLOG?.list?.pathname);
-export const CATEGORY_BASE = cleanSlug(APP_BLOG?.category?.pathname);
-export const TAG_BASE = cleanSlug(APP_BLOG?.tag?.pathname) || 'tag';
+export const BLOG_CATEGORY_BASE = cleanSlug(APP_BLOG?.category?.pathname);
+export const BLOG_TAG_BASE = cleanSlug(APP_BLOG?.tag?.pathname) || 'tag';
 
-export const POST_PERMALINK_PATTERN = trimSlash(APP_BLOG?.post?.permalink || `${BLOG_BASE}/%slug%`);
+export const POST_PERMALINK_PATTERN = trimSlash(`${BLOG_BASE}/%slug%` || APP_BLOG?.post?.permalink  );
+
+/********* PROJECTS RELATE PERMALINKS  ********/
+export const PROJECTS_BASE = cleanSlug(APP_PROJECTS?.list?.pathname);
+export const PROJECTS_CATEGORY_BASE = cleanSlug(APP_PROJECTS?.category?.pathname);
+
+export const PROJECT_PERMALINK_PATTERN = trimSlash( `${PROJECTS_BASE}/%slug%`|| APP_PROJECTS?.project?.permalink );
 
 /** */
 export const getCanonical = (path = ''): string | URL => {
@@ -43,15 +50,23 @@ export const getPermalink = (slug = '', type = 'page'): string => {
   let permalink: string;
 
   switch (type) {
-    case 'category':
-      permalink = createPath(CATEGORY_BASE, trimSlash(slug));
+    case 'blog-category':
+      permalink = createPath(BLOG_CATEGORY_BASE, trimSlash(slug));
       break;
 
-    case 'tag':
-      permalink = createPath(TAG_BASE, trimSlash(slug));
+    case 'blog-tag':
+      permalink = createPath(BLOG_TAG_BASE, trimSlash(slug));
       break;
 
     case 'post':
+      permalink = createPath(trimSlash(slug));
+      break;
+    
+    case 'project-category':
+      permalink = createPath(PROJECTS_CATEGORY_BASE, trimSlash(slug));
+      break;
+
+    case 'project':
       permalink = createPath(trimSlash(slug));
       break;
 
@@ -69,6 +84,8 @@ export const getHomePermalink = (): string => getPermalink('/');
 
 /** */
 export const getBlogPermalink = (): string => getPermalink(BLOG_BASE);
+/** */
+export const getProjectsPermalink = (): string => getPermalink(PROJECTS_BASE);
 
 /** */
 export const getAsset = (path: string): string =>

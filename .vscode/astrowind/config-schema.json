@@ -232,9 +232,99 @@
             }
           },
           "required": ["isEnabled", "postsPerPage", "post", "list", "category", "tag"]
+        },
+        "projects": {
+          "type": "object",
+          "properties": {
+            "isEnabled": {
+              "type": "boolean"
+            },
+            "projectsPerPage": {
+              "type": "integer"
+            },
+            "isRelatedProjectsEnabled": {
+              "type": "boolean"
+            },
+            "relatedProjectsCount": {
+              "type": "integer"
+            },
+            "project": {
+              "type": "object",
+              "properties": {
+                "isEnabled": {
+                  "type": "boolean"
+                },
+                "permalink": {
+                  "type": "string"
+                },
+                "robots": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "boolean"
+                    },
+                    "follow": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": ["index"]
+                }
+              },
+              "required": ["isEnabled", "permalink", "robots"]
+            },
+            "list": {
+              "type": "object",
+              "properties": {
+                "isEnabled": {
+                  "type": "boolean"
+                },
+                "pathname": {
+                  "type": "string"
+                },
+                "robots": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "boolean"
+                    },
+                    "follow": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": ["index"]
+                }
+              },
+              "required": ["isEnabled", "pathname", "robots"]
+            },
+            "category": {
+              "type": "object",
+              "properties": {
+                "isEnabled": {
+                  "type": "boolean"
+                },
+                "pathname": {
+                  "type": "string"
+                },
+                "robots": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "boolean"
+                    },
+                    "follow": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": ["index"]
+                }
+              },
+              "required": ["isEnabled", "pathname", "robots"]
+            }
+          },
+          "required": ["isEnabled", "projectsPerPage", "project", "list", "category"]
         }
       },
-      "required": ["blog"]
+      "required": ["blog", "projects"]
     },
     "analytics": {
       "type": "object",

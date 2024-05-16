@@ -1,0 +1,28 @@
+---
+import { APP_PROJECTS } from "~/utils/config";
+
+import { fetchProjects, getRelatedProjects } from "~/utils/projects";
+import HighlightedProjects from "~/components/projects/HighlightedProjects.astro";
+import type { Project } from "~/types";
+import { getProjectsPermalink } from "~/utils/permalinks";
+
+export interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const fetchedProjects = await fetchProjects();
+const relatedProjects = project.category ? getRelatedProjects(fetchedProjects, project.slug, project.category) : [];
+---
+
+{
+  APP_PROJECTS.isRelatedProjectsEnabled ? (
+    <HighlightedProjects
+      classes={{ container: "pt-0 lg:pt-0 md:pt-0" }}
+      title="Related Projects"
+      linkText="View All Projects"
+      linkUrl={getProjectsPermalink()}
+      projectIds={relatedProjects.map((project) => project.id)}
+    />
+  ) : null
+}

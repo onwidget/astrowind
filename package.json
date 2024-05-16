@@ -1,7 +1,7 @@
 {
-  "name": "@onwidget/astrowind",
-  "description": "AstroWind: A free template using Astro 4.0 and Tailwind CSS. Astro starter theme.",
-  "version": "1.0.0-beta.17",
+  "name": "carol-hernandez-website",
+  "description": "Diseñadora UX/UI con 3 años de experiencia creando interfaces intuitivas y atractivas para aplicaciones web y móviles.",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "astro dev",

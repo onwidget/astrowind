@@ -1,0 +1,50 @@
+---
+import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
+
+import merge from 'lodash.merge';
+import type { ImageMetadata } from 'astro';
+import Layout from '~/layouts/PageLayout.astro';
+import SingleProject from '~/components/projects/SingleProject.astro';
+import { getCanonical, getPermalink } from '~/utils/permalinks';
+import { getStaticPathsProject, projectRobots } from '~/utils/projects';
+import { findImage } from '~/utils/images';
+import type { MetaData } from '~/types';
+import RelatedProjects from '~/components/projects/RelatedProjects.astro';
+import ToProjectsLink from '~/components/projects/ToProjectsLink.astro';
+
+export const prerender = true;
+
+export const getStaticPaths = (async () => {
+  return await getStaticPathsProject();
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { project } = Astro.props as Props;
+
+const url = getCanonical(getPermalink(project.permalink, 'project'));
+const image = (await findImage(project.image)) as ImageMetadata | string | undefined;
+
+const metadata = merge(
+  {
+    title: project.title,
+    description: project.excerpt,
+    robots: {
+      index: projectRobots?.index,
+      follow: projectRobots?.follow,
+    },
+    openGraph: {
+      type: 'project',
+      ...(image ? { images: [{ url: image, width: (image as ImageMetadata)?.width, height: (image as ImageMetadata)?.height }] } : {}),
+    },
+  },
+  { ...(project?.metadata ? { ...project.metadata, canonical: project.metadata?.canonical || url } : {}) }
+) as MetaData;
+---
+
+<Layout metadata={metadata}>
+  <ToProjectsLink />
+  <SingleProject project={{ ...project, image: image }} url={url} />
+ 
+  <RelatedProjects project={project} />
+</Layout>

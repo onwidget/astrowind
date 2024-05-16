@@ -27,7 +27,7 @@ const { tags, class: className = 'text-sm', title = undefined, isCategory = fals
               tag
             ) : (
               <a
-                href={getPermalink(tag, (isCategory ? 'category' : 'tag'))}
+                href={getPermalink(tag, (isCategory ? 'blog-category' : 'blog-tag'))}
               >
                 {tag}
               </a>

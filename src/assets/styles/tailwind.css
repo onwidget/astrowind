@@ -69,7 +69,7 @@ p {
 }
 
 [astro-icon].icon-bold > * {
-  stroke-width: 2.4;
+  stroke-width: 1.5;
 }
 
 [data-aw-toggle-menu] path {

@@ -2,16 +2,16 @@
 import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
 
 import Layout from '~/layouts/PageLayout.astro';
-import BlogList from '~/components/blog/List.astro';
+import ProjectsList from '~/components/projects/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
 
-import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
+import { projectsListRobots, getStaticPathsProjectsList } from '~/utils/projects';
 
 export const prerender = true;
 
 export const getStaticPaths = (async ({ paginate }) => {
-  return await getStaticPathsBlogList({ paginate });
+  return await getStaticPathsProjectsList({ paginate });
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -21,13 +21,13 @@ const currentPage = page.currentPage ?? 1;
 
 
 const metadata = {
-  title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
+  title: `Projects${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
   robots: {
-    index: blogListRobots?.index && currentPage === 1,
-    follow: blogListRobots?.follow,
+    index: projectsListRobots?.index && currentPage === 1,
+    follow: projectsListRobots?.follow,
   },
   openGraph: {
-    type: 'blog',
+    type: 'projects',
   },
 };
 ---
@@ -35,11 +35,11 @@ const metadata = {
 <Layout metadata={metadata}>
   <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-5xl">
     <Headline
-      subtitle="A statically generated blog example with news, tutorials, resources and other interesting content related to AstroWind"
+      subtitle="A statically generated projects list example para psarles el bowe por la cara jajajajjahuuuuwith news, tutorials, resources and other interesting content"
     >
-      The Blog
+      My fucking projects biches
     </Headline>
-    <BlogList posts={page.data} />
+    <ProjectsList projects={page.data} />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
   </section>
 </Layout>

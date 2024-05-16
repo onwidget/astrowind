@@ -1,0 +1,54 @@
+---
+import { APP_PROJECTS } from "~/utils/config";
+
+import Grid from "~/components/projects/Grid.astro";
+
+import { getProjectsPermalink } from "~/utils/permalinks";
+import { findLatestProjects } from "~/utils/projects";
+import type { Widget } from "~/types";
+import Button from "../ui/Button.astro";
+
+export interface Props extends Widget {
+  title?: string;
+  linkText?: string;
+  linkUrl?: string | URL;
+  information?: string;
+  count?: number;
+}
+
+const {
+  title = await Astro.slots.render("title"),
+  linkText = "View all projects",
+  linkUrl = getProjectsPermalink(),
+  information = await Astro.slots.render("information"),
+  count = 3,
+} = Astro.props;
+
+const projects = APP_PROJECTS.isEnabled ? await findLatestProjects({ count }) : [];
+---
+
+{
+  APP_PROJECTS.isEnabled ? (
+    <>
+      <div class="flex flex-col lg:justify-between lg:flex-row">
+        {title && (
+          <div class="md:max-w-sm">
+            <h2
+              class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading"
+              set:html={title}
+            />
+            {APP_PROJECTS.list.isEnabled && linkText && linkUrl && (
+              <Button variant="link" href={linkUrl}> {linkText} »</Button>
+            )}
+          </div>
+        )}
+
+        {information && <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={information} />}
+      </div>
+
+      <Grid projects={projects} />
+      </>
+  ) : (
+    <Fragment />
+  )
+}
