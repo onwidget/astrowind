@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import Button from 'src/components/ui/Button.astro';
 import SingleTestimonial from './SingleTestimonial.astro';
-import ProjectSlide from './ProyectSlide.astro';
+import ProjectSlide from '~/components/projects/LatestProjects.astro';
 import CopyToClipboard from '../common/CopyToClipboard.astro';
 
 interface Props {
@@ -98,35 +98,7 @@ const { text } = Astro.props;
   <div
     class="rounded-md md:rounded-xl overflow-hidden bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 row-span-1 lg:aspect-auto aspect-[8/5] col-span-1"
   >
-    <ProjectSlide
-      projects={[
-        {
-          excerpt: `She took our vague concept and turned it into a visual masterpiece thatas into compelling visuals exceeded our expectations.`,
-          title: 'Mar ofngoankfvokna n',
-
-          image: {
-            src: 'src/assets/images/Mask-group.png',
-            alt: 'Mark Thompson Image',
-          },
-        },
-        {
-          excerpt: `She took our vague concept and turned it into a visual masterpiece th translate ideas into compelling visuals exceeded our expectations.`,
-          title: 'Mark Thompson',
-          image: {
-            src: 'src/assets/images/Image.png',
-            alt: 'Mark Thompson Image',
-          },
-        },
-        {
-          excerpt: `She took our vague concept and turned it into a visual masterpy to translate ideas into compelling visuals exceeded our expectations.`,
-          title: 'Mark Thompson',
-          image: {
-            src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-            alt: 'Mark Thompson Image',
-          },
-        },
-      ]}
-    />
+    <ProjectSlide />
   </div>
   <div
     class="rounded-md md:rounded-xl bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 row-span-1 col-span-1 p-6"

@@ -1,54 +1,131 @@
 ---
-import { APP_PROJECTS } from "~/utils/config";
-
-import Grid from "~/components/projects/Grid.astro";
-
-import { getProjectsPermalink } from "~/utils/permalinks";
-import { findLatestProjects } from "~/utils/projects";
-import type { Widget } from "~/types";
-import Button from "../ui/Button.astro";
+import { APP_PROJECTS } from '~/utils/config';
+import { Icon } from 'astro-icon/components';
+import Image from '~/components/common/Image.astro';
+import { findLatestProjects } from '~/utils/projects';
+import type { ImageMetadata } from 'astro';
+import { findImage } from '~/utils/images';
+import type { Widget } from '~/types';
+import { getPermalink } from '~/utils/permalinks';
 
 export interface Props extends Widget {
-  title?: string;
-  linkText?: string;
-  linkUrl?: string | URL;
-  information?: string;
   count?: number;
 }
 
-const {
-  title = await Astro.slots.render("title"),
-  linkText = "View all projects",
-  linkUrl = getProjectsPermalink(),
-  information = await Astro.slots.render("information"),
-  count = 3,
-} = Astro.props;
-
+const { count = 3 } = Astro.props;
 const projects = APP_PROJECTS.isEnabled ? await findLatestProjects({ count }) : [];
+const projectImages: ImageMetadata[] = [];
+
+for (const project of projects) {
+  const image = (await findImage(project.image)) as ImageMetadata | undefined;
+  if (image) {
+    projectImages.push(image);
+  }
+}
 ---
 
 {
   APP_PROJECTS.isEnabled ? (
     <>
-      <div class="flex flex-col lg:justify-between lg:flex-row">
-        {title && (
-          <div class="md:max-w-sm">
-            <h2
-              class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading"
-              set:html={title}
-            />
-            {APP_PROJECTS.list.isEnabled && linkText && linkUrl && (
-              <Button variant="link" href={linkUrl}> {linkText} »</Button>
-            )}
-          </div>
-        )}
+      <div class="flex flex-col w-full h-full gap-4 xl:gap-6 relative">
+        <div class="grid grid-flow-col grid-cols-[repeat(6,100%)] w-full h-full" id="projects">
+          {projects &&
+            projects.map(({ title, excerpt, permalink, image }) => (
+              <section class="relative project w-full h-full flex  items-start justify-end not-prose ">
+                <div class="w-full">
+                  <a href={permalink}>
+                    {image && (
+                      <div class="relative m-auto max-w-5xl">
+                        {typeof image === 'string' ? (
+                          <img src={image} class="mx-auto rounded-md w-full aspect-[1.6!important] lg:aspect-[1!important] xl:aspect-[1.6!important]"
+                            sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+                            loading="eager"
+                            width={1200}
+                            height={720}/>
+                        ) : (
+                          <Image
+                          src={image}
+                            class="mx-auto rounded-md w-full aspect-[1.6!important] lg:aspect-[1!important] xl:aspect-[1.6!important]"
+                            widths={[400, 768, 1024, 2040]}
+                            sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+                            loading="eager"
+                            width={1200}
+                            height={720}
+                          />
+                        )}
+                      </div>
+                    )}
+                  </a>
+                </div>
+                <div class=" absolute bottom-0 left-0 p-4 sm:p-6 ">
+                  <div>
+                    {title && (
+                      <h2 class="text-5xl md:text-4xl font-semibold leading-none leading-tighter tracking-tighter mb-2 font-heading dark:text-gray-200 hover:text-primary dark:hover:text-purple-400">
+                        <a href={getPermalink(permalink, 'project')}>{title}</a>
+                      </h2>
+                    )}
+                    {excerpt && (
+                      <p class="text-xl text-secondary max-w-xl dark:text-blue-200 tracking-wide" set:html={excerpt} />
+                    )}
+                  </div>
+                </div>
+              </section>
+            ))}
+        </div>
+        <div class="absolute pl-6 pt-6">
+          <button
+            id="prev"
+            class="p-3 bg-purple-500/30 mr-2 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 rounded-full hover:bg-purple-500/50 project-btn"
+          >
+            <Icon name="tabler:chevron-left" class="text-purple-500 dark:text-purple-300 w-6 h-6" />
+          </button>
 
-        {information && <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={information} />}
+          <button
+            id="next"
+            class="p-3 bg-purple-500/30 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 rounded-full hover:bg-purple-500/50 project-btn"
+          >
+            <Icon name="tabler:chevron-right" class="text-purple-500 dark:text-purple-300 w-6 h-6" />
+          </button>
+        </div>
       </div>
-
-      <Grid projects={projects} />
-      </>
+    </>
   ) : (
     <Fragment />
   )
 }
+<script>
+  const reviewsSlider = document.getElementById('projects');
+  const reviewBtns = document.querySelectorAll('.project-btn');
+  const reviews = [...document.querySelectorAll('.project')];
+  let isMoving;
+  let currentIndex = 1;
+
+  function moveSlider() {
+    reviewsSlider && (reviewsSlider.style.transform = `translateX(-${currentIndex * 100}%)`);
+  }
+
+  function handleReviewBtnClick(e) {
+    if (isMoving) {
+      return;
+    }
+    isMoving = true;
+    e.currentTarget.id === 'next' ? currentIndex++ : currentIndex--;
+    moveSlider();
+    isMoving = false;
+    if (currentIndex < 0 && reviewsSlider ) {
+      currentIndex = reviews.length - 1;
+      reviewsSlider.style.transitionDuration = '300ms';
+      return moveSlider();
+    }
+    if (currentIndex >= reviews.length && reviewsSlider ) {
+      currentIndex = 0;
+      reviewsSlider.style.transitionDuration = '300ms';
+      return moveSlider();
+    }
+  }
+
+  // Event Listeners
+  reviewBtns.forEach((btn) => {
+    btn.addEventListener('click', handleReviewBtnClick);
+  });
+</script>
