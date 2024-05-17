@@ -276,9 +276,10 @@ export interface AltImage {
   src: string;
   alt?: string;
   position: string;
-  xoffset?: number;
-  yoffset?: number;
+  xoffset?: string;
+  yoffset?: string;
   rotation?: number;
+  scale?: number;
   imageClass?: string;
 }
 

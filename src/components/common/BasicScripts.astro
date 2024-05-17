@@ -220,6 +220,38 @@ import { UI } from '~/utils/config';
       });
     }
     handleTestimonialslide();
+    function ShowImage() {
+      const cardElements = document.querySelectorAll('.card');
+      if (cardElements) {
+        cardElements.forEach((card) => {
+          card.addEventListener('mouseover', () => {
+            const cardImages = card.querySelectorAll('.card-image');
+            cardImages.forEach((image) => {
+              const horizontalOffset = image.dataset.x ? image.dataset.x : '10%';
+              const verticalOffset = image.dataset.y ? image.dataset.y : '10%';
+              const rotationAngle = image.dataset.r ? image.dataset.r : 30;
+              const scale = image.dataset.s ? image.dataset.s : 1;
+              // Apply transform
+              image.style.transform = `translate(${horizontalOffset}, ${verticalOffset}) rotate(${rotationAngle}deg)`;
+              image.addEventListener('mouseover', () => {
+                image.style.transform = `translate(${horizontalOffset}, ${verticalOffset}) rotate(${rotationAngle}deg) scale(${scale})`;
+                event.stopPropagation();
+              });
+            }
+          );
+          event.stopPropagation();
+          });
+
+          card.addEventListener('mouseout', () => {
+            const cardImages = card.querySelectorAll('.card-image');
+            cardImages.forEach((image) => {
+              image.style.transform = 'none';
+            });
+          });
+        });
+      }
+    }
+    ShowImage();
   };
   const onPageShow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');

@@ -1,7 +1,11 @@
 ---
-import { SITE } from '~/utils/config';
+import { Icon } from "astro-icon/components"
 ---
 
-<span class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white">
-  🚀 {SITE?.name}
-</span>
+<>
+<div class="flex w-full align-center">
+<div  class="bg-purple-200 hover:bg-purple-300 dark:bg-purple-800/10 hover:dark:bg-purple-800/30 rounded-md md:px-2 md:py-2">
+<Icon name='tabler:home' class="sm:w-8 sm:h-8 w-6 h-6 text-purple-500 dark:text-purple-300">
+</div>
+</div>
+  </>

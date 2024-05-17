@@ -2,6 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Button from '~/components/ui/Button.astro';
 import Header from '~/components/widgets/Header.astro';
+import ShowImage from '~/components/widgets/ShowImage.astro';
 
 const metadata = {
   title: 'Services',
@@ -17,7 +18,7 @@ const metadata = {
   </Fragment>
   <div class="grid grid-cols-1 sm:max-xl:grid-cols-2 col-custom gap-2 md:gap-3  m-auto w-full h-full p-3 xs:p-6 md:p-12 md:pt-0 max-w-[1920px]">
     <div class="grid col-span-1 row-span-2 grid-cols-1 lg:grid-cols-2 gap-3">
-      <div class="rounded-md md:rounded-xl overflow-hidden lg:col-span-2 bg-purple-300  dark:bg-purple-800/40 p-3 md:p-6 flex flex-col gap-2 justify-between">
+      <div class="relative rounded-md md:rounded-xl overflow-hidden lg:col-span-2 bg-purple-300  dark:bg-purple-800/40 p-3 md:p-6 flex flex-col gap-2 justify-between">
         <div class="flex flex-col gap-2">
           <h2 class="text-5xl text-purple-950 dark:text-purple-200 font-bold">MVP</h2>
         <p>Valida tu idea en tiempo récord. Construye solo lo que importa, al mínimo costo y máxima velocidad.</p>
@@ -32,12 +33,56 @@ const metadata = {
             target: '_blank',
             icon: "tabler:calendar-event",
           } || {}}
-          class="rounded-md md:rounded-xl text-lg font-medium px-4 py-2">
+          class="rounded-md md:rounded-xl text-lg font-medium px-4 py-2 z-50">
   
           </Button>
         </div>
+        <ShowImage image={[
+          {
+                    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                    alt: 'Mark Thompson Image',
+                    position: 'bottom',
+                    xoffset: '0%',
+                    yoffset: '-40px',
+                    rotation: 0,
+                    scale: 1.5,
+                    imageClass: 'rounded-full w-8 h-9 top-full',
+                },
+                {
+                    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                    alt: 'Mark Thompson Image',
+                    position: 'top',
+                    xoffset: '20%',
+                    yoffset: '160px',
+                    rotation: 0,
+                    scale: 1.2,
+                    imageClass: 'rounded-full w-40 h-40 bottom-full',
+                },
+        ]}/>
       </div>
-      <div class="rounded-md md:rounded-xl overflow-hidden bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 p-3 md:p-6 flex flex-col gap-2 justify-end">
+      <div class="relative rounded-md md:rounded-xl overflow-hidden bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 p-3 md:p-6 flex flex-col gap-2 justify-end">
+        <ShowImage image={[
+          {
+                    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                    alt: 'Mark Thompson Image',
+                    position: 'bottom',
+                    xoffset: '0%',
+                    yoffset: '-40px',
+                    rotation: 0,
+                    scale: 1.5,
+                    imageClass: 'rounded-full w-8 h-9 top-full',
+                },
+                {
+                    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                    alt: 'Mark Thompson Image',
+                    position: 'top',
+                    xoffset: '20%',
+                    yoffset: '160px',
+                    rotation: 0,
+                    scale: 1.2,
+                    imageClass: 'rounded-full w-40 h-40 bottom-full',
+                },
+        ]}/>
         <div class="flex flex-col gap-2">
           <h2 class="text-2xl text-purple-950 dark:text-purple-200  font-bold">Auditoría UX </h2>
         <p class="text-muted text" >Revisión exhaustiva de la experiencia de usuario en tu sitio o aplicación. Identifica áreas de mejora.</p>
@@ -51,12 +96,34 @@ const metadata = {
             target: '_blank',
             icon: "tabler:calendar-event",
           } || {}}
-          class="rounded-md md:rounded-xl text-lg font-medium px-2 py-2 mr-2">
+          class="rounded-md md:rounded-xl text-lg font-medium px-2 py-2 mr-2 z-50">
     
           </Button>
         </div>
       </div>
-      <div class="rounded-md md:rounded-xl overflow-hidden bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 p-3 md:p-6 flex flex-col gap-2 justify-end">
+      <div class="relative rounded-md md:rounded-xl overflow-hidden bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 p-3 md:p-6 flex flex-col gap-2 justify-end">
+        <ShowImage image={[
+          {
+                    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                    alt: 'Mark Thompson Image',
+                    position: 'bottom',
+                    xoffset: '0%',
+                    yoffset: '-40px',
+                    rotation: 0,
+                    scale: 1.5,
+                    imageClass: 'rounded-full w-8 h-9 top-full',
+                },
+                {
+                    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                    alt: 'Mark Thompson Image',
+                    position: 'top',
+                    xoffset: '20%',
+                    yoffset: '160px',
+                    rotation: 0,
+                    scale: 1.2,
+                    imageClass: 'rounded-full w-40 h-40 bottom-full',
+                },
+        ]}/>
         <div class="flex flex-col gap-2">
           <h2 class="text-2xl text-purple-950 dark:text-purple-200  font-bold">Consultoría UX</h2>
         <p class="text-muted" >Asesoramiento personalizado para optimizar la experiencia de usuario en tus proyectos.</p>
@@ -70,7 +137,7 @@ const metadata = {
             target: '_blank',
             icon: "tabler:calendar-event",
           } || {}}
-          class="rounded-md md:rounded-xl text-lg font-medium px-2 py-2">
+          class="rounded-md md:rounded-xl text-lg font-medium px-2 py-2 z-50">
     
           </Button>
         </div>
@@ -78,7 +145,29 @@ const metadata = {
     </div>
 
     <div class="grid col-span-1 row-span-2 gap-3">
-      <div class="rounded-md md:rounded-xl overflow-hidden bg-purple-300   dark:bg-purple-800/40 p-3 md:p-6 flex flex-col gap-2 justify-between">
+      <div class="relative rounded-md md:rounded-xl overflow-hidden bg-purple-300   dark:bg-purple-800/40 p-3 md:p-6 flex flex-col gap-2 justify-between">
+        <ShowImage image={[
+          {
+                    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                    alt: 'Mark Thompson Image',
+                    position: 'bottom',
+                    xoffset: '0%',
+                    yoffset: '-40px',
+                    rotation: 0,
+                    scale: 1.5,
+                    imageClass: 'rounded-full w-8 h-9 top-full',
+                },
+                {
+                    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                    alt: 'Mark Thompson Image',
+                    position: 'top',
+                    xoffset: '20%',
+                    yoffset: '160px',
+                    rotation: 0,
+                    scale: 1.2,
+                    imageClass: 'rounded-full w-40 h-40 bottom-full',
+                },
+        ]}/>
         <div class="flex flex-col gap-2">
           <h2 class="text-5xl text-purple-950 dark:text-purple-200 font-bold max-w-52">Diseño de páginas web</h2>
         <p>Sitios web atractivos, con una experiencia satisfactoria. Adaptados a tus necesidades y objetivos específicos.</p>
@@ -93,12 +182,34 @@ const metadata = {
             target: '_blank',
             icon: "tabler:calendar-event",
           } || {}}
-          class="rounded-md md:rounded-xl text-lg font-medium px-4 py-2">
+          class="rounded-md md:rounded-xl text-lg font-medium px-4 py-2 z-50">
     
           </Button>
         </div>
       </div>
-      <div class="rounded-md md:rounded-xl overflow-hidden bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 p-3 md:p-6 flex flex-col gap-2 justify-between">
+      <div class="relative rounded-md md:rounded-xl overflow-hidden bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 p-3 md:p-6 flex flex-col gap-2 justify-between">
+        <ShowImage image={[
+          {
+                    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                    alt: 'Mark Thompson Image',
+                    position: 'bottom',
+                    xoffset: '0%',
+                    yoffset: '-40px',
+                    rotation: 0,
+                    scale: 1.5,
+                    imageClass: 'rounded-full w-8 h-9 top-full',
+                },
+                {
+                    src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                    alt: 'Mark Thompson Image',
+                    position: 'top',
+                    xoffset: '20%',
+                    yoffset: '160px',
+                    rotation: 0,
+                    scale: 1.2,
+                    imageClass: 'rounded-full w-40 h-40 bottom-full',
+                },
+        ]}/>
         <div class="flex flex-col gap-2">
          <h2 class="text-3xl text-purple-950 dark:text-purple-200  font-bold w-4/5">Diseño y desarrollo de páginas web</h2>
          <p class="text-muted" >Creación de sitios web a medida, con diseño atractivo y funcionalidad personalizada.</p>
@@ -113,13 +224,35 @@ const metadata = {
              target: '_blank',
              icon: "tabler:calendar-event",
            } || {}}
-           class="rounded-md md:rounded-xl text-lg font-medium px-4 py-2">
+           class="rounded-md md:rounded-xl text-lg font-medium px-4 py-2 z-50">
      
            </Button>
          </div>
        </div>
     </div>
-    <div class="rounded-md md:rounded-xl overflow-hidden bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 p-3 md:p-6 flex flex-col gap-2 justify-between">
+    <div class="relative rounded-md md:rounded-xl overflow-hidden bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 p-3 md:p-6 flex flex-col gap-2 justify-between">
+      <ShowImage image={[
+        {
+                  src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                  alt: 'Mark Thompson Image',
+                  position: 'bottom',
+                  xoffset: '0%',
+                  yoffset: '-40px',
+                  rotation: 0,
+                  scale: 1.5,
+                  imageClass: 'rounded-full w-8 h-9 top-full',
+              },
+              {
+                  src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                  alt: 'Mark Thompson Image',
+                  position: 'top',
+                  xoffset: '20%',
+                  yoffset: '160px',
+                  rotation: 0,
+                  scale: 1.2,
+                  imageClass: 'rounded-full w-40 h-40 bottom-full',
+              },
+      ]}/>
       <div class="flex flex-col gap-2">
         <h2 class="text-3xl text-purple-950 dark:text-purple-200  font-bold w-4/5">Diseño y desarrollo no-code de apps</h2>
       <p class="text-muted" >Idea y prototipo a una aplicación funcional sin escribir código. Ideal para proyectos rápidos.</p>
@@ -134,13 +267,35 @@ const metadata = {
         target: '_blank',
         icon: "tabler:calendar-event",
       } || {}}
-      class="rounded-md md:rounded-xl text-lg font-medium px-4 py-2">
+      class="rounded-md md:rounded-xl text-lg font-medium px-4 py-2 z-50">
 
       </Button>
      </div>
     </div>
    
-    <div class="rounded-md md:rounded-xl overflow-hidden bg-purple-300   dark:bg-purple-800/40 p-3 md:p-6 flex flex-col gap-2 justify-between ">
+    <div class="relative rounded-md md:rounded-xl overflow-hidden bg-purple-300   dark:bg-purple-800/40 p-3 md:p-6 flex flex-col gap-2 justify-between ">
+      <ShowImage image={[
+        {
+                  src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                  alt: 'Mark Thompson Image',
+                  position: 'bottom',
+                  xoffset: '0%',
+                  yoffset: '-40px',
+                  rotation: 0,
+                  scale: 1.5,
+                  imageClass: 'rounded-full w-8 h-9 top-full',
+              },
+              {
+                  src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                  alt: 'Mark Thompson Image',
+                  position: 'top',
+                  xoffset: '20%',
+                  yoffset: '160px',
+                  rotation: 0,
+                  scale: 1.2,
+                  imageClass: 'rounded-full w-40 h-40 bottom-full',
+              },
+      ]}/>
       <div class="flex flex-col gap-2">
         <h2 class="text-5xl text-purple-950 dark:text-purple-200 font-bold">Diseño de apps</h2>
       <p>Diseño de interfaces de usuario intuitivas y atractivas para aplicaciones móviles y web.</p>
@@ -155,7 +310,7 @@ const metadata = {
           target: '_blank',
           icon: "tabler:calendar-event",
         } || {}}
-        class="rounded-md md:rounded-xl text-lg font-medium px-4 py-2">
+        class="rounded-md md:rounded-xl text-lg font-medium px-4 py-2 z-50">
   
         </Button>
       </div>

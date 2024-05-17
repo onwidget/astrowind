@@ -1,0 +1,22 @@
+---
+import type { Images } from '~/types';
+import { twMerge } from 'tailwind-merge';
+const { image = [] } = Astro.props as Images;
+---
+
+<div class="card absolute top-0 left-0 overflow-hidden h-full w-full">
+  {
+    image &&
+      image.map(({ src, alt, imageClass, xoffset, yoffset, rotation, scale }) => (
+        <div
+          class:list={twMerge('absolute card-image transition ease-in-out duration-300 delay-100', imageClass)}
+          data-x={xoffset}
+          data-y={yoffset}
+          data-r={rotation}
+          data-s={scale}
+        >
+          {image && <img src={src} alt={alt} loading="lazy" class="h-full w-full object-center object-cover"/>}
+        </div>
+      ))
+  }
+</div>

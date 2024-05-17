@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import ShowImage from '~/components/widgets/ShowImage.astro';
 
 const metadata = {
   title: 'Contact',
@@ -38,6 +39,52 @@ const metadata = {
     }}
     description="Our support team typically responds within 24 business hours."
   />
+  <div class="w-full h-60 flex gap-4 justify-center items-center">
+    <ShowImage  image={[
+      {
+                src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                alt: 'Mark Thompson Image',
+                position: 'right',
+                xoffset: '-200px',
+                yoffset: '20%',
+                scale: 1.4,
+                rotation: -30,
+                imageClass: 'rounded-full w-8 h-9 left-full',
+            },
+            {
+                src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                alt: 'Mark Thompson Image',
+                position: 'left',
+                xoffset: '200px',
+                yoffset:'20%',
+                scale: 1.2,
+                rotation: 30,
+                imageClass: 'rounded-full w-8 h-9 right-full',
+            },
+    ]} />
+    <ShowImage image={[
+      {
+                src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                alt: 'Mark Thompson Image',
+                position: 'bottom',
+                xoffset: '0%',
+                yoffset: '-40px',
+                rotation: 0,
+                scale: 1.5,
+                imageClass: 'rounded-full w-8 h-9 top-full',
+            },
+            {
+                src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+                alt: 'Mark Thompson Image',
+                position: 'top',
+                xoffset: '20%',
+                yoffset: '160px',
+                rotation: 0,
+                scale: 1.2,
+                imageClass: 'rounded-full w-40 h-40 bottom-full',
+            },
+    ]} />
+  </div>
 
   <!-- Features2 Widget ************** -->
 
