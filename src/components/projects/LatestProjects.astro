@@ -28,10 +28,10 @@ for (const project of projects) {
   APP_PROJECTS.isEnabled ? (
     <>
       <div class="flex flex-col w-full h-full gap-4 xl:gap-6 relative">
-        <div class="grid grid-flow-col grid-cols-[repeat(6,100%)] w-full h-full" id="projects">
+        <div class="grid grid-flow-col grid-cols-[repeat(6,100%)] w-full h-full" id="projectslider">
           {projects &&
             projects.map(({ title, excerpt, permalink, image }) => (
-              <section class="relative project w-full h-full flex  items-start justify-end not-prose ">
+              <section class="relative projectslide w-full h-full flex  items-start justify-end not-prose ">
                 <div class="w-full">
                   <a href={permalink}>
                     {image && (
@@ -65,26 +65,26 @@ for (const project of projects) {
                       </h2>
                     )}
                     {excerpt && (
-                      <p class="text-xl text-secondary max-w-xl dark:text-blue-200 tracking-wide" set:html={excerpt} />
+                      <p class="hidden md:block text-xl text-secondary max-w-xl dark:text-blue-200 tracking-wide" set:html={excerpt} />
                     )}
                   </div>
                 </div>
               </section>
             ))}
         </div>
-        <div class="absolute pl-6 pt-6">
+        <div class="absolute pl-4 pt-4 md:pl-6 md:pt-6">
           <button
             id="prev"
-            class="p-3 bg-purple-500/30 mr-2 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 rounded-full hover:bg-purple-500/50 project-btn"
+            class="p-2 md:p-3 bg-purple-500/30 mr-2 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 rounded-full hover:bg-purple-500/50 project-btnslide"
           >
-            <Icon name="tabler:chevron-left" class="text-purple-500 dark:text-purple-300 w-6 h-6" />
+            <Icon name="tabler:chevron-left" class="text-purple-500 dark:text-purple-300 w-5 h-5 md:w-6 md:h-6" />
           </button>
 
           <button
             id="next"
-            class="p-3 bg-purple-500/30 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 rounded-full hover:bg-purple-500/50 project-btn"
+            class="p-2 md:p-3 bg-purple-500/30 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 rounded-full hover:bg-purple-500/50 project-btnslide"
           >
-            <Icon name="tabler:chevron-right" class="text-purple-500 dark:text-purple-300 w-6 h-6" />
+            <Icon name="tabler:chevron-right" class="text-purple-500 dark:text-purple-300 w-5 h-5 md:w-6 md:h-6" />
           </button>
         </div>
       </div>
@@ -93,39 +93,3 @@ for (const project of projects) {
     <Fragment />
   )
 }
-<script>
-  const reviewsSlider = document.getElementById('projects');
-  const reviewBtns = document.querySelectorAll('.project-btn');
-  const reviews = [...document.querySelectorAll('.project')];
-  let isMoving;
-  let currentIndex = 1;
-
-  function moveSlider() {
-    reviewsSlider && (reviewsSlider.style.transform = `translateX(-${currentIndex * 100}%)`);
-  }
-
-  function handleReviewBtnClick(e) {
-    if (isMoving) {
-      return;
-    }
-    isMoving = true;
-    e.currentTarget.id === 'next' ? currentIndex++ : currentIndex--;
-    moveSlider();
-    isMoving = false;
-    if (currentIndex < 0 && reviewsSlider ) {
-      currentIndex = reviews.length - 1;
-      reviewsSlider.style.transitionDuration = '300ms';
-      return moveSlider();
-    }
-    if (currentIndex >= reviews.length && reviewsSlider ) {
-      currentIndex = 0;
-      reviewsSlider.style.transitionDuration = '300ms';
-      return moveSlider();
-    }
-  }
-
-  // Event Listeners
-  reviewBtns.forEach((btn) => {
-    btn.addEventListener('click', handleReviewBtnClick);
-  });
-</script>

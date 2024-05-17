@@ -84,7 +84,7 @@ apps:
         index: true
 
     isRelatedProjectsEnabled: true
-    relatedProjectsCount: 4
+    relatedProjectsCount: 3
     
 analytics:
   vendors:

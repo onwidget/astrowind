@@ -1,6 +1,5 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import Header from '~/components/widgets/Header.astro';
 import Bento from '~/components/widgets/Bento.astro';
 const metadata = {
   title: 'Carol Hernandez',
@@ -10,9 +9,6 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <Fragment slot="header">
-    <Header
-      isSticky
-    />
   </Fragment>
-  <Bento></Bento>
+  <Bento/>
 </Layout>

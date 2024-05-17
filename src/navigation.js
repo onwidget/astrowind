@@ -1,19 +1,15 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getBlogPermalink, getProjectsPermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {
   links: [
         {
-          text: 'Personal',
-          href: getPermalink('/homes/personal'),
-        },
-        {
           text: 'Services',
           href: getPermalink('/services'),
         },
-        {
-          text: 'About us',
-          href: getPermalink('/about'),
-        },
+        // {
+        //   text: 'About me',
+        //   href: getPermalink('/about'),
+        // },
         {
           text: 'Contact',
           href: getPermalink('/contact'),
@@ -22,8 +18,12 @@ export const headerData = {
           text: 'Blog',
           href: getBlogPermalink(),
         },
+        {
+          text: 'Projects',
+          href: getProjectsPermalink(),
+        },
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  // actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
 };
 
 export const footerData1 = {

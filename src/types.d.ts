@@ -68,10 +68,6 @@ export interface Project {
 
   /**  */
   category?: string;
-  /**  */
-  tags?: Array<string>;
-  /**  */
-  author?: string;
 
   /**  */
   metadata?: MetaData;
@@ -183,17 +179,6 @@ export interface Item {
   image?: Image;
 }
 
-export interface Price {
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  price?: number;
-  period?: string;
-  items?: Array<Item>;
-  callToAction?: CallToAction;
-  hasRibbon?: boolean;
-  ribbonTitle?: string;
-}
 
 export interface Testimonial {
   title?: string;
@@ -282,6 +267,19 @@ export interface Testimonials extends Headline, Widget {
 export interface Brands extends Headline, Widget {
   icons?: Array<string>;
   images?: Array<Image>;
+}
+
+export interface Images {
+  image?: Array<AltImage>;
+}
+export interface AltImage {
+  src: string;
+  alt?: string;
+  position: string;
+  xoffset?: number;
+  yoffset?: number;
+  rotation?: number;
+  imageClass?: string;
 }
 
 export interface Features extends Headline, Widget {

@@ -30,57 +30,19 @@ const {
         ))
     }
   </div>
-  <div class="flex justify-between px-6 pb-6">
+  <div class="flex justify-between px-3 pb-3 md:px-6 md:pb-6">
     <button id="prev"
-    class="p-3 bg-purple-200 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 rounded-full hover:bg-purple-300 review-btn"
+    class="p-2 md:p-3 bg-purple-200 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 rounded-full hover:bg-purple-300 review-btn"
     >
-         <Icon name="tabler:chevron-left" class="text-purple-500 dark:text-purple-300 w-6 h-6">
+         <Icon name="tabler:chevron-left" class="text-purple-500 dark:text-purple-300 w-5 h-5 md:w-6 md:h-6">
         </Icon>
     </button>
 
     <button id="next"
-        class="p-3 bg-purple-200 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 rounded-full hover:bg-purple-300 review-btn"
+        class="p-2 md:p-3 bg-purple-200 dark:bg-purple-800/30 dark:hover:bg-purple-800/50 rounded-full hover:bg-purple-300 review-btn"
     >
-        <Icon name="tabler:chevron-right" class="text-purple-500 dark:text-purple-300 w-6 h-6">
+        <Icon name="tabler:chevron-right" class="text-purple-500 dark:text-purple-300 w-5 h-5 md:w-6 md:h-6">
         </Icon>
     </button>
 </div>
 </div>
-<script>
-  
- const reviewsSlider = document.getElementById('testimonials');
-const reviewBtns = document.querySelectorAll('.review-btn');
-const reviews = [...document.querySelectorAll('.review')];
-let isMoving;
-let currentIndex = 1;
-
-
-function moveSlider(){
-  reviewsSlider.style.transform = `translateX(-${currentIndex * 100}%)`;
-}
-
-function handleReviewBtnClick(e){
-  if(isMoving){ return }
-  isMoving = true;
-  e.currentTarget.id === 'next'
-    ? currentIndex++
-    : currentIndex--;
-  moveSlider();
-  isMoving = false;
-  if(currentIndex < 0){
-     currentIndex  = reviews.length - 1;
-   reviewsSlider.style.transitionDuration = '300ms';
-  return moveSlider();
-  }
-   if(currentIndex >= reviews.length){
-    currentIndex = 0;
-    reviewsSlider.style.transitionDuration = '300ms';
-    return moveSlider();
-    }
-}
-
-// Event Listeners
-reviewBtns.forEach(btn => {
-  btn.addEventListener('click', handleReviewBtnClick);
-})
-</script>

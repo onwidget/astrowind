@@ -16,7 +16,7 @@ const { text } = Astro.props;
 
 <section
   id={text}
-  class="grid gap-2 md:gap-3 m-auto w-full h-full p-3 xs:p-6 md:p-12 md:pt-0 grid-custom-col max-w-[1920px]"
+  class="grid gap-2 md:gap-3 m-auto w-full h-full p-3 xs:p-6 md:p-12 md:pt-12 grid-custom-col max-w-[1920px]"
 >
   <div class="row-span-1 col-span-1 grid grid-cols-80-auto gap-2 md:gap-3">
     <div
@@ -71,14 +71,14 @@ const { text } = Astro.props;
         <li
           class="flex items-center justify-center sm:h-full h-12 bg-purple-200 hover:bg-purple-300/70 dark:bg-purple-800/10 hover:dark:bg-purple-800/20 rounded-md w-full sm:aspect-square sm:mt-6"
         >
-          <ToggleTheme iconClass="text-purple-400 dark:text-purple-700 sm:w-10 sm:h-10 w-8 h-8 " />
+          <ToggleTheme transition:persist iconClass="text-purple-400 dark:text-purple-700  sm:w-8 sm:h-8 w-6 h-6 " />
         </li>
       </ul>
     </div>
     <div
       class="col-span-1 rounded-md md:rounded-xl bg-purple-100 border dark:border-purple-950 border-purple-200 dark:bg-purple-800/10 p-3 md:p-6 flex gap-2 md:gap-3"
     >
-      <div class="bg-purple-400 h-20 rounded-md md:h-24 aspect-square"></div>
+      <div class="bg-purple-400 h-full rounded-md lg:min-h-16 xl:h-28 aspect-square"></div>
       <h1 class="font-semibold text-4xl">Carol Hernandez</h1>
     </div>
     <div
@@ -101,11 +101,11 @@ const { text } = Astro.props;
     <ProjectSlide />
   </div>
   <div
-    class="rounded-md md:rounded-xl bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 row-span-1 col-span-1 p-6"
+    class="rounded-md md:rounded-xl bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 row-span-1 col-span-1 p-3 md:p-6"
   >
     <Post title="Artículo más reciente" linkText="ver todos" linkUrl="/blog" />
   </div>
-  <div class="row-span-1 col-span-1 grid gap-2 md:gap-3 grid-cols-2 row-3-custom">
+  <div class="sm:row-span-1 sm:col-span-1 flex max-sm:flex-col sm:grid gap-2 md:gap-3 sm:grid-cols-2 row-3-custom">
     <Button
       {...{
         variant: 'primary',
@@ -119,8 +119,6 @@ const { text } = Astro.props;
       class="rounded-md md:rounded-xl bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 row-span-2 overflow-hidden"
     >
       <SingleTestimonial
-        title="Client testimonials"
-        subtitle="Discover what clients have to say about their experiences working with me."
         testimonials={[
           {
             testimonial: `She took our vague concept and turned it into a visual masterpiece that perfectly aligned with our goals. Her attention to detail and ability to translate ideas into compelling visuals exceeded our expectations.`,
@@ -162,7 +160,7 @@ const { text } = Astro.props;
       />
     </div>
     <div
-      class="flex flex-col items-center justify-center gap-3 rounded-md md:rounded-xl bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 row-span-2"
+      class="flex flex-col items-center justify-center gap-3 rounded-md md:rounded-xl bg-purple-100 border border-purple-200 dark:border-purple-950 dark:bg-purple-800/10 row-span-2 p-3 md:p-6"
     >
       <p class="text-2xl font-semibold">Experiments</p>
       <p class="text-lg text-secondary">Cooming soon!</p>
@@ -197,10 +195,6 @@ const { text } = Astro.props;
     }
   }
   @media screen and (max-width: 640px) {
-    .row-3-custom {
-      grid-template-columns: minmax(250px, 1fr);
-      grid-template-rows: repeat(auto-fill, minmax(max-content, 1fr));
-    }
     .grid-cols-80-auto {
       grid-template-columns: 100%;
     }

@@ -71,7 +71,6 @@ const projectCollection = defineCollection({
     excerpt: z.string().optional(),
     image: z.string().optional(),
     category: z.string().optional(),
-    tags: z.array(z.string()).optional(),
     metadata: metadataDefinition(),
   }),
 });

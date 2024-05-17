@@ -10,15 +10,15 @@ import { UI } from '~/utils/config';
   window.basic_script = true;
 
   function applyTheme(theme) {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
     } else {
-      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove('dark');
     }
   }
 
-    const iconlight = document.getElementById("ai:tabler:sun");
-    const icondark = document.getElementById("ai:tabler:moon-2");
+  const iconlight = document.getElementById('ai:tabler:sun');
+  const icondark = document.getElementById('ai:tabler:moon-2');
   const initTheme = function () {
     if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
       applyTheme(defaultTheme.replace(':only', ''));
@@ -27,12 +27,12 @@ import { UI } from '~/utils/config';
       (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
       applyTheme('dark');
-       iconlight.classList.add("opacity-0");
-      icondark.classList.remove("opacity-0");
+      iconlight.classList.add('opacity-0');
+      icondark.classList.remove('opacity-0');
     } else {
       applyTheme('light');
-      iconlight.classList.remove("opacity-0");
-      icondark.classList.add("opacity-0");
+      iconlight.classList.remove('opacity-0');
+      icondark.classList.add('opacity-0');
     }
   };
   initTheme();
@@ -76,8 +76,8 @@ import { UI } from '~/utils/config';
       }
       document.documentElement.classList.toggle('dark');
       localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-        iconlight.classList.toggle("opacity-0", document.documentElement.classList.contains('dark'));
-        icondark.classList.toggle("opacity-0", !document.documentElement.classList.contains('dark'));
+      iconlight.classList.toggle('opacity-0', document.documentElement.classList.contains('dark'));
+      icondark.classList.toggle('opacity-0', !document.documentElement.classList.contains('dark'));
     });
 
     attachEvent('[data-aw-social-share]', 'click', function (_, elem) {
@@ -126,9 +126,9 @@ import { UI } from '~/utils/config';
 
     function appyHeaderStylesOnScroll() {
       const header = document.querySelector('#header[data-aw-sticky-header]');
-      if (lastKnownScrollPosition > 60 && !header.classList.contains('scroll')) {
+      if (header && lastKnownScrollPosition > 60 && !header.classList.contains('scroll')) {
         document.getElementById('header').classList.add('scroll');
-      } else if (lastKnownScrollPosition <= 60 && header.classList.contains('scroll')) {
+      } else if (header && lastKnownScrollPosition <= 60 && header.classList.contains('scroll')) {
         document.getElementById('header').classList.remove('scroll');
       }
       ticking = false;
@@ -145,6 +145,81 @@ import { UI } from '~/utils/config';
         ticking = true;
       }
     });
+
+    function handleProjectslide() {
+      const reviewsSlider = document.getElementById('projectslider');
+      const reviewBtns = document.querySelectorAll('.project-btnslide');
+      const reviews = [...document.querySelectorAll('.projectslide')];
+      let isMoving;
+      let currentIndex = 0;
+
+      function moveSlider() {
+        reviewsSlider && (reviewsSlider.style.transform = `translateX(-${currentIndex * 100}%)`);
+      }
+
+      function handleReviewBtnClick(e) {
+        if (isMoving) {
+          return;
+        }
+        isMoving = true;
+        e.currentTarget.id === 'next' ? currentIndex++ : currentIndex--;
+        moveSlider();
+        isMoving = false;
+        if (currentIndex < 0 && reviewsSlider) {
+          currentIndex = reviews.length - 1;
+          reviewsSlider.style.transitionDuration = '300ms';
+          return moveSlider();
+        }
+        if (currentIndex >= reviews.length && reviewsSlider) {
+          currentIndex = 0;
+          reviewsSlider.style.transitionDuration = '300ms';
+          return moveSlider();
+        }
+      }
+
+      // Event Listeners
+      reviewBtns.forEach((btn) => {
+        btn.addEventListener('click', handleReviewBtnClick);
+      });
+    }
+    handleProjectslide();
+    function handleTestimonialslide() {
+      const reviewsSlider = document.getElementById('testimonials');
+      const reviewBtns = document.querySelectorAll('.review-btn');
+      const reviews = [...document.querySelectorAll('.review')];
+      let isMoving;
+      let currentIndex = 1;
+
+      function moveSlider() {
+        reviewsSlider && (reviewsSlider.style.transform = `translateX(-${currentIndex * 100}%)`);
+      }
+
+      function handleReviewBtnClick(e) {
+        if (isMoving) {
+          return;
+        }
+        isMoving = true;
+        e.currentTarget.id === 'next' ? currentIndex++ : currentIndex--;
+        moveSlider();
+        isMoving = false;
+        if (currentIndex < 0 && reviewsSlider) {
+          currentIndex = reviews.length - 1;
+          reviewsSlider.style.transitionDuration = '300ms';
+          return moveSlider();
+        }
+        if (currentIndex >= reviews.length && reviewsSlider) {
+          currentIndex = 0;
+          reviewsSlider.style.transitionDuration = '300ms';
+          return moveSlider();
+        }
+      }
+
+      // Event Listeners
+      reviewBtns.forEach((btn) => {
+        btn.addEventListener('click', handleReviewBtnClick);
+      });
+    }
+    handleTestimonialslide();
   };
   const onPageShow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');

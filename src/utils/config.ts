@@ -214,7 +214,7 @@ const getAppProjects = () => {
     isEnabled: false,
     projectsPerPage: 6,
     isRelatedProjectsEnabled: false,
-    relatedProjectsCount: 4,
+    relatedProjectsCount: 3,
     project: {
       isEnabled: true,
       permalink: 'projects/%slug%',
