@@ -62,6 +62,9 @@ export interface Project {
   /**  */
   title: string;
   /** Optional summary of project content. */
+  client?: string;
+  duration?: string;
+  role?: string;
   excerpt?: string;
   /**  */
   image?: ImageMetadata | string;

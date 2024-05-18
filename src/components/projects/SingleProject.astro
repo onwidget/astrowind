@@ -1,83 +1,108 @@
 ---
-import { Icon } from 'astro-icon/components';
-
 import Image from '~/components/common/Image.astro';
-import SocialShare from '~/components/common/SocialShare.astro';
-
 import { getPermalink } from '~/utils/permalinks';
-import { getFormattedDate } from '~/utils/utils';
-
 import type { Project } from '~/types';
-
 export interface Props {
   project: Project;
   url: string | URL;
 }
 
-const { project, url } = Astro.props;
+const { project } = Astro.props;
 const { Content } = project;
 ---
 
-<section class="py-8 sm:py-12 lg:py-16 mx-auto">
+<section class="py-2 lg:py-4 mx-auto">
   <article>
     <header class={project.image ? '' : ''}>
-      <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center">
-        <p>
-          <Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
-          <time datetime={String(project.publishDate)} class="inline-block">{getFormattedDate(project.publishDate)}</time>
-          {
-            project.category && (
-              <>
-                {' '}
-                ·{' '}
-                <a class="capitalize hover:underline inline-block" href={getPermalink(project.category, 'project-category')}>
-                  {project.category.replaceAll('-', ' ')}
-                </a>
-              </>
-            )
-          }
-          {project.readingTime && <> · {project.readingTime} min read</>}
-        </p>
-      </div>
-
-      <h1
-        class="px-4 sm:px-6 max-w-3xl mx-auto text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading"
-      >
-        {project.title}
-      </h1>
-      <p
-        class="max-w-3xl mx-auto mt-4 mb-8 px-4 sm:px-6 text-xl md:text-2xl text-muted dark:text-slate-400 text-justify"
-      >
-        {project.excerpt}
-      </p>
-
       {
         project.image ? (
-          <Image
-            src={project.image}
-            class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
-            widths={[400, 900]}
-            sizes="(max-width: 900px) 400px, 900px"
-            alt={project?.excerpt || ''}
-            width={900}
-            height={506}
-            loading="eager"
-            decoding="async"
-          />
+          <div class="px-4 md:px-6">
+            <Image
+              src={project.image}
+              class="max-w-full lg:max-w-[1280px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700 "
+              widths={[400, 900]}
+              sizes="(max-width: 1280px) 520px, 1280px"
+              alt={project?.excerpt || ''}
+              width={1280}
+              height={640}
+              loading="eager"
+              decoding="async"
+            />
+          </div>
         ) : (
-          <div class="max-w-3xl mx-auto px-4 sm:px-6">
+          <div class="max-w-screen-xl mx-auto px-4 sm:px-6">
             <div class="border-t dark:border-slate-700" />
           </div>
         )
       }
+      <div class="flex flex-col lg:flex-row items-start justify-start max-w-screen-xl mx-auto">
+        <div class="flex flex-col gap-2 md:gap-4 flex-1">
+          <h1
+            class="px-4 sm:px-6 max-w-screen-xl text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading"
+          >
+            {project.title}
+          </h1>
+            <div class=" justify-start items-start gap-3 inline-flex mb-2 px-4 sm:px-6 ">
+              <div class="grow shrink basis-auto flex-col justify-start items-start inline-flex">
+                <div class="self-stretch font-semibold ">
+                  Cliente
+                </div>
+                <div class="self-stretch text-md">
+                  {
+                    project.client && (
+                      <>
+                        <span>{project.client}</span>
+                      </>
+                    )
+                  }
+                </div>
+              </div>
+              <div class="grow shrink basis-auto flex-col justify-start items-start inline-flex">
+                <div class="self-stretch font-semibold">
+                  Duración
+                </div>
+                <div class="self-stretch text-md">
+                  {
+                    project.duration && (
+                      <>
+                        <span>{project.duration}</span>
+                      </>
+                    )
+                  }
+                </div>
+              </div>
+              <div class="grow shrink basis-auto self-stretch flex-col justify-start items-start inline-flex">
+                <div class="self-stretch font-semibold">
+                  Servicio
+                </div>
+                <div class="self-stretch text-md">
+                  {
+                    project.category && (
+                      <>
+                        <a
+                          class="capitalize hover:underline inline-block"
+                          href={getPermalink(project.category, 'project-category')}
+                        >
+                          {project.category.replaceAll('-', ' ')}
+                        </a>
+                      </>
+                    )
+                  }
+                </div>
+              </div>
+            </div>
+        </div>
+        <p
+          class="max-w-screen-xl mt-4 lg:mt-2 mb-8 px-4 sm:px-6 text-xl md:text-2xl text-muted dark:text-slate-400 text-justify flex-1"
+        >
+          {project.excerpt}
+        </p>
+      </div>
     </header>
     <div
-      class="mx-auto px-6 sm:px-6 max-w-3xl prose prose-lg lg:prose-xl dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-primary dark:prose-a:text-blue-400 prose-img:rounded-md prose-img:shadow-lg mt-8 prose-headings:scroll-mt-[80px]"
+      class="mx-auto px-6 sm:px-6 max-w-screen-xl prose prose-lg lg:prose-xl dark:prose-invert dark:prose-headings:text-slate-300 prose-md prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-primary dark:prose-a:text-blue-400 prose-img:rounded-md prose-img:shadow-lg mt-8 prose-headings:scroll-mt-[80px]"
     >
       {Content ? <Content /> : <Fragment set:html={project.content || ''} />}
-    </div>
-    <div class="mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row">
-      <SocialShare url={url} text={project.title} class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600" />
     </div>
   </article>
 </section>

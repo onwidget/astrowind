@@ -5,6 +5,7 @@ const { image = [] } = Astro.props as Images;
 ---
 
 <div class="card absolute top-0 left-0 overflow-hidden h-full w-full">
+  <slot/>
   {
     image &&
       image.map(({ src, alt, imageClass, xoffset, yoffset, rotation, scale }) => (
@@ -15,7 +16,7 @@ const { image = [] } = Astro.props as Images;
           data-r={rotation}
           data-s={scale}
         >
-          {image && <img src={src} alt={alt} loading="lazy" class="h-full w-full object-center object-cover"/>}
+          {image && <img src={src} alt={alt} loading="lazy" class="h-full w-full object-center object-cover z-20"/>}
         </div>
       ))
   }

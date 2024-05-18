@@ -10,7 +10,8 @@ import { getStaticPathsProject, projectRobots } from '~/utils/projects';
 import { findImage } from '~/utils/images';
 import type { MetaData } from '~/types';
 import RelatedProjects from '~/components/projects/RelatedProjects.astro';
-import ToProjectsLink from '~/components/projects/ToProjectsLink.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import {footerData2 } from '~/navigation';
 
 export const prerender = true;
 
@@ -43,8 +44,8 @@ const metadata = merge(
 ---
 
 <Layout metadata={metadata}>
-  <ToProjectsLink />
   <SingleProject project={{ ...project, image: image }} url={url} />
  
   <RelatedProjects project={project} />
+  <Footer slot='footer' {...footerData2}></Footer>
 </Layout>

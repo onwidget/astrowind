@@ -48,6 +48,9 @@ const getNormalizedProject = async (project: CollectionEntry<'project'>): Promis
     publishDate: rawPublishDate = new Date(),
     updateDate: rawUpdateDate,
     title,
+    client,
+    duration,
+    role,
     excerpt,
     image,
     category: rawCategory,
@@ -69,6 +72,9 @@ const getNormalizedProject = async (project: CollectionEntry<'project'>): Promis
     updateDate: updateDate,
 
     title: title,
+    client: client,
+    duration: duration,
+    role: role,
     excerpt: excerpt,
     image: image,
 

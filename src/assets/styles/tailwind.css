@@ -16,6 +16,13 @@
   .text-muted {
     color: var(--aw-color-text-muted);
   }
+  .text-link {
+    color: var(--aw-color-text-link);
+  }
+  .aw-link-active {
+    color: var(--aw-color-primary)
+
+  }
 }
 
 @layer components {

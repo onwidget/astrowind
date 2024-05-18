@@ -33,6 +33,9 @@ collections:
     create: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Client', name: 'client', widget: 'string' }
+      - { label: 'Duration', name: 'duration', widget: 'string' }
+      - { label: 'Role', name: 'role', widget: 'string' }
       - { label: 'Excerpt', name: 'excerpt', widget: 'string' }
       - { label: 'Category', name: 'category', widget: 'string' }
       - { label: 'Image', name: 'image', widget: 'string' }
