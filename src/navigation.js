@@ -28,6 +28,10 @@ export const headerData = {
       ],
     },
     {
+      text: 'Dashboard',
+      href: 'https://dashboard.trieve.ai',
+    },
+    {
       text: 'Live Demo',
       href: 'https://yc.trieve.ai',
     },

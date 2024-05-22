@@ -1,5 +1,5 @@
 ---
-publishDate: 2024-02-10T08:45:00Z
+publishDate: 2024-05-21T08:45:00Z
 author: skeptrune (Nick K)
 title: Trieve vs. Algolia
 excerpt: Compared to Algolia, Trieve offers a more powerful source available search platform with dense-vector semantic capabilities, RAG support, and a ranking plus relevance fine-tuning dashboard for document expansion and merchandising.
@@ -32,13 +32,12 @@ This blog post is going to highlight Trieve relative to Algolia and explain whic
 ## When to Use Algolia Over Trieve
 
 - built in analytics are necessary for your solution
-- you need ~100ms latency or less; Trieve is currently ~250ms
 - Algolia's prebuilt integrations for your UI framework are very important
 
 ## Comparison Summary
 
 Trieve sets itself apart by being BSL-licensed self-hostable and built in public at [github.com/devflowinc/trieve](https://github.com/devflowinc/trieve) whereas Algolia is fully closed, having support for dense vector semantic search and recommendations while Algolia is only neural full-text, supporting gen-AI RAG, and shipping with an Admin UI for document expansion and weighting (AKA merchandising).
 
-However, Trieve currently has latency times of ~250ms whereas Algolia is relatively consistent at ~100ms or less. The only time the Trieve team would say to use Algolia, given their closed-source and non self-hostable status, would be if you absolutely need sub-100ms latency times, built-in analytics, or their UI integrations. At Trieve, we are hard at work building these features to reach full parity with Algolia see for yourself on [Trieve's Github](https://github.com/devflowinc/trieve).
+However, Trieve currently has latency times of ~170ms whereas Algolia is relatively consistent at ~100ms or less. The only time the Trieve team would say to use Algolia, given their closed-source and non self-hostable status, would be if you absolutely need sub-100ms latency times, built-in analytics, or their UI integrations. At Trieve, we are hard at work building these features to reach full parity with Algolia see for yourself on [Trieve's Github](https://github.com/devflowinc/trieve).
 
 <ComparisonTable />
