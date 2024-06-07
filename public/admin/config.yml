@@ -1,6 +1,13 @@
 backend:
-  name: git-gateway
-  branch: main
+  name: github
+  repo: awaddell/astrowind
+  branch: decapcms
+
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: dhaobum0q
+    api_key: 799333572876976
 
 media_folder: 'src/assets/images'
 public_folder: '/_astro'
@@ -23,7 +30,7 @@ collections:
           collapsed: false,
           field: { label: 'Tag', name: 'tag', widget: 'string' },
         }
-      - { label: 'Image', name: 'image', widget: 'string' }
+      - { label: 'Image', name: 'image', widget: 'image' }
       - { label: 'Publish Date', name: 'publishDate', widget: 'datetime', required: false }
       - { label: 'Author', name: 'author', widget: 'string' }
       - { label: 'Content', name: 'body', widget: 'markdown' }
