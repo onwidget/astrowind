@@ -23,6 +23,7 @@
     "@astrolib/seo": "^1.0.0-beta.5",
     "@fontsource-variable/inter": "^5.0.18",
     "astro": "^4.9.2",
+    "astro-decap-cms-oauth": "^0.3.0",
     "astro-embed": "^0.7.2",
     "astro-icon": "^1.1.0",
     "limax": "4.1.0",

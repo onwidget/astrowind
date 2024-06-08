@@ -1846,6 +1846,11 @@ astro-auto-import@^0.4.2:
     "@types/node" "^18.0.0"
     acorn "^8.8.0"
 
+astro-decap-cms-oauth@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/astro-decap-cms-oauth/-/astro-decap-cms-oauth-0.3.0.tgz#d3cbebd0c678740ac98ce3012dbbd6ede97e362c"
+  integrity sha512-QCxMbO0di5zW4Vq5CdjFdXe2VZsxPpAENRXCo6qKFVKhdQz0nPfZULWN6cIH9ynG6Jo8tSaccvUe8IEd0vwpcg==
+
 astro-embed@^0.7.2:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/astro-embed/-/astro-embed-0.7.2.tgz#23884982e2a5734ca3580f64481d322ee5a3930a"

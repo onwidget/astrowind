@@ -11,6 +11,7 @@ import icon from 'astro-icon';
 import compress from '@playform/compress';
 
 import astrowind from './vendor/integration';
+import decapCmsOauth from "astro-decap-cms-oauth";
 
 import {
   readingTimeRemarkPlugin,
@@ -25,7 +26,7 @@ const whenExternalScripts = (items = []) =>
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
-  output: 'static',
+  output: 'hybrid', // was 'static', using 'hybrid' as astro-decap-cms-oauth requires 'server'
 
   integrations: [
     tailwind({
@@ -72,6 +73,8 @@ export default defineConfig({
     astrowind({
       config: './src/config.yaml',
     }),
+
+    decapCmsOauth(),
   ],
 
   image: {
