@@ -12,6 +12,7 @@ import compress from '@playform/compress';
 
 import astrowind from './vendor/integration';
 import decapCmsOauth from "astro-decap-cms-oauth";
+import vercel from '@astrojs/vercel/serverless';
 
 import {
   readingTimeRemarkPlugin,
@@ -27,6 +28,7 @@ const whenExternalScripts = (items = []) =>
 
 export default defineConfig({
   output: 'hybrid', // was 'static', using 'hybrid' as astro-decap-cms-oauth requires 'server'
+  adapter: vercel(),
 
   integrations: [
     tailwind({
