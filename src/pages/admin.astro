@@ -1,3 +1,10 @@
+---
+// we are in hybrid mode and need to opt this page out of prerendering makig it server side rendered (SSR)
+// See https://github.com/dorukgezici/astro-decap-cms-oauth?tab=readme-ov-file#manual-installation
+// See https://docs.astro.build/en/guides/server-side-rendering/
+export const prerender = false;
+---
+
 <!doctype html>
 <html>
   <head>
