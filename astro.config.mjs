@@ -8,7 +8,7 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
-import compress from '@playform/compress';
+import compress from 'astro-compress';
 
 import astrowind from './vendor/integration';
 
