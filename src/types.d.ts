@@ -213,12 +213,10 @@ export interface Form {
 }
 
 // WIDGETS
-export interface Hero extends Omit<Headline, 'classes'>, Widget {
+export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' | 'classes'> {
   content?: string;
+  actions?: string | CallToAction[];
   image?: string | unknown;
-  callToAction1?: CallToAction;
-  callToAction2?: CallToAction;
-  isReversed?: boolean;
 }
 
 export interface Team extends Omit<Headline, 'classes'>, Widget {
