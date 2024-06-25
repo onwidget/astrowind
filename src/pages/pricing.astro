@@ -15,18 +15,20 @@ const metadata = {
 
   <HeroText
     title="Pricing That Makes Sense"
-    subtitle="Flat pricing based on dataset size. 24/7 support included on all plans. No unexpected charges when you have high traffic periods."
+    subtitle="Flat pricing based on dataset size. 24/7 support included on all plans."
+    callToAction={{
+      target: '_blank',
+      text: 'Contact For Commercial Self-Host Pricing',
+      href: 'https://cal.com/nick.k/meet',
+    }}
   />
 
   <!-- Pricing Widget ******************* -->
 
   <Prices
-    title="Plans"
-    subtitle="Non-commercial self-hosting is free and our hosted service is free up to 10,000 vectors/chunks."
     prices={[
       {
         title: 'dev cloud',
-        subtitle: 'Optimal choice for small teams. Ideal for startups and small businesses getting started',
         price: 25,
         period: 'Per Month',
         items: [
@@ -56,43 +58,7 @@ const metadata = {
         },
       },
       {
-        title: 'sovereign',
-        subtitle: 'Buy a license to host Trieve on your own servers. Ideal for large organizations and agencies',
-        price: '500+',
-        period: 'Per Month - Starting',
-        items: [
-          {
-            description: 'Terraform templates',
-          },
-          {
-            description: 'Helm charts',
-          },
-          {
-            description: 'Run securely on your own servers or cloud',
-          },
-          {
-            description: 'Multi-tenant so can be used by multiple teams within your organization',
-          },
-          {
-            description: 'Unlimited usage - Do whatever you want besides reselling',
-          },
-        ],
-        callToAction: {
-          target: '_blank',
-          text: 'Book Meeting',
-          href: 'https://cal.com/nick.k/meet',
-        },
-        callToAction2: {
-          target: '_blank',
-          text: 'humans@trieve.ai',
-          href: 'mailto:humans@trieve.ai',
-        },
-        hasRibbon: true,
-        ribbonTitle: 'self-host',
-      },
-      {
         title: 'pro cloud',
-        subtitle: 'For mid-sized datasets needing enhanced performance and storage capacity',
         price: 500,
         period: 'Per Month',
         items: [
@@ -123,7 +89,6 @@ const metadata = {
       },
       {
         title: 'enterprise cloud',
-        subtitle: 'Contracted guarantees for organizations with strict latency and uptime requirements',
         price: '5000+',
         period: 'Per Month - Starting',
         items: [

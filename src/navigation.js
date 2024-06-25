@@ -36,7 +36,7 @@ export const headerData = {
       href: 'https://yc.trieve.ai',
     },
     {
-      text: 'API Docs',
+      text: 'Documentation',
       href: 'https://docs.trieve.ai',
     },
     {
@@ -82,7 +82,7 @@ export const footerData = {
       title: 'Product',
       links: [
         { text: 'Pricing', href: '/pricing' },
-        { text: 'API Docs', href: 'https://docs.trieve.ai' },
+        { text: 'Documentation', href: 'https://docs.trieve.ai' },
         { text: 'YC Directory Demo', href: 'https://yc.trieve.ai' },
       ],
     },
