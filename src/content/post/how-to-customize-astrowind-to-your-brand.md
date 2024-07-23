@@ -4,11 +4,11 @@ title: How to customize AstroWind template to suit your branding
 excerpt: Personalize AstroWind template for your brand. Our guide unlocks seamless customization steps for a unique online presence.
 image: https://images.unsplash.com/photo-1546984575-757f4f7c13cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80
 tags:
-  - astro
-  - tailwind css
-  - theme
+    - astro
+    - tailwind css
+    - theme
 metadata:
-  canonical: https://astrowind.vercel.app/how-to-customize-astrowind-to-your-brand
+    canonical: https://astrowind.vercel.app/how-to-customize-astrowind-to-your-brand
 ---
 
 ## Congue justo vulputate nascetur convallis varius orci fringilla nulla pharetr
@@ -19,13 +19,13 @@ Accumsan torquent vitae convallis duis cras risus pretium nulla mi litora socios
 
 ## Mauris velit laoreet vitae cursus augue
 
-- Massa egestas consequat nisl id volutpat, varius neque aenean.
+-   Massa egestas consequat nisl id volutpat, varius neque aenean.
 
-- Venenatis tincidunt eros pretium viverra lacinia convallis, turpis orci condimentum fusce.
+-   Venenatis tincidunt eros pretium viverra lacinia convallis, turpis orci condimentum fusce.
 
-- Pellentesque in aliquet nisi gravida netus, commodo aptent volutpat.
+-   Pellentesque in aliquet nisi gravida netus, commodo aptent volutpat.
 
-- Nisi rutrum eros euismod, parturient ullamcorper mattis a, dapibus vestibulum.
+-   Nisi rutrum eros euismod, parturient ullamcorper mattis a, dapibus vestibulum.
 
 Senectus fermentum tristique egestas bibendum per dictumst purus pharetra cras dictum pulvinar, vitae nec eros montes dis quis nullam duis netus litora, feugiat cubilia mollis porttitor velit ligula metus ante risus eu.
 

@@ -9,23 +9,23 @@ import { headerData, footerData } from '~/navigation';
 import type { MetaData } from '~/types';
 
 export interface Props {
-  metadata?: MetaData;
+	metadata?: MetaData;
 }
 
 const { metadata } = Astro.props;
 ---
 
 <Layout metadata={metadata}>
-  <slot name="announcement">
-    <Announcement />
-  </slot>
-  <slot name="header">
-    <Header {...headerData} isSticky showRssFeed showToggleTheme />
-  </slot>
-  <main>
-    <slot />
-  </main>
-  <slot name="footer">
-    <Footer {...footerData} />
-  </slot>
+	<slot name="announcement">
+		<Announcement />
+	</slot>
+	<slot name="header">
+		<Header {...headerData} isSticky showRssFeed showToggleTheme />
+	</slot>
+	<main>
+		<slot />
+	</main>
+	<slot name="footer">
+		<Footer {...footerData} />
+	</slot>
 </Layout>

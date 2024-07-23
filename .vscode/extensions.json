@@ -1,10 +1,18 @@
 {
-  "recommendations": [
-    "astro-build.astro-vscode",
-    "bradlc.vscode-tailwindcss",
-    "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
-    "unifiedjs.vscode-mdx"
-  ],
-  "unwantedRecommendations": []
+	"recommendations": [
+		"astro-build.astro-vscode",
+		"bradlc.vscode-tailwindcss",
+		"dbaeumer.vscode-eslint",
+		"esbenp.prettier-vscode",
+		"unifiedjs.vscode-mdx",
+		"naumovs.color-highlight",
+		"kisstkondoros.vscode-gutter-preview",
+		"jock.svg",
+		"bradlc.vscode-tailwindcss",
+		"dbaeumer.vscode-eslint",
+		"christian-kohler.path-intellisense",
+		"esbenp.prettier-vscode",
+		"vivaxy.vscode-conventional-commits",
+	],
+	"unwantedRecommendations": []
 }

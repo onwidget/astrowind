@@ -1,6 +1,6 @@
 {
-  "startCommand": "npm start",
-  "env": {
-    "ENABLE_CJS_IMPORTS": true
-  }
+	"startCommand": "npm start",
+	"env": {
+		"ENABLE_CJS_IMPORTS": true
+	}
 }
