@@ -5,11 +5,11 @@ excerpt: While easy to get started, Astrowind is quite complex internally.  This
 image: https://images.unsplash.com/photo-1534307671554-9a6d81f4d629?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1651&q=80
 category: Documentation
 tags:
-  - astro
-  - tailwind css
-  - front-end
+    - astro
+    - tailwind css
+    - front-end
 metadata:
-  canonical: https://astrowind.vercel.app/astrowind-template-in-depth
+    canonical: https://astrowind.vercel.app/astrowind-template-in-depth
 ---
 
 import DListItem from '~/components/ui/DListItem.astro';
@@ -28,17 +28,17 @@ As the name suggests, _AstroWind_ relies on _TailWind_ for styling. Furthermore,
 The styling mechanism consists of the following files (all paths are prefixed with `/src/` ):
 
 <DListItem dt="assets/styles/tailwind.css">
-  This file is essentially an extension of _TailWind's_ base.css. High-level component styles are defined here. Note
-  also styling on elements selected by 'attribute' selectors at the bottom of the files, particularly those selected by
-  'data' attributes.
+	This file is essentially an extension of _TailWind's_ base.css. High-level component styles are defined here. Note
+	also styling on elements selected by 'attribute' selectors at the bottom of the files, particularly those selected
+	by 'data' attributes.
 </DListItem>
 <DListItem dt="components/CustomStyles.astro">
-  Defines custom colors and fonts. For these to take effect in the 'base.css' file, they need to be loaded in the html
-  header section. See next.
+	Defines custom colors and fonts. For these to take effect in the 'base.css' file, they need to be loaded in the html
+	header section. See next.
 </DListItem>
 <DListItem dt="layouts/Layout.astro">
-  This layout is used for all of the pages rendered by _AstroWind_. The contents of _tailwind.css_ and
-  _CustomStyles.astro_ component, described above, is injected into the html header.
+	This layout is used for all of the pages rendered by _AstroWind_. The contents of _tailwind.css_ and
+	_CustomStyles.astro_ component, described above, is injected into the html header.
 </DListItem>
 
 ### Dark Mode
@@ -47,11 +47,11 @@ _Dark Mode_ is triggered by the little 'sunlight' icon:<ToggleTheme/>in the page
 
 ```javascript
 attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
-  if (defaultTheme.endsWith(':only')) {
-    return;
-  }
-  document.documentElement.classList.toggle('dark');
-  localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+	if (defaultTheme.endsWith(':only')) {
+		return;
+	}
+	document.documentElement.classList.toggle('dark');
+	localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
 });
 ```
 
@@ -66,15 +66,15 @@ _slots_ are part of the component implementation, which is a common concept amon
 // (file: MyComponent.astro)
 const { title } = Astro.props;
 export interface Props {
-  title: string;
+	title: string;
 }
 ---
 
 <div>
-  <h2>{title}</h2>
-  <slot />
-  <!-- slot contents injected here -->
-  <div></div>
+	<h2>{title}</h2>
+	<slot />
+	<!-- slot contents injected here -->
+	<div></div>
 </div>
 ```
 
@@ -83,7 +83,7 @@ And in usage elsewhere:
 ```astro
 import MyComponent from "~/components/MyComponent"; ...
 <MyComponent someArg="A Slot example">
-  <p>This content will be displayed in the slot</p>
+	<p>This content will be displayed in the slot</p>
 </MyComponent>
 ```
 
@@ -97,17 +97,17 @@ There's another way we can use slots, useful particularly when a component can h
 
 const { title } = Astro.props;
 export interface Props {
-  title: string;
+	title: string;
 }
 const content: string = await Astro.props.render('default');
 ---
 
 // renders the html to the 'content' variable
 <div>
-  <h2>{title}</h2>
-  <div set:html={content} />
-  <!-- slot contents injected here -->
-  <div></div>
+	<h2>{title}</h2>
+	<div set:html={content} />
+	<!-- slot contents injected here -->
+	<div></div>
 </div>
 ```
 
@@ -141,31 +141,31 @@ You'll note that the index file imports a lot of components, each one roughly an
 
 ```astro
 <CallToAction
-  callToAction={{
-    text: 'Get template',
-    href: 'https://github.com/onwidget/astrowind',
-    icon: 'tabler:download',
-  }}
+	callToAction={{
+		text: 'Get template',
+		href: 'https://github.com/onwidget/astrowind',
+		icon: 'tabler:download',
+	}}
 >
-  <Fragment slot="title">
-    Astro + <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-  </Fragment>
+	<Fragment slot="title">
+		Astro + <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+	</Fragment>
 
-  <Fragment slot="subtitle">
-    Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't waste
-    more time! :P
-  </Fragment>
+	<Fragment slot="subtitle">
+		Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
+		waste more time! :P
+	</Fragment>
 </CallToAction>
 ```
 
 Some things to note, here:
 
 <DListItem dt="The <em>callToAction</em> argument">
-  This argument is actually being passed a javascript object -- not a string. (However, in the TS definition, it could
-  be a string...)
+	This argument is actually being passed a javascript object -- not a string. (However, in the TS definition, it could
+	be a string...)
 </DListItem>
 <DListItem dt="There are several <em>Fragment</em> children">
-  Furthermore, these &lt;Fragment/&gt; elements each have a _slot="(value)"_ specifier.
+	Furthermore, these &lt;Fragment/&gt; elements each have a _slot="(value)"_ specifier.
 </DListItem>
 
 The latter seems odd, because &lt;Fragment/&gt; is a built-in component over which you have no control, and doesn't have a provision for rendering slots, <em>per se</em>.
@@ -184,8 +184,8 @@ So, in the example above, the _CallToAction_ component defines the _subtitle_ sl
 
 ```astro
 <Fragment slot="subtitle">
-  Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't waste
-  more time! :P
+	Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't waste
+	more time! :P
 </Fragment>
 ```
 
