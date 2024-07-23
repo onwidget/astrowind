@@ -1,0 +1,30 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run Astro Server",
+			"type": "process",
+			"command": "make",
+			"args": [
+				"start"
+			],
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated",
+				"focus": true
+			},
+			"runOptions": {
+				"runOn": "folderOpen"
+			}
+		},
+		{
+			"label": "Prettier Code",
+			"type": "process",
+			"command": "make",
+			"args": [
+				"format"
+			]
+		},
+	]
+}
