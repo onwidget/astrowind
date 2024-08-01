@@ -75,6 +75,7 @@ export const footerData = {
       links: [
         { text: 'About', href: '/about' },
         { text: 'Admin Dashboard', href: 'https://dashboard.trieve.ai' },
+        { text: 'Privacy Policy', href: '/legal/privacy-policy' },
         { text: 'Github', href: 'https://github.com/devflowinc/trieve' },
       ],
     },
