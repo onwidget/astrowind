@@ -1,7 +1,7 @@
 ---
-title: Streaming ChatGPT Messages with OpenAI API and Actix Web
-author: fastfist
-pubDatetime: 2023-05-15T10:00:00Z
+title: Streaming LLM assistant completions with the OpenAI API and Rust Actix-Web
+author: cdxker
+pubDatetime: 2024-08-15T10:00:00Z
 postSlug: streaming-chatgpt-messages-with-openai-api-and-actix-web
 featured: true
 draft: false
@@ -10,8 +10,8 @@ tags:
   - actix-web
   - chat-gpt
   - open-ai
-image: /assets/blog-post-open-ai-rust.jpeg
-excerpt: Guide on how we were able to stream ChatGPT messages in real time using Actix Web.
+image: https://cdn.trieve.ai/blog/crab-surfing.jpeg
+excerpt: Guide on how we were able to stream LLM assistant completions in real time using Actix-Web.
 ---
 
 When choosing to decide what software to build [Arguflow AI](https://coach.arguflow.ai) with we were tired of using Javascript for our backend services. We wanted something better, something faster, something safer, something rusty. Our main motivation behind choosing to use rust was for the learning experience behind it.

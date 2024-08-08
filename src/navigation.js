@@ -19,7 +19,7 @@ export const headerData = {
         },
         {
           text: 'Matrix',
-          href: 'https://matrix.to/#/#trieve-general:matrix.zerodao.gg',
+          href: 'https://matrix.to/#/#trieve-general:trieve.ai',
         },
         {
           text: 'Discord',
@@ -58,7 +58,7 @@ export const footerData = {
       title: 'Support',
       links: [
         { text: 'Docs', href: 'https://docs.trieve.ai' },
-        { text: 'Matrix', href: 'https://matrix.to/#/#trieve-general:matrix.zerodao.gg' },
+        { text: 'Matrix', href: 'https://matrix.to/#/#trieve-general:trieve.ai' },
         { text: 'Discord', href: 'https://discord.gg/E9sPRZqpDT' },
         {
           text: '+1 628-222-4090',
@@ -95,7 +95,7 @@ export const footerData = {
   socialLinks: [
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: 'https://x.com/trieveai' },
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/devflowinc/trieve' },
-    { ariaLabel: 'Matrix', icon: 'tabler:brand-matrix', href: 'https://matrix.to/#/#trieve-general:matrix.zerodao.gg' },
+    { ariaLabel: 'Matrix', icon: 'tabler:brand-matrix', href: 'https://matrix.to/#/#trieve-general:trieve.ai' },
     { ariaLabel: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/E9sPRZqpDT' },
   ],
   secondaryLinks: [],
