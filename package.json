@@ -1,5 +1,5 @@
 {
-  "name": "@onwidget/astrowind",
+  "name": "lifedental",
   "version": "1.0.0-beta.39",
   "description": "AstroWind: A free template using Astro 4.0 and Tailwind CSS. Astro starter theme.",
   "type": "module",
@@ -22,7 +22,7 @@
     "@astrolib/analytics": "^0.5.0",
     "@astrolib/seo": "^1.0.0-beta.5",
     "@fontsource-variable/inter": "^5.0.19",
-    "astro": "^4.12.2",
+    "astro": "^4.13.1",
     "astro-embed": "^0.7.2",
     "astro-icon": "^1.1.0",
     "limax": "4.1.0",
@@ -52,6 +52,7 @@
     "mdast-util-to-string": "^4.0.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "reading-time": "^1.5.0",
     "rehype-plugin-image-native-lazy-loading": "^1.2.0",
     "sharp": "0.33.4",
@@ -59,5 +60,20 @@
     "tailwindcss": "^3.4.6",
     "typescript": "^5.5.3",
     "typescript-eslint": "^7.16.1"
-  }
+  },
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code13901/lifedentalvs.git"
+  },
+  "keywords": [
+    "implant",
+    "cosmetic"
+  ],
+  "author": "Ketan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/code13901/lifedentalvs/issues"
+  },
+  "homepage": "https://github.com/code13901/lifedentalvs#readme"
 }
