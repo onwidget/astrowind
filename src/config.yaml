@@ -1,5 +1,5 @@
 site:
-  name: AstroWind
+  name: Life.Dental
   site: 'https://astrowind.vercel.app'
   base: '/'
   trailingSlash: false
@@ -16,9 +16,9 @@ metadata:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Life.Dental
     images:
-      - url: '~/assets/images/default.png'
+      - url: '~/assets/images/logo.png'
         width: 1200
         height: 628
     type: website
