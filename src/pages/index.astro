@@ -11,7 +11,7 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-
+import Testimonials from '~/components/widgets/Testimonials.astro';
 const metadata = {
   title: 'Life.Dental - Implant and Cosmetic Dentist in Dunwoody',
   ignoreTitleTemplate: true,
@@ -81,40 +81,97 @@ const metadata = {
   <!-- Content Widget **************** -->
 
   <Content
-    isAfterContent
-    items={[
+  id="about"
+  
+  image={{
+    src: 'src/assets/images/Dr.Ken.jpg',
+    alt: 'Dr.Ketan Ginoya',
+    loading: 'eager',
+  }}
+>
+  <Fragment slot="content">
+    <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Dr.Ketan Ginoya </h2> <br/>
+
+<p>Dr. Ketan Ginoya is a highly skilled and compassionate general dentist with over a decade of experience in delivering exceptional dental care. Graduating with honors from the prestigious Boston University Goldman School of Dental Medicine in 2011, Dr. Ginoya has since dedicated his career to helping patients achieve optimal oral health and beautiful smiles.</p><br/>
+
+<p>With a foundation in dental excellence, Dr. Ginoya also holds a Bachelor of Dental Surgery degree from  Rajiv Gandhi University of Health and Science, Bangalore, India. Demonstrating a commitment to lifelong learning, Dr. Ginoya has earned the Fellowship in the Academy of General Dentistry (FAGD), a testament to his extensive knowledge and expertise in the field.</p><br/>
+
+<p>A strong advocate for continuous education and professional growth, Dr. Ginoya is an active member of several esteemed organizations, including the American Dental Association and the Academy of General Dentistry. His dedication to advancing his skills is reflected in his role as a Kois Center Mentor, where he guides other dental professionals in achieving clinical excellence.</p> <br/>
+
+<p>Dr. Ginoya has completed extensive continuing education, including advanced training in implantology with Dr. Arun Garg, esthetic dentistry with Dr. Frank Spears at Spears Education, and comprehensive courses in composite techniques, hard and soft tissue augmentation, and zygomatic implants. His expertise in these areas allows him to offer cutting-edge dental solutions tailored to the unique needs of each patient.</p><br/>
+
+<p>Whether it's enhancing a patient's smile with Invisalign, performing bone grafting, or conducting maxillary sinus augmentations, Dr. Ginoya combines his vast clinical experience with a patient-centered approach to ensure the best outcomes.</p> <br/>
+
+<p>When you choose Dr. Ketan Ginoya, you are choosing a dentist who is not only deeply knowledgeable but also genuinely invested in your oral health and well-being. With a passion for dentistry and a commitment to excellence, Dr. Ginoya is dedicated to helping you achieve the smile you've always wanted.</p>
+<br/>
+  </Fragment>
+
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+  </Fragment>
+</Content>
+
+
+<Testimonials
+    title="Patient testimonials"
+    subtitle="Discover what patients have to say about their experiences working with us."
+    testimonials={[
       {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
+        testimonial: `She took our vague concept and turned it into a visual masterpiece that perfectly aligned with our goals. Her attention to detail and ability to translate ideas into compelling visuals exceeded our expectations.`,
+        name: 'Mark Thompson',
+        job: 'Creative director',
+        image: {
+          src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+          alt: 'Mark Thompson Image',
+        },
       },
       {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
+        testimonial: `She transformed our brand identity with her creative finesse, capturing our essence in every element. Her dedication and talent truly shine through her work.`,
+        name: 'Emily Martinez',
+        job: 'CEO',
+        image: {
+          src: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=772&q=80',
+          alt: 'Emily Martinez Image',
+        },
       },
       {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
+        testimonial: `She has an uncanny ability to communicate emotions and stories. She crafted a logo for our NGO that not only represents our cause but also evokes empathy. Her professionalism and commitment make her a designer of exceptional caliber.`,
+        name: 'Laura Simmons',
+        job: 'Founder of an NGO',
+        image: {
+          src: 'https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+          alt: 'Laura Simmons Image',
+        },
       },
       {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
+        testimonial: `We entrusted Sarah with revamping our website's user interface, and the results were astounding. Her intuitive design sense enhanced user experience, leading to a significant increase in engagement. She's a designer who truly understands the synergy of aesthetics and functionality.`,
+        name: 'Alex Foster',
+        job: 'Director of web services',
+        image: {
+          src: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+          alt: 'Alex Foster Image',
+        },
+      },
+      {
+        testimonial: `She took our vision and elevated it beyond imagination. Her ability to capture brand essence and translate it into design is nothing short of remarkable. Working with her has been an inspiring journey.`,
+        name: 'Jessica Collins',
+        job: 'Product Manager',
+        image: {
+          src: 'https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=778&q=80',
+          alt: 'Jessica Collins Image',
+        },
+      },
+      {
+        testimonial: `Her ability to transform concepts into captivating visuals is nothing short of extraordinary. She took our event poster idea and turned it into a visual masterpiece that perfectly captured the essence of our festival. Sarah's dedication, creativity, and knack for delivering beyond expectations make her an invaluable asset to any project.`,
+        name: 'Michael Carter',
+        job: 'Event Coordinator',
+        image: {
+          src: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+          alt: 'Michael Carter Image',
+        },
       },
     ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
+  />
   <!-- Content Widget **************** -->
 
   <Content

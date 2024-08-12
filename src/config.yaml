@@ -1,6 +1,6 @@
 site:
   name: Life.Dental
-  site: 'https://astrowind.vercel.app'
+  site: 'https://life.dental'
   base: '/'
   trailingSlash: false
 
@@ -9,9 +9,9 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Life.Dental
+    template: '%s — Life.Dental'
+  description: "Comprehensive, Implant and cosmetic dentistry serving Dunwoody, Chamblee, Sandy Springs, Buckhead area."
   robots:
     index: true
     follow: true
