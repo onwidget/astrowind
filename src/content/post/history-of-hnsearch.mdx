@@ -1,0 +1,103 @@
+---
+publishDate: 2024-08-12T08:45:00Z
+author: skeptrune (Nick K)
+title: 'History of HackerNews Search: From 2007 to 2024'
+excerpt: The history of HackerNews (HN) search spans three generations. Starting in 2007 with Disqus founder Jason Yan followed by a series of other sites, Octopart/ThriftDB-powered HNSearch in 2011, and finally Algolia-powered search from 2014 to today.
+image: https://cdn.trieve.ai/blog/history-of-hnsearch/hnsearch-api-contest-resized.png
+category: History
+tags:
+  - hackernews
+---
+
+We at Trieve are going to be launching a search engine for HackerNews with some additional features soon and thought it would be worth studying the history of HN search before finalizing things. Here's what we found!
+
+> Note: Did the research using our own HN search engine! :)
+
+> Note: I was happy looking at these old HN posts and seeing that so many of the comment/post'ers from the early days of HN
+> were, or eventually became, founders of YC companies.
+
+## First Gen | 2007-2011
+
+### 1. Search News YC (bigheadlabs) on March 17, 2007
+
+Written and shared by Jason Yan, Founder/CTO of Disqus (S07) (aka [jsonyan](https://news.ycombinator.com/user?id=jasonyan)), on [March 17, 2007](https://news.ycombinator.com/item?id=4780). Can still be viewed [here on the internet archive](https://web.archive.org/web/20070707020143/http://nycs.bigheadlabs.com/).
+
+![search-news-yc-screenshot](https://cdn.trieve.ai/blog/history-of-hnsearch/nycs.bigheadlabs.com.webp)
+
+I assume there was some indexing logic being done on the DJango server that Jason used.
+
+### 2. ycsearch.com on June 27, 2007
+
+Quickly hacked together by Keven Lin (YC S07) (aka [keven](https://news.ycombinator.com/user?id=keven)) on [June 27, 2007](https://news.ycombinator.com/item?id=31012).
+
+I could not find a screenshot on Internet Archive, but Keven explained he built it with [cse.google.com](https://programmablesearchengine.google.com/about/).
+
+### 3. Search 'Hacker News' (trk7.com) on September 18, 2007
+
+Created and shared by Kesevan (aka [cosmok](https://news.ycombinator.com/user?id=cosmok)) on [September 18, 2007](https://news.ycombinator.com/item?id=56327).
+
+Can see the UI at this [link on the internet archive](https://web.archive.org/web/20080306153636/http://trk7.com/yc).
+
+![trk7-search-hn-screenshot](https://cdn.trieve.ai/blog/history-of-hnsearch/trk7-hnsearch.webp)
+
+In the text of the original post (see [here](https://news.ycombinator.com/item?id=1309589)), cosmok explains that he built it using Yahoo's search API.
+
+### 4. searchyc.com (independent) on Dec 31, 2007 | First with Some Staying Power
+
+Independently created and shared by Mike Cheng (aka [chengmi](https://news.ycombinator.com/user?id=chengmi)) and Alaska Miller (aka [alaskamiller](https://news.ycombinator.com/user?id=chengmi)) on [Dec 31, 2007](https://news.ycombinator.com/item?id=93864).
+
+I surmise from the comment on the post that the motivation here was ycsearch being limited in terms of HN-specific filters and the bigheadlabs one being un-maintained.
+
+![search-yc-screenshot](https://cdn.trieve.ai/blog/history-of-hnsearch/searchyc.com.webp)
+
+Judging from the last [paulg comment on this thread](https://news.ycombinator.com/item?id=35959) it seems like, similar to ycsearch, it was built using [cse.google.com](https://programmablesearchengine.google.com/about/).
+
+The HN community seemed to get a lot of value out of it as in a [HN thread posted when it went down on June 1 of 2011](https://news.ycombinator.com/item?id=2605959) there are multiple users explaining how important it was to them:
+
+> **iheartmemcache**: This service is a major component of this community; as such, I'll host this on whatever metal you need. My contact information is in my profile. Ping me on G-talk and we can have this sorted out by the morning (if you're in PST).
+
+> **bkrausz**: What kind of traffic does SearchYC get? Is a $40/mo Linode not sufficient? I would gladly pay that (or be content with some Google ads in the right bar). Hell, I'd even maintain the site...it's a great service.
+
+> **g123g**: Hopfully you will be able to bring it back soon. <span>SearchYC.com</span> is the best way to search the treasure trove that HN has become.
+
+Worth mentioning that HNSearch (mentioned further below) was up by this point in time. Judging by comments on the shutdown post it seems like traffic was somewhat split:
+
+> **swombat**: What's wrong with http://www.hnsearch.com ?
+>
+> > **evangineer**: Just got zero hits on a search that I know there is at least one result for. Same search worked fine on <span>searchyc.com</span> a few days ago.
+
+## Second Gen - Octopart/ThriftDB-powered HNSearch | 2011-2014
+
+The official launch of HNSearch was posted by Andres Morey, founder of Octopart (W07) (aka [andres](https://news.ycombinator.com/user?id=andres)), [on June 4, 2011](https://news.ycombinator.com/item?id=2619892). It was launched as a competition to build the best thing on top of the HNSearch API where the winner would get a 27-inch Dell monitor.
+
+![octopart/thriftdb-search-screenshot](https://cdn.trieve.ai/blog/history-of-hnsearch/hnsearch-api-contest.webp)
+
+Building search for HN has certainly been a trial for us and we felt validated seeing that [PG first mentioned the Octopart guys using ThriftDB to make this in 2007 4yrs before it released](https://news.ycombinator.com/item?id=35959).
+
+I think the best part of HNSearch was that third-party applications were built on top of it. It seems, judging by the [HNSearch shutdown post](https://news.ycombinator.com/item?id=7404972), that it was well-loved by HN users and also well-replaced by Algolia.
+
+> **clamprecht**: Can someone outline the benefits of the new one over the old one? When I first tried the new one, the UI was severely lacking. I saw the fixed a few things, but I haven't evaluated it again.
+> I don't always use the HN search engine, but when I do, it's usually very helpful. I'd hate to lose that.
+>
+> > **swah**I noticed the new one is much faster..
+
+## Third Gen - Algolia powered search | 2014-current
+
+The first HN post I was able to find mentioning Algolia HN search was [Ask HN: What do you think about our last HN Search update? on Jan 26, 2014](https://news.ycombinator.com/item?id=7126301) posted by Julian Lemoine, founder/CTO of Algolia (W14) aka [jlemoine](https://news.ycombinator.com/user?id=jlemoine).
+
+![algolia-hn-search-screenshot](https://cdn.trieve.ai/blog/history-of-hnsearch/algolia-hn-search.webp)
+
+Algolia's ability to get HN search up so quickly is really impressive. If you look at the [Github repo](https://github.com/algolia/hn-search/commits/master/?after=e27760e09840a6fa3efc592649fceb89237e4c2f+1119) it seems like they started in Sep 2013 and released in Jan 2014.
+
+We also took about 6 months to get everything up having [started in Feb 2024 and releasing in Aug 2024](https://github.com/devflowinc/trieve-hn-discovery/commits/main/?after=0163ad22215a28a3492fc86f0d50e4a9bd338f3b+139). I can say now, with firsthand experience, that timeline is not easy to operate on. Especially given certain devtooling was less mature in 2013.
+
+[Algolia asked the community for feedback post-launch in 2014](https://news.ycombinator.com/item?id=7126301) and implemented several improvements including [additional filter types and improved indexing speed in late 2023](https://news.ycombinator.com/item?id=37881130). We think it's incredibly accurate for keyword search and has all the filters and options that we would want.
+
+## Honorable Mentions during the Algolia era
+
+- [hackersearch.net](https://hackersearch.net/) by [jnnnthnn](https://news.ycombinator.com/user?id=jnnnthnn) posted May 2024 | semantic search engine using OpenAI embeddings
+- [deephn.org](https://deephn.org/) by [wolfgarbe](https://news.ycombinator.com/user?id=wolfgarbe) posted April 13, 2021 | full-text search of both HN posts and linked webpages
+- [hackernews.demo.vectara.com](https://hackernews.demo.vectara.com/) by [ofermend](https://news.ycombinator.com/user?id=ofermend) posted July 2024 | semantic search for past 6mths of data
+- [searchhacker.news](https://searchhacker.news/) by [isoprophlex](https://news.ycombinator.com/user?id=isoprophlex) posted April 2024 | keyword search over discussions re-ranked by dense semantic vectors
+- [hn.lixiasearch.com](https://hn.lixiasearch.com/) by [larose](https://news.ycombinator.com/user?id=larose) posted February 2024 | unknown data level and indexing strategy
+- [orangewords.com](https://orangewords.com/search) by [cmcollier](https://news.ycombinator.com/submitted?id=cmcollier) (not posted to HN yet) | all of HN indexed in Vespa with RAG

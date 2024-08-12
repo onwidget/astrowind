@@ -1,7 +1,7 @@
 ---
+publishDate: 2024-08-08T08:45:00Z
 title: Streaming LLM assistant completions with the OpenAI API and Rust Actix-Web
 author: cdxker
-pubDatetime: 2024-08-15T10:00:00Z
 postSlug: streaming-chatgpt-messages-with-openai-api-and-actix-web
 featured: true
 draft: false

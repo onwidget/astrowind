@@ -48,7 +48,7 @@ export const headerData = {
       href: getBlogPermalink(),
     },
   ],
-  actions: [{ text: 'Get Started', href: 'https://dashboard.trieve.ai', target: '_blank' }],
+  actions: [{ text: 'Get Started Free', href: 'https://dashboard.trieve.ai', target: '_blank' }],
   showRssFeed: true,
 };
 
