@@ -1,0 +1,67 @@
+---
+import Image from '~/components/common/Image.astro';
+interface Props {
+  leftImageSrc: string;
+  rightImageSrc: string;
+  leftImageAlt: string;
+  rightImageAlt: string;
+  leftCaption: string;
+  rightCaption: string;
+  leftLink: string;
+  rightLink: string;
+  query: string;
+  size: 'small' | 'medium' | 'large';
+}
+const {
+  leftImageSrc,
+  rightImageSrc,
+  leftImageAlt,
+  rightImageAlt,
+  leftCaption,
+  rightCaption,
+  leftLink,
+  rightLink,
+  query,
+  size,
+} = Astro.props;
+const containerClasses = size === 'medium' ? 'ml-4' : '';
+---
+
+<div class={`mx-auto max-w-3xl mb-5 ${containerClasses}`}>
+  <div class="flex justify-between">
+    <div class="w-[49%]">
+      <figure class="m-0">
+        <figcaption class="mt-1 text-center">
+          <small
+            >{leftCaption} results for
+            <a href={leftLink} target="_blank">{query}</a></small
+          >
+        </figcaption>
+        <Image
+          src={leftImageSrc}
+          alt={leftImageAlt}
+          class="w-full h-auto m-0 border border-gray-300"
+          width={400}
+          height={300}
+        />
+      </figure>
+    </div>
+    <div class="w-[49%]">
+      <figure class="m-0">
+        <figcaption class="mt-1 text-center">
+          <small
+            >{rightCaption} results for
+            <a href={rightLink} target="_blank">{query}</a></small
+          >
+        </figcaption>
+        <Image
+          src={rightImageSrc}
+          alt={rightImageAlt}
+          class="w-full h-auto m-0 border border-fuchsia-500"
+          width={400}
+          height={300}
+        />
+      </figure>
+    </div>
+  </div>
+</div>

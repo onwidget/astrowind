@@ -1,0 +1,254 @@
+---
+publishDate: 2024-08-15T08:45:00Z
+author: danielsgriffin
+title: 'Search Relevance Exploration: Pod Foods'
+excerpt: 'Exploring eCommerce search with the Pod Foods wholesale grocery distribution catalog.'
+image: https://cdn.trieve.ai/github/trieve-podfoods-demo-screenshot.webp
+category: Explore
+tags:
+  - demo
+  - relevance
+  - SPLADE
+---
+
+import ImageComparison from '~/components/common/ImageComparison.astro';
+import TextBox from '~/components/common/TextBox.astro';
+import QueryDiscussion from '~/components/common/QueryDiscussion.astro';
+
+## Introduction
+
+Trieve focuses on helping our customers build great discovery experiences and [Pod Foods](https://podfoods.co/) is a wholesale grocery distribution company with a search platform for its B2B marketplace.
+
+Keyword search is ideal when you know exactly what you're looking for, but the wrong fit for exploring. Pod Foods seemed like an ideal user-experience to us, because their explicit business goal is **to help retailers find new independent brands and help those brands be found**.
+
+Pod Foods is not our customer, but we've built out a demo within a limited mockup of their website to showcase and test our product. 
+
+- **Live demo:** [podfoods.trieve.ai](https://podfoods.trieve.ai)
+- **GitHub repo:** [devflowinc/podfoods-discovery](https://github.com/devflowinc/podfoods-discovery)
+
+## Relevance Comparisons
+
+Here we show several relevance comparisons between the existing search in Pod Foods and Trieve's AI-enhanced **fulltext** search.
+
+<TextBox>
+  Our fulltext search uses **[SPLADE](https://github.com/naver/splade), a sparse neural search retrieval model**. There are also two other search types available in the demo: **semantic**, a dense vector search using cosine distance powered by [Jina english embeddings](https://jina.ai/news/jina-ai-launches-worlds-first-open-source-8k-text-embedding-rivaling-openai), and a **hybrid**, which takes in results from both fulltext and semantic then merges and ranks them with the [BAAI/bge-reranker-large](https://huggingface.co/BAAI/bge-reranker-large) cross-encoder model.
+</TextBox>
+
+### Searching for Natural, Healthy, Real Fruit Toaster Pastries
+
+Pod Food's Chief Merchandising Officer [posted on LinkedIn about the natural Ghetto Gastro toaster pastries in their catalog](https://www.linkedin.com/posts/peter-gialantzis-a14a1b88_cpg-naturalfoods-garbage-activity-7221838546095992832-Gxd0?utm_source=share&utm_medium=member_desktop). In the current search, searching for **toaster pastries** successfully returns the Ghetto Gastro pastries, but adding terms like "natural", "healthy", "real fruit" to the query shoves toaster pastries out of the top results. With SPLADE through Trieve, each of those queries correctly has the Ghetto Gastro pastries at the top. Since **SPLADE correctly identifies "toaster pastries" as the most important term**, the additional terms don't confuse the search engine into showing unrelated items before the intended pastries.
+
+<QueryDiscussion query="toaster pastries" />
+
+<ImageComparison
+  query="toaster pastries"
+  size="large"
+  leftImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-objective_toaster_pastries_2024_08_06.png"
+  rightImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-trieve_toaster_pastries_2024_08_06.png"
+  leftImageAlt="podfoods-objective_toaster_pastries_2024_08_06"
+  rightImageAlt="podfoods-trieve_toaster_pastries_2024_08_06"
+  leftCaption="Current"
+  rightCaption="Trieve"
+  leftLink="https://podfoods.co/products?term=toaster%20pastries"
+  rightLink="https://podfoods.trieve.ai/?term=toaster%20pastries"
+/>
+
+<QueryDiscussion query="healthy toaster pastries" />
+
+<ImageComparison
+  query="healthy toaster pastries"
+  size="medium"
+  leftImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-objective_healthy_toaster_pastries_2024_08_06.png"
+  rightImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-trieve_healthy_toaster_pastries_2024_08_06.png"
+  leftImageAlt="podfoods-objective_healthy_toaster_pastries_2024_08_06"
+  rightImageAlt="podfoods-trieve_healthy_toaster_pastries_2024_08_06"
+  leftCaption="Current"
+  rightCaption="Trieve"
+  leftLink="https://podfoods.co/products?term=healthy%20toaster%20pastries"
+  rightLink="https://podfoods.trieve.ai/?term=healthy%20toaster%20pastries"
+/>
+
+<QueryDiscussion query="natural toaster pastries" />
+
+<ImageComparison
+  query="natural toaster pastries"
+  size="medium"
+  leftImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-objective_natural_toaster_pastries_2024_08_06.png"
+  rightImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-trieve_natural_toaster_pastries_2024_08_06.png"
+  leftImageAlt="podfoods-objective_natural_toaster_pastries_2024_08_06"
+  rightImageAlt="podfoods-trieve_natural_toaster_pastries_2024_08_06"
+  leftCaption="Current"
+  rightCaption="Trieve"
+  leftLink="https://podfoods.co/products?term=natural%20toaster%20pastries"
+  rightLink="https://podfoods.trieve.ai/?term=natural%20toaster%20pastries"
+/>
+
+<QueryDiscussion query="real fruit toaster pastries" />
+
+<ImageComparison
+  query="real fruit toaster pastries"
+  size="medium"
+  leftImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-objective_real_fruit_toaster_pastries_2024_08_06.png"
+  rightImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-trieve_real_fruit_toaster_pastries_2024_08_06.png"
+  leftImageAlt="podfoods-objective_real_fruit_toaster_pastries_2024_08_06"
+  rightImageAlt="podfoods-trieve_real_fruit_toaster_pastries_2024_08_06"
+  leftCaption="Current"
+  rightCaption="Trieve"
+  leftLink="https://podfoods.co/products?term=real%20fruit%20toaster%20pastries"
+  rightLink="https://podfoods.trieve.ai/?term=real%20fruit%20toaster%20pastries"
+/>
+
+ <TextBox>
+  Terms **natural**, **healthy**, and **real fruit** are shown here because they are relevant throughout the catalog and will occur organically. However, the comparison can be made more stark by using unnatural terms. Queries like **[martian toaster pastries](https://podfoods.trieve.ai/?term=martian+toaster+pastries)**, **[hello world toaster pastries](https://podfoods.trieve.ai/?term=hello+world+toaster+pastries)**, and **[beautiful toaster pastries](https://podfoods.trieve.ai/?term=beautiful+toaster+pastries)** work correctly with Trieve and you'll still get **[Pod Foods' best toaster pastries](https://podfoods.trieve.ai/?term=Pod+Foods'+best+toaster+pastries)**. However, these style queries perform poorly in the current search implementation.
+ </TextBox>
+
+### Specific Product Variant
+
+Search results in Pod Foods currently show a product's first image instead of the most similar variant. However, real queries may focus on a particular color, flavor, size, etc. We show results for queries constructed to retrieve a specific product variant in this section.
+
+<QueryDiscussion query="Orange Blossom Almond tea">
+  The current results do not _appear_ relevant, but the fourth result actually is due to its "Know by Heart - Orange Blossom Almond White Tea" variant. The current UI hides that, but since the Trieve demo breaks out the individual product variants, its relevance is apparent. Trieve also ranks correctly, but we are not trying to highlight that here.
+</QueryDiscussion>
+
+<ImageComparison
+  query="Orange Blossom Almond tea"
+  size="large"
+  leftImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-objective_Orange_Blossom_Almond_tea_2024_08_06.png"
+  rightImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-trieve_Orange_Blossom_Almond_tea_2024_08_06.png"
+  leftImageAlt="podfoods-objective_Orange_Blossom_Almond_tea_2024_08_06"
+  rightImageAlt="podfoods-trieve_Orange_Blossom_Almond_tea_2024_08_06"
+  leftCaption="Current"
+  rightCaption="Trieve"
+  leftLink="https://podfoods.co/products?term=Orange%20Blossom%20Almond%20tea"
+  rightLink="https://podfoods.trieve.ai/?term=Orange%20Blossom%20Almond%20tea"
+/>
+
+
+<QueryDiscussion query="grapefruit weird yerba">
+  When you search [grapefruit weird yerba](https://podfoods.co/products?term=grapefruit%20weird%20yerba) the first result is labelled "WEIRD Iced Tea, Organic | 12 Pack By Weird Beverages". This is correct, but you have to click through to the product page to realize that as the variant is hidden there. Again, the Trieve version fixes this by showing going beyond the product and showing the variant closest to the query.
+</QueryDiscussion>
+
+<ImageComparison
+  query="grapefruit weird yerba"
+  size="large"
+  leftImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-objective_grapefruit_weird_yerba_2024_08_06.png"
+  rightImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-trieve_grapefruit_weird_yerba_2024_08_06.png"
+  leftImageAlt="podfoods-objective_grapefruit_weird_yerba_2024_08_06"
+  rightImageAlt="podfoods-trieve_grapefruit_weird_yerba_2024_08_06"
+  leftCaption="Current"
+  rightCaption="Trieve"
+  leftLink="https://podfoods.co/products?term=grapefruit%20weird%20yerba"
+  rightLink="https://podfoods.trieve.ai/?term=grapefruit%20weird%20yerba"
+/>
+
+### Specific Ingredient + Form
+
+Terms focused on general categories or nouns must be prioritized over descriptors for search to work correctly. We compare Trieve against the current search for queries containing both a type of product and key ingredient in this section.
+
+<QueryDiscussion query="raw honey bars">
+  Rating of current results. Broadly, they are thrown off by the "honey" term to not focus on bars or the "Raw" in the brand or product name:
+
+  1. ❌ "UPGRADED kalumi BEAUTYfood marine collagen bars"
+  2. ✅ a bar with raw honey from Honeymoon Chocolates
+  3. ❌ a bar from Raw Rev. (Where the description says: **"Not a raw food."**)
+  4. ❌ the "Raw Chocolate Essential Bars" from Rawmio, these are **vegan and do not contain raw honey**.
+
+  In Trieve, the top three results are all bars with raw honey. This is mostly due to using SPLADE over a dense vector model.
+</QueryDiscussion>
+
+<ImageComparison
+  query="raw honey bars"
+  size="large"
+  leftImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-objective_raw_honey_bars_2024_08_06.png"
+  rightImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-trieve_raw_honey_bars_2024_08_06.png"
+  leftImageAlt="podfoods-objective_raw_honey_bars_2024_08_06"
+  rightImageAlt="podfoods-trieve_raw_honey_bars_2024_08_06"
+  leftCaption="Current"
+  rightCaption="Trieve"
+  leftLink="https://podfoods.co/products?term=raw%20honey%20bars"
+  rightLink="https://podfoods.trieve.ai/?term=raw%20honey%20bars"
+/>
+
+### Location-based
+
+Here we looked to see if we could retrieve results specific to a location, something important when a retailer wants to include local brands or regional flavors on their shelves. These sorts of queries may depend partially on structured metadata (and Pod Foods does have a location dropdown filter on the search page), but in many cases the search query itself should be able to retrieve relevant results.
+
+<QueryDiscussion query="Texas boutique yerba tea">
+  The first tests we did were for the Austin-based Weird Beverages brand, which
+  did not appear in the top results. The top result for the current search did
+  have Texas in its name, but it was a coffee, and not yerba tea. Trieve gets
+  the right result even if you use TX instead of Texas: [TX boutique yerba
+  tea](https://podfoods.trieve.ai/?term=TX%20boutique%20yerba%20tea). Whereas,
+  again due to the lack of effective query and document expansion that SPLADE
+  provides, the current results miss Texas entirely.
+</QueryDiscussion>
+
+<ImageComparison
+  query="Texas boutique yerba tea"
+  size="large"
+  leftImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-objective_Texas_boutique_yerba_tea_2024_08_14.png"
+  rightImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-trieve_Texas_boutique_yerba_tea_2024_08_14.png"
+  leftImageAlt="podfoods-objective_Texas_boutique_tea_yerba_2024_08_13"
+  rightImageAlt="podfoods-trieve_Texas_boutique_tea_yerba_2024_08_13"
+  leftCaption="Current"
+  rightCaption="Trieve"
+  leftLink="https://podfoods.co/products?term=Texas%20boutique%20yerba%20tea"
+  rightLink="https://podfoods.trieve.ai/?term=Texas%20boutique%20yerba%20tea"
+/>
+
+
+<QueryDiscussion query="Arizona">
+  Rating of current results:
+
+  1. ✅ The first result is from a brand based in Arizona.
+  2. ❌ The third result is not based in Arizona (but does mention the Sonoran desert).
+  3. ❌ The rest of the top results are from brands based in Washington, Oregon, California, and Virginia.
+
+  In Trieve, all of the top results are from brands based in Arizona.
+</QueryDiscussion>
+
+<ImageComparison
+  query="Arizona"
+  size="large"
+  leftImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-objective_Arizona_2024_08_06.png"
+  rightImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-trieve_Arizona_2024_08_06.png"
+  leftImageAlt="podfoods-objective_Arizona_2024_08_06"
+  rightImageAlt="podfoods-trieve_Arizona_2024_08_06"
+  leftCaption="Current"
+  rightCaption="Trieve"
+  leftLink="https://podfoods.co/products?term=Arizona"
+  rightLink="https://podfoods.trieve.ai/?term=Arizona"
+/>
+
+### Word to the Wise: Cannot ship vector search and simultaneously degrade keyword because that's always the base, most common case
+
+In e-commerce platforms, users often rely on keyword searches to find specific types of products. Some vector search techniques, while powerful, do not support keyword searches well because dense vector models focus on the semantics of a query rather than the terms themselves.
+
+If users are likely to use keyword searches and expect to find specific products, then the retrieval models should be selected (or adapted with rerankers) to support that use case. We address this issue with SPLADE in our fulltext search, and provide the flexibility for the searcher to also use the semantic search or the hybrid search if they know that's what they want. Algorithmic techniques like swapping to semantic mode if the query has multiple punctuation characters or ends in a question mark may also be used.
+
+<QueryDiscussion query="organic fair-trade cacao Peru coconut sugar raw cacao butter dark chocolate">
+  We were looking for a specific product, the [Rawmio Essentials 70% Cacao Dark
+  Chocolate Bar](https://podfoods.co/raw-chocolate-essential-bars-rawmio-p10945.html?sku=26894-raw-chocolate-essential-bar-mint&i=765851),
+  from which we constructed this keyword search query. In the current search,
+  neither the particular bar nor anything from the Rawmio brand appears in the
+  top results.
+</QueryDiscussion>
+
+<ImageComparison
+  query="organic fair-trade cacao Peru coconut sugar raw cacao butter dark chocolate"
+  size="large"
+  leftImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-objective_organic_fair-trade_cacao_Peru_coconut_sugar_raw_cacao_butter_dark_chocolate_2024_08_06.png"
+  rightImageSrc="https://cdn.trieve.ai/blog/podfoods-relevance-blog/podfoods-trieve_organic_fair-trade_cacao_Peru_coconut_sugar_raw_cacao_butter_dark_chocolate_2024_08_06.png"
+  leftImageAlt="podfoods-objective_organic_fair-trade_cacao_Peru_coconut_sugar_raw_cacao_butter_dark_chocolate_2024_08_06"
+  rightImageAlt="podfoods-trieve_organic_fair-trade_cacao_Peru_coconut_sugar_raw_cacao_butter_dark_chocolate_2024_08_06"
+  leftCaption="Current"
+  rightCaption="Trieve"
+  leftLink="https://podfoods.co/products?term=organic%20fair-trade%20cacao%20Peru%20coconut%20sugar%20raw%20cacao%20butter%20dark%20chocolate"
+  rightLink="https://podfoods.trieve.ai/?term=organic%20fair-trade%20cacao%20Peru%20coconut%20sugar%20raw%20cacao%20butter%20dark%20chocolate"
+/>
+
+## Conclusion
+
+Poke around and highlight the core differences between the search experiences through self-directed exploration in the **live demo at [podfoods.trieve.ai](https://podfoods.trieve.ai)**.
+
+See the **open source repo on GitHub: [devflowinc/podfoods-discovery](https://github.com/devflowinc/podfoods-discovery)**.
