@@ -16,7 +16,7 @@ import {
   readingTimeRemarkPlugin,
   responsiveTablesRehypePlugin,
   lazyImagesRehypePlugin,
-} from './src/utils/frontmatter.mjs';
+} from './src/utils/frontmatter';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
