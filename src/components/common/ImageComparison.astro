@@ -1,5 +1,6 @@
 ---
 import Image from '~/components/common/Image.astro';
+
 interface Props {
   leftImageSrc: string;
   rightImageSrc: string;
@@ -12,6 +13,7 @@ interface Props {
   query: string;
   size: 'small' | 'medium' | 'large';
 }
+
 const {
   leftImageSrc,
   rightImageSrc,
@@ -24,40 +26,35 @@ const {
   query,
   size,
 } = Astro.props;
+
 const containerClasses = size === 'medium' ? 'ml-4' : '';
 ---
 
 <div class={`mx-auto max-w-3xl mb-5 ${containerClasses}`}>
   <div class="flex justify-between">
-    <div class="w-[49%]">
+    <div class="w-[49%] image-container">
       <figure class="m-0">
-        <figcaption class="mt-1 text-center">
-          <small
-            >{leftCaption} results for
-            <a href={leftLink} target="_blank">{query}</a></small
-          >
+        <figcaption class="mb-2 text-center">
+          <small>{leftCaption} results for <a href={leftLink} target="_blank">{query}</a></small>
         </figcaption>
         <Image
           src={leftImageSrc}
           alt={leftImageAlt}
-          class="w-full h-auto m-0 border border-gray-300"
+          class="w-full h-auto m-0 border border-gray-300 cursor-pointer"
           width={400}
           height={300}
         />
       </figure>
     </div>
-    <div class="w-[49%]">
+    <div class="w-[49%] image-container">
       <figure class="m-0">
-        <figcaption class="mt-1 text-center">
-          <small
-            >{rightCaption} results for
-            <a href={rightLink} target="_blank">{query}</a></small
-          >
+        <figcaption class="mb-2 text-center">
+          <small>{rightCaption} results for <a href={rightLink} target="_blank">{query}</a></small>
         </figcaption>
         <Image
           src={rightImageSrc}
           alt={rightImageAlt}
-          class="w-full h-auto m-0 border border-fuchsia-500"
+          class="w-full h-auto m-0 border border-fuchsia-500 cursor-pointer"
           width={400}
           height={300}
         />
@@ -65,3 +62,70 @@ const containerClasses = size === 'medium' ? 'ml-4' : '';
     </div>
   </div>
 </div>
+
+<div id="popup" class="hidden fixed inset-0 bg-black bg-opacity-80 z-50 flex justify-center items-center">
+  <div class="relative w-full h-full flex justify-center items-center">
+    <button
+      id="closePopup"
+      class="absolute top-4 right-4 text-white text-2xl p-2 bg-gray-800 rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+      <span class="sr-only">Close</span>
+    </button>
+    <img id="popupImage" src="" alt="Enlarged image" class="max-w-[90vw] max-h-[90vh] object-contain" />
+  </div>
+</div>
+
+<script is:inline>
+  function setupImagePopup() {
+    const popup = document.getElementById('popup');
+    const popupImage = document.getElementById('popupImage');
+    const closePopup = document.getElementById('closePopup');
+    function closePopupFunction() {
+      popup?.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.image-container img').forEach((img) => {
+      img.addEventListener('click', () => {
+        if (popupImage instanceof HTMLImageElement && img instanceof HTMLImageElement) {
+          popupImage.src = img.src;
+          popup?.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    closePopup?.addEventListener('click', closePopupFunction);
+
+    popup?.addEventListener('click', (e) => {
+      if (e.target === popup) {
+        closePopupFunction();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !popup?.classList.contains('hidden')) {
+        closePopupFunction();
+      }
+    });
+  }
+
+  // Check if the document is already loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupImagePopup);
+  } else {
+    setupImagePopup();
+  }
+</script>
+
+<style>
+  .image-container img {
+    transition: transform 0.3s ease;
+  }
+  .image-container img:hover {
+    transform: scale(1.05);
+  }
+</style>
