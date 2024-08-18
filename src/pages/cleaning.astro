@@ -1,0 +1,279 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content2.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero2.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Dental Cleaning in Dunwoody,  Chamblee',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Dental Cleaning"
+    title="Clean Teeth, Happy Heart—Let’s Give Your Smile a Fresh Start!"
+    subtitle="At our practice, we refer to dental cleanings and checkups as hygiene appointments or recall visits, and they involve much more than just a simple teeth cleaning. Whether you've had fillings, a smile makeover, implants, or are simply focused on maintaining a healthy mouth, our licensed dental hygienists in Georgia are here to ensure your smile stays vibrant for life. Located in the heart of Dunwoody, Atlanta, our state-of-the-art dental office provides top-tier teeth cleaning services. Our team is committed to ongoing education, with our hygienists and entire staff regularly attending advanced courses to ensure our patients receive the most current and effective care available. When it’s time for your regular dental checkups, you can trust our experienced Atlanta dentists to deliver exceptional care tailored to your needs."
+
+    actions={[{ variant: 'primary', target: '_blank', text: 'Make an Appointmet', href: '/' }]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      alt: 'AstroWind Hero Image',
+    }}
+  />
+
+  
+  <!-- Content Widget **************** -->
+
+<Content
+  isReversed={true}  // Explicitly passing true (optional)
+  items={[
+    {
+      title: 'Prevention of Gum Disease',
+      description:
+        'Gum disease, or periodontal disease, is a common but preventable condition. It starts with plaque, a sticky film of bacteria that forms on your teeth. If plaque is not removed, it hardens into tartar, which can only be removed by a dental professional. Tartar buildup can lead to gingivitis, the early stage of gum disease, characterized by red, swollen gums that may bleed easily. Without intervention, gingivitis can progress to periodontitis, a more severe form of gum disease that can result in tooth loss. Regular dental cleanings remove plaque and tartar, significantly reducing your risk of developing gum disease.',
+    },
+    {
+      title: 'Cavity Prevention',
+      description:
+        'Even with the most diligent home care, it is challenging to clean every nook and cranny of your mouth. Plaque that isn\'t removed can erode tooth enamel, leading to cavities. Dental cleanings help to clean these hard-to-reach areas, ensuring that plaque and tartar are thoroughly removed and your teeth remain healthy and cavity-free.',
+    },
+    {
+      title: 'Fresh Breath and Improved Oral Health',
+      description:
+        'Persistent bad breath, or halitosis, can be a sign of underlying dental issues such as gum disease or the presence of plaque and tartar. Regular dental cleanings help to keep your mouth clean and fresh, improving your overall oral health and giving you the confidence to smile and speak freely.',
+    },
+    {
+      title: 'A Brighter Smile',
+      description:
+        'Over time, your teeth can become stained from the foods and drinks you consume, as well as from habits such as smoking. Professional dental cleanings can remove these surface stains, resulting in a whiter, brighter smile. This not only enhances your appearance but also boosts your self-esteem.',
+    },
+    {
+      title: 'Early Detection of Oral Health Issues',
+      description:
+        'During a dental cleaning, your dentist or hygienist will conduct a thorough examination of your mouth, checking for signs of oral health issues such as cavities, gum disease, and oral cancer. Early detection of these conditions is crucial for effective treatment and can prevent more serious problems down the line.',
+    },
+    {
+      title: 'Overall Health Benefits',
+      description:
+        'Oral health is closely linked to overall health. Studies have shown that poor oral hygiene and untreated gum disease can contribute to a variety of systemic conditions, including heart disease, diabetes, and respiratory infections. By maintaining regular dental cleanings, you can protect your oral health and reduce your risk of developing these serious health issues.',
+    },
+  ]}
+
+>
+
+
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Why Dental Cleaning is Crucial for Your Oral Health</h3>
+      <p>Dental cleaning, also known as prophylaxis, is a preventive measure that goes beyond what your regular oral hygiene routine can achieve. Here’s why it’s so important:</p>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Initial Examination',
+        description:
+          'Before the cleaning begins, your dental hygienist will conduct a thorough examination of your mouth. Using a small mirror, they will check your teeth and gums for signs of gingivitis or other potential concerns. If they detect any significant issues, they may consult with your dentist before proceeding with the cleaning.',
+      },
+      {
+        title: 'Removal of Plaque and Tartar',
+        description:
+          'The first step in the cleaning process is the removal of plaque and tartar using a scaler. Plaque is a sticky film of bacteria that constantly forms on your teeth, and if it’s not removed, it can harden into tartar. Tartar is firmly attached to the tooth surface and can only be removed with professional tools. The hygienist will carefully scrape the tartar from your teeth, focusing on the gum line and between your teeth where plaque and tartar often accumulate.',
+      },
+      {
+        title: 'Deep Cleaning with Gritty Toothpaste',
+        description:
+          'After the tartar is removed, the hygienist will use a high-powered electric toothbrush and a gritty toothpaste to deep clean your teeth. The gritty texture of the toothpaste helps to scrub your teeth, removing any remaining tartar and surface stains. This part of the cleaning process leaves your teeth feeling smooth and polished.',
+      },
+      {
+        title: 'Professional Flossing',
+        description:
+          'Even if you floss regularly at home, professional flossing during a dental cleaning is more thorough. The hygienist will expertly floss between all your teeth, removing any remaining plaque or toothpaste. They may also point out areas where you could improve your flossing technique at home.',
+      },
+      {
+        title: 'Rinsing',
+        description:
+        'Once your teeth are cleaned, the hygienist will ask you to rinse your mouth to wash away any debris. This rinse may contain fluoride to help strengthen your teeth.'
+      },
+      {
+        title: 'Fluoride Treatment',
+        description:
+        "The final step in a dental cleaning is often a fluoride treatment. Fluoride is a natural mineral that helps to strengthen the enamel and prevent cavities. The fluoride treatment may be applied as a gel, foam, or varnish, and it is typically left on your teeth for a few minutes to allow it to take effect. The treatment provides an added layer of protection against cavities until your next cleaning."
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      alt: 'Benefits Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Understanding the Dental Cleaning Process
+</h3>
+<p>For many people, the thought of a dental cleaning can cause anxiety. Understanding the process and what to expect can help alleviate these concerns. Here’s a step-by-step breakdown of what happens during a typical dental cleaning:</p>
+    </Fragment>
+  </Content>
+
+  <Content >
+  <Fragment slot="content">
+  <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">How Often Should You Schedule a Dental Cleaning?
+</h3>
+  <div>
+  The frequency of your dental cleanings depends on your individual oral health needs. The American Dental Association (ADA) recommends that most people have their teeth professionally cleaned at least twice a year. However, if you have a history of gum disease, are prone to cavities, or have other oral health concerns, your dentist may recommend more frequent cleanings.
+  </div>
+  </br>
+  <div>
+  Regular dental visits allow your dentist to monitor your oral health and catch any potential issues early, before they become more serious. By keeping up with your cleanings, you can enjoy a lifetime of healthy teeth and gums.
+  </div>
+  </Fragment>
+  </Content>
+
+  <Content >
+  <Fragment slot="content">
+  <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">The Role of Dental Cleaning in Preventive Dentistry
+
+</h3>
+  <div>
+  Preventive dentistry focuses on maintaining optimal oral health through regular dental care, including cleanings, exams, and patient education. Dental cleaning is a cornerstone of preventive dentistry, as it helps to prevent common dental issues such as cavities, gum disease, and enamel erosion.
+  </div>
+  </br>
+  <div>
+In addition to regular cleanings, preventive dentistry involves educating patients on proper brushing and flossing techniques, dietary habits that promote oral health, and the use of preventive treatments such as fluoride and dental sealants. By taking a proactive approach to your oral health, you can prevent the need for more invasive and costly dental treatments in the future.  </div>
+  </Fragment>
+  </Content>
+
+<Content
+    isAfterContent
+    items={[
+      {
+        title: 'Heart Disease:',
+        description:
+        'Poor oral hygiene and gum disease have been linked to an increased risk of heart disease. The bacteria from infected gums can enter the bloodstream and contribute to the formation of arterial plaque, which can lead to heart attacks and strokes.'
+      },
+      {
+        title: 'Diabetes',
+        description:
+        'People with diabetes are more prone to gum disease, and untreated gum disease can make it more difficult to control blood sugar levels. Regular dental cleanings can help to prevent gum disease and support overall diabetes management.'
+      },
+      {
+        title: 'Pregnancy Complications:',
+        description:
+        'Pregnant women with gum disease are at a higher risk of premature birth and low birth weight. Regular dental cleanings during pregnancy are essential for maintaining oral health and reducing the risk of complications.'
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      alt: 'Benefits Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">The Connection Between Oral Health and Overall Health
+</h3>
+<p>Your oral health is closely linked to your overall health. Research has shown that there is a strong connection between oral health and a variety of systemic conditions, including:
+</p>
+    </Fragment>
+  </Content>
+
+<Content
+    isReversed
+    isAfterContent
+    items={[
+  {
+    title: 'Communicate with Your Dentist',
+    description:
+      'If you’re feeling anxious, let your dentist or hygienist know. They can take extra steps to ensure your comfort, such as explaining each step of the process or offering breaks if needed.',
+  },
+  {
+    title: 'Schedule Regular Visits',
+    description:
+      'The more frequently you visit the dentist, the more familiar you’ll become with the process, which can help to reduce anxiety over time.',
+  },
+  {
+    title: 'Bring a Distraction',
+    description:
+      'Listening to music or a podcast during your cleaning can help to distract you from the sounds and sensations of the procedure.',
+  },
+  {
+    title: 'Practice Relaxation Techniques',
+    description:
+      'Deep breathing, meditation, or visualization techniques can help to calm your nerves before and during your dental visit.',
+  },
+]}
+
+    image={{
+      src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      alt: 'Benefits Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Overcoming Dental Anxiety: Making Dental Cleanings Comfortable
+</h3>
+<p>
+It’s not uncommon for people to experience anxiety or fear when it comes to dental visits, particularly dental cleanings. However, it’s important to remember that modern dentistry is designed to be as comfortable and stress-free as possible. Here are some tips to help you overcome dental anxiety:
+</p>
+    </Fragment>
+  </Content>
+<div class="text-md tracking-tight dark:text-white sm:text-xl m-16 text-justify ">Remember, the benefits of regular dental cleanings far outweigh the temporary discomfort or anxiety you may feel. Your dentist and hygienist are there to support you and ensure you have a positive experience.
+</div>
+  <!-- Testimonials Widget *********** -->
+
+  <Testimonials
+    title="Words from real customers"
+    testimonials={[
+      {
+        testimonial: `The designs are not only visually appealing but also highly professional. The templates have saved me a significant amount of time while helping me make a lasting impression on my clients.`,
+        name: 'Emily Kennedy',
+        job: 'Front-end developer',
+        image: {
+          src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
+          alt: 'Emily Kennedy Image',
+        },
+      },
+      {
+        testimonial: `It beautifully showcases my work, with its clean and elegant design that lets my photographs shine. Customization was a breeze, even for a non-tech person like me. The result is a professional and immersive portfolio that's garnered numerous compliments.`,
+        name: 'Sarah Hansen',
+        job: 'Photographer',
+        image: {
+          src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+          alt: 'Sarah Hansen Image',
+        },
+      },
+      {
+        testimonial: `I discovered these templates and I'm impressed by their variety and quality. They've helped me establish a consistent brand image across my marketing and social platforms, elevating my business's overall appearance.`,
+        name: 'Mark Wilkinson',
+        job: 'Small business owner',
+        image: {
+          src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
+          alt: 'Mark Wilkinson Image',
+        },
+      },
+    ]}
+    callToAction={{
+      target: '_blank',
+      text: 'More testimonials...',
+      href: 'https://github.com/onwidget/astrowind',
+      icon: 'tabler:chevron-right',
+    }}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Start exploring',
+        href: '/',
+      },
+    ]}
+    title="Dive into our template collection"
+    subtitle="Whether you're in business, design, or education, our templates are here to elevate your projects."
+  />
+</Layout>

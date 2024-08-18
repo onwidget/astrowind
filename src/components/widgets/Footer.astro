@@ -1,102 +1,73 @@
 ---
-import { Icon } from 'astro-icon/components';
-import { SITE } from 'astrowind:config';
-import { getHomePermalink } from '~/utils/permalinks';
-
-interface Link {
-  text?: string;
-  href?: string;
-  ariaLabel?: string;
-  icon?: string;
-}
-
-interface Links {
-  title?: string;
-  links: Array<Link>;
-}
-
-export interface Props {
-  links: Array<Links>;
-  secondaryLinks: Array<Link>;
-  socialLinks: Array<Link>;
-  footNote?: string;
-  theme?: string;
-}
-
-const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+// You can pass any necessary props here, such as office hours, contact info, etc.
 ---
 
-<footer class:list={[{ dark: theme === 'dark' }, 'relative border-t border-gray-200 dark:border-slate-800 not-prose']}>
-  <div class="dark:bg-dark absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 dark:text-slate-300">
-    <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
-      <div class="col-span-12 lg:col-span-4">
-        <div class="mb-2">
-          <a class="inline-block font-bold text-xl" href={getHomePermalink()}>{SITE?.name}</a>
-        </div>
-        <div class="text-sm text-muted flex gap-1">
-          {
-            secondaryLinks.map(({ text, href }, index) => (
-              <>
-                {index !== 0 ? ' · ' : ''}
-                <a
-                  class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
-                  href={href}
-                  set:html={text}
-                />
-              </>
-            ))
-          }
-        </div>
-      </div>
-      {
-        links.map(({ title, links }) => (
-          <div class="col-span-6 md:col-span-3 lg:col-span-2">
-            <div class="dark:text-gray-300 font-medium mb-2">{title}</div>
-            {links && Array.isArray(links) && links.length > 0 && (
-              <ul class="text-sm">
-                {links.map(({ text, href, ariaLabel }) => (
-                  <li class="mb-2">
-                    <a
-                      class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
-                      href={href}
-                      aria-label={ariaLabel}
-                    >
-                      <Fragment set:html={text} />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))
-      }
+<footer class="bg-teal-400 text-white py-8">
+  <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Map Section -->
+    <div class="flex justify-center">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.7218234707057!2d-84.31629002473778!3d33.9225583732062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5097823651cd3%3A0x3f3768f0ea4c7aac!2s4511%20Chamblee%20Dunwoody%20Rd%2C%20Atlanta%2C%20GA%2030338%2C%20USA!5e0!3m2!1sen!2sca!4v1723936231191!5m2!1sen!2sca" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        width="300"
+        height="200"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        aria-label="Google Map showing office location"
+      ></iframe>
     </div>
-    <div class="md:flex md:items-center md:justify-between py-6 md:py-8">
-      {
-        socialLinks?.length ? (
-          <ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4">
-            {socialLinks.map(({ ariaLabel, href, text, icon }) => (
-              <li>
-                <a
-                  class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-                  aria-label={ariaLabel}
-                  href={href}
-                >
-                  {icon && <Icon name={icon} class="w-5 h-5" />}
-                  <Fragment set:html={text} />
-                </a>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          ''
-        )
-      }
 
-      <div class="text-sm mr-4 dark:text-muted">
-        <Fragment set:html={footNote} />
-      </div>
+    <!-- Contact Section -->
+    <div>
+      <h3 class="text-xl font-semibold mb-4">Contact</h3>
+      <p>Call: <a href="tel:404-806-9799" class="hover:underline">404-806-9799</a></p>
+      <p>Fax: <a href="tel:404-806-9707" class="hover:underline">404-806-9707</a></p>
+      <p>Email: <a href="mailto:info@life.dental" class="hover:underline">info@life.dental</a></p>
+      <p>4511 Chamblee Dunwoody Road, Suite A2, Atlanta, GA 30338</p>
+      <p>
+        <a href="https://maps.app.goo.gl/hB4pdi8F9aLVk3838" class="text-white underline hover:text-gray-300">CLICK HERE FOR DIRECTION</a>
+      </p>
     </div>
+
+    <!-- Office Hours Section -->
+    <div>
+      <h3 class="text-xl font-semibold mb-4">Office Hours</h3>
+      <p>Monday: 8:00 am to 4:00 pm</p>
+      <p>Tuesday: 8:00 am to 4:00 pm</p>
+      <p>Wednesday: 8:00 am to 4:00 pm</p>
+      <p>Thursday: 8:00 am to 4:00 pm</p>
+      <p>Friday: 8:00 am to 1:00 pm</p>
+    </div>
+  </div>
+
+  <!-- Action Links and Social Media -->
+  <div class="container mx-auto px-4 mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="flex justify-center md:justify-start space-x-8">
+      <a href="/404" class="flex items-center space-x-2 hover:underline">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m-6 8h14V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14h4v4m8-4v-4" /></svg>
+        <span>Refer a Friend</span>
+      </a>
+      <a href="/404" class="flex items-center space-x-2 hover:underline">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7l6 6m0 0l6-6m-6 6V3m0 14v4m0-4H5a2 2 0 01-2-2v-2m0 4a2 2 0 002 2h10a2 2 0 002-2v-2m-2 2h2a2 2 0 002-2v-2m-2 2v4" /></svg>
+        <span>Tour Our Office</span>
+      </a>
+    </div>
+    <div class="flex justify-center md:justify-end space-x-4">
+      <a href="#" aria-label="Facebook" class="hover:text-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.407.593 24 1.324 24H12.81v-9.282H9.692V11.25h3.117V8.837c0-3.1 1.894-4.788 4.66-4.788 1.324 0 2.462.098 2.794.142v3.24l-1.918.001c-1.505 0-1.797.715-1.797 1.765v2.312h3.59l-.468 3.468h-3.122V24h6.118c.73 0 1.324-.593 1.324-1.324V1.324C24 .593 23.407 0 22.676 0z"/></svg>
+      </a>
+      <a href="#" aria-label="Instagram" class="hover:text-gray-300">
+      <svg xmlns="http://www.w3.org/2000/svg"class="h-6 w-6"fill="currentColor"viewBox="0 0 24 24"><pathd="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.341 3.608 1.316.975.975 1.254 2.242 1.316 3.608.058 1.266.069 1.646.069 4.85s-.012 3.584-.07 4.85c-.062 1.366-.341 2.633-1.316 3.608-.975.975-2.242 1.254-3.608 1.316-1.266.058-1.646.069-4.85.069s-3.584-.012-4.85-.07c-1.366-.062-2.633-.341-3.608-1.316-.975-.975-1.254-2.242-1.316-3.608-.058-1.266-.069-1.646-.069-4.85s.012-3.584.07-4.85c.062-1.366.341-2.633 1.316-3.608.975-.975 2.242-1.254 3.608-1.316 1.266-.058 1.646-.069 4.85-.069m0-2.163c-3.257 0-3.667.012-4.947.071-1.52.07-2.861.342-3.938 1.419-1.077 1.077-1.349 2.418-1.419 3.938-.059 1.28-.071 1.69-.071 4.947s.012 3.667.071 4.947c.07 1.52.342 2.861 1.419 3.938 1.077 1.077 2.418 1.349 3.938 1.419 1.28.059 1.69.071 4.947.071s3.667-.012 4.947-.071c1.52-.07 2.861-.342 3.938-1.419 1.077-1.077 1.349-2.418 1.419-3.938.059-1.28.071-1.69.071-4.947s-.012-3.667-.071-4.947c-.07-1.52-.342-2.861-1.419-3.938-1.077-1.077-2.418-1.349-3.938-1.419-1.28-.059-1.69-.071-4.947-.071zm0 5.838c-3.403 0-6.162 2.76-6.162 6.162s2.76 6.162 6.162 6.162 6.162-2.76 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.125c-2.185 0-3.963-1.779-3.963-3.963s1.779-3.963 3.963-3.963 3.963 1.779 3.963 3.963-1.779 3.963-3.963 3.963zm6.406-11.845c0 .796-.646 1.442-1.442 1.442s-1.442-.646-1.442-1.442c0-.796.646-1.442 1.442-1.442s1.442.646 1.442 1.442z"/></svg>
+      </a>
+      <a href="#" aria-label="Twitter" class="hover:text-gray-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.944 4.569c-.885.392-1.83.656-2.825.775 1.014-.607 1.793-1.568 2.163-2.719-.95.564-2.005.974-3.127 1.195-.897-.956-2.178-1.555-3.594-1.555-2.72 0-4.924 2.204-4.924 4.925 0 .386.043.762.127 1.122C7.69 8.094 4.066 6.13 1.64 3.161c-.423.725-.665 1.567-.665 2.465 0 1.7.865 3.197 2.178 4.075-.803-.025-1.56-.246-2.22-.615v.061c0 2.376 1.689 4.358 3.932 4.807-.412.112-.846.172-1.294.172-.315 0-.624-.03-.927-.087.625 1.953 2.444 3.377 4.6 3.415-1.68 1.317-3.808 2.101-6.114 2.101-.398 0-.79-.023-1.175-.069 2.179 1.397 4.768 2.212 7.548 2.212 9.057 0 14.008-7.503 14.008-14.008 0-.213-.005-.425-.015-.637.961-.695 1.796-1.562 2.456-2.549z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Copyright and Privacy Policy -->
+  <div class="container mx-auto px-4 mt-8 text-center text-white text-sm">
+    <p>© 2024 Life.Dental</p>
+    <a href="/privacy-policy" class="hover:underline">Privacy Policy</a>
   </div>
 </footer>

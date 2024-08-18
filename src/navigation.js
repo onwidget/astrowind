@@ -28,23 +28,23 @@ export const headerData = {
       ],
     },
     {
-      text: 'Pages',
+      text: 'Services',
       links: [
         {
-          text: 'Features (Anchor Link)',
-          href: getPermalink('/#features'),
+          text: 'Dental Cleaning',
+          href: getPermalink('/cleaning'),
         },
         {
-          text: 'Services',
-          href: getPermalink('/services'),
+          text: 'Deep Cleaning',
+          href: getPermalink('/deepcleaning'),
         },
         {
-          text: 'Pricing',
-          href: getPermalink('/pricing'),
+          text: 'Root Canal Treatment',
+          href: getPermalink('/rct'),
         },
         {
-          text: 'About us',
-          href: getPermalink('/about'),
+          text: 'Dental Crown',
+          href: getPermalink('/crown'),
         },
         {
           text: 'Contact',
@@ -115,8 +115,8 @@ export const headerData = {
       ],
     },
     {
-      text: 'Widgets',
-      href: '#',
+      text: 'ContactUs',
+      href: './contact',
     },
   ],
   actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
