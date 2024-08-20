@@ -1,0 +1,64 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Dr. Ketan Ginoya DMD FAGD',
+};
+---
+
+<Layout metadata={metadata}>
+  
+
+  <!-- Hero2 Widget ******************* -->
+
+  <Hero
+    id="hero"
+    title="Dr. Ketan Ginoya DMD, FAGD "
+  >
+  </Hero>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    image={{
+      src: 'https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      alt: 'Colorful Image',
+      loading: 'eager',
+    }}
+  >
+    <Fragment slot="content">
+
+<p>Dr. Ketan Ginoya is a seasoned and caring dentist with over a decade of experience in creating healthy, beautiful smiles. A proud graduate of Boston University Goldman School of Dental Medicine, where he earned his degree with honors in 2011, Dr. Ginoya has made it his mission to help every patient achieve the best in oral health.</p><br/>
+
+<p>But Dr. Ginoya’s journey didn’t start there. He also holds a Bachelor of Dental Surgery from Rajiv Gandhi University of Health and Science in Bangalore, India. His passion for learning didn’t stop after graduation—he earned a Fellowship in the Academy of General Dentistry (FAGD), highlighting his deep commitment to staying at the top of his field.</p><br/>
+
+<p>Dr. Ginoya believes that learning never ends. He’s an active member of the American Dental Association and the Academy of General Dentistry, and he plays an important role as a Kois Center Mentor, guiding other dentists to reach new heights in their practice.</p><br/>
+
+<p>His dedication to continued education shines through in the extensive training he’s completed. From advanced implantology with Dr. Arun Garg to esthetic dentistry with Dr. Frank Spear at Spears Education, Dr. Ginoya has honed his skills across a wide range of specialties. Whether it’s mastering composite techniques or perfecting zygomatic implants, he’s equipped to offer the latest and greatest in dental care, all tailored to fit your unique needs.</p><br/>
+
+<p>From Invisalign to bone grafting, Dr. Ginoya brings a wealth of experience and a personal touch to every procedure. His goal? To make sure that when you leave his office, you’re smiling brighter and feeling confident about your oral health.</p><br/>
+
+<p>Choosing Dr. Ketan Ginoya means choosing a dentist who not only knows his craft inside and out but who also truly cares about you and your smile. With a blend of expertise and a genuine love for what he does, Dr. Ginoya is here to help you achieve the healthy, beautiful smile you’ve always wanted.</p><br/>
+
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  
+
+  
+
+
+
+</Layout>

@@ -12,6 +12,7 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
+import Button from '~/components/ui/Button.astro';
 const metadata = {
   title: 'Life.Dental - Implant and Cosmetic Dentist in Dunwoody',
   ignoreTitleTemplate: true,
@@ -25,7 +26,7 @@ const metadata = {
       {
         variant: 'primary',
         text: 'Schedule a free consultation',
-        href: '/ContactUs',
+        href: '/contact',
         icon: 'tabler:link',
       }
     ]}
@@ -91,19 +92,22 @@ const metadata = {
 >
   <Fragment slot="content">
     <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Dr.Ketan Ginoya </h2> <br/>
+  <p>Meet Dr. Ketan Ginoya: Where Expertise Meets Care</p><br/>
 
-<p>Dr. Ketan Ginoya is a highly skilled and compassionate general dentist with over a decade of experience in delivering exceptional dental care. Graduating with honors from the prestigious Boston University Goldman School of Dental Medicine in 2011, Dr. Ginoya has since dedicated his career to helping patients achieve optimal oral health and beautiful smiles.</p><br/>
+<p>Dr. Ketan Ginoya is a seasoned and caring dentist with over a decade of experience in creating healthy, beautiful smiles. A proud graduate of Boston University Goldman School of Dental Medicine, where he earned his degree with honors in 2011, Dr. Ginoya has made it his mission to help every patient achieve the best in oral health.</p><br/>
 
-<p>With a foundation in dental excellence, Dr. Ginoya also holds a Bachelor of Dental Surgery degree from  Rajiv Gandhi University of Health and Science, Bangalore, India. Demonstrating a commitment to lifelong learning, Dr. Ginoya has earned the Fellowship in the Academy of General Dentistry (FAGD), a testament to his extensive knowledge and expertise in the field.</p><br/>
+<p>But Dr. Ginoya’s journey didn’t start there. He also holds a Bachelor of Dental Surgery from Rajiv Gandhi University of Health and Science in Bangalore, India. His passion for learning didn’t stop after graduation—he earned a Fellowship in the Academy of General Dentistry (FAGD), highlighting his deep commitment to staying at the top of his field.</p><br/>
 
-<p>A strong advocate for continuous education and professional growth, Dr. Ginoya is an active member of several esteemed organizations, including the American Dental Association and the Academy of General Dentistry. His dedication to advancing his skills is reflected in his role as a Kois Center Mentor, where he guides other dental professionals in achieving clinical excellence.</p> <br/>
+<p>Dr. Ginoya believes that learning never ends. He’s an active member of the American Dental Association and the Academy of General Dentistry, and he plays an important role as a Kois Center Mentor, guiding other dentists to reach new heights in their practice.</p><br/>
 
-<p>Dr. Ginoya has completed extensive continuing education, including advanced training in implantology with Dr. Arun Garg, esthetic dentistry with Dr. Frank Spears at Spears Education, and comprehensive courses in composite techniques, hard and soft tissue augmentation, and zygomatic implants. His expertise in these areas allows him to offer cutting-edge dental solutions tailored to the unique needs of each patient.</p><br/>
 
-<p>Whether it's enhancing a patient's smile with Invisalign, performing bone grafting, or conducting maxillary sinus augmentations, Dr. Ginoya combines his vast clinical experience with a patient-centered approach to ensure the best outcomes.</p> <br/>
-
-<p>When you choose Dr. Ketan Ginoya, you are choosing a dentist who is not only deeply knowledgeable but also genuinely invested in your oral health and well-being. With a passion for dentistry and a commitment to excellence, Dr. Ginoya is dedicated to helping you achieve the smile you've always wanted.</p>
-<br/>
+   <Button
+      variant="tertiary"
+      text="More"
+      icon="tabler:arrow-right"
+      class="px-6 py-3 bg-blue-500 text-white" <!-- Ensuring visibility -->
+      href="/dr-Ketan"
+    />
   </Fragment>
 
   <Fragment slot="bg">
@@ -117,27 +121,24 @@ const metadata = {
     subtitle="Discover what patients have to say about their experiences working with us."
     testimonials={[
       {
-        testimonial: `She took our vague concept and turned it into a visual masterpiece that perfectly aligned with our goals. Her attention to detail and ability to translate ideas into compelling visuals exceeded our expectations.`,
-        name: 'Tim',
+        testimonial: `The staff was friendly, knowledgeable and caring. They always had a smile to share.  Dr Ketan was very professional and patient with me.`,
+        name: 'Jim',
         image: {
-          src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Mark Thompson Image',
+          alt: 'Jim ',
         },
       },
       {
-        testimonial: `She transformed our brand identity with her creative finesse, capturing our essence in every element. Her dedication and talent truly shine through her work.`,
-        name: 'Karen',
+        testimonial: `Excellent coordination from staff and removal of wisdom tooth from Dr.Ken. Highly recommend this dental practice to anyone`,
+        name: 'Paul',
         image: {
-          src: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=772&q=80',
-          alt: 'Emily Martinez Image',
+          alt: 'Paul',
         },
       },
       {
-        testimonial: `She has an uncanny ability to communicate emotions and stories. She crafted a logo for our NGO that not only represents our cause but also evokes empathy. Her professionalism and commitment make her a designer of exceptional caliber.`,
-        name: 'Jason',
+        testimonial: ` Dr. Ketan and staff are very professional and competent! This is patient centered dentistry. I am pleased with the work they did in making a crown for a front tooth.`,
+        name: 'Diane',
         image: {
-          src: 'https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Laura Simmons Image',
+          alt: 'Patient testimonial',
         },
       },
    
@@ -195,15 +196,6 @@ const metadata = {
     </Fragment>
   </Features2>
 
-  <!-- HighlightedPosts Widget ******* -->
-
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
-  />
 
   <!-- FAQs Widget ******************* -->
 
@@ -243,19 +235,4 @@ const metadata = {
       },
     ]}
   />
-
-
-
-  <!-- CallToAction Widget *********** -->
-
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Book an Appointment',
-        href: './contact',
-        icon: 'tabler:link',
-      },
-    ]}
-  >  </CallToAction>
 </Layout>

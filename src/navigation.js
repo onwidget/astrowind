@@ -7,7 +7,7 @@ export const headerData = {
       links: [
         {
           text: 'Dr. Ketan Ginoya',
-          href: getPermalink('/drketan'),
+          href: getPermalink('/dr-Ketan'),
         },
         {
           text: 'Our Team',
@@ -48,78 +48,42 @@ export const headerData = {
         },
         {
           text: 'Contact',
-          href: getPermalink('/contact'),
+          href: getPermalink('/implant'),
         },
         {
           text: 'Terms',
-          href: getPermalink('/terms'),
+          href: getPermalink('/allonx'),
         },
         {
           text: 'Privacy policy',
-          href: getPermalink('/privacy'),
+          href: getPermalink('/bridge'),
         },
       ],
     },
     {
-      text: 'Landing',
+      text: 'Patient info & Insurance',
       links: [
         {
-          text: 'Lead Generation',
+          text: 'New Patient Forms',
           href: getPermalink('/landing/lead-generation'),
         },
         {
-          text: 'Long-form Sales',
+          text: 'Payment Informations',
           href: getPermalink('/landing/sales'),
-        },
-        {
-          text: 'Click-Through',
-          href: getPermalink('/landing/click-through'),
-        },
-        {
-          text: 'Product Details (or Services)',
-          href: getPermalink('/landing/product'),
-        },
-        {
-          text: 'Coming Soon or Pre-Launch',
-          href: getPermalink('/landing/pre-launch'),
-        },
-        {
-          text: 'Subscription',
-          href: getPermalink('/landing/subscription'),
-        },
+        }
       ],
     },
     {
-      text: 'Blog',
-      links: [
-        {
-          text: 'Blog List',
-          href: getBlogPermalink(),
-        },
-        {
-          text: 'Article',
-          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
-        },
-        {
-          text: 'Article (with MDX)',
-          href: getPermalink('markdown-elements-demo-post', 'post'),
-        },
-        {
-          text: 'Category Page',
-          href: getPermalink('tutorials', 'category'),
-        },
-        {
-          text: 'Tag Page',
-          href: getPermalink('astro', 'tag'),
-        },
-      ],
+      text: 'Before/After',
+          href: './before-after',
+      
     },
     {
       text: 'ContactUs',
       href: './contact',
     },
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  actions: [{ text: 'Contact Us', href: getPermalink('/contact'), target: '_blank' }],
 };
 
 export const footerData = {
