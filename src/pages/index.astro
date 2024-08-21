@@ -10,7 +10,7 @@ import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'AI search infrastructure that combines language models with tools for fine tuning ranking and relevance',
+  title: 'AI-First infrastructure API for search, recommendations, and RAG that combines language models with tools for fine tuning ranking and relevance',
   ignoreTitleTemplate: true,
 };
 ---
@@ -22,10 +22,6 @@ const metadata = {
 <meta property="og:type" content="" />
 <meta property="og:image" content="https://cdn.trieve.ai/trieve-og.png" />
 <script defer data-domain="trieve.ai" src="https://plausible.trieve.ai/js/script.js"></script>
-<script
-  id="warmly-script-loader"
-  src="https://opps-widget.getwarmly.com/warmly.js?clientId=2e6ca6d6d1b9dcbaa66a212f816cc369"
-  defer></script>
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
@@ -34,30 +30,30 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get Started - free',
+        text: 'Get Started',
         href: 'https://dashboard.trieve.ai',
         target: '_blank',
         icon: 'tabler:external-link',
       },
       {
         variant: 'secondary',
-        text: 'Book a Demo',
+        text: 'Book a demo',
         href: 'https://cal.com/nick.k/meet',
         target: '_blank',
         icon: 'tabler:calendar',
       },
     ]}
-    image={{ src: 'https://cdn.trieve.ai/trieve-team.png', alt: 'Trieve Team Doing a Podcast' }}
+    image={{ src: 'https://cdn.trieve.ai/dashboard.png', alt: 'Trieve Dashboard' }}
   >
     <Fragment slot="title">
-      Infrastructure for building
-      <span class="text-accent highlight">AI search</span> into your applications
+      Modern API for Search and
+      <span class="text-accent highlight"> RAG </span>
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">Trieve</span> offers all-in-one infrastructure for building search, recommendations,
-        and RAG. We combine search language models with tools for tuning ranking and relevance.</span
+        <span class="font-semibold">All-in-one</span> infrastructure for building search, discovery,
+        and RAG combining leading search language models + tools for tuning quality</span
       >
       <span class="block mb-1 sm:hidden font-bold text-blue-600">Trieve: Production-ready.</span>
       <span class="block sm:hidden"> Use Trieve to show users what they're looking for every time.</span>
@@ -67,34 +63,33 @@ const metadata = {
   <!-- Note Widget ******************* -->
 
   <Note tagline="Source Available:">
-    Find us on Github at <a class="underline" href="https://github.com/devflowinc/trieve">devflowinc/trieve</a> and follow
-    the project.
+    Find us on Github at <a class="underline" href="https://github.com/devflowinc/trieve">devflowinc/trieve</a>
   </Note>
 
   <!-- Features Widget *************** -->
 
   <Features
     id="features"
-    tagline="Features"
-    title="What you get with Trieve"
-    subtitle="Everything you could expect from modern AI infrastructure for search and RAG"
+    tagline="End-to-end"
+    title="Trieve Coordinates, You Scale"
+    subtitle="Billion-scale search, discovery, and RAG experiences within the same API"
     items={[
       {
-        title: 'Private Managed Embedding models',
-        description: 'Bring your own embedding model or use one of our available open source hosted defaults.',
-        icon: 'tabler:3d-cube-sphere',
+        title: 'Semantic Vector Search',
+        description: 'For when you need more than just full-text search. Trieve supports semantic vector search out of the box. ',
+        icon: 'tabler:file-vector',
       },
       {
-        title: 'SPLADE full-text neural search',
+        title: 'BM25 & SPLADE Full-Text Search',
         description:
-          'BM25 is great, but SPLADE is better. SPLADE is a state-of-the-art retrieval model for full-text search.',
+          'Choose between the leading state-of-the-art retrieval models for full-text search.',
         icon: 'tabler:file-typography',
       },
       {
-        title: 'Semantic Vector Search',
+        title: 'Stock and Custom Embedding models',
         description:
-          'Sometimes you need more than just full-text search. Trieve supports semantic vector search out of the box.',
-        icon: 'tabler:file-vector',
+          'Our modular infrastructure offers several models and bring your own embedding model.',
+        icon: 'tabler:3d-cube-sphere',
       },
       {
         title: 'Hybrid Search',
@@ -103,15 +98,15 @@ const metadata = {
         icon: 'tabler:arrows-join',
       },
       {
-        title: 'Merchandising Relevance tuning',
-        description: 'Boost search results based on sales or popularity to show users what you know works.',
+        title: 'Merchandising & Relevance tuning',
+        description: 'Tune and boost search results to hit your KPIs via the API or no-code dashboard.',
         icon: 'tabler:military-rank',
       },
       {
-        title: 'Date Recency Biasing',
+        title: 'Sub-sentence Highlighting',
         description:
-          'Relevance tuning is not just about the query. Trieve supports date recency biasing to ensure the most recent results are shown first.',
-        icon: 'tabler:calendar',
+          'Search results can get long. Sub-sentence highlights show users exactly what they are looking for, quick.',
+        icon: 'tabler:binoculars',
       },
     ]}
   />
@@ -120,23 +115,23 @@ const metadata = {
 
   <Content
     isReversed
-    tagline="Build What Matters Most"
-    title="Trieve handles search and RAG so you can focus on building your unique features"
+    tagline="Build Fast and Don't Break Things"
+    title="Manage ingestion, embeddings and analytics with ease"
     items={[
       {
-        title: 'Private Open Source Models',
+        title: 'Private Open-Source Models',
         description:
-          'When requested we use open source embedding models and LLMs ran in our own servers, so data is never leaked.',
+          'We use open source embedding models and LLMs running in our own servers. Data is never leaked.',
       },
       {
         title: 'Batteries Included',
         description:
-          "Our API surface is large, the features are many, and the documentation is thorough. We've got you covered.",
+          "Our API surface covers chunking, ingestion, search, recommendations, RAG, and even a little front-end.",
       },
       {
-        title: 'Host Yourself',
+        title: 'Self-Hostable',
         description:
-          "Sensitive data? Don't worry about vendor agreements, host yourself with terraform templates and no external dependencies.",
+          "Sensitive data? Need maximum performance? Host Trieve yourself with terraform templates and no external dependencies.",
       },
     ]}
     image={{
@@ -146,7 +141,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2">Built on the best foundations</h3>
-      Gain a competitive advantage by incorporating AI powered search and RAG
+      We help companies build unfair competitive advantages through their search, discovery, and RAG experiences
     </Fragment>
 
     <Fragment slot="bg">
@@ -157,23 +152,23 @@ const metadata = {
   <!-- Steps Widget ****************** -->
 
   <Steps
-    title="Get an industry leading search UX setup in hours."
+    title="Set up industry-leading search in 30 minutes"
     items={[
       {
         title: 'Step 1: <span class="font-medium">Add Existing Data</span>',
         description:
-          'Send your data to the API. Either upload individual chunks or entire documents that get chunked by our algorithms.',
+          'Upload individual chunks or entire documents that get chunked by our algorithms via our API or no-code dashboard.',
         icon: 'tabler:database-export',
       },
       {
         title: 'Step 2: <span class="font-medium">Integrate our API</em>',
-        description: 'Add calls to our API on your create and update routes to keep your data up to date.',
+        description: 'Add calls to our API on your create and update routes to keep your data current.',
         icon: 'tabler:git-merge',
       },
       {
         title: 'Step 3: <span class="font-medium">Search, Recommend, or Generate</span>',
         description:
-          'Start testing search quality with our management Search UI and then integrate the search or RAG API calls into your product.',
+          'Test and tune search, recommendations, and chat quality with our search playground, then integrate the API calls into your product.',
         icon: 'tabler:telescope',
       },
       {
@@ -188,7 +183,7 @@ const metadata = {
   />
 
   <!-- Features2 Widget ************** -->
-
+<!-- 
   <Features2
     title="Most used features"
     subtitle="Provides frequently used endpoints for rounding out the full spectrum of search and RAG features."
@@ -235,7 +230,7 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Features2>
-
+  -->
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
@@ -256,8 +251,8 @@ const metadata = {
       },
     ]}
   >
-    <Fragment slot="title">The Best Search API</Fragment>
+    <Fragment slot="title">Take control of your search.</Fragment>
 
-    <Fragment slot="subtitle">Use Trieve to show users what they're looking for every time.</Fragment>
+    <Fragment slot="subtitle">AI-native, end-to-end, self-hostable API for the trends of today and tomorrow</Fragment>
   </CallToAction>
 </Layout>

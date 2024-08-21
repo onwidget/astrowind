@@ -3,6 +3,26 @@ import { getBlogPermalink } from './utils/permalinks';
 export const headerData = {
   links: [
     {
+      text: 'Dashboard',
+      href: 'https://dashboard.trieve.ai',
+    },
+    {
+      text: 'Demo',
+      href: 'https://yc.trieve.ai',
+    },
+    {
+      text: 'Docs',
+      href: 'https://docs.trieve.ai',
+    },
+    {
+      text: 'Pricing',
+      href: '/pricing',
+    },
+    {
+      text: 'Blog',
+      href: getBlogPermalink(),
+    },
+    {
       text: 'Contact',
       links: [
         {
@@ -25,28 +45,7 @@ export const headerData = {
           text: 'Discord',
           href: 'https://discord.gg/E9sPRZqpDT',
         },
-      ],
-    },
-    {
-      text: 'Dashboard',
-      href: 'https://dashboard.trieve.ai',
-    },
-    {
-      text: 'Live Demo',
-      href: 'https://yc.trieve.ai',
-    },
-    {
-      text: 'Documentation',
-      href: 'https://docs.trieve.ai',
-    },
-    {
-      text: 'Pricing',
-      href: '/pricing',
-    },
-    {
-      text: 'Blog',
-      href: getBlogPermalink(),
-    },
+      ],},
   ],
   actions: [{ text: 'Get Started Free', href: 'https://dashboard.trieve.ai', target: '_blank' }],
   showRssFeed: true,
