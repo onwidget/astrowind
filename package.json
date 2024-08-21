@@ -36,6 +36,7 @@
     "@astrojs/partytown": "^2.1.1",
     "@astrojs/tailwind": "5.1.0",
     "@eslint/js": "^9.7.0",
+    "@iconify-icons/healthicons": "^1.2.8",
     "@iconify-json/flat-color-icons": "^1.1.10",
     "@iconify-json/tabler": "^1.1.118",
     "@iconify/tailwind": "^1.1.2",
