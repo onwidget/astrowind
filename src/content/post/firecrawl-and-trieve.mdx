@@ -3,7 +3,7 @@ publishDate: 2024-08-12T08:45:00Z
 author: danielsgriffin
 title: 'Build Search and RAG for Any Website with Firecrawl and Trieve'
 excerpt: Use Firecrawl and Trieve to build search and RAG (in both Python and JS).
-image: https://cdn.trieve.ai/trieve-logo.png
+image: https://cdn.trieve.ai/blog/firecrawl-and-trieve/trieve-firecrawl-signoz.png
 category: Tutorials
 tags:
   - chunking
@@ -21,7 +21,7 @@ In this guide, we will show how to use [Firecrawl](https://www.firecrawl.dev/) a
 Trieve's API can then receive chunks of the markdown docs, embed and place them into a search index, and finally be called to perform AI Search and RAG on all of the site's content.
 
 <TextBox>
-All the code used (both node.js and Python) is also in this repo: [firecrawl-to-trieve](https://github.com/devflowinc/firecrawl-to-trieve). 
+All the code used (both node.js and Python) is also in this GitHub repo (MIT license): [firecrawl-to-trieve](https://github.com/devflowinc/firecrawl-to-trieve). 
 </TextBox>
 
 ## Requirements - free API keys:
@@ -39,10 +39,10 @@ TRIEVE_API_KEY=
 ## 1. Converting Signoz docs to Markdown Chunks with Firecrawl
 
 <TextBox>
-[Firecrawl Docs](https://docs.firecrawl.dev/features/crawl) & Github: [js-sdk](https://github.com/mendableai/firecrawl/tree/main/apps/js-sdk) and [python-sdk](https://github.com/mendableai/firecrawl/tree/main/apps/python-sdk)
+[Firecrawl Docs](https://docs.firecrawl.dev/features/crawl) & [Github](https://github.com/mendableai/firecrawl/) (see also their [js-sdk](https://github.com/mendableai/firecrawl/tree/main/apps/js-sdk) and [python-sdk](https://github.com/mendableai/firecrawl/tree/main/apps/python-sdk))
 </TextBox>
 
-We use firecrawl to convert the pages on `https://signoz.io/docs/` into markdown then save them to a json file (with a timestamp). You can adjust the crawler limit, but there are only 303 pages so it falls within the free credits plan.
+We use Firecrawl to convert the pages on `https://signoz.io/docs/` into markdown then save them to a json file (with a timestamp). You can adjust the crawler limit (there are only 303 pages so it falls within the free credits plan).
 
 
 ```js
@@ -254,46 +254,63 @@ Trying out some searches and chatting with the chunks is one way to get a look a
 
 After loading the chunks you can head to [dashboard.trieve.ai](https://dashboard.trieve.ai/). Here you'll find a datasets table with your ingested dataset, listing the number of chunks along with quicklinks to settings and the search, RAG, and analytics playgrounds. Both the Search and RAG Playgrounds show the chunks with their `chunk_html`, the links to their source pages, tracking IDs, and metadata.
 
-#### [Search Playground at search.trieve.ai](https://search.trieve.ai/)
+#### Search Playground: [search.trieve.ai](https://search.trieve.ai/)
 
 <TextBox>
 This is a search interface optimized for fully exploring the search options in Trieve. You'll see configurations for adjusting filters, choosing between search types (ex. hybrid, semantic, fulltext (SPLADE), BM25, etc.), sorting and reranking. You can also do multi-query searches and group search (returning the corresponding group for the retrieved chunks). There are additional options to set the score threshold for retrieved results, page size, stop word removal, and various settings for managing Trieve's sub-sentence highlighting. Once a search has been conducted you will also see a button to "Rate This Search" which opens a modal with a 0-10 slider and notes field.
 </TextBox>
 
-Example searches:
+Example searches to showcase the search types:
 
 Query: *visualizations* (Semantic)
 This is a dense vector search using cosine distance vectors on [Jina english embeddings](https://jina.ai/news/jina-ai-launches-worlds-first-open-source-8k-text-embedding-rivaling-openai)), 
-![image](https://hackmd.io/_uploads/HJlVdkVsR.png)
+![image](https://cdn.trieve.ai/blog/firecrawl-and-trieve/visualizations_query_signoz_semantic.png)
 
 
 Query: *visualizations* (Fulltext)
 Notice how the retrieval model for our fulltext search type, [SPLADE](https://github.com/naver/splade), is returning chunks containing words closer to the query rather than the broader semantics.
-![image](https://hackmd.io/_uploads/SksYEkVj0.png)
+![image](https://cdn.trieve.ai/blog/firecrawl-and-trieve/visualizations_query_signoz_fulltext.png)
+
+
+
+
 
 Query: *visualizations* (Hybrid)
 This takes in results from both fulltext and semantic and re-ranks with a cross-encoder model (here the [BAAI/bge-reranker-large](https://huggingface.co/BAAI/bge-reranker-large)).
-![image](https://hackmd.io/_uploads/BydbEyVsA.png)
+![image](https://cdn.trieve.ai/blog/firecrawl-and-trieve/visualizations_query_signoz_hybrid.png)
+
 
 
 **Group Search:**
 Internally this uses the [chunk_group/group_oriented_search](https://docs.trieve.ai/api-reference/chunk-group/search-over-groups) route.
 
 Query: *OpenTelemetry FastAPI example* (Hybrid)
-![image](https://hackmd.io/_uploads/B1cXEk4jA.png)
+![image](https://cdn.trieve.ai/blog/firecrawl-and-trieve/fastapi_example_query_signoz_semantic_group.png)
 
-#### [RAG Playground at chat.trieve.ai](https://chat.trieve.ai/)
+#### RAG Playground: [chat.trieve.ai](https://chat.trieve.ai/)
 
 <TextBox>
 This is a question-and-answer chat interface to showcase and explore RAG in your dataset with Trieve. It has everything you are looking for: input at bottom, streaming response from the LLM, and documents (the retrieved chunks) used by the LLM in its response on the right-hand side. You can regenerate a response, ask follow-on questions, start new conversations, and open any of the retrieved chunks. The various RAG-relevant parameters can be adjusted in the dataset settings in the dashboard: LLM, HyDE prompt (optional), System Prompt, RAG prompt, and more. We support models available on OpenRouter: [openrouter.ai/docs/models](https://openrouter.ai/docs/models)
 </TextBox>
 
 <TextBoxLearnMore>
-HyDE is... https://arxiv.org/abs/2212.10496
+**What is HyDE?**
+Hypothetical Document Embeddings (HyDE) is a retrieval method where an LLM first generates a hypothetical document that might address a user's query, and then that document is used in a semantic search (instead of the original query) to retrieve documents from the dataset. Read more in [Luyu Gao et al.'s "Precise Zero-Shot Dense Retrieval without Relevance Labels"](https://arxiv.org/abs/2212.10496).
 </TextBoxLearnMore>
 
-Example questions and responses:
+Example interactions on the RAG interface:
 
 Question: *What is SigNoz?*
 
-![image](https://hackmd.io/_uploads/rJfody4jR.png)
+![image](https://cdn.trieve.ai/blog/firecrawl-and-trieve/what_signoz_chat_signoz.png)
+
+Question: *What are the benefits of OpenTelemetry?*
+![image](https://cdn.trieve.ai/blog/firecrawl-and-trieve/open_telemetry_benefits_chat_signoz.png)
+
+## Conclusion
+
+Firecrawl and Trieve are a powerful combination for quickly building search and RAG systems. [Get started today!](https://dashboard.trieve.ai/)
+
+- Firecrawl: [firecrawl.dev](https://firecrawl.dev/)
+- Trieve: [trieve.ai](https://trieve.ai/)
+- Github repo: [firecrawl-to-trieve](https://github.com/devflowinc/firecrawl-to-trieve)
