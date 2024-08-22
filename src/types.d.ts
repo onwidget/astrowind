@@ -210,6 +210,8 @@ export interface Form {
   disclaimer?: Disclaimer;
   button?: string;
   description?: string;
+  action?: string;  // Add action property
+  method?: string;  // Add method property
 }
 
 // WIDGETS

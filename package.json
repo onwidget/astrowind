@@ -29,6 +29,7 @@
     "astro-icon": "^1.1.1",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
+    "nodemailer": "^6.9.14",
     "unpic": "^3.18.0"
   },
   "devDependencies": {

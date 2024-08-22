@@ -18,6 +18,8 @@ const {
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
+  action = '',  // Adding action prop
+  method = 'POST',  // Adding method prop
 } = Astro.props;
 ---
 
@@ -33,6 +35,8 @@ const {
           disclaimer={disclaimer}
           button={button}
           description={description}
+          action={action}  // Passing action to FormContainer
+          method={method}  // Passing method to FormContainer
         />
       </div>
     )
