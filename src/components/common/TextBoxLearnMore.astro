@@ -1,0 +1,9 @@
+---
+import TextBox from './TextBox.astro';
+import { Icon } from 'astro-icon/components';
+  ---
+
+<TextBox class="flex flex-row">
+  <Icon name="tabler:bulb" class="w-5 h-5 mt-2 mr-2 flex-shrink-0 text-fuchsia-500 dark:text-fuchsia-100"></Icon>
+  <slot />
+</TextBox>

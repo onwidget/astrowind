@@ -1,6 +1,11 @@
 ---
+interface Props {
+  class?: string;
+}
+
+const { class: additionalClass = '' } = Astro.props;
 ---
 
-<div class="max-w-full break-words p-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
+<div class={`max-w-full break-words px-4 mx-6 text-sm rounded-lg border border-fuchsia-200 dark:border-fuchsia-500 bg-fuchsia-50 dark:bg-fuchsia-700 text-fuchsia-900 dark:text-fuchsia-100 ${additionalClass}`}>
   <slot />
 </div>

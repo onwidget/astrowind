@@ -11,7 +11,7 @@ tags:
   - search
 ---
 
-import LearnMoreBox from '../../components/common/LearnMoreBox.astro';
+import TextBoxLearnMore from '../../components/common/TextBoxLearnMore.astro';
 import TextBox from '../../components/common/TextBox.astro';
 
 In this guide, we will show how to use [Firecrawl](https://www.firecrawl.dev/) and Trieve to build search and RAG for [SigNoz's documentation](https://signoz.io/docs/) in both Python and JS.
@@ -20,7 +20,9 @@ In this guide, we will show how to use [Firecrawl](https://www.firecrawl.dev/) a
 
 Trieve's API can then receive chunks of the markdown docs, embed and place them into a search index, and finally be called to perform AI Search and RAG on all of the site's content.
 
-TextBox: All the code used (both node.js and Python) is also in this repo: ____. 
+<TextBox>
+All the code used (both node.js and Python) is also in this repo: [firecrawl-to-trieve](https://github.com/devflowinc/firecrawl-to-trieve). 
+</TextBox>
 
 ## Requirements - free API keys:
 
@@ -41,6 +43,7 @@ TRIEVE_API_KEY=
 </TextBox>
 
 We use firecrawl to convert the pages on `https://signoz.io/docs/` into markdown then save them to a json file (with a timestamp). You can adjust the crawler limit, but there are only 303 pages so it falls within the free credits plan.
+
 
 ```js
 import FirecrawlApp from '@mendable/firecrawl-js';
@@ -96,7 +99,9 @@ Initial cleaning functions are in `cleaners.py` / `cleaners.js`, imported into t
 
 For a baseline chunking approach we just want to find ways to split pages into smaller chunks, while maintaining some semantic cohesion within the chunks. Just as with cleaning, we can always refine our chunking strategy as we gain more familarity with the data and our use cases.
 
-LearnMoreBox: Learn more about chunking techniques in [Greg Kamradt's "5 Levels Of Text Splitting" Notebook](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/a4570f3c4883eb9b835b0ee18990e62298f518ef/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb) and [Maria Khalusova's "Chunking for RAG: best practices"](https://unstructured.io/blog/chunking-for-rag-best-practices)
+<TextBoxLearnMore>
+Learn more about chunking techniques in [Greg Kamradt's "5 Levels Of Text Splitting" Notebook](https://github.com/FullStackRetrieval-com/RetrievalTutorials/blob/a4570f3c4883eb9b835b0ee18990e62298f518ef/tutorials/LevelsOfTextSplitting/5_Levels_Of_Text_Splitting.ipynb) and [Maria Khalusova's "Chunking for RAG: best practices"](https://unstructured.io/blog/chunking-for-rag-best-practices)
+</TextBoxLearnMore>
 
 Our transform script first makes chunks of any page that is less than 500 words (though this could easily be switched for a token-based limit based on the LLM of your RAG system). Then it splits longer content into chunks by top-level anchor links (e.g. `[](#overview)\nOverview` ) and then splitting by h3, h4, etc (e.g. `### [](#step-1-setup-otel-collector)\n`). (Explicit h1-h2 (i.e. `# this-is-h1` and `## this-is-h2`) headings for this dataset are not indicated in the markdown. The html itself has h2 headings for both the page title and for what is rendered here as the top-level anchor link headings but it is not represented with `#` here.)
 
@@ -283,9 +288,9 @@ Query: *OpenTelemetry FastAPI example* (Hybrid)
 This is a question-and-answer chat interface to showcase and explore RAG in your dataset with Trieve. It has everything you are looking for: input at bottom, streaming response from the LLM, and documents (the retrieved chunks) used by the LLM in its response on the right-hand side. You can regenerate a response, ask follow-on questions, start new conversations, and open any of the retrieved chunks. The various RAG-relevant parameters can be adjusted in the dataset settings in the dashboard: LLM, HyDE prompt (optional), System Prompt, RAG prompt, and more. We support models available on OpenRouter: [openrouter.ai/docs/models](https://openrouter.ai/docs/models)
 </TextBox>
 
-<LearnMoreBox>
+<TextBoxLearnMore>
 HyDE is... https://arxiv.org/abs/2212.10496
-</LearnMoreBox>
+</TextBoxLearnMore>
 
 Example questions and responses:
 
