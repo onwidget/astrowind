@@ -28,6 +28,12 @@ export const headerData = {
       ],
     },
     {
+      text: 'Emergency',
+      links:[{
+        href: getPermalink('/emergency'),
+      }]
+    },
+    {
       text: 'Services',
       links: [
         {

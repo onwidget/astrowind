@@ -1,0 +1,15 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Thank You!',
+};
+---
+
+<Layout metadata={metadata}>
+  <div class="container mx-auto text-center py-10">
+    <h1 class="text-4xl font-bold mb-4">Thank You!</h1>
+    <p class="text-lg">Your message has been successfully sent. We will get back to you shortly.</p>
+    <a href="/" class="inline-block mt-6 text-blue-500 hover:underline">Go back to home</a>
+  </div>
+</Layout>

@@ -1,0 +1,177 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content2.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero2.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Emergency Dental Treatment in [Location]',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Emergency Dentistry"
+    title="Immediate Relief When You Need It Most—Same-Day Emergency Dentistry"
+    subtitle="Dental emergencies can strike at any moment, causing pain, stress, and disruption to your life. Whether you're dealing with a severe toothache, a broken tooth, or a sudden loss of a filling, our team is here to provide the immediate care you need. Located in the heart of [Location], our practice offers same-day emergency dentistry to ensure you get relief fast. Our experienced and compassionate team is equipped to handle a wide range of dental emergencies, restoring your comfort and protecting your oral health. When every moment counts, trust us to be there for you."
+
+    actions={[{ variant: 'primary', target: '_blank', text: 'Call for Immediate Assistance', href: '/' }]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1598387841595-4f37a9f99a98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      alt: 'Emergency Dentistry Hero Image',
+    }}
+  />
+
+  <!-- Content Widget **************** -->
+
+<Content
+  isReversed={true}  
+  items={[
+    {
+      title: 'Severe Toothache',
+      description:
+        'A severe toothache can indicate various issues, such as deep decay, an abscess, or a cracked tooth. This pain can be sharp, throbbing, or constant, and it often worsens with chewing or exposure to hot or cold temperatures. If you experience a persistent toothache that lasts more than a day, or if it’s accompanied by swelling, fever, or pus, immediate dental care is essential. Delaying treatment can lead to more serious complications and the need for more extensive care.',
+    },
+    {
+      title: 'Knocked-Out Tooth',
+      description:
+        'A knocked-out tooth, also known as an avulsed tooth, is a serious emergency that requires prompt attention. If the tooth is handled correctly and treated quickly, there’s a good chance it can be saved. Contact our office immediately and follow our instructions to preserve the tooth and increase the likelihood of successful reimplantation.',
+    },
+    {
+      title: 'Chipped or Broken Tooth',
+      description:
+        'Whether from a fall, a sports injury, or biting down on something hard, a chipped or broken tooth can be painful and unsightly. Depending on the severity, emergency treatment may involve smoothing the edges, applying a filling, or placing a crown to restore the tooth’s appearance and function. Immediate care helps prevent further damage and alleviates pain.',
+    },
+    {
+      title: 'Lost Filling or Crown',
+      description:
+        'If a filling or crown falls out, it can expose the underlying tooth to damage and increase sensitivity. While this situation is not as immediately painful as some other emergencies, it still requires prompt attention to prevent further complications. We offer same-day repairs to restore your tooth’s integrity and protect it from future issues.',
+    },
+    {
+      title: 'Abscess or Infection',
+      description:
+        'An abscess is a serious infection that can cause significant pain and swelling. It requires immediate treatment to prevent the infection from spreading to other areas. Our team will drain the abscess and provide antibiotics to eliminate the infection, ensuring your overall health is protected.',
+    },
+    {
+      title: 'Soft Tissue Injuries',
+      description:
+        'Injuries to the gums, lips, or tongue can occur from accidents or trauma. These injuries may bleed heavily and cause pain, requiring immediate attention to manage the damage and promote healing. We provide expert care to address soft tissue injuries and ensure your recovery is smooth and complication-free.',
+    },
+  ]}
+>
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Common Dental Emergencies We Treat</h3>
+      <p>Dental emergencies come in many forms, each requiring a specific approach to care. Here are some of the most common emergencies we handle and the immediate steps you should take:</p>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Immediate Assessment and Guidance',
+        description:
+          'When you contact our office with a dental emergency, our team will quickly assess your situation over the phone. We’ll ask about your symptoms, the nature of the emergency, and any relevant medical history. Based on this information, we’ll provide immediate advice on how to manage your condition until you can see us in person.',
+      },
+      {
+        title: 'Same-Day Appointments',
+        description:
+          'Dental emergencies require urgent attention, which is why we offer same-day appointments to ensure you receive prompt care. We strive to schedule you in as quickly as possible, often within a few hours, to address your emergency and provide relief.',
+      },
+      {
+        title: 'Comprehensive Emergency Treatment',
+        description:
+          'Upon arrival, we’ll conduct a thorough examination, including X-rays if needed, to assess the issue fully. Once we identify the problem, we’ll discuss your treatment options and proceed with the necessary care to restore your oral health. Our team is equipped to handle a wide range of emergencies efficiently.',
+      },
+      {
+        title: 'Follow-Up Care and Long-Term Solutions',
+        description:
+          'After addressing the immediate emergency, we’ll develop a plan for any necessary follow-up care. This may include additional appointments, further treatment, or preventive measures to protect against future emergencies. We’re committed to ensuring you achieve lasting results and a healthy smile.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1607746583128-29b9d3780e04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      alt: 'Emergency Dentistry Process',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Our Approach to Emergency Dentistry</h3>
+      <p>At Life.Dental, we prioritize your comfort and well-being. Our emergency dental care is designed to provide compassionate, efficient, and expert treatment when you need it most. Here’s how we handle your emergency from the moment you contact us:</p>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Preparing for Dental Emergencies</h3>
+      <div>
+        Dental emergencies are often unexpected, but being prepared can make a significant difference. Here are some tips to help you handle emergencies effectively and reduce the risk of serious complications:
+      </div>
+      </br>
+      <div>
+        <strong>Keep Our Contact Information Handy</strong>: Save our phone number in your contacts and post it in a visible place at home. This ensures you can reach us quickly in an emergency.
+      </div>
+      </br>
+      <div>
+        <strong>Have a Dental Emergency Kit</strong>: Consider keeping a small dental emergency kit at home and in your car. This kit might include gauze, a container for storing a knocked-out tooth, dental cement, and over-the-counter pain relievers.
+      </div>
+      </br>
+      <div>
+        <strong>Understand Basic First Aid for Dental Emergencies</strong>: Knowing how to manage common dental emergencies before seeing a dentist can make a big difference. Familiarize yourself with first aid steps to take immediately after an emergency.
+      </div>
+      </br>
+      <div>
+        <strong>Maintain Regular Dental Checkups</strong>: Many dental emergencies can be prevented with regular checkups and cleanings. Staying on top of your dental care allows potential problems to be caught early, before they escalate into emergencies.
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Why Choose Life.Dental for Emergency Dentistry?</h3>
+      <div>
+        When a dental emergency strikes, you want to know that you’re in capable, caring hands. At Life.Dental, we pride ourselves on providing fast, effective, and compassionate care for all types of dental emergencies. Here’s why patients trust us with their urgent dental needs:
+      </div>
+      </br>
+      <div>
+        <strong>Expertise and Experience</strong>: Our dental team has extensive experience in handling a wide range of dental emergencies. From complex cases to routine issues, we have the skills and knowledge to provide the highest level of care.
+      </div>
+      </br>
+      <div>
+        <strong>State-of-the-Art Facilities</strong>: We use the latest dental technology and techniques to ensure that you receive the best possible treatment. Our modern facilities are equipped to handle all types of emergencies, from advanced imaging to on-the-spot restorations.
+      </div>
+      </br>
+      <div>
+        <strong>Compassionate Care</strong>: We understand that dental emergencies can be stressful and painful. Our team is dedicated to providing gentle, patient-centered care that puts your comfort first. We’ll take the time to listen to your concerns and explain every step of your treatment.
+      </div>
+      </br>
+      <div>
+        <strong>Convenient Same-Day Appointments</strong>: We know that time is of the essence when it comes to dental emergencies. That’s why we offer same-day appointments to ensure that you get the care you need right away. We’ll do everything we can to accommodate your schedule and provide prompt relief.
+      </div>
+      </br>
+      <div>
+        <strong>Comprehensive Dental Services</strong>: In addition to emergency care, we offer a full range of dental services to meet all your oral health needs. Whether you need a follow-up visit, preventive care, or a cosmetic treatment, we’re here to support your long-term dental health.
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Call to Action **************** -->
+
+  <CallToAction
+    title="Take Action: Don’t Wait to Get the Help You Need"
+    subtitle="Dental emergencies are unpredictable and can be incredibly disruptive, but you don’t have to face them alone. At Life.Dental, we’re here to provide the expert care you need, exactly when you need it. If you’re experiencing a dental emergency, don’t hesitate—call us immediately to schedule a same-day appointment."
+    actions={[
+      { variant: 'primary', target: '_blank', text: 'Contact Us Today', href: '/contact' },
+    ]}
+  />
+  
+</Layout>
