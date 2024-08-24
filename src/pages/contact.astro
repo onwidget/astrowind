@@ -20,7 +20,7 @@ const metadata = {
       novalidate
       class="needs-validation"
     >
-      <h3>Contact Us</h3>
+      <h3>Please fillout the fallowing form</h3>
 
       <!-- Hidden input for Web3Forms Access Key -->
       <input type="hidden" name="access_key" value="e4f9a8e4-a60b-4fed-bbb3-f47cd924a271" />
@@ -139,6 +139,7 @@ const metadata = {
             let json = await response.json();
             if (response.status == 200) {
               window.location.href = "/success";
+          
             } else {
               console.log(response);
               result.classList.add("text-red-500");
