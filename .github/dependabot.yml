@@ -1,0 +1,39 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    assignees:
+      - "onwidget"
+    groups:
+      security:
+        applies-to: "security-updates"
+        update-types:
+          - "minor"
+          - "patch"
+      security-breaking:
+        applies-to: "security-updates"
+        update-types:
+          - "major"
+      non-security:
+        applies-to: "version-updates"
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    assignees:
+      - "onwidget"
+    groups:
+      security:
+        applies-to: "security-updates"
+        patterns:
+          - "*"
+      normal:
+        applies-to: "version-updates"
+        patterns:
+          - "*"
