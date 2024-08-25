@@ -89,19 +89,19 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}) => {
           const sitemapExists = fs.existsSync(sitemapFile);
 
           if (hasIntegration && sitemapExists) {
-            const robotsTxt = fs.readFileSync(robotsTxtFile, { encoding: 'utf8', flags: 'a+' });
+            const robotsTxt = fs.readFileSync(robotsTxtFile, { encoding: 'utf8', flag: 'a+' });
             const sitemapUrl = new URL(sitemapName, String(new URL(cfg.base, cfg.site)));
             const pattern = /^Sitemap:(.*)$/m;
 
             if (!pattern.test(robotsTxt)) {
               fs.appendFileSync(robotsTxtFileInOut, `${os.EOL}${os.EOL}Sitemap: ${sitemapUrl}`, {
                 encoding: 'utf8',
-                flags: 'w',
+                flag: 'w',
               });
             } else {
               fs.writeFileSync(robotsTxtFileInOut, robotsTxt.replace(pattern, `Sitemap: ${sitemapUrl}`), {
                 encoding: 'utf8',
-                flags: 'w',
+                flag: 'w',
               });
             }
           }
