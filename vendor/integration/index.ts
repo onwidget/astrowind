@@ -1,11 +1,12 @@
 import fs from 'node:fs';
 import os from 'node:os';
+import type { AstroConfig, AstroIntegration } from 'astro';
 
-import configBuilder from './utils/configBuilder';
+import configBuilder, { type Config } from './utils/configBuilder';
 import loadConfig from './utils/loadConfig';
 
-export default ({ config: _themeConfig = 'src/config.yaml' } = {}) => {
-  let cfg;
+export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegration => {
+  let cfg: AstroConfig;
   return {
     name: 'astrowind-integration',
 
@@ -24,7 +25,7 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}) => {
         const virtualModuleId = 'astrowind:config';
         const resolvedVirtualModuleId = '\0' + virtualModuleId;
 
-        const rawJsonConfig = await loadConfig(_themeConfig);
+        const rawJsonConfig = (await loadConfig(_themeConfig)) as Config;
         const { SITE, I18N, METADATA, APP_BLOG, UI, ANALYTICS } = configBuilder(rawJsonConfig);
 
         updateConfig({
