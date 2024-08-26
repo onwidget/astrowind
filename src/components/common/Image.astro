@@ -1,4 +1,5 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
 import { findImage } from '~/utils/images';
 import {
   getImagesOptimized,
@@ -6,13 +7,12 @@ import {
   unpicOptimizer,
   isUnpicCompatible,
   type ImageProps,
-  type AttributesProps,
 } from '~/utils/images-optimization';
 
 type Props = ImageProps;
 type ImageType = {
   src: string;
-  attributes: AttributesProps;
+  attributes: HTMLAttributes<'img'>;
 };
 
 const props = Astro.props;
