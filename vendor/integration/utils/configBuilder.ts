@@ -78,7 +78,9 @@ export interface AnalyticsConfig {
   };
 }
 
-export interface UIConfig {}
+export interface UIConfig {
+  theme: string;
+}
 
 const DEFAULT_SITE_NAME = 'Website';
 

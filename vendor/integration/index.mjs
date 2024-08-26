@@ -105,7 +105,8 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}) => {
               });
             }
           }
-        } catch (err) {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        } catch (error) {
           /* empty */
         }
       },

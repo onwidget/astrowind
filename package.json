@@ -1,6 +1,6 @@
 {
   "name": "@onwidget/astrowind",
-  "version": "1.0.0-beta.40",
+  "version": "1.0.0-beta.41",
   "description": "AstroWind: A free template using Astro 4.0 and Tailwind CSS. Astro starter theme.",
   "type": "module",
   "private": true,
@@ -40,13 +40,13 @@
     "@types/eslint__js": "^8.42.3",
     "@types/js-yaml": "^4.0.9",
     "@types/lodash.merge": "^4.6.9",
-    "@typescript-eslint/eslint-plugin": "^7.16.1",
-    "@typescript-eslint/parser": "^7.16.1",
+    "@types/mdx": "^2.0.13",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
     "astro-compress": "2.3.1",
     "astro-eslint-parser": "^1.0.2",
-    "eslint": "8.57.0",
+    "eslint": "^9.9.1",
     "eslint-plugin-astro": "^1.2.3",
-    "eslint-plugin-jsx-a11y": "^6.9.0",
     "globals": "^15.9.0",
     "js-yaml": "^4.1.0",
     "mdast-util-to-string": "^4.0.0",
@@ -58,6 +58,6 @@
     "tailwind-merge": "^2.5.2",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^7.16.1"
+    "typescript-eslint": "^8.2.0"
   }
 }
