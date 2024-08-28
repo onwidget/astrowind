@@ -1,0 +1,73 @@
+---
+publishDate: 2024-08-12T08:45:00Z
+author: cdxker (Denzell F)
+title: 'Introducing Yet Another Steam Recommendation Engine!'
+excerpt: The history of HackerNews (HN) search spans three generations. Starting in 2007 with Disqus founder Jason Yan followed by a series of other sites, Octopart/ThriftDB-powered HNSearch in 2011, and finally Algolia-powered search from 2014 to today.
+image: https://cdn.trieve.ai/blog/steam-recommendations/homepage.png
+category: History
+tags:
+  - steam
+  - games
+  - recommendations
+---
+
+# Introducing Yet Another Steam Recommendation Engine!
+
+## Discoverability and Steam
+
+One of the most pressing challenges for creators online is discoverability. How can they get attention on their projects?
+
+In the case of games, the highest bidders usually get the top slots, guaranteeing millions of eye balls. For many, this works well for them. AAA quality games are amazing, hundreds of millions of dollars of investment into them can't go wrong (right?).
+
+Those fatigued with AAA production games have found peace and satisfaction with relatively basic and chill indie games, a trend that has been growing strong for years now. But how do you best discover these hidden gems?
+
+## Existing solutions
+
+![Steamdb Screenshot](https://cdn.trieve.ai/blog/steam-recommendations/steamdb-view.png)
+
+Steamdb.info is a third-party website that scrapes Steam's website to pull more statistics on Steam games than what Steam provides via the API. The main feature that I love to use are the trending games and the graphs of active players over time.
+
+This *almost* scratched that itch I wanted, but none of this was based off games that I own nor could I rate them in real time. Many other sites like this exist like https://steamspy.com/.  We wanted to make an alternative to these, using Trieve.
+
+## Initial Attempt
+
+We scraped games descriptions, categories, names, tags, and metacritic scores. We then sent the data to Trieve and made a frontend for it.
+
+![image](https://cdn.trieve.ai/blog/steam-recommendations/batman-search.png)
+
+![image](https://cdn.trieve.ai/blog/steam-recommendations/hogwarts-search.png)
+
+Now we have search, but I still couldn't find my indie games nor discover undiscovered (to me) titles. I could really only find games that I know exist. For example "Games in gotham" to get the batman series or "Harry potter games" to get Hogwarts legacy.
+
+
+## I didn't know want to search
+
+The search "worked" but the user experience was lacking. It lacked discoverability. As great as semantic search is, it's not a perfect replacement for engineering discoverability.
+
+Entertainment platforms like movies, games and music typically show their users what content exists in their content library. People browse the Netflix catalog for hours without even thinking about the search bar. This is an established user behavior and, in this case, a search bar limits that journey.
+
+We already had all the vector embeddings calculated so now we needed to build everything else for recommendations.
+
+## UI Pivot
+
+![CleanShot 2024-08-26 at 13.51.10@2x](https://cdn.trieve.ai/blog/steam-recommendations/homepage.png)
+
+We decided to to tailor our demo as an exploratory experience and emphasize recommendations. We needed put more options on the page, made it more of a list view, and reduced the amount of data per choice.
+
+To fine tune recommendations we changed scoring metrics. Instead of `metacritic_rating` we used the ratio of positive to negative Steam reviews with a filter for the minimum number of reviews.
+
+We added an import libraray feature to import your whole Steam library to give the recomendation engine some real fire.
+
+![CleanShot 2024-08-26 at 13.53.07@2x](https://cdn.trieve.ai/blog/steam-recommendations/import-games.png)
+
+The feeling of joy I got from seeing new games I never heard about, after looking through the same dataset for hours spoke to me. This user experience was cleaner and immediately compelling.
+
+## Learnings
+
+When content discovery is the main goal:
+- Reduce the number of options per each point of content. If the user wants to know more, they will click on it.
+- Increase the amount of content you can place overall.
+
+By adding these features we found some new games to play that would have never found otherwise. We would love for you to try it and give us your feedback.
+
+Hit it! [https://steam.trieve.ai/](https://steam.trieve.ai/)
