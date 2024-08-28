@@ -1,17 +1,15 @@
 ---
-publishDate: 2024-08-12T08:45:00Z
+publishDate: 2024-08-28T22:10:00Z
 author: cdxker (Denzell F)
 title: 'Introducing Yet Another Steam Recommendation Engine!'
-excerpt: The history of HackerNews (HN) search spans three generations. Starting in 2007 with Disqus founder Jason Yan followed by a series of other sites, Octopart/ThriftDB-powered HNSearch in 2011, and finally Algolia-powered search from 2014 to today.
+excerpt: How we used Trieve to build a recomendation engine from the Steam game catalog.
 image: https://cdn.trieve.ai/blog/steam-recommendations/homepage.png
-category: History
 tags:
-  - steam
   - games
   - recommendations
+  - search
 ---
-
-# Introducing Yet Another Steam Recommendation Engine!
+import ImageComparison from '~/components/common/ImageComparison.astro';
 
 ## Discoverability and Steam
 
@@ -33,9 +31,20 @@ This *almost* scratched that itch I wanted, but none of this was based off games
 
 We scraped games descriptions, categories, names, tags, and metacritic scores. We then sent the data to Trieve and made a frontend for it.
 
-![image](https://cdn.trieve.ai/blog/steam-recommendations/batman-search.png)
-
-![image](https://cdn.trieve.ai/blog/steam-recommendations/hogwarts-search.png)
+<ImageComparison
+  query=""
+  size="large"
+  leftImageSrc="https://cdn.trieve.ai/blog/steam-recommendations/hogwarts-search.png"
+  rightImageSrc="https://cdn.trieve.ai/blog/steam-recommendations/batman-search.png"
+  leftImageAlt=""
+  rightImageAlt=""
+  leftCaption='Results for "Games in Gotham"'
+  rightCaption='Results for "Harry Potter Games"'
+  leftLink=""
+  rightStyles="border-fuchsia-500"
+  leftStyles="border-fuchsia-500"
+  rightLink=""
+/>
 
 Now we have search, but I still couldn't find my indie games nor discover undiscovered (to me) titles. I could really only find games that I know exist. For example "Games in gotham" to get the batman series or "Harry potter games" to get Hogwarts legacy.
 
