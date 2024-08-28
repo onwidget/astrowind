@@ -25,6 +25,8 @@ const {
   rightLink,
   query,
   size,
+  leftStyles,
+  rightStyles
 } = Astro.props;
 
 const containerClasses = size === 'medium' ? 'ml-4' : '';
@@ -35,12 +37,12 @@ const containerClasses = size === 'medium' ? 'ml-4' : '';
     <div class="w-[49%] image-container">
       <figure class="m-0">
         <figcaption class="mb-2 text-center">
-          <small>{leftCaption} results for <a href={leftLink} target="_blank">{query}</a></small>
+          <small>{leftCaption} <a href={leftLink} target="_blank">{query}</a></small>
         </figcaption>
         <Image
           src={leftImageSrc}
           alt={leftImageAlt}
-          class="w-full h-auto m-0 border border-gray-300 cursor-pointer"
+          class={`w-full h-auto m-0 border ${rightStyles} cursor-pointer`}
           width={400}
           height={300}
         />
@@ -49,12 +51,12 @@ const containerClasses = size === 'medium' ? 'ml-4' : '';
     <div class="w-[49%] image-container">
       <figure class="m-0">
         <figcaption class="mb-2 text-center">
-          <small>{rightCaption} results for <a href={rightLink} target="_blank">{query}</a></small>
+          <small>{rightCaption} {query && <a href={rightLink} target="_blank">{query}</a>}</small>
         </figcaption>
         <Image
           src={rightImageSrc}
           alt={rightImageAlt}
-          class="w-full h-auto m-0 border border-fuchsia-500 cursor-pointer"
+          class={`w-full h-auto m-0 border ${leftStyles} cursor-pointer`}
           width={400}
           height={300}
         />
