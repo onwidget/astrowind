@@ -120,7 +120,7 @@ Inside **AstroWind** template, you'll see the following folders and files:
 │   ├── config.yaml
 │   └── navigation.js
 ├── package.json
-├── astro.config.mjs
+├── astro.config.ts
 └── ...
 ```
 
