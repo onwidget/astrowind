@@ -1,0 +1,101 @@
+---
+publishDate: 2024-08-29T08:45:00.000Z
+author: skeptrune (Nick K)
+title: >-
+  Launching Trieve HN Discovery - A Discovery Focused Search Engine for Hacker
+  News
+excerpt: >-
+  Trieve HN Discovery is an open source discovery-focused search engine for
+  Hacker News. With features like LLM-generated query suggestions, site filters,
+  semantic search, RAG AI chat, and order by descendant count, it offers a
+  comprehensive search experience for the Hacker News community.
+image: >-
+  https://cdn.trieve.ai/blog/trieve-hn-discovery/trieve-hn-discovery-preview-opengraph.webp
+category: Demos
+tags:
+  - hackernews
+  - search
+  - demo
+---
+
+We have been interested in building a HN discovery interface since before we were accepted into the W24 Y Combinator batch in late 2023\. However, we were limited by our own product not being good enough to develop what we wanted. Our ingest speed and reliability in particular were extreme challenges. Now, with a production ready Rust backend and [6 months of hacking in our spare time](https://github.com/devflowinc/trieve-hn-discovery/commit/2e24998d30b336416a947ee1594eb9c026958087), we are excited to share the complete version available at [hn.trieve.ai](https://hn.trieve.ai)!
+
+Backend source code available at [github.com/devflowinc/trieve](https://github.com/devflowinc/trieve) and the frontend code at [github.com/devflowinc/trieve-hn-discovery](https://github.com/devflowinc/trieve-hn-discovery). See the [system diagram here](https://docs.trieve.ai/getting-started/introduction#system-diagram) for a high level overview.
+
+# New Features!
+
+Quote and negated word, author, story id, points, comments, and date filters are all supported. We thought it was extremely important to preserve all existing functionality.
+
+## No JS Version
+
+We have both [hnnojs.trieve.ai](https://hnnojs.trieve.ai/) and [hn.trieve.ai](https://hn.trieve.ai/). Respectively, they are a Rust [actix-web server](https://github.com/devflowinc/trieve-hn-discovery/tree/main/actix-frontend) with [minijinja](https://github.com/mitsuhiko/minijinja) templates and a [SolidJS SPA](https://github.com/devflowinc/trieve-hn-discovery/tree/main/frontend).
+
+A dedicated blog on how we built the no-js version in Rust will come out soon!
+
+## LLM Generated Query Suggestions
+
+We used our [generate suggested queries route](https://docs.trieve.ai/api-reference/chunk/generate-suggested-queries) to show query suggestions based on random posts from HN.
+
+## Site Filters
+
+Search results can now be limited on a URL basis! For example you can query for "async site:blog.rust-lang.org" to see discussion of async Rust specifically shared by the official rust blog.
+
+Negated filters like "async rust site:-blog.rust-lang.org" to constrain results to posts NOT from blog.rust-lang.org.
+
+## Recommendations
+
+Click the "Get Recommendations" button on any story to get exact recommendations. Both "fulltext" and "semantic" oriented recommendations are available.
+
+![image](https://cdn.trieve.ai/blog/trieve-hn-discovery/recommendations.webp)
+
+## Semantic Search
+
+We added dense vector semantic search so that users can figure out the general vibe on HN for a particular topic. Comparisons are an especially good use-case. See the [about](https://hn.trieve.ai/about) page for more information on the different search modes.
+
+![image](https://cdn.trieve.ai/blog/trieve-hn-discovery/semantic-search.webp)
+
+## RAG AI chat
+
+**RAG chatbots performing search queries unknown to the user to inform their output is somewhat of a dark pattern.** LLM's are more valuable in "search before generate" scenarios where you can more narrowly define the context you are chatting with. This interface has both a [fully manged RAG setup](https://hn.trieve.ai/chat) (somewhat dark-pattern'ed) and a search before generate flow.
+
+When I was researching the [history of HN search](https://trieve.ai/history-of-hnsearch/), I came across several references to slashdot, but had no awareness of what it actually was. Adding it to the AI chat and asking was useful.
+
+Under the hood of Github Copilot and Cursor are smart algorithms for deciding what's in your context at any point in time and we want to make building with that pattern easy with Trieve.
+
+![image](https://cdn.trieve.ai/blog/trieve-hn-discovery/ai-chat.webp)
+
+## Order by Descendant Count
+
+There is an option for to order based on the number of top-level comments instead of points. It's useful when you're looking for lots of discussion instead of upvotes.
+
+# Why we made fulltext the default search mode
+
+In order, these are the factors which led to us picking SPLADE-powered fulltext as the default search mode. If you want to learn more about the different search modes, check out the [about page](https://hn.trieve.ai/about).
+
+## 1\. Users accustomed to traditional search systems can find semantic search disorienting
+
+Semantic search keys in on the general idea of what you are querying for instead of the specific keywords. Searching for "Rust vs. Zig" will return random comparisons before posts containing the specific terms of "Rust" or "Zig". We can argue about whether or not this behavior is preferable, but it's certainly not expected. We didn't want users to be confused or feel like the search wasn't working, so we picked SPLADE as the default since it's still semantic'y, but more aligned to keyword search expectations.
+
+## 2\. Fulltext latency is 50-75ms and semantic is 100-200ms
+
+We believe it's possible to improve semantic search latency by tuning our search database (Qdrant), but we ultimately ran out of time and punted on it. Segment sizes are either too large or small and we are not yet sure which.
+
+I want to highlight that 100-300ms is good enough that it was not a blocker to making semantic the default search mode. It still feels near-instant at that speed. Our decision was primarily based on it not being disorienting for users coming from keyword search experiences.
+
+# Relevance quality likely could have been better if we implemented learning-to-rank (LTR)
+
+> For those who don't know, Learning to Rank, is a means of using a machine learning model to optimize relevance of search results. The Elasticsearch Learning to Rank plugin creates the infrastructure for feature storage (aka templated Elastic queries), feature logging, and then uploading models trained offline for ranking with those features. - [softwaredoug](https://news.ycombinator.com/item?id=21837407)
+
+Doug has another great blog post called [Learning to Rank 101 -- Linear Models](https://opensourceconnections.com/blog/2017/04/01/learning-to-rank-linear-models/) which I would recommend checking out if you are interested.
+
+We tried to use our in-page weight system (detailed blog coming soon) to implement a pseudo LTR model based on points, but it was worse than blindly using the IDF scores with SPLADE sparse vectors.
+
+We did boost the in-doc-frequencies of story titles such that they would rank higher than random comments or text containing the same terms, but LTR with features like "title match score", "text match score", "post score", "user Karma", etc. would have really put the quality over the top. It's unfortunate that we made this misstep early on and correcting at this point would require an extensive refactor.
+
+Throughout this project we discovered that vector db's lacking support for LTR is a large weakness and something to be wary of when choosing them as your primary search db. We plan to add LTR support for Qdrant in the near future and maybe revisit our API surface in a v3 release.
+
+# Future Ideas
+
+1. We have enough data to show the most linked top-level domains and plan to make a site for displaying that list.
+2. Our recommendation system supports both positive and negative examples (see our [steam games recommendation system here](https://steamdb.trieve.ai/) to see that in action) and we would like to make an interface for that on HN. More advanced recommendations seem useful for "past" links in particular.
+3. Come back and add LTR

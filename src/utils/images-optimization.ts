@@ -162,12 +162,14 @@ const getStyle = ({
   if (layout === 'contained') {
     styleEntries.push(['max-width', '100%']);
     styleEntries.push(['max-height', '100%']);
-    styleEntries.push(['object-fit', 'contain']);
-    styleEntries.push(['aspect-ratio', aspectRatio ? `${aspectRatio}` : undefined]);
+    styleEntries.push(['object-fit', 'scale-down']);
+    styleEntries.push(['aspect-ratio', aspectRatio ? `${aspectRatio}` : 'auto']);
   }
   if (layout === 'cover') {
     styleEntries.push(['max-width', '100%']);
     styleEntries.push(['max-height', '100%']);
+    styleEntries.push(['object-fit', 'scale-down']);
+    styleEntries.push(['aspect-ratio', aspectRatio ? `${aspectRatio}` : 'auto']);
   }
 
   const styles = Object.fromEntries(styleEntries.filter(([, value]) => value));
