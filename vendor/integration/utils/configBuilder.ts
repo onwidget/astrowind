@@ -2,7 +2,7 @@ import merge from 'lodash.merge';
 
 import type { MetaData } from '~/types';
 
-type Config = {
+export type Config = {
   site?: SiteConfig;
   metadata?: MetaDataConfig;
   i18n?: I18NConfig;
