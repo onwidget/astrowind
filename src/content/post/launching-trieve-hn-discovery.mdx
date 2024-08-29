@@ -36,6 +36,12 @@ A dedicated blog on how we built the no-js version in Rust will come out soon!
 
 We used our [generate suggested queries route](https://docs.trieve.ai/api-reference/chunk/generate-suggested-queries) to show query suggestions based on random posts from HN.
 
+## Public Analytics
+
+Analytics for all search, RAG, and recommendation queries are public on the site! Soon, we will also be adding click-through-rate data. Our goal is to look at the analytics such that we can improve the search quality over time. Secondarily, we also think it's cool to be able to see what's interesting to HN over time.
+
+![analytics-screenshot](https://trieve.b-cdn.net/blog/trieve-hn-discovery/analytics-screenshot.webp)
+
 ## Site Filters
 
 Search results can now be limited on a URL basis! For example you can query for "async site:blog.rust-lang.org" to see discussion of async Rust specifically shared by the official rust blog.
@@ -96,6 +102,7 @@ Throughout this project we discovered that vector db's lacking support for LTR i
 
 # Future Ideas
 
-1. We have enough data to show the most linked top-level domains and plan to make a site for displaying that list.
-2. Our recommendation system supports both positive and negative examples (see our [steam games recommendation system here](https://steamdb.trieve.ai/) to see that in action) and we would like to make an interface for that on HN. More advanced recommendations seem useful for "past" links in particular.
-3. Come back and add LTR
+1. Show CTR analytics data
+2. We have enough data to show the most linked top-level domains and plan to make a site for displaying that list.
+3. Our recommendation system supports both positive and negative examples (see our [steam games recommendation system here](https://steamdb.trieve.ai/) to see that in action) and we would like to make an interface for that on HN. More advanced recommendations seem useful for "past" links in particular.
+4. Come back and add LTR
