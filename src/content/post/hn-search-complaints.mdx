@@ -1,8 +1,8 @@
 ---
 publishDate: 2024-08-30T08:45:00Z
 author: danielsgriffin
-title: "Algolia HN Search Complaints and Trieve's Discovery Quality"
-excerpt: Comparing the search quality between Algolia and Trieve with HN search complaints.
+title: "Examining HN Discovery Quality Using Existing Complaints"
+excerpt: Comparing the search quality between HN search engines with publicly available complaints.
 image: https://cdn.trieve.ai/blog/hn-search-complaints/trieve_hn_discovery_search.png
 category: Comparisons
 tags:
@@ -30,7 +30,8 @@ We combed through HN (and [user issues posted to Algolia's repo for HN search](h
 - **Search intent:** Finding information about PostgreSQL clustering solutions
 - **Sourced from:** [@avereveard comment on Hacker News](https://news.ycombinator.com/item?id=40240237)
 
-Algolia provides only three results, from 9-12 years ago. Trieve provides dozens of results to help the searcher along their way.
+Algolia's engine focuses on showing extremely precise keyword matches while Trieve's takes a more discovery-focused approach and prioritizes relevance. This query is a good example of where a relevance focused approach can be better. However, it's important to note that there are pros and cons to each approach.
+
 <ImageComparison
   leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_0_postgresclustering_2024_08_30.png"
   rightImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.trieve.ai_1_postgresclustering_2024_08_30.png"
@@ -50,7 +51,8 @@ Algolia provides only three results, from 9-12 years ago. Trieve provides dozens
 - **Search intent:** Exact phrase match with long query
 - **Sourced from:** [@Pranoy1c on github/algolia/hn-search/issues](https://github.com/algolia/hn-search/issues/243)
 
-Having one extra word in the search causes it to fail in Trieve&#x27;s fulltext search (see the search with or without &quot;new&quot;). The issue does not seem to be an Algolia query limit (512 chars).
+Precise keyword sensitivity means that having one extra word in the search causes it to fail. Trieve's relevance oriented fulltext search is less sensitive and will still surface good results (see the search with or without &quot;new&quot;). The issue does not seem to be an Algolia query limit (512 chars).
+
 <ImageComparison
   leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_2_AT26T20says20criminals20stole20phone20records20of20E28098nearly20allE2809920customers20in20new20data20breach_2024_08_30.png"
   rightImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.trieve.ai_3_AT26TsayscriminalsstolephonerecordsofE28098nearlyallE28099customersinnewdatabreach_2024_08_30.png"
@@ -86,7 +88,8 @@ Having one extra word in the search causes it to fail in Trieve&#x27;s fulltext 
 - **Search intent:** Exact string match when string contains non-alphanumeric characters
 - **Sourced from:** [@some1else on github/algolia/hn-search/issues](https://github.com/algolia/hn-search/issues/197)
 
-Algolia&#x27;s result appear to match on <code>video</code>, not only <code>[video]</code>. Trieve&#x27;s hybrid and semantic search types do very well on the exact match, but not perfect. Trieve does better if in quotes, like [&quot;[video]&quot;], which does not seem to have an affect here in Algolia.
+Algolia&#x27;s result appear to match on <code>video</code>, not only <code>[video]</code>. Trieve&#x27;s hybrid and semantic search types do very well on the exact match, but not perfect. Trieve does better if in quotes, like [&quot;[video]&quot;], which does not seem to have an affect here in Algolia. Difference here is likely due to tokenization approaches moreso than general relevance strategy. Again, there are pros and cons to different tokenization strategies, but issues similar to this one helped inform our final decision on approach.
+
 <ImageComparison
   leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_6_5Bvideo5D_2024_08_30.png"
   rightImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.trieve.ai_7_5Bvideo5D_2024_08_30.png"
@@ -120,7 +123,8 @@ Algolia&#x27;s result appear to match on <code>video</code>, not only <code>[vid
 - **Search intent:** Exact match for acronym (with ampersand)
 - **Sourced from:** [@Pranoy1c on github/algolia/hn-search/issues](https://github.com/algolia/hn-search/issues/244)
 
-The issue seems to be with the prefix paramater in Algolia. Algolia&#x27;s results are less relevant when searching for [AT&amp;T] with <code>prefix=true</code>. Results improve with <code>prefix=false</code> or when the query is in quotes. This appears to be an issue with how the <code>prefix</code> parameter is set in the URL in Algolia. If the user opens the Algolia HN search and starts typing <code>prefix=true</code>, if the user hits enter, the URL is changed to <code>prefix=false</code>. Trieve&#x27;s results (for all search types) are relevant even without quotes.
+The issue seems to be with the prefix paramater in Algolia. Algolia&#x27;s results are less relevant when searching for [AT&amp;T] with <code>prefix=true</code>. Results improve with <code>prefix=false</code> or when the query is in quotes. This appears to be an issue with how the <code>prefix</code> parameter is set in the URL in Algolia. If the user opens the Algolia HN search and starts typing <code>prefix=true</code>, if the user hits enter, the URL is changed to <code>prefix=false</code>. Trieve&#x27;s results (for all search types) are relevant even without quotes. There may be reasoning for Algolia's default prefixing params outside of this query which make it better overall, but we indexed on this complaint.
+
 <ImageComparison
   leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_10_AT26T_2024_08_30.png"
   rightImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_11_AT26T_2024_08_30.png"
@@ -156,7 +160,8 @@ The issue seems to be with the prefix paramater in Algolia. Algolia&#x27;s resul
 - **Search intent:** Match for out-of-domain string
 - **Sourced from:** [@douglaskayama comment on Hacker News](https://news.ycombinator.com/item?id=40869786)
 
-This was actually a complaint about not Algolia, but a demo search tool from another provider. The user praised Algolia&#x27;s performance on this query. Trieve&#x27;s different search types support different user goals, so while BM25 works great for out-of-domain strings like this, the others just need quotation marks.
+This was actually a complaint about not Algolia, but a demo search tool from another provider. The user praised Algolia&#x27;s performance on this query. Trieve&#x27;s different search types support different user goals, so while BM25 works great for out-of-domain strings like this, the others would require quotation marks. Queries like this one tend to favor Algolia's more narrow and precise strategy over Trieve's relevance focus. Our engine splits "lootitooti" into multiple tokens like "loot", "lootit", etc. instead of preserving the entire match. Using Trieve's internal BKTree to detect non-dictionary tokens and auto-quote require them is the clearest fix for these kinds of queries, but we have not yet implemented it in the HN search demo.
+
 <ImageComparison
   leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_14_lootitooti_2024_08_30.png"
   rightImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.trieve.ai_15_lootitooti_2024_08_30.png"
@@ -193,6 +198,7 @@ This was actually a complaint about not Algolia, but a demo search tool from ano
 - **Sourced from:** [@codethief comment on Hacker News](https://news.ycombinator.com/item?id=40241070)
 
 Algolia shows no results for a story search for this query. Trieve shows the identified target link in the fourth result. This is a common discovery pattern we hope to support—the *presque vue* search or the &quot;tip of your tongue&quot; phenomenon.
+
 <ImageComparison
   leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_18_deterministic20Docker20builds_2024_08_30.png"
   rightImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.trieve.ai_19_deterministicDockerbuilds_2024_08_30.png"
@@ -209,7 +215,8 @@ Algolia shows no results for a story search for this query. Trieve shows the ide
 
 ### Searching for "tip of your tongue phenomenon"
 
-**Bonus!**
+**Bonus!** Again, precision focused approach of requiring "your" has downsides.
+
 <ImageComparison
   leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_20_tip20of20your20tongue20phenomenon_2024_08_30.png"
   rightImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.trieve.ai_21_tipofyourtonguephenomenon_2024_08_30.png"
