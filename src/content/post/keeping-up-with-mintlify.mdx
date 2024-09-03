@@ -1,0 +1,54 @@
+---
+publishDate: 2024-09-04T08:45:00Z
+author: danielsgriffin
+title: "Keeping up with Mintlify's AI Chat"
+excerpt: How I used Mintlify's AI Chat to keep up with the Trieve codebase.
+image: https://cdn.trieve.ai/blog/keeping-up-with-mintlify/trieve.png
+tags:
+  - mintlify
+  - rag
+  - search
+---
+
+
+import Image from '../../components/common/Image.astro';
+
+I am pretty new to the Trieve codebase ([GitHub](https://github.com/devflowinc/trieve), [Docs](https://docs.trieve.ai)) and am sometimes hesitant to ask about things that initially seem to me to be missing, confusing, or not working. This is common for many—even when, like in my case, those around you strongly encourage any and all questions. For [my dissertation research at UC Berkeley](https://danielsgriffin.com/diss/), I studied how data engineers search the web for their work and [wrote about how they try to keep learning](https://danielsgriffin.com/diss/repairing_searching/):
+
+> A key observation of data engineering work is that they are operating at the edge, working with the new, or new to them, tools, systems, or other ways of handling data. Navigating around these edges, or learning around the edge, necessitates constantly working to “keep up” [(Kotamraju, 2002)](https://doi.org/10.1080/13691180110117631) and engage in “intensive self-learning” [(Avnoon, 2021)](https://doi.org/10.1177/0950017020977306) in a fluid, and loosely defined, field. They use web search to keep up.
+
+In my research, I also looked at what people did when they were struggling despite searching the web. Often, they—eventually—ask others. And no matter how encouraging your teammates, you may still wonder if your question is going to waste their time or make you appear a fool. Many people fear, or have experienced, being [ragged on](https://en.wiktionary.org/wiki/rag_on) for asking a question that was perhaps searchable. Maybe they were harshly told to [read the manual](https://en.wikipedia.org/wiki/RTFM) or sent a [LMGTFY](https://www.urbandictionary.com/define.php?term=lmgtfy) link ([a practice long-ago banned on Stack Overflow](https://meta.stackoverflow.com/questions/255397/lmgtfy-link-cant-be-added)). Some of my research participants told me how they sometimes said or sent such things to their colleagues to reduce the demand on their own time. Others confessed how they found themselves silenced when a boss or colleague said something similar to them. So, folks often took the time to carefully package questions, looking for ways to demonstrate due diligence.
+
+Thanks to Trieve's integration with [Mintlify](https://mintlify.com/), my due diligence process looked roughly like this, advancing to the next step as necessary:
+
+1) Identify a doubt or question.
+2) Search [the docs](https://docs.trieve.ai/introduction) (sometimes through the integrated search bar and sometimes just on the page with <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>F</kbd>).
+3) Write (and even iteratively reformulate) a question in [Mintlify's AI Chat](https://mintlify.com/blog/chat) interface.
+4) Share a screenshot of the question & answer with the rest of the Trieve team.
+
+<figure>
+  <img src="https://cdn.trieve.ai/blog/keeping-up-with-mintlify/search.png" alt="screenshot of the Mintlify search bar" style="border: 1px solid black;"/>
+    <figcaption style="color: grey;">You can jump to the Mintlify search bar at the top of the page with <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>K</kbd></figcaption>
+</figure>
+
+Some questions I only had to recognize to be able to resolve (on my own with the code and computer). Many just required a quick search. For others I could refine my understanding through the act of simply writing out fully formulated questions (like in [rubber duck debugging](https://rubberduckdebugging.com/) or how even ["starting to ask"](https://danielsgriffin.com/diss/repairing_searching/#renewed-impetus) a colleague a question helps clarify a path forward). Sometimes the value was in reading the docs as repackaged by the LLM chat.
+
+<figure>
+  <img src="https://cdn.trieve.ai/blog/keeping-up-with-mintlify/searching.png" alt="screenshot of Mintlify's search interface" style="border: 1px solid black;"/>
+  <figcaption style="color: grey;">The Mintlify interface lets you jump straight to the RAG response or the retrieved search results.</figcaption>
+</figure>
+
+<figure>
+  <img src="https://cdn.trieve.ai/blog/keeping-up-with-mintlify/sources.png" alt="screenshot of Mintlify's RAG source links" style="border: 1px solid black;"/>
+  <figcaption style="color: grey;">Links to the sources used by the LLM to generate the response are displayed at the bottom.</figcaption>
+</figure>
+
+Then there was that last type of question—often dealing with API parameters or some special term in the docs—where the RAG response helped me really recognize my misunderstandings or reframe my confusion. The question-and-answer was displayed in a way that let me quickly relay to the team my doubt or surprise packaged alongside the RAG response. 
+
+<figure>
+  <img src="https://cdn.trieve.ai/blog/keeping-up-with-mintlify/full.png" alt="screenshot of Mintlify's RAG response to 'What is the difference between group_ids and group_tracking_ids?'" style="border: 1px solid black;"/>
+  <figcaption style="color: grey;">Screenshot of the Mintlify AI Chat interface showing both the question and the RAG response.</figcaption>
+</figure>
+
+
+Sharing these screenshots helped make clear how the confusion or uncertainty was connected with the existing documentation, or not. These questions then helped the team identify where I really needed help keeping up and where the documentation might be improved to support a better developer experience in the docs, in the search, and with the RAG.
