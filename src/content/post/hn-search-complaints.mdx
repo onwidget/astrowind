@@ -253,3 +253,53 @@ Algolia does not show any results when the query includes <code>by:</code> filte
   preventShrink={true}
 />
 
+## Default sorting by relevance v. popularity metrics
+
+### Searching for "Excel"
+
+- **Search intent:** Find popular Excel-related stories on Hacker News
+- **Sourced from:** [@airstrike on Hacker News](https://news.ycombinator.com/item?id=41394126)
+
+This is from a comparison that @airstrike shared after we launched our discovery search. He prefered the results from Algolia. Algolia defaults to a popularity-based sort. Algolia also has sort-by-date, but does not have a specific relevance-focused sorting option.
+
+Trieve offers multiple sorting options:
+
+- default: relevance (not tuned to extrinsic popularity metrics)
+- number of points (Algolia&#x27;s &quot;popularity&quot;)
+- date (reverse chronological)
+- descendants (number of comments)
+
+[Nick (@skeptrune) responded](https://news.ycombinator.com/item?id=41394412) with some of our internal deliberations:
+
+> We went back and forth on making points sorting default and ended up deciding against it, but maybe we should have. Our thinking was that since it&#x27;s focused on &quot;discovery&quot; it was worth prioritizing relevance, but I can see how it can feel the result quality isn&#x27;t as great.
+
+If someone is looking for more of the popularity-focused results, they can start their Trieve HN Discovery searches with the <code>sortby=</code> parameter set to <code>num_value</code> (try [this link](https://hn.trieve.ai/?score_threshold=5&amp;page_size=30&amp;prefetch_amount=30&amp;rerank_type=none&amp;highlight_delimiters=+%2C-%2C_%2C.%2C%2C&amp;highlight_threshold=0.85&amp;highlight_max_length=50&amp;highlight_max_num=50&amp;highlight_window=0&amp;recency_bias=0&amp;highlight_results=true&amp;use_quote_negated_terms=true&amp;storyType=story&amp;matchAnyAuthorNames=&amp;matchNoneAuthorNames=&amp;popularityFilters=%7B%7D&amp;sortby=num_value&amp;dateRange=all&amp;searchType=fulltext&amp;page=1&amp;getAISummary=false)).
+
+<ImageComparison
+  leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_0_Excel_2024_09_03.png"
+  rightImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.trieve.ai_1_Excel_2024_09_03.png"
+  leftImageAlt="Algolia (sorted by popularity)"
+  rightImageAlt="Trieve (sorted by relevance)"
+  leftCaption="Algolia (sorted by popularity) for"
+  rightCaption="Trieve (sorted by relevance) for"
+  leftLink="https://hn.algolia.com/?dateRange=all&page=0&prefix=false&query=Excel&sort=byPopularity&type=story"
+  rightLink="https://hn.trieve.ai/?score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&q=Excel&storyType=story&matchAnyAuthorNames=&matchNoneAuthorNames=&popularityFilters=%7B%7D&sortby=relevance&dateRange=all&searchType=fulltext&page=1&getAISummary=false"
+  query="Excel"
+  size="large"
+  preventShrink={true}
+/>
+
+<ImageComparison
+  leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.trieve.ai_2_Excel_2024_09_03.png"
+  rightImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.trieve.ai_3_Excel_2024_09_03.png"
+  leftImageAlt="Trieve (sorted by points)"
+  rightImageAlt="Trieve (sorted by descendants)"
+  leftCaption="Trieve (sorted by points) for"
+  rightCaption="Trieve (sorted by descendants) for"
+  leftLink="https://hn.trieve.ai/?score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&q=Excel&storyType=story&matchAnyAuthorNames=&matchNoneAuthorNames=&popularityFilters=%7B%7D&sortby=num_value&dateRange=all&searchType=fulltext&page=1&getAISummary=false"
+  rightLink="https://hn.trieve.ai/?score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&q=Excel&storyType=story&matchAnyAuthorNames=&matchNoneAuthorNames=&popularityFilters=%7B%7D&sortby=metadata.descendants&dateRange=all&searchType=fulltext&page=1&getAISummary=false"
+  query="Excel"
+  size="large"
+  preventShrink={true}
+/>
+
