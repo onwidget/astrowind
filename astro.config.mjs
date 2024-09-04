@@ -9,8 +9,14 @@ import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
 import tasks from './src/utils/tasks';
+import { rehypeHeadingIds } from '@astrojs/markdown-remark';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
-import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin } from './src/utils/frontmatter.mjs';
+import {
+  readingTimeRemarkPlugin,
+  responsiveTablesRehypePlugin,
+  rehypeHeadingClasses,
+} from './src/utils/frontmatter.mjs';
 
 import { ANALYTICS, SITE } from './src/utils/config.ts';
 
@@ -39,14 +45,7 @@ export default defineConfig({
     icon({
       include: {
         tabler: ['*'],
-        'flat-color-icons': [
-          'search',
-          'collaboration',
-          'multiple-inputs',
-          'document',
-          'binoculars',
-          'calendar',
-        ],
+        'flat-color-icons': ['search', 'collaboration', 'multiple-inputs', 'document', 'binoculars', 'calendar'],
         ri: ['*'],
       },
     }),
@@ -66,7 +65,33 @@ export default defineConfig({
 
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin],
-    rehypePlugins: [responsiveTablesRehypePlugin],
+    rehypePlugins: [
+      rehypeHeadingClasses,
+      rehypeHeadingIds,
+      responsiveTablesRehypePlugin,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'append',
+          properties: {
+            className: 'no-underline h-fit hidden group-hover:flex items-center',
+          },
+          content: {
+            type: 'element',
+            tagName: 'span',
+            properties: {
+              className: 'text-sm text-gray-500 h-fit',
+            },
+            children: [
+              {
+                type: 'text',
+                value: '#',
+              },
+            ],
+          },
+        },
+      ],
+    ],
   },
 
   vite: {

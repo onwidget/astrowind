@@ -34,3 +34,17 @@ export function responsiveTablesRehypePlugin() {
     }
   };
 }
+
+export function rehypeHeadingClasses() {
+  return function (tree) {
+    if (!tree.children) return;
+
+    for (let i = 0; i < tree.children.length; i++) {
+      const child = tree.children[i];
+
+      if (child.type === 'element' && child.tagName.startsWith('h') && child.tagName.length === 2) {
+        child.properties.className = 'flex items-center gap-2 group';
+      }
+    }
+  };
+}
