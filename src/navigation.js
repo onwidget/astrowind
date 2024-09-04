@@ -75,7 +75,7 @@ export const footerData = {
         { text: 'About', href: '/about' },
         { text: 'Admin Dashboard', href: 'https://dashboard.trieve.ai' },
         { text: 'Privacy Policy', href: '/legal/privacy-policy' },
-        { text: 'Github', href: 'https://github.com/devflowinc/trieve' },
+        { text: 'GitHub', href: 'https://github.com/devflowinc/trieve' },
       ],
     },
     {
@@ -93,7 +93,7 @@ export const footerData = {
   ],
   socialLinks: [
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: 'https://x.com/trieveai' },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/devflowinc/trieve' },
+    { ariaLabel: 'GitHub', icon: 'tabler:brand-github', href: 'https://github.com/devflowinc/trieve' },
     { ariaLabel: 'Matrix', icon: 'tabler:brand-matrix', href: 'https://matrix.to/#/#trieve-general:trieve.ai' },
     { ariaLabel: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/E9sPRZqpDT' },
   ],
