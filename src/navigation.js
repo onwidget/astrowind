@@ -7,8 +7,8 @@ export const headerData = {
       href: 'https://dashboard.trieve.ai',
     },
     {
-      text: 'Demo',
-      href: 'https://yc.trieve.ai',
+      text: 'Hacker News Search Engine',
+      href: 'https://hn.trieve.ai',
     },
     {
       text: 'Docs',
@@ -45,7 +45,8 @@ export const headerData = {
           text: 'Discord',
           href: 'https://discord.gg/E9sPRZqpDT',
         },
-      ],},
+      ],
+    },
   ],
   actions: [{ text: 'Get Started Free', href: 'https://dashboard.trieve.ai', target: '_blank' }],
   showRssFeed: true,
@@ -83,7 +84,7 @@ export const footerData = {
       links: [
         { text: 'Pricing', href: '/pricing' },
         { text: 'Documentation', href: 'https://docs.trieve.ai' },
-        { text: 'YC Directory Demo', href: 'https://yc.trieve.ai' },
+        { text: 'Hacker News Search Engine', href: 'https://hn.trieve.ai' },
       ],
     },
     {
