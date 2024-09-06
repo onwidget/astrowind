@@ -1,0 +1,511 @@
+---
+publishDate: 2024-09-12T22:10:00Z
+author: Marcin Stankiewicz
+title: 'Guide for Self-Hosting Trieve on a VPS'
+excerpt: Instructions for self-hosting Trieve on a VPS using docker-compose. You'll be able to set up Trieve on a Hetzner server which comes with semantic and hybrid search, SPLADE fulltext search, re-ranker models, RAG AI Chat, recommendations, and analytics.
+image: https://trieve.b-cdn.net/blog/self-hosting-guide/self-hosting-guide-preview.webp
+tags:
+  - self hosting
+  - open source
+---
+import Warning from '~/components/common/Warning.astro';
+
+## Table of Contents
+
+1. [Introduction](#1-introduction)
+2. [Creating the Server](#2-creating-the-server)
+    1. [Prerequisites](#21-prerequisites)
+    2. [Server Setup Steps](#22-server-setup-steps)
+3. [Trieve Configuration on the Server](#3-trieve-configuration-on-the-server)
+    1. [Caddy Configuration](#31-caddy-configuration)
+    2. [Environment Variables Configuration](#32-environment-variables-configuration)
+    3. [Running Trieve](#33-running-trieve)
+4. [Keycloak Configuration](#4-keycloak-configuration)
+5. [Changing Default Passwords (OPTIONAL, BUT RECOMMENDED)](#5-changing-default-passwords-optiona-but-recommended)
+    1. [Changing via script](#51-changing-via-script)
+    2. [Changing by hand](#52-changing-by-hand)
+        1. [Updating the .env File](#521-updating-the-env-file)
+        2. [Updating Docker Compose Configuration](#522-updating-docker-compose-configuration)
+    3. [Applying the Changes](#53-applying-the-changes)
+6. [Troubleshooting](#6-troubleshooting)
+7. [FAQ](#7-FAQ)
+
+## 1. Introduction
+
+This guide provides comprehensive instructions for self-hosting Trieve. By following these steps, you'll be able to set up your own Trieve instance on a Hetzner Cloud server.
+
+<Warning>
+  <p>
+    Due to this guide being CPU-only, semantic search and ingest will be SLOW, 2+s for semantic search and ~10 chunks/s on ingest. Fulltext SPLADE and bm25 search types will remain fast, but be aware that running the embedding servers on GPU's is required for a more latency sensitive setup. See our <a href="https://docs.trieve.ai/self-hosting/aws#3-create-values-yaml">AWS</a> or <a href="https://docs.trieve.ai/self-hosting/gcp">GCP</a> guides for more information or contact us at <a href="mailto:humans@trieve.ai">humans@trieve.ai</a> for more information.
+  </p>
+</Warning>
+
+## 2. Creating the Server
+
+### 2.1 Prerequisites
+
+Before beginning the server setup, ensure you have:
+
+- A domain name with access to its DNS configuration
+- A Hetzner Cloud account
+
+### 2.2 Server Setup Steps
+
+1. Log in to the Hetzner Cloud Console at https://console.hetzner.cloud
+
+2. Create a new project for your Trieve instance.
+
+3. Create a public IP address:
+   - Choose the same location as your intended server location.
+
+![create primary hetzner IP](https://cdn.trieve.ai/blog/self-hosting-guide/hetzner-2.2-image.webp)
+
+4. Configure your domain:
+   - Add an A record pointing to the public IP address you just created.
+
+![DNS record setup](https://cdn.trieve.ai/blog/self-hosting-guide/self-hosting-dns-records.webp)
+
+
+    | Host      | Type | IP                |
+    | --------- | ---- | ----------------- |
+    | api       | A    | HETZNER-PUBLIC-IP |
+    | auth      | A    | HETZNER-PUBLIC-IP |
+    | dashboard | A    | HETZNER-PUBLIC-IP |
+    | chat      | A    | HETZNER-PUBLIC-IP |
+    | search    | A    | HETZNER-PUBLIC-IP |
+    | analytics | A    | HETZNER-PUBLIC-IP |
+
+5. Add an SSH key to your Hetzner account:
+   - To view your existing public key in terminal on your local machine, use:
+     ```
+     cat ~/.ssh/id_ed25519.pub
+     ```
+   - If you don't have an SSH key, generate one with:
+     ```
+     ssh-keygen -t ed25519
+     ```
+
+![ssh keygen screenshot](https://cdn.trieve.ai/blog/self-hosting-guide/ssh-keygen.webp)
+    - Go to the "Security" tab in Hetzner Cloud website.
+    - Click on "Add SSH key" and paste your public key.
+
+![hetzner adding ssh key](https://cdn.trieve.ai/blog/self-hosting-guide/hetzner-ssh-key.webp)
+
+For detailed instructions, refer to Hetzner's community guides for Linux and Windows:
+
+[Linux: Setting up an SSH key](https://community.hetzner.com/tutorials/howto-ssh-key)
+[Windows: Generate SSH key using PuTTYgen](https://community.hetzner.com/tutorials/how-to-generate-ssh-key-putty)
+
+6. Create a new network:
+   - Go to the "Networks" tab in Hetzner Cloud website.
+   - Add a new network with the IP range `192.168.1.0/24`.
+
+![hetzner create network page](https://cdn.trieve.ai/blog/self-hosting-guide/hetzner-network-setup.webp)
+
+7. Create a new server:
+   - Go to the "Servers" tab and click "Add Server".
+   - Choose the same location as your public IP address.
+   - Select Ubuntu 24.04 as the operating system.
+   - Choose a server size (minimum 8vCPU/16GB-RAM, recommended 8vCPU/32GB-RAM).
+   - In networking settings:
+     - Select your public IP.
+     - Check "Private networks" and select the network you created.
+     - Uncheck public IPv6.
+   - Select your SSH key.
+   - In the Cloud config section, paste the provided configuration.
+   - Replace `{PASTE HERE YOUR SSH KEY}` with your actual SSH public key.
+
+```yaml
+#cloud-config
+users:
+  - name: trieve
+    groups: users, admin, docker
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - {PASTE HERE YOU SSH KEY}
+packages:
+  - fail2ban
+  - firewalld
+  - jq
+  - caddy
+  - make
+package_update: true
+package_upgrade: true
+write_files:
+  - path: /etc/docker/daemon.json
+    content: |
+      {
+        "ipv6": false,
+        "iptables": false
+      }
+    permissions: '0644'
+  - path: /etc/fail2ban/jail.local
+    content: |
+      [sshd]
+      enabled = true
+      banaction = iptables-multiport
+    permissions: '0644'
+  - path: /etc/ssh/sshd_config
+    content: |
+         Protocol 2
+         HostKey /etc/ssh/ssh_host_rsa_key
+         HostKey /etc/ssh/ssh_host_ecdsa_key
+         HostKey /etc/ssh/ssh_host_ed25519_key
+         KbdInteractiveAuthentication no
+         UsePrivilegeSeparation yes
+         KeyRegenerationInterval 3600
+         ServerKeyBits 4096
+         SyslogFacility AUTH
+         LogLevel VERBOSE
+         LoginGraceTime 60
+         PermitRootLogin no
+         StrictModes yes
+         PubkeyAuthentication yes
+         IgnoreRhosts yes
+         HostbasedAuthentication no
+         PermitEmptyPasswords no
+         ChallengeResponseAuthentication no
+         PasswordAuthentication no
+         X11Forwarding no
+         PrintMotd no
+         PrintLastLog yes
+         TCPKeepAlive yes
+         AcceptEnv LANG LC_*
+         Subsystem sftp /usr/lib/openssh/sftp-server
+         UsePAM yes
+         MaxAuthTries 3
+         AuthenticationMethods publickey
+         KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
+         Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+         MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com
+         ClientAliveInterval 300
+         ClientAliveCountMax 2
+         AllowAgentForwarding yes
+         AllowTcpForwarding no
+         PermitUserEnvironment no
+         AllowUsers trieve
+runcmd:
+  - curl -fsSL https://get.docker.com | sh
+  - newgrp docker
+  - systemctl enable fail2ban
+  - systemctl restart docker
+  - firewall-cmd --zone=public --add-masquerade --permanent
+  - firewall-cmd --permanent --zone=trusted --add-interface=docker0
+  - firewall-cmd --reload
+  - firewall-cmd --zone=public --add-port=80/tcp --permanent
+  - firewall-cmd --zone=public --add-port=443/tcp --permanent
+  - firewall-cmd --zone=public --add-port=22/tcp --permanent
+  - firewall-cmd --permanent --new-zone=docker
+  - firewall-cmd --permanent --zone=docker --add-source=172.16.0.0/12
+  - firewall-cmd --permanent --zone=docker --set-target=ACCEPT
+  - iptables -I DOCKER-USER -i docker0 ! -o docker0 -j DROP
+  - mkdir -p /etc/iptables/
+  - iptables-save | tee /etc/iptables/rules.v4
+  - firewall-cmd --reload
+  - systemctl restart docker
+  - su - trieve -c "git clone https://github.com/devflowinc/trieve.git"
+  - sed -i 's/KC_HOSTNAME=\"localhost\"/KC_HOSTNAME=\"\"/' /home/trieve/trieve/.env.example
+  - su - trieve -c "cd trieve && cp .env.example .env && docker compose up -d && sleep 3 && docker compose down"
+  - reboot
+```
+
+![creating hetzner server part 1](https://cdn.trieve.ai/blog/self-hosting-guide/hetzner-create-server-1.webp)
+![creating hetzner server part 2](https://cdn.trieve.ai/blog/self-hosting-guide/hetzner-create-server-2.webp)
+![creating hetzner server part 3](https://cdn.trieve.ai/blog/self-hosting-guide/hetzner-create-server-3.webp)
+
+8. Create the server and wait for the initialization process to complete (approximately 3 minutes).
+If you want to see the logs during cloud-init initialization, log into the server via SSH and execute:
+    
+    ```
+    sudo -s
+    journalctl -f
+    ```
+
+9. Connect to your server via SSH:
+    ```
+    ssh trieve@YOUR_SERVER_IP
+    ```
+    
+![ssh to see formation logs](https://cdn.trieve.ai/blog/self-hosting-guide/hetzner-formation-monitoring.webp)
+
+## 3. Trieve Configuration on the Server
+
+### 3.1 Caddy Configuration
+
+1. Log in as root:
+   ```
+   sudo -s
+   ```
+
+2. Clear the default Caddy configuration:
+   ```
+   echo > /etc/caddy/Caddyfile
+   ```
+
+3. Edit the Caddyfile:
+   ```
+   nano /etc/caddy/Caddyfile
+   ```
+   Replace `YOUR-DOMAIN.COM` with your actual domain in the following configuration:
+
+   ```
+   dashboard.YOUR-DOMAIN.COM {
+       reverse_proxy localhost:5173
+   }
+   search.YOUR-DOMAIN.COM {
+       reverse_proxy localhost:5174
+   }
+   chat.YOUR-DOMAIN.COM {
+       reverse_proxy localhost:5175
+   }
+   analytics.YOUR-DOMAIN.COM {
+       reverse_proxy localhost:5176
+   }
+   api.YOUR-DOMAIN.COM {
+       reverse_proxy localhost:8090
+   }
+   auth.YOUR-DOMAIN.COM {
+       reverse_proxy localhost:8080
+   }
+   ```
+
+4. Verify the Caddy configuration:
+   ```
+   caddy fmt /etc/caddy/Caddyfile
+   ```
+
+5. Check your DNS A records, should be same as `YOUR_SERVER_IP` (Hetzner server public ip):
+   ```
+   ping api.YOUR-DOMAIN.COM
+   ```
+   If they indicate a different IP address:
+    - verify the correct configuration on the domain provider's side
+    - restart the server again (This ensures that the server picks up the latest DNS changes)
+
+6. Reload Caddy:
+   ```
+   systemctl reload caddy.service
+   ```
+
+7. Verify certificate creation:
+   ```
+   journalctl -u caddy | grep "successfully"
+   ```
+
+![verify caddyfile content](https://cdn.trieve.ai/blog/self-hosting-guide/hetzner-certificate-generation.webp)
+
+
+### 3.2 Environment Variables Configuration
+
+1. Switch to the trieve user and navigate to the Trieve directory:
+   ```
+   su - trieve
+   cd /home/trieve/trieve
+   ```
+
+2. Edit the .env file:
+   ```
+   nano .env
+   ```
+
+3. Modify the following variables or add them to the end of the file. Replace `YOUR-DOMAIN.COM` with actual domain name in all the listed environment variables:
+   ```
+   KC_HOSTNAME="auth.YOUR-DOMAIN.COM"
+   KC_PROXY=edge
+   VITE_API_HOST=https://api.YOUR-DOMAIN.COM/api
+   VITE_SEARCH_UI_URL=https://search.YOUR-DOMAIN.COM
+   VITE_CHAT_UI_URL=https://chat.YOUR-DOMAIN.COM
+   VITE_ANALYTICS_UI_URL=https://analytics.YOUR-DOMAIN.COM
+   VITE_DASHBOARD_URL=https://dashboard.YOUR-DOMAIN.COM
+   OIDC_AUTH_REDIRECT_URL="https://auth.YOUR-DOMAIN.COM/realms/trieve/protocol/openid-connect/auth"
+   OIDC_ISSUER_URL="https://auth.YOUR-DOMAIN.COM/realms/trieve"
+   BASE_SERVER_URL="https://api.YOUR-DOMAIN.COM"
+   ```
+
+![trieve env setup](https://cdn.trieve.ai/blog/self-hosting-guide/trieve-env-config.webp)
+
+
+### 3.3 Running Trieve
+
+1. Start the Trieve application:
+   ```
+   docker compose -f docker-compose-cpu-embeddings.yml up -d
+   docker compose up -d
+   ```
+
+2. Monitor the logs during startup:
+   ```
+   docker compose logs -f
+   ```
+   If everything is well configured, server show more or less such logs:
+
+![trieve logs view](https://cdn.trieve.ai/blog/self-hosting-guide/running-trieve-logs.webp)
+
+## 4. Keycloak Configuration
+
+1. Access the Keycloak admin console at `https://auth.YOUR-DOMAIN.COM/admin/master/console/#/trieve/clients/list`
+
+2. Log in with the default credentials:
+   - Username: `admin`
+   - Password: `aintsecure`
+
+3. Select the "vault" client and add the following configurations:
+
+   Valid redirect and Valid post logout redirect URIs:
+   ```
+   https://api.YOUR-DOMAIN.COM/*
+   https://dashboard.YOUR-DOMAIN.COM/*
+   https://chat.YOUR-DOMAIN.COM/*
+   https://search.YOUR-DOMAIN.COM/*
+   https://analytics.YOUR-DOMAIN.COM/*
+   ```
+
+   Web origins:
+   ```
+   +
+   http://localhost:8090
+   ```
+
+![keycloak config preview](https://cdn.trieve.ai/blog/self-hosting-guide/keycloak-config-preview.webp)
+
+4. Navigate to `https://dashboard.YOUR-DOMAIN.COM/` and create a new account when prompted.
+
+## 5. Changing Default Passwords (OPTIONAL, BUT RECOMMENDED)
+
+When configuring Trieve, it's crucial to change all default passwords to ensure the security of your self-hosted instance. This section will guide you through changing the passwords for various components of the Trieve stack. You can choose whether to do it through a script or manually.
+
+### 5.1 Changing via script
+
+1. Export new password:
+   ```
+   export NEW_PASSWORD="WRITE HERE YOUR NEW PASSWORD"
+   ```
+
+2. Use `sed` one-liners command:
+   ```
+   NEW_PASSWORD="$NEW_PASSWORD" && sed -i 's/^MINIO_ROOT_PASSWORD=.*/MINIO_ROOT_PASSWORD="'"$NEW_PASSWORD"'"/; s/^REDIS_PASSWORD=.*/REDIS_PASSWORD="'"$NEW_PASSWORD"'"/; s|^REDIS_URL=.*|REDIS_URL="redis://:'"$NEW_PASSWORD"'@localhost:6379"|; s|^DATABASE_URL=.*|DATABASE_URL="postgres://postgres:'"$NEW_PASSWORD"'@localhost:5432/trieve"|; s/^SALT=.*/SALT="'"$NEW_PASSWORD"'"/; s/^S3_SECRET_KEY=.*/S3_SECRET_KEY="'"$NEW_PASSWORD"'"/; s/^CLICKHOUSE_PASSWORD=.*/CLICKHOUSE_PASSWORD='"$NEW_PASSWORD"'/' .env && sed -i 's/POSTGRES_PASSWORD:.*/POSTGRES_PASSWORD: '"$NEW_PASSWORD"'/; s/KEYCLOAK_ADMIN_PASSWORD=.*/KEYCLOAK_ADMIN_PASSWORD='"$NEW_PASSWORD"'/; s/KC_DB_PASSWORD=.*/KC_DB_PASSWORD='"$NEW_PASSWORD"'/; s/CLICKHOUSE_PASSWORD=.*/CLICKHOUSE_PASSWORD='"$NEW_PASSWORD"'/' docker-compose.yml
+   ```
+
+### 5.2 Changing by hand
+
+#### 5.2.1 Updating the .env File
+
+1. Navigate to the Trieve directory:
+   ```
+   cd /home/trieve/trieve
+   ```
+
+2. Open the .env file for editing:
+   ```
+   nano .env
+   ```
+
+3. Update the following variables with strong, unique passwords:
+
+   - `MINIO_ROOT_PASSWORD`: Change from "rootpassword" to a secure password for the Minio root user.
+   - `REDIS_PASSWORD`: Replace "thisredispasswordisverysecureandcomplex" with a new, complex password.
+   - `S3_SECRET_KEY`: Change "ssssssssssssssssssssTTTTTTTTTTTTTTTTTTTT" to a new secret key.
+   - `SALT`: Change "goodsaltisveryyummy" to a new random string.
+   - `CLICKHOUSE_PASSWORD`: Change from "password" to a secure password.
+   - `REDIS_URL`: Replace "thisredispasswordisverysecureandcomplex" from URL with a new, complex password.
+   - `DATABASE_URL`: Change from "password" in URL to a secure password.
+
+4. Save the file and exit the editor.
+
+#### 5.2.2 Updating Docker Compose Configuration
+
+1. Open the docker-compose.yml file:
+   ```
+   nano docker-compose.yml
+   ```
+
+2. Update the following passwords in the file:
+
+   - For the `db` service, change the `POSTGRES_PASSWORD` from "password" to a new, secure password.
+   - For the `keycloak` service, change the `KEYCLOAK_ADMIN_PASSWORD` from "aintsecure" and `KC_DB_PASSWORD` from "password" to a new, secure password.
+   - For the `keycloak-db` service, change the `POSTGRES_PASSWORD` from "password" to a new, secure password (use the same password as for the `db` service).
+   - For the `clickhouse-db` service, change the `CLICKHOUSE_PASSWORD` from "password" to a new, secure password.
+
+3. Save the file and exit the editor.
+
+### 5.3 Applying the Changes
+
+After updating the passwords, you need to restart the Docker containers to apply the changes:
+
+1. Stop the running containers, and remove volumes with old passwords:
+   ```
+   make clean
+   ```
+
+2. Start the containers with the new configuration:
+   ```
+   docker compose up -d --force-recreate
+   ```
+
+3. After changing all passwords, verify that all services are running correctly:
+   ```
+   docker compose ps
+   ```
+
+4. Test the Trieve application to ensure everything is functioning as expected.
+
+Remember to store these new passwords securely, such as in a password manager. Never share them or expose them in public repositories or logs.
+
+
+## 6. Troubleshooting
+
+If you're unable to access the Keycloak admin panel due to SSL certificate issues, which can occur when the SSL certificates haven't been properly generated or applied, you can use the following workaround:
+
+1. Temporarily comment out the `KC_HOSTNAME` variable in the .env file:
+   ```
+   sed -i 's/^KC\_HOSTNAME/#KC\_HOSTNAME/g' .env
+   docker compose up -d --force-recreate
+   ```
+2. Also temporarily change the SSH settings in the file `/etc/ssh/sshd_config`
+
+    ```
+    sudo sed -i 's/AllowTcpForwarding no/AllowTcpForwarding yes/g' /etc/ssh/sshd_config
+    ```
+
+3. Set up an SSH tunnel to securely access your server:
+   ```
+   ssh -vv -D 1337 -C -N trieve@YOUR_SERVER_IP
+   ```
+
+4. Configure your browser to use a SOCKS5 proxy:
+   - Host: `localhost`
+   - Port: `1337`
+
+5. Access Keycloak via `http://192.168.1.2:8080` and complete the configuration. This allows you to access Keycloak without SSL, enabling you to make necessary changes such as disabling the SSL requirement or updating redirect URIs.
+
+6. After making the necessary changes, restore the `KC_HOSTNAME` and `AllowTcpForwarding` variable:
+   ```
+   sed -i 's/^#KC\_HOSTNAME/KC\_HOSTNAME/g' .env
+   docker compose up -d --force-recreate
+   ```
+   ```
+   sudo sed -i 's/AllowTcpForwarding yes/AllowTcpForwarding no/g' /etc/ssh/sshd_config
+   ```
+
+7. Remove the SOCKS5 proxy configuration from your browser.
+
+This workaround should only be used temporarily to resolve initial setup issues. Ensure that you properly configure SSL for production use to maintain security.
+
+## 7. FAQ
+
+Q: What are the minimum server requirements for running Trieve?
+A: The minimum recommended server is 8vCPU/16GB-RAM, while the optimal server is 8vCPU/32GB-RAM.
+
+Q: How do I update Trieve after installation?
+A: To update Trieve, pull the latest Docker images and restart the containers. Specific update instructions may vary depending on the version, so consult the official documentation for the most up-to-date process.
+
+Q: Is it possible to use a custom SSL certificate instead of Let's Encrypt?
+A: Yes, you can use a custom SSL certificate. You'll need to modify the Caddy configuration to use your custom certificate instead of the automatic Let's Encrypt provisioning.
+
+Q: How can I backup my Trieve instance?
+A: To backup your Trieve instance, you should regularly backup the Docker volumes containing your data and the .env file containing your configuration. Consider using tools like restic or duplicity for automated backups.
+
+Q: What should I do if I forget the Keycloak admin password?
+A: If you forget the Keycloak admin password, you can reset it by accessing the Keycloak container and using the built-in admin CLI. Consult the Keycloak documentation for specific instructions on resetting the admin password.
+
