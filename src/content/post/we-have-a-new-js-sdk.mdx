@@ -1,0 +1,111 @@
+---
+publishDate: 2024-09-07T08:45:00.000Z
+author: nikkitaFTW (Sara V)
+title: >-
+  We have a new JavaScript SDK
+  News
+excerpt: >-
+  We have released a new fully typed JavaScript SDK that makes it easier than ever to use Trieve in your JavaScript applications.
+image: >-
+  https://cdn.trieve.ai/blog/trieve-hn-discovery/trieve-hn-discovery-preview-opengraph.webp
+category: Demos
+tags:
+  - search
+  - open source
+  - JavaScript
+  - TypeScript
+---
+
+If you have used Trieve in a JavaScript application, you probably know that you need to make most of your calls to Trieve using fetch. While this approach is good, it's not ideal, and we want to provide users with an easier way to use our APIs.
+
+Well, behind the scenes we have been working on making Trieve easier to use than ever in JavaScript applications and that includes making a new JavaScript SDK that makes it much simpler to integrate Trieve into any application.
+
+First things first, you can install the new [`trieve-ts-sdk`](https://www.npmjs.com/package/trieve-ts-sdk) with your favorite package manager:
+
+```bash!
+yarn add trieve-ts-sdk
+# or
+npm install trieve-ts-sdk
+# or
+pnpm install trieve-ts-sdk
+```
+
+And now let's see how it works, and let's take a search call as an example.
+
+Before you would need to do something like:
+
+```javascript
+fetch('https://api.trieve.ai/api/chunk/search', {
+  method: 'POST',
+  headers: {
+    'TR-Dataset': 'dc6f3b0d-cf21-412b-9d16-fb7ade090365',
+    Authorization: 'tr-********************************',
+  },
+  body: JSON.stringify({
+    query: 'Sonic the Hedgehog',
+  }),
+});
+```
+
+While this method works well, it's not the cleanest approach. You will need to have the documentation open next to your code editor, as there are no types to assist you in making your function calls.Now, with the new SDK you can call it like so:
+
+```javascript
+import { TrieveSDK } from 'trieve-ts-sdk';
+
+export const trieve = new TrieveSDK({
+  apiKey: '<your-api-key>',
+  datasetId: '<dataset-to-use>',
+});
+
+const results = await trieve.search({
+  query: 'Sonic the Hedgehog',
+});
+```
+
+With the help of the exported types it's also much easier to create a much more complicated search that includes, for example, filters:
+
+```javascript
+import { TrieveSDK } from 'trieve-ts-sdk';
+
+const results = await trieve.search({
+  query: 'Sonic the Hedgehog',
+  search_type: 'hybrid',
+  filters: {
+    must: [
+      {
+        field: 'meta.rating',
+        range: {
+          gt: 80,
+        },
+      },
+    ],
+    must_not: [
+      {
+        field: 'metadata.console',
+        match: ['gba', 'wii'],
+      },
+    ],
+  },
+});
+```
+
+![CleanShot 2024-09-03 at 15.56.22@2x](https://hackmd.io/_uploads/HJ5sXsE2R.png)
+
+And it's not just methods for chunks, we have functions for most of our API that you can use, want to get the CTR analytics for a dataset? We got that:
+
+```javascript
+const data = await trieve.getCTRAnalytics({
+  filter: {
+    date_range: {
+      gt: '2024-01-01 00:00:00.000',
+    },
+    search_method: 'fulltext',
+    search_type: 'search',
+  },
+  type: 'search_ctr_metrics',
+});
+```
+
+We also created [comprehensive docs](https://ts-sdk.trieve.ai/) so that all these functions are easy for you to find whether you use TypeScript or not.
+
+Okay, the last step is to install it and get to search!
