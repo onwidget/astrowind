@@ -1,13 +1,12 @@
 ---
-publishDate: 2024-09-07T08:45:00.000Z
+publishDate: 2024-09-10T08:45:00.000Z
 author: nikkitaFTW (Sara V)
-title: >-
-  We have a new JavaScript SDK
-  News
+title: Announcing Trieve's New TypeScript SDK!
 excerpt: >-
-  We have released a new fully typed JavaScript SDK that makes it easier than ever to use Trieve in your JavaScript applications.
-image: >-
-  https://cdn.trieve.ai/blog/trieve-hn-discovery/trieve-hn-discovery-preview-opengraph.webp
+  We have released a new JS SDK that makes it easier than ever to build RAG,
+  search, and recommendations into your product using Trieve and TypeScript or
+  JavaScript.
+image: 'https://trieve.b-cdn.net/blog/we-have-a-new-js-sdk/trieve-sdk-cover-image.webp'
 category: Demos
 tags:
   - search
@@ -89,23 +88,21 @@ const results = await trieve.search({
 });
 ```
 
-![CleanShot 2024-09-03 at 15.56.22@2x](https://hackmd.io/_uploads/HJ5sXsE2R.png)
+![screenshot of typed Trieve SDK](https://cdn.trieve.ai/blog/we-have-a-new-js-sdk/fully-typed-trieve-ts-sdk.webp)
 
-And it's not just methods for chunks, we have functions for most of our API that you can use, want to get the CTR analytics for a dataset? We got that:
+And it's not just methods for chunks, we have functions for most of our API that you can use, want to stream a RAG completion? We got that:
 
 ```javascript
-const data = await trieve.getCTRAnalytics({
-  filter: {
-    date_range: {
-      gt: '2024-01-01 00:00:00.000',
-    },
-    search_method: 'fulltext',
-    search_type: 'search',
+const reader = await trieve.createMessageReader({
+  topic_id: id || currentTopic,
+  new_message_content: currentQuestion,
+  llm_options: {
+    completion_first: true,
   },
-  type: 'search_ctr_metrics',
 });
+handleReader(reader);
 ```
 
 We also created [comprehensive docs](https://ts-sdk.trieve.ai/) so that all these functions are easy for you to find whether you use TypeScript or not.
 
-Okay, the last step is to install it and get to search!
+Okay, the last step is to install it and get to building search and RAG in your application!
