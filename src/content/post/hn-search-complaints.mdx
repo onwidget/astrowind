@@ -39,6 +39,7 @@ Algolia's engine focuses on showing extremely precise keyword matches while Trie
   rightImageAlt="Trieve"
   leftCaption="Algolia for"
   rightCaption="Trieve for"
+  rightStyles="border-fuchsia-500"
   leftLink="https://hn.algolia.com/?q=postgres+clustering"
   rightLink="https://hn.trieve.ai/?q=postgres+clustering&score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&storyType=story&authorNames=&sortby=Relevance&dateRange=pastYear&searchType=fulltext&page=1"
   query="postgres clustering"
@@ -51,7 +52,7 @@ Algolia's engine focuses on showing extremely precise keyword matches while Trie
 - **Search intent:** Exact phrase match with long query
 - **Sourced from:** [@Pranoy1c on github/algolia/hn-search/issues](https://github.com/algolia/hn-search/issues/243)
 
-Precise keyword sensitivity means that having one extra word in the search causes it to fail. Trieve's relevance oriented fulltext search is less sensitive and will still surface good results (see the search with or without &quot;new&quot;). The issue does not seem to be an Algolia query limit (512 chars).
+Precise keyword sensitivity means that having one extra word in the search causes it to fail. Trieve's relevance oriented fulltext search is less sensitive and will still surface good results (see the search with or without &quot;new&quot;). The issue does not seem to be related to an Algolia query-length limit (512 chars while the query is 84).
 
 <ImageComparison
   leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_2_AT26T20says20criminals20stole20phone20records20of20E28098nearly20allE2809920customers20in20new20data20breach_2024_08_30.png"
@@ -60,6 +61,7 @@ Precise keyword sensitivity means that having one extra word in the search cause
   rightImageAlt="Trieve"
   leftCaption="Algolia for"
   rightCaption="Trieve for"
+  rightStyles="border-fuchsia-500"
   leftLink="https://hn.algolia.com/?dateRange=all&page=0&prefix=false&query=AT%26T%20says%20criminals%20stole%20phone%20records%20of%20%E2%80%98nearly%20all%E2%80%99%20customers%20in%20new%20data%20breach&sort=byPopularity&type=story"
   rightLink="https://hn.trieve.ai/?score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&q=AT%26T+says+criminals+stole+phone+records+of+%E2%80%98nearly+all%E2%80%99+customers+in+new+data+breach&storyType=story&authorNames=&sortby=Relevance&dateRange=all&searchType=fulltext&page=1"
   query="AT&amp;T says criminals stole phone records of &#x27;nearly all&#x27; customers in new data breach"
@@ -74,6 +76,7 @@ Precise keyword sensitivity means that having one extra word in the search cause
   rightImageAlt="Trieve (without extra word)"
   leftCaption="Algolia (without extra word) for"
   rightCaption="Trieve (without extra word) for"
+  rightStyles="border-fuchsia-500"
   leftLink="https://hn.algolia.com/?dateRange=all&page=0&prefix=false&query=AT%26T%20says%20criminals%20stole%20phone%20records%20of%20%E2%80%98nearly%20all%E2%80%99%20customers%20in%20data%20breach&sort=byPopularity&type=story"
   rightLink="https://hn.trieve.ai/?score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&q=AT%26T+says+criminals+stole+phone+records+of+%E2%80%98nearly+all%E2%80%99+customers+in+data+breach&storyType=story&authorNames=&sortby=Relevance&dateRange=all&searchType=fulltext&page=1"
   query="AT&amp;T says criminals stole phone records of &#x27;nearly all&#x27; customers in new data breach"
@@ -97,6 +100,7 @@ Algolia&#x27;s result appear to match on <code>video</code>, not only <code>[vid
   rightImageAlt="Trieve (semantic)"
   leftCaption="Algolia for"
   rightCaption="Trieve (semantic) for"
+  rightStyles="border-fuchsia-500"
   leftLink="https://hn.algolia.com/?query=%5Bvideo%5D"
   rightLink="https://hn.trieve.ai/?q=%5Bvideo%5D&score_threshold=0.5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&storyType=story&authorNames=&sortby=Relevance&dateRange=all&searchType=semantic&page=1"
   query="[video]"
@@ -111,6 +115,7 @@ Algolia&#x27;s result appear to match on <code>video</code>, not only <code>[vid
   rightImageAlt="Trieve (semantic, quoted)"
   leftCaption="Algolia (quoted) for"
   rightCaption="Trieve (semantic, quoted) for"
+  rightStyles="border-fuchsia-500"
   leftLink="https://hn.algolia.com/?dateRange=all&page=0&prefix=false&query=%22%5Bvideo%5D%22&sort=byPopularity&type=story"
   rightLink="https://hn.trieve.ai/?q=%22%5Bvideo%5D%22&score_threshold=0.5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&storyType=story&authorNames=&sortby=Relevance&dateRange=all&searchType=semantic&page=1"
   query="[video]"
@@ -123,7 +128,7 @@ Algolia&#x27;s result appear to match on <code>video</code>, not only <code>[vid
 - **Search intent:** Exact match for acronym (with ampersand)
 - **Sourced from:** [@Pranoy1c on github/algolia/hn-search/issues](https://github.com/algolia/hn-search/issues/244)
 
-The issue seems to be with the prefix paramater in Algolia. Algolia&#x27;s results are less relevant when searching for AT&amp;T with <code>prefix=true</code>. Results improve with <code>prefix=false</code> or when the query is in quotes. This appears to be an issue with how the <code>prefix</code> parameter is set in the URL in Algolia. If the user opens the Algolia HN search and starts typing <code>prefix=true</code>, if the user hits enter, the URL is changed to <code>prefix=false</code>. Trieve&#x27;s results (for all search types) are relevant even without quotes. There may be reasoning for Algolia's default prefixing params outside of this query which make it better overall, but are not aware of them.
+The issue seems to be with the prefix paramater in Algolia. Algolia&#x27;s results are less relevant when searching for AT&amp;T with <code>prefix=true</code>. Results improve with <code>prefix=false</code> or when the query is in quotes. This appears to be an issue with how the <code>prefix</code> parameter is set in the URL in Algolia. If the user opens the Algolia HN search and starts typing, the URL params show <code>prefix=true</code>. If the user hits enter, the URL is changed to <code>prefix=false</code>. Trieve&#x27;s results (for all search types) are relevant even without quotes. There may be reasoning for Algolia's default prefixing params outside of this query which make it better overall, but we are not aware of them.
 
 <ImageComparison
   leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_10_AT26T_2024_08_30.png"
@@ -146,6 +151,7 @@ The issue seems to be with the prefix paramater in Algolia. Algolia&#x27;s resul
   rightImageAlt="Trieve"
   leftCaption="Algolia (quoted) for"
   rightCaption="Trieve for"
+  rightStyles="border-fuchsia-500"
   leftLink="https://hn.algolia.com/?dateRange=all&page=0&prefix=true&query=%22AT%26T%22&sort=byPopularity&type=all"
   rightLink="https://hn.trieve.ai/?q=AT%26T&score_threshold=0.5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&storyType=story&authorNames=&sortby=Relevance&dateRange=all&searchType=semantic&page=1"
   query="AT&amp;T"
@@ -169,6 +175,7 @@ This was actually a complaint about not Algolia, but a demo search tool from ano
   rightImageAlt="Trieve for"
   leftCaption="Algolia for"
   rightCaption="Trieve for"
+  rightStyles="border-fuchsia-500"
   leftLink="https://hn.algolia.com/?dateRange=all&page=0&prefix=true&query=lootitooti&sort=byPopularity&type=all"
   rightLink="https://hn.trieve.ai/?q=lootitooti&score_threshold=0.3&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&storyType=all&authorNames=&sortby=Relevance&dateRange=all&searchType=fulltext&page=1"
   query="lootitooti"
@@ -192,6 +199,7 @@ Algolia shows no results for a story search for this query. Trieve shows the ide
   rightImageAlt="Trieve (type: Story)"
   leftCaption="Algolia (type: Story) for"
   rightCaption="Trieve (type: Story) for"
+  rightStyles="border-fuchsia-500"
   leftLink="https://hn.algolia.com/?dateRange=all&page=0&prefix=false&query=deterministic%20Docker%20builds&sort=byPopularity&type=story"
   rightLink="https://hn.trieve.ai/?q=deterministic+Docker+builds&score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&storyType=story&authorNames=&sortby=Relevance&dateRange=all&searchType=fulltext&page=1"
   query="deterministic Docker builds"
@@ -210,6 +218,7 @@ Algolia shows no results for a story search for this query. Trieve shows the ide
   rightImageAlt="Trieve"
   leftCaption="Algolia for"
   rightCaption="Trieve for"
+  rightStyles="border-fuchsia-500"
   leftLink="https://hn.algolia.com/?dateRange=all&page=0&prefix=true&query=tip%20of%20your%20tongue%20phenomenon&sort=byrelevance&type=story"
   rightLink="https://hn.trieve.ai/?score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&q=tip+of+your+tongue+phenomenon&storyType=story&matchAnyAuthorNames=&matchNoneAuthorNames=&popularityFilters=%7B%7D&sortby=relevance&dateRange=all&searchType=fulltext&page=1&getAISummary=false"
   query="tip of your tongue phenomenon"
@@ -233,6 +242,7 @@ Algolia does not show any results when the query includes <code>by:</code> filte
   rightImageAlt="Trieve"
   leftCaption="Algolia for"
   rightCaption="Trieve for"
+  rightStyles="border-fuchsia-500"
   leftLink="https://hn.algolia.com/?dateRange=all&page=0&prefix=true&query=%22It%20Won%27t%20Fail%20Because%20of%20Me%22%20by%3A1970-01-01&sort=byPopularity&type=story"
   rightLink="https://hn.trieve.ai/?score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&q=%22It+Won%27t+Fail+Because+of+Me%22+&storyType=story&matchAnyAuthorNames=&matchNoneAuthorNames=&popularityFilters=%7B%7D&sortby=relevance&dateRange=all&searchType=fulltext&page=1&getAISummary=false"
   query="&quot;It Won&#x27;t Fail Because of Me&quot; by:1970-01-01"
@@ -269,6 +279,7 @@ If someone is looking for more of the popularity-focused results, they can start
   rightImageAlt="Trieve (sorted by relevance)"
   leftCaption="Algolia (sorted by popularity) for"
   rightCaption="Trieve (sorted by relevance) for"
+  rightStyles="border-fuchsia-500"
   leftLink="https://hn.algolia.com/?dateRange=all&page=0&prefix=false&query=Excel&sort=byPopularity&type=story"
   rightLink="https://hn.trieve.ai/?score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&q=Excel&storyType=story&matchAnyAuthorNames=&matchNoneAuthorNames=&popularityFilters=%7B%7D&sortby=relevance&dateRange=all&searchType=fulltext&page=1&getAISummary=false"
   query="Excel"
@@ -283,10 +294,11 @@ If someone is looking for more of the popularity-focused results, they can start
   rightImageAlt="Trieve (sorted by descendants)"
   leftCaption="Trieve (sorted by points) for"
   rightCaption="Trieve (sorted by descendants) for"
+  rightStyles="border-fuchsia-500"
+  leftStyles="border-fuchsia-500"
   leftLink="https://hn.trieve.ai/?score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&q=Excel&storyType=story&matchAnyAuthorNames=&matchNoneAuthorNames=&popularityFilters=%7B%7D&sortby=num_value&dateRange=all&searchType=fulltext&page=1&getAISummary=false"
   rightLink="https://hn.trieve.ai/?score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&q=Excel&storyType=story&matchAnyAuthorNames=&matchNoneAuthorNames=&popularityFilters=%7B%7D&sortby=metadata.descendants&dateRange=all&searchType=fulltext&page=1&getAISummary=false"
   query="Excel"
   size="large"
   preventShrink={true}
 />
-
