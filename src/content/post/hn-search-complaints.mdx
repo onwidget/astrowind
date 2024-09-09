@@ -30,7 +30,7 @@ We combed through HN (and [user issues posted to Algolia's repo for HN search](h
 - **Search intent:** Finding information about PostgreSQL clustering solutions
 - **Sourced from:** [@avereveard comment on Hacker News](https://news.ycombinator.com/item?id=40240237)
 
-Algolia's engine focuses on showing extremely precise keyword matches while Trieve's takes a more discovery-focused approach and prioritizes relevance. This query is a good example of where a relevance focused approach can be better. However, it's important to note that there are pros and cons to each approach.
+Algolia's engine focuses on showing extremely precise keyword matches while Trieve's takes a more discovery-focused approach and prioritizes relevance. This query is a good example of where a relevance focused approach is ideal.
 
 <ImageComparison
   leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_0_postgresclustering_2024_08_30.png"
@@ -88,7 +88,7 @@ Precise keyword sensitivity means that having one extra word in the search cause
 - **Search intent:** Exact string match when string contains non-alphanumeric characters
 - **Sourced from:** [@some1else on github/algolia/hn-search/issues](https://github.com/algolia/hn-search/issues/197)
 
-Algolia&#x27;s result appear to match on <code>video</code>, not only <code>[video]</code>. Trieve&#x27;s hybrid and semantic search types do very well on the exact match, but not perfect. Trieve does better if in quotes, like [&quot;[video]&quot;], which does not seem to have an affect here in Algolia. Difference here is likely due to tokenization approaches moreso than general relevance strategy. Again, there are pros and cons to different tokenization strategies, but issues similar to this one helped inform our final decision on approach.
+Algolia&#x27;s result appear to match on <code>video</code>, not only <code>[video]</code>. Trieve&#x27;s **semantic search mode**, and therefore also hybrid surprisingly do very well on the exact match, but not perfect. Dense vector tokenization transformer model style tokenization is shockingly good at understanding when <code>[</code> are important. Both Algolia's and Trieve's tokenizers ignore the <code>[</code> for Keyword and Fulltext search types.
 
 <ImageComparison
   leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_6_5Bvideo5D_2024_08_30.png"
@@ -123,7 +123,7 @@ Algolia&#x27;s result appear to match on <code>video</code>, not only <code>[vid
 - **Search intent:** Exact match for acronym (with ampersand)
 - **Sourced from:** [@Pranoy1c on github/algolia/hn-search/issues](https://github.com/algolia/hn-search/issues/244)
 
-The issue seems to be with the prefix paramater in Algolia. Algolia&#x27;s results are less relevant when searching for [AT&amp;T] with <code>prefix=true</code>. Results improve with <code>prefix=false</code> or when the query is in quotes. This appears to be an issue with how the <code>prefix</code> parameter is set in the URL in Algolia. If the user opens the Algolia HN search and starts typing <code>prefix=true</code>, if the user hits enter, the URL is changed to <code>prefix=false</code>. Trieve&#x27;s results (for all search types) are relevant even without quotes. There may be reasoning for Algolia's default prefixing params outside of this query which make it better overall, but we indexed on this complaint.
+The issue seems to be with the prefix paramater in Algolia. Algolia&#x27;s results are less relevant when searching for AT&amp;T with <code>prefix=true</code>. Results improve with <code>prefix=false</code> or when the query is in quotes. This appears to be an issue with how the <code>prefix</code> parameter is set in the URL in Algolia. If the user opens the Algolia HN search and starts typing <code>prefix=true</code>, if the user hits enter, the URL is changed to <code>prefix=false</code>. Trieve&#x27;s results (for all search types) are relevant even without quotes. There may be reasoning for Algolia's default prefixing params outside of this query which make it better overall, but are not aware of them.
 
 <ImageComparison
   leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_10_AT26T_2024_08_30.png"
@@ -160,31 +160,17 @@ The issue seems to be with the prefix paramater in Algolia. Algolia&#x27;s resul
 - **Search intent:** Match for out-of-domain string
 - **Sourced from:** [@douglaskayama comment on Hacker News](https://news.ycombinator.com/item?id=40869786)
 
-This was actually a complaint about not Algolia, but a demo search tool from another provider. The user praised Algolia&#x27;s performance on this query. Trieve&#x27;s different search types support different user goals, so while BM25 works great for out-of-domain strings like this, the others would require quotation marks. Queries like this one tend to favor Algolia's more narrow and precise strategy over Trieve's relevance focus. Our engine splits "lootitooti" into multiple tokens like "loot", "lootit", etc. instead of preserving the entire match. Using Trieve's internal BKTree to detect non-dictionary tokens and auto-quote require them is the clearest fix for these kinds of queries, but we have not yet implemented it in the HN search demo.
+This was actually a complaint about not Algolia, but a demo search tool from another provider. The user praised Algolia&#x27;s performance on this query. Trieve initially struggled with it because our engine splits "lootitooti" into multiple tokens like "loot", "lootit", etc. instead of preserving the entire match. We solved the issue and improved precision by using Trieve's internal BKTree to detect non-dictionary tokens and auto-quote require them. Trieve is transforming a query of <code>lootitooti</code> into <code>"lootitooti"</code> and does similar things for entity names like "OpenAI" or "ChatGPT".
 
 <ImageComparison
   leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_14_lootitooti_2024_08_30.png"
   rightImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.trieve.ai_15_lootitooti_2024_08_30.png"
   leftImageAlt="Algolia"
-  rightImageAlt="Trieve (BM25)"
+  rightImageAlt="Trieve for"
   leftCaption="Algolia for"
-  rightCaption="Trieve (BM25) for"
+  rightCaption="Trieve for"
   leftLink="https://hn.algolia.com/?dateRange=all&page=0&prefix=true&query=lootitooti&sort=byPopularity&type=all"
-  rightLink="https://hn.trieve.ai/?q=lootitooti&score_threshold=0.3&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&storyType=all&authorNames=&sortby=Relevance&dateRange=all&searchType=bm25&page=1"
-  query="lootitooti"
-  size="large"
-  preventShrink={true}
-/>
-
-<ImageComparison
-  leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.trieve.ai_16_22lootitooti22_2024_08_30.png"
-  rightImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.trieve.ai_17_22lootitooti22_2024_08_30.png"
-  leftImageAlt="Trieve (semantic)"
-  rightImageAlt="Trieve (SPLADE)"
-  leftCaption="Trieve (semantic) for"
-  rightCaption="Trieve (SPLADE) for"
-  leftLink="https://hn.trieve.ai/?q=%22lootitooti%22&score_threshold=0.5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&storyType=all&authorNames=&sortby=Relevance&dateRange=all&searchType=semantic&page=1"
-  rightLink="https://hn.trieve.ai/?q=%22lootitooti%22&score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&storyType=all&authorNames=&sortby=Relevance&dateRange=all&searchType=fulltext&page=1"
+  rightLink="https://hn.trieve.ai/?q=lootitooti&score_threshold=0.3&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&storyType=all&authorNames=&sortby=Relevance&dateRange=all&searchType=fulltext&page=1"
   query="lootitooti"
   size="large"
   preventShrink={true}
@@ -239,6 +225,7 @@ Algolia shows no results for a story search for this query. Trieve shows the ide
 - **Sourced from:** [@SushiHippie Ask HN on Hacker News](https://news.ycombinator.com/item?id=38866518)
 
 Algolia does not show any results when the query includes <code>by:</code> filter for searching a username containing hyphens (example shown: user @1970-01-01).
+
 <ImageComparison
   leftImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.algolia.com_22_22It20Won27t20Fail20Because20of20Me2220by3A19700101_2024_08_30.png"
   rightImageSrc="https://cdn.trieve.ai/blog/hn-search-complaints/hn.trieve.ai_23_22ItWon27tFailBecauseofMe22_2024_08_30.png"
