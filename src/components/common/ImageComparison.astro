@@ -11,7 +11,6 @@ interface Props {
   leftLink: string;
   rightLink: string;
   query: string;
-  size: 'small' | 'medium' | 'large';
   leftStyles?: string;
   rightStyles?: string;
   preventShrink?: boolean;
@@ -27,21 +26,19 @@ const {
   leftLink,
   rightLink,
   query,
-  size,
   leftStyles,
   rightStyles,
   preventShrink = false,
 } = Astro.props;
 
-const containerClasses = size === 'medium' ? 'ml-4' : '';
-const imageClasses = `w-full h-auto m-0 border cursor-pointer${preventShrink ? ' min-w-[400px] min-h-[300px]' : ''}`;
+const imageClasses = `w-full h-auto m-0 border cursor-pointer${preventShrink ? ' min-w-[200px] min-h-[150px]' : ''}`;
 const widthValue = preventShrink ? 'auto' : 400;
 const heightValue = 300;
 ---
 
-<div class={`mx-auto max-w-3xl mb-5 ${containerClasses}`}>
-  <div class="flex justify-between">
-    <div class="w-[49%] image-container">
+<div class="mx-auto max-w-3xl mb-5">
+  <div class="flex flex-wrap justify-center gap-4">
+    <div class="flex-grow flex-shrink-0 basis-[300px] max-w-full image-container">
       <figure class="m-0">
         <figcaption class="mb-2 text-center">
           <small>{leftCaption} <a href={leftLink} target="_blank">{query}</a></small>
@@ -52,11 +49,11 @@ const heightValue = 300;
           class={`${imageClasses} ${leftStyles}`}
           width={widthValue}
           height={heightValue}
-          aspectRatio={preventShrink ? "10:7" : undefined}
+          aspectRatio={preventShrink ? '10:7' : undefined}
         />
       </figure>
     </div>
-    <div class="w-[49%] image-container">
+    <div class="flex-grow flex-shrink-0 basis-[300px] max-w-full image-container">
       <figure class="m-0">
         <figcaption class="mb-2 text-center">
           <small
@@ -76,7 +73,7 @@ const heightValue = 300;
           class={`${imageClasses} ${rightStyles}`}
           width={widthValue}
           height={heightValue}
-          aspectRatio={preventShrink ? "10:7" : undefined}
+          aspectRatio={preventShrink ? '10:7' : undefined}
         />
       </figure>
     </div>
