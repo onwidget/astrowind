@@ -1,7 +1,11 @@
 ---
 publishDate: 2024-09-09T08:45:00Z
 author: densumesh
+<<<<<<< HEAD
 title: How we Built 300μs Typo Detection for 1.3M Words in Rust
+=======
+title: How we Built 300μs Typo Correction for 1.3M Words in Rust
+>>>>>>> aab659b (cleanup: add number for misspelling to brief + cleanup navbar)
 excerpt: We explain how we built blazingly fast spellcheck in Rust using BKTrees, Redis queues, and Clickhouse in this blog.
 image: https://cdn.trieve.ai/blog/building-30%CE%BCs-typo-tolerance-for-1.3M-words%20using%20Rust/building-30us-typo-tolerance-cover.webp
 tags:
@@ -13,7 +17,11 @@ displayImage: false
 displayExcerpt: false
 ---
 
+<<<<<<< HEAD
 We launched our [Hacker News search and RAG engine](https://hn.trieve.ai) with a half-baked typo correction system. Our first draft took 30+ms for correctly spelled queries which was slow enough that we defaulted it to off. Our latest version is 100 times faster, 300μs for correctly spelled queries and ~5ms/word for misspellings. We explain how it was accomplished in this post!
+=======
+We launched our [Hacker News search and RAG engine](https://hn.trieve.ai) with a half-baked typo correction system. Our first draft took 30+ms for correctly spelled queries which was slow enough that we defaulted it to off. Our latest version is 100 times faster, 300μs for corrrectly spelled queries and ~5ms/word for misspellings. We explain how it was accomplished in this post!
+>>>>>>> aab659b (cleanup: add number for misspelling to brief + cleanup navbar)
 
 ![video demo of spellcheck](https://cdn.trieve.ai/blog/building-30%CE%BCs-typo-tolerance-for-1.3M-words%20using%20Rust/typo-tolerance-demo.gif)
 
