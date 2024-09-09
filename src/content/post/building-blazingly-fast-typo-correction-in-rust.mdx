@@ -1,25 +1,33 @@
 ---
-publishDate: 2024-09-06T08:45:00Z
+publishDate: 2024-09-09T08:45:00Z
 author: densumesh
 title: Building 300μs Typo Correction for 1.3M Words in Rust
-excerpt: We tell the story of how we built blazingly fast spellcheck in Rust using BKTrees, Redis queues, and Clickhouse in this blog.
+excerpt: We explain how we built blazingly fast spellcheck in Rust using BKTrees, Redis queues, and Clickhouse in this blog.
 image: https://cdn.trieve.ai/blog/building-30%CE%BCs-typo-tolerance-for-1.3M-words%20using%20Rust/building-30us-typo-tolerance-cover.webp
 tags:
   - rust
   - BKTree
   - typo-correction
   - relevance
+displayImage: false
+displayExcerpt: false
 ---
 
-We launched our [Hacker News search and RAG engine](https://hn.trieve.ai) with a half-baked typo correction system. Our first draft took 30+ms which was slow enough that we defaulted it to off. Our latest version is 100 times faster and you can try it at [hn.trieve.ai](https://hn.trieve.ai). Heres the story of how we did it:
+We launched our [Hacker News search and RAG engine](https://hn.trieve.ai) with a half-baked typo correction system. Our first draft took 30+ms which was slow enough that we defaulted it to off. Our latest version is 100 times faster and you can try it at [hn.trieve.ai](https://hn.trieve.ai). We tell you exactly how we did it in this post!
 
 ![video demo of spellcheck](https://cdn.trieve.ai/blog/building-30%CE%BCs-typo-tolerance-for-1.3M-words%20using%20Rust/typo-tolerance-demo.gif)
+
+## Sample Queries to Try
+
+- [OpnAI](https://hn.trieve.ai/?score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&q=OpnAi&storyType=story&matchAnyAuthorNames=&matchNoneAuthorNames=&popularityFilters=%7B%7D&sortby=relevance&dateRange=all&searchType=fulltext&page=1&getAISummary=false)
+- [Cnva devloper platfirm](https://hn.trieve.ai/?score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&q=Cnva+devloper+platfirm&storyType=story&matchAnyAuthorNames=&matchNoneAuthorNames=&popularityFilters=%7B%7D&sortby=relevance&dateRange=all&searchType=fulltext&page=1&getAISummary=false)
+- [prviacy focsed email](https://hn.trieve.ai/?score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&q=prviacy+focsed+email&storyType=story&matchAnyAuthorNames=&matchNoneAuthorNames=&popularityFilters=%7B%7D&sortby=relevance&dateRange=all&searchType=fulltext&page=1&getAISummary=false)
 
 ## Creating a dictionary of Words and Frequencies
 
 For small datasets, this is an easy task. You can scroll ~1000 HN post size text blobs in 10 seconds with one worker and basic word splitting. However, as you scale to the size of our [Hacker News Demo (38M+ posts)](https://hn.trieve.ai), work needs to be distributed.
 
-Eventually, we decided on 2 distinct workers for dictionary building: 
+Eventually, we decided on 2 distinct workers for dictionary building:
 
 1. [Cronjob](https://github.com/devflowinc/trieve/blob/main/server/src/bin/word-id-cronjob.rs) to scroll all of the documents present in each of our users' search indices and add chunk ids from our database into a Redis queue 500 at a time.
 2. [Word worker](https://github.com/devflowinc/trieve/blob/main/server/src/bin/word-worker.rs) that pops off the queue and procesesses 500 chunks at a time. Text for each chunk is pulled, split into words, and each word is then loaded into Clickhouse.
@@ -28,17 +36,9 @@ We chose [ClickHouse](https://clickhouse.com/) to store the dictionary as we ran
 
 ## Using a BKTree data structure to identify and correct typos
 
-We take the [standard approach to typo correction](https://nullwords.wordpress.com/2013/03/13/the-bk-tree-a-data-structure-for-spell-checking/) and build per-dataset Burkhard-Keller Trees (BKTrees) for efficient comparision of words in the search query and the dataset's dictionary in O(log N) time complexity. Read more on the data structure at [wikipedia.org/BKTree](https://en.wikipedia.org/wiki/BK-tree).
+We take the [standard approach to typo correction](https://nullwords.wordpress.com/2013/03/13/the-bk-tree-a-data-structure-for-spell-checking/) and build per-dataset Burkhard-Keller Trees (BKTrees) for efficient comparision of words in the search query and the dataset's dictionary in O(log N) time complexity. Explaining this data structure in depth is outside the scope of this blog, but you can read our [Rust implementation here]((https://github.com/devflowinc/trieve/blob/6e114abdca5683440e2834eccacf3f850dff810f/server/src/operators/typo_operator.rs#L35-112)) or read its [wiki](https://en.wikipedia.org/wiki/BK-tree).
 
-![visualization of BK Tree](https://cdn.trieve.ai/blog/building-30%CE%BCs-typo-tolerance-for-1.3M-words%20using%20Rust/bktree-viz.webp)
-
-BKTrees are a type of metric tree whose nodes are the word (and frequency in our case) and edges are the edit distance between the node and its children. 
-This type of tree implements a trait known as the triangle inequality.
-
-Let's say we're at a node n in the BKtree, and we know the distance `d(n, q)` between `n` and our query `q`. For any child `c` of `n`, we know `d(n, c)` (it's stored in the tree). The triangle inequality tells us:
-`d(q, c) ≥ |d(q, n) - d(n, c)|`. This means if `|d(q, n) - d(n, c)| > k`, we can safely skip the entire subtree rooted at `c`, as no string in that subtree can be within distance `k` of `q`.
-
-We utilized a third[ bktree-worker](https://github.com/devflowinc/trieve/blob/main/server/src/bin/bktree-worker.rs) to build the BKTrees. It takes datasets with completed dictonaries stored in Clickhouse then uses their words and frequencies to construct a tree. 
+We utilized a third[ bktree-worker](https://github.com/devflowinc/trieve/blob/main/server/src/bin/bktree-worker.rs) to build the BKTrees. It takes datasets with completed dictonaries stored in Clickhouse then uses their words and frequencies to construct a tree.
 
 Once the BKTree is constructed, the worker then stores it in Redis such that it can be efficiently loaded into the API server's memory when needed at first query time for a given dataset.
 
@@ -73,7 +73,7 @@ lazy_static! {
 }
 ```
 
-On the first search with typo-tolerance enabled, we initiate a ~200-400ms cold start to pull the BKTree for the dataset being queried from Redis into server memory. Searches following this operation then use the BKTree to check for typos which only takes 100-300μs. 
+On the first search with typo-tolerance enabled, we initiate a ~200-400ms cold start to pull the BKTree for the dataset being queried from Redis into server memory. Searches following this operation then use the BKTree to check for typos which only takes 100-300μs.
 
 ### Identifying English Words
 
@@ -94,7 +94,7 @@ static ref ENGLISH_WORDS: HashSet<String> = {
 
 #### 2. Affix Analysis
 
-We then check for if the word is just an english word with a prefix or suffix: 
+We then check for if the word is just an english word with a prefix or suffix:
 
 - We construct separate Tries for common prefixes and suffixes.
 
@@ -230,6 +230,6 @@ fn is_best_correction(word: &str, correction: &str) -> bool {
 
 ## Future Ideas
 
-We plan to leverage this same system to implement query splitting and concatenation as those features share the same requirement of quickly looking up words in a dictionary as does typo tolerance.
+We plan to leverage this same system to implement query splitting and concatenation as those features share the same requirement of quickly looking up words in a dictionary.
 
 Trieve will always pursue the best possible relevance out of the box! Try it on our [HN search engine](https://hn.trieve.ai), [sign up for a free cloud account](https://dashboard.trieve.ai), or [see our self-hosting guides](https://docs.trieve.ai/self-hosting/aws).

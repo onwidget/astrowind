@@ -27,3 +27,5 @@ collections:
       - { label: 'Publish Date', name: 'publishDate', widget: 'datetime', required: false }
       - { label: 'Author', name: 'author', widget: 'string' }
       - { label: 'Content', name: 'body', widget: 'markdown' }
+      - { label: 'Display Excerpt', name: 'displayExcerpt', required: false }
+      - { label: 'Display Image', name: 'displayImage', required: false }

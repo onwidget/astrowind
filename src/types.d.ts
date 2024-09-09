@@ -42,6 +42,10 @@ export interface Post {
 
   /**  */
   readingTime?: number;
+
+  displayImage?: boolean;
+
+  displayExcerpt?: boolean;
 }
 
 export interface MetaData {
@@ -280,4 +284,4 @@ export interface Content extends Headline, Widget {
   callToAction?: CallToAction;
 }
 
-export interface Contact extends Headline, Form, Widget {}
+export interface Contact extends Headline, Form, Widget { }

@@ -55,6 +55,8 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     author,
     draft = false,
     metadata = {},
+    displayExcerpt,
+    displayImage
   } = data;
 
   const slug = cleanSlug(rawSlug); // cleanSlug(rawSlug.split('/').pop());
@@ -87,6 +89,9 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     // or 'content' in case you consume from API
 
     readingTime: remarkPluginFrontmatter?.readingTime,
+
+    displayExcerpt: displayExcerpt,
+    displayImage: displayImage
   };
 };
 
