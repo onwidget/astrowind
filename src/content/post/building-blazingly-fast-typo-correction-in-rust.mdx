@@ -1,7 +1,7 @@
 ---
 publishDate: 2024-09-09T08:45:00Z
 author: densumesh
-title: Building 300μs Typo Correction for 1.3M Words in Rust
+title: How we Built 300μs Typo Detection for 1.3M Words in Rust
 excerpt: We explain how we built blazingly fast spellcheck in Rust using BKTrees, Redis queues, and Clickhouse in this blog.
 image: https://cdn.trieve.ai/blog/building-30%CE%BCs-typo-tolerance-for-1.3M-words%20using%20Rust/building-30us-typo-tolerance-cover.webp
 tags:
@@ -13,11 +13,13 @@ displayImage: false
 displayExcerpt: false
 ---
 
-We launched our [Hacker News search and RAG engine](https://hn.trieve.ai) with a half-baked typo correction system. Our first draft took 30+ms which was slow enough that we defaulted it to off. Our latest version is 100 times faster and you can try it at [hn.trieve.ai](https://hn.trieve.ai). We tell you exactly how we did it in this post!
+We launched our [Hacker News search and RAG engine](https://hn.trieve.ai) with a half-baked typo correction system. Our first draft took 30+ms for correctly spelled queries which was slow enough that we defaulted it to off. Our latest version is 100 times faster, 300μs for correctly spelled queries and ~5ms/word for misspellings. We explain how it was accomplished in this post!
 
 ![video demo of spellcheck](https://cdn.trieve.ai/blog/building-30%CE%BCs-typo-tolerance-for-1.3M-words%20using%20Rust/typo-tolerance-demo.gif)
 
-## Sample Queries to Try
+## Sample Queries You Can Try
+
+Click the links to try the typo correction system out yourself on [hn.trieve.ai](https://hn.trieve.ai).
 
 - [OpnAI](https://hn.trieve.ai/?score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&q=OpnAi&storyType=story&matchAnyAuthorNames=&matchNoneAuthorNames=&popularityFilters=%7B%7D&sortby=relevance&dateRange=all&searchType=fulltext&page=1&getAISummary=false)
 - [Cnva devloper platfirm](https://hn.trieve.ai/?score_threshold=5&page_size=30&prefetch_amount=30&rerank_type=none&highlight_delimiters=+%2C-%2C_%2C.%2C%2C&highlight_threshold=0.85&highlight_max_length=50&highlight_max_num=50&highlight_window=0&recency_bias=0&highlight_results=true&use_quote_negated_terms=true&q=Cnva+devloper+platfirm&storyType=story&matchAnyAuthorNames=&matchNoneAuthorNames=&popularityFilters=%7B%7D&sortby=relevance&dateRange=all&searchType=fulltext&page=1&getAISummary=false)
@@ -36,7 +38,7 @@ We chose [ClickHouse](https://clickhouse.com/) to store the dictionary as we ran
 
 ## Using a BKTree data structure to identify and correct typos
 
-We take the [standard approach to typo correction](https://nullwords.wordpress.com/2013/03/13/the-bk-tree-a-data-structure-for-spell-checking/) and build per-dataset Burkhard-Keller Trees (BKTrees) for efficient comparision of words in the search query and the dataset's dictionary in O(log N) time complexity. Explaining this data structure in depth is outside the scope of this blog, but you can read our [Rust implementation here]((https://github.com/devflowinc/trieve/blob/6e114abdca5683440e2834eccacf3f850dff810f/server/src/operators/typo_operator.rs#L35-112)) or read its [wiki](https://en.wikipedia.org/wiki/BK-tree).
+We take the [standard approach to typo correction](https://nullwords.wordpress.com/2013/03/13/the-bk-tree-a-data-structure-for-spell-checking/) and build per-dataset Burkhard-Keller Trees (BKTrees) for efficient comparision of words in the search query and the dataset's dictionary in O(log N) time complexity. Explaining this data structure in depth is outside the scope of this blog, but you can read our [Rust implementation here](<(https://github.com/devflowinc/trieve/blob/6e114abdca5683440e2834eccacf3f850dff810f/server/src/operators/typo_operator.rs#L35-112)>) or its [wiki](https://en.wikipedia.org/wiki/BK-tree) for more information.
 
 We utilized a third[ bktree-worker](https://github.com/devflowinc/trieve/blob/main/server/src/bin/bktree-worker.rs) to build the BKTrees. It takes datasets with completed dictonaries stored in Clickhouse then uses their words and frequencies to construct a tree.
 
@@ -46,22 +48,9 @@ This was challenging for larger datasets where the tree was hundreds of megabyte
 
 ## Writing the Business Logic to Perform Typo Corrections
 
-On the API server side, in our [typo_operator](https://github.com/devflowinc/trieve/blob/main/server/src/operators/typo_operator.rs), we optimized to reduce time required for corrections down to ~300μs for correctly spelled queries and ~25ms for mispelled queries.
+On the API server side, in our [typo_operator](https://github.com/devflowinc/trieve/blob/main/server/src/operators/typo_operator.rs), we optimized to reduce time required for corrections down to ~300μs for correctly spelled queries and ~10ms/word for mispelled queries.
 
-```mermaid
-graph TD
-    A[Start] --> B[Pull tree from Redis]
-    B --> C[Deserialize and put into memory]
-    C --> D[Check for English words in the query]
-    D --> E{Is word English?}
-    E -->|Yes| F[Move to next word]
-    E -->|No| G[Check tree for closest words]
-    G --> H[Correct word to most relevant in set]
-    H --> F
-    F --> I{More words?}
-    I -->|Yes| D
-    I -->|No| J[End]
-```
+![typo-operator-graph](https://trieve.b-cdn.net/blog/building-30%CE%BCs-typo-tolerance-for-1.3M-words%20using%20Rust/typo-operator-graph.webp)
 
 ### Pulling from Redis
 

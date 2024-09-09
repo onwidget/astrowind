@@ -7,7 +7,7 @@ export const headerData = {
       href: 'https://dashboard.trieve.ai',
     },
     {
-      text: 'Hacker News Search Engine',
+      text: 'HN Search Engine',
       href: 'https://hn.trieve.ai',
     },
     {
@@ -84,7 +84,7 @@ export const footerData = {
       links: [
         { text: 'Pricing', href: '/pricing' },
         { text: 'Documentation', href: 'https://docs.trieve.ai' },
-        { text: 'Hacker News Search Engine', href: 'https://hn.trieve.ai' },
+        { text: 'HN Search Engine', href: 'https://hn.trieve.ai' },
       ],
     },
     {
