@@ -41,7 +41,7 @@ We chose [ClickHouse](https://clickhouse.com/) to store the dictionary as we ran
 
 # Using a BKTree data structure to identify and correct typos
 
-We take the [standard approach to typo correction](https://nullwords.wordpress.com/2013/03/13/the-bk-tree-a-data-structure-for-spell-checking/) and build per-dataset Burkhard-Keller Trees (BKTrees) for efficient comparision of words in the search query and the dataset's dictionary in O(log N) time complexity. Explaining this data structure in depth is outside the scope of this blog, but you can read our [Rust implementation here]((https://github.com/devflowinc/trieve/blob/main/server/src/operators/typo_operator.rs#L35-112)>) or its [wiki](https://en.wikipedia.org/wiki/BK-tree) for more information.
+We take the [standard approach to typo correction](https://nullwords.wordpress.com/2013/03/13/the-bk-tree-a-data-structure-for-spell-checking/) and build per-dataset Burkhard-Keller Trees (BKTrees) for efficient comparision of words in the search query and the dataset's dictionary in O(log N) time complexity. Explaining this data structure in depth is outside the scope of this blog, but you can read our [Rust implementation here](https://github.com/devflowinc/trieve/blob/main/server/src/operators/typo_operator.rs#L35-112) or its [wiki](https://en.wikipedia.org/wiki/BK-tree) for more information.
 
 We utilized a third [bktree-worker](https://github.com/devflowinc/trieve/blob/main/server/src/bin/bktree-worker.rs) to build the BKTrees. It takes datasets with completed dictonaries stored in Clickhouse then uses their words and frequencies to construct a tree.
 
