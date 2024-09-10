@@ -107,7 +107,7 @@ export interface Widget {
 export interface Headline {
   title?: string;
   subtitle?: string;
-  tagline?: string;
+  tagline?: Node;
   classes?: Record<string, string>;
 }
 
@@ -153,12 +153,8 @@ export interface Price {
   ribbonTitle?: string;
 }
 
-export interface Testimonial {
-  title?: string;
-  testimonial?: string;
-  name?: string;
-  job?: string;
-  image?: string | unknown;
+export interface Logo {
+  src: string;
 }
 
 export interface Input {
@@ -232,8 +228,8 @@ export interface Pricing extends Headline, Widget {
   prices?: Array<Price>;
 }
 
-export interface Testimonials extends Headline, Widget {
-  testimonials?: Array<Testimonial>;
+export interface Logos extends Headline, Widget {
+  logos?: Array<Logo>;
   callToAction?: CallToAction;
 }
 
@@ -284,4 +280,4 @@ export interface Content extends Headline, Widget {
   callToAction?: CallToAction;
 }
 
-export interface Contact extends Headline, Form, Widget { }
+export interface Contact extends Headline, Form, Widget {}

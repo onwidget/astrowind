@@ -1,16 +1,15 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
 import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Logos from '~/components/widgets/Logos.astro';
 
 const metadata = {
-  title: 'AI-First infrastructure API for search, recommendations, and RAG that combines language models with tools for fine tuning ranking and relevance',
+  title:
+    'AI-First infrastructure API for search, recommendations, and RAG that combines language models with tools for fine tuning ranking and relevance',
   ignoreTitleTemplate: true,
 };
 ---
@@ -21,7 +20,7 @@ const metadata = {
 <meta property="og:description" content="" />
 <meta property="og:type" content="" />
 <meta property="og:image" content="https://cdn.trieve.ai/trieve-og.png" />
-<script defer data-domain="trieve.ai" src="https://plausible.trieve.ai/js/script.js"></script>
+<script is:inline defer data-domain="trieve.ai" src="https://plausible.trieve.ai/js/script.js"></script>
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
@@ -52,19 +51,26 @@ const metadata = {
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">All-in-one</span> infrastructure for building search, discovery,
-        and RAG combining leading search language models + tools for tuning quality</span
-      >
+        <span class="font-semibold">All-in-one</span> infrastructure for building search, discovery, and RAG combining leading
+        search language models + tools for tuning quality
+      </span>
       <span class="block mb-1 sm:hidden font-bold text-blue-600">Trieve: Production-ready.</span>
       <span class="block sm:hidden"> Use Trieve to show users what they're looking for every time.</span>
     </Fragment>
   </Hero>
 
-  <!-- Note Widget ******************* -->
-
-  <Note tagline="Source Available:">
-    Find us on GitHub at <a class="underline" href="https://github.com/devflowinc/trieve">devflowinc/trieve</a>
-  </Note>
+  <Logos
+    tagline={`<p class="text-black">
+        Powering search experiences across categories. See our
+        <a class="underline" href="/tag/success-story/"> customer success stories</a>.
+      </p>`}
+    logos={[
+      { src: 'https://cdn.trieve.ai/customer-logos/mintlify-logo.svg' },
+      { src: 'https://cdn.trieve.ai/customer-logos/billtrack50logo.svg' },
+      { src: 'https://cdn.trieve.ai/customer-logos/agentic-labs-logo.png' },
+      { src: 'https://cdn.trieve.ai/customer-logos/openmart-logo.svg' },
+    ]}
+  />
 
   <!-- Features Widget *************** -->
 
@@ -76,19 +82,18 @@ const metadata = {
     items={[
       {
         title: 'Semantic Vector Search',
-        description: 'For when you need more than just full-text search. Trieve supports semantic vector search out of the box. ',
+        description:
+          'For when you need more than just full-text search. Trieve supports semantic vector search out of the box. ',
         icon: 'tabler:file-vector',
       },
       {
         title: 'BM25 & SPLADE Full-Text Search',
-        description:
-          'Choose between the leading state-of-the-art retrieval models for full-text search.',
+        description: 'Choose between the leading state-of-the-art retrieval models for full-text search.',
         icon: 'tabler:file-typography',
       },
       {
         title: 'Stock and Custom Embedding models',
-        description:
-          'Our modular infrastructure offers several models and bring your own embedding model.',
+        description: 'Our modular infrastructure offers several models and bring your own embedding model.',
         icon: 'tabler:3d-cube-sphere',
       },
       {
@@ -120,18 +125,17 @@ const metadata = {
     items={[
       {
         title: 'Private Open-Source Models',
-        description:
-          'We use open source embedding models and LLMs running in our own servers. Data is never leaked.',
+        description: 'We use open source embedding models and LLMs running in our own servers. Data is never leaked.',
       },
       {
         title: 'Batteries Included',
         description:
-          "Our API surface covers chunking, ingestion, search, recommendations, RAG, and even a little front-end.",
+          'Our API surface covers chunking, ingestion, search, recommendations, RAG, and even a little front-end.',
       },
       {
         title: 'Self-Hostable',
         description:
-          "Sensitive data? Need maximum performance? Host Trieve yourself with terraform templates and no external dependencies.",
+          'Sensitive data? Need maximum performance? Host Trieve yourself with terraform templates and no external dependencies.',
       },
     ]}
     image={{
@@ -182,55 +186,6 @@ const metadata = {
     }}
   />
 
-  <!-- Features2 Widget ************** -->
-<!-- 
-  <Features2
-    title="Most used features"
-    subtitle="Provides frequently used endpoints for rounding out the full spectrum of search and RAG features."
-    tagline="Components"
-    items={[
-      {
-        title: 'Search',
-        description:
-          'Full-text search with an index built by SPLADE and semantic vector search with your choice of embedding model.',
-        icon: 'flat-color-icons:search',
-      },
-      {
-        title: 'RAG',
-        description:
-          'Build RAG experiences with our API that returns generated outputs with citations and manages message history.',
-        icon: 'flat-color-icons:collaboration',
-      },
-      {
-        title: 'Recommendations',
-        description:
-          'Recommendations are a great way to keep users engaged. Trieve supports recommendations based on user history and content similarity.',
-        icon: 'flat-color-icons:multiple-inputs',
-      },
-      {
-        title: 'Term Frequency Boosting',
-        description:
-          'Boost the presence of certain terms in your search index. Great for when you want to highlight a flagship product for a brand.',
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Sub-sentence Highlighting',
-        description:
-          'Search results can be paragraphs long. Trieve supports sub-sentence highlighting to show users exactly what they are looking for.',
-        icon: 'flat-color-icons:binoculars',
-      },
-      {
-        title: 'Recency Biasing',
-        description: 'Relevance tuning is not just about the query. Trieve supports date recency biasing.',
-        icon: 'flat-color-icons:calendar',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
-  -->
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
