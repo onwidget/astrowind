@@ -15,7 +15,8 @@ const metadata = {
 
   <HeroText
     title="Pricing"
-    subtitle="Unlimited search requests + full AI, merchandising & analytics tools included on all plans "
+    subtitle='<p>Unlimited search requests + full AI, merchandising studio & analytics tools included on all plans. No credit card required. See self-hosting options here: <a class="underline hover:text-primary" href="https://docs.trieve.ai/self-hosting/docker-compose" target="_blank">Docker Compose VPS</a>, <a class="underline hover:text-primary" href="https://docs.trieve.ai/self-hosting/aws" target="_blank">AWS EKS</a> , <a class="underline hover:text-primary" href="https://docs.trieve.ai/self-hosting/gcp" target="_blank"> GCP GKE</a>.</p>'
+    ,
     callToAction={{
       target: '_blank',
       text: 'Contact For Commercial Self-Hosting License',
@@ -27,6 +28,39 @@ const metadata = {
 
   <Prices
     prices={[
+      {
+        title: 'Free Cloud',
+        price: 0,
+        period: 'Per Month',
+        items: [
+          {
+            description: '1,000 vectorized and stored chunks/records',
+          },
+          {
+            description: '10 requests per second rate limit',
+          },
+          {
+            description: '2 indexed datasets',
+          },
+          {
+            description: '5 users',
+          },
+          {
+            description: '1,000 gen AI messages',
+          },
+          {
+            description: '512MB S3 file storage',
+          },
+          {
+            description: 'Guided Onboarding',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Get started free',
+          href: 'https://dashboard.trieve.ai',
+        },
+      },
       {
         title: 'Dev Cloud',
         price: 25,
@@ -51,7 +85,7 @@ const metadata = {
             description: '1gb S3 file storage',
           },
           {
-            description: 'Hamburger',
+            description: 'Guided Onboarding',
           },
         ],
         callToAction: {
@@ -105,7 +139,7 @@ const metadata = {
             description: 'Up to 99.99% uptime SLA',
           },
           {
-            description: 'Up to 125ms P95 hybrid search SLO',
+            description: 'Up to 125ms P95 latency SLO',
           },
           {
             description: '1000 requests per second',
@@ -114,9 +148,8 @@ const metadata = {
             description: '1 hour maximum response time',
           },
           {
-            description: 'Load your own custom models for embeddings, LLMs, and reranking',
+            description: 'Load your own custom embedding, LLMs, and reranking models',
           },
-          
           {
             description: 'VPC peering',
           },
@@ -129,7 +162,6 @@ const metadata = {
           text: 'Talk to team',
           href: 'https://cal.com/nick.k/meet',
         },
-      
         callToAction2: {
           target: '_blank',
           text: 'humans@trieve.ai',
@@ -140,49 +172,6 @@ const metadata = {
       },
     ]}
   />
-
-  <!-- Features3 Widget ************** 
-
-  <Features3
-    title="Price-related features"
-    subtitle="Discover the advantages of choosing our plans"
-    columns={2}
-    items={[
-      {
-        title: 'Tiered Pricing Plans',
-        description: 'Choose from a range of pricing plans designed to accommodate different budgets and requirements.',
-        icon: 'tabler:stairs',
-      },
-      {
-        title: 'Transparent Pricing',
-        description: 'Clearly displayed pricing details for each plan, with no hidden costs or unexpected charges.',
-        icon: 'tabler:flip-vertical',
-      },
-      {
-        title: 'SLA Available',
-        description: 'Highest tier plans include a SLA that suits your needs.',
-        icon: 'tabler:shield-check',
-      },
-      {
-        title: 'Instant Access',
-        description: `Immediate access to your chosen plan's features and templates upon subscription.`,
-        icon: 'tabler:accessible',
-      },
-      {
-        title: 'Upgrade Value',
-        description: 'Upgrade to higher-tier plans to unlock more features and benefits for an enhanced experience.',
-        icon: 'tabler:chevrons-up',
-      },
-      {
-        title: '24H support',
-        description: 'Questions answered via live chat, email or phone, every calendar day.',
-        icon: 'tabler:headset',
-      },
-    ]}
-    classes={{ container: 'max-w-5xl' }}
-  />
-  -->
-  <!-- CallToAction Widget *********** -->
 
   <CallToAction
     title="Still unsure? Derisk with a custom demo!"
