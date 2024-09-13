@@ -45,11 +45,11 @@ If we replace `async` with `parallel`, voila! It works beautifully! It would be 
 
 Pgvector is very slow, seconds to 10's of seconds, on filter and order by queries. Its maintainers are working on this as you can see in this [currently 83 comment long issue on Github](https://github.com/pgvector/pgvector/issues/259) and [pgvector.rs has made improvements as you can see here](https://github.com/tensorchord/pgvecto.rs/issues/94), but it's messy. I strongly believe that you don't want to be fighting through these issues when adding semantic search to your product. It's going to be a long term, hard fought struggle to keep up with pgvector's updates here and continuously tune it. 
 
-Trieve and other search solutions, in contrast, are going to be easy. You can try it yourself on our [hacker news search engine](https://hn.trieve.ai) and see that on large datasets (up to billions of documents), Trieve's handling of segments and scale gaurantees that filters and order by's are 0 cost.
+Trieve and other search solutions, in contrast, are going to be easy. You can try it yourself on our [hacker news search engine](https://hn.trieve.ai) and see that on large datasets (up to billions of documents), Trieve's handling of segments and scale guarantees that filters and order by's are 0 cost.
 
 ## 4. Support for sparse vectors, BM25, and other inverse document frequency search modes
 
-PGVector will only allow you to bulid semantic search and not fulltext which can create instances of users trained on keyword search hitting your new fancy system, trying hit, seeing bad results, and churning because they feel like the "newfangled AI" is overhyped and not ready.
+PGVector will only allow you to build semantic search and not fulltext which can create instances of users trained on keyword search hitting your new fancy system, trying hit, seeing bad results, and churning because they feel like the "newfangled AI" is overhyped and not ready.
 
 Professionals today have decades of experience built up using keyword search and semantic search is a different pattern. It's amazing and unlocks new possibilities, but needs to be introduced to our products without breaking users' assumptions.
 
@@ -61,4 +61,4 @@ Defaulting to fulltext and adding semantic as an option gives your users the tim
 
 Our goal with this post is to inform readers about the potential downside and pitfalls of PGVector. We are not saying that it's always the wrong choice. Simplicity is powerful and may outweigh the above missing features.
 
-We are always happy to chat search outside outside of Trieve as a solution. If you have further questions, please book a [meeting with me here](https://cal.com/nick.k), join us on [discord and chat async](https://discord.gg/E9sPRZqpDT), or send us an email at [humans@trieve.ai](mailto:humans@trieve.ai).
+We are always happy to chat search outside of Trieve as a solution. If you have further questions, please book a [meeting with me here](https://cal.com/nick.k), join us on [discord and chat async](https://discord.gg/E9sPRZqpDT), or send us an email at [humans@trieve.ai](mailto:humans@trieve.ai).
