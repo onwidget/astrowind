@@ -11,8 +11,9 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'PureStream Media - Revolutionizing Online Streaming',
-  metaDescription: 'Experience the future of online streaming with PureStream Media. Discover our innovative solutions for a seamless viewing experience.',
+  title: 'Pure Stream Media - Revolutionizing Online Streaming',
+  metaDescription:
+    'Experience the future of online streaming with Pure Stream Media. Discover our innovative solutions for a seamless viewing experience.',
   ignoreTitleTemplate: true,
 };
 ---
@@ -24,21 +25,24 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'View Pricing',
+        text: 'Get Demo',
         href: '/pricing',
         icon: 'tabler:list',
         class: 'mx-2',
       },
-      { text: 'Learn more', href: '#features', class: 'mx-2' },
+      // { text: 'Learn more', href: '#features', class: 'mx-2' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'PureStream Hero Image' }}
+    image={{ src: '~/assets/images/hero-image.png', alt: 'Pure Stream Hero Image' }}
   >
-    <Fragment slot="title"> PureStream Media </Fragment>
+    <Fragment slot="title"> Pure Stream</Fragment>
 
     <Fragment slot="subtitle" class="mx-4 md:mx-8 mb-2 block w-full">
-        <span class="mx-4 md:mx-8 mb-2 block w-full">
-          <span class="font-semibold">PureStream Media:</span> A unique advantage in the OTT advertising industry</span>
-        <span class="mx-4 md:mx-8 mb-2 block w-full">Target your perfect customer with up to 27,000 filters and maximize visibility and ROI.</span>
+      <div class="mx-4 md:mx-8 mb-2 block w-full">
+        <div class="font-semibold">An unparalleled pricing and pinpoint ad placement</div>
+      </div>
+      <div class="mx-4 md:mx-8 mb-2 block w-full"
+        >Pure Stream maximizes your ROI with targeted campaigns that reach the right audience at the right price.</div
+      >
     </Fragment>
   </Hero>
 
@@ -51,12 +55,12 @@ const metadata = {
   <Features
     id="features"
     tagline="Features"
-    title="What you get with PureStream"
-    subtitle="Unlock the full potential of your ad revenue with PureStream's cutting-edge technology and expert team."
+    title="What you get with Pure Stream"
+    subtitle="Unlock the full potential of your ad revenue with Pure Stream's cutting-edge technology and expert team."
     items={[
       {
         title: 'Advanced Ad Optimization',
-        description: `Maximize your ad revenue with PureStream's AI-powered engine, analyzing your traffic and ad inventory to deliver the highest possible returns.`,
+        description: `Maximize your ad revenue with Pure Stream's AI-powered engine, analyzing your traffic and ad inventory to deliver the highest possible returns.`,
         icon: 'tabler:brand-tailwind',
       },
       {
@@ -67,12 +71,12 @@ const metadata = {
       },
       {
         title: 'Competitive Revenue Shares',
-        description: `Benefit from PureStream's competitive revenue shares, designed to ensure you get the most out of your ad inventory.`,
+        description: `Benefit from Pure Stream's competitive revenue shares, designed to ensure you get the most out of your ad inventory.`,
         icon: 'tabler:coin',
       },
       {
         title: 'Brand Safety and Ad Quality Control',
-        description: `Trust PureStream's advanced filtering technology and human moderation team to ensure high-quality, brand-safe ads on your site or app.`,
+        description: `Trust Pure Stream's advanced filtering technology and human moderation team to ensure high-quality, brand-safe ads on your site or app.`,
         icon: 'tabler:rocket',
       },
       {
@@ -84,7 +88,7 @@ const metadata = {
       {
         title: 'Constant Innovation and Updates',
         description:
-          'PureStream is committed to staying at the forefront of ad streaming technology, with new features and updates released regularly.',
+          'Pure Stream is committed to staying at the forefront of ad streaming technology, with new features and updates released regularly.',
         icon: 'tabler:bulb',
       },
     ]}
@@ -94,8 +98,8 @@ const metadata = {
 
   <Content
     isReversed
-    tagline="Why PureStream?"
-    title="PureStream Media: Taking your ads to the next level"
+    tagline="Why Pure Stream?"
+    title="Pure Stream Media: Taking your ads to the next level"
     items={[
       {
         title: 'Pin point placement',
@@ -125,7 +129,7 @@ const metadata = {
     items={[
       {
         title: 'Unparalleled CPM Pricing',
-        description: `PureStream Media offers a unique advantage in the OTT advertising industry: dramatically undercutting existing CPM prices while ensuring optimal ad placement.`,
+        description: `Pure Stream Media offers a unique advantage in the OTT advertising industry: dramatically undercutting existing CPM prices while ensuring optimal ad placement.`,
       },
       {
         title: 'Targeted Ad Placement',
@@ -147,48 +151,45 @@ const metadata = {
 
   <!-- HighlightedPosts Widget ******* -->
 
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-
-  />
+  <BlogLatestPosts title="Find out more content in our Blog" />
 
   <!-- FAQs Widget ******************* -->
 
   <FAQs
     title="Frequently Asked Questions"
-    subtitle="Why PureStream?"
+    subtitle="Why Pure Stream?"
     tagline="FAQs"
     classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'Why PureStream?',
+        title: 'Why Pure Stream?',
         description:
-          'Unlock the full potential of your ad revenue with PureStream. Our cutting-edge technology and expert team help you maximize your earnings and reach new heights. Say goodbye to ad revenue uncertainty and hello to a brighter future.',
+          'Unlock the full potential of your ad revenue with Pure Stream. Our cutting-edge technology and expert team help you maximize your earnings and reach new heights. Say goodbye to ad revenue uncertainty and hello to a brighter future.',
       },
       {
         title: 'What do I need to start?',
         description:
-          'Getting started with PureStream is easy. Simply sign up, integrate our code into your website or app, and start monetizing your traffic. Our dedicated support team is always here to help you every step of the way.',
+          'Getting started with Pure Stream is easy. Simply sign up, integrate our code into your website or app, and start monetizing your traffic. Our dedicated support team is always here to help you every step of the way.',
       },
       {
-        title: 'How to optimize my ad placements with PureStream?',
+        title: 'How to optimize my ad placements with Pure Stream?',
         description:
-          "PureStream's advanced ad optimization technology ensures that your ad placements are always performing at their best. Our AI-powered engine analyzes your traffic and ad inventory to deliver the highest possible revenue. Plus, our expert team is always available to provide personalized optimization tips and strategies.",
+          "Pure Stream's advanced ad optimization technology ensures that your ad placements are always performing at their best. Our AI-powered engine analyzes your traffic and ad inventory to deliver the highest possible revenue. Plus, our expert team is always available to provide personalized optimization tips and strategies.",
       },
       {
-        title: 'What sets PureStream apart from other ad streaming platforms?',
+        title: 'What sets Pure Stream apart from other ad streaming platforms?',
         description:
-          "At PureStream, we're committed to transparency, fairness, and innovation. Our platform is built on a foundation of trust, with clear and concise reporting, competitive revenue shares, and a constant stream of new features and updates. Experience the PureStream difference for yourself.",
+          "At Pure Stream, we're committed to transparency, fairness, and innovation. Our platform is built on a foundation of trust, with clear and concise reporting, competitive revenue shares, and a constant stream of new features and updates. Experience the Pure Stream difference for yourself.",
       },
       {
-        title: 'How does PureStream ensure brand safety and ad quality?',
+        title: 'How does Pure Stream ensure brand safety and ad quality?',
         description:
-          'PureStream takes brand safety and ad quality extremely seriously. Our advanced filtering technology and human moderation team work together to ensure that only high-quality, brand-safe ads are displayed on your site or app. You can trust PureStream to protect your reputation and your users.',
+          'Pure Stream takes brand safety and ad quality extremely seriously. Our advanced filtering technology and human moderation team work together to ensure that only high-quality, brand-safe ads are displayed on your site or app. You can trust Pure Stream to protect your reputation and your users.',
       },
       {
-        title: 'What kind of support can I expect from PureStream?',
+        title: 'What kind of support can I expect from Pure Stream?',
         description:
-          "At PureStream, we're dedicated to providing world-class support to our publishers. From onboarding to optimization, our team is always available to help you succeed. Whether you need technical assistance, ad optimization tips, or simply have a question, we're here to help.",
+          "At Pure Stream, we're dedicated to providing world-class support to our publishers. From onboarding to optimization, our team is always available to help you succeed. Whether you need technical assistance, ad optimization tips, or simply have a question, we're here to help.",
       },
     ]}
   />
@@ -210,18 +211,18 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'View Pricing',
+        text: 'Get Demo',
         href: '/pricing',
         icon: 'tabler:list',
       },
     ]}
   >
     <Fragment slot="title">
-      PureStream <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Media</span>
+      Pure Stream <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Media</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      View our affordable pricing models today or inquire for a custom quote.<br class="hidden md:inline" /> Unlock your
+      Pure Stream: Low Price + Pinpoint Placement = Maximum ROI.<br class="hidden md:inline" /> Unlock your
       ad potential today.
     </Fragment>
   </CallToAction>
