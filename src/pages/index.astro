@@ -34,15 +34,15 @@ const metadata = {
     ]}
     image={{ src: '~/assets/images/hero-image.png', alt: 'Pure Stream Hero Image' }}
   >
-    <Fragment slot="title"> Pure Stream</Fragment>
+    <Fragment slot="title">
+      <span class=" dark:text-white highlight">Pure Stream Media</span>
+    </Fragment>
 
-    <Fragment slot="subtitle" class="mx-4 md:mx-8 mb-2 block w-full">
-      <div class="mx-4 md:mx-8 mb-2 block w-full">
-        <div class="font-semibold">An unparalleled pricing and pinpoint ad placement</div>
-      </div>
-      <div class="mx-4 md:mx-8 mb-2 block w-full"
-        >Pure Stream maximizes your ROI with targeted campaigns that reach the right audience at the right price.</div
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        <span class="font-semibold">Pure Stream</span> is an unparalleled pricing and pinpoint ad placement platform.</span
       >
+      Pure Stream maximizes your ROI with targeted campaigns that reach the right audience at the right price.
     </Fragment>
   </Hero>
 
@@ -222,8 +222,8 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      Pure Stream: Low Price + Pinpoint Placement = Maximum ROI.<br class="hidden md:inline" /> Unlock your
-      ad potential today.
+      Pure Stream: Low Price + Pinpoint Placement = Maximum ROI.<br class="hidden md:inline" /> Unlock your ad potential
+      today.
     </Fragment>
   </CallToAction>
 </Layout>
