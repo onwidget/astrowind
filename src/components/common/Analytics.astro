@@ -10,4 +10,23 @@ import { ANALYTICS } from '~/utils/config';
 }
 
 <script defer data-domain="trieve.ai" src="https://plausible.trieve.ai/js/script.js"></script>
-<script id="warmly-script-loader" src="https://opps-widget.getwarmly.com/warmly.js?clientId=2e6ca6d6d1b9dcbaa66a212f816cc369" defer></script>
+<script>
+  (function() {
+    if (typeof window === 'undefined') return;
+    if (typeof window.signals !== 'undefined') return;
+    var script = document.createElement('script');
+    script.src = 'https://cdn.cr-relay.com/v1/site/c458280a-b780-4c1e-930a-492e1b2a85d4/signals.js';
+    script.async = true;
+    window.signals = Object.assign(
+      [],
+      ['page', 'identify', 'form'].reduce(function (acc, method){
+        acc[method] = function () {
+          signals.push([method, arguments]);
+          return signals;
+        };
+       return acc;
+      }, {})
+    );
+    document.head.appendChild(script);
+  })();
+</script>
