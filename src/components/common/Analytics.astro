@@ -5,9 +5,11 @@ import { ANALYTICS } from '~/utils/config';
 
 {
   ANALYTICS?.vendors?.googleAnalytics?.id ? (
-    <GoogleAnalytics id={String(ANALYTICS.vendors.googleAnalytics.id)} partytown={ANALYTICS?.vendors?.googleAnalytics?.partytown} />
+    <GoogleAnalytics
+      id={String(ANALYTICS.vendors.googleAnalytics.id)}
+      partytown={ANALYTICS?.vendors?.googleAnalytics?.partytown}
+    />
   ) : null
 }
 
 <script defer data-domain="trieve.ai" src="https://plausible.trieve.ai/js/script.js"></script>
-<script id="warmly-script-loader" src="https://opps-widget.getwarmly.com/warmly.js?clientId=2e6ca6d6d1b9dcbaa66a212f816cc369" defer></script>
