@@ -1,5 +1,5 @@
 site:
-  name: Pure Stream
+  name: Top Stream
   site: 'https://astrowind.vercel.app'
   base: '/'
   trailingSlash: false
@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: Purestream
-    template: '%s — Purestream'
+    default: TopStream
+    template: '%s — TopStream'
   description: "\U0001F680 The most affordable placement for ads on every plaform provider."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: PureStream
+    site_name: TopStream
     images:
       - url: '~/assets/images/default.png'
         width: 1200
