@@ -52,8 +52,22 @@ const metadata = {
 
   <!-- Todo: cma - Market Comparison section -->
   <!-- <MarketComparison /> -->
-
-  <div>MARKET COMPARISON coming soon..</div>
+  <Content
+    isReversed
+    tagline="Coming soon..."
+    title="Market comparison: Top Stream vs major competitors"
+    items={[
+      {
+        title: 'Coming soon..',
+        description:
+          'Top stream vs major market competitors -> interactive chart / display',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/ctv-direct.png',
+      alt: 'Colorful Image',
+    }}
+  />
 
   <!-- FAQs Widget ******************* -->
 
@@ -95,7 +109,6 @@ const metadata = {
       },
     ]}
   />
-
 
   <!-- Features Widget *************** -->
 
@@ -228,8 +241,7 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      Top Stream: Low Price + Pinpoint Placement = Maximum ROI.<br class="hidden md:inline" /> Unlock your ad potential
-      today.
+      Top Stream: Low Price + Pinpoint Placement = Maximum ROI.<br class="hidden md:inline" /> Unlock your ad potential today.
     </Fragment>
   </CallToAction>
 </Layout>
