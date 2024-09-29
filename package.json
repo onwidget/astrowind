@@ -30,6 +30,7 @@
     "astro": "^4.15.5",
     "astro-embed": "^0.7.2",
     "astro-icon": "^1.1.1",
+    "decap-cms-app": "^3.3.3",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
     "unpic": "^3.18.0"
