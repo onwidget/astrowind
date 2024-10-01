@@ -9,6 +9,7 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features2 from '~/components/widgets/Features2.astro';
 
 const metadata = {
   title: 'Top Stream Media - Revolutionizing Online Streaming',
@@ -32,7 +33,7 @@ const metadata = {
       },
       // { text: 'Learn more', href: '#features', class: 'mx-2' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'Top Stream Hero Image' }}
+    image={{ src: '~/assets/images/hero-image.jpg', alt: 'Top Stream Hero Image' }}
   >
     <Fragment slot="title">
       <span class="text-accent dark:text-white highlight">Top Stream </span>Media
@@ -46,28 +47,36 @@ const metadata = {
     </Fragment>
   </Hero>
 
-  <!-- Note Widget ******************* -->
+  <!-- Features2 Widget ************** -->
 
-  <Note />
-
-  <!-- Todo: cma - Market Comparison section -->
-  <!-- <MarketComparison /> -->
-  <Content
-    isReversed
-    tagline="Coming soon..."
-    title="Market comparison: Top Stream vs major competitors"
+  <Features2
+    title="Publishers, Networks and Inventory Available"
+    subtitle="Peeling back the hidden layers: Premion, Omnicom Group, Amazon Ads Prime, Effectv"
     items={[
       {
-        title: 'Coming soon..',
+        title: 'Sales Managers',
         description:
-          'Top stream vs major market competitors -> interactive chart / display',
+          'Every "layer" of interaction needs to be paid in order for the process to run, therefore that cost is pushed on to the client budget.',
+        icon: 'flat-color-icons:document',
+      },
+      {
+        title: 'Direct to Bergie Digital - Our Client',
+        description:
+          'We are sharing the cost of the actual ad spend directly to you without adding fees and any additional money to pay multiple layers of middle men. You get what YOU pay for.',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Sales Representatives',
+        description:
+          'Every "layer" of interaction needs to be paid in order for the process to run, therefore that cost is pushed on to the client budget.',
+        icon: 'flat-color-icons:voice-presentation',
       },
     ]}
-    image={{
-      src: '~/assets/images/ctv-direct.png',
-      alt: 'Colorful Image',
-    }}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
 
   <!-- FAQs Widget ******************* -->
 
@@ -110,6 +119,10 @@ const metadata = {
     ]}
   />
 
+      <!-- Note Widget ******************* -->
+
+      <Note />
+
   <!-- Features Widget *************** -->
 
   <Features
@@ -120,24 +133,14 @@ const metadata = {
     items={[
       {
         title: 'Advanced Ad Optimization',
-        description: `Maximize your ad revenue with Top Stream's AI-powered engine, analyzing your traffic and ad inventory to deliver the highest possible returns.`,
+        description: `We allow you access to thousands of behavioral charchateristics so that you can clearly define your ad to reach your optimum customer.`,
         icon: 'tabler:brand-tailwind',
       },
       {
-        title: 'Real-time Reporting and Analytics',
+        title: 'Reporting and Analytics',
         description:
-          'Get instant access to detailed reports and analytics, empowering you to track your ad performance and make data-driven decisions.',
+          'We will provide you with comprehensive reporting that will allow you to see your reach as well as your engagement to your website.  Reporting is the best way to not only calculate your ROI, but allow you to better understand your target market.',
         icon: 'tabler:components',
-      },
-      {
-        title: 'Competitive Revenue Shares',
-        description: `Benefit from Top Stream's competitive revenue shares, designed to ensure you get the most out of your ad inventory.`,
-        icon: 'tabler:coin',
-      },
-      {
-        title: 'Brand Safety and Ad Quality Control',
-        description: `Trust Top Stream's advanced filtering technology and human moderation team to ensure high-quality, brand-safe ads on your site or app.`,
-        icon: 'tabler:rocket',
       },
       {
         title: 'Dedicated Support Team',
@@ -163,18 +166,22 @@ const metadata = {
     items={[
       {
         title: 'Pin point placement',
-        description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+        description: 'You pick your audience AND your placement. Guaranteed.',
+      },
+      {
+        title: 'Maximum Impact',
+        description: 'Our software is equipped for precise ad placements to deliver the maximum impact for your brand.',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      src: '~/assets/images/topstream-ott.jpg',
       alt: 'Colorful Image',
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">The competitors edge</h3>
-      We charge over half of the leading competitors.
+      Our minimum overhead and conservative margins allow us to pass the savings on to you. Our prices per CPM are a fraction
+      of our competitors, especially with live sports.
     </Fragment>
 
     <Fragment slot="bg">
@@ -198,12 +205,10 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
+      src: '~/assets/images/topstream-mobile-network.jpg',
       alt: 'Blueprint Image',
     }}
   >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
@@ -211,18 +216,18 @@ const metadata = {
 
   <!-- HighlightedPosts Widget ******* -->
 
-  <BlogLatestPosts title="Find out more content in our Blog" />
+  <!-- <BlogLatestPosts title="Find out more content in our Blog" /> -->
 
   <!-- Stats Widget ****************** -->
 
-  <Stats
+  <!-- <Stats
     stats={[
-      { title: 'Customers', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Ads', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
+      // { title: 'Customers', amount: '132K' },
+      // { title: 'Stars', amount: '24.8K' },
+      // { title: 'Ads', amount: '10.3K' },
+      // { title: 'Users', amount: '48.4K' },
     ]}
-  />
+  /> -->
 
   <!-- CallToAction Widget *********** -->
 
