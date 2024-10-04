@@ -21,7 +21,7 @@ export interface ImageProps extends Omit<HTMLAttributes<'img'>, 'src'> {
   layout?: Layout;
   widths?: number[] | null;
   aspectRatio?: string | number | null;
-  objectPosition?: string | null;
+  objectPosition?: string;
 }
 
 export type ImagesOptimizer = (
