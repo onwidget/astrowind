@@ -1,27 +1,24 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { defineConfig, squooshImageService } from 'astro/config';
+import { defineConfig } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
-import compress from '@playform/compress';
+import compress from 'astro-compress';
+import type { AstroIntegration } from 'astro';
 
 import astrowind from './vendor/integration';
 
-import {
-  readingTimeRemarkPlugin,
-  responsiveTablesRehypePlugin,
-  lazyImagesRehypePlugin,
-} from './src/utils/frontmatter.mjs';
+import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const hasExternalScripts = false;
-const whenExternalScripts = (items = []) =>
+const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
@@ -75,7 +72,6 @@ export default defineConfig({
   ],
 
   image: {
-    service: squooshImageService(),
     domains: ['cdn.pixabay.com'],
   },
 

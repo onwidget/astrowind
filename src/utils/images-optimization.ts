@@ -6,8 +6,6 @@ import type { HTMLAttributes } from 'astro/types';
 
 type Layout = 'fixed' | 'constrained' | 'fullWidth' | 'cover' | 'responsive' | 'contained';
 
-export interface AttributesProps extends HTMLAttributes<'img'> {}
-
 export interface ImageProps extends Omit<HTMLAttributes<'img'>, 'src'> {
   src?: string | ImageMetadata | null;
   width?: string | number | null;
@@ -23,6 +21,7 @@ export interface ImageProps extends Omit<HTMLAttributes<'img'>, 'src'> {
   layout?: Layout;
   widths?: number[] | null;
   aspectRatio?: string | number | null;
+  objectPosition?: string;
 }
 
 export type ImagesOptimizer = (
@@ -261,9 +260,20 @@ export const unpicOptimizer: ImagesOptimizer = async (image, breakpoints, width,
 /* ** */
 export async function getImagesOptimized(
   image: ImageMetadata | string,
-  { src: _, width, height, sizes, aspectRatio, widths, layout = 'constrained', style = '', ...rest }: ImageProps,
+  {
+    src: _,
+    width,
+    height,
+    sizes,
+    aspectRatio,
+    objectPosition,
+    widths,
+    layout = 'constrained',
+    style = '',
+    ...rest
+  }: ImageProps,
   transform: ImagesOptimizer = () => Promise.resolve([])
-): Promise<{ src: string; attributes: AttributesProps }> {
+): Promise<{ src: string; attributes: HTMLAttributes<'img'> }> {
   if (typeof image !== 'string') {
     width ||= Number(image.width) || undefined;
     height ||= typeof width === 'number' ? computeHeight(width, image.width / image.height) : undefined;
@@ -317,6 +327,7 @@ export async function getImagesOptimized(
         width: width,
         height: height,
         aspectRatio: aspectRatio,
+        objectPosition: objectPosition,
         layout: layout,
       })}${style ?? ''}`,
       ...rest,

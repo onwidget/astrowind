@@ -16,8 +16,6 @@ interface Link {
   icon?: string;
 }
 
-interface ActionLink extends CallToAction {}
-
 interface MenuLink extends Link {
   links?: Array<MenuLink>;
 }
@@ -25,7 +23,7 @@ interface MenuLink extends Link {
 export interface Props {
   id?: string;
   links?: Array<MenuLink>;
-  actions?: Array<ActionLink>;
+  actions?: Array<CallToAction>;
   isSticky?: boolean;
   isDark?: boolean;
   isFullWidth?: boolean;
