@@ -28,6 +28,7 @@
     "@astrolib/seo": "^1.0.0-beta.8",
     "@fontsource-variable/inter": "^5.1.0",
     "astro": "^5.0.0-beta.4",
+    "astro-embed": "^0.7.4",
     "astro-icon": "^1.1.1",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
