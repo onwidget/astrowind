@@ -160,3 +160,122 @@ import { UI } from 'astrowind:config';
     onPageShow();
   });
 </script>
+
+<script is:inline>
+  /* Inspired by: https://github.com/heidkaemper/tailwindcss-intersect */
+  const Observer = {
+    observers: {},
+    visibleElementsQueue: [],
+    processing: false,
+    delayBetweenAnimations: 100,
+
+    start() {
+      const selectors = [
+        '[class*=" intersect:"]',
+        '[class*=":intersect:"]',
+        '[class^="intersect:"]',
+        '[class="intersect"]',
+        '[class*=" intersect "]',
+        '[class^="intersect "]',
+        '[class$=" intersect"]',
+      ];
+
+      const elements = Array.from(document.querySelectorAll(selectors.join(',')));
+
+      elements.forEach((el) => el.setAttribute('no-intersect', ''));
+
+      const getThreshold = (element) => {
+        if (element.classList.contains('intersect-full')) return 0.99;
+        if (element.classList.contains('intersect-half')) return 0.5;
+        if (element.classList.contains('intersect-quarter')) return 0.25;
+        return 0;
+      };
+
+      Object.values(this.observers).forEach((observer) => observer.disconnect());
+      this.observers = {};
+
+      const callback = (entries) => {
+        entries.forEach((entry) => {
+          const target = entry.target;
+
+          if (entry.isIntersecting) {
+            if (target.classList.contains('intercept-no-queue')) {
+              target.removeAttribute('no-intersect');
+              if (target.classList.contains('intersect-once')) {
+                Object.values(this.observers).forEach((observer) => observer.unobserve(target));
+              }
+              return;
+            }
+
+            if (!this.visibleElementsQueue.includes(target)) {
+              this.visibleElementsQueue.push(target);
+            }
+
+            this.processQueue();
+          } else {
+            target.setAttribute('no-intersect', '');
+
+            const index = this.visibleElementsQueue.indexOf(target);
+            if (index > -1) {
+              this.visibleElementsQueue.splice(index, 1);
+            }
+          }
+        });
+      };
+
+      elements.forEach((el) => {
+        const threshold = getThreshold(el);
+
+        if (!this.observers[threshold]) {
+          this.observers[threshold] = new IntersectionObserver(callback, { threshold });
+        }
+
+        this.observers[threshold].observe(el);
+      });
+    },
+
+    async processQueue() {
+      if (this.processing) {
+        return;
+      }
+
+      this.processing = true;
+
+      while (this.visibleElementsQueue.length > 0) {
+        const element = this.visibleElementsQueue.shift();
+
+        element.removeAttribute('no-intersect');
+
+        if (element.classList.contains('intersect-once')) {
+          Object.values(this.observers).forEach((observer) => observer.unobserve(element));
+        }
+
+        if (this.isElementInViewport(element)) {
+          await this.delay(this.delayBetweenAnimations);
+        }
+      }
+
+      this.processing = false;
+    },
+
+    delay(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    },
+
+    isElementInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top < (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.bottom > 0 &&
+        rect.left < (window.innerWidth || document.documentElement.clientWidth) &&
+        rect.right > 0
+      );
+    },
+  };
+
+  Observer.start();
+
+  document.addEventListener('astro:after-swap', () => {
+    Observer.start();
+  });
+</script>
