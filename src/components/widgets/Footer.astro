@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import { SITE } from '~/utils/config';
 import { getHomePermalink } from '~/utils/permalinks';
+import ToggleTheme from '../common/ToggleTheme.astro';
 
 interface Link {
   text?: string;
@@ -73,6 +74,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
       {
         socialLinks?.length ? (
           <ul class="flex mb-4 md:order-1 -ml-2 md:ml-4 md:mb-0 rtl:ml-0 rtl:-mr-2 rtl:md:ml-0 rtl:md:mr-4">
+            <ToggleTheme iconClass="w-5 h-5" />
             {socialLinks.map(({ ariaLabel, href, text, icon }) => (
               <li>
                 <a

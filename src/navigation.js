@@ -1,4 +1,5 @@
 import { getBlogPermalink } from './utils/permalinks';
+import { getAsset } from '~/utils/permalinks';
 
 export const headerData = {
   links: [
@@ -49,7 +50,8 @@ export const headerData = {
     },
   ],
   actions: [{ text: 'Get Started Free', href: 'https://dashboard.trieve.ai', target: '_blank' }],
-  showRssFeed: true,
+  showRssFeed: false,
+  showToggleTheme: false,
 };
 
 export const footerData = {
@@ -98,6 +100,7 @@ export const footerData = {
     { ariaLabel: 'GitHub', icon: 'tabler:brand-github', href: 'https://github.com/devflowinc/trieve' },
     { ariaLabel: 'Matrix', icon: 'tabler:brand-matrix', href: 'https://matrix.to/#/#trieve-general:trieve.ai' },
     { ariaLabel: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/E9sPRZqpDT' },
+    { ariaLabel: 'RSS Feed', icon: 'tabler:rss', href: getAsset('/rss.xml') },
   ],
   secondaryLinks: [],
 };
