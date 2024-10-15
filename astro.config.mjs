@@ -15,7 +15,6 @@ import {
   rehypeHeadingClasses,
 } from './src/utils/frontmatter.mjs';
 import { ANALYTICS, SITE } from './src/utils/config.ts';
-import solidJs from '@astrojs/solid-js';
 import react from '@astrojs/react';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const whenExternalScripts = (items = []) =>
@@ -53,7 +52,6 @@ export default defineConfig({
     ),
     tasks(),
     react(),
-    solidJs(),
   ],
   image: {
     service: sharpImageService(),

@@ -26,7 +26,13 @@ export const headerData = {
   ],
   actions: [
     { text: 'Login', href: 'https://dashboard.trieve.ai', target: '_blank', variant: 'link' },
-    { text: 'Get a demo', href: 'https://cal.com/nick.k', target: '_blank', variant: 'secondary' },
+    {
+      text: 'Get a demo',
+      href: 'https://cal.com/nick.k',
+      target: '_blank',
+      variant: 'secondary',
+      className: 'hidden xl:inline-block',
+    },
     { text: 'Sign up', href: 'https://dashboard.trieve.ai', target: '_blank', variant: 'primary' },
   ],
   showRssFeed: false,

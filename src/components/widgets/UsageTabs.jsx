@@ -1,28 +1,28 @@
-import { createSignal, createResource } from 'solid-js';
+import { useMemo } from 'react';
 import { codeToHtml } from 'shiki';
 import { install, newTrieve, reactComponent, wcComponent } from '~/utils/docsearch-code';
 
 const UsageTabs = () => {
-  const [selectedTab, setSelectedTab] = createSignal('react');
-  const [installCode] = createResource(() =>
+  const [selectedTab, setSelectedTab] = useState('react');
+  const [installCode] = useMemo(() =>
     codeToHtml(install, {
       lang: 'bash',
       theme: 'night-owl',
     })
   );
-  const [newTrieveCode] = createResource(() =>
+  const [newTrieveCode] = useMemo(() =>
     codeToHtml(newTrieve, {
       lang: 'javascript',
       theme: 'night-owl',
     })
   );
-  const [reactComponentCode] = createResource(() =>
+  const [reactComponentCode] = useMemo(() =>
     codeToHtml(reactComponent, {
       lang: 'jsx',
       theme: 'night-owl',
     })
   );
-  const [wcComponentCode] = createResource(() =>
+  const [wcComponentCode] = useMemo(() =>
     codeToHtml(wcComponent, {
       lang: 'jsx',
       theme: 'night-owl',
@@ -30,7 +30,7 @@ const UsageTabs = () => {
   );
   return (
     <div class="bg-page px-4 py-6 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-5xl">
+      <div class="mx-auto max-w-7xl">
         <div class="sm:hidden">
           <label for="tabs" class="sr-only">
             Select a tab
@@ -58,7 +58,7 @@ const UsageTabs = () => {
               <li>
                 <button
                   onClick={() => setSelectedTab(() => 'react')}
-                  class={`${selectedTab() === 'react' ? 'text-indigo-500' : ''}`}
+                  class={`${selectedTab() === 'react' ? 'text-magenta-500' : ''}`}
                 >
                   React
                 </button>
@@ -66,7 +66,7 @@ const UsageTabs = () => {
               <li>
                 <button
                   onClick={() => setSelectedTab(() => 'wc')}
-                  class={`${selectedTab() === 'wc' ? 'text-indigo-500' : ''}`}
+                  class={`${selectedTab() === 'wc' ? 'text-magenta-500' : ''}`}
                 >
                   Web Components
                 </button>

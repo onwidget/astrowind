@@ -1,21 +1,23 @@
-import { initTrieveModalSearch, TrieveSDK } from 'trieve-search-component';
-import 'trieve-search-component/dist/index.css';
-
-const trieve = new TrieveSDK({
-  apiKey: 'tr-cs4zCkeKgrki09aOykgKUt53K2Uv0mhT',
-  datasetId: '15bd032c-ff24-454d-beee-6b6cac97d8be',
-});
-
-initTrieveModalSearch({
-  trieve,
-  theme: localStorage.getItem('theme') || 'dark',
-});
+import { TrieveModalSearch } from 'trieve-search-component';
 
 const SearchComponent = () => {
   return (
     <div class="flex justify-center">
       <div class="min-w-[300px]">
-        <trieve-modal-search />
+        <TrieveModalSearch
+          apiKey="tr-zpPVGUq18FxOCmXgLfqGbmDOY4UMW00r"
+          datasetId="4538ad9f-47cf-44d4-8a14-7c111f9558a9"
+          theme={localStorage.getItem('theme') || 'dark'}
+          defaultSearchQueries={['How to create a chunk?', 'Does Trieve use a re-ranker?', 'Sending click events']}
+          defaultAiQuestions={[
+            'What is Trieve?',
+            'How to perform autocomplete search?',
+            'How do I install the TS SDK?',
+          ]}
+          brandLogoImgSrcUrl="https://cdn.trieve.ai/trieve-logo.png"
+          brandName="Trieve"
+          brandColor="#b557c5"
+        />
       </div>
     </div>
   );
