@@ -1,5 +1,4 @@
 ---
-import { TrieveModalSearch } from 'trieve-search-component';
 import { Icon } from 'astro-icon/components';
 import Logo from '~/components/Logo.astro';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
@@ -123,7 +122,6 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       </ul>
     </nav>
     <div class="flex-1"></div>
-    <TrieveModalSearch apiKey="tr-UPjrAOp35kGrJWM1IvODj4zVWTdGgQxI" datasetId="4650e231-7857-45aa-beb1-cb52006a2460" />
     <div
       class:list={[
         { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'left' },

@@ -1,0 +1,145 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import Headline from '~/components/blog/Headline.astro';
+import UsageTabs from '~/components/widgets/UsageTabs.jsx';
+import SearchComponent from '~/components/widgets/Search.jsx';
+const metadata = {
+  title: 'DocSearch',
+};
+const props = [
+  {
+    name: 'trieve',
+    type: 'TrieveSDK',
+    description: 'The trieve instance used to search',
+    defaut: 'null',
+    typeLink: 'https://ts-sdk.trieve.ai/',
+  },
+  {
+    name: 'chat',
+    type: 'boolean',
+    description: 'Adds AI search to the compomnent. Only works in the Modal version',
+    defaut: 'true',
+  },
+  {
+    name: 'showImages',
+    type: 'boolean',
+    description: 'If your search results have images linked to them this will show them to the side',
+    defaut: 'false',
+  },
+  {
+    name: 'placeholder',
+    type: 'string',
+    description: 'Placeholder for the search input',
+    defaut: 'Search...',
+  },
+  {
+    name: 'onResultClick',
+    type: 'function',
+    description: 'Any function you want to run when a user clicks on a search result',
+    defaut: '() => {}',
+  },
+  {
+    name: 'theme',
+    type: 'light | dark',
+    description: 'Color theme',
+    defaut: 'light',
+  },
+  {
+    name: 'searchOptions',
+    type: 'SearchChunksReqPayload',
+    description: 'Any options you want to pass to the search function',
+    defaut: '{ search_type: "hybrid" }',
+    typeLink: 'https://ts-sdk.trieve.ai/types/types_gen.SearchChunksReqPayload.html',
+  },
+];
+const features = [
+  {
+    title: 'React and Web Components',
+    description: 'Use it with any framework. Anywhere',
+    icon: 'tabler:brand-javascript',
+  },
+  {
+    title: 'Fully typed',
+    description: 'No guessing props. Let ctrl + space do the work for you.',
+    icon: 'tabler:brand-typescript',
+  },
+  {
+    title: 'AI Chat',
+    description: 'Let your users ask questions and get answers.',
+    icon: 'tabler:robot',
+  },
+  {
+    title: 'Light and Dark themes',
+    description: 'Fits to your style',
+    icon: 'tabler:sun',
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <HeroText title="Docsearch" subtitle="Free Trieve Search and RAG For Developer Docs" />
+
+  <!-- Search Example Widget *************** -->
+  <SearchComponent client:only="solid-js" />
+
+  <!-- Features Widget *************** -->
+
+  <Features id="features" title="Why our component?" items={features} />
+
+  <!-- Usage Widget *************** -->
+  <Headline title={'Usage'} subtitle={'How to get started'} />
+  <UsageTabs client:only="solid-js" />
+
+  <!-- Props Widget *************** -->
+  <Headline title="Props" />
+
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-12">
+    <div class="mt-8 flow-root">
+      <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead>
+              <tr>
+                {
+                  Object.keys(props[0])
+                    .filter((key) => key != 'typeLink')
+                    .map((key) => (
+                      <th
+                        scope="col"
+                        class="capitalize py-3.5 pl-4 pr-3 text-left text-sm font-semibold dark:text-white sm:pl-0"
+                      >
+                        {key}
+                      </th>
+                    ))
+                }
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
+              {
+                props.map((prop) => (
+                  <tr>
+                    {Object.keys(prop)
+                      .filter((key) => key != 'typeLink')
+                      .map((key) => (
+                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium dark:text-white sm:pl-0">
+                          {key === 'type' && prop.typeLink ? (
+                            <a href={prop.typeLink} class="underline hover:text-blue-500">
+                              {prop[key]}
+                            </a>
+                          ) : (
+                            prop[key]
+                          )}
+                        </td>
+                      ))}
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

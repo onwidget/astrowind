@@ -9,11 +9,21 @@ import icon from 'astro-icon';
 import tasks from './src/utils/tasks';
 import { rehypeHeadingIds } from '@astrojs/markdown-remark';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, rehypeHeadingClasses } from './src/utils/frontmatter.mjs';
+import {
+  readingTimeRemarkPlugin,
+  responsiveTablesRehypePlugin,
+  rehypeHeadingClasses,
+} from './src/utils/frontmatter.mjs';
 import { ANALYTICS, SITE } from './src/utils/config.ts';
-import react from "@astrojs/react";
+import solidJs from '@astrojs/solid-js';
+import react from '@astrojs/react';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const whenExternalScripts = (items = []) => ANALYTICS.vendors.googleAnalytics.id && ANALYTICS.vendors.googleAnalytics.partytown ? Array.isArray(items) ? items.map(item => item()) : [items()] : [];
+const whenExternalScripts = (items = []) =>
+  ANALYTICS.vendors.googleAnalytics.id && ANALYTICS.vendors.googleAnalytics.partytown
+    ? Array.isArray(items)
+      ? items.map((item) => item())
+      : [items()]
+    : [];
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,47 +31,68 @@ export default defineConfig({
   base: SITE.base,
   trailingSlash: SITE.trailingSlash ? 'always' : 'ignore',
   output: 'static',
-  integrations: [tailwind({
-    applyBaseStyles: false
-  }), sitemap(), mdx(), icon({
-    include: {
-      tabler: ['*'],
-      'flat-color-icons': ['search', 'collaboration', 'multiple-inputs', 'document', 'binoculars', 'calendar'],
-      ri: ['*']
-    }
-  }), ...whenExternalScripts(() => partytown({
-    config: {
-      forward: ['dataLayer.push']
-    }
-  })), tasks(), react()],
+  integrations: [
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    sitemap(),
+    mdx(),
+    icon({
+      include: {
+        tabler: ['*'],
+        'flat-color-icons': ['search', 'collaboration', 'multiple-inputs', 'document', 'binoculars', 'calendar'],
+        ri: ['*'],
+      },
+    }),
+    ...whenExternalScripts(() =>
+      partytown({
+        config: {
+          forward: ['dataLayer.push'],
+        },
+      })
+    ),
+    tasks(),
+    react(),
+    solidJs(),
+  ],
   image: {
-    service: sharpImageService()
+    service: sharpImageService(),
   },
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin],
-    rehypePlugins: [rehypeHeadingClasses, rehypeHeadingIds, responsiveTablesRehypePlugin, [rehypeAutolinkHeadings, {
-      behavior: 'append',
-      properties: {
-        className: 'no-underline h-fit hidden group-hover:flex items-center'
-      },
-      content: {
-        type: 'element',
-        tagName: 'span',
-        properties: {
-          className: 'text-sm text-gray-500 h-fit'
+    rehypePlugins: [
+      rehypeHeadingClasses,
+      rehypeHeadingIds,
+      responsiveTablesRehypePlugin,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'append',
+          properties: {
+            className: 'no-underline h-fit hidden group-hover:flex items-center',
+          },
+          content: {
+            type: 'element',
+            tagName: 'span',
+            properties: {
+              className: 'text-sm text-gray-500 h-fit',
+            },
+            children: [
+              {
+                type: 'text',
+                value: '#',
+              },
+            ],
+          },
         },
-        children: [{
-          type: 'text',
-          value: '#'
-        }]
-      }
-    }]]
+      ],
+    ],
   },
   vite: {
     resolve: {
       alias: {
-        '~': path.resolve(__dirname, './src')
-      }
-    }
-  }
+        '~': path.resolve(__dirname, './src'),
+      },
+    },
+  },
 });
