@@ -8,7 +8,7 @@ export const headerData = {
       href: 'https://dashboard.trieve.ai',
     },
     {
-      text: 'HN Search Engine',
+      text: 'HN Search',
       href: 'https://hn.trieve.ai',
     },
     {
@@ -23,33 +23,12 @@ export const headerData = {
       text: 'Blog',
       href: getBlogPermalink(),
     },
-    {
-      text: 'Contact',
-      links: [
-        {
-          text: '+1 628-222-4090',
-          href: 'tel:+16282224090',
-        },
-        {
-          text: 'humans@trieve.ai',
-          href: 'mailto:humans@trieve.ai',
-        },
-        {
-          text: 'Meet with Us',
-          href: 'https://cal.com/nick.k/meet',
-        },
-        {
-          text: 'Matrix',
-          href: 'https://matrix.to/#/#trieve-general:trieve.ai',
-        },
-        {
-          text: 'Discord',
-          href: 'https://discord.gg/E9sPRZqpDT',
-        },
-      ],
-    },
   ],
-  actions: [{ text: 'Get Started Free', href: 'https://dashboard.trieve.ai', target: '_blank' }],
+  actions: [
+    { text: 'Login', href: 'https://dashboard.trieve.ai', target: '_blank', variant: 'link' },
+    { text: 'Get a demo', href: 'https://cal.com/nick.k', target: '_blank', variant: 'secondary' },
+    { text: 'Sign up', href: 'https://dashboard.trieve.ai', target: '_blank', variant: 'primary' },
+  ],
   showRssFeed: false,
   showToggleTheme: false,
 };

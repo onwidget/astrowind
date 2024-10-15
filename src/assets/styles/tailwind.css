@@ -22,11 +22,11 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
+    @apply inline-flex items-center justify-center rounded-xl border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-magenta-500 focus:ring-offset-magenta-200 focus:ring-2 focus:ring-offset-2 hover:bg-magenta-50/30 hover:border-magenta-600 dark:text-magenta-300 dark:border-magenta-500 dark:hover:bg-magenta-800 dark:hover:border-magenta-800 cursor-pointer;
   }
 
   .btn-primary {
-    @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
+    @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary dark:text-white;
   }
 
   .btn-secondary {
@@ -47,9 +47,6 @@
   @apply bg-page md:bg-[#0C0A0Ee6] border-b border-gray-500/20;
   box-shadow: none;
 }
-/* #header.scroll > div:last-child {
-  @apply py-3;
-} */
 
 #header.expanded nav {
   position: fixed;
@@ -91,6 +88,6 @@
 
 @layer base {
   html {
-    font-family: "Maven Pro", system-ui, sans-serif;
+    font-family: 'Maven Pro', system-ui, sans-serif;
   }
 }

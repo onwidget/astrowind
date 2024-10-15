@@ -1,4 +1,5 @@
 ---
+import { TrieveModalSearch } from 'trieve-search-component';
 import { Icon } from 'astro-icon/components';
 import Logo from '~/components/Logo.astro';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
@@ -59,7 +60,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
   <div class="absolute inset-0"></div>
   <div
     class:list={[
-      'relative text-default py-3 px-3 md:px-6 mx-auto w-full md:flex md:justify-between',
+      'relative text-default py-3 px-3 mx-auto w-full md:flex md:justify-start',
       {
         'max-w-7xl': !isFullWidth,
       },
@@ -74,7 +75,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       </div>
     </div>
     <nav
-      class="items-center w-full md:w-auto hidden md:flex text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:mx-5"
+      class="items-center w-full md:w-auto hidden md:flex text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:mx-5 md:pl-5 lg:pl-10"
       aria-label="Main navigation"
     >
       <ul
@@ -108,7 +109,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               ) : (
                 <a
                   class:list={[
-                    'hover:text-link dark:hover:text-white px-4 py-3 flex items-centers hover:underline',
+                    'hover:text-link dark:hover:text-white hover:text-primary px-4 py-3 flex items-centers hover:underline',
                     { 'aw-link-active': href === currentPath },
                   ]}
                   href={href}
@@ -121,6 +122,8 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         }
       </ul>
     </nav>
+    <div class="flex-1"></div>
+    <TrieveModalSearch apiKey="tr-UPjrAOp35kGrJWM1IvODj4zVWTdGgQxI" datasetId="4650e231-7857-45aa-beb1-cb52006a2460" />
     <div
       class:list={[
         { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'left' },
@@ -146,7 +149,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
           actions?.length ? (
             <span class="ml-4 rtl:ml-0 rtl:mr-4">
               {actions.map((btnProps) => (
-                <Button {...btnProps} class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto" />
+                <Button {...btnProps} class="rounded-xl ml-2 px-3 py-1.5 font-medium shadow-none" />
               ))}
             </span>
           ) : (
