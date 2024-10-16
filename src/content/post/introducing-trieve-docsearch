@@ -1,0 +1,18 @@
+---
+publishDate: 2024-09-26T22:10:00Z
+author: Federico Chávez Torres
+title: 'Introducing: Trieve Docsearch: Search and AI Chat for Your Docs'
+excerpt: Add search and AI chat to your docs. Freeish.
+image: https://trieve.b-cdn.net/bleb.jpg
+category: Launches
+tags:
+  - docsearch
+  - search
+  - RAG
+---
+
+import Info from '~/components/common/Info.astro';
+import TextBoxLearnMore from '../../components/common/TextBoxLearnMore.astro';
+import TextBox from '../../components/common/TextBox.astro';
+
+# Big Hamburger
