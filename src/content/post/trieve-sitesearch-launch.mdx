@@ -1,9 +1,9 @@
 ---
 publishDate: 2024-10-17T22:10:00Z
-author: Federico Chávez Torres
-title: 'Trieve Sitesearch: Search and AI Chat for Your Site'
-excerpt: Add search and AI chat to your docs. Freeish.
-image: https://trieve.b-cdn.net/bleb.jpg
+author: skeptrune (Nick K)
+title: 'Free Alternative to Algolia Docsearch with AI Chat'
+excerpt: Modern, configurable drop-in search and RAG components
+image: https://trieve.b-cdn.net/blog/trieve-docsearch/trieve-sitesearch-blog.webp
 category: Launches
 tags:
   - docsearch
@@ -15,4 +15,36 @@ import Info from '~/components/common/Info.astro';
 import TextBoxLearnMore from '../../components/common/TextBoxLearnMore.astro';
 import TextBox from '../../components/common/TextBox.astro';
 
-# Big Hamburger
+## Introducing Sitesearch
+Today, we're making Sitesearch generally available for every site. 
+
+However, naming it Sitesearch is a bit of a misnomer. Let me explain:
+
+Remember when we were teenagers and laughed at our parents' hitting Google with demanding queries? It was because they didn't know *how* to Google. They were unfamiliar with its limitations and optimistic about its power and it wasn't their fault. We've had decades of keyword search. 
+
+However, we're firmly in a new paradigm and are thrilled to provide Trieve Sitesearch powered by the world's only end-to-end AI search and RAG infrastructure. 
+
+It's been two years since OpenAI launched ChatGPT. Billions have been spent upending -or at a minimum, adapting- traditional retrieval systems for the new AI-native world. Search should be more than "find" because now it can be. Oftentimes, what we're searching for is blurry in our own heads. You find that this is especially the case in knowledge-intensive work like software development, manufacturing, legal, healthcare, and so on. There are answers in code blocks or other language systems that tf-idf or BM-25 or trigram based search methods cannot serve to you because they can't even understand it. 
+
+![Sam Altman Launces the Supercycle](https://trieve.b-cdn.net/blog/trieve-docsearch/sama-launches-the-market.jpeg)
+
+Check it on our site! It's in the top right corner. You can also try it live on other sites like [Signoz](https://trieve.ai) and [Glasskube](https://trieve.ai).
+
+## How can I get a component?
+To get this into your website, fill out this form or shoot us an email or DM on Twitter or Discord. Whatever is easiest for you.
+
+First, we'll **scrape** your site/documentation and square away the dataset using our [site-optimized firecrawl crawler](https://github.com/devflowinc/firecrawl-simple). Then, we turn around a version of it, show you the reins for **configuration**, and hand it over to you to **deploy**! This will come in the form of a drop-in code snippet and access to your organization's Trieve Dashboard.
+<TextBoxLearnMore>
+  **Can I remove the Trieve logo from the component or replace it?** Yes! It's $25/month.
+</TextBoxLearnMore>
+
+## What do we want to achieve?
+Search and chat is a hot space. There are tons of great projects whose sites can benefit from free search and chat but are limited to incumbent technologies. The desire to interact with sitewide content, **especially documentation**, in a more conversational way will only continue to grow. Trieve is meeting this demand. This means Trieve in the hands of more developers and end users, enabling the setting of new standards, and making search feel like this:
+
+![returning-desired-feeling](https://trieve.b-cdn.net/blog/trieve-docsearch/feelsgoodman-trieve.png)
+
+This is the ultimate goal of Trieve. Wide and intense distribution of a product that enables next generation builds in our AI-native world. **Get Trieve Sitesearch today, it's free!**
+
+<TextBoxLearnMore>
+Note: I did a lot of the research for this blog using our HackerNews search and asking it questions. It is great as a starting point for finding social proof.
+</TextBoxLearnMore>
