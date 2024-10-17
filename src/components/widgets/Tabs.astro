@@ -1,0 +1,80 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface TabOption {
+  iconName: string;
+  text: string;
+  darkImage?: string;
+  lightImage?: string;
+}
+
+const { tabs = [] } = Astro.props;
+---
+
+<script>
+  document.querySelectorAll('tabs tab').forEach((tab) => {
+    tab.addEventListener('click', (event) => {
+      document.querySelectorAll('tabs tab').forEach((otherTab) => {
+        if (otherTab.id !== tab.id) {
+          otherTab.classList.remove('active');
+        }
+      });
+
+      tab.classList.add('active');
+
+      const tabId = tab.id.split('-')[1];
+      document.querySelectorAll('span[id^="tabpreview"]').forEach((preview) => {
+        if (preview.id.split('-')[1] === tabId) {
+          preview.classList.add('block');
+        } else {
+          preview.classList.remove('block');
+        }
+      });
+    });
+  });
+
+  setInterval(() => {
+    const activeTab = document.querySelector('tabs tab.active');
+    if (!activeTab) {
+      document.querySelector('tabs tab')?.classList.add('active');
+      return;
+    }
+
+    const tabs = document.querySelectorAll('tabs tab');
+    const activeTabIndex = Array.from(tabs).indexOf(activeTab);
+
+    activeTab.classList.remove('active');
+    tabs[(activeTabIndex + 1) % tabs.length].classList.add('active');
+
+    const previews = document.querySelectorAll('span[id^="tabpreview"]');
+    previews.forEach((preview) => {
+      preview.classList.remove('block');
+      preview.classList.add('hidden');
+    });
+    previews[(activeTabIndex + 1) % tabs.length].classList.add('block');
+  }, 10000);
+</script>
+<div>
+  <tabs class="w-full max-w-7xl justify-center flex items-center mx-auto space-x-4 md:space-x-10 text-gray-400 font-semibold">
+    {
+      tabs.map((tab: TabOption, index: number) => (
+        <tab id={`tab-${tab.text}`} class={`${index === 0 ? 'active' : ''}`}>
+          <button id={`tabbutton-${tab.text}`} class="flex items center">
+            <Icon class="w-6 h-6 mr-2" name={tab.iconName} aria-hidden="true" />
+            <span>{tab.text}</span>
+          </button>
+        </tab>
+      ))
+    }
+  </tabs>
+  <div class="w-full max-w-7xl mx-auto mt-4 2xl:px-0 px-4">
+    {
+      tabs.map((tab: TabOption, index: number) => (
+        <span id={`tabpreview-${tab.text}`} class={`hidden ${index === 0 ? 'block' : 'hidden'}`}>
+          <img src={tab.darkImage} alt={tab.text} class="hidden dark:inline rounded-xl" />
+          <img src={tab.lightImage} alt={tab.text} class="inline dark:hidden rounded-xl" />
+        </span>
+      ))
+    }
+  </div>
+</div>

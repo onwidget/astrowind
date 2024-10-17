@@ -12,8 +12,8 @@ export const headerData = {
       href: '/pricing',
     },
     {
-      text: 'DocSearch',
-      href: '/docsearch',
+      text: 'Sitesearch',
+      href: '/sitesearch',
     },
     {
       text: 'HN Search',

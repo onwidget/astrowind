@@ -13,20 +13,22 @@ export const trieve = new TrieveSDK({
   datasetId: "<dataset-to-use>",
 });`;
 
-export const reactComponent = `// 3 - Use The Components
-<TrieveModalSearch trieve={trieve} />
+export const reactComponent = `// 2 - Use The Components
+<TrieveModalSearch datasetId="<dataset-to-use>" apiKey="<your-api-key>" />
 // or
-<TrieveSearch trieve={trieve} />
+<TrieveSearch datasetId="<dataset-to-use>" apiKey="<your-api-key>" />
 `;
 
-export const wcComponent = `// 3 - Use The Components
+export const wcComponent = `// 2 - Use The Components
 initModalSearch({
-  trieve,
+  datasetId: "<dataset-to-use>",
+  apiKey: "<your-api-key>",
 })
 <trieve-modal-search />
 // or
 initSearch({
-  trieve,
+  datasetId: "<dataset-to-use>",
+  apiKey: "<your-api-key>",
 })
 <trieve-search />
 `;

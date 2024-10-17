@@ -97,3 +97,9 @@
     font-family: 'Maven Pro', system-ui, sans-serif;
   }
 }
+
+tab {
+  &.active {
+    @apply text-primary border-b border-primary;
+  }
+}
