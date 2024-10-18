@@ -14,6 +14,7 @@ const SearchComponentSmall = () => {
       brandColor="#b557c5"
       tags={[
         {
+          key: 'openapi-route',
           tag: 'openapi-route',
           label: 'API Routes',
           icon: () => (
@@ -39,6 +40,7 @@ const SearchComponentSmall = () => {
           ),
         },
         {
+          key: 'blog',
           tag: 'blog',
           label: 'Blog',
           icon: () => (
