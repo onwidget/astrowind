@@ -46,22 +46,15 @@ import { UI } from '~/utils/config';
 
     attachEvent('#header nav', 'click', function () {
       document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
-      document.body.classList.remove('overflow-hidden');
-      document.getElementById('header')?.classList.remove('h-screen');
-      document.getElementById('header')?.classList.remove('expanded');
-      document.getElementById('header')?.classList.remove('bg-page');
-      document.querySelector('#header nav')?.classList.add('hidden');
-      document.querySelector('#header > div > div:last-child')?.classList.add('hidden');
+      document.getElementById('mobile-menu')?.classList.remove('h-screen');
+      document.getElementById('mobile-menu')?.classList.remove('expanded');
     });
 
     attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
-      elem.classList.toggle('expanded');
-      document.body.classList.toggle('overflow-hidden');
-      document.getElementById('header')?.classList.toggle('h-screen');
-      document.getElementById('header')?.classList.toggle('expanded');
-      document.getElementById('header')?.classList.toggle('bg-page');
-      document.querySelector('#header nav')?.classList.toggle('hidden');
-      document.querySelector('#header > div > div:last-child')?.classList.toggle('hidden');
+      document.getElementById('mobile-menu')?.classList.toggle('hidden');
+      document.getElementById('mobile-menu')?.classList.toggle('h-screen');
+      document.getElementById('mobile-menu')?.classList.toggle('expanded');
+      elem?.classList.toggle('expanded');
     });
 
     attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
@@ -108,12 +101,8 @@ import { UI } from '~/utils/config';
     let screenSize = window.matchMedia('(max-width: 767px)');
     screenSize.addEventListener('change', function () {
       document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
-      document.body.classList.remove('overflow-hidden');
-      document.getElementById('header')?.classList.remove('h-screen');
-      document.getElementById('header')?.classList.remove('expanded');
-      document.getElementById('header')?.classList.remove('bg-page');
-      document.querySelector('#header nav')?.classList.add('hidden');
-      document.querySelector('#header > div > div:last-child')?.classList.add('hidden');
+      document.getElementById('mobile-menu')?.classList.remove('h-screen');
+      document.getElementById('mobile-menu')?.classList.remove('expanded');
     });
 
     function appyHeaderStylesOnScroll() {
@@ -144,10 +133,8 @@ import { UI } from '~/utils/config';
     if (elem) {
       elem.classList.remove('expanded');
     }
-    document.body.classList.remove('overflow-hidden');
-    document.getElementById('header')?.classList.remove('h-screen');
-    document.getElementById('header')?.classList.remove('expanded');
-    document.querySelector('#header nav')?.classList.add('hidden');
+    document.getElementById('mobile-menu')?.classList.remove('h-screen');
+    document.getElementById('mobile-menu')?.classList.remove('expanded');
   };
 
   window.onload = onLoad;

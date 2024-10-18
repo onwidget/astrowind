@@ -2,7 +2,7 @@
 const { title = await Astro.slots.render('default'), subtitle = await Astro.slots.render('subtitle') } = Astro.props;
 ---
 
-<header class="mb-8 md:mb-16 text-center max-w-3xl mx-auto">
+<header class="mb-8 text-center max-w-7xl mx-auto">
   <h1 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading" set:html={title} />
   {
     subtitle && (

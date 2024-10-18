@@ -1,17 +1,10 @@
 import { getBlogPermalink } from './utils/permalinks';
+import { getAsset } from '~/utils/permalinks';
 
 export const headerData = {
   links: [
     {
-      text: 'Dashboard',
-      href: 'https://dashboard.trieve.ai',
-    },
-    {
-      text: 'HN Search Engine',
-      href: 'https://hn.trieve.ai',
-    },
-    {
-      text: 'Docs',
+      text: 'Documentation',
       href: 'https://docs.trieve.ai',
     },
     {
@@ -19,37 +12,31 @@ export const headerData = {
       href: '/pricing',
     },
     {
+      text: 'Sitesearch',
+      href: '/sitesearch',
+    },
+    {
+      text: 'HN Search',
+      href: 'https://hn.trieve.ai',
+    },
+    {
       text: 'Blog',
       href: getBlogPermalink(),
     },
-    {
-      text: 'Contact',
-      links: [
-        {
-          text: '+1 628-222-4090',
-          href: 'tel:+16282224090',
-        },
-        {
-          text: 'humans@trieve.ai',
-          href: 'mailto:humans@trieve.ai',
-        },
-        {
-          text: 'Meet with Us',
-          href: 'https://cal.com/nick.k/meet',
-        },
-        {
-          text: 'Matrix',
-          href: 'https://matrix.to/#/#trieve-general:trieve.ai',
-        },
-        {
-          text: 'Discord',
-          href: 'https://discord.gg/E9sPRZqpDT',
-        },
-      ],
-    },
   ],
-  actions: [{ text: 'Get Started Free', href: 'https://dashboard.trieve.ai', target: '_blank' }],
-  showRssFeed: true,
+  actions: [
+    { text: 'Login', href: 'https://dashboard.trieve.ai', target: '_blank', variant: 'link' },
+    {
+      text: 'Get a demo',
+      href: 'https://cal.com/nick.k',
+      target: '_blank',
+      variant: 'secondary',
+      className: 'hidden xl:inline-block',
+    },
+    { text: 'Sign up', href: 'https://dashboard.trieve.ai', target: '_blank', variant: 'primary' },
+  ],
+  showRssFeed: false,
+  showToggleTheme: false,
 };
 
 export const footerData = {
@@ -98,6 +85,7 @@ export const footerData = {
     { ariaLabel: 'GitHub', icon: 'tabler:brand-github', href: 'https://github.com/devflowinc/trieve' },
     { ariaLabel: 'Matrix', icon: 'tabler:brand-matrix', href: 'https://matrix.to/#/#trieve-general:trieve.ai' },
     { ariaLabel: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.gg/E9sPRZqpDT' },
+    { ariaLabel: 'RSS Feed', icon: 'tabler:rss', href: getAsset('/rss.xml') },
   ],
   secondaryLinks: [],
 };

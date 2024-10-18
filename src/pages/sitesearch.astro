@@ -1,0 +1,261 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Features from '~/components/widgets/Features.astro';
+import Headline from '~/components/blog/Headline.astro';
+import UsageTabs from '~/components/widgets/UsageTabs.jsx';
+import SearchComponent from '~/components/widgets/Search.jsx';
+import Tags from '~/components/widgets/Tabs.astro';
+
+const metadata = {
+  title: 'Trieve Sitesearch',
+};
+
+const tabs = [
+  {
+    iconName: 'tabler:search',
+    text: 'Search',
+    darkImage: 'https://cdn.trieve.ai/sitesearch-previews/what-is-trieve-search-darkmode.png',
+    lightImage: 'https://cdn.trieve.ai/sitesearch-previews/what-is-trieve-search-lightmode.png',
+  },
+  {
+    iconName: 'tabler:sparkles',
+    text: 'AI Chat',
+    darkImage: 'https://cdn.trieve.ai/sitesearch-previews/what-is-trieve-ai-chat-darkmode.png',
+    lightImage: 'https://cdn.trieve.ai/sitesearch-previews/what-is-trieve-ai-chat-lightmode.png',
+  },
+  {
+    iconName: 'tabler:chart-bar',
+    text: 'Analytics',
+    darkImage: 'https://cdn.trieve.ai/sitesearch-previews/trieve-search-analytics.png',
+    lightImage: 'https://cdn.trieve.ai/sitesearch-previews/trieve-search-analytics.png',
+  },
+];
+
+const props = [
+  {
+    name: 'datasetId',
+    type: 'string',
+    description: 'The id of the dataset used to search',
+    defaut: '<must be specified>',
+  },
+  {
+    name: 'apiKey',
+    type: 'string',
+    description: 'The api key used to search',
+    defaut: '<must be specified>',
+  },
+  {
+    name: 'chat',
+    type: 'boolean',
+    description: 'Adds AI search to the compomnent. Only works in the Modal version',
+    defaut: 'true',
+  },
+  {
+    name: 'analytics',
+    type: 'boolean',
+    description: 'If you want to track the searches and clicks',
+    defaut: 'true',
+  },
+  {
+    name: 'placeholder',
+    type: 'string',
+    description: 'Placeholder for the search input',
+    defaut: 'Search...',
+  },
+  {
+    name: 'onResultClick',
+    type: 'function',
+    description: 'Any function you want to run when a user clicks on a search result',
+    defaut: '() => {}',
+  },
+  {
+    name: 'theme',
+    type: 'light | dark',
+    description: 'Color theme',
+    defaut: 'light',
+  },
+  {
+    name: 'searchOptions',
+    type: 'SearchChunksReqPayload',
+    description: 'Any options you want to pass to the search function',
+    defaut: '{ search_type: "hybrid" }',
+    typeLink: 'https://ts-sdk.trieve.ai/types/types_gen.SearchChunksReqPayload.html',
+  },
+  {
+    name: 'openKeyCombination',
+    type: '{ key?: string; label?: string; ctrl?: boolean }[]',
+    description: 'Key combination to open the search',
+    defaut: '[{ ctrl: true }, { key: "k", label: "K" }]',
+  },
+  {
+    name: 'ButtonEl',
+    type: 'JSX.ElementType',
+    description: 'The element to use as the button, defaults to a rectangular input if null',
+    default: 'null',
+  },
+  {
+    name: 'responsive',
+    type: 'boolean',
+    description: 'If you want the search bar to be responsive and shrink on mobile',
+    default: 'false',
+  },
+  {
+    name: 'suggestedQueries',
+    type: 'boolean',
+    description: 'If you want to show suggested queries and allow the user to refresh them',
+    default: 'true',
+  },
+  {
+    name: 'defaultSearchQueries',
+    type: 'string[]',
+    description: 'The default search queries to show in search mode',
+    default: '[]',
+  },
+  {
+    name: 'defaultAiQuestions',
+    type: 'string[]',
+    description: 'The default AI questions to show in chat mode',
+    default: '[]',
+  },
+  {
+    name: 'brandLogoImgSrcUrl',
+    type: 'string',
+    description: 'The url of the image to use as the brand logo',
+    default: 'null',
+  },
+  {
+    name: 'brandName',
+    type: 'string',
+    description: 'The name of the brand to show in the search bar',
+    default: 'null',
+  },
+  {
+    name: 'problemLink',
+    type: 'string',
+    description: 'The link to the page where the user can report a problem when no results are found',
+    default: 'mailto:help@trieve.ai?subject=',
+  },
+  {
+    name: 'accentColor',
+    type: 'string',
+    description: 'The color to use as the accent color',
+    default: '#CB53EB',
+  },
+];
+
+const features = [
+  {
+    title: 'Free!',
+    description: '10k AI chats + unlimited search when including our logo',
+    icon: 'tabler:free-rights',
+  },
+  {
+    title: 'React and Web Components',
+    description: 'Use it with any framework. Anywhere',
+    icon: 'tabler:brand-javascript',
+  },
+  {
+    title: 'Fully typed',
+    description: 'No guessing props. Let ctrl + space do the work for you.',
+    icon: 'tabler:brand-typescript',
+  },
+  {
+    title: 'AI Chat',
+    description: 'Let your users ask questions and get answers.',
+    icon: 'tabler:robot',
+  },
+  {
+    title: 'Light and Dark themes',
+    description: 'Fits to your style',
+    icon: 'tabler:sun',
+  },
+  {
+    title: 'Analytics',
+    description: 'Track your users searches, clicks, and AI chat ratings',
+    icon: 'tabler:chart-bar',
+  },
+  {
+    title: 'Easily Styleable',
+    description: 'Use our classes as selectors to customize the look and feel',
+    icon: 'tabler:brush',
+  },
+  {
+    title: 'AI Suggested Queries',
+    description: 'Let visitors unfamilar with your site learn about what they can search for',
+    icon: 'tabler:brush',
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <HeroText title="Sitesearch" subtitle="Free Trieve Search and RAG for your Website and Documentation" />
+
+  <!-- Search Example Widget *************** -->
+  <SearchComponent client:only="react" />
+
+  <div class="mt-24">
+    <Tags tabs={tabs} />
+  </div>
+
+  <!-- Features Widget *************** -->
+
+  <Features id="features" title="Why our component?" items={features} />
+
+  <!-- Usage Widget *************** -->
+  <Headline title={'Usage'} subtitle={'How to get started'} />
+  <UsageTabs client:only="react" />
+
+  <!-- Props Widget *************** -->
+  <div class="mt-24">
+    <Headline title="Props" subtitle="Available customization options" />
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-12">
+    <div class="mt-8 flow-root">
+      <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead>
+              <tr>
+                {
+                  Object.keys(props[0])
+                    .filter((key) => key != 'typeLink')
+                    .map((key) => (
+                      <th
+                        scope="col"
+                        class="capitalize py-3.5 pl-4 pr-3 text-left text-sm font-semibold dark:text-white sm:pl-0"
+                      >
+                        {key}
+                      </th>
+                    ))
+                }
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
+              {
+                props.map((prop) => (
+                  <tr>
+                    {Object.keys(prop)
+                      .filter((key) => key != 'typeLink')
+                      .map((key) => (
+                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium dark:text-white sm:pl-0">
+                          {key === 'type' && prop.typeLink ? (
+                            <a href={prop.typeLink} class="underline hover:text-blue-500">
+                              {prop[key]}
+                            </a>
+                          ) : (
+                            prop[key]
+                          )}
+                        </td>
+                      ))}
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
