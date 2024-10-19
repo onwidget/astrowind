@@ -1,21 +1,18 @@
 ---
-// Import necessary components and types
 import type { Form as Props } from '~/types';
 import Button from '~/components/ui/Button.astro';
 
 const { inputs, textarea, disclaimer, button = 'Contact us', description = '', form } = Astro.props;
-
-// Function to handle form submission
 ---
-<script is:inline >
-  function handleSubmit(e){
-    if (!document.getElementById("disclaimer").checked){
+
+<script is:inline>
+  function handleSubmit(e) {
+    if (!document.getElementById('disclaimer').checked) {
       e.preventDefault();
-      alert("Please accept the terms.",); 
+      alert('Please accept the terms.');
     }
   }
-
-  </script>
+</script>
 <form {...form} onsubmit="return handleSubmit(event)">
   {
     inputs &&
