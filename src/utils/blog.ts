@@ -127,6 +127,7 @@ export const blogCategoryRobots = APP_BLOG.category.robots;
 export const blogTagRobots = APP_BLOG.tag.robots;
 
 export const blogPostsPerPage = APP_BLOG?.postsPerPage;
+export const categoryBlogPostsPerPage = APP_BLOG?.category.postsPerPage;
 
 /** */
 export const fetchPosts = async (): Promise<Array<Post>> => {
@@ -210,7 +211,7 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
       posts.filter((post) => post.category?.slug && categorySlug === post.category?.slug),
       {
         params: { category: categorySlug, blog: CATEGORY_BASE || undefined },
-        pageSize: blogPostsPerPage,
+        pageSize: categoryBlogPostsPerPage || blogPostsPerPage,
         props: { category: categories[categorySlug] },
       }
     )
