@@ -212,7 +212,7 @@ export interface Form {
   disclaimer?: Disclaimer;
   button?: string;
   description?: string;
-  form?: Array<FormProps>;
+  form?: FormProps;
 }
 
 export interface FormProps {
@@ -220,7 +220,7 @@ export interface FormProps {
   class?: string;
   name?: string;
   id?: string;
-  method?: string;
+  method?: 'GET' | 'POST';
   enctype?: string;
 }
 

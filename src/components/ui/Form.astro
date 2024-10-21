@@ -12,8 +12,16 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '', f
       alert('Please accept the terms.');
     }
   }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const formElement = document.querySelector('form');
+    if (formElement) {
+      formElement.addEventListener('submit', handleSubmit);
+    }
+  });
 </script>
-<form {...form} onsubmit="return handleSubmit(event)">
+
+<form {...form}>
   {
     inputs &&
       inputs.map(
