@@ -2,8 +2,8 @@
   // These tasks will run in order when initializing your CodeSandbox project.
   "setupTasks": [
     {
-      "command": "yarn install",
-      "name": "Install Dependencies"
+      "name": "Install Dependencies",
+      "command": "yarn install"
     }
   ],
 
@@ -12,42 +12,38 @@
     "dev": {
       "name": "dev",
       "command": "yarn dev",
-      "runAtStart": true
+      "runAtStart": true,
+      "preview": {
+        "port": 3000
+      }
     },
     "start": {
       "name": "start",
-      "command": "yarn start",
-      "runAtStart": false
+      "command": "yarn start"
     },
     "build": {
       "name": "build",
-      "command": "yarn build",
-      "runAtStart": false
+      "command": "yarn build"
     },
     "preview": {
       "name": "preview",
-      "command": "yarn preview",
-      "runAtStart": false
+      "command": "yarn preview"
     },
     "astro": {
       "name": "astro",
-      "command": "yarn astro",
-      "runAtStart": false
+      "command": "yarn astro"
     },
     "format": {
       "name": "format",
-      "command": "yarn format",
-      "runAtStart": false
+      "command": "yarn format"
     },
     "lint:eslint": {
       "name": "lint:eslint",
-      "command": "yarn lint:eslint",
-      "runAtStart": false
+      "command": "yarn lint:eslint"
     },
     "subfont": {
       "name": "subfont",
-      "command": "yarn subfont",
-      "runAtStart": false
+      "command": "yarn subfont"
     }
   }
 }
