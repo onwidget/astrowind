@@ -1,0 +1,43 @@
+---
+import { getPicture } from '@astrojs/image';
+
+const {
+	src,
+	alt,
+	sizes,
+	widths,
+	aspectRatio = 1,
+	formats = ['avif', 'webp'],
+	loading = 'lazy',
+	decoding = 'async',
+	class: className = '',
+	...attrs
+} = Astro.props;
+
+let picture = null;
+try {
+	picture =
+		src &&
+		(await getPicture({
+			src,
+			widths,
+			formats,
+			aspectRatio,
+		}));
+} catch (e) {
+	// continue regardless of error
+}
+
+const { image = {}, sources = [] } = picture || {};
+---
+
+{
+	src && image?.src && (
+		<picture {...attrs}>
+			{sources.map((attrs) => (
+				<source {...attrs} sizes={sizes} />
+			))}
+			<img {...image} {loading} {decoding} {alt} class={className} />
+		</picture>
+	)
+}

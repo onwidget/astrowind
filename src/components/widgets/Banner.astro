@@ -1,0 +1,113 @@
+---
+import BearLink from 'src/components/widgets/BearLink.astro';
+---
+
+<div class="banner">
+	<img
+		class="cover"
+		src="https://raw.githubusercontent.com/BioinformaticOpenDays/bods-website-2023/main/src/assets/images/HEADER_BOD_2024.png"
+		alt="Bioinformatics Open Days"
+	/>
+	<div class="banner-content text-center">
+		<!-- <img class="logo" src="https://raw.githubusercontent.com/BioinformaticOpenDays/bods-website-2023/main/src/assets/images/logowebsitehorizontalpreto24.png" alt="JSHeroes" /> -->
+		<h1 class="dark:text-white text-4xl md:text-[3.50rem] tracking-tighter mb-4 font-bold leading-tighter font-heading">
+			Bioinformatics
+			<span
+				class="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500 sm:whitespace-nowrap"
+				>Open Days</span
+			>
+		</h1>
+		<div>
+			<h2 class="text-3xl">
+				<strong>XIV</strong> Edition
+			</h2>
+		</div>
+		<div class="date">
+			<h3 class="dark:text-white text-3xl font-bold leading-tighter font-heading">26-28 March 2025</h3>
+			<span class="bear-anchor">
+				<BearLink animation="scale" />-
+			</span>
+		</div>
+		<div><h4 class="text-xl text-center">University of Minho <br />Gualtar Campus, Braga, Portugal</h4></div>
+
+		<style>
+			.banner {
+				background-color: var(--color-primary);
+				height: 550px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: relative;
+			}
+			.cover {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
+			@media screen and (max-width: 756px) {
+				.banner {
+					height: 400px;
+				}
+			}
+			.banner-content {
+				color: white;
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+				gap: 1rem;
+				font-family: var(--font-family-display);
+				position: absolute;
+			}
+			.banner-content p {
+				margin: 0;
+			}
+			.logo {
+				aspect-ratio: 300/53;
+				width: clamp(10rem, 30vw, 18rem);
+			}
+			.date {
+				border: 2px solid white;
+				border-radius: 1rem;
+				padding: 0.5rem;
+				font-size: var(--font-size-lg);
+				font-weight: 500;
+			}
+			.highlight {
+				font-size: 1.2em;
+			}
+			@keyframes float {
+				from {
+					transform: translateX(0, 0) scale(1) rotate(0);
+				}
+				to {
+					transform: translate(120px, -30px) scale(0.8) rotate(45deg);
+				}
+			}
+			.bear-anchor {
+				position: absolute;
+				z-index: 1;
+				bottom: -240px;
+				right: -200px;
+				animation: 30s infinite alternate float;
+				animation-timing-function: linear;
+			}
+			@media screen and (max-width: 1000px) {
+				.bear-anchor {
+					animation: none;
+				}
+			}
+			@media screen and (max-width: 756px) {
+				.bear-anchor {
+					bottom: -140px;
+					right: -100px;
+				}
+			}
+			@media screen and (max-width: 432px) {
+				.bear-anchor {
+					bottom: -140px;
+					right: 0;
+				}
+			}
+		</style>
+	</div>
+</div>

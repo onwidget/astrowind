@@ -1,52 +1,41 @@
 ---
-import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
+import { SITE, BLOG } from '~/config.mjs';
 
-import Layout from '~/layouts/PageLayout.astro';
+import Layout from '~/layouts/BlogLayout.astro';
 import BlogList from '~/components/blog/List.astro';
-import Headline from '~/components/blog/Headline.astro';
-import Pagination from '~/components/blog/Pagination.astro';
-// import PostTags from "~/components/blog/Tags.astro";
+import Pagination from '~/components/atoms/Pagination.astro';
 
-import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
+import { fetchPosts } from '~/utils/posts';
+import { getCanonical, getPermalink, BLOG_BASE } from '~/utils/permalinks';
 
-export const prerender = true;
+export async function getStaticPaths({ paginate }) {
+	if (BLOG?.disabled || BLOG?.blog?.disabled) return [];
 
-export const getStaticPaths = (async ({ paginate }) => {
-  return await getStaticPathsBlogList({ paginate });
-}) satisfies GetStaticPaths;
+	const posts = await fetchPosts();
 
-type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+	return paginate(posts, {
+		params: { blog: BLOG_BASE || undefined },
+		pageSize: BLOG.postsPerPage,
+	});
+}
 
-const { page } = Astro.props as Props;
+const { page } = Astro.props;
 const currentPage = page.currentPage ?? 1;
 
-// const allCategories = await findCategories();
-// const allTags = await findTags();
-
-const metadata = {
-  title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
-  robots: {
-    index: blogListRobots?.index && currentPage === 1,
-    follow: blogListRobots?.follow,
-  },
-  openGraph: {
-    type: 'blog',
-  },
+const meta = {
+	title: `Blog ${currentPage > 1 ? `— Page ${currentPage} ` : ''}— ${SITE.name}`,
+	description: SITE.description,
+	canonical: getCanonical(getPermalink(BLOG?.blog?.pathname)),
+	ogType: 'blog',
+	noindex: currentPage > 1,
 };
 ---
 
-<Layout metadata={metadata}>
-  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-    <Headline
-      subtitle="A statically generated blog example with news, tutorials, resources and other interesting content related to AstroWind"
-    >
-      The Blog
-    </Headline>
-    <BlogList posts={page.data} />
-    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-    <!--
-      <PostTags tags={allCategories} class="mb-2" title="Search by Categories:" isCategory />
-      <PostTags tags={allTags}  title="Search by Tags:" />
-    -->
-  </section>
+<Layout {meta}>
+	<Fragment slot="title">
+		News and step-by-step guides about
+		<span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500">AstroWind</span>
+	</Fragment>
+	<BlogList posts={page.data} />
+	<Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
 </Layout>

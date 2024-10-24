@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon';
+---
+
+<section id="completeschedule" class="dark:bg-neutral-900">
+    <div class="md:py-16 sm:px-4 mx-auto md:px-6 lg:px-8 lg:py-20 max-w-6xl">
+        <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+            <h2 class="text-3xl lg:text-4xl font-bold  md:text-4xl md:leading-tight dark:text-white">Conference Book</h2>
+            <p class="mt-6 text-neutral-600 dark:text-neutral-400">
+                We are thrilled to be a platform for knowledge sharing and community building
+                within the Bioinformatics field. We hope that this year's event will provide a great
+                experience for everyone and help advance the future of Bioinformatics, both
+                nationally and internationally.
+            </p>
+            <div class="mt-6 flex justify-center"> <!-- Use flex to align buttons side by side -->
+                <div class="mr-4"> <!-- Container for the first button -->
+                    <a
+                        class="btn bg-primary-600"
+                        href="https://github.com/BioinformaticOpenDays/bods-website-2023/raw/main/public/BOD_Conference_Book.pdf"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <Icon name="tabler:file-download" class="w-5 h-5 mr-1 -ml-1.5" /> Conference Book
+                    </a>
+                </div>
+                <div> <!-- Container for the second button -->
+                    <a
+                        class="btn bg-primary-600"
+                        href="https://github.com/BioinformaticOpenDays/bods-website-2023/raw/main/public/BOD_Abstract_Book.pdf"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <Icon name="tabler:file-download" class="w-5 h-5 mr-1 -ml-1.5" /> Abstract Book
+                    </a>
+                </div>
+            </div>
+            <div class="my-16">
+                <p class="mt-1 text-neutral-600 dark:text-neutral-400">
+                    Thank you for your participation and enthusiasm, and we look forward to seeing you
+                    at the XIII Edition of the Bioinformatics Open Days.
+                </p>
+                <p class="mt-1 text-neutral-600 dark:text-neutral-400">
+                    Kind regards, <br>The Organizing Committee of BOD 2024</p>
+            </div>
+        </div>
+    </div>
+</section>

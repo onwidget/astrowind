@@ -1,0 +1,91 @@
+---
+import { Icon } from 'astro-icon';
+
+const items = [
+	{
+		title: 'Location',
+		description: 'Held in Braga, at the University of Minho - Campus of Gualtar.',
+		icon: 'emojione-v1:globe-showing-europe-africa',
+		link: '/location',
+	},
+	{
+		title: 'Stay',
+		description: 'Find some of the best stays in Braga, with options for every budget.',
+		icon: 'emojione-v1:hotel',
+		link: '/stays',
+	},
+	{
+		title: 'Transportation',
+		description: 'Learn about the best travel options to get here with no hiccups.',
+		icon: 'emojione-v1:bullet-train',
+		// 'icon-park:acceleration',
+		link: '/transportation',
+	},
+];
+---
+
+<section id="schedule" class="dark:bg-neutral-900">
+	<div class="max-w-6xl mx-auto px-4 sm:px-6 overflow-hidden">
+		<div class="py-6 md:py-6">
+			<div class="py-4 sm:py-6 lg:py-8">
+				<div class="flex flex-wrap md:-mx-8">
+					<div class="w-full lg:w-1/2 px-0 sm:px-8">
+						<div class="lg:mb-0 lg:pb-0 border-b lg:border-b-0">
+							<h2 class="mb-4 text-3xl lg:text-4xl font-bold font-heading dark:text-white">Schedule</h2>
+
+							<p class="mb-8 text-xl text-neutral-600 dark:text-neutral-400">
+								Join us at BOD 2023 for three days of knowledge sharing, innovation and networking in the dynamic field of Bioinformatics.
+							</p>
+
+							<div class="w-full">
+								<a
+									class="btn text-white bg-primary-600 hover:bg-primary-800 mb-4 sm:mb-0"
+									href="/schedule"
+									target="_blank"
+									rel="noopener"
+								>
+									Schedule
+								</a>
+							</div>
+							
+						</div>
+						
+					</div>
+					<div class="w-full lg:w-1/2 px-0 sm:px-8">
+						<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-2 items-start dark:text-white">
+							<a class="dark:text-neutral-200" href="/schedule">
+								<div class="relative flex flex-col p-6 bg-primary-400 dark:bg-neutral-900 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-neutral-800">
+									<div class="flex items-center mb-4">
+										<Icon name="emojione-v1:speaking-head" class="w-12 h-12" />
+	
+										<div class="ml-4 text-xl font-bold">Presentations</div>
+									</div>
+								</div>
+							</a>
+							<a class="dark:text-neutral-200" href="/schedule">
+								<div class="relative flex flex-col p-6 bg-primary-300 dark:bg-neutral-900 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-neutral-800">
+									<div class="flex items-center mb-4">
+										<Icon name="emojione-v1:briefcase" class="w-12 h-12" />
+	
+										<div class="ml-4 text-xl font-bold">Companies</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="my-12 dark:text-white">
+							<a class="dark:text-neutral-200" href="/schedule">
+								<div class="relative flex flex-col p-6 bg-primary-500 dark:bg-neutral-900 rounded shadow-xl hover:shadow-lg transition dark:border dark:border-neutral-800">
+									<div class="flex items-center mb-4">
+										<Icon name="emojione-v1:three-networked-computers" class="w-12 h-12" />
+	
+										<div class="ml-4 text-xl font-bold">Workshops</div>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

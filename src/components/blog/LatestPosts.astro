@@ -1,0 +1,24 @@
+---
+import Grid from '~/components/blog/Grid.astro';
+
+import { findLatestPosts } from '~/utils/posts';
+
+const count = 4;
+const posts = await findLatestPosts({ count });
+---
+
+<section class="px-4 py-16 mx-auto max-w-6xl lg:py-20">
+	<div class="flex flex-col mb-6 lg:justify-between lg:flex-row md:mb-8">
+		<h2 class="max-w-lg mb-2 text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none lg:mb-5 group font-heading">
+			<span class="inline-block mb-1 sm:mb-4">Latest articles<br class="hidden md:block" /> in our Blog</span>
+		</h2>
+
+		<p class="text-gray-700 dark:text-slate-400 lg:text-sm lg:max-w-md">
+			The blog will be used to display AstroWind documentation. Each new article will be an important step that you will
+			need to know to be an expert in creating a website using Astro + Tailwind CSS The blog does not exist yet, but
+			very soon. Astro is a very interesting technology. Thanks.
+		</p>
+	</div>
+
+	<Grid posts={posts} />
+</section>

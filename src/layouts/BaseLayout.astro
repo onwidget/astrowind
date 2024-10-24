@@ -1,0 +1,25 @@
+---
+import '~/assets/styles/base.css';
+
+import MetaTags from '~/components/core/MetaTags.astro';
+import BasicScripts from '~/components/core/BasicScripts.astro';
+
+const { meta = {} } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="motion-safe:scroll-smooth 2xl:text-[20px]">
+	<head>
+		<MetaTags {...meta} />
+	</head>
+
+	<body class="antialiased dark:bg-slate-900 text-gray-900 dark:text-slate-300 tracking-tight bg-white ">
+		<slot />
+		<BasicScripts />
+		<style is:global>
+			img {
+				content-visibility: auto;
+			}
+		</style>
+	</body>
+</html>

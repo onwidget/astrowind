@@ -1,12 +1,11 @@
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
-    "strictNullChecks": true,
+    "types": ["astro/client"],
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"]
     }
-  },
-  "exclude": ["dist/"]
+  }
 }

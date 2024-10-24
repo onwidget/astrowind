@@ -1,0 +1,93 @@
+---
+---
+
+<script is:inline>
+	// Set "light" theme as default
+	// if (!localStorage.theme) {
+	//   localStorage.theme = "dark";
+	// }
+
+	if (
+		localStorage.theme === 'dark' ||
+		(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+	) {
+		document.documentElement.classList.add('dark');
+	} else {
+		document.documentElement.classList.remove('dark');
+	}
+
+	function attachEvent(selector, event, fn) {
+		const matches = document.querySelectorAll(selector);
+		if (matches && matches.length) {
+			matches.forEach((elem) => {
+				elem.addEventListener(event, () => fn(elem), false);
+			});
+		}
+	}
+
+	window.onload = function () {
+		attachEvent('[data-aw-toggle-menu]', 'click', function (elem) {
+			elem.classList.toggle('expanded');
+			document.body.classList.toggle('overflow-hidden');
+			document.getElementById('header')?.classList.toggle('h-screen');
+			document.querySelector('#header nav')?.classList.toggle('hidden');
+		});
+
+		attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
+			document.documentElement.classList.toggle('dark');
+			localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+		});
+
+		attachEvent('[data-aw-social-share]', 'click', function (elem) {
+			const network = elem.getAttribute('data-aw-social-share');
+			const url = encodeURIComponent(elem.getAttribute('data-aw-url'));
+			const text = encodeURIComponent(elem.getAttribute('data-aw-text'));
+
+			let href;
+			switch (network) {
+				case 'facebook':
+					href = `https://www.facebook.com/sharer.php?u=${url}`;
+					break;
+				case 'twitter':
+					href = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+					break;
+				case 'linkedin':
+					href = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${text}`;
+					break;
+				case 'whatsapp':
+					href = `https://wa.me/?text=${text}%20${url}`;
+					break;
+				case 'mail':
+					href = `mailto:?subject=%22${text}%22&body=${text}%20${url}`;
+					break;
+
+				default:
+					return;
+			}
+
+			const newlink = document.createElement('a');
+			newlink.target = '_blank';
+			newlink.href = href;
+			newlink.click();
+		});
+	};
+	window.onpageshow = function () {
+		const elem = document.querySelector('[data-aw-toggle-menu]');
+		if (elem) {
+			elem.classList.remove('expanded');
+		}
+		document.body.classList.remove('overflow-hidden');
+		document.getElementById('header')?.classList.remove('h-screen');
+		document.querySelector('#header nav')?.classList.add('hidden');
+	};
+</script>
+
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '226104');
+</script>
+<!-- End MailerLite Universal -->

@@ -1,0 +1,82 @@
+---
+import { AstroSeo } from '@astrolib/seo';
+import { GoogleAnalytics } from '@astrolib/analytics';
+import { getImage } from '@astrojs/image';
+import { getRelativeUrlByFilePath } from '~/utils/directories';
+
+import defaultImageSrc from '~/assets/images/defaultbod.png';
+
+import { SITE } from '~/config.mjs';
+import Fonts from '../atoms/Fonts.astro';
+import ExtraMetaTags from '../atoms/ExtraMetaTags.astro';
+import SplitbeeAnalytics from './SplitbeeAnalytics.astro';
+
+const { src: defaultImage } = await getImage({
+	src: defaultImageSrc,
+	width: 1200,
+	height: 628,
+});
+
+const {
+	title = SITE.name,
+	description = '',
+	image: _image = defaultImage,
+
+	canonical,
+	noindex = false,
+	nofollow = false,
+
+	ogTitle = title,
+	ogType = 'website',
+} = Astro.props;
+
+const image =
+	typeof _image === 'string'
+		? new URL(_image, Astro.site)
+		: _image && typeof _image['src'] !== 'undefined'
+		? new URL(getRelativeUrlByFilePath(_image.src), Astro.site)
+		: null;
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<AstroSeo
+	title={title}
+	description={description}
+	canonical={canonical}
+	noindex={noindex}
+	nofollow={nofollow}
+	openGraph={{
+		url: canonical,
+		title: ogTitle,
+		description: description,
+		type: ogType,
+		images: image
+			? [
+					{
+						url: image.toString(),
+						alt: ogTitle,
+					},
+			  ]
+			: undefined,
+		// site_name: 'SiteName',
+	}}
+	twitter={{
+		// handle: '@handle',
+		// site: '@site',
+		cardType: image ? 'summary_large_image' : undefined,
+	}}
+/>
+
+<Fonts />
+
+<!-- Google Site Verification -->
+{SITE.googleSiteVerificationId && <meta name="google-site-verification" content={SITE.googleSiteVerificationId} />}
+
+<!-- Google Analytics -->
+{SITE.googleAnalyticsId && <GoogleAnalytics id={String(SITE.googleAnalyticsId)} partytown={true} />}
+
+{SITE.splitbeeAnalytics?.enabled && <SplitbeeAnalytics {...SITE.splitbeeAnalytics} />}
+
+<ExtraMetaTags />
