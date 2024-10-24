@@ -1,5 +1,4 @@
 import { TrieveModalSearch } from 'trieve-search-component';
-import 'trieve-search-component/dist/index.css';
 
 const SearchComponentSmall = () => {
   return (

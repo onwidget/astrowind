@@ -28,10 +28,11 @@ export const headerData = {
     { text: 'Login', href: 'https://dashboard.trieve.ai', target: '_blank', variant: 'link' },
     {
       text: 'Get a demo',
-      href: 'https://cal.com/nick.k',
-      target: '_blank',
       variant: 'secondary',
       className: 'hidden xl:inline-block',
+      'data-cal-link': 'nick.k/meet',
+      'data-cal-namespace': 'meet',
+      'data-cal-config': '{"layout":"month_view"}',
     },
     { text: 'Sign up', href: 'https://dashboard.trieve.ai', target: '_blank', variant: 'primary' },
   ],

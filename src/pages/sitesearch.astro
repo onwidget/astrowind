@@ -5,7 +5,7 @@ import Features from '~/components/widgets/Features.astro';
 import Headline from '~/components/blog/Headline.astro';
 import UsageTabs from '~/components/widgets/UsageTabs.jsx';
 import SearchComponent from '~/components/widgets/Search.jsx';
-import Tags from '~/components/widgets/Tabs.astro';
+import Tabs from '~/components/widgets/Tabs.astro';
 
 const metadata = {
   title: 'Trieve Sitesearch',
@@ -204,7 +204,9 @@ const features = [
         placeholder="Link to your site or documentation"
         class="w-3/4 dark:bg-zinc-900 !rounded-l-lg px-2 py-3 border border-gray-500 focus:ring-0 focus:outline-none focus:border-magenta-500"
       />
-      <button type="submit" class="w-1/4 !rounded-r-lg text-xs sm:text-sm md:text-lg btn-primary !rounded-l-none"> Get a Free Demo </button>
+      <button type="submit" class="w-1/4 !rounded-r-lg text-xs sm:text-sm md:text-lg btn-primary !rounded-l-none">
+        Get a Free Demo
+      </button>
     </div>
     <div class="hidden sm:flex justify-end xl:px-0 px-4">
       <p class="text-xs text-gray-500 dark:text-gray-300 w-1/4 text-center">Custom on your content</p>
@@ -212,7 +214,7 @@ const features = [
   </form>
 
   <div class="mt-24">
-    <Tags tabs={tabs} />
+    <Tabs tabs={tabs} />
   </div>
 
   <Features id="features" title="Why our component?" items={features} />
