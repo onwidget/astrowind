@@ -1,45 +1,45 @@
 ---
 export interface Props {
-  rotate?: number;
-  animation?: "scale" | "scaleAndSlide";
+	rotate?: number;
+	animation?: 'scale' | 'scaleAndSlide';
 }
 const { animation, rotate } = Astro.props as Props;
 ---
 
 <a
-  class="bear-link"
-  data-animation={animation}
-  href="https://photos.app.goo.gl/XFxpxeHHaBBKkhKJ7"
-  target="_blank"
-  title="Read more about BOD"
-  ><img
-    class="bear"
-    style={rotate ? { transform: `rotate(${rotate}deg` } : {}}
-    src="https://raw.githubusercontent.com/BioinformaticOpenDays/bods-website-2023/a2cd6034f7cd2500b4c26f24360b9d42494bf179/src/assets/images/Favico_BioStar24_certo.svg"
-    alt="BOD symbol"
-  />
+	class="bear-link"
+	data-animation={animation}
+	href="https://photos.app.goo.gl/XFxpxeHHaBBKkhKJ7"
+	target="_blank"
+	title="Read more about BOD"
+	><img
+		class="bear"
+		style={rotate ? { transform: `rotate(${rotate}deg` } : {}}
+		src="https://raw.githubusercontent.com/BioinformaticOpenDays/bods-website-2023/a2cd6034f7cd2500b4c26f24360b9d42494bf179/src/assets/images/Favico_BioStar24_certo.svg"
+		alt="BOD symbol"
+	/>
 </a>
 
 <style>
-  .bear-link {
-    display: block;
-    transition: transform var(--speed-move) ease-out;
-  }
-  .bear-link::after {
-    display: none;
-  }
-  .bear-link[data-animation="scale"]:hover {
-    transform: scale(1.1);
-  }
-  .bear-link[data-animation="scaleAndSlide"]:hover {
-    transform: translateX(20px) scale(1.05);
-  }
-  .bear {
-    width: 11rem;
-  }
-  @media screen and (max-width: 756px) {
-    .bear {
-      width: 6rem;
-    }
-  }
+	.bear-link {
+		display: block;
+		transition: transform var(--speed-move) ease-out;
+	}
+	.bear-link::after {
+		display: none;
+	}
+	.bear-link[data-animation='scale']:hover {
+		transform: scale(1.1);
+	}
+	.bear-link[data-animation='scaleAndSlide']:hover {
+		transform: translateX(20px) scale(1.05);
+	}
+	.bear {
+		width: 11rem;
+	}
+	@media screen and (max-width: 756px) {
+		.bear {
+			width: 6rem;
+		}
+	}
 </style>
