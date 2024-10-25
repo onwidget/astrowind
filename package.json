@@ -1,7 +1,7 @@
 {
-  "name": "@onwidget/astrowind",
-  "version": "1.0.0-beta.48",
-  "description": "AstroWind: A free template using Astro 4.0 and Tailwind CSS. Astro starter theme.",
+  "name": "themasclinic",
+  "version": "0.0.1",
+  "description": "The Mas Clinic is an online Men's Clinicins",
   "type": "module",
   "private": true,
   "engines": {
@@ -22,12 +22,12 @@
     "fix:prettier": "prettier -w ."
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.8",
-    "@astrojs/sitemap": "^3.2.0",
+    "@astrojs/rss": "^4.0.9",
+    "@astrojs/sitemap": "^3.2.1",
     "@astrolib/analytics": "^0.6.1",
     "@astrolib/seo": "^1.0.0-beta.8",
     "@fontsource-variable/inter": "^5.1.0",
-    "astro": "^4.16.2",
+    "astro": "^4.16.7",
     "astro-embed": "^0.7.4",
     "astro-icon": "^1.1.1",
     "limax": "4.1.0",
