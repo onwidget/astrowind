@@ -4,7 +4,7 @@ import { getAsset } from '~/utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Documentation',
+      text: 'API Documentation',
       href: 'https://docs.trieve.ai',
     },
     {

@@ -15,6 +15,7 @@ const SearchComponent = () => {
             'Does Trieve use a re-ranker?',
           ]}
           brandLogoImgSrcUrl="https://cdn.trieve.ai/trieve-logo.png"
+          problemLink='mailto:help@trieve.ai?subject='
           brandName="Trieve"
           brandColor="#b557c5"
           tags={[

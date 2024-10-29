@@ -11,6 +11,10 @@ const SearchComponentSmall = () => {
       brandLogoImgSrcUrl="https://cdn.trieve.ai/trieve-logo.png"
       brandName="Trieve"
       brandColor="#b557c5"
+      problemLink='mailto:help@trieve.ai?subject='
+      searchOptions={{
+        use_autocomplete: false,
+      }}
       tags={[
         {
           key: 'openapi-route',

@@ -3837,11 +3837,6 @@ mdast-util-gfm-task-list-item@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/mdast-util-gfm-task-list-item/-/mdast-util-gfm-task-list-item-2.0.0.tgz#e68095d2f8a4303ef24094ab642e1047b991a936"
   integrity sha512-IrtvNvjxC1o06taBAVJznEnkiHxLFTzgonUdy8hzFVeDun0uTjxxrRGVaNFqkU1wJR3RBPEfsxmU6jDWPofrTQ==
-  dependencies:
-    "@types/mdast" "^4.0.0"
-    devlop "^1.0.0"
-    mdast-util-from-markdown "^2.0.0"
-    mdast-util-to-markdown "^2.0.0"
 
 mdast-util-gfm@^3.0.0:
   version "3.0.0"
@@ -5725,10 +5720,10 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-trieve-search-component@^0.0.52:
-  version "0.0.52"
-  resolved "https://registry.yarnpkg.com/trieve-search-component/-/trieve-search-component-0.0.52.tgz#ccfa782e69adbc15a3d12384a7b5e7d7ec89e3a3"
-  integrity sha512-fp64xiP7VsI7DjHRIcmjNHX+ND49xDxU6aaWuzuJwuc03PIqVNmCk5iK40sWbAgUoI15o0pcNdGlcS/ktH/j1w==
+trieve-search-component@^0.0.57:
+  version "0.0.57"
+  resolved "https://registry.yarnpkg.com/trieve-search-component/-/trieve-search-component-0.0.57.tgz#981f0505f125fd7953d66092bb2d6583619f17c3"
+  integrity sha512-44uEQDJ3wwWfvdCJnvM6qG+aQ13xrW8mWnwKjGdFQrldXAhm5LLoqgVGcRsssNiL7Qc2d2/2fx9tRAg1fYUDSA==
   dependencies:
     "@r2wc/react-to-web-component" "^2.0.3"
     "@thumbmarkjs/thumbmarkjs" "^0.14.8"

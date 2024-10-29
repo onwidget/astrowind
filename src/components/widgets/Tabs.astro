@@ -1,11 +1,12 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-interface TabOption {
+export interface TabOption {
   iconName: string;
   text: string;
   darkImage?: string;
   lightImage?: string;
+  link?: string;
 }
 
 const { tabs = [] } = Astro.props;
@@ -26,14 +27,14 @@ const { tabs = [] } = Astro.props;
       activeTab.classList.remove('active');
       tabs[(activeTabIndex + 1) % tabs.length].classList.add('active');
 
-      const previews = document.querySelectorAll('span[id^="tabpreview"]');
+      const previews = document.querySelectorAll('[id^="tabpreview"]');
       previews.forEach((preview) => {
         preview.classList.remove('block');
         preview.classList.add('hidden');
       });
       previews[(activeTabIndex + 1) % tabs.length].classList.add('block');
       previews[(activeTabIndex + 1) % tabs.length].classList.remove('hidden');
-    }, 10000);
+    }, 7500);
 
   let clearActiveTimeout = startActiveTimeout();
 
@@ -48,7 +49,7 @@ const { tabs = [] } = Astro.props;
       tab.classList.add('active');
 
       const tabId = tab.id.split('-')[1];
-      document.querySelectorAll('span[id^="tabpreview"]').forEach((preview) => {
+      document.querySelectorAll('[id^="tabpreview"]').forEach((preview) => {
         if (preview.id.split('-')[1] === tabId) {
           preview.classList.add('block');
           preview.classList.remove('hidden');
@@ -66,12 +67,12 @@ const { tabs = [] } = Astro.props;
 
 <div>
   <tabs
-    class="w-full max-w-7xl justify-center flex items-center mx-auto space-x-4 md:space-x-10 text-gray-400 font-semibold"
+    class="w-full max-w-7xl justify-center flex flex-wrap gap-y-4 items-center mx-auto space-x-2 sm:space-x-4 md:space-x-10 text-gray-400 font-semibold"
   >
     {
       tabs.map((tab: TabOption, index: number) => (
         <tab id={`tab-${tab.text}`} class={`${index === 0 ? 'active' : ''}`}>
-          <button id={`tabbutton-${tab.text}`} class="flex items center">
+          <button id={`tabbutton-${tab.text}`} class="flex items-center">
             <Icon class="w-6 h-6 mr-2" name={tab.iconName} aria-hidden="true" />
             <span>{tab.text}</span>
           </button>
@@ -81,12 +82,24 @@ const { tabs = [] } = Astro.props;
   </tabs>
   <div class="w-full max-w-7xl mx-auto mt-4 2xl:px-0 px-4">
     {
-      tabs.map((tab: TabOption, index: number) => (
-        <span id={`tabpreview-${tab.text}`} class={`${index === 0 ? 'block' : 'hidden'}`}>
-          <img src={tab.darkImage} alt={tab.text} class="hidden dark:inline rounded-xl" />
-          <img src={tab.lightImage} alt={tab.text} class="inline dark:hidden rounded-xl" />
-        </span>
-      ))
+      tabs.map((tab: TabOption, index: number) =>
+        tab.link ? (
+          <a
+            href={tab.link}
+            target="_blank"
+            id={`tabpreview-${tab.text}`}
+            class={`${index === 0 ? 'block' : 'hidden'}`}
+          >
+            <img src={tab.darkImage} alt={tab.text} class="hidden dark:inline rounded-xl" />
+            <img src={tab.lightImage} alt={tab.text} class="inline dark:hidden rounded-xl" />
+          </a>
+        ) : (
+          <span id={`tabpreview-${tab.text}`} class={`${index === 0 ? 'block' : 'hidden'}`}>
+            <img src={tab.darkImage} alt={tab.text} class="hidden dark:inline rounded-xl" />
+            <img src={tab.lightImage} alt={tab.text} class="inline dark:hidden rounded-xl" />
+          </span>
+        )
+      )
     }
   </div>
 </div>

@@ -2,6 +2,8 @@
 import Image from '~/components/common/Image.astro';
 import Button from '~/components/ui/Button.astro';
 import type { CallToAction } from '~/types';
+import type { TabOption } from './Tabs.astro';
+import Tabs from './Tabs.astro';
 
 export interface Props {
   id?: string;
@@ -11,6 +13,7 @@ export interface Props {
   content?: string;
   actions?: string | CallToAction[];
   image?: string | any; // TODO: find HTMLElementProps
+  tabs?: TabOption[];
 }
 
 const {
@@ -21,12 +24,13 @@ const {
   content = await Astro.slots.render('content'),
   actions = await Astro.slots.render('actions'),
   image = await Astro.slots.render('image'),
+  tabs,
 } = Astro.props;
 ---
 
 <section class="not-prose" {...id ? { id } : {}}>
   <div class="max-w-7xl mx-auto px-4 sm:px-0">
-    <div class="py-12 md:py-20">
+    <div class="py-6 md:py-12">
       <div class="text-center pb-10 md:pb-16 max-w-5xl mx-auto">
         {
           tagline && (
@@ -84,6 +88,7 @@ const {
             </div>
           )
         }
+        {tabs && tabs.length && <Tabs tabs={tabs} />}
       </div>
     </div>
   </div>
