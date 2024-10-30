@@ -111,3 +111,8 @@ tab {
 #request-demo-form > div > input {
   @apply focus:ring-0 focus:outline-none focus:border-magenta-500;
 }
+
+body #trieve-search-modal {
+  top: 40vh;
+  max-width: 650px;
+}
