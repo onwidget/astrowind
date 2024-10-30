@@ -1,0 +1,155 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Tabs from '~/components/widgets/Tabs.astro';
+
+const metadata = {
+  title: 'Trieve  - See it for Free',
+};
+
+const tabs = [
+  {
+    iconName: 'tabler:search',
+    text: 'Search',
+    darkImage: 'https://cdn.trieve.ai/landing-tabs/dark-mode-docsearch.webp',
+    lightImage: 'https://cdn.trieve.ai/landing-tabs/light-mode-docsearch.webp',
+    link: 'https://trieve.ai/request-demo',
+  },
+  {
+    iconName: 'tabler:sparkles',
+    text: 'AI Chat',
+    darkImage: 'https://cdn.trieve.ai/landing-tabs/dark-mode-aichat.webp',
+    lightImage: 'https://cdn.trieve.ai/landing-tabs/light-mode-aichat.webp',
+    link: 'https://trieve.ai/request-demo',
+  },
+  {
+    iconName: 'tabler:chart-bar',
+    text: 'Analytics',
+    darkImage: 'https://cdn.trieve.ai/landing-tabs/hn-search-analytics.webp',
+    lightImage: 'https://cdn.trieve.ai/landing-tabs/hn-search-analytics.webp',
+    link: 'https://trieve.ai/request-demo',
+  },
+];
+---
+
+<script>
+  const searchParams = new URLSearchParams(window.location.search);
+  const name = searchParams.get('name');
+  const email = searchParams.get('email');
+  const link = searchParams.get('link');
+  const usecase = searchParams.get('usecase');
+
+  if (name) {
+    const input = document.querySelector('input[name="name"]') as HTMLInputElement;
+    if (input) {
+      input.value = name;
+    }
+  }
+
+  if (email) {
+    const input = document.querySelector('input[name="email"]') as HTMLInputElement;
+    if (input) {
+      input.value = email;
+    }
+  }
+
+  if (link) {
+    const input = document.querySelector('input[name="link"]') as HTMLInputElement;
+    if (input) {
+      input.value = link;
+    }
+  }
+
+  if (usecase) {
+    const input = document.querySelector('textarea[name="usecase"]') as HTMLTextAreaElement;
+    if (input) {
+      input.value = usecase;
+    }
+  }
+
+  // custom form submission handler with application/json content type on a fetch request to https://docsearch.trieve.ai/submit
+  const form = document.getElementById('request-demo-form') as HTMLFormElement;
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const body = Object.fromEntries(formData.entries());
+    fetch('https://docsearch.trieve.ai/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    }).then((response) => {
+      if (response.ok) {
+        // form.innerHTML = '<p class="text-green-500">Request received! We will get back to you soon.</p>';
+        for (const input of form.querySelectorAll('input, textarea')) {
+          (input as HTMLInputElement).value = '';
+        }
+        // append a success message as a p to the top of the form
+        const successMessage = form.appendChild(document.createElement('p'));
+        successMessage.className = 'dark:text-green-400 text-green-700';
+        successMessage.textContent = 'Request received! We will get back to you soon.';
+      } else {
+        form.innerHTML = '<p class="text-red-500">Something went wrong. Please try again later.</p>';
+      }
+    });
+  });
+</script>
+
+<Layout metadata={metadata}>
+  <HeroText
+    title="See it for your use-case"
+    subtitle="Share a link to your content and we'll create a free custom demo and send it to you. 24 hour turnaround."
+  />
+
+  <form
+    class="max-w-7xl mx-auto 2xl:px-0 px-4 w-full gap-y-4 flex flex-col"
+    name="request-demo"
+    method="POST"
+    id="request-demo-form"
+  >
+    <div class="!rounded-lg w-full flex flex-col gap-y-1">
+      <label for="name" class="text-sm font-bold text-gray-700 dark:text-gray-300">Name*</label>
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        class="!rounded-lg w-full dark:bg-zinc-900 px-2 py-2.5 text-base border border-gray-500 focus:ring-0 focus:outline-none focus:border-magenta-500"
+        required
+      />
+    </div>
+    <div class="!rounded-lg w-full flex flex-col gap-y-1">
+      <label for="email" class="text-sm font-bold text-gray-700 dark:text-gray-300">Email*</label>
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        class="!rounded-lg w-full dark:bg-zinc-900 px-2 py-2.5 text-base border border-gray-500 focus:ring-0 focus:outline-none focus:border-magenta-500"
+        required
+      />
+    </div>
+    <div class="!rounded-lg w-full flex flex-col gap-y-1">
+      <label for="link" class="text-sm font-bold text-gray-700 dark:text-gray-300">Link*</label>
+      <input
+        type="text"
+        name="link"
+        placeholder="Link"
+        class="!rounded-lg w-full dark:bg-zinc-900 px-2 py-2.5 text-base border border-gray-500 focus:ring-0 focus:outline-none focus:border-magenta-500"
+        required
+      />
+    </div>
+    <div class="!rounded-lg w-full flex flex-col gap-y-1">
+      <label for="useCase" class="text-sm font-bold text-gray-700 dark:text-gray-300">Use-case</label>
+      <textarea
+        name="useCase"
+        placeholder="Explain a bit about your use-case (optional)"
+        class="!rounded-lg w-full dark:bg-zinc-900 px-2 py-2.5 text-base border border-gray-500 focus:ring-0 focus:outline-none focus:border-magenta-500"
+        required></textarea>
+    </div>
+    <button type="submit" class="btn-primary w-fit">Request Demo</button>
+  </form>
+
+  <div class="my-24">
+    <Tabs tabs={tabs} />
+  </div>
+</Layout>

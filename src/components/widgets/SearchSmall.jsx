@@ -1,5 +1,4 @@
 import { TrieveModalSearch } from 'trieve-search-component';
-import 'trieve-search-component/dist/index.css';
 
 const SearchComponentSmall = () => {
   return (
@@ -12,8 +11,13 @@ const SearchComponentSmall = () => {
       brandLogoImgSrcUrl="https://cdn.trieve.ai/trieve-logo.png"
       brandName="Trieve"
       brandColor="#b557c5"
+      problemLink='mailto:help@trieve.ai?subject='
+      searchOptions={{
+        use_autocomplete: false,
+      }}
       tags={[
         {
+          key: 'openapi-route',
           tag: 'openapi-route',
           label: 'API Routes',
           icon: () => (
@@ -39,6 +43,7 @@ const SearchComponentSmall = () => {
           ),
         },
         {
+          key: 'blog',
           tag: 'blog',
           label: 'Blog',
           icon: () => (

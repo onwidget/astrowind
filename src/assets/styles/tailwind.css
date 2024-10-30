@@ -103,3 +103,11 @@ tab {
     @apply text-primary border-b border-primary;
   }
 }
+
+#get-demo > div > input {
+  @apply focus:ring-0 focus:outline-none focus:border-magenta-500;
+}
+
+#request-demo-form > div > input {
+  @apply focus:ring-0 focus:outline-none focus:border-magenta-500;
+}

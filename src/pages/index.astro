@@ -12,6 +12,44 @@ const metadata = {
     'AI-First infrastructure API for search, recommendations, and RAG that combines language models with tools for fine tuning ranking and relevance',
   ignoreTitleTemplate: true,
 };
+
+const tabs = [
+  {
+    iconName: 'tabler:search',
+    text: 'Search',
+    darkImage: 'https://cdn.trieve.ai/landing-tabs/dark-mode-docsearch.webp',
+    lightImage: 'https://cdn.trieve.ai/landing-tabs/light-mode-docsearch.webp',
+    link: 'https://trieve.ai/request-demo',
+  },
+  {
+    iconName: 'tabler:sparkles',
+    text: 'AI Chat',
+    darkImage: 'https://cdn.trieve.ai/landing-tabs/dark-mode-aichat.webp',
+    lightImage: 'https://cdn.trieve.ai/landing-tabs/light-mode-aichat.webp',
+    link: 'https://trieve.ai/request-demo',
+  },
+  {
+    iconName: 'tabler:basket',
+    text: 'Recommendations',
+    darkImage: 'https://cdn.trieve.ai/landing-tabs/recommendations.webp',
+    lightImage: 'https://cdn.trieve.ai/landing-tabs/recommendations.webp',
+    link: 'https://trieve.ai/request-demo',
+  },
+  {
+    iconName: 'tabler:chart-bar',
+    text: 'Analytics',
+    darkImage: 'https://cdn.trieve.ai/landing-tabs/hn-search-analytics.webp',
+    lightImage: 'https://cdn.trieve.ai/landing-tabs/hn-search-analytics.webp',
+    link: 'https://trieve.ai/request-demo',
+  },
+  {
+    iconName: 'tabler:code',
+    text: 'API',
+    darkImage: 'https://cdn.trieve.ai/landing-tabs/dark-api.webp',
+    lightImage: 'https://cdn.trieve.ai/landing-tabs/light-api.webp',
+    link: 'https://docs.trieve.ai/api-reference',
+  },
+];
 ---
 
 <meta property="og:title" content="Trieve" />
@@ -37,22 +75,23 @@ const metadata = {
       {
         variant: 'secondary',
         text: 'Talk to a Founder',
-        href: 'https://cal.com/nick.k/meet',
-        target: '_blank',
         icon: 'tabler:calendar',
+        'data-cal-link': 'nick.k/meet',
+        'data-cal-namespace': 'meet',
+        'data-cal-config': '{"layout":"month_view"}',
       },
     ]}
-    image={{ src: 'https://cdn.trieve.ai/dashboard.webp', alt: 'Trieve Dashboard' }}
+    tabs={tabs}
   >
     <Fragment slot="title">
-      Modern API for Search and
-      <span class="highlight"> RAG </span>
+      Make your discovery
+      <span class="highlight"> delightful </span>
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">All-in-one</span> solution for building search, discovery, and RAG combining leading
-        search language models + tools for tuning quality
+        <span class="font-semibold">All-in-one</span> solution for search, recommendations, RAG and analytics. Relevant out
+        of the box with automatic continuous improvement based on dozens of feedback signals.
       </span>
     </Fragment>
   </Hero>
@@ -198,9 +237,10 @@ const metadata = {
       {
         variant: 'secondary',
         text: 'Talk to a Founder',
-        href: 'https://cal.com/nick.k/meet',
-        target: '_blank',
         icon: 'tabler:calendar',
+        'data-cal-link': 'nick.k/meet',
+        'data-cal-namespace': 'meet',
+        'data-cal-config': '{"layout":"month_view"}',
       },
     ]}
   >
