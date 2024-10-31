@@ -38,13 +38,13 @@
   }
 }
 
-#header.scroll > div:first-child {
-  @apply bg-page md:bg-white/90 md:backdrop-blur-md;
+#header > div:first-child {
+  @apply bg-page md:bg-white/90;
   box-shadow: 0 0.375rem 1.5rem 0 rgb(12, 10, 14 / 13%);
 }
-.dark #header.scroll > div:first-child,
-#header.scroll.dark > div:first-child {
-  @apply bg-page md:bg-[#0C0A0Ee6] border-b border-gray-500/20;
+.dark #header > div:first-child,
+#header.dark > div:first-child {
+  @apply bg-page md:bg-[#0C0A0Ee6];
   box-shadow: none;
 }
 
@@ -110,9 +110,4 @@ tab {
 
 #request-demo-form > div > input {
   @apply focus:ring-0 focus:outline-none focus:border-magenta-500;
-}
-
-body #trieve-search-modal {
-  top: 50vh;
-  max-width: 650px;
 }
