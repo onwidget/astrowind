@@ -41,15 +41,12 @@ const _image = await findImage(props.src);
 
 let image: ImageType | undefined = undefined;
 
-if (typeof _image === 'string') {
-  if ((_image.startsWith('http://') || _image.startsWith('https://')) && isUnpicCompatible(_image)) {
-    image = await getImagesOptimized(_image, props, unpicOptimizer);
-  } else {
-    image = {
-      src: _image,
-      attributes: { ...props, src: undefined },
-    };
-  }
+if (
+  typeof _image === 'string' &&
+  (_image.startsWith('http://') || _image.startsWith('https://')) &&
+  isUnpicCompatible(_image)
+) {
+  image = await getImagesOptimized(_image, props, unpicOptimizer);
 } else if (_image) {
   image = await getImagesOptimized(_image, props, astroAsseetsOptimizer);
 }
