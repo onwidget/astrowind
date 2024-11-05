@@ -5725,10 +5725,10 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-trieve-search-component@^0.0.59:
-  version "0.0.59"
-  resolved "https://registry.yarnpkg.com/trieve-search-component/-/trieve-search-component-0.0.59.tgz#81b049f589f6483b415f5f10fe43903ea912c8c6"
-  integrity sha512-a7LMTMvWVYCq5Zr2ie4D40l2f2eQt+Mo0swzA1YIeypmkko6XDAmqkHkm5LRBcBytQXzW/sFYLAjSwjkIb43gg==
+trieve-search-component@^0.0.63:
+  version "0.0.63"
+  resolved "https://registry.yarnpkg.com/trieve-search-component/-/trieve-search-component-0.0.63.tgz#021baeba4455f19120cabed92889077acc8edeb7"
+  integrity sha512-wUdDTw/RWg569JyKXXjdqLJJVPhuPDeVmL8QGitc6hH9hAklgutAC4HJk/kcvxL4g0uWfSe9RiICwrqL3DeifQ==
   dependencies:
     "@r2wc/react-to-web-component" "^2.0.3"
     "@thumbmarkjs/thumbmarkjs" "^0.14.8"
@@ -5736,9 +5736,9 @@ trieve-search-component@^0.0.59:
     trieve-ts-sdk "*"
 
 trieve-ts-sdk@*:
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/trieve-ts-sdk/-/trieve-ts-sdk-0.0.14.tgz#006a604f8de11d9e311077deb77f576250f8aa67"
-  integrity sha512-fAMZPZOPxs+ufuqQnE14dEX3Xd0RDjTBOmDqh7r4KzfHvrbCTiQimwdHgohSqmCT1/12SIqXEDVX1NUJxrNVJw==
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/trieve-ts-sdk/-/trieve-ts-sdk-0.0.15.tgz#299c477227f839988dafa05c10b8e2cf242b7db8"
+  integrity sha512-xvwMytyXLRSy8gW9frdZLx56v1IIjSS2xNxkaU5JHvLHRFw77fUmOaxOLRG+H1opu/jwizkF8NE4DukvL9qlfw==
 
 trim-lines@^3.0.0:
   version "3.0.1"
