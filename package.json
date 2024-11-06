@@ -29,7 +29,7 @@
     "lodash.merge": "^4.6.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "trieve-search-component": "^0.0.63",
+    "trieve-search-component": "^0.0.66",
     "unpic": "^3.17.0"
   },
   "devDependencies": {
