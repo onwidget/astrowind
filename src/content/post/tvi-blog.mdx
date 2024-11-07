@@ -1,0 +1,93 @@
+---
+publishDate: 2024-11-13T22:10:00Z
+author: Federico Chávez Torres
+title: 'Introducing TVI: Embedding and Reranking Infra Built for Kube'
+excerpt: Unmetered In-VPC Embeddings and Rerankers at Ridiculously Low Latency
+image: https://trieve.b-cdn.net/blog/tvi-blog/tvi-blog-graphic.webp
+category: Explainers
+tags:
+  - TVI
+  - self-hosting
+  - AWS
+  - embeddings
+---
+
+import Info from '~/components/common/Info.astro';
+import TextBoxLearnMore from '../../components/common/TextBoxLearnMore.astro';
+import TextBox from '../../components/common/TextBox.astro';
+
+## Introducing Trieve Vector Inference
+
+Trieve Vector Inference (TVI), our solution for fast, unmetered embedding vector inference in your own cloud or on your own hardware, is now generally available as a standalone product!
+
+Building AI features at scale exposes two critical limitations of cloud embedding APIs: high latency and rate limits. Modern AI applications require better infrastructure.
+
+The platform supports any embedding model, whether it's your own custom model, a private model, or popular open-source options. You get the flexibility to choose the right model for your use case while maintaining complete control over your infrastructure.
+
+We put together TVI to eliminate these bottlenecks for our own core product. It's served billions of queries across billions of documents. After requests from others, we've sanded it down, wrote up some docs, and are now making it available for all. You can even get it on [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-kxk2t4nafpmn4?sr=0-1&ref_=beagle&applicationId=AWSMPContessa)!
+
+## So, just how good is TVI?
+
+To start, here are our benchmarks:
+![tvi-benchmarks-docs](https://trieve.b-cdn.net/blog/tvi-blog/tvi-benchmarks-docs.png)
+
+At 1000 RPS, your P99 latency with cloud-based embeddings will range between 23.59 to 27.03 seconds. With Trieve, we're still measuring in milliseconds. It's literally an order of magnitude faster.
+
+Additionally, check out the failed requests. Notice that we ran 30,000 with no failures. Without TVI, you're only making ~7,000. If you're going through Sagemaker, it's around ~3,000.
+
+## TVI is a simple solution that solves two problems 
+
+#### Rate limits
+Rate limits force you to implement complex batching and queueing. Now you're allocating development time on workarounds instead of building core product. This crucial part of your pipeline should not feel like an exercise. We've seen teams build elaborate workarounds:
+
+- Multiple API keys rotated on a schedule
+- Distributed rate limit tracking across microservices
+- Complex retry logic with exponential backoff
+- Request queuing systems that rival Kafka in complexity
+
+One customer had an entire Kubernetes cluster dedicated to managing their embedding pipeline - not because of compute needs, but just to handle rate limit coordination across their services. Another built a "request budget" system that required teams to reserve embedding capacity days in advance.
+
+None of this complexity adds value to your product. It's pure overhead, stealing engineering time from features that actually matter to your users.
+
+#### High Latency
+High latency robs your magic. When every embedding request takes 300ms+ round trip, your real-time features aren't really real-time anymore.
+
+The cascading effects are brutal:
+
+- Search results that lag behind user typing
+- Recommendations that feel disconnected from user actions
+- Chat experiences with noticeable "thinking" delays
+- Batch processes that take hours instead of minutes
+
+Add in retries for rate limits and your "real-time" feature is now consistently 1+ second behind.
+
+![sama-respect-to-the-prince](https://trieve.b-cdn.net/blog/tvi-blog/sama-working-on-low-latency-embeddings.png)
+
+### We hope you like the TVI DX
+Most AI dev tools feel like they are at home in Jupyter notebooks or made for quick prototyping. The platforms hyperscalers and others built to onboard the masses onto AI were not designed to handle large scale.
+
+Most production-grade software seems to fall into two buckets. It's either 1) expensive and requires intense engagement with a vendor, and is limited in scope or 2) painful to self-host, let alone begin to productionize. We've talked to some folk who spent weeks building and tweaking their own servers. Others who went the enterprise route and now have to maintain annoying shadow infrastructure. Pain!
+
+Trieve is a dev-first company. This means all engineers. DevOps, frontend, backend, everyone. We really think TVI is one of those rare solutions that works for tinkerers and giants alike. General support is available over 12 hours per day over email, Discord, Slack, and our office line.  
+
+## Getting Started
+
+You have two options for getting started with TVI. You can 1) buy a license from us and self-host it or 2) deploy it via AWS through AWS Marketplace. Self-hosting gives you maximum control, while AWS Marketplace provides the fastest path to production and still a ton of control.
+
+Our deployment process is streamlined for both paths:
+
+- AWS: Deployment via Helm through Marketplace
+- Self-hosted: Docker images and clear documentation for any environment
+
+We back TVI with a 15-day integration guarantee - if you can't get it running in your environment, we'll refund your fees. We've had teams go from zero to production in under an hour.
+
+## The Future of Vector Inference
+
+We're committed to making vector inference more accessible, faster, and more cost-effective for teams building AI features. Our roadmap includes:
+
+- Enhanced monitoring and observability (custom Grafana dashboards coming soon)
+- Support for more cloud providers (GCP and Azure coming soon)
+- Additional model optimizations (including quantization and pruning)
+- Advanced scaling features (automatic horizontal scaling based on load)
+
+Plus, we're working on some exciting features we can't talk about yet. If you think today's latency numbers are good, stay tuned!

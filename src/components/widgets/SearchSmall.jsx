@@ -3,7 +3,7 @@ import { TrieveModalSearch } from 'trieve-search-component';
 const SearchComponentSmall = () => {
   return (
     <TrieveModalSearch
-      apiKey="tr-zpPVGUq18FxOCmXgLfqGbmDOY4UMW00r"
+      apiKey="tr-b9werMdlgnMVsFmqTASCL8or50TU6uJ4"
       datasetId="4538ad9f-47cf-44d4-8a14-7c111f9558a9"
       theme={localStorage.getItem('theme') || 'dark'}
       defaultSearchQueries={['Create a chunk', 'Trieve vs. Algolia', 'Pricing']}

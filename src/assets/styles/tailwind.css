@@ -113,6 +113,5 @@ tab {
 }
 
 body #trieve-search-modal {
-  top: 40vh;
   max-width: 650px;
 }
