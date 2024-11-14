@@ -14,9 +14,6 @@ import Stats from '~/components/widgets/Stats.astro';
 import Button from '~/components/ui/Button.astro';
 import Image from '~/components/common/Image.astro';
 
-const appStoreImg = '~/assets/images/app-store.png';
-const appStoreDownloadLink = 'https://github.com/onwidget/astrowind';
-
 const googlePlayImg = '~/assets/images/google-play.png';
 const googlePlayDownloadLink = 'https://github.com/onwidget/astrowind';
 
@@ -29,15 +26,16 @@ const metadata = {
   <Fragment slot="announcement"></Fragment>
   <Fragment slot="header">
     <Header
-      position="left"
+      position="center"
       links={[
-        { text: 'Services', href: '#' },
-        { text: 'Features', href: '#' },
-        { text: 'About', href: '#' },
+        { text: 'Inicio', href: '#' },
+        { text: 'Servicios', href: '#' },
+        { text: 'Precios', href: '#' },
+        { text: 'Contacto', href: '#' },
       ]}
       actions={[
         {
-          text: 'Download',
+          text: 'Descargar',
           href: '#download',
         },
       ]}
@@ -49,30 +47,26 @@ const metadata = {
   <!-- Hero2 Widget ******************* -->
 
   <Hero2
-    tagline="Mobile App Web Demo"
+    tagline="Facturación Electrónica"
     image={{
       src: 'https://images.unsplash.com/photo-1535303311164-664fc9ec6532?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
       alt: 'AstroWind Hero Image',
     }}
   >
     <Fragment slot="title">
-      <span class="text-accent dark:text-white highlight">AstroWind App</span>: <br /> professional websites <span
-        class="hidden xl:inline">made easy</span
+      <span class="text-accent dark:text-white highlight">AcontPlus App</span>: <br /> ahorre tu tiempo <span
+        class="hidden xl:inline">y energía</span
       >
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        Unlock boundless creativity at your fingertips: your gateway to innovative design.
+        Una solución innovadora para facturar electrónicamente desde tu móvil en cuestión de minutos.
       </span>
-      Download now and embark on a journey to elevate your projects like never before.
+      Descargue nuestra aplicación, revise la demostración y experimenta la diferencia ahorrando tiempo.
     </Fragment>
 
     <div slot="actions" class="flex max-w-sm gap-4">
-      <Button variant="link" href={appStoreDownloadLink}>
-        <Image src={appStoreImg} alt="App Store Image" width={200} />
-      </Button>
-
       <Button variant="link" href={googlePlayDownloadLink}>
         <Image src={googlePlayImg} alt="Google Play Image" width={200} />
       </Button>
@@ -195,10 +189,10 @@ const metadata = {
   <!-- Stats Widget ****************** -->
 
   <Stats
-    title="Statistics of our app"
+    title="Estadisticas de nuestra aplicación"
     stats={[
-      { amount: '20K', icon: 'tabler:download' },
-      { amount: '18.5K', icon: 'tabler:users' },
+      { amount: '400K', icon: 'tabler:download' },
+      { amount: '275+', icon: 'tabler:users' },
       { amount: '4.7', icon: 'tabler:user-star' },
     ]}
   />
@@ -206,7 +200,7 @@ const metadata = {
   <!-- Testimonials Widget *********** -->
 
   <Testimonials
-    title="What our users say?"
+    title="Qué dicen nuestros clientes?"
     testimonials={[
       {
         testimonial: `It's made exploring and downloading website templates a breeze. The interface is intuitive, and I had no trouble finding the perfect template for my project. It's an app that truly empowers users.`,
@@ -239,7 +233,7 @@ const metadata = {
     ]}
     callToAction={{
       target: '_blank',
-      text: 'Read more testimonials',
+      text: 'Leer más testimonios',
       href: 'https://github.com/onwidget/astrowind',
       icon: 'tabler:chevron-right',
     }}
@@ -248,31 +242,34 @@ const metadata = {
   <!-- FAQs Widget ******************* -->
 
   <FAQs
-    title="Still have some doubts?"
+    title="Preguntas Frecuentes"
+    subtitle="Choosing the right plan is important, and we're here to answer your questions. If you have queries about our pricing options, you're in the right place."
+    columns={1}
     items={[
       {
-        title: 'What does this app do?',
+        title: 'Pruebo revisar una demostración?',
         description:
-          'This app provides a platform for you to easily browse, purchase, download, and use a wide range of website templates for your projects.',
+          'Sí, tenemos disponible para que usted pueda revisar todos módulos disponibles en la aplicación móvil y web, durante 1 mes y sin compromiso.',
       },
       {
-        title: 'How can this app solve my problem?',
+        title: 'La aplicación funciona de manera off-line?',
         description:
-          'This app streamlines the process of finding and implementing professional website designs, saving you time and effort in creating visually appealing and functional websites.',
+          "No, actualmente ninguna de nuestras aplicaciones funcionan de manera off-line. Sin embargo, como AcontPlus nos escontramos trabajando para que dentro de muy poco tiempo dispongan de esa funcionalidad.",
       },
       {
-        title: 'Is it available for my device?',
-        description: `Our app is designed for compatibility across various devices and platforms, ensuring accessibility whether you're using a smartphone, tablet, or computer.`,
+        title: 'Puedo usar a AcontPlus App en iOS?',
+        description:
+          'Muy pronto! Nosotros queremos que nuestros clientes sean felices. AcontPlus App, muy pronto estará disponible para nuestros clientes que usan iOS.',
       },
       {
-        title: 'What makes this app different from others?',
+        title: 'What payment methods do you accept?',
         description:
-          'Our app stands out for its user-friendly interface, extensive template collection, and seamless integration of the purchasing and downloading process, making it highly efficient.',
+          'We accept major credit cards and online payment methods to ensure a convenient and secure transaction process.',
       },
       {
-        title: 'Are there any costs involved?',
+        title: 'Are there any hidden fees beyond the displayed cost?',
         description:
-          'While the app itself may be free to download, there may be costs associated with purchasing specific templates based on your preferences and project requirements.',
+          'No, the subscription cost covers all the features and templates listed under each plan. There are no hidden fees or extra charges.',
       },
     ]}
   />
@@ -281,13 +278,10 @@ const metadata = {
 
   <CallToAction
     id="download"
-    title="Download our app now!"
+    title="Descarga la aplicación ahora!"
     subtitle="Access a variety of stunning templates, simplify your creative process, and elevate your online presence."
   >
     <div slot="actions" class="flex max-w-sm gap-4">
-      <Button variant="link" href={appStoreDownloadLink}>
-        <Image src={appStoreImg} alt="App Store Image" width={200} />
-      </Button>
 
       <Button variant="link" href={googlePlayDownloadLink}>
         <Image src={googlePlayImg} alt="Google Play Image" width={200} />

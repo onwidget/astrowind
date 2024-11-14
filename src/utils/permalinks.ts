@@ -87,7 +87,7 @@ export const getPermalink = (slug = '', type = 'page'): string => {
 };
 
 /** */
-export const getHomePermalink = (): string => getPermalink('/');
+export const getHomePermalink = (): string => getPermalink('/homes/mobile-app');
 
 /** */
 export const getBlogPermalink = (): string => getPermalink(BLOG_BASE);
