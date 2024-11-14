@@ -1,399 +1,332 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
-import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
+import Header from '~/components/widgets/Header.astro';
+
+import Hero2 from '~/components/widgets/Hero2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 import Content from '~/components/widgets/Content.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import Prices from '~/components/widgets/Pricing.astro';
+
+import Button from '~/components/ui/Button.astro';
+import Image from '~/components/common/Image.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const googlePlayImg = '~/assets/images/google-play.png';
+const googlePlayDownloadLink = 'https://play.google.com/store/apps/details?id=com.acontplus_facturacion';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
-  ignoreTitleTemplate: true,
+  title: 'Mobile App Homepage',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  <Fragment slot="announcement"></Fragment>
+  <Fragment slot="header">
+    <Header
+      position="center"
+      links={[
+        { text: 'Acerca de nosotros', href: '#about' },
+        { text: 'Clientes', href: '#clients' },
+        { text: 'FAQs', href: '#faqs' },
+        { text: 'Precios', href: '#pricing' },
+        { text: 'Contácto', href: '#contact' },
+      ]}
+      actions={[
+        {
+          text: 'Descargar',
+          href: '#download',
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
 
-  <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-      { text: 'Learn more', href: '#features' },
-    ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
+  <!-- Hero2 Widget ******************* -->
+
+  <Hero2
+    tagline="Facturación Electrónica"
+    image={{
+      src: 'https://ik.imagekit.io/dett8mrqe/intro-hd-01.png?updatedAt=1731612098616',
+      alt: 'AstroWind Hero Image',
+    }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white highlight"> Astro 4.0</span> + Tailwind CSS
+      <span class="text-accent dark:text-white highlight">AcontPlus</span>: <br /> ahorre tu tiempo <span
+        class="hidden xl:inline">y energía</span
+      >
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 4.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
-      Blogs.
-    </Fragment>
-  </Hero>
-
-  <!-- Note Widget ******************* -->
-
-  <Note />
-
-  <!-- Features Widget *************** -->
-
-  <Features
-    id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022."
-    items={[
-      {
-        title: 'Astro + Tailwind CSS Integration',
-        description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
-      },
-      {
-        title: 'Ready-to-use Components',
-        description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
-      },
-      {
-        title: 'Best Practices',
-        description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
-      },
-      {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
-      },
-    ]}
-  />
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
-    items={[
-      {
-        title: 'Built on top of Astro 4.0',
-        description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
-      },
-      {
-        title: 'Styled using Tailwind CSS',
-        description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
-      },
-      {
-        title: 'Cross-browser compatibility',
-        description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
+        Una solución innovadora para facturar electrónicamente desde tu móvil en cuestión de minutos.
+      </span>
     </Fragment>
 
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      },
-      {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="Get your dream website up and running in no time with AstroWind."
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Download</span>',
-        description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
-        description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
-        description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
-      },
-      {
-        title: 'Ready!',
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
-  />
-
-  <!-- Features2 Widget ************** -->
+    <div slot="actions" class="flex max-w-sm gap-4">
+      <Button variant="link" href={googlePlayDownloadLink} target="_blank">
+        <Image src={googlePlayImg} alt="Google Play Image" width={200} />
+      </Button>
+    </div>
+  </Hero2>
 
   <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
-    items={[
-      {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
-      },
-      {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
-      },
-    ]}
+    id="about"
+    title="¿Qué es AcontPlus?"
+    subtitle="Una empresa Ecuatoriana que ofrece la aplicación de Facturación Electrónica tanto para móvil como para web. Facilitando el proceso de manera sencilla y eficiente. Nuestra lema es 'Facturar nunca fue tan fácil'."
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Features2>
 
-  <!-- HighlightedPosts Widget ******* -->
+  <Content
+    isReversed
+    items={[
+      {
+        title: 'Gestión de Ventas',
+        description:
+          'Permite registrar y monitorear ventas, gestionar clientes y productos, y generar reportes para optimizar el proceso de ventas y mejorar ingresos.',
+        icon: 'tabler:wand',
+      },
+      {
+        title: 'Facturación Electrónica',
+        description:
+          'Permite emitir, gestionar y almacenar facturas de manera digital cumpliendo con las normativas fiscales. Facilita el envío de facturas a los clientes y el seguimiento de pagos.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Gestión de Financiera y entre otros',
+        description: 'Permite controlar ingresos, gastos y generar reportes para facilitar el análisis financiero.',
+        icon: 'tabler:carousel-horizontal',
+      },
+    ]}
+    image={{
+      src: 'https://ik.imagekit.io/dett8mrqe/intro-hd-02-preview.png?updatedAt=1731612715515',
+      alt: 'Colorful Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">¿Qué ofrecemos en AcontPlus?</h3>
+    </Fragment>
+  </Content>
 
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    title="El impacto impresionante de AcontPlus"
+    subtitle="Las cifras que figuran a continuación reflejan la confianza que nuestros usuarios han depositado en nosotros y los notables resultados que les hemos ayudado a conseguir."
+    stats={[
+      { title: 'Comp. emitidos', amount: '400k' },
+      { title: 'Firmas Tramitadas', amount: '200K' },
+      { title: 'Clientes', amount: '275+' },
+    ]}
+  />
+
+  <!-- Testimonials Widget *********** -->
+  <Testimonials
+    id="clients"
+    title="¿Qué dicen nuestros clientes?"
+    testimonials={[
+      {
+        testimonial: `Sus procesos de facturación han sido mucho más rápidos y fáciles desde que utiliza nuestro software de facturación electrónica.`,
+        name: '“EL CARACOL” RESTAURANT',
+        job: 'Restaurante',
+        image: {
+          src: 'https://ik.imagekit.io/dett8mrqe/restaurant-caracol.png?updatedAt=1731620324221',
+          alt: 'Cary Kennedy Image',
+        },
+      },
+      {
+        testimonial: `Acontplus ha simplificado por completo mi proceso de ventas. Es fácil de usar y me ha ahorrando un tiempo valioso. ¡Recomendado al 100%!`,
+        name: 'ELECTROPARTES “LA JOTA”',
+        job: 'Ferretería',
+        image: {
+          src: 'https://ik.imagekit.io/dett8mrqe/ferreteria-j.png?updatedAt=1731620324193',
+          alt: 'J',
+        },
+      },
+      {
+        testimonial:
+          'Desde que empecé a utilizar Acontplus, la facturación se ha vuelto mucho más eficiente. Ahora puedo crear, personalizar y enviar facturas de manera rápida y sencilla, lo que ha mejorado mi flujo de trabajo.',
+        name: 'GENUINE PARTS',
+        job: 'Mecánica',
+        image: {
+          src: 'https://ik.imagekit.io/dett8mrqe/mecanica-partes.png?updatedAt=1731620324053',
+          alt: 'Sidney Hansen Image',
+        },
+      },
+    ]}
+    callToAction={{
+      target: '_blank',
+      text: 'Leer más testimonios',
+      href: 'https://acontplus.com.ec/clientes/',
+      icon: 'tabler:chevron-right',
+    }}
   />
 
   <!-- FAQs Widget ******************* -->
 
   <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
+    id="faqs"
+    title="Preguntas Frecuentes"
+    subtitle="Cualquier duda adicional, no dudes en escribirnos."
+    columns={1}
     items={[
       {
-        title: 'Why AstroWind?',
+        title: 'Pruebo revisar una demostración?',
         description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+          'Sí, tenemos disponible para que usted pueda revisar todos módulos disponibles en la aplicación móvil y web, durante 1 mes y sin compromiso.',
       },
       {
-        title: 'What do I need to start?',
+        title: '¿La aplicación funciona de manera off-line?',
         description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+          'No, actualmente ninguna de nuestras aplicaciones funcionan de manera off-line. Sin embargo, como AcontPlus nos escontramos trabajando para que dentro de muy poco tiempo dispongan de esa funcionalidad.',
       },
       {
-        title: 'How to install the Astro + Tailwind CSS template?',
+        title: '¿Puedo usar a AcontPlus App en iOS?',
         description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
+          'Muy pronto! Nosotros queremos que nuestros clientes sean felices. AcontPlus App, muy pronto estará disponible para nuestros clientes que usan iOS.',
       },
       {
-        title: "What's something that you don't understand?",
+        title: '¿Disponemos de una aplicación web?',
         description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+          'Sí, tenemos disponible para que usted pueda revisar todos módulos disponibles y funcionalidades de la aplicación web.',
       },
       {
-        title: 'What is something that you would like to try again?',
+        title: '¿Puedo enviar a autorizar comprobantes electrónicos a SRI?',
         description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+          'Sí, desde la aplicación móvil y web usted puede enviar a autorizar comprobantes electrónicos según lo estipula el SRI.',
       },
     ]}
   />
 
-  <!-- Stats Widget ****************** -->
+  <Prices
+    title="Nuestros precios"
+    id="pricing"
+    subtitle="Pague sólo por lo que necesite"
+    prices={[
+      {
+        title: 'básica',
+        subtitle: 'Óptimo para negocios pequeños',
+        price: 115,
+        period: 'anual',
+        items: [
+          {
+            description: 'No hay límite en la facturación electrónica.',
+          },
+          {
+            description: 'Tiene acceso al módulo de compras, pagos, inventario, ventas, cobros.',
+          },
+          {
+            description: 'Configuración para 1 sucursal y 3 usuarios.',
+          },
+          {
+            description: 'Permite el registro de hasta 1000 artículos.',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Empezar',
+          href: `https://api.whatsapp.com/send?phone=593959889744&text=Hola`,
+        },
+      },
+      {
+        title: 'comercios',
+        subtitle: 'Para negocios medianos',
+        price: 230,
+        period: 'anual',
+        items: [
+          {
+            description: 'Sin límite en la facturación electrónica.',
+          },
+          {
+            description: 'Acceso al módulo de compras, pagos, inventario, ventas, cobros y etc',
+          },
+          {
+            description: 'Configuración para 2 sucursales y 3 usuarios por sucursal.',
+          },
+          {
+            description: 'Registro de hasta 3000 artículos.',
+          },
+          {
+            description: 'Instalación y configuración en sitio $34,5. (Valor Referencial)',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Empezar ahora',
+          href: `https://api.whatsapp.com/send?phone=593959889744&text=Hola`,
+        },
+        hasRibbon: true,
+        ribbonTitle: 'popular',
+      },
+      {
+        title: 'Premium',
+        subtitle: 'Recomendado para negocios grandes',
+        price: 345,
+        period: 'anual',
+        items: [
+          {
+            description: 'Sin límite en la facturación electrónica',
+          },
+          {
+            description:
+              'Tiene acceso al módulo de compras, pagos, inventario, ventas, cobros, importación de comprobantes electrónicos y etc.',
+          },
+          {
+            description: 'Configuración para 2 sucursales y 3 usuarios por sucursal.',
+          },
+          {
+            description: 'Envío de comprobantes por lotes',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Empezar',
+          href: `https://api.whatsapp.com/send?phone=593959889744&text=Hola`,
+        },
+      },
+    ]}
+  />
 
-  <Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
+  <Features2
+    id="contact"
+    title="Estamos aquí para ayudarle."
+    items={[
+      {
+        title: 'Teléfono',
+        description: '0991686066 / 0980330089',
+        icon: 'tabler:headset',
+      },
+      {
+        title: 'Email',
+        description: 'zaractec@acontplus.com.ec',
+        icon: 'tabler:mail',
+      },
+      {
+        title: 'Dirección',
+        description: 'El Coca - Juan Montalvo y Napo. - Ecuador',
+        icon: 'tabler:map-pin',
+      },
     ]}
   />
 
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-    ]}
+    id="download"
+    title="Descarga la aplicación ahora!"
+    subtitle="Descarga la aplicación AcontPlus y comienza a facturar electrónica con facilidad."
   >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
-    </Fragment>
+    <div slot="actions" class="flex max-w-sm gap-4">
+      <Button variant="link" href={googlePlayDownloadLink} target="_blank">
+        <Image src={googlePlayImg} alt="Google Play Image" width={200} />
+      </Button>
+    </div>
   </CallToAction>
 </Layout>
