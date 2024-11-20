@@ -31,17 +31,17 @@ export const findImage = async (
   }
 
   // Absolute paths
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://') || imagePath.startsWith('/')) {
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://') || imagePath.startsWith('//')) {
     return imagePath;
   }
 
+  let key = imagePath
   // Relative paths or not "~/assets/"
-  if (!imagePath.startsWith('~/assets/images')) {
-    return imagePath;
+  if (!imagePath.startsWith('~/')) {
+    key = imagePath.replace('~/', '/src/');
   }
 
   const images = await fetchLocalImages();
-  const key = imagePath.replace('~/', '/src/');
 
   return images && typeof images[key] === 'function'
     ? ((await images[key]()) as { default: ImageMetadata })['default']
