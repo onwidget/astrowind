@@ -44,12 +44,6 @@ import { UI } from '~/utils/config';
     let lastKnownScrollPosition = window.scrollY;
     let ticking = true;
 
-    attachEvent('#header nav', 'click', function () {
-      document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
-      document.getElementById('mobile-menu')?.classList.remove('h-screen');
-      document.getElementById('mobile-menu')?.classList.remove('expanded');
-    });
-
     attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
       document.getElementById('mobile-menu')?.classList.toggle('hidden');
       document.getElementById('mobile-menu')?.classList.toggle('h-screen');
@@ -58,9 +52,6 @@ import { UI } from '~/utils/config';
     });
 
     attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
-      if (defaultTheme.endsWith(':only')) {
-        return;
-      }
       document.documentElement.classList.toggle('dark');
       localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
     });
@@ -134,4 +125,8 @@ import { UI } from '~/utils/config';
     onLoad();
     onPageShow();
   });
+
+  setTimeout(() => {
+    onLoad();
+  }, 1000);
 </script>
