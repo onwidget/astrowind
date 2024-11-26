@@ -35,9 +35,9 @@ export const findImage = async (
     return imagePath;
   }
 
-  let key = imagePath
   // Relative paths or not "~/assets/"
-  if (!imagePath.startsWith('~/')) {
+  let key = imagePath;
+  if (imagePath.startsWith('~/')) {
     key = imagePath.replace('~/', '/src/');
   }
 
@@ -84,6 +84,7 @@ export const adaptOpenGraphImages = async (
             typeof resolvedImage !== 'string' && resolvedImage?.width <= defaultWidth
               ? [resolvedImage?.width, resolvedImage?.height]
               : [defaultWidth, defaultHeight];
+          
           _image = (
             await astroAsseetsOptimizer(resolvedImage, [dimensions[0]], dimensions[0], dimensions[1], 'jpg')
           )[0];
