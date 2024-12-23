@@ -1,3 +1,5 @@
 skip_list:
-  - yaml[truthy]
-  - yaml[line-length]
+- yaml[truthy]
+- yaml[line-length]
+exclude_paths:
+- public/decapcms/config.yml
