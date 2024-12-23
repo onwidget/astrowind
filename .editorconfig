@@ -1,12 +1,47 @@
 # https://EditorConfig.org
 
-# top-most EditorConfig file
+
+# Root EditorConfig file
 root = true
 
+# Unix-style newlines with a newline ending every file
 [*]
 charset = utf-8
 end_of_line = lf
-indent_size = 2
-indent_style = space
 insert_final_newline = true
+trim_trailing_whitespace = true
+
+# 2 space indentation for JavaScript, TypeScript, JSON, CSS, HTML, YAML, etc.
+[*.{js,jsx,ts,tsx,json,css,scss,less,html,htm,yaml,yml,astro}]
+indent_style = space
+indent_size = 2
+
+# 4 space indentation for Python, Dockerfiles, Terraform, Ansible, and Bash scripts
+[*.{py,Dockerfile,tf,tfvars,yml,sh}]
+indent_style = space
+indent_size = 4
+
+# Tab indentation for Makefiles
+[Makefile]
+indent_style = tab
+
+# Handle Markdown files
+[*.md]
 trim_trailing_whitespace = false
+indent_style = space
+indent_size = 2
+
+# Configuration for YAML files (e.g., Ansible playbooks)
+[*.{yaml,yml}]
+indent_style = space
+indent_size = 2
+
+# Ignore generated files
+[*.min.js]
+insert_final_newline = false
+trim_trailing_whitespace = false
+
+# Specific settings for Tailwind CSS (if applicable)
+[tailwind.config.js]
+indent_style = space
+indent_size = 2

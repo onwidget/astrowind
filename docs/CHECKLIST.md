@@ -1,0 +1,29 @@
+# Checklist - Evan Harmon Website
+- [ ] Raycast
+  - Setup Raycast VS Code Workspace alias (use its cli?)
+- [ ] Framework/Application
+  - Setup specific framework, dependencies, etc.
+  - Python
+    - [cookiecutter](https://cookiecutter.readthedocs.io/en/stable/README.html)
+  - JavaScript
+    - Astro starter templates
+    - Astro cli new project setup command
+  - Java
+    - [Maven Archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)
+  - Shell
+    - `dev/templates/shellScriptTemplate`
+- [ ] .gitignore
+  - Configure gitignore with [gitignore.io - Create Useful .gitignore Files For Your Project](https://www.toptal.com/developers/gitignore)
+- [ ] Adapt doc files
+  - Readme
+  - Taskfile
+  - todo.md
+  - howzit.md
+  - justfile
+- [ ] DevOps & DevEx
+  - linting, formatting, etc.
+  - Setup pre-commit
+  - CI/CD
+  - Add branch protection to main branch (prevent direct pushes to main)
+    - As of 2024 - GitHub doesn't let you setup branch protection on a private repo without being on a paid plan.
+- [ ] Testing Setup

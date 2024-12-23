@@ -1,0 +1,70 @@
+name: Bump Release Version
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  bump-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Fetch all history for versioning
+
+      - name: Get Latest Tag
+        id: get_latest_tag
+        run: |
+          LATEST_TAG=$(git tag --sort=-version:refname | head -n1)
+          echo "LATEST_TAG=${LATEST_TAG}" >> $GITHUB_ENV
+
+      - name: Get Current Version
+        id: get_current_version
+        run: |
+          VERSION=${{ env.LATEST_TAG }}
+          VERSION=${VERSION#v}
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+
+      - name: Split Version into Components
+        id: split_version
+        run: |
+          MAJOR=$(echo "${{ env.VERSION }}" | cut -d. -f1)
+          MINOR=$(echo "${{ env.VERSION }}" | cut -d. -f2)
+          PATCH=$(echo "${{ env.VERSION }}" | cut -d. -f3)
+          echo "MAJOR=${MAJOR}" >> $GITHUB_ENV
+          echo "MINOR=${MINOR}" >> $GITHUB_ENV
+          echo "PATCH=${PATCH}" >> $GITHUB_ENV
+
+      - name: Calculate New Patch Version
+        id: calculate_new_patch_version
+        run: |
+          NEW_PATCH=$(( ${{ env.PATCH }} + 1 ))
+          echo "NEW_PATCH=${NEW_PATCH}" >> $GITHUB_ENV
+
+      - name: Set New Version
+        id: set_new_version
+        run: |
+          NEW_VERSION="v${{ env.MAJOR }}.${{ env.MINOR }}.${{ env.NEW_PATCH }}"
+          echo "NEW_VERSION=${NEW_VERSION}" >> $GITHUB_ENV
+
+      - name: Display Version Info
+        run: |
+          echo "Latest tag is ${{ env.LATEST_TAG }}"
+          echo "Current version is ${{ env.VERSION }}"
+          echo "Bumping patch version to ${{ env.NEW_VERSION }}"
+
+      - name: Create New Git Tag
+        run: |
+          git tag "${{ env.NEW_VERSION }}"
+          git push origin "${{ env.NEW_VERSION }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create GitHub Release
+        run: |
+          gh release create "${{ env.NEW_VERSION }}" --generate-notes
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

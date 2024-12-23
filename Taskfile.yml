@@ -1,0 +1,117 @@
+# Taskfile for Evan Harmon Website
+version: "3"
+tasks:
+  boostrap:
+    cmds:
+      - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - brew install python #TODO: Might need to use a non-homebrew method
+    silent: true
+  install:
+    cmds:
+      - brew bundle --file=Brewfile
+      - python install -r requirements.txt
+    silent: true
+  validate:
+    cmds:
+      - pre-commit run --all-files
+      # - shellcheck osConfig/mac/updateMac.sh
+      # - shellcheck osConfig/mac/setupMac.sh
+      # - shellcheck osConfig/mac/configureMacSettings.sh
+    silent: true
+  pre-commit:
+    cmds:
+      - pre-commit run --all-files
+    silent: true
+  security:
+    cmds:
+      - ./check_for_pattern.sh . "*secret*"
+      - whispers --config test/whisperConfig.yml --severity BLOCKER,CRITICAL .
+      - task: snyk
+    silent: true
+  snyk:
+    cmds:
+      - snyk test --file=requirements.txt
+      - snyk test --file=package.json
+    silent: true
+  ghReleaseInit:
+    cmds:
+      - git add .
+      - git commit -m 'Initial release v0.0.1'
+      - git tag -a v0.0.1 -m "Initial release v0.0.1"
+      - git push origin main
+      - git push origin --tags
+      - gh release create
+    silent: false
+  vBumpPatch:
+    desc: Bump to the next patch version
+    vars:
+      LATEST_TAG:
+        sh: git tag --sort=-version:refname | head -n1
+      VERSION:
+        sh: echo "{{.LATEST_TAG}}" | sed 's/^v//'
+      MAJOR:
+        sh: echo "{{.VERSION}}" | cut -d. -f1
+      MINOR:
+        sh: echo "{{.VERSION}}" | cut -d. -f2
+      PATCH:
+        sh: echo "{{.VERSION}}" | cut -d. -f3
+      NEW_PATCH:
+        sh: expr {{.PATCH}} + 1
+      NEW_VERSION: v{{.MAJOR}}.{{.MINOR}}.{{.NEW_PATCH}}
+    cmds:
+      - echo "Latest tag is {{.LATEST_TAG}}"
+      - echo "Current version is {{.VERSION}}"
+      - echo "Bumping patch version to {{.NEW_VERSION}}"
+      - git tag {{.NEW_VERSION}}
+      - git push origin {{.NEW_VERSION}}
+      - gh release create
+  vBumpMinor:
+    desc: Bump to the next minor version
+    vars:
+      LATEST_TAG:
+        sh: git tag --sort=-version:refname | head -n1
+      VERSION:
+        sh: echo "{{.LATEST_TAG}}" | sed 's/^v//'
+      MAJOR:
+        sh: echo "{{.VERSION}}" | cut -d. -f1
+      MINOR:
+        sh: echo "{{.VERSION}}" | cut -d. -f2
+      NEW_MINOR:
+        sh: expr {{.MINOR}} + 1
+      NEW_VERSION: v{{.MAJOR}}.{{.NEW_MINOR}}.0
+    cmds:
+      - echo "Latest tag is {{.LATEST_TAG}}"
+      - echo "Current version is {{.VERSION}}"
+      - echo "Bumping minor version to {{.NEW_VERSION}}"
+      - git tag {{.NEW_VERSION}}
+      - git push origin {{.NEW_VERSION}}
+      - gh release create {{.NEW_VERSION}} --generate-notes
+  vBumpMajor:
+    desc: Bump to the next major version
+    vars:
+      LATEST_TAG:
+        sh: git tag --sort=-version:refname | head -n1
+      VERSION:
+        sh: echo "{{.LATEST_TAG}}" | sed 's/^v//'
+      MAJOR:
+        sh: echo "{{.VERSION}}" | cut -d. -f1
+      NEW_MAJOR:
+        sh: expr {{.MAJOR}} + 1
+      NEW_VERSION: v{{.NEW_MAJOR}}.0.0
+    cmds:
+      - echo "Latest tag is {{.LATEST_TAG}}"
+      - echo "Current version is {{.VERSION}}"
+      - echo "Bumping major version to {{.NEW_VERSION}}"
+      - git tag {{.NEW_VERSION}}
+      - git push origin {{.NEW_VERSION}}
+      - gh release create
+  bunchAdd:
+    cmds:
+      - mv '.meta/Code Project - Evan Harmon Website.bunch' '/Users/evan/Library/Mobile Documents/com~apple~CloudDocs/Bunches/'
+      - ln -s '/Users/evan/Library/Mobile Documents/com~apple~CloudDocs/Bunches/Code Project - Evan Harmon Website.bunch' .meta
+    silent: false
+  obsidianAdd:
+    cmds:
+      - mv '.meta/Evan Harmon Website.md' '/Users/evan/Local/Memex/Personal/Digital'
+      - ln -s '/Users/evan/Local/Memex/Personal/Digital/Evan Harmon Website.md' .meta
+    silent: false

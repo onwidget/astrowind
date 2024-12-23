@@ -1,0 +1,25 @@
+# Changes here will be overwritten by Copier
+_commit: v2.1.12
+_src_path: harmon-stack
+ansible: true
+bunch_add: true
+ci_cd: github_actions
+code_templates: false
+data_folder: false
+design_files: true
+devcontainer: false
+git_init: false
+github_collaboration_templates: true
+github_release_init: false
+github_remote_create: false
+infra: []
+license: mit
+observability: []
+obsidian_project_add: true
+project_description: My personal website
+project_name: Evan Harmon Website
+project_slug: evan-harmon
+project_type: code
+project_url: https://evanharmon.com
+run_task_bootstrap: false
+run_task_install: false

@@ -1,0 +1,3 @@
+skip_list:
+  - yaml[truthy]
+  - yaml[line-length]

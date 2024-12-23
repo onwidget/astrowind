@@ -1,0 +1,14 @@
+name: Validate
+run-name: ${{ github.actor }} is running Validate Actions
+on: [pull_request]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Triggered by a ${{ github.event_name }} event."
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+      - uses: pre-commit/action@v3.0.1
+      - uses: pre-commit-ci/lite-action@v1.1.0

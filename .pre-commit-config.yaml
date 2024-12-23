@@ -1,0 +1,71 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+        exclude: "^(codeTemplates/|tempalte/|{% if code_templates %}codeTemplates{% endif %}/)"
+      # - id: check-symlinks # I needed to disable since I use symbolic links to files outside my repo which will cause the CI check to fail.
+      - id: check-toml
+      - id: check-xml
+      - id: debug-statements
+      - id: destroyed-symlinks
+      # - id: detect-aws-credentials
+      - id: detect-private-key
+      - id: mixed-line-ending
+      - id: no-commit-to-branch
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
+    hooks:
+      - id: black
+  - repo: https://github.com/detailyang/pre-commit-shell
+    rev: 1.0.5
+    hooks:
+      - id: shell-lint
+        args:
+          [
+            --format=json,
+            --color=always,
+            --exclude=SC3037,
+            --exclude=SC2148,
+            --severity=error,
+          ]
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.96.1
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_docs
+      - id: terraform_checkov
+      - id: infracost_breakdown
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+        language_version: python3.9
+  - repo: https://github.com/ansible/ansible-lint
+    rev: v6.22.2
+    hooks:
+      - id: ansible-lint
+        entry: python3 -m ansiblelint -v --force-color
+        language: python
+        # do not pass files to ansible-lint, see:
+        # https://github.com/ansible/ansible-lint/issues/611
+        pass_filenames: false
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+    for more information, see https://pre-commit.ci
+  autofix_prs: true
+  autoupdate_branch: ""
+  autoupdate_commit_msg: "[pre-commit.ci] pre-commit autoupdate"
+  autoupdate_schedule: weekly
+  skip: []
+  submodules: false

@@ -1,0 +1,29 @@
+name: Security
+run-name: ${{ github.actor }} is running Security Actions
+on: [pull_request]
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Triggered by a ${{ github.event_name }} event."
+      - uses: actions/checkout@v3
+      # E.g., to check for my `~/Local/.secret` file
+      - name: Custom check for secret files
+        run: ./check_for_pattern.sh . "*secret*"
+      - name: Force the installation of the required versions due to pip not being able to uninstall system packages
+        run: |
+          sudo pip install --ignore-installed typing_extensions==4.12.2
+          sudo pip install --ignore-installed PyYAML
+          sudo pip install --ignore-installed jsonschema
+      - name: Install Whispers
+        run: sudo pip install whispers
+      # Use whispers to check repo for unecrypted secrets, passwords, etc.
+      - name: Run whispers
+        run: whispers --config test/whisperConfig.yml --severity BLOCKER,CRITICAL . > /tmp/scan_output.json
+      # Upload Artifacts
+      - name: Upload the scan output
+        uses: actions/upload-artifact@v3
+        with:
+          name: scan_results
+          path: /tmp/scan_output.json
+          retention-days: 7

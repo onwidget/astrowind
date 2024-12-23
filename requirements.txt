@@ -1,0 +1,3 @@
+# Python requirements for Evan Harmon Website
+
+whispers

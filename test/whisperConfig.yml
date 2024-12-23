@@ -1,0 +1,22 @@
+include:
+  files:
+    - "**/*"
+
+exclude:
+  files:
+    - __pycache__|\.eggs|build|dev|\.vscode|\.git
+    - .*/(locale|spec|test|mock)s?/
+    - integration|node_modules
+    - (package(-lock)?|npm-shrinkwrap)\.json
+    - osConfig/mac/*configureMacSettings*
+    - osConfig/mac/mackup/*
+    - osConfig/docker/docker-compose-db.yml
+
+  keys:
+    - .*(public|project).*
+
+  values:
+    - ^(true|false|yes|no|1|0)$
+    - .*_(user|password|token|key|placeholder|name)$
+    - ^aws_(access_key_id|secret_access_key|session_token)$
+    - ^((cn?trl|alt|shift|del|ins|esc|tab|f[\d]+) ?[\+_\-\\/] ?)+[\w]+$
