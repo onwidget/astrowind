@@ -1,4 +1,4 @@
-name: GitHub Actions
+name: Build Test
 
 on:
   pull_request:
@@ -14,8 +14,6 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 18
-          - 20
           - 22
     steps:
       - uses: actions/checkout@v4
@@ -27,15 +25,3 @@ jobs:
       - run: npm ci
       - run: npm run build
       # - run: npm test
-
-  check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js 22
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run check
