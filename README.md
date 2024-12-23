@@ -1,4 +1,5 @@
 # Evan Harmon Website
+
 My personal website built with Astro and Tailwind CSS with the AstroWind starter template.
 
 <https://evanharmon.com>
@@ -15,32 +16,39 @@ Author: Evan Harmon
 ## Setup & Installation
 
 ### Requirements
+
 - Homebrew
 - Python
 - [Taskfile](https://taskfile.dev/)
 
 ### Bootstrap
+
 Install required software to run other project installers and task runners
 `task bootstrap`
 
 ### Install
+
 Install required dependencies
 `task install`
 
 ## Usage
 
 ### Task Runner
+
 [Taskfile.yaml](./Taskfile.yml)
 
 ### Testing
 
 #### Validate
+
 `task validate`
 
 #### Security
+
 `task security`
 
 #### Linting, Formatting, Conventions, Style Guidelines, etc
+
 - .pre-commit-config.yaml
 - .shellcheckrc
 - .ansible-lint-ignore
@@ -48,6 +56,7 @@ Install required dependencies
 ### Building, Deploying, & CI/CD
 
 ## Todo File
+
 [todo.md](./todo.md)
 
 ## AstroWind

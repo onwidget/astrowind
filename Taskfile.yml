@@ -1,5 +1,5 @@
 # Taskfile for Evan Harmon Website
-version: "3"
+version: '3'
 tasks:
   boostrap:
     cmds:
