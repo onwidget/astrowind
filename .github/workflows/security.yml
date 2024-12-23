@@ -1,4 +1,4 @@
-name: Security
+name: Security Test
 run-name: ${{ github.actor }} is running Security Actions
 on: [pull_request]
 jobs:
