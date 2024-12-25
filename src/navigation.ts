@@ -43,12 +43,13 @@ export const headerData = {
 };
 
 export const footerData = {
+  links: [],
   secondaryLinks: [
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
     { text: 'About', href: '/about' },
-    { text: 'Blog', href: '/blog' },
     { text: 'Contact', href: '/contact' },
     { text: 'Meet', href: '/meet' },
+    { text: 'Blog', href: '/blog' },
+    { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
   socialLinks: [
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/evanharmon1' },
