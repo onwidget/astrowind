@@ -19,82 +19,55 @@ const metadata = {
   <Hero
     actions={[
       {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
+        text: 'Memex',
+        href: 'https://www.evanharmon.com/Memex',
         target: '_blank',
-        icon: 'tabler:download',
+        icon: 'tabler:sitemap',
       },
-      { text: 'Learn more', href: '#features' },
+      { text: 'Projects', href: '#projects' },
+      { text: 'Contact Me', href: '/contact' },
+      { text: 'Meet With Me', href: 'https://fantastical.app/evanharmon' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
+    image={{ src: '~/assets/images/flammarion.jpeg', alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title"> Evan Harmon </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">Coding</span> cantankerous contraptions and proffering philosophical piffle</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600"></span> since the Tokugawa shogunate.
+      <span>Coding cantankerous contraptions and proffering philosophical piffle since the Tokugawa shogunate.</span>
     </Fragment>
   </Hero>
 
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
+    title="Projects"
+    id="projects"
     items={[
       {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
+        title: 'HarmonOps',
+        description:
+          'Various scripts, dotfiles, automation, and IaC for my developer environment and homelab infrastructure with self-hosted apps, Raspberry Pis, Dockerfiles, etc.',
         icon: 'flat-color-icons:template',
+        href: 'https://github.com/evanharmon1/harmon-ops',
       },
       {
-        title: 'Heros',
+        title: 'Memex',
         description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
+          "I use the Obsidian app for my day-to-day notes as a PKM/zettelkasten and share them here as a so-called 'digital garden'",
         icon: 'flat-color-icons:gallery',
+        href: 'https://evanharmon.com/Memex',
       },
       {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
+        title: 'Triplicate Group',
+        description: 'Co-founded by myself and Cayden Sommer',
         icon: 'flat-color-icons:approval',
+        href: 'https://triplicategroup.com',
       },
       {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
+        title: 'Contraption Labs',
+        description: 'Technology company',
         icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
+        href: 'https://contraptionlabs.com',
       },
     ]}
   >
@@ -105,22 +78,20 @@ const metadata = {
 
   <!-- HighlightedPosts Widget ******* -->
 
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
-  />
+  <BlogLatestPosts title="Blog" />
 
   <!-- Stats Widget ****************** -->
 
   <Stats
     stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
+      { title: 'Contraptions', amount: '132K' },
+      { title: 'Bits', amount: '24.8K' },
+      { title: 'Qualia', amount: '10.3K' },
+      {
+        title:
+          'Number of times that people have had an interaction with me in which they have found that experience and/or me and/or their general outlook on life thereafter simply delightful',
+        amount: '48.4K',
+      },
     ]}
   />
 
@@ -128,22 +99,10 @@ const metadata = {
 
   <CallToAction
     actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
+      { text: 'Contact Me', href: '/contact' },
+      { text: 'Meet With Me', href: 'https://fantastical.app/evanharmon' },
     ]}
   >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
-    </Fragment>
+    <Fragment slot="title"> Let's Talk! </Fragment>
   </CallToAction>
 </Layout>

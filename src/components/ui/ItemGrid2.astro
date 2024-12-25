@@ -8,7 +8,6 @@ const { items = [], columns, defaultIcon = '', classes = {} } = Astro.props;
 
 const {
   container: containerClass = '',
-  // container: containerClass = "sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
   panel: panelClass = '',
   title: titleClass = '',
   description: descriptionClass = '',
@@ -32,28 +31,38 @@ const {
         containerClass
       )}
     >
-      {items.map(({ title, description, icon, callToAction, classes: itemClasses = {} }) => (
-        <div
-          class={twMerge(
-            'relative flex flex-col intersect-once intersect-quarter intercept-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade',
-            panelClass,
-            itemClasses?.panel
-          )}
-        >
-          {(icon || defaultIcon) && (
-            <Icon name={icon || defaultIcon} class={twMerge('mb-2 w-10 h-10', defaultIconClass, itemClasses?.icon)} />
-          )}
-          <div class={twMerge('text-xl font-bold', titleClass, itemClasses?.title)}>{title}</div>
-          {description && (
-            <p class={twMerge('text-muted mt-2', descriptionClass, itemClasses?.description)} set:html={description} />
-          )}
-          {callToAction && (
-            <div class="mt-2">
-              <Button {...callToAction} />
-            </div>
-          )}
-        </div>
-      ))}
+      {items.map(({ title, description, icon, callToAction, href, classes: itemClasses = {} }) => {
+        const ContentWrapper = href ? 'a' : 'div';
+        const hrefProps = href ? { href, target: '_blank', rel: 'noopener noreferrer' } : {};
+
+        return (
+          <ContentWrapper
+            {...hrefProps}
+            class={twMerge(
+              'relative flex flex-col intersect-once intersect-quarter intercept-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade hover:transform hover:scale-105 transition-transform duration-300',
+              panelClass,
+              itemClasses?.panel,
+              href && 'cursor-pointer'
+            )}
+          >
+            {(icon || defaultIcon) && (
+              <Icon name={icon || defaultIcon} class={twMerge('mb-2 w-10 h-10', defaultIconClass, itemClasses?.icon)} />
+            )}
+            <div class={twMerge('text-xl font-bold', titleClass, itemClasses?.title)}>{title}</div>
+            {description && (
+              <p
+                class={twMerge('text-muted mt-2', descriptionClass, itemClasses?.description)}
+                set:html={description}
+              />
+            )}
+            {callToAction && (
+              <div class="mt-2">
+                <Button {...callToAction} />
+              </div>
+            )}
+          </ContentWrapper>
+        );
+      })}
     </div>
   )
 }
