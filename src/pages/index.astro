@@ -1,6 +1,8 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 
+import { Swiper, SwiperSlide } from 'swiper/astro';
+
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
@@ -16,7 +18,154 @@ const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
   ignoreTitleTemplate: true,
 };
+
+import Layout from '../layouts/Layout.astro';
+
+const proj = "54_swiper-slider"
+
+// import MySwiper from '../components/MySwiper.astro'
 ---
+
+<script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  </script>
+
+
+
+
+
+<Layout title="Welcome to Astro.">
+	<main>
+		sdfsdf<br/>
+		<div class="swiper mySwiper">
+			<div class="swiper-wrapper">
+			  <div class="swiper-slide">Slide 1</div>
+			  <div class="swiper-slide">Slide 2</div>
+			  <div class="swiper-slide">Slide 3</div>
+			  <div class="swiper-slide">Slide 4</div>
+			  <div class="swiper-slide">Slide 5</div>
+			  <div class="swiper-slide">Slide 6</div>
+			  <div class="swiper-slide">Slide 7</div>
+			  <div class="swiper-slide">Slide 8</div>
+			  <div class="swiper-slide">Slide 9</div>
+			</div>
+			<div class="swiper-pagination"></div>
+
+
+		<a href="/">home</a>
+		<a href="/simple">simlpe slider</a>
+		<h1>Slider <span class="text-gradient">Swiper</span></h1>
+		<a href={`https://github.com/MicroWebStacks/astro-examples/tree/main/${proj}`} target="_blank">github project '{proj}'</a>
+		<p class="instructions" >Demo for Swiper</p>
+
+		<div class="swiper-container">
+			<div class="swiper main">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">Slide 1</div>
+					<div class="swiper-slide">Slide 2</div>
+					<div class="swiper-slide">Slide 3</div>
+					<div class="swiper-slide">Slide 4</div>
+					<div class="swiper-slide">Slide 5</div>
+					<div class="swiper-slide">Slide 6</div>
+				</div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
+			<div class="swiper thumbs">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">Slide 1</div>
+					<div class="swiper-slide">Slide 2</div>
+					<div class="swiper-slide">Slide 3</div>
+					<div class="swiper-slide">Slide 4</div>
+					<div class="swiper-slide">Slide 5</div>
+					<div class="swiper-slide">Slide 6</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.swiper-container{
+		position: relative;
+		height: 600px;
+	}
+	.swiper.main {
+		width: 100%;
+		height: 80%;
+	}
+	.swiper.thumbs {
+		width: 100%;
+		height: 20%;
+		box-sizing: border-box;
+	    padding: 10px 0;
+	}
+	.swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+	  background-size: cover;
+      background-position: center;
+    }
+	.thumbs .swiper-slide{
+		width: 25%;
+    	height: 100%;
+    	opacity: 0.4;
+	}
+	
+	.thumbs .swiper-slide-thumb-active {
+      opacity: 1;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+	
+	main {
+		margin: auto;
+		padding: 1.5rem;
+		max-width: 60ch;
+	}
+	h1 {
+		font-size: 3rem;
+		font-weight: 800;
+		margin: 0;
+	}
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+	.instructions {
+		line-height: 1.6;
+		margin: 1rem 0;
+		border: 1px solid rgba(var(--accent), 25%);
+		background-color: white;
+		padding: 1rem;
+		border-radius: 0.4rem;
+	}
+</style>
+
+
+<script src="../libs/slider_thumbnail.js"></script>
+
+
+
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
