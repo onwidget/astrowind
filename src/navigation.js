@@ -16,10 +16,6 @@ export const headerData = {
       href: '/sitesearch',
     },
     {
-      text: 'HN Search',
-      href: 'https://hn.trieve.ai',
-    },
-    {
       text: 'Blog',
       href: getBlogPermalink(),
     },
@@ -30,9 +26,7 @@ export const headerData = {
       text: 'Get a demo',
       variant: 'secondary',
       className: 'hidden xl:inline-block',
-      'data-cal-link': 'nick.k/meet',
-      'data-cal-namespace': 'meet',
-      'data-cal-config': '{"layout":"month_view"}',
+      href: '/request-demo',
     },
     { text: 'Sign up', href: 'https://dashboard.trieve.ai', target: '_blank', variant: 'primary' },
   ],

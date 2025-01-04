@@ -21,7 +21,7 @@ const {
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
   <div class="flex items-stretch justify-center">
-    <div class="grid grid-cols-4 gap-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4">
+    <div class="grid grid-cols-3 gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
       {
         prices &&
           prices.map(
@@ -55,8 +55,22 @@ const {
                       {subtitle && <p class="font-light sm:text-lg text-gray-600 dark:text-slate-400">{subtitle}</p>}
                       <div class="my-8">
                         <div class="flex items-center justify-center text-center mb-1">
-                          <span class="text-5xl">$</span>
-                          <span class="text-6xl font-extrabold">{price}</span>
+                          {price || price == 0 ? (
+                            <span class="text-5xl">$</span>
+                            <span class="text-6xl font-extrabold">{price}</span>
+                          ) : (callToAction && (
+                            <div class={`flex justify-center`}>
+                              {typeof callToAction === 'string' ? (
+                                <Fragment set:html={callToAction} />
+                              ) : (
+                                callToAction &&
+                                callToAction.href && (
+                                  <Button {...(hasRibbon ? { variant: 'primary' } : {})} {...callToAction} />
+                                )
+                              )}
+                            </div>
+                            )
+                          )}
                         </div>
                         <span class="text-base leading-6 lowercase text-gray-600 dark:text-slate-400">{period}</span>
                       </div>
@@ -80,7 +94,7 @@ const {
                       )}
                     </div>
                     <div class="flex flex-col gap-y-2">
-                      {callToAction && (
+                      {callToAction && (price || price == 0) && (
                         <div class={`flex justify-center`}>
                           {typeof callToAction === 'string' ? (
                             <Fragment set:html={callToAction} />

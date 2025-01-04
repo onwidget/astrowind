@@ -10,15 +10,15 @@ const { logos, title, subtitle, tagline, callToAction, id, classes = {} } = Astr
 <div class="w-full bg-gray-100">
   <WidgetWrapper
     id={id}
-    containerClass={`relative mx-auto px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default max-w-5xl ${classes?.container ?? ''}`}
+    containerClass={`relative mx-auto px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default max-w-7xl ${classes?.container ?? ''}`}
   >
     <Headline title={title} subtitle={subtitle} tagline={tagline} />
 
-    <div class="flex justify-center gap-8 flex-wrap">
+    <div class="flex justify-center gap-8 flex-wrap w-full">
       {
         logos &&
           logos.map(({ src }) => (
-            <div class="flex h-auto grayscale">
+            <div class="flex h-auto">
               <img src={src} class="object-contain w-auto h-8 sm:h-16" />
             </div>
           ))
