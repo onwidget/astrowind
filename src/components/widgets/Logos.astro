@@ -12,7 +12,11 @@ const { logos, title, subtitle, tagline, callToAction, id, classes = {} } = Astr
     id={id}
     containerClass={`relative mx-auto px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default max-w-7xl ${classes?.container ?? ''}`}
   >
-    <Headline title={title} subtitle={subtitle} tagline={tagline} />
+    <div class="mb-8 md:mx-auto md:mb-12 text-center">
+      <h2 class="font-bold leading-tighter tracking-tighter font-heading text-heading text-3xl dark:text-black">
+        {title}
+      </h2>
+    </div>
 
     <div class="flex justify-center gap-8 flex-wrap w-full">
       {
