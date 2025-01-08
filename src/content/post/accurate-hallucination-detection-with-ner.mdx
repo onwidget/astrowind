@@ -1,0 +1,104 @@
+---
+publishDate: 2025-01-07T08:45:00.000Z
+author: Dens Sumesh
+title: Accurate Hallucination Detection With NER
+excerpt: >-
+  Using a LLM-as-a-judge for hallucinations is slow and imprecise relative to
+  simple NER. We share how we solved hallucination detection at Trieve.
+image: >-
+  https://cdn.trieve.ai/blog/accurate-hallucination-detection-with-ner/accurate-hallucination-detection-opengraph.webp
+category: Tutorials
+tags:
+  - AI
+  - hallucination-detection
+displayImage: true
+displayExcerpt: true
+---
+
+You can find all the code involved in our NER system, including benchmarks, at [github.com/devflowinc/trieve/tree/main/hallucination-detection](https://github.com/devflowinc/trieve/tree/main/hallucination-detection).
+
+# How We Do It: Smart Use of NER
+
+Our method zeroes in on the most common and critical hallucinations--those that could mislead or confuse users. Based on our research, a large percentage of hallucinations fall into three categories:
+
+1. **Proper nouns** (people, places, organizations)
+2. **Numerical values** (dates, amounts, statistics)
+3. **Made-up terminology**
+
+Instead of throwing complex language models at the problem with a LLM-as-a-judge approach, we use Named Entity Recognition (NER) to spot proper nouns and compare them between the gen AI completion and the retrieved reference text. For numbers and unknown words, we use similarly straightforward techniques to flag potential issues.
+
+Our approach will only work in use-cases where RAG is present which is fine given that Trieve is a search and RAG API. Further, because the most common approach to limiting hallucinations is RAG, this approach will work for any team building solutions on top of other search engines.
+
+## Why This Is Important:
+
+- **Lightning fast**: Processes in 100-300 milliseconds.
+- **Fully self-contained**: No need for external AI services.
+- **Customizable**: Works with domain-specific NER models.
+- **Minimal setup**: Can run on CPU nodes.
+
+# Benchmark Results
+
+## RAGTruth Dataset Performance
+
+We achieved a 67% accuracy rate on the [RAGTruth dataset](https://github.com/ParticleMedia/RAGTruth), which provides a comprehensive benchmark for hallucination detection in RAG systems. This result is particularly impressive considering our lightweight approach compared to more complex solutions.
+
+## Comparison with Vectara
+
+When tested against [Vectara's examples](https://huggingface.co/datasets/vectara/hcm-examples-aug-2024), our system showed:
+
+- 70% alignment with Vectara's model predictions
+- Comparable performance on obvious hallucinations
+- Strong detection of numerical inconsistencies
+- High accuracy on entity-based hallucinations
+
+This level of alignment is significant because we achieve it without the computational overhead of a full language model.
+
+# Why This Works
+
+Our method focuses on the types of hallucinations that matter most. Made-up entities, wrong numbers, and gibberish words. By sticking to these basics, we've built a system that:
+
+- **Catches high-impact errors**: No more fake organizations or incorrect stats.
+- **Runs lightning fast**: Minimal delay in real-time systems.
+- **Fits anywhere**: Easily integrates into production pipelines with no fancy hardware needed.
+
+# Why It Matters in the Real World
+
+Speed and simplicity are the stars of this show. Our system processes responses in **100-300ms**, making it perfect for:
+
+- Real-time applications (think chatbots and virtual assistants)
+- High-volume systems where efficiency is key
+- Low-resource setups, like edge devices or small servers
+
+In short, this approach bridges the gap between effectiveness and practicality. You get solid hallucination detection without slowing everything down or breaking the bank.
+
+# What's Next: Room to Grow
+
+While we're thrilled with these results, we've got a lot of ideas for the future:
+
+1. **Smarter Entity Recognition**
+
+  - Train models for industry-specific jargon and custom entity types.
+  - Improve recognition for niche use cases.
+
+2. **Better Number Handling**
+
+  - Add context-aware analysis for ranges, approximations, and units.
+  - Normalize and convert units for consistent comparisons.
+
+3. **Expanded Word Validation**
+
+  - Incorporate specialized vocabularies for different fields.
+  - Make it multilingual and more context-aware.
+
+4. **Hybrid Methods**
+
+  - Optionally tap into language models for tricky edge cases.
+  - Combine with semantic similarity scores or structural analysis for tougher challenges.
+
+# The Takeaway
+
+Our system shows that **you don't need heavyweight tools** to handle hallucination detection. By focusing on the most common issues, we've built a fast, reliable solution that's production-ready and easy to scale.
+
+It's a practical tool for anyone looking to improve the trustworthiness of AI outputs, especially in environments where speed and resource efficiency are non-negotiable.
+
+Check out our work, give it a try, and let us know what you think!
