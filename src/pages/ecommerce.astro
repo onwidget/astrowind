@@ -1,0 +1,163 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Logos from '~/components/widgets/Logos.astro';
+
+const metadata = {
+  title: 'Trieve provides AI-native conversational discovery solutions for ecommerce',
+  ignoreTitleTemplate: true,
+};
+---
+
+<meta property="og:title" content="Trieve" />
+<meta property="og:site_name" content="" />
+<meta property="og:url" content="https://search.trieve.ai" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="" />
+<meta property="og:image" content="https://cdn.trieve.ai/trieve-og.png" />
+<script is:inline defer data-domain="trieve.ai" src="https://plausible.trieve.ai/js/script.js"></script>
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get Started Free',
+        href: 'https://dashboard.trieve.ai',
+        target: '_blank',
+        icon: 'tabler:external-link',
+      },
+      {
+        variant: 'secondary',
+        text: 'Request a demo',
+        icon: 'tabler:presentation',
+        href: '/request-demo',
+      },
+    ]}
+  >
+    <Fragment slot="title"> Conversational Discovery for any Ecommerce Experience </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        Discovery isn't just search and recommendations. Consumers coming from Google, Bing, and Perplexity all expect
+        GenAI. <br />
+      </span>
+    </Fragment>
+  </Hero>
+
+  <Logos
+    title="Powering 30,000+ discovery experiences across categories"
+    logos={[
+      { src: 'https://cdn.trieve.ai/customer-logos/mintlify-logo.svg' },
+      { src: 'https://cdn.trieve.ai/customer-logos/vapi-logo.png' },
+      { src: 'https://cdn.trieve.ai/customer-logos/guardant-health-logo.svg' },
+      { src: 'https://cdn.trieve.ai/customer-logos/bestway-logo.png' },
+      { src: 'https://cdn.trieve.ai/customer-logos/signoz-logo.svg' },
+      { src: 'https://cdn.trieve.ai/customer-logos/parcelhero.webp' },
+      { src: 'https://cdn.trieve.ai/customer-logos/billtrack50logo.svg' },
+      { src: 'https://cdn.trieve.ai/customer-logos/hostai-logo.webp' },
+      { src: 'https://cdn.trieve.ai/customer-logos/openmart-logo.svg' },
+      { src: 'https://cdn.trieve.ai/customer-logos/agentic-labs-logo.png' },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    tagline="Build Fast and Don't Break Things"
+    title="Manage ingestion, embeddings and analytics with ease"
+    items={[
+      {
+        title: 'Private Open-Source Models',
+        description: 'We use open source embedding models and LLMs running in our own servers. Data is never leaked.',
+      },
+      {
+        title: 'Batteries Included',
+        description:
+          'Our API surface covers chunking, ingestion, search, recommendations, RAG, and even a little front-end.',
+      },
+      {
+        title: 'Self-Hostable',
+        description:
+          'Sensitive data? Need maximum performance? Host Trieve yourself with terraform templates and no external dependencies.',
+      },
+    ]}
+    image={{
+      src: 'https://cdn.trieve.ai/battery-4-square.png',
+      alt: 'Visual of Trieve features',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2">Built on the best foundations</h3>
+      We help companies build unfair competitive advantages through their search, discovery, and RAG experiences
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    title="Set up industry-leading search in 30 minutes"
+    items={[
+      {
+        title: 'Step 1: <span class="font-medium">Add Existing Data</span>',
+        description:
+          'Upload individual chunks or entire documents that get chunked by our algorithms via our API or no-code dashboard.',
+        icon: 'tabler:database-export',
+      },
+      {
+        title: 'Step 2: <span class="font-medium">Integrate our API</em>',
+        description: 'Add calls to our API on your create and update routes to keep your data current.',
+        icon: 'tabler:git-merge',
+      },
+      {
+        title: 'Step 3: <span class="font-medium">Search, Recommend, or Generate</span>',
+        description:
+          'Test and tune search, recommendations, and chat quality with our search playground, then integrate the API calls into your product.',
+        icon: 'tabler:telescope',
+      },
+      {
+        title: 'Ready!',
+        icon: 'tabler:check',
+      },
+    ]}
+    image={{
+      src: 'https://cdn.trieve.ai/db-4-square.png',
+      alt: 'Steps to use',
+    }}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get Started Free',
+        href: 'https://dashboard.trieve.ai',
+        target: '_blank',
+        icon: 'tabler:external-link',
+      },
+      {
+        variant: 'secondary',
+        text: 'Request a demo',
+        icon: 'tabler:presentation',
+        href: '/request-demo',
+      },
+    ]}
+  >
+    <Fragment slot="title">Take control of your search.</Fragment>
+
+    <Fragment slot="subtitle">AI-native, end-to-end, self-hostable API for the trends of today and tomorrow</Fragment>
+  </CallToAction>
+</Layout>

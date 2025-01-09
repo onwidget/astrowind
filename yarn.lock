@@ -3558,6 +3558,11 @@ jiti@^1.21.6:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.21.7.tgz#9dd81043424a3d28458b193d965f0d18a2300ba9"
   integrity sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==
 
+jotai@^2.11.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/jotai/-/jotai-2.11.0.tgz#923f8351e0b2d721036af892c0ae25625049d120"
+  integrity sha512-zKfoBBD1uDw3rljwHkt0fWuja1B76R7CjznuBO+mSX6jpsO1EBeWNRKpeaQho9yPI/pvCv4recGfgOXGxwPZvQ==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -3878,11 +3883,6 @@ mdast-util-gfm-task-list-item@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/mdast-util-gfm-task-list-item/-/mdast-util-gfm-task-list-item-2.0.0.tgz#e68095d2f8a4303ef24094ab642e1047b991a936"
   integrity sha512-IrtvNvjxC1o06taBAVJznEnkiHxLFTzgonUdy8hzFVeDun0uTjxxrRGVaNFqkU1wJR3RBPEfsxmU6jDWPofrTQ==
-  dependencies:
-    "@types/mdast" "^4.0.0"
-    devlop "^1.0.0"
-    mdast-util-from-markdown "^2.0.0"
-    mdast-util-to-markdown "^2.0.0"
 
 mdast-util-gfm@^3.0.0:
   version "3.0.0"
@@ -5017,10 +5017,10 @@ react-markdown@^9.0.1:
     unist-util-visit "^5.0.0"
     vfile "^6.0.0"
 
-react-pdf-spotlight@0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/react-pdf-spotlight/-/react-pdf-spotlight-0.0.11.tgz#6b714d5aeac77c6918922c830039ec1e4553b751"
-  integrity sha512-Go68WzKQPj8fJe+tSXcGcdmiWUUSAZu10YlJ4n+4j+gcbb6eVaYftWTpU9rsPQiLyTFatrlHNm1ILKU0c+u5xg==
+react-pdf-spotlight@0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/react-pdf-spotlight/-/react-pdf-spotlight-0.0.15.tgz#00509fb6936625bfbeb96986d35e0e066bde4a67"
+  integrity sha512-GVm2DhXem7fSSv584n3wdkGiqrNvtattE3peHuGFsE8sJhAIkHPmps8V4eh/xoTM5gOJw3zpTPumA2BUnjBSPA==
   dependencies:
     pdfjs-dist "^4.9.155"
 
@@ -5888,15 +5888,16 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-trieve-search-component@^0.2.60:
-  version "0.2.68"
-  resolved "https://registry.yarnpkg.com/trieve-search-component/-/trieve-search-component-0.2.68.tgz#539b5711115d124969131511db865e3101917575"
-  integrity sha512-d7+66+9DNj/gY4epZXN72puUb7w+8YCKWqo3R7Iqv4F59nDE1+A0/skkWOt9mUDS9U5/H/QKBN7OVBqTIcYDAw==
+trieve-search-component@^0.3.7:
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/trieve-search-component/-/trieve-search-component-0.3.7.tgz#78eb8b3b3afd32a7da5a81cda4e82e0618384e0c"
+  integrity sha512-S9EOk4kd5l0ms9Jwq4klOHYA/Xai5G7tACItX1iv66oVN0iV+xvQo+L5SYEz9i9IPGjufKIKApkHee4tIrasKA==
   dependencies:
     "@r2wc/react-to-web-component" "^2.0.3"
     "@thumbmarkjs/thumbmarkjs" "^0.16.1"
+    jotai "^2.11.0"
     react-markdown "^9.0.1"
-    react-pdf-spotlight "0.0.11"
+    react-pdf-spotlight "0.0.15"
     react-snap-carousel "^0.5.0"
     trieve-ts-sdk "*"
 
