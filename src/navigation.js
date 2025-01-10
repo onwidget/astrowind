@@ -4,20 +4,20 @@ import { getAsset } from '~/utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Developers',
-      href: 'https://docs.trieve.ai',
-    },
-    {
-      text: 'Pricing',
-      href: '/pricing',
-    },
-    {
       text: 'Ecommerce',
       href: '/ecommerce',
     },
     {
       text: 'Blog',
       href: getBlogPermalink(),
+    },
+    {
+      text: 'Developers',
+      href: 'https://docs.trieve.ai',
+    },
+    {
+      text: 'Pricing',
+      href: '/pricing',
     },
   ],
   actions: [

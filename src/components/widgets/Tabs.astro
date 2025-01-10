@@ -34,7 +34,7 @@ const { tabs = [] } = Astro.props;
       });
       previews[(activeTabIndex + 1) % tabs.length].classList.add('block');
       previews[(activeTabIndex + 1) % tabs.length].classList.remove('hidden');
-    }, 7500);
+    }, 10000);
 
   let clearActiveTimeout = startActiveTimeout();
 

@@ -11,6 +11,44 @@ const metadata = {
   title: 'Trieve provides AI-native conversational discovery solutions for ecommerce',
   ignoreTitleTemplate: true,
 };
+
+const tabs = [
+  {
+    iconName: 'tabler:basket',
+    text: 'Recommendations',
+    darkImage: 'https://cdn.trieve.ai/landing-tabs/personalized-recommendations.gif',
+    lightImage: 'https://cdn.trieve.ai/landing-tabs/personalized-recommendations.gif',
+    link: 'https://trieve.ai/request-demo',
+  },
+  {
+    iconName: 'tabler:search',
+    text: 'Search',
+    darkImage: 'https://cdn.trieve.ai/landing-tabs/ecom-search-v2.gif',
+    lightImage: 'https://cdn.trieve.ai/landing-tabs/ecom-search-v2.gif',
+    link: 'https://trieve.ai/request-demo',
+  },
+  {
+    iconName: 'tabler:sparkles',
+    text: 'Conversational Discovery',
+    darkImage: 'https://cdn.trieve.ai/landing-tabs/conversational-discovery.gif',
+    lightImage: 'https://cdn.trieve.ai/landing-tabs/conversational-discovery.gif',
+    link: 'https://trieve.ai/request-demo',
+  },
+  {
+    iconName: 'tabler:chart-bar',
+    text: 'Analytics',
+    darkImage: 'https://cdn.trieve.ai/landing-tabs/hn-search-analytics.webp',
+    lightImage: 'https://cdn.trieve.ai/landing-tabs/hn-search-analytics.webp',
+    link: 'https://trieve.ai/request-demo',
+  },
+  {
+    iconName: 'tabler:code',
+    text: 'API',
+    darkImage: 'https://cdn.trieve.ai/landing-tabs/dark-api.webp',
+    lightImage: 'https://cdn.trieve.ai/landing-tabs/light-api.webp',
+    link: 'https://docs.trieve.ai/api-reference',
+  },
+];
 ---
 
 <meta property="og:title" content="Trieve" />
@@ -40,6 +78,7 @@ const metadata = {
         href: '/request-demo',
       },
     ]}
+    tabs={tabs}
   >
     <Fragment slot="title"> Conversational Discovery for any Ecommerce Experience </Fragment>
 
@@ -51,52 +90,39 @@ const metadata = {
     </Fragment>
   </Hero>
 
-  <Logos
-    title="Powering 30,000+ discovery experiences across categories"
-    logos={[
-      { src: 'https://cdn.trieve.ai/customer-logos/mintlify-logo.svg' },
-      { src: 'https://cdn.trieve.ai/customer-logos/vapi-logo.png' },
-      { src: 'https://cdn.trieve.ai/customer-logos/guardant-health-logo.svg' },
-      { src: 'https://cdn.trieve.ai/customer-logos/bestway-logo.png' },
-      { src: 'https://cdn.trieve.ai/customer-logos/signoz-logo.svg' },
-      { src: 'https://cdn.trieve.ai/customer-logos/parcelhero.webp' },
-      { src: 'https://cdn.trieve.ai/customer-logos/billtrack50logo.svg' },
-      { src: 'https://cdn.trieve.ai/customer-logos/hostai-logo.webp' },
-      { src: 'https://cdn.trieve.ai/customer-logos/openmart-logo.svg' },
-      { src: 'https://cdn.trieve.ai/customer-logos/agentic-labs-logo.png' },
-    ]}
-  />
-
   <!-- Content Widget **************** -->
 
   <Content
     isReversed
-    tagline="Build Fast and Don't Break Things"
-    title="Manage ingestion, embeddings and analytics with ease"
+    tagline="Offer Modern Discovery Experiences"
+    title="All major search engines offer GenAI and now you can too"
     items={[
       {
-        title: 'Private Open-Source Models',
-        description: 'We use open source embedding models and LLMs running in our own servers. Data is never leaked.',
+        title: 'Allow Exploration of Your Entire Inventory',
+        description:
+          'Keyword search is no longer enough. Let your customers explore your entire inventory with GenAI sales agent.',
       },
       {
-        title: 'Batteries Included',
+        title: 'Peronalize Based on User Intent',
         description:
-          'Our API surface covers chunking, ingestion, search, recommendations, RAG, and even a little front-end.',
+          'Our AI tracks user intent across your site just like a sales associate on the floor. Each conversation is unique.',
       },
       {
-        title: 'Self-Hostable',
+        title: '24/7/365 Sales Associate',
         description:
-          'Sensitive data? Need maximum performance? Host Trieve yourself with terraform templates and no external dependencies.',
+          'Our AI is always on and always ready to help. No more waiting for a sales associate to be available.',
       },
     ]}
     image={{
-      src: 'https://cdn.trieve.ai/battery-4-square.png',
-      alt: 'Visual of Trieve features',
+      src: 'https://cdn.trieve.ai/landing-tabs/conversational-discovery-preview.png',
+      alt: 'Visual of Trieve conversational discovery',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2">Built on the best foundations</h3>
-      We help companies build unfair competitive advantages through their search, discovery, and RAG experiences
+      <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2">
+        Replicate the brick and mortar sales experience with personalized GenAI
+      </h3>
+      We help companies build unfair competitive advantages through their search, discovery, and RAG
     </Fragment>
 
     <Fragment slot="bg">
@@ -107,23 +133,23 @@ const metadata = {
   <!-- Steps Widget ****************** -->
 
   <Steps
-    title="Set up industry-leading search in 30 minutes"
+    title="Offer each individual visitor a personalized experience"
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Add Existing Data</span>',
+        title: 'Step 1: Our AI observes how your customers interact with your site',
         description:
-          'Upload individual chunks or entire documents that get chunked by our algorithms via our API or no-code dashboard.',
+          'Based on purchase history, search history, and session-specific interactions, our AI builds a profile of each visitor.',
         icon: 'tabler:database-export',
       },
       {
-        title: 'Step 2: <span class="font-medium">Integrate our API</em>',
-        description: 'Add calls to our API on your create and update routes to keep your data current.',
+        title: 'Step 2: Request recommendations, search results, or GenAI completions from our API',
+        description: 'Trieve offers an athletic 70+ route API that can be integrated into any stack.',
         icon: 'tabler:git-merge',
       },
       {
-        title: 'Step 3: <span class="font-medium">Search, Recommend, or Generate</span>',
+        title: 'Step 3: Measure the impact of GenAI on your bottom line',
         description:
-          'Test and tune search, recommendations, and chat quality with our search playground, then integrate the API calls into your product.',
+          'Our analytics dashboard shows you how GenAI is impacting your bottom line and tells you how it plans to improve itself.',
         icon: 'tabler:telescope',
       },
       {
@@ -132,8 +158,8 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://cdn.trieve.ai/db-4-square.png',
-      alt: 'Steps to use',
+      src: 'https://cdn.trieve.ai/landing-tabs/personalized-recommendations.png',
+      alt: 'Image of personalized recs',
     }}
   />
 
