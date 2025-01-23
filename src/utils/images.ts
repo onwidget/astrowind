@@ -31,17 +31,17 @@ export const findImage = async (
   }
 
   // Absolute paths
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://') || imagePath.startsWith('/')) {
+  if (imagePath.startsWith('http://') || imagePath.startsWith('https://') || imagePath.startsWith('//')) {
     return imagePath;
   }
 
   // Relative paths or not "~/assets/"
-  if (!imagePath.startsWith('~/assets/images')) {
-    return imagePath;
+  let key = imagePath;
+  if (imagePath.startsWith('~/')) {
+    key = imagePath.replace('~/', '/src/');
   }
 
   const images = await fetchLocalImages();
-  const key = imagePath.replace('~/', '/src/');
 
   return images && typeof images[key] === 'function'
     ? ((await images[key]()) as { default: ImageMetadata })['default']
@@ -84,6 +84,7 @@ export const adaptOpenGraphImages = async (
             typeof resolvedImage !== 'string' && resolvedImage?.width <= defaultWidth
               ? [resolvedImage?.width, resolvedImage?.height]
               : [defaultWidth, defaultHeight];
+          
           _image = (
             await astroAsseetsOptimizer(resolvedImage, [dimensions[0]], dimensions[0], dimensions[1], 'jpg')
           )[0];
