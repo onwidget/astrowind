@@ -16,6 +16,13 @@ const metadata = {
 
   <ContactUs
     id="form"
+    form={{
+      action: '#',
+      name: 'formName',
+      id: 'formId',
+      method: 'POST',
+      enctype: 'multipart/form-data',
+    }}
     title="Drop us a message today!"
     subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
     inputs={[
@@ -23,15 +30,20 @@ const metadata = {
         type: 'text',
         name: 'name',
         label: 'Name',
+        placeholder: 'Your Name',
+        required: true,
       },
       {
         type: 'email',
         name: 'email',
         label: 'Email',
+        placeholder: 'your@email.com',
+        required: true,
       },
     ]}
     textarea={{
       label: 'Message',
+      required: false,
     }}
     disclaimer={{
       label:
