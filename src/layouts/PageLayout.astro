@@ -2,7 +2,7 @@
 import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
-import Announcement from '~/components/widgets/Announcement.astro';
+
 
 import { headerData, footerData } from '~/navigation';
 
@@ -14,6 +14,7 @@ export interface Props {
 
 const { metadata } = Astro.props;
 ---
+<!-- import Announcement from '~/components/widgets/Announcement.astro'; -->
 
 <Layout metadata={metadata}>
   <slot name="announcement">

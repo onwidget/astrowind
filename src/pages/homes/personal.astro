@@ -12,7 +12,7 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import { getPermalink } from '~/utils/permalinks';
 
 const metadata = {
-  title: 'Personal Homepage Demo',
+  title: 'Abel Barrios Portfolio',
 };
 ---
 
@@ -26,11 +26,11 @@ const metadata = {
         { text: 'Resume', href: '#resume' },
         { text: 'Porfolio', href: '#porfolio' },
         { text: 'Blog', href: '#blog' },
-        { text: 'Github', href: 'https://github.com/onwidget' },
+        { text: 'Github', href: 'https://github.com/abelstats' },
       ]}
       actions={[
         {
-          text: 'Hire me',
+          text: 'Contact me',
           href: '#',
         },
       ]}
@@ -39,18 +39,19 @@ const metadata = {
     />
   </Fragment>
 
+  <!--'https://github.com/onwidget' -->
+
   <!-- Hero2 Widget ******************* -->
 
   <Hero
     id="hero"
-    title="Sarah Johnson"
-    tagline="Personal Web Demo"
-    actions={[{ variant: 'primary', text: 'Hire me', href: getPermalink('/contact#form') }]}
+    title="Abel Barrios Córdova"
+    tagline="Personal Web"
+    actions={[{ variant: 'primary', text: 'Contact me', href: getPermalink('/contact#form') }]}
   >
     <Fragment slot="subtitle">
-      I'm a Graphic Designer passionate about crafting visual stories. <br /> With 5 years of experience and a degree from
-      New York University's School of Design. I infuse vitality into brands and designs, transforming concepts into captivating
-      realities.
+      I'm a Data Scientific passionate about crafting visual stories. <br /> With 2 years of experience and a degree from
+      COLPOS.
     </Fragment>
   </Hero>
 
