@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Abel Barrios Cordova
+  site: 'https://abelstats.github.io'
   base: '/'
   trailingSlash: false
 
@@ -8,17 +8,17 @@ site:
 
 # Default SEO metadata
 metadata:
-  title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+  title: 
+    default: 'Abel Barrios Cordova'
+    template: '%s — Data Scientist y Analista de Datos'
+  description: 'Portafolio de Abel Barrios, Data Scientist especializado en análisis predictivo, machine learning y visualización de datos.'
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: 'Abel Barrios Portfolio'
     images:
-      - url: '~/assets/images/default.png'
+      - url: '~/assets/images/abel_barrios_default.png'
         width: 1200
         height: 628
     type: website
