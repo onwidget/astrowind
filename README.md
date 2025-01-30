@@ -150,6 +150,13 @@ All commands are run from the root of the project, from a terminal:
 | `npm run fix`       | Run Eslint and format codes with Prettier          |
 | `npm run astro ...` | Run CLI commands like `astro add`, `astro preview` |
 
+#### Docker
+
+| Command                                      | Action                                                                             |
+| :------------------------------------------- | :--------------------------------------------------------------------------------- |
+| `docker build -t <repo-name>-astrowind .`    | Builds a Docker image for the specified repo; replace `<repo-name>` with your repo |
+| `docker compose up`                          | Starts the Docker containers as specified in `docker-compose.yml`                  |
+
 <br>
 
 ### Configuration
