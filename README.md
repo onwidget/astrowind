@@ -152,10 +152,10 @@ All commands are run from the root of the project, from a terminal:
 
 #### Docker
 
-| Command                                      | Action                                                                           |
-| :------------------------------------------- | :------------------------------------------------------------------------------- |
-| `docker build -t <repo-name>-astrowind .`    | Builds a Docker image for the specified repo; replace <repo-name> with your repo |
-| `docker compose up`                          | Starts the Docker containers as specified in `docker-compose.yml`                |
+| Command                                      | Action                                                                             |
+| :------------------------------------------- | :--------------------------------------------------------------------------------- |
+| `docker build -t <repo-name>-astrowind .`    | Builds a Docker image for the specified repo; replace `<repo-name>` with your repo |
+| `docker compose up`                          | Starts the Docker containers as specified in `docker-compose.yml`                  |
 
 <br>
 
