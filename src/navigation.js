@@ -58,6 +58,8 @@ export const footerData = {
         { text: 'About', href: '/about' },
         { text: 'Admin Dashboard', href: 'https://dashboard.trieve.ai' },
         { text: 'Privacy Policy', href: '/legal/privacy-policy' },
+        { text: 'Terms of Service', href: '/lterms' },
+        { text: 'Trust Center', href: 'https://trust.oneleet.com/trieve' },
         { text: 'GitHub', href: 'https://github.com/devflowinc/trieve' },
       ],
     },
