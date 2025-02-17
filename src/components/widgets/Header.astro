@@ -47,10 +47,11 @@ const {
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 ---
 
+/**
 <header
   class:list={[
     { sticky: isSticky, relative: !isSticky, dark: isDark },
-    'top-0 z-40 flex-none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out',
+    'top-0 z-40 flex- none mx-auto w-full border-b border-gray-50/0 transition-[opacity] ease-in-out',
   ]}
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
@@ -163,5 +164,33 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         }
       </div>
     </div>
+  </div>
+</header>
+*/
+
+<header class="w-full bg-[#FCF6E5] px-16 py-8">
+  <div class="max-w-[1512px] mx-auto flex justify-between items-center">
+    
+    <!-- Logo -->
+    <div class="flex-1 text-2xl font-semibold font-['DM Sans']">
+      <span class="text-[#657B83]">Inter</span>
+      <span class="text-[#AE8300]">personal</span>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="flex space-x-16 text-[#657B83] text-lg font-medium font-['DM Sans']">
+      <a href="#" class="hover:text-[#AE8300]">Features</a>
+      <a href="#" class="hover:text-[#AE8300]">Products</a>
+      <a href="#" class="hover:text-[#AE8300]">Our Mission</a>
+      <a href="#" class="hover:text-[#AE8300]">Contact Us</a>
+    </nav>
+
+    <!-- Sign-in Button -->
+    <div class="flex-1 flex justify-end">
+      <a href="#" class="border-2 border-[#AE8300] text-[#AE8300] px-6 py-4 rounded-lg text-lg font-semibold font-['DM Sans'] hover:bg-[#AE8300] hover:text-white transition">
+        Sign in
+      </a>
+    </div>
+    
   </div>
 </header>
