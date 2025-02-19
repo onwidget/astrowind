@@ -1,16 +1,17 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
-import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
+import CustomerCall from '~/components/widgets/CustomerCall.astro';
+// import "../styles/global.css";
+// import Hero from '~/components/widgets/Hero.astro';
+// import Note from '~/components/widgets/Note.astro';
+// import Features from '~/components/widgets/Features.astro';
+// import Features2 from '~/components/widgets/Features2.astro';
+// import Steps from '~/components/widgets/Steps.astro';
+// import Content from '~/components/widgets/Content.astro';
+// import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+// import FAQs from '~/components/widgets/FAQs.astro';
+// import Stats from '~/components/widgets/Stats.astro';
+// import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
@@ -19,7 +20,25 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <div style="width: 1512px; height: 1336px; position: relative">
+
+   <section class="w-full h-[860px] flex flex-col justify-center items-center px-[280px]">
+     <div class="flex flex-col justify-center items-center gap-16">
+       <!-- Text Section -->
+       <div class="h-[225px] flex flex-col justify-start items-center gap-12 w-full">
+         <p class="text-[#657B83] text-[16px] font-dm-sans font-medium uppercase tracking-[1.28px]">
+           The GPS for Sales Calls
+         </p>
+         <h1 class="text-center text-[#012B36] text-[56px] font-diphylleia font-normal leading-[72px]">
+           Find PMF <i>Faster</i>
+         </h1>
+         <p class="text-center text-[#657B83] text-[28px] font-dm-sans font-normal">
+           Turn-by-turn GPS for discovery calls
+         </p>
+       </div>
+     </div>
+   </section>
+     
+  <!-- <div style="width: 1512px; height: 1336px; position: relative">
     <div style="width: 1512px; height: 100px; left: 0px; top: 1236px; position: absolute">
         <div style="height: 100px; left: 216px; top: 0px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: center; gap: 48px; display: inline-flex">
             <div style="align-self: stretch; text-align: center; color: #AE8300; font-size: 20px; font-family: DM Sans; font-weight: 700; word-wrap: break-word">03:21</div>
@@ -183,12 +202,12 @@ const metadata = {
             <div style="text-align: center; color: #657B83; font-size: 20px; font-family: DM Sans; font-weight: 400; word-wrap: break-word">Hear unspoken feedback</div>
         </div>
     </div>
-</div>
+</div> -->
   
   <!-- Hero Widget ******************* -->
 
   <!-- <Hero -->
-    actions={[
+    <!-- actions={[
       {
         variant: 'primary',
         text: 'Get template',
@@ -198,7 +217,7 @@ const metadata = {
       },
       { text: 'Learn more', href: '#features' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
+    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }} -->
   <!-- >
     <Fragment slot="title">
       Free template for <span class="hidden xl:inline">creating websites with</span>
@@ -562,4 +581,7 @@ const metadata = {
       waste more time! :P
     </Fragment>
   </CallToAction> -->
+  <CustomerCall />
+
 </Layout>
+

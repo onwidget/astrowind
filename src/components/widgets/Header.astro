@@ -1,50 +1,50 @@
 ---
-import { Icon } from 'astro-icon/components';
-import Logo from '~/components/Logo.astro';
-import ToggleTheme from '~/components/common/ToggleTheme.astro';
-import ToggleMenu from '~/components/common/ToggleMenu.astro';
-import Button from '~/components/ui/Button.astro';
+// import { Icon } from 'astro-icon/components';
+// import Logo from '~/components/Logo.astro';
+// import ToggleTheme from '~/components/common/ToggleTheme.astro';
+// import ToggleMenu from '~/components/common/ToggleMenu.astro';
+// import Button from '~/components/ui/Button.astro';
 
-import { getHomePermalink } from '~/utils/permalinks';
-import { trimSlash, getAsset } from '~/utils/permalinks';
-import type { CallToAction } from '~/types';
+// import { getHomePermalink } from '~/utils/permalinks';
+// import { trimSlash, getAsset } from '~/utils/permalinks';
+// import type { CallToAction } from '~/types';
 
-interface Link {
-  text?: string;
-  href?: string;
-  ariaLabel?: string;
-  icon?: string;
-}
+// interface Link {
+//   text?: string;
+//   href?: string;
+//   ariaLabel?: string;
+//   icon?: string;
+// }
 
-interface MenuLink extends Link {
-  links?: Array<MenuLink>;
-}
+// interface MenuLink extends Link {
+//   links?: Array<MenuLink>;
+// }
 
-export interface Props {
-  id?: string;
-  links?: Array<MenuLink>;
-  actions?: Array<CallToAction>;
-  isSticky?: boolean;
-  isDark?: boolean;
-  isFullWidth?: boolean;
-  showToggleTheme?: boolean;
-  showRssFeed?: boolean;
-  position?: string;
-}
+// export interface Props {
+//   id?: string;
+//   links?: Array<MenuLink>;
+//   actions?: Array<CallToAction>;
+//   isSticky?: boolean;
+//   isDark?: boolean;
+//   isFullWidth?: boolean;
+//   showToggleTheme?: boolean;
+//   showRssFeed?: boolean;
+//   position?: string;
+// }
 
-const {
-  id = 'header',
-  links = [],
-  actions = [],
-  isSticky = false,
-  isDark = false,
-  isFullWidth = false,
-  showToggleTheme = false,
-  showRssFeed = false,
-  position = 'center',
-} = Astro.props;
+// const {
+//   id = 'header',
+//   links = [],
+//   actions = [],
+//   isSticky = false,
+//   isDark = false,
+//   isFullWidth = false,
+//   showToggleTheme = false,
+//   showRssFeed = false,
+//   position = 'center',
+// } = Astro.props;
 
-const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+// const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 ---
 
 <!--
@@ -170,29 +170,65 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
   */
 -->
 
-<header class="w-full bg-[#FCF6E5] px-16 py-8">
+  <!-- <header class="w-full bg-[#FCF6E5] px-16 py-8">
   <div class="max-w-[1512px] mx-auto flex justify-between items-center">
-    
+     -->
     <!-- Logo -->
-    <div class="flex-1 text-2xl font-semibold font-['DM Sans']">
+    <!-- <div class="flex-1 text-2xl font-semibold font-['DM Sans']">
       <span class="text-[#657B83]">Inter</span>
       <span class="text-[#AE8300]">personal</span>
-    </div>
+    </div> -->
 
     <!-- Navigation Links -->
-    <nav class="flex space-x-16 text-[#657B83] text-lg font-medium font-['DM Sans']">
+    <!-- <nav class="flex space-x-16 text-[#657B83] text-lg font-medium font-['DM Sans']">
       <a href="#" class="hover:text-[#AE8300]">Features</a>
       <a href="#" class="hover:text-[#AE8300]">Products</a>
       <a href="#" class="hover:text-[#AE8300]">Our Mission</a>
       <a href="#" class="hover:text-[#AE8300]">Contact Us</a>
-    </nav>
+    </nav> -->
 
     <!-- Sign-in Button -->
-    <div class="flex-1 flex justify-end">
+    <!-- <div class="flex-1 flex justify-end">
       <a href="#" class="border-2 border-[#AE8300] text-[#AE8300] px-6 py-4 rounded-lg text-lg font-semibold font-['DM Sans'] hover:bg-[#AE8300] hover:text-white transition">
         Sign in
       </a>
     </div>
-    
-  </div>
-</header>
+   </div>
+  </header> -->
+
+  <header class="w-full h-[122px] px-16 py-8 flex justify-between items-center bg-[#FCF6E5]">
+    <nav class="w-full max-w-[1200px] mx-auto flex justify-between items-center bg-[#FCF6E5]">
+        <div class="flex justify-start items-center">
+            <div class="h-full p-[14.50px] rounded-[4.53px] inline-flex flex-col justify-start items-start gap-[2.27px]">
+                <div class="inline-flex justify-start items-center gap-[14.66px]">
+                    <div data-svg-wrapper>
+                        <svg width="41" height="30" viewBox="0 0 41 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.4482 0.5C10.4472 0.5 9.63574 1.31148 9.63574 2.3125V7.75C9.63574 8.75102 10.4472 9.5625 11.4482 9.5625H16.8857C17.8868 9.5625 18.6982 8.75102 18.6982 7.75V2.3125C18.6982 1.31148 17.8868 0.5 16.8857 0.5H11.4482ZM22.3232 0.5C21.3222 0.5 20.5107 1.31148 20.5107 2.3125V18.625C20.5107 19.626 21.3222 20.4375 22.3232 20.4375H38.6357C39.6368 20.4375 40.4482 19.626 40.4482 18.625V2.3125C40.4482 1.31148 39.6368 0.5 38.6357 0.5H22.3232ZM0.573242 11.375C0.573242 10.374 1.38473 9.5625 2.38574 9.5625H7.82324C8.82426 9.5625 9.63574 10.374 9.63574 11.375V27.6875C9.63574 28.6885 8.82426 29.5 7.82324 29.5H2.38574C1.38473 29.5 0.573242 28.6885 0.573242 27.6875V11.375ZM13.2607 20.4375C12.2597 20.4375 11.4482 21.249 11.4482 22.25V27.6875C11.4482 28.6885 12.2597 29.5 13.2607 29.5H18.6982C19.6993 29.5 20.5107 28.6885 20.5107 27.6875V22.25C20.5107 21.249 19.6993 20.4375 18.6982 20.4375H13.2607Z" fill="url(#paint0_linear_2051_550)"/>
+                            <defs>
+                                <linearGradient id="paint0_linear_2051_550" x1="14.2701" y1="-27.0903" x2="80.1425" y2="22.3533" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#8A6800"/>
+                                    <stop offset="1" stop-color="#DBA600"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="w-[154.36px] text-[#8A6800] text-[25.93px] font-cal-sans font-semibold">Interpersonal</div>
+                </div>
+            </div>
+        </div>
+  
+        <div class="flex justify-center items-center gap-[72px]">
+            <a href="#" class="text-[#657B83] text-[20px] font-dm-sans font-medium">What it is</a>
+            <a href="#" class="text-[#657B83] text-[20px] font-dm-sans font-medium">How it works</a>
+            <a href="#" class="text-[#657B83] text-[20px] font-dm-sans font-medium">Why</a>
+            <a href="#" class="text-[#657B83] text-[20px] font-dm-sans font-medium">Contact</a>
+        </div>
+  
+        <div class="flex justify-end items-center">
+            <button class="inline-flex justify-center items-center px-6 py-4 rounded-lg border-[2.4px] border-[#AE8300]">
+                <span class="text-[#AE8300] text-[20px] font-dm-sans font-semibold">Book a demo</span>
+            </button>
+        </div>
+    </nav>
+  </header>  
+  
