@@ -1,42 +1,84 @@
 ---
-import "@fontsource/dm-sans"; 
-import "@fontsource/diphylleia"; 
+import "@fontsource/dm-sans";
+import "@fontsource/diphylleia";
 ---
 
-<section class="w-full max-w-[1512px] mx-auto h-[1336px] relative">
+<section class="w-full max-w-[1512px] mx-auto h-[1336px] bg-[#FCF6E5] flex flex-col items-center px-8 relative">
+  
   <!-- Heading -->
-  <div class="absolute top-0 left-[235px] text-center text-[#083642] text-[32px] font-diphylleia leading-[40px]">
+  <div class="text-center text-[#083642] text-[32px] font-diphylleia leading-[40px] mt-16">
     Each customer call helps you get incrementally closer to <br />
-    feeling the “pull” of customer demand.
+    feeling the <span class="italic">“pull”</span> of customer demand.
   </div>
 
-  <!-- Video Call Container -->
-  <div class="absolute top-[188px] left-[364px] w-[662px] h-[827px] bg-white shadow-xl rounded-[24px]"></div>
+  <!-- Video Call Section -->
+  <div class="relative w-[662px] h-[827px] mt-16">
+    <!-- Background SVG Shadow -->
+    <div class="absolute w-full h-full">
+      <svg width="662" height="827" viewBox="0 0 662 827" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_d_2045_422)">
+          <rect x="84" y="84" width="494" height="659" rx="24" fill="white"/>
+        </g>
+        <defs>
+          <filter id="filter0_d_2045_422" x="0" y="0" width="662" height="827" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset/>
+            <feGaussianBlur stdDeviation="42"/>
+            <feComposite in2="hardAlpha" operator="out"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0.682353 0 0 0 0 0.513726 0 0 0 0 0 0 0 0 0.08 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2045_422"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2045_422" result="shape"/>
+          </filter>
+        </defs>
+      </svg>
+    </div>
 
-  <!-- Video Image -->
-  <img class="absolute top-[342px] left-[292px] w-[638px] h-[420px] shadow-xl rounded-[24px]" 
-       src="https://placehold.co/638x420" alt="Video Call" />
+    <!-- Video Image -->
+    <img class="absolute top-[154px] left-[13px] w-[638px] h-[420px] shadow-lg rounded-[24px]" 
+         src="/images/woman_on_videocall.jpg"  
+         alt="Video Call" />
 
-  <!-- Video Call with Rebecca -->
-  <div class="absolute top-[802px] left-[486px] bg-white shadow-lg rounded-full flex items-center gap-4 px-8 py-4">
-    <div class="bg-gradient-to-r from-[#AE8300] to-[#D7A200] w-[61px] h-[61px] rounded-full"></div>
-    <div class="flex flex-col">
-      <span class="text-[#083642] text-[20px] font-semibold">Video Call</span>
-      <span class="text-[#083642] text-[20px] font-normal">with Rebecca</span>
+    <!-- Video Call Label -->
+    <div class="absolute top-[620px] left-[160px] bg-white shadow-lg rounded-full flex items-center gap-4 px-6 py-4">
+      <div class="bg-gradient-to-r from-[#AE8300] to-[#D7A200] w-[61px] h-[61px] rounded-full flex items-center justify-center">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 10H20V20H10V10Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-[#083642] text-[20px] font-semibold">Video Call</span>
+        <span class="text-[#083642] text-[20px] font-normal">with Rebecca</span>
+      </div>
     </div>
   </div>
 
   <!-- Annotations -->
-  <div class="absolute top-[597px] left-[12px] border-2 border-[#AE8300]/40 rounded-full px-6 py-4">
-    <span class="text-[#AE8300] text-[20px] font-dmSans font-medium">Unlock real demand</span>
+  <div class="absolute top-[520px] left-[160px] border-2 border-[#AE8300]/40 rounded-full px-6 py-3 flex items-center">
+    <span class="text-[#AE8300] text-[18px] font-dm-sans font-medium">Unlock real demand</span>
   </div>
 
-  <div class="absolute top-[436px] left-[974px] border-2 border-[#AE8300]/40 rounded-full px-6 py-4">
-    <span class="text-[#AE8300] text-[20px] font-dmSans font-medium">Understand the customer’s critical <br /> projects</span>
+  <div class="absolute top-[320px] right-[180px] border-2 border-[#AE8300]/40 rounded-full px-6 py-3 flex items-center">
+    <span class="text-[#AE8300] text-[18px] font-dm-sans font-medium">
+      Understand the customer’s critical <br /> projects
+    </span>
+  </div>
+
+  <!-- Callout Bubbles -->
+  <div class="absolute top-[750px] left-[120px] bg-white px-6 py-4 rounded-lg shadow-md">
+    <span class="text-[#657B83] text-[18px]">Hear unspoken feedback</span>
+  </div>
+
+  <div class="absolute top-[920px] left-[160px] bg-white px-6 py-4 rounded-lg shadow-md">
+    <span class="text-[#657B83] text-[18px]">Revisit the segments that resonate</span>
+  </div>
+
+  <div class="absolute top-[920px] right-[180px] bg-white px-6 py-4 rounded-lg shadow-md">
+    <span class="text-[#657B83] text-[18px]">Differentiate real demand from a feature wishlist or complaining</span>
   </div>
 
   <!-- Timeline -->
-  <div class="absolute bottom-0 w-full flex justify-between px-16 text-[#AE8300] text-[20px]">
+  <div class="absolute bottom-16 w-full flex justify-between px-32 text-[#AE8300] text-[20px]">
     <div class="text-center">
       <span class="font-bold">03:21</span>
       <p class="font-medium">Built Rapport</p>
@@ -54,4 +96,5 @@ import "@fontsource/diphylleia";
       <p class="font-medium">Company Research</p>
     </div>
   </div>
+
 </section>
