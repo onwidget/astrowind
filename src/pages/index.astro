@@ -21,23 +21,93 @@ const metadata = {
 
 <Layout metadata={metadata}>
 
-   <section class="w-full h-[860px] flex flex-col justify-center items-center px-[280px]">
-     <div class="flex flex-col justify-center items-center gap-16">
-       <!-- Text Section -->
-       <div class="h-[225px] flex flex-col justify-start items-center gap-12 w-full">
-         <p class="text-[#657B83] text-[16px] font-dm-sans font-medium uppercase tracking-[1.28px]">
-           The GPS for Sales Calls
-         </p>
-         <h1 class="text-center text-[#012B36] text-[56px] font-diphylleia font-normal leading-[72px]">
-           Find PMF <i>Faster</i>
-         </h1>
-         <p class="text-center text-[#657B83] text-[28px] font-dm-sans font-normal">
-           Turn-by-turn GPS for discovery calls
-         </p>
-       </div>
-     </div>
-   </section>
-     
+  <section id="what-it-is" class="w-full max-w-[1512px] mx-auto h-[860px] bg-[#FCF6E5] flex justify-center items-center px-8 relative">
+    <div class="flex flex-col items-center gap-12 text-center max-w-[741px]">
+      <p class="text-[#657B83] text-[16px] font-dm-sans font-medium uppercase tracking-[1.28px]">
+        The GPS for Sales calls
+      </p>
+      <h2 class="text-[#012B36] text-[56px] font-diphylleia font-normal leading-[72px]">
+        Find PMF Faster
+      </h2>
+      <p class="text-[#657B83] text-[28px] font-dm-sans font-normal leading-[36px]">
+        Turn-by-turn GPS for discovery calls
+      </p>
+    </div>
+  </section>
+
+  <!-- Customer Call -->
+   <CustomerCall />
+
+   <!-- How it works -->
+   <!-- class="w-full max-w-[1512px] mx-auto h-[1336px] bg-[#FCF6E5] flex flex-col items-center px-8 relative" -->
+  <section id="how-it-works" class="w-full max-w-[1512px] mx-auto h-[860px] bg-[#FCF6E5] flex justify-center items-center px-8 relative">
+  <div class="flex flex-col items-center gap-12 text-center max-w-[741px]">
+    <!-- Section Label -->
+    <p class="text-[#657B83] text-[16px] font-dm-sans font-medium uppercase tracking-[1.28px]">
+      How it works
+    </p>
+
+    <!-- Heading with Line-through Effect -->
+    <h2 class="text-[#012B36] text-[56px] font-diphylleia font-normal leading-[72px]">
+      <span class="line-through">Computer Vision</span> <br />
+      Computer “EQ” Vision
+    </h2>
+
+    <!-- Description Text -->
+    <p class="text-[#657B83] text-[28px] font-dm-sans font-normal leading-[36px]">
+      Ensemble Machine Learning models help you quantify and understand the complete communication.
+    </p>
+  </div>
+  </section>
+
+  <!-- The Future of Work Section -->
+<section id="why" class="w-full max-w-[1512px] mx-auto h-[860px] bg-[#FCF6E5] flex flex-col items-center px-[128px] py-[120px]">
+  
+  <!-- Section Heading -->
+  <h2 class="text-[#012B36] text-[56px] font-diphylleia font-normal leading-[72px] text-center">
+    The Future of Work
+  </h2>
+
+  <!-- Content Wrapper -->
+  <div class="flex items-center justify-between max-w-[1256px] w-full mt-[120px]">
+    
+    <!-- Left: Image -->
+    <img class="w-[574px] h-[428px] rounded-[24px] object-cover shadow-md" 
+         src="public/images/people-meeting.jpg" 
+         alt="People working together" />
+
+    <!-- Right: Quote & CTA -->
+    <div class="flex flex-col justify-start gap-[64px] w-[574px]">
+      
+      <!-- Quote Block -->
+      <div class="flex flex-col gap-[24px] relative">
+        
+        <!-- Large Quotation Mark -->
+        <p class="absolute -top-[40px] left-0"></p>
+          <span class="text-[#657B83] text-[56px] font-diphylleia">“</span>
+          <span class="text-[#657B83] text-[28px] font-dm-sans font-normal leading-[36px]">At Interpersonal we believe the future of work is still people working with other people, but now enhanced with AI.</span>
+
+        <!-- Dotted Divider -->
+        <div class="border-t border-dotted border-[#657B83]/80"></div>
+
+        <!-- Author & Title -->
+        <p class="text-[20px] font-dm-sans">
+          <span class="text-[#AE8300] font-semibold">Adell Hanson-Kahn</span>, 
+          <span class="text-[#657B83] font-normal">Founder & CEO, Interpersonal, Inc.</span>
+        </p>
+        
+      </div>
+
+      <!-- CTA Button -->
+      <button class="px-6 py-4 text-[20px] font-dm-sans font-semibold text-[#AE8300] border-2 border-[#AE8300] rounded-lg hover:bg-[#AE8300] hover:text-white transition">
+        Connect with us
+      </button>
+
+    </div>
+  </div>
+
+</section>
+
   <!-- <div style="width: 1512px; height: 1336px; position: relative">
     <div style="width: 1512px; height: 100px; left: 0px; top: 1236px; position: absolute">
         <div style="height: 100px; left: 216px; top: 0px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: center; gap: 48px; display: inline-flex">
@@ -581,7 +651,6 @@ const metadata = {
       waste more time! :P
     </Fragment>
   </CallToAction> -->
-  <CustomerCall />
 
 </Layout>
 
