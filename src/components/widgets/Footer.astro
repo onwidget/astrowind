@@ -1,4 +1,4 @@
----
+<!-- ---
 import { Icon } from 'astro-icon/components';
 import { SITE } from 'astrowind:config';
 import { getHomePermalink } from '~/utils/permalinks';
@@ -100,5 +100,47 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
         <Fragment set:html={footNote} />
       </div>
     </div>
+  </div>
+</footer> -->
+
+<footer class="w-full bg-white shadow-lg py-16 px-48 flex flex-col items-center justify-center">
+  <div class="w-full max-w-[1256px] flex justify-between items-start">
+    <!-- Left Section -->
+    <div class="flex flex-col gap-6">
+      <!-- Logo -->
+      <div class="flex items-center gap-4 ml-[-14px]">
+        <img src="images/interpersonal_logo_wordmark.svg" 
+             alt="Interpersonal Logo" 
+             class="w-auto h-[58px]" />
+      </div>
+
+      <!-- Tagline -->
+      <p class="text-[#657B83] text-[20px] font-dm-sans font-normal opacity-80">
+        Look forward to going to work.
+      </p>
+
+      <!-- Social Icons -->
+      <div class="flex gap-4">
+        <a href="#" aria-label="LinkedIn">
+          <img src="public/images/linkedin.svg" alt="LinkedIn" class="w-[24px] h-[24px]" />
+        </a>
+        <a href="#" aria-label="Twitter">
+          <img src="public/images/twitter.svg" alt="Twitter" class="w-[24px] h-[24px]" />
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Section (Navigation Links) -->
+    <div class="flex flex-col gap-3 text-right">
+      <a href="#" class="text-[#657B83] text-[20px] font-dm-sans font-normal opacity-80">What it is</a>
+      <a href="#" class="text-[#657B83] text-[20px] font-dm-sans font-normal opacity-80">How it works</a>
+      <a href="#" class="text-[#657B83] text-[20px] font-dm-sans font-normal opacity-80">Why</a>
+      <a href="#" class="text-[#657B83] text-[20px] font-dm-sans font-normal opacity-80">Contact</a>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="mt-12 text-[#657B83] text-[20px] font-dm-sans font-normal opacity-80 text-center">
+    © 2025 Interpersonal, Inc. All rights reserved.
   </div>
 </footer>
