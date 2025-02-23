@@ -38,7 +38,6 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.0.7",
     "@astrojs/partytown": "^2.1.3",
-    "@astrojs/tailwind": "^5.1.5",
     "@eslint/js": "^9.18.0",
     "@iconify-json/flat-color-icons": "^1.2.1",
     "@iconify-json/tabler": "^1.2.14",
@@ -61,7 +60,8 @@
     "reading-time": "^1.5.0",
     "sharp": "0.33.5",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "^4.0.8",
+    "@tailwindcss/vite": "^4.0.8",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.21.0",
     "unist-util-visit": "^5.0.0"
