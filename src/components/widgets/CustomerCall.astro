@@ -3,98 +3,98 @@ import "@fontsource/dm-sans";
 import "@fontsource/diphylleia";
 ---
 
-<section class="w-full max-w-[1512px] mx-auto h-[1336px] bg-[#FCF6E5] flex flex-col items-center px-8 relative">
+<section class="w-full max-w-[1512px] mx-auto h-[1336px] bg-[#FCF6E5] flex flex-col items-center px-8 py-16">
   
   <!-- Heading -->
-  <div class="text-center text-[#083642] text-[32px] font-diphylleia leading-[40px] mt-16">
-    Each customer call helps you get incrementally closer to <br />
-    feeling the <span class="italic">“pull”</span> of customer demand.
-  </div>
+  <h2 class="text-center text-[#083642] text-[32px] font-diphylleia font-normal leading-[40px]">
+    Each customer call helps you get incrementally closer to <br /> feeling the “pull” of customer demand.
+  </h2>
 
-  <!-- Video Call Section -->
-  <div class="relative w-[662px] h-[827px] mt-16">
-    <!-- Background SVG Shadow -->
-    <div class="absolute w-full h-full">
-      <svg width="662" height="827" viewBox="0 0 662 827" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g filter="url(#filter0_d_2045_422)">
-          <rect x="84" y="84" width="494" height="659" rx="24" fill="white"/>
-        </g>
-        <defs>
-          <filter id="filter0_d_2045_422" x="0" y="0" width="662" height="827" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-            <feOffset/>
-            <feGaussianBlur stdDeviation="42"/>
-            <feComposite in2="hardAlpha" operator="out"/>
-            <feColorMatrix type="matrix" values="0 0 0 0 0.682353 0 0 0 0 0.513726 0 0 0 0 0 0 0 0 0.08 0"/>
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2045_422"/>
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2045_422" result="shape"/>
-          </filter>
-        </defs>
-      </svg>
+  <!-- Content Wrapper -->
+  <div class="relative w-[1348px] h-[852px] flex justify-center items-center mt-[108px]">
+
+    <!-- Background Card -->
+    <div class="absolute w-[494px] h-[659px] top-0 bg-white shadow-lg rounded-[24px]"></div>
+
+    <!-- Main Image -->
+    <img src="public/images/woman_on_videocall.jpg" alt="Video Call with Rebecca"
+      class="absolute w-[638px] h-[420px] rounded-[24px] shadow-lg object-cover top-[154px]">
+
+    <!-- Labels & Connectors -->
+    <!-- Top Label -->
+    <div class="absolute top-[40px] ml-[400px] bg-white rounded-[24px] shadow-sm px-6 py-4 text-center">
+      <p class="text-[#657B83] text-[20px] font-dm-sans">Know what your customer wants to get done</p>
     </div>
 
-    <!-- Video Image -->
-    <img class="absolute top-[154px] left-[13px] w-[638px] h-[420px] shadow-lg rounded-[24px]" 
-         src="/images/woman_on_videocall.jpg"  
-         alt="Video Call" />
-
-    <!-- Video Call Label -->
-    <div class="absolute top-[620px] left-[160px] bg-white shadow-lg rounded-full flex items-center gap-4 px-6 py-4">
-      <div class="bg-gradient-to-r from-[#AE8300] to-[#D7A200] w-[61px] h-[61px] rounded-full flex items-center justify-center">
-        <svg width="30" height="30" viewBox="0 0 30 30" fill="white" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 10H20V20H10V10Z" fill="currentColor"/>
-        </svg>
-      </div>
-      <div class="flex flex-col">
-        <span class="text-[#083642] text-[20px] font-semibold">Video Call</span>
-        <span class="text-[#083642] text-[20px] font-normal">with Rebecca</span>
+    <!-- Left Label (Unlock real demand) -->
+    <div class="absolute left-[60px] top-[400px] flex items-center space-x-4">
+      <div class="w-[12px] h-[12px] bg-[#D7A200] rounded-full"></div>
+      <div class="border border-[#D7A200] px-6 py-4 rounded-[2000px] text-[#AE8300] text-[20px] font-dm-sans font-medium">
+        Unlock real demand
       </div>
     </div>
-  </div>
 
-  <!-- Annotations -->
-  <div class="absolute top-[520px] left-[160px] border-2 border-[#AE8300]/40 rounded-full px-6 py-3 flex items-center">
-    <span class="text-[#AE8300] text-[18px] font-dm-sans font-medium">Unlock real demand</span>
-  </div>
-
-  <div class="absolute top-[320px] right-[180px] border-2 border-[#AE8300]/40 rounded-full px-6 py-3 flex items-center">
-    <span class="text-[#AE8300] text-[18px] font-dm-sans font-medium">
-      Understand the customer’s critical <br /> projects
-    </span>
-  </div>
-
-  <!-- Callout Bubbles -->
-  <div class="absolute top-[750px] left-[120px] bg-white px-6 py-4 rounded-lg shadow-md">
-    <span class="text-[#657B83] text-[18px]">Hear unspoken feedback</span>
-  </div>
-
-  <div class="absolute top-[920px] left-[160px] bg-white px-6 py-4 rounded-lg shadow-md">
-    <span class="text-[#657B83] text-[18px]">Revisit the segments that resonate</span>
-  </div>
-
-  <div class="absolute top-[920px] right-[180px] bg-white px-6 py-4 rounded-lg shadow-md">
-    <span class="text-[#657B83] text-[18px]">Differentiate real demand from a feature wishlist or complaining</span>
-  </div>
-
-  <!-- Timeline -->
-  <div class="absolute bottom-16 w-full flex justify-between px-32 text-[#AE8300] text-[20px]">
-    <div class="text-center">
-      <span class="font-bold">03:21</span>
-      <p class="font-medium">Built Rapport</p>
+    <!-- Right Label (Understand customer’s critical projects) -->
+    <div class="absolute right-[60px] top-[230px] flex items-center space-x-4">
+      <div class="border border-[#D7A200] px-6 py-4 rounded-[2000px] text-[#AE8300] text-[20px] font-dm-sans font-medium">
+        Understand the customer’s critical projects
+      </div>
+      <div class="w-[12px] h-[12px] bg-[#D7A200] rounded-full"></div>
     </div>
-    <div class="text-center">
-      <span class="font-bold">04:34</span>
-      <p class="font-medium">Disengaged</p>
+
+    <!-- Bottom Center Label (Video Call with Rebecca) -->
+    <div class="w-auto h-auto absolute bottom-[25px] flex items-center bg-white pl-[16px] pr-[32px] py-[16px] rounded-full shadow-md">
+      <div class="w-[61px] h-[61px] bg-[#ae8300] rounded-full flex items-center justify-center">
+        <img src="public/images/Video.svg" alt="Twitter" class="w-[24px] h-[24px]" />
+      </div>
+      <div class="ml-4">
+        <p class="text-[#083642] text-[20px] font-dm-sans font-semibold">Video Call</p>
+        <p class="text-[#083642] text-[20px] font-dm-sans">with Rebecca</p>
+      </div>
     </div>
-    <div class="text-center">
-      <span class="font-bold">07:57</span>
-      <p class="font-medium">Engaged: (Frustration) Shared Pain Point</p>
+
+    <!-- Bottom Left Label (Revisit Segments) -->
+    <div class="absolute left-[140px] bottom-[-92px] bg-white px-6 py-4 rounded-[24px] shadow-sm text-center">
+      <p class="text-[#657B83] text-[20px] font-dm-sans">Revisit the segments that resonate</p>
     </div>
-    <div class="text-center opacity-50">
-      <span class="font-bold">12:45</span>
-      <p class="font-medium">Company Research</p>
+
+    <!-- Bottom Right Label (Differentiate demand) -->
+    <div class="absolute right-0 bottom-[-120px] bg-white px-6 py-4 rounded-[24px] shadow-sm text-center">
+      <p class="text-[#657B83] text-[20px] font-dm-sans">Differentiate real demand from a feature <br /> wishlist or complaining</p>
+    </div>
+
+    <!-- Bottom Floating Label (Hear unspoken feedback) -->
+    <div class="absolute left-0 bottom-[-6px] bg-white px-6 py-4 rounded-[24px] shadow-sm text-center">
+      <p class="text-[#657B83] text-[20px] font-dm-sans">Hear unspoken feedback</p>
+    </div>
+  </div>
+
+  <!-- Timeline Section -->
+  <div class="w-full flex justify-center items-center mt-[196px]">
+    <div class="w-[1181px] flex justify-between text-center text-[#AE8300] font-dm-sans">
+      
+      <div class="flex flex-col items-center">
+        <p class="font-bold text-[20px]">03:21</p>
+        <p class="font-medium text-[20px]">Built Rapport</p>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <p class="font-bold text-[20px]">04:34</p>
+        <p class="font-medium text-[20px]">Disengaged</p>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <p class="font-bold text-[20px]">07:57</p>
+        <p class="font-medium text-[20px]">Engaged: (Frustration) Shared Pain Point</p>
+      </div>
+
+      <div class="flex flex-col items-center opacity-50">
+        <p class="font-bold text-[20px]">12:45</p>
+        <p class="font-medium text-[20px]">Company Research</p>
+      </div>
+
     </div>
   </div>
 
 </section>
+
