@@ -62,6 +62,10 @@ export default {
         dmSans: ['DM Sans', 'sans-serif'],
         diphylleia: ['Diphylleia', 'serif'],
       },
+      backgroundImage: {
+        'line-gradient(left)': 'linear-gradient(to left, rgba(174, 131, 0, 1) 0%, rgba(174, 131, 0, 0.5) 30%, rgba(174, 131, 0, 0) 60%)',
+        'line-gradient(right)': 'linear-gradient(to right, rgba(174, 131, 0, 1) 0%, rgba(174, 131, 0, 0.5) 30%, rgba(174, 131, 0, 0) 60%)',
+      },
 
       animation: {
         fade: 'fadeInUp 1s both',
@@ -83,3 +87,4 @@ export default {
   ],
   darkMode: 'class',
 };
+
