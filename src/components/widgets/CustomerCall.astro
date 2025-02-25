@@ -3,74 +3,76 @@ import "@fontsource/dm-sans";
 import "@fontsource/diphylleia";
 ---
 
-<section class="w-full max-w-[1512px] mx-auto h-[1336px] bg-[#FCF6E5] flex flex-col items-center px-8 py-16">
+<section class="w-full max-w-[1512px] mx-auto h-[1336px] bg-[#FCF6E5] flex flex-col items-between gap-[196px]">
   
-  <!-- Heading -->
-  <h2 class="text-center text-[#083642] text-[32px] font-diphylleia font-normal leading-[40px]">
+  <div class="relative w-[1348px] mx-auto h-[1040px] flex flex-col justify-start items-center gap-[108px]">
+    <!-- Heading -->
+    <h2 class="text-center text-[#083642] text-[32px] font-diphylleia font-normal leading-[40px]">
     Each customer call helps you get incrementally closer to <br /> feeling the “pull” of customer demand.
-  </h2>
+    </h2>
 
-  <!-- Content Wrapper -->
-  <div class="relative w-[1348px] h-[852px] flex justify-center items-center mt-[108px]">
+    <!-- Content Wrapper -->
+    <div class="relative w-[1348px] h-[852px] flex justify-center items-center">
 
-    <!-- Background Card -->
-    <div class="absolute w-[494px] h-[659px] top-0 bg-white shadow-lg rounded-[24px]"></div>
+      <!-- Background Card -->
+      <div class="absolute top-0 w-[494px] h-[659px] bg-white shadow-lg rounded-[24px]"></div>
 
-    <!-- Main Image -->
-    <img src="public/images/woman_on_videocall.jpg" alt="Video Call with Rebecca"
-      class="absolute w-[638px] h-[420px] rounded-[24px] shadow-lg object-cover top-[154px]">
+      <!-- Main Image -->
+      <img src="public/images/woman_on_videocall.jpg" alt="Video Call with Rebecca"
+        class="absolute top-[154px] w-[638px] h-[420px] rounded-[24px] shadow-lg object-cover">
 
-    <!-- Labels & Connectors -->
-    <!-- Top Label -->
-    <div class="absolute top-[40px] ml-[400px] bg-white rounded-[24px] shadow-sm px-6 py-4 text-center">
-      <p class="text-[#657B83] text-[20px] font-dm-sans">Know what your customer wants to get done</p>
-    </div>
-
-    <!-- Left Label (Unlock real demand) -->
-    <div class="absolute left-[60px] top-[400px] flex items-center space-x-4">
-      <div class="w-[12px] h-[12px] bg-[#D7A200] rounded-full"></div>
-      <div class="border border-[#D7A200] px-6 py-4 rounded-[2000px] text-[#AE8300] text-[20px] font-dm-sans font-medium">
-        Unlock real demand
+      <!-- Labels & Connectors -->
+      <!-- Top Label -->
+      <div class="absolute ml-[400px] top-[40px] bg-white rounded-[24px] shadow-sm px-6 py-4 text-center">
+        <p class="text-[#657B83] text-[20px] font-dm-sans">Know what your customer wants to get done</p>
       </div>
-    </div>
 
-    <!-- Right Label (Understand customer’s critical projects) -->
-    <div class="absolute right-[60px] top-[230px] flex items-center space-x-4">
-      <div class="border border-[#D7A200] px-6 py-4 rounded-[2000px] text-[#AE8300] text-[20px] font-dm-sans font-medium">
-        Understand the customer’s critical projects
+      <!-- Left Label (Unlock real demand) -->
+      <div class="absolute left-[60px] top-[400px] flex items-center space-x-4">
+        <div class="w-[12px] h-[12px] bg-[#D7A200] rounded-full"></div>
+        <div class="border border-[#D7A200] px-6 py-4 rounded-[2000px] text-[#AE8300] text-[20px] font-dm-sans font-medium">
+          Unlock real demand
+        </div>
       </div>
-      <div class="w-[12px] h-[12px] bg-[#D7A200] rounded-full"></div>
-    </div>
-
-    <!-- Bottom Center Label (Video Call with Rebecca) -->
-    <div class="w-auto h-auto absolute bottom-[25px] flex items-center bg-white pl-[16px] pr-[32px] py-[16px] rounded-full shadow-md">
-      <div class="w-[61px] h-[61px] bg-[#ae8300] rounded-full flex items-center justify-center">
-        <img src="public/images/Video.svg" alt="Twitter" class="w-[24px] h-[24px]" />
+    
+      <!-- Right Label (Understand customer’s critical projects) -->
+      <div class="absolute right-[60px] top-[230px] flex items-start space-x-4">
+        <div class="border border-[#D7A200] px-6 py-4 rounded-[2000px] text-[#AE8300] text-[20px] font-dm-sans font-medium">
+          Understand the customer’s <br /> critical projects
+        </div>
+        <div class="w-[12px] h-[12px] bg-[#D7A200] rounded-full"></div>
       </div>
-      <div class="ml-4">
-        <p class="text-[#083642] text-[20px] font-dm-sans font-semibold">Video Call</p>
-        <p class="text-[#083642] text-[20px] font-dm-sans">with Rebecca</p>
+
+      <!-- Bottom Center Label (Video Call with Rebecca) -->
+      <div class="w-auto h-auto absolute bottom-[145px] flex items-center bg-white pl-[16px] pr-[32px] py-[16px] rounded-full shadow-md">
+        <div class="w-[61px] h-[61px] bg-[#ae8300] rounded-full flex items-center justify-center">
+          <img src="public/images/Video.svg" alt="Twitter" class="w-[24px] h-[24px]" />
+        </div>
+        <div class="ml-4">
+          <p class="text-[#083642] text-[20px] font-dm-sans font-semibold">Video Call</p>
+          <p class="text-[#083642] text-[20px] font-dm-sans">with Rebecca</p>
+        </div>
       </div>
-    </div>
 
-    <!-- Bottom Left Label (Revisit Segments) -->
-    <div class="absolute left-[140px] bottom-[-92px] bg-white px-6 py-4 rounded-[24px] shadow-sm text-center">
-      <p class="text-[#657B83] text-[20px] font-dm-sans">Revisit the segments that resonate</p>
-    </div>
+      <!-- Bottom Left Label (Revisit Segments) -->
+      <div class="absolute left-[140px] bottom-[26px] bg-white px-[24px] py-[24px] rounded-[24px] shadow-sm text-center">
+        <p class="text-[#657B83] text-[20px] font-dm-sans">Revisit the segments that resonate</p>
+      </div>
 
-    <!-- Bottom Right Label (Differentiate demand) -->
-    <div class="absolute right-0 bottom-[-120px] bg-white px-6 py-4 rounded-[24px] shadow-sm text-center">
-      <p class="text-[#657B83] text-[20px] font-dm-sans">Differentiate real demand from a feature <br /> wishlist or complaining</p>
-    </div>
+      <!-- Bottom Right Label (Differentiate demand) -->
+      <div class="absolute right-0 bottom-0 bg-white px-[24px] py-[24px] rounded-[24px] shadow-sm text-center">
+        <p class="text-[#657B83] text-[20px] font-dm-sans">Differentiate real demand from a feature <br /> wishlist or complaining</p>
+      </div>
 
-    <!-- Bottom Floating Label (Hear unspoken feedback) -->
-    <div class="absolute left-0 bottom-[-6px] bg-white px-6 py-4 rounded-[24px] shadow-sm text-center">
-      <p class="text-[#657B83] text-[20px] font-dm-sans">Hear unspoken feedback</p>
+      <!-- Bottom Floating Label (Hear unspoken feedback) -->
+      <div class="absolute left-0 bottom-[126px] bg-white px-[24px] py-[24px] rounded-[24px] shadow-sm text-center">
+        <p class="text-[#657B83] text-[20px] font-dm-sans">Hear unspoken feedback</p>
+      </div>
     </div>
   </div>
 
   <!-- Timeline Section -->
-  <div class="w-full flex justify-center items-center mt-[196px]">
+  <div class="w-full bottom-0 flex justify-center items-center">
     <div class="w-[1181px] flex justify-between text-center text-[#AE8300] font-dm-sans">
       
       <div class="flex flex-col items-center">
