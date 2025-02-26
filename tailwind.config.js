@@ -66,6 +66,10 @@ export default {
         'line-gradient(left)': 'linear-gradient(to left, rgba(174, 131, 0, 1) 0%, rgba(174, 131, 0, 0.5) 30%, rgba(174, 131, 0, 0) 60%)',
         'line-gradient(right)': 'linear-gradient(to right, rgba(174, 131, 0, 1) 0%, rgba(174, 131, 0, 0.5) 30%, rgba(174, 131, 0, 0) 60%)',
       },
+      boxShadow: {
+        'image-shadow': '0px 0px 108px rgba(174, 131, 0, 0.08)', // Adjust x, y, blur, and color
+        'whitebox-shadow': '0px 0px 84px rgba(174, 131, 0, 0.08)',
+      },
 
       animation: {
         fade: 'fadeInUp 1s both',
