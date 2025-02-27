@@ -69,6 +69,7 @@ export default {
       boxShadow: {
         'image-shadow': '0px 0px 108px rgba(174, 131, 0, 0.08)', // Adjust x, y, blur, and color
         'whitebox-shadow': '0px 0px 84px rgba(174, 131, 0, 0.08)',
+        'footer-shadow': '0px 4px 240px rgba(174, 131, 0, 0.04)',
       },
 
       animation: {
