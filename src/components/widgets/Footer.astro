@@ -103,12 +103,13 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
   </div>
 </footer> -->
 
-<footer class="w-full bg-white shadow-lg py-16 px-48 flex flex-col items-center justify-center">
-  <div class="w-full max-w-[1256px] flex justify-between items-start">
+<footer class="w-full h-[416px] bg-white shadow-footer-shadow py-[80px] px-[191px] flex flex-col items-center justify-between">
+  <div class="w-full max-w-[1130px] flex justify-between items-start">
     <!-- Left Section -->
-    <div class="flex flex-col gap-6">
+    <div class="flex flex-col gap-[48px]">
+      
       <!-- Logo -->
-      <div class="flex items-center gap-4 ml-[-14px]">
+      <div class="flex items-center gap-4 ml-[-14px] mt-[-14px]">
         <img src="images/interpersonal_logo_wordmark.svg" 
              alt="Interpersonal Logo" 
              class="w-auto h-[58px]" />
@@ -119,28 +120,60 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
         Look forward to going to work.
       </p>
 
-      <!-- Social Icons -->
-      <div class="flex gap-4">
-        <a href="#" aria-label="LinkedIn">
-          <img src="public/images/linkedin.svg" alt="LinkedIn" class="w-[24px] h-[24px]" />
-        </a>
-        <a href="#" aria-label="Twitter">
-          <img src="public/images/twitter.svg" alt="Twitter" class="w-[24px] h-[24px]" />
-        </a>
-      </div>
     </div>
 
-    <!-- Right Section (Navigation Links) -->
-    <div class="flex flex-col gap-3 text-right">
-      <a href="#" class="text-[#657B83] text-[20px] font-dm-sans font-normal opacity-80">What it is</a>
-      <a href="#" class="text-[#657B83] text-[20px] font-dm-sans font-normal opacity-80">How it works</a>
-      <a href="#" class="text-[#657B83] text-[20px] font-dm-sans font-normal opacity-80">Why</a>
-      <a href="#" class="text-[#657B83] text-[20px] font-dm-sans font-normal opacity-80">Contact</a>
+    <div class="flex flex-col gap-[48px]">
+      
+      <!-- Right Section (Navigation Links) -->
+      <nav class="w-[118px] h-full flex flex-col gap-[16px]">
+        <a href="#what-it-is" class="nav-link text-[#657B83] opacity-80 text-[20px] font-dm-sans font-normal hover:text-[#AE8300] transition">What it is</a>
+        <a href="#how-it-works" class="nav-link text-[#657B83] opacity-80 text-[20px] font-dm-sans font-normal hover:text-[#AE8300] transition">How it works</a>
+        <a href="#why" class="nav-link text-[#657B83] opacity-80 text-[20px] font-dm-sans font-normal hover:text-[#AE8300] transition">Why</a>
+        <!-- <a href="#" class="text-[#657B83] text-[20px] font-dm-sans font-normal opacity-80">Contact</a> -->
+      </nav>
+
+      <!-- Social Icons -->
+      <div class="flex items-start gap-[32px]">
+        
+        <a href="mailto:hello@interpersonal.work" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="group relative w-[24px] h-[24px] inline-block">
+        
+        <!-- Default LinkedIn Icon -->
+        <img src="public/images/Email.svg" 
+             alt="Email" 
+             class="w-full h-full transition-opacity duration-300 group-hover:opacity-0">
+        
+        <!-- Hover State LinkedIn Icon -->
+        <img src="public/images/Email_hover.svg" 
+             alt="Email Hover" 
+             class="w-full h-full transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute top-0 left-0">
+        </a>
+        
+        <a href="https://www.linkedin.com/company/interpersonal-inc/"
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="group relative w-[24px] h-[24px] inline-block">
+        
+        <!-- Default LinkedIn Icon -->
+        <img src="public/images/linkedin.svg" 
+             alt="LinkedIn" 
+             class="w-full h-full transition-opacity duration-300 group-hover:opacity-0">
+        
+        <!-- Hover State LinkedIn Icon -->
+        <img src="public/images/linkedin_hover.svg" 
+             alt="LinkedIn Hover" 
+             class="w-full h-full transition-opacity duration-300 opacity-0 group-hover:opacity-100 absolute top-0 left-0">
+        </a>
+
+      </div>
+
     </div>
   </div>
 
   <!-- Copyright -->
-  <div class="mt-12 text-[#657B83] text-[20px] font-dm-sans font-normal opacity-80 text-center">
+  <div class="text-[#657B83] text-[20px] font-dm-sans font-normal opacity-80 text-center">
     © 2025 Interpersonal, Inc. All rights reserved.
   </div>
 </footer>
