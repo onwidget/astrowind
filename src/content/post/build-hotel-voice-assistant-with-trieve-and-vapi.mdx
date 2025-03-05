@@ -1,0 +1,220 @@
+---
+publishDate: 2025-03-04T13:45:00.000Z
+author: Nicholas Khami
+title: Build a Hotel Voice Assistant with Trieve + Vapi
+excerpt: >-
+  Step by step guide including how to create a datset, perform a web crawl of a
+  hotel's site, and connect the dataset to Vapi as a knowledge-base quickly.
+image: >-
+  https://cdn.trieve.ai/blog/hotel-voice-agent/hotel-knowledge-base-using-trieve-and-vapi.png
+category: Tutorials
+tags:
+  - AI
+  - tutorials
+  - Vapi
+displayImage: true
+displayExcerpt: true
+---
+
+import Info from '~/components/common/Info.astro';
+
+If you are a more API focused user and just interested in the HTTP requests you would use to build this system, then please reference the included cURL requests throughout the blog.
+
+# Hotel Voice Agent Requirements
+
+We are going to be building a voice assistant for [Hotel Spero in San Francisco](https://www.ihg.com/vignettecollection/hotels/us/en/san-francisco/sfosh/hoteldetail).
+
+- [x] Answer questions about check-in/check-out time
+- [x] Provide directions to the hotel and parking information
+- [x] Provide information about hotel amenities (e.g., gym, pool, restaurant, spa)
+
+# Trieve Portion
+
+<Info>
+  Creating a Trieve account is a pre-requisite to this tutorial. Navigate to <a href="https://trieve.ai">trieve.ai</a> and click "Sign Up" to create your account and access the dashboard. Alternatively, navigate directly to <a href="https://dashboard.trieve.ai">dashboard.trieve.ai</a>.
+</Info>
+
+## Step 1: Create a Trieve Dataset
+
+Datasets in Trieve correlate to knowledge bases. Typically you will want to have one `dataset` per voice agent in your system.
+
+You can create your first dataset by clicking on the "create dataset" button when you sign up for Trieve:
+
+![create trieve dataset](https://cdn.trieve.ai/blog/hotel-voice-agent/hotel-voice-agent-create-dataset.png)
+
+After pressing that button you will see the following modal, simply enter your dataset name and press enter. You can ignore the advanced settings.
+
+![create dataset modal](https://cdn.trieve.ai/blog/hotel-voice-agent/create-dataset-modal.png)
+
+You can also do this via an HTTP request. If creating the dataset via HTTP, make sure to copy the ID of the dataset from the response and save it for later requests.
+
+```sh
+curl 'https://api.trieve.ai/api/dataset' \
+  -H 'Authorization: <replace-with-your-trieve-api-key>' \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'tr-organization: <replace-with-your-organization-id>' \
+  --data-raw '{"dataset_name":"vignette-san-francisco"}'
+```
+
+## Step 2: Trigger a crawl
+
+Hotel Spero's website contains information to answer every common question about the hotel. Parking, directions, gym, pool, and other details are all available. We will be performing a crawl of their website to make that information accessible to our voice agent.
+
+1. Navigate to the Crawling Options in the left sidenav on the dashboard page for your dataset
+2. Paste the site's URL into the `Site URL` input
+3. Click start new crawl
+
+![trigger a crawl](https://cdn.trieve.ai/blog/hotel-voice-agent/hotel-crawl-guide.png)
+
+You can see the progress in the results page after your crawl is triggered:
+
+![crawl progress screenshot](https://cdn.trieve.ai/blog/hotel-voice-agent/crawl-progress-screenshot.png)
+
+You can also trigger the crawl through an HTTP request:
+
+```sh
+curl 'https://api.trieve.ai/api/crawl' \
+  -H 'Authorization: <replace-with-your-trieve-api-key>' \
+  -H 'content-type: application/json' \
+  -H 'tr-dataset: <replace-with-your-dataset-id>' \
+  --data-raw '{"crawl_options":{"allow_external_links":false,"boost_titles":true,"exclude_paths":[],"exclude_tags":["navbar","footer","aside","nav","form", "header"],"include_paths":[],"include_tags":[],"interval":"daily","limit":1000,"site_url":"https://www.ihg.com/vignettecollection/hotels/us/en/san-francisco/sfosh/hoteldetail","scrape_options":null}}'
+```
+
+# Vapi Portion
+
+Now that we have all of the Hotel's context pulled into to a `Dataset`, we will need to create a Voice assistant with Vapi and connect it to the Trieve `Dataset` for Hotel Spiro as a Knowledge Base.
+
+<Info>
+  Creating a Vapi account is a pre-requisite to this tutorial. Navigate to <a href="https://vapi.ai">vapi.ai</a> and click "Sign Up" to create your account and access the dashboard. Alternatively, navigate directly to <a href="https://dashboard.vapi.ai">dashboard.vapi.ai</a>.
+</Info>
+
+## 1\. Add your Trieve API Key as a Vapi Provider Credential
+
+### 1\. Create and copy Trieve api key in your [Trieve dashboard at dashboard.trieve.ai](https://dashboard.trieve.ai)
+
+Click on the on the create api key button in the "API Key" tab of the Trieve dashboard.
+
+![create a trieve api key](https://cdn.trieve.ai/blog/hotel-voice-agent/create-new-key-screenshot.png)
+
+### 2\. Copy your API key from Trieve
+
+You will need to copy the key to add it to Vapi after generating it.
+
+![trieve copy api key](https://cdn.trieve.ai/blog/hotel-voice-agent/copy-api-key.png)
+
+### 3\. Navigate your Provider Credentials Page in Vapi
+
+Now that you have the Trieve copied, you need to navigate to the provider credentials settings in Vapi.
+
+![vapi provider credential](https://cdn.trieve.ai/blog/hotel-voice-agent/navigate-to-vapi-provider-credentials.png)
+
+### 4\. Add your Trieve API key to Vapi
+
+Vapi needs to have your Trieve key so it can make API calls to your `Dataset` within Trieve.
+
+![add trieve api key to vapi](https://cdn.trieve.ai/blog/hotel-voice-agent/vapi-add-trieve-key.png)
+
+## 2\. Create a Vapi Knowledge Base that connects to Trieve
+
+Vapi has a HTTP API route documented at [docs.vapi.ai/api-reference/knowledge-bases/create](https://docs.vapi.ai/api-reference/knowledge-bases/create) which allows you to create a knowledge base.
+
+### 1\. Save your Dataset ID from the Trieve dashboard
+
+Open your dataset in the Trieve dashboard and save it's ID so you can connect it to Vapi via HTTP API call later. You will need to copy this later.
+
+![trieve copy dataset id](https://cdn.trieve.ai/blog/hotel-voice-agent/trieve-copy-dataset-id.png)
+
+### 2\. Copy your Vapi secret key from the Vapi dashboard
+
+You will need your secret API key from Vapi in order to complete the final required step and connect your Trieve knowledge-base.
+
+![copy Vapi API key](https://cdn.trieve.ai/blog/hotel-voice-agent/vapi-copy-api-key.png)
+
+### 3\. Make the HTTP API call to create the Knowledge Base in Vapi that connects to Trieve
+
+Navigate to Vapi's docs for the request at [docs.vapi.ai/api-reference/knowledge-bases/create](https://docs.vapi.ai/api-reference/knowledge-bases/create) and click on the "try it" button. Then follow these steps.
+
+![vapi create KB try it button](https://cdn.trieve.ai/blog/hotel-voice-agent/create-knowledge-base-try-it.png)
+
+Once the popover opens, you will need to fill in the fields to make the request in order to create your knowledge base.
+
+1. Paste your Vapi api key into the token text input field
+2. Select Trieve for the request body
+3. Select Import for `createPlan`
+4. Paste your Trieve `Dataset` ID for the `providerId`
+5. Add the `name` parameter and set it to the name of your KB
+6. Press send request
+
+![send request to create knowledge base](https://cdn.trieve.ai/blog/hotel-voice-agent/send-request-to-create-knowledge-base.png)
+
+If your request succeeds, you will see the following message:
+
+![successful create KB response](https://cdn.trieve.ai/blog/hotel-voice-agent/successful-kb-response.png)
+
+This step can also be performed via a HTTP request through cURL or another method of your choice:
+
+```sh
+curl -X POST https://api.vapi.ai/knowledge-base \
+     -H "Authorization: Bearer <replace-with-your-vapi-key>" \
+     -H "Content-Type: application/json" \
+     -d '{
+      "provider": "trieve",
+      "searchPlan": {
+        "searchType": "hybrid",
+        "scoreThreshold": 0
+      },
+      "createPlan": {
+        "type": "import",
+        "providerId": "<replace-with-your-trieve-api-key>"
+      },
+      "name": "IHG-SF-Hotel"
+    }'
+```
+
+## 3\. Setup your Voice agent in the Vapi dashboard
+
+The final step required to create your hotel voice agent is creating the Assistant inside of Vapi.
+
+1. Click Create Assistant
+2. Setup your prompts
+3. Select the knowledge base you named and created in the previous step.
+
+![create the Vapi assistant](https://cdn.trieve.ai/blog/hotel-voice-agent/create-vapi-assistant.png)
+
+Here is the raw text of our first message and prompts:
+
+```txt
+First message: Hi! I\'m James here to assist you with any questions about the Spiro hotel in San Francisco
+
+System prompt: You are Steve, the friendly and witty voice assistant for Hotel Spiro located in the heart of downtown San Francisco. Our doors are open 24/7 to welcome guests from near and far. You handle inquiries about the hotel, from room availability and amenities to event bookings.  Here’s your conversational blueprint:  1\. Start with a lighthearted greeting. 2\. Gather the caller\'s full name and purpose for calling. 3\. Use the retrieved context to help yourself respond to users and assist them with their queries about the hotel    Remember to keep things casual and quick, like a friendly chat. Be concise, using friendly fillers like \"Well...\", \"You know...\", and \"Let\'s see...\". Your goal is to make guests feel welcome while efficiently helping with their requests.
+```
+
+If you would prefer, you can also do this via HTTP request as follows:
+
+```sh
+curl -X POST https://api.vapi.ai/assistant \
+     -H "Authorization: Bearer bec788fe-cdaf-4126-82ee-a90aa06dad47" \
+     -H "Content-Type: application/json" \
+     -d '{
+      "model": {
+        "provider": "openai",
+        "model": "gpt-4o-mini",
+        "knowledgeBaseId": "31bd355c-1137-4a1f-93a9-f01020207d05",
+        "messages": [
+          {
+            "content": "You are Steve, the friendly and witty voice assistant for Hotel Spiro located in the heart of downtown San Francisco. Our doors are open 24/7 to welcome guests from near and far. You handle inquiries about the hotel, from room availability and amenities to event bookings.  Here’s your conversational blueprint:  1\. Start with a lighthearted greeting. 2\. Gather the caller\'s full name and purpose for calling. 3\. Use the retrieved context to help yourself respond to users and assist them with their queries about the hotel    Remember to keep things casual and quick, like a friendly chat. Be concise, using friendly fillers like \"Well...\", \"You know...\", and \"Let\'s see...\". Your goal is to make guests feel welcome while efficiently helping with their requests.",
+            "role": "system"
+          }
+        ]
+      },
+      "firstMessage": "Hi! I\'m James here to assist you with any questions about the Spiro hotel in San Francisco",
+      "name": "James"
+    }'
+```
+
+# Conclusion
+
+And with that, you've successfully built a hotel voice assistant using Trieve and Vapi! By leveraging Trieve's powerful knowledge base capabilities and Vapi's voice agent platform, you've created a system that can answer common customer questions, provide directions, and offer information about hotel amenities. This setup not only enhances the guest experience but also streamlines operations, freeing up staff to focus on more complex tasks.
+
+This tutorial provides a solid foundation for building similar voice agents for other hotels or even different types of businesses. Remember to tailor your datasets and prompts to the specific needs of your target audience. As you continue to explore the possibilities of AI-powered voice assistants, consider experimenting with different AI models, prompt engineering techniques, and knowledge base strategies to further optimize your results. The future of customer service is conversational, and with tools like Trieve and Vapi, you're well-equipped to be at the forefront of this exciting revolution. Happy building!
