@@ -15,7 +15,7 @@ const WrapperTag = as;
 ---
 
 <WrapperTag class="relative not-prose scroll-mt-[72px]" {...id ? { id } : {}}>
-  <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">
+  <div class="absolute inset-0 pointer-events-none -z-1" aria-hidden="true">
     <slot name="bg">
       {bg ? <Fragment set:html={bg} /> : <Background isDark={isDark} />}
     </slot>
