@@ -123,6 +123,13 @@ const PriceSlider = ({
   const handleInputChange = (e) => {
     const raw = e.target.value;
     setInputValue(raw);
+
+    // Try to parse the input value and update the slider in real-time
+    const parsed = parseValue(raw);
+    if (!isNaN(parsed) && parsed >= min && parsed <= max) {
+      setValue(parsed);
+      if (onChange) onChange(parsed);
+    }
   };
 
   // When input loses focus, parse and validate the value
@@ -212,7 +219,7 @@ const PriceSlider = ({
     <div className="max-w-full mx-auto p-2 rounded-lg">
       <div className="mb-6">
         <div className="flex items-center mb-4">
-          <div className="text-lg font-medium text-white">{beforeValueText}</div>
+          <div className="text-lg font-medium dark:text-white">{beforeValueText}</div>
           <div className="mx-2">
             <input
               ref={inputRef}
@@ -225,7 +232,7 @@ const PriceSlider = ({
               aria-label="Set value"
             />
           </div>
-          <div className="text-lg font-medium text-white">{afterValueText}</div>
+          <div className="text-lg font-medium dark:text-white">{afterValueText}</div>
         </div>
 
         <div className="relative mt-1">
@@ -259,7 +266,7 @@ const PriceSlider = ({
             {/* Tooltip */}
             {showTooltip && (
               <div
-                className="absolute -top-8 px-2 py-1 bg-gray-700 text-white text-xs rounded transform -translate-x-1/2 z-30"
+                className="absolute -top-8 px-2 py-1 bg-gray-700 dark:text-white text-xs rounded transform -translate-x-1/2 z-30"
                 style={{ left: `${thumbPercentage}%` }}
               >
                 {formatValue(value)}
@@ -278,7 +285,7 @@ const PriceSlider = ({
                 {index !== 0 && index !== tickMarks.length - 1 && (
                   <div className="h-2 border-l-2 border-neutral-600 -mt-2 w-2"></div>
                 )}
-                <div className="text-xs text-white mt-1">{formatValue(marker)}</div>
+                <div className="text-xs dark:text-white mt-1">{formatValue(marker)}</div>
               </div>
             ))}
           </div>
