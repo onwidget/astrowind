@@ -1,9 +1,8 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
+import Prices from '~/components/widgets/Pricing.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import PriceSlider from '~/components/widgets/PriceSlider';
-import PricingCalculator from '~/components/widgets/PricingCalculator';
 
 const metadata = {
   title: 'Pricing',
@@ -14,19 +13,126 @@ const metadata = {
   <!-- HeroText Widget ******************* -->
 
   <HeroText
-    title="Pricing that scales with you"
+    title="Pricing"
+    subtitle='<p>Unlimited search requests + full AI, merchandising studio & analytics tools included on all plans. No credit card required. See self-hosting options here: <a class="underline hover:text-primary" href="https://docs.trieve.ai/self-hosting/docker-compose" target="_blank">Docker Compose VPS</a>, <a class="underline hover:text-primary" href="https://docs.trieve.ai/self-hosting/aws" target="_blank">AWS EKS</a> , <a class="underline hover:text-primary" href="https://docs.trieve.ai/self-hosting/gcp" target="_blank"> GCP GKE</a>.</p>',
     callToAction={{
       target: '_blank',
-      text: 'Get started free',
-      href: 'https://dashboard.trieve.ai',
+      text: 'Contact For Commercial Self-Hosting License',
+      href: 'https://cal.com/nick.k/meet',
     }}
   />
 
   <!-- Pricing Widget ******************* -->
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <PricingCalculator client:only="react" />
-  </div>
+  <Prices
+    prices={[
+      {
+        title: 'Free Cloud',
+        price: 0,
+        period: 'Per Month',
+        items: [
+          {
+            description: '1,000 vectorized and stored chunks/records',
+          },
+          {
+            description: '10 requests per second rate limit',
+          },
+          {
+            description: '10 datasets',
+          },
+          {
+            description: '5 users',
+          },
+          {
+            description: '1,000 gen AI messages',
+          },
+          {
+            description: '1gb S3 file storage',
+          },
+          {
+            description: 'Guided Onboarding',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Get started free',
+          href: 'https://dashboard.trieve.ai',
+        },
+      },
+      {
+        title: 'Dev Cloud',
+        price: 25,
+        period: 'Per Month',
+        items: [
+          {
+            description: '100,000 vectorized and stored chunks/records',
+          },
+          {
+            description: '10 requests per second rate limit',
+          },
+          {
+            description: '100 datasets',
+          },
+          {
+            description: '5 users',
+          },
+          {
+            description: '10,000 gen AI messages',
+          },
+          {
+            description: '10gb S3 file storage',
+          },
+          {
+            description: 'Guided Onboarding',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Get started free',
+          href: 'https://dashboard.trieve.ai',
+        },
+      },
+      {
+        title: 'Enterprise',
+        period: 'Self Hosting Available',
+        items: [
+          {
+            description: 'Unlimited vectorized and stored chunks/records',
+          },
+          {
+            description: 'Unlimited datasets',
+          },
+          {
+            description: 'Unlimited file storage',
+          },
+          {
+            description: 'Up to 99.99% uptime SLA and VPC Peering',
+          },
+          {
+            description: 'Up to 1000RPS and 125ms P95 latency SLO',
+          },
+          {
+            description: '1 hour maximum response time and guided onboarding',
+          },
+          {
+            description: 'Load your own custom embedding, LLMs, and reranking models',
+          },
+        ],
+        callToAction: {
+          target: '_blank',
+          text: 'Talk to sales',
+          href: 'https://cal.com/nick.k/meet',
+        },
+        callToAction2: {
+          target: '_blank',
+          text: 'humans@trieve.ai',
+          href: 'mailto:humans@trieve.ai',
+        },
+        hasRibbon: true,
+        ribbonTitle: 'flagship',
+      },
+    ]}
+  />
 
   <CallToAction
     title="Still unsure? Derisk with a custom demo!"

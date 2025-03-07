@@ -201,11 +201,11 @@ const PricingCalculator = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto  text-white rounded-xl shadow-2xl overflow-hidden mt-2">
+    <div className="max-w-7xl mx-auto rounded-xl shadow-2xl overflow-hidden mt-2">
       <div className="text-2xl font-bold p-6 flex items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8 mr-3 text-fuchsia-500"
+          className="h-8 w-8 mr-3 text-fuchsia-800 dark:text-fuchsia-500"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -223,31 +223,31 @@ const PricingCalculator = () => {
         <div className="flex overflow-x-auto scrollbar-hide">
           <button
             onClick={() => setActiveTab('search')}
-            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'search' ? 'text-fuchsia-400 border-b-2 border-fuchsia-400' : 'text-gray-400 hover:text-gray-300'}`}
+            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'search' ? 'text-fuchsia-800 dark:text-fuchsia-400 border-b-2 border-fuchsia-400' : 'text-gray-800 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'}`}
           >
             Search & Vector DB
           </button>
           <button
             onClick={() => setActiveTab('storage')}
-            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'storage' ? 'text-fuchsia-400 border-b-2 border-fuchsia-400' : 'text-gray-400 hover:text-gray-300'}`}
+            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'storage' ? 'text-fuchsia-800 dark:text-fuchsia-400 border-b-2 border-fuchsia-400' : 'text-gray-800 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'}`}
           >
             Data Storage & Processing
           </button>
           <button
             onClick={() => setActiveTab('ingestion')}
-            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'ingestion' ? 'text-fuchsia-400 border-b-2 border-fuchsia-400' : 'text-gray-400 hover:text-gray-300'}`}
+            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'ingestion' ? 'text-fuchsia-800 dark:text-fuchsia-400 border-b-2 border-fuchsia-400' : 'text-gray-800 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'}`}
           >
             Data Ingestion
           </button>
           <button
             onClick={() => setActiveTab('ai')}
-            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'ai' ? 'text-fuchsia-400 border-b-2 border-fuchsia-400' : 'text-gray-400 hover:text-gray-300'}`}
+            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'ai' ? 'text-fuchsia-800 dark:text-fuchsia-400 border-b-2 border-fuchsia-400' : 'text-gray-800 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'}`}
           >
             Analytics
           </button>
           <button
             onClick={() => setActiveTab('infrastructure')}
-            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'infrastructure' ? 'text-fuchsia-400 border-b-2 border-fuchsia-400' : 'text-gray-400 hover:text-gray-300'}`}
+            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'infrastructure' ? 'text-fuchsia-800 dark:text-fuchsia-400 border-b-2 border-fuchsia-400' : 'text-gray-800 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'}`}
           >
             Infrastructure
           </button>
@@ -268,7 +268,7 @@ const PricingCalculator = () => {
                 <div className="mb-6">
                   <h3 className="text-lg font-medium mb-4">AI & Search</h3>
                   <div className="flex justify-between mb-2">
-                    <label className="text-gray-300">Search Tokens (per hundred thousand)</label>
+                    <label className="text-gray-700 dark:text-gray-300">Search Tokens (per hundred thousand)</label>
                   </div>
                   <PriceSlider
                     min={1}
@@ -280,7 +280,7 @@ const PricingCalculator = () => {
                     onChange={(value) => handleUsageChange('searchTokens', value)}
                   />
                   <div className="flex mb-2">
-                    <label className="text-gray-300 mr-2">Costs:</label>
+                    <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
                     <div>{formatCurrency(calculatePrice('vectorInference', usage.searchTokens / 10))}</div>
                   </div>
                 </div>
@@ -289,7 +289,7 @@ const PricingCalculator = () => {
 
                   <div>
                     <div className="flex justify-between mb-2">
-                      <label className=" text-gray-300">Tokens</label>
+                      <label className=" text-gray-700 dark:text-gray-300">Tokens</label>
                     </div>
 
                     <div className="relative">
@@ -304,7 +304,7 @@ const PricingCalculator = () => {
                       />
                     </div>
                     <div className="flex mb-2">
-                      <label className="text-gray-300 mr-2">Costs:</label>
+                      <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
                       <div>{formatCurrency(calculatePrice('chatMessages', usage.chatTokens))}</div>
                     </div>
                   </div>
@@ -318,7 +318,7 @@ const PricingCalculator = () => {
                 <div className="mb-6">
                   <h3 className="text-lg font-medium mb-4">Chunk Processing</h3>
                   <div className="flex justify-between mb-2">
-                    <label className="text-gray-300">Chunk Tokens (per hundred thousand)</label>
+                    <label className="text-gray-700 dark:text-gray-300">Chunk Tokens (per hundred thousand)</label>
                   </div>
                   <PriceSlider
                     min={1}
@@ -330,7 +330,7 @@ const PricingCalculator = () => {
                     onChange={(value) => handleUsageChange('vectorInference', value)}
                   />
                   <div className="flex mb-2">
-                    <label className="text-gray-300 mr-2">Costs:</label>
+                    <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
                     <div>{formatCurrency(calculatePrice('vectorInference', usage.vectorInference / 10))}</div>
                   </div>
                 </div>
@@ -338,7 +338,7 @@ const PricingCalculator = () => {
                   <h3 className="text-lg font-medium mb-4">Chunk Storage</h3>
                   <div>
                     <div className="flex justify-between mb-2">
-                      <label className="text-gray-300">Storage (MB)</label>
+                      <label className="text-gray-700 dark:text-gray-300">Storage (MB)</label>
                     </div>
 
                     <div className="relative">
@@ -353,7 +353,7 @@ const PricingCalculator = () => {
                       />
                     </div>
                     <div className="flex mb-2">
-                      <label className="text-gray-300 mr-2">Costs:</label>
+                      <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
                       <div>{formatCurrency(calculatePrice('chunkStorage', usage.chunkStorage))}</div>
                     </div>
                   </div>
@@ -362,7 +362,7 @@ const PricingCalculator = () => {
                   <h3 className="text-lg font-medium mb-4">File Storage</h3>
                   <div>
                     <div className="flex justify-between mb-2">
-                      <label className="text-gray-300">Storage (GB)</label>
+                      <label className="text-gray-700 dark:text-gray-300">Storage (GB)</label>
                     </div>
 
                     <div className="relative">
@@ -377,7 +377,7 @@ const PricingCalculator = () => {
                       />
                     </div>
                     <div className="flex mb-2">
-                      <label className="text-gray-300 mr-2">Costs:</label>
+                      <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
                       <div>{formatCurrency(calculatePrice('fileStorage', usage.fileStorage))}</div>
                     </div>
                   </div>
@@ -393,7 +393,7 @@ const PricingCalculator = () => {
 
                   <div>
                     <div className="flex justify-between mb-2">
-                      <label className="text-gray-300">Pages</label>
+                      <label className="text-gray-700 dark:text-gray-300">Pages</label>
                     </div>
 
                     <div className="relative">
@@ -408,7 +408,7 @@ const PricingCalculator = () => {
                       />
                     </div>
                     <div className="flex mb-2">
-                      <label className="text-gray-300 mr-2">Costs:</label>
+                      <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
                       <div>{formatCurrency(calculatePrice('webCrawls', usage.webCrawls))}</div>
                     </div>
                   </div>
@@ -419,7 +419,7 @@ const PricingCalculator = () => {
 
                   <div>
                     <div className="flex justify-between mb-2">
-                      <label className=" text-gray-300">Pages</label>
+                      <label className="text-gra-700 dark:text-gray-300">Pages</label>
                     </div>
 
                     <div className="relative">
@@ -434,7 +434,7 @@ const PricingCalculator = () => {
                       />
                     </div>
                     <div className="flex mb-2">
-                      <label className="text-gray-300 mr-2">Costs:</label>
+                      <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
                       <div>{formatCurrency(calculatePrice('ocrPages', usage.ocrPages))}</div>
                     </div>
                   </div>
@@ -449,7 +449,7 @@ const PricingCalculator = () => {
 
                   <div>
                     <div className="flex justify-between mb-2">
-                      <label className=" text-gray-300">Events</label>
+                      <label className="text-gra-700 dark:text-gray-300">Events</label>
                     </div>
 
                     <div className="relative">
@@ -464,7 +464,7 @@ const PricingCalculator = () => {
                       />
                     </div>
                     <div className="flex mb-2">
-                      <label className="text-gray-300 mr-2">Costs:</label>
+                      <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
                       <div>{formatCurrency(calculatePrice('analyticsEvents', usage.analyticsEvents))}</div>
                     </div>
                   </div>
@@ -479,7 +479,7 @@ const PricingCalculator = () => {
 
                 <div>
                   <div className="flex justify-between mb-2">
-                    <label className=" text-gray-300">Namespaces</label>
+                    <label className="text-gra-700 dark:text-gray-300">Namespaces</label>
                   </div>
 
                   <div className="relative">
@@ -494,14 +494,14 @@ const PricingCalculator = () => {
                     />
                   </div>
                   <div className="flex mb-2">
-                    <label className="text-gray-300 mr-2">Costs:</label>
+                    <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
                     <div>{formatCurrency(calculatePrice('namespaces', usage.namespaces))}</div>
                   </div>
                 </div>
 
                 <div>
                   <div className="flex justify-between mb-2">
-                    <label className=" text-gray-300">Users</label>
+                    <label className="text-gra-700 dark:text-gray-300">Users</label>
                   </div>
 
                   <div className="relative">
@@ -516,14 +516,14 @@ const PricingCalculator = () => {
                     />
                   </div>
                   <div className="flex mb-2">
-                    <label className="text-gray-300 mr-2">Costs:</label>
+                    <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
                     <div>{formatCurrency(calculatePrice('users', usage.users))}</div>
                   </div>
                 </div>
 
                 <div className="mt-6">
                   <div className="flex justify-between mb-2">
-                    <label className="text-gray-300">Component Loads</label>
+                    <label className="text-gray-700 dark:text-gray-300">Component Loads</label>
                   </div>
 
                   <div className="relative">
@@ -538,7 +538,7 @@ const PricingCalculator = () => {
                     />
                   </div>
                   <div className="flex mb-2">
-                    <label className="text-gray-300 mr-2">Costs:</label>
+                    <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
                     <div>{formatCurrency(calculatePrice('componentLoads', usage.componentLoads))}</div>
                   </div>
                 </div>
@@ -552,7 +552,7 @@ const PricingCalculator = () => {
           <h3 className="text-xl font-semibold mb-6 flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2 text-fuchsia-400"
+              className="h-5 w-5 mr-2 text-fuchsia-800 dark:text-fuchsia-400"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -567,7 +567,7 @@ const PricingCalculator = () => {
 
           <div className="space-y-6">
             <div className="rounded-lg p-4">
-              <h4 className="text-lg mb-2 flex items-center text-fuchsia-300">
+              <h4 className="text-lg mb-2 flex items-center text-fuchsia-800 dark:text-fuchsia-300">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 mr-2"
@@ -582,11 +582,13 @@ const PricingCalculator = () => {
                 </svg>
                 Only pay for products you use
               </h4>
-              <p className="text-gray-300 text-sm ml-7">Check or uncheck products to include in your estimate</p>
+              <p className="text-gray-700 dark:text-gray-300 text-sm ml-7">
+                Check or uncheck products to include in your estimate
+              </p>
             </div>
 
             <div className=" rounded-lg p-4">
-              <h4 className="text-lg mb-2 flex items-center text-fuchsia-300">
+              <h4 className="text-lg mb-2 flex items-center text-fuchsia-800 dark:text-fuchsia-300">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 mr-2"
@@ -601,15 +603,15 @@ const PricingCalculator = () => {
                 </svg>
                 Generous free tier for each product
               </h4>
-              <p className="text-gray-300 text-sm ml-7">
+              <p className="text-gray-700 dark:text-gray-300 text-sm ml-7">
                 1M free events monthly
                 <br />
-                <span className="text-xs text-gray-400">(resets monthly)</span>
+                <span className="text-xs text-gray-800 dark:text-gray-400">(resets monthly)</span>
               </p>
             </div>
 
             <div className=" rounded-lg p-4">
-              <h4 className="text-lg mb-2 flex items-center text-fuchsia-300">
+              <h4 className="text-lg mb-2 flex items-center text-fuchsia-800 dark:text-fuchsia-300">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 mr-2"
@@ -624,10 +626,10 @@ const PricingCalculator = () => {
                 </svg>
                 Volume discounts
               </h4>
-              <p className="text-gray-300 text-sm ml-7">
+              <p className="text-gray-700 dark:text-gray-300 text-sm ml-7">
                 6.67% discount per order of magnitude
                 <br />
-                <span className="text-xs text-gray-400">(up to 26.67% maximum)</span>
+                <span className="text-xs text-gray-700 dark:text-gray-400">(up to 26.67% maximum)</span>
               </p>
             </div>
           </div>
@@ -639,13 +641,14 @@ const PricingCalculator = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div>
             <h3 className="text-xl font-semibold">Estimated total</h3>
-            <p className="text-sm text-gray-400">for all products & add-ons</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">for all products & add-ons</p>
           </div>
           <div className="text-3xl font-bold mt-4 md:mt-0">
-            {formatCurrency(total)} <span className="text-sm font-normal text-gray-400">/ month</span>
+            {formatCurrency(total)}{' '}
+            <span className="text-sm font-normal text-gray-600 dark:text-gray-400">/ month</span>
           </div>
           <div className="mt-4 md:mt-0">
-            <button className="bg-fuchsia-600 hover:bg-fuchsia-700 text-white py-2 px-6 rounded-lg font-medium transition duration-200">
+            <button className="bg-primary text-white hover:bg-fuchsia-700 py-2 px-6 rounded-lg font-medium transition duration-200">
               Get started free
             </button>
           </div>
