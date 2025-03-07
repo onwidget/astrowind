@@ -16,6 +16,9 @@ const PricingCalculator = () => {
     componentLoads: 10000,
   });
 
+  // New state to track individual cost items
+  const [costItems, setCostItems] = useState({});
+
   const discountTiers = [
     { threshold: 1000000, discount: 0.0667 },
     { threshold: 10000000, discount: 0.1334 },
@@ -150,29 +153,133 @@ const PricingCalculator = () => {
   // Update total when any value changes
   useEffect(() => {
     let newTotal = 0;
-    // Calculate cost for each selected product
-    newTotal += calculatePrice('vectorInference', usage.vectorInference / 10 + usage.searchTokens / 10);
-    // Assuming some relationship between vectorTokens and storage needs
-    newTotal += calculatePrice('chunkStorage', usage.chunkStorage);
+    // Object to store individual cost items
+    const newCostItems = {};
 
-    newTotal += calculatePrice('fileStorage', usage.fileStorage);
+    // Calculate cost for each product and store in the costItems object
+    const searchInferenceCost = calculatePrice('vectorInference', usage.searchTokens / 10);
+    newCostItems.searchInference = {
+      name: 'Search Inference',
+      amount: usage.searchTokens,
+      unit: 'hundred thousand tokens',
+      cost: searchInferenceCost,
+      description: pricing.vectorInference.description,
+    };
+    newTotal += searchInferenceCost;
 
-    newTotal += calculatePrice('webCrawls', usage.webCrawls);
+    const vectorInferenceCost = calculatePrice('vectorInference', usage.vectorInference / 10);
+    newCostItems.vectorInference = {
+      name: 'Vector Inference',
+      amount: usage.vectorInference,
+      unit: 'hundred thousand tokens',
+      cost: vectorInferenceCost,
+      description: pricing.vectorInference.description,
+    };
+    newTotal += vectorInferenceCost;
 
-    newTotal += calculatePrice('chatMessages', usage.chatTokens);
+    const chunkStorageCost = calculatePrice('chunkStorage', usage.chunkStorage);
+    newCostItems.chunkStorage = {
+      name: 'Chunk Storage',
+      amount: usage.chunkStorage,
+      unit: 'GB',
+      cost: chunkStorageCost,
+      description: pricing.chunkStorage.description,
+    };
+    newTotal += chunkStorageCost;
 
-    newTotal += calculatePrice('ocrPages', usage.ocrPages);
+    const fileStorageCost = calculatePrice('fileStorage', usage.fileStorage);
+    newCostItems.fileStorage = {
+      name: 'File Storage',
+      amount: usage.fileStorage,
+      unit: 'GB',
+      cost: fileStorageCost,
+      description: pricing.fileStorage.description,
+    };
+    newTotal += fileStorageCost;
 
-    newTotal += calculatePrice('fileChunking', usage.ocrPages);
+    const webCrawlsCost = calculatePrice('webCrawls', usage.webCrawls);
+    newCostItems.webCrawls = {
+      name: 'Web Crawls',
+      amount: usage.webCrawls,
+      unit: 'pages',
+      cost: webCrawlsCost,
+      description: pricing.webCrawls.description,
+    };
+    newTotal += webCrawlsCost;
 
-    newTotal += calculatePrice('analyticsEvents', usage.analyticsEvents);
+    const chatTokensCost = calculatePrice('chatMessages', usage.chatTokens);
+    newCostItems.chatTokens = {
+      name: 'RAG Processing',
+      amount: usage.chatTokens,
+      unit: 'thousand tokens',
+      cost: chatTokensCost,
+      description: pricing.chatMessages.description,
+    };
+    newTotal += chatTokensCost;
 
-    // Always include these base costs
-    newTotal += calculatePrice('namespaces', usage.namespaces);
-    newTotal += calculatePrice('users', usage.users);
-    newTotal += calculatePrice('componentLoads', usage.componentLoads);
+    const ocrPagesCost = calculatePrice('ocrPages', usage.ocrPages);
+    newCostItems.ocrPages = {
+      name: 'OCR Processing',
+      amount: usage.ocrPages,
+      unit: 'pages',
+      cost: ocrPagesCost,
+      description: pricing.ocrPages.description,
+    };
+    newTotal += ocrPagesCost;
 
+    const fileChunkingCost = calculatePrice('fileChunking', usage.ocrPages);
+    newCostItems.fileChunking = {
+      name: 'File Chunking',
+      amount: usage.ocrPages,
+      unit: 'pages',
+      cost: fileChunkingCost,
+      description: pricing.fileChunking.description,
+    };
+    newTotal += fileChunkingCost;
+
+    const analyticsEventsCost = calculatePrice('analyticsEvents', usage.analyticsEvents);
+    newCostItems.analyticsEvents = {
+      name: 'Analytics Events',
+      amount: usage.analyticsEvents,
+      unit: 'events',
+      cost: analyticsEventsCost,
+      description: pricing.analyticsEvents.description,
+    };
+    newTotal += analyticsEventsCost;
+
+    const namespacesCost = calculatePrice('namespaces', usage.namespaces);
+    newCostItems.namespaces = {
+      name: 'Namespaces',
+      amount: usage.namespaces,
+      unit: 'namespaces',
+      cost: namespacesCost,
+      description: pricing.namespaces.description,
+    };
+    newTotal += namespacesCost;
+
+    const usersCost = calculatePrice('users', usage.users);
+    newCostItems.users = {
+      name: 'Users',
+      amount: usage.users,
+      unit: 'users',
+      cost: usersCost,
+      description: pricing.users.description,
+    };
+    newTotal += usersCost;
+
+    const componentLoadsCost = calculatePrice('componentLoads', usage.componentLoads);
+    newCostItems.componentLoads = {
+      name: 'Component Loads',
+      amount: usage.componentLoads,
+      unit: 'loads',
+      cost: componentLoadsCost,
+      description: pricing.componentLoads.description,
+    };
+    newTotal += componentLoadsCost;
+
+    // Update both the total and costItems states
     setTotal(newTotal);
+    setCostItems(newCostItems);
   }, [usage]);
 
   // Format currency
@@ -184,14 +291,6 @@ const PricingCalculator = () => {
     return '$' + amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   };
 
-  // Toggle product selection
-  const toggleProduct = (product) => {
-    setSelectedProducts((prev) => ({
-      ...prev,
-      [product]: !prev[product],
-    }));
-  };
-
   // Handle usage input change
   const handleUsageChange = (product, value) => {
     setUsage((prev) => ({
@@ -200,8 +299,13 @@ const PricingCalculator = () => {
     }));
   };
 
+  // Get active cost items (cost > 0)
+  const getActiveCostItems = () => {
+    return Object.values(costItems).filter((item) => item.cost > 0);
+  };
+
   return (
-    <div className="max-w-7xl mx-auto rounded-xl shadow-2xl overflow-hidden mt-2">
+    <div className="max-w-7xl mx-auto text-black dark:text-white rounded-xl shadow-md overflow-hidden mt-2">
       <div className="text-2xl font-bold p-6 flex items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -220,34 +324,34 @@ const PricingCalculator = () => {
 
       {/* Main tab navigation */}
       <div className="border-b border-gray-800">
-        <div className="flex overflow-x-auto scrollbar-hide">
+        <div className="flex overflow-x-auto scrollbar-hide dark:text-gray-400 dark:hover:dark:text-gray-300">
           <button
             onClick={() => setActiveTab('search')}
-            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'search' ? 'text-fuchsia-800 dark:text-fuchsia-400 border-b-2 border-fuchsia-400' : 'text-gray-800 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'}`}
+            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'search' ? 'text-fuchsia-400 border-b-2 border-fuchsia-400' : ''}`}
           >
             Search & Vector DB
           </button>
           <button
             onClick={() => setActiveTab('storage')}
-            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'storage' ? 'text-fuchsia-800 dark:text-fuchsia-400 border-b-2 border-fuchsia-400' : 'text-gray-800 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'}`}
+            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'storage' ? 'text-fuchsia-400 border-b-2 border-fuchsia-400' : ''}`}
           >
             Data Storage & Processing
           </button>
           <button
             onClick={() => setActiveTab('ingestion')}
-            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'ingestion' ? 'text-fuchsia-800 dark:text-fuchsia-400 border-b-2 border-fuchsia-400' : 'text-gray-800 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'}`}
+            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'ingestion' ? 'text-fuchsia-400 border-b-2 border-fuchsia-400' : ''}`}
           >
             Data Ingestion
           </button>
           <button
             onClick={() => setActiveTab('ai')}
-            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'ai' ? 'text-fuchsia-800 dark:text-fuchsia-400 border-b-2 border-fuchsia-400' : 'text-gray-800 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'}`}
+            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'ai' ? 'text-fuchsia-400 border-b-2 border-fuchsia-400' : ''}`}
           >
             Analytics
           </button>
           <button
             onClick={() => setActiveTab('infrastructure')}
-            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'infrastructure' ? 'text-fuchsia-800 dark:text-fuchsia-400 border-b-2 border-fuchsia-400' : 'text-gray-800 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'}`}
+            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'infrastructure' ? 'text-fuchsia-400 border-b-2 border-fuchsia-400' : ''}`}
           >
             Infrastructure
           </button>
@@ -268,7 +372,7 @@ const PricingCalculator = () => {
                 <div className="mb-6">
                   <h3 className="text-lg font-medium mb-4">AI & Search</h3>
                   <div className="flex justify-between mb-2">
-                    <label className="text-gray-700 dark:text-gray-300">Search Tokens (per hundred thousand)</label>
+                    <label className="dark:text-gray-300">Search Tokens (per hundred thousand)</label>
                   </div>
                   <PriceSlider
                     min={1}
@@ -280,8 +384,8 @@ const PricingCalculator = () => {
                     onChange={(value) => handleUsageChange('searchTokens', value)}
                   />
                   <div className="flex mb-2">
-                    <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
-                    <div>{formatCurrency(calculatePrice('vectorInference', usage.searchTokens / 10))}</div>
+                    <label className="dark:text-gray-300 mr-2">Costs:</label>
+                    <div>{formatCurrency(costItems.searchInference?.cost || 0)}</div>
                   </div>
                 </div>
                 <div className="mb-6">
@@ -289,7 +393,7 @@ const PricingCalculator = () => {
 
                   <div>
                     <div className="flex justify-between mb-2">
-                      <label className=" text-gray-700 dark:text-gray-300">Tokens</label>
+                      <label className=" dark:text-gray-300">Tokens</label>
                     </div>
 
                     <div className="relative">
@@ -304,21 +408,21 @@ const PricingCalculator = () => {
                       />
                     </div>
                     <div className="flex mb-2">
-                      <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
-                      <div>{formatCurrency(calculatePrice('chatMessages', usage.chatTokens))}</div>
+                      <label className="dark:text-gray-300 mr-2">Costs:</label>
+                      <div>{formatCurrency(costItems.chatTokens?.cost || 0)}</div>
                     </div>
                   </div>
                 </div>
               </>
             )}
 
-            {/* Data Ingestion Tab Content */}
+            {/* Data Storage Tab Content */}
             {activeTab === 'storage' && (
               <>
                 <div className="mb-6">
                   <h3 className="text-lg font-medium mb-4">Chunk Processing</h3>
                   <div className="flex justify-between mb-2">
-                    <label className="text-gray-700 dark:text-gray-300">Chunk Tokens (per hundred thousand)</label>
+                    <label className="dark:text-gray-300">Chunk Tokens (per hundred thousand)</label>
                   </div>
                   <PriceSlider
                     min={1}
@@ -330,15 +434,15 @@ const PricingCalculator = () => {
                     onChange={(value) => handleUsageChange('vectorInference', value)}
                   />
                   <div className="flex mb-2">
-                    <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
-                    <div>{formatCurrency(calculatePrice('vectorInference', usage.vectorInference / 10))}</div>
+                    <label className="dark:text-gray-300 mr-2">Costs:</label>
+                    <div>{formatCurrency(costItems.vectorInference?.cost || 0)}</div>
                   </div>
                 </div>
                 <div className="mb-6">
                   <h3 className="text-lg font-medium mb-4">Chunk Storage</h3>
                   <div>
                     <div className="flex justify-between mb-2">
-                      <label className="text-gray-700 dark:text-gray-300">Storage (MB)</label>
+                      <label className="dark:text-gray-300">Storage (MB)</label>
                     </div>
 
                     <div className="relative">
@@ -353,8 +457,8 @@ const PricingCalculator = () => {
                       />
                     </div>
                     <div className="flex mb-2">
-                      <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
-                      <div>{formatCurrency(calculatePrice('chunkStorage', usage.chunkStorage))}</div>
+                      <label className="dark:text-gray-300 mr-2">Costs:</label>
+                      <div>{formatCurrency(costItems.chunkStorage?.cost || 0)}</div>
                     </div>
                   </div>
                 </div>
@@ -362,7 +466,7 @@ const PricingCalculator = () => {
                   <h3 className="text-lg font-medium mb-4">File Storage</h3>
                   <div>
                     <div className="flex justify-between mb-2">
-                      <label className="text-gray-700 dark:text-gray-300">Storage (GB)</label>
+                      <label className="dark:text-gray-300">Storage (GB)</label>
                     </div>
 
                     <div className="relative">
@@ -377,8 +481,8 @@ const PricingCalculator = () => {
                       />
                     </div>
                     <div className="flex mb-2">
-                      <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
-                      <div>{formatCurrency(calculatePrice('fileStorage', usage.fileStorage))}</div>
+                      <label className="dark:text-gray-300 mr-2">Costs:</label>
+                      <div>{formatCurrency(costItems.fileStorage?.cost || 0)}</div>
                     </div>
                   </div>
                 </div>
@@ -393,7 +497,7 @@ const PricingCalculator = () => {
 
                   <div>
                     <div className="flex justify-between mb-2">
-                      <label className="text-gray-700 dark:text-gray-300">Pages</label>
+                      <label className="dark:text-gray-300">Pages</label>
                     </div>
 
                     <div className="relative">
@@ -408,8 +512,8 @@ const PricingCalculator = () => {
                       />
                     </div>
                     <div className="flex mb-2">
-                      <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
-                      <div>{formatCurrency(calculatePrice('webCrawls', usage.webCrawls))}</div>
+                      <label className="dark:text-gray-300 mr-2">Costs:</label>
+                      <div>{formatCurrency(costItems.webCrawls?.cost || 0)}</div>
                     </div>
                   </div>
                 </div>
@@ -419,7 +523,7 @@ const PricingCalculator = () => {
 
                   <div>
                     <div className="flex justify-between mb-2">
-                      <label className="text-gra-700 dark:text-gray-300">Pages</label>
+                      <label className=" dark:text-gray-300">Pages</label>
                     </div>
 
                     <div className="relative">
@@ -434,8 +538,8 @@ const PricingCalculator = () => {
                       />
                     </div>
                     <div className="flex mb-2">
-                      <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
-                      <div>{formatCurrency(calculatePrice('ocrPages', usage.ocrPages))}</div>
+                      <label className="dark:text-gray-300 mr-2">Costs:</label>
+                      <div>{formatCurrency(costItems.ocrPages?.cost || 0)}</div>
                     </div>
                   </div>
                 </div>
@@ -449,7 +553,7 @@ const PricingCalculator = () => {
 
                   <div>
                     <div className="flex justify-between mb-2">
-                      <label className="text-gra-700 dark:text-gray-300">Events</label>
+                      <label className=" dark:text-gray-300">Events</label>
                     </div>
 
                     <div className="relative">
@@ -464,8 +568,8 @@ const PricingCalculator = () => {
                       />
                     </div>
                     <div className="flex mb-2">
-                      <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
-                      <div>{formatCurrency(calculatePrice('analyticsEvents', usage.analyticsEvents))}</div>
+                      <label className="dark:text-gray-300 mr-2">Costs:</label>
+                      <div>{formatCurrency(costItems.analyticsEvents?.cost || 0)}</div>
                     </div>
                   </div>
                 </div>
@@ -479,7 +583,7 @@ const PricingCalculator = () => {
 
                 <div>
                   <div className="flex justify-between mb-2">
-                    <label className="text-gra-700 dark:text-gray-300">Namespaces</label>
+                    <label className=" dark:text-gray-300">Namespaces</label>
                   </div>
 
                   <div className="relative">
@@ -494,14 +598,14 @@ const PricingCalculator = () => {
                     />
                   </div>
                   <div className="flex mb-2">
-                    <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
-                    <div>{formatCurrency(calculatePrice('namespaces', usage.namespaces))}</div>
+                    <label className="dark:text-gray-300 mr-2">Costs:</label>
+                    <div>{formatCurrency(costItems.namespaces?.cost || 0)}</div>
                   </div>
                 </div>
 
                 <div>
                   <div className="flex justify-between mb-2">
-                    <label className="text-gra-700 dark:text-gray-300">Users</label>
+                    <label className=" dark:text-gray-300">Users</label>
                   </div>
 
                   <div className="relative">
@@ -516,14 +620,14 @@ const PricingCalculator = () => {
                     />
                   </div>
                   <div className="flex mb-2">
-                    <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
-                    <div>{formatCurrency(calculatePrice('users', usage.users))}</div>
+                    <label className="dark:text-gray-300 mr-2">Costs:</label>
+                    <div>{formatCurrency(costItems.users?.cost || 0)}</div>
                   </div>
                 </div>
 
                 <div className="mt-6">
                   <div className="flex justify-between mb-2">
-                    <label className="text-gray-700 dark:text-gray-300">Component Loads</label>
+                    <label className="dark:text-gray-300">Component Loads</label>
                   </div>
 
                   <div className="relative">
@@ -538,8 +642,8 @@ const PricingCalculator = () => {
                     />
                   </div>
                   <div className="flex mb-2">
-                    <label className="text-gray-700 dark:text-gray-300 mr-2">Costs:</label>
-                    <div>{formatCurrency(calculatePrice('componentLoads', usage.componentLoads))}</div>
+                    <label className="dark:text-gray-300 mr-2">Costs:</label>
+                    <div>{formatCurrency(costItems.componentLoads?.cost || 0)}</div>
                   </div>
                 </div>
               </>
@@ -547,8 +651,8 @@ const PricingCalculator = () => {
           </div>
         </div>
 
-        {/* How pricing works */}
-        <div className="w-full md:w-1/4 p-6 ">
+        {/* Line items section */}
+        <div className="w-full md:w-1/4 p-6">
           <h3 className="text-xl font-semibold mb-6 flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -562,76 +666,26 @@ const PricingCalculator = () => {
                 clipRule="evenodd"
               />
             </svg>
-            How our pricing works
+            Line Items
           </h3>
 
-          <div className="space-y-6">
-            <div className="rounded-lg p-4">
-              <h4 className="text-lg mb-2 flex items-center text-fuchsia-800 dark:text-fuchsia-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-2"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                Only pay for products you use
-              </h4>
-              <p className="text-gray-700 dark:text-gray-300 text-sm ml-7">
-                Check or uncheck products to include in your estimate
-              </p>
-            </div>
+          {/* Display active cost items */}
+          <div className="space-y-4 max-h-96 overflow-y-auto pr-2">
+            {getActiveCostItems().map((item, index) => (
+              <div key={index} className="border-b border-gray-700 pb-3">
+                <div className="flex justify-between mb-1">
+                  <span className="font-medium">{item.name}</span>
+                  <span className="font-medium">{formatCurrency(item.cost)}</span>
+                </div>
+                <div className="text-sm dark:text-gray-400 text-gray-700">
+                  {item.amount.toLocaleString()} {item.unit}
+                </div>
+              </div>
+            ))}
 
-            <div className=" rounded-lg p-4">
-              <h4 className="text-lg mb-2 flex items-center text-fuchsia-800 dark:text-fuchsia-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-2"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                Generous free tier for each product
-              </h4>
-              <p className="text-gray-700 dark:text-gray-300 text-sm ml-7">
-                1M free events monthly
-                <br />
-                <span className="text-xs text-gray-800 dark:text-gray-400">(resets monthly)</span>
-              </p>
-            </div>
-
-            <div className=" rounded-lg p-4">
-              <h4 className="text-lg mb-2 flex items-center text-fuchsia-800 dark:text-fuchsia-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-2"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                Volume discounts
-              </h4>
-              <p className="text-gray-700 dark:text-gray-300 text-sm ml-7">
-                6.67% discount per order of magnitude
-                <br />
-                <span className="text-xs text-gray-700 dark:text-gray-400">(up to 26.67% maximum)</span>
-              </p>
-            </div>
+            {getActiveCostItems().length === 0 && (
+              <div className="text-gray-400 italic">No charges yet. Adjust the sliders to see cost breakdown.</div>
+            )}
           </div>
         </div>
       </div>
