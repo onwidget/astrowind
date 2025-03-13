@@ -427,7 +427,7 @@ const PricingCalculator = () => {
                   <PriceSlider
                     min={1}
                     max={10000}
-                    markers={[1, 10, 100, 1000, 10000]}
+                    markers={[1, 10, 100, 1000, 10_000, 100_000, 200_000]}
                     defaultValue={usage.vectorInference}
                     beforeValueText="Processing"
                     afterValueText="hundred thousand chunk tokens"
@@ -450,10 +450,10 @@ const PricingCalculator = () => {
                         min={1}
                         max={100000}
                         markers={[1, 10, 100, 1000, 10000, 100000]}
-                        defaultValue={usage.chunkStorage * 1000}
+                        defaultValue={usage.chunkStorage}
                         beforeValueText="Storing"
-                        afterValueText="MB(s) of chunks"
-                        onChange={(value) => handleUsageChange('chunkStorage', value / 1000)}
+                        afterValueText="GB(s) of chunks"
+                        onChange={(value) => handleUsageChange('chunkStorage', value)}
                       />
                     </div>
                     <div className="flex mb-2">
@@ -560,7 +560,7 @@ const PricingCalculator = () => {
                       <PriceSlider
                         min={100}
                         max={10000000}
-                        markers={[100, 1000, 10000, 100000, 1000000, 10000000]}
+                        markers={[100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000]}
                         defaultValue={usage.analyticsEvents}
                         beforeValueText="Tracking"
                         afterValueText="analytics events"
