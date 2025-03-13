@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PriceSlider from './PriceSlider';
 
+
 const PricingCalculator = () => {
   const [usage, setUsage] = useState({
     chunkStorage: 0.01, // per gb/indice
@@ -26,7 +27,10 @@ const PricingCalculator = () => {
     { threshold: 1000000000, discount: 0.2667 }, // Max discount of 26.67%
   ];
 
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState({
+    price: 0,
+    usageDiscount: 0,
+  });
   const [activeTab, setActiveTab] = useState('search'); // Tab for product categories
 
   // Pricing rates based on the provided specifications
@@ -76,7 +80,7 @@ const PricingCalculator = () => {
       description: 'Event tracking and analysis',
     },
     namespaces: {
-      baseRate: 1, // $1 per dataset
+      baseRate: 0.01, // $1 per dataset
       freeTier: 10,
       description: 'Separate data environments',
     },
@@ -103,17 +107,17 @@ const PricingCalculator = () => {
   };
 
   const calculatePrice = (product, amount) => {
-    if (!pricing[product]) return 0;
+    if (!pricing[product]) return { price: 0, usageDiscount: 0 };
 
     const { baseRate, freeTier = 0 } = pricing[product];
 
     // Apply free tier
     const billableAmount = Math.max(0, amount - freeTier);
 
-    if (billableAmount <= 0) return 0;
+    if (billableAmount <= 0) return { price: 0, usageDiscount: 0 };
 
     // If no discount tiers or special pricing, apply base rate to billable amount
-    if (discountTiers.length === 0) return baseRate * billableAmount;
+    if (discountTiers.length === 0) return { price: baseRate * billableAmount, usageDiscount: 0 };
 
     let remainingAmount = billableAmount;
     let totalPrice = 0;
@@ -122,12 +126,15 @@ const PricingCalculator = () => {
     // Sort discount tiers by threshold to ensure proper calculation
     const sortedTiers = [...discountTiers].sort((a, b) => a.threshold - b.threshold);
 
+    let totalUsageDiscount = 0;
+
     // Apply tiered pricing
     for (const tier of sortedTiers) {
       if (billableAmount > tier.threshold) {
         // Calculate the amount in this tier
         const tierAmount = tier.threshold - lastThreshold;
         const discountedRate = baseRate * (1 - tier.discount);
+        totalUsageDiscount += discountedRate;
         totalPrice += tierAmount * discountedRate;
         remainingAmount -= tierAmount;
         lastThreshold = tier.threshold;
@@ -144,15 +151,19 @@ const PricingCalculator = () => {
         (sortedTiers.length > 0 ? sortedTiers[sortedTiers.length - 1] : null);
 
       const discountedRate = baseRate * (1 - (applicableTier?.discount || 0));
+      totalUsageDiscount += discountedRate;
       totalPrice += remainingAmount * discountedRate;
     }
-
-    return totalPrice;
+    return {
+      price: totalPrice,
+      usageDiscount: totalUsageDiscount
+    };
   };
 
   // Update total when any value changes
   useEffect(() => {
     let newTotal = 0;
+    let newDiscount = 0;
     // Object to store individual cost items
     const newCostItems = {};
 
@@ -165,7 +176,8 @@ const PricingCalculator = () => {
       cost: searchInferenceCost,
       description: pricing.vectorInference.description,
     };
-    newTotal += searchInferenceCost;
+    newTotal += searchInferenceCost.price;
+    newDiscount += searchInferenceCost.usageDiscount;
 
     const vectorInferenceCost = calculatePrice('vectorInference', usage.vectorInference / 10);
     newCostItems.vectorInference = {
@@ -175,7 +187,8 @@ const PricingCalculator = () => {
       cost: vectorInferenceCost,
       description: pricing.vectorInference.description,
     };
-    newTotal += vectorInferenceCost;
+    newTotal += vectorInferenceCost.price;
+    newDiscount += vectorInferenceCost.usageDiscount;
 
     const chunkStorageCost = calculatePrice('chunkStorage', usage.chunkStorage);
     newCostItems.chunkStorage = {
@@ -185,7 +198,8 @@ const PricingCalculator = () => {
       cost: chunkStorageCost,
       description: pricing.chunkStorage.description,
     };
-    newTotal += chunkStorageCost;
+    newTotal += chunkStorageCost.price;
+    newDiscount += chunkStorageCost.usageDiscount;
 
     const fileStorageCost = calculatePrice('fileStorage', usage.fileStorage);
     newCostItems.fileStorage = {
@@ -195,7 +209,8 @@ const PricingCalculator = () => {
       cost: fileStorageCost,
       description: pricing.fileStorage.description,
     };
-    newTotal += fileStorageCost;
+    newTotal += fileStorageCost.price;
+    newDiscount += fileStorageCost.usageDiscount;
 
     const webCrawlsCost = calculatePrice('webCrawls', usage.webCrawls);
     newCostItems.webCrawls = {
@@ -205,7 +220,8 @@ const PricingCalculator = () => {
       cost: webCrawlsCost,
       description: pricing.webCrawls.description,
     };
-    newTotal += webCrawlsCost;
+    newTotal += webCrawlsCost.price;
+    newDiscount += webCrawlsCost.usageDiscount;
 
     const chatTokensCost = calculatePrice('chatMessages', usage.chatTokens);
     newCostItems.chatTokens = {
@@ -215,7 +231,8 @@ const PricingCalculator = () => {
       cost: chatTokensCost,
       description: pricing.chatMessages.description,
     };
-    newTotal += chatTokensCost;
+    newTotal += chatTokensCost.price;
+    newDiscount += chatTokensCost.usageDiscount;
 
     const ocrPagesCost = calculatePrice('ocrPages', usage.ocrPages);
     newCostItems.ocrPages = {
@@ -225,7 +242,8 @@ const PricingCalculator = () => {
       cost: ocrPagesCost,
       description: pricing.ocrPages.description,
     };
-    newTotal += ocrPagesCost;
+    newTotal += ocrPagesCost.price;
+    newDiscount += ocrPagesCost.usageDiscount;
 
     const fileChunkingCost = calculatePrice('fileChunking', usage.ocrPages);
     newCostItems.fileChunking = {
@@ -235,7 +253,8 @@ const PricingCalculator = () => {
       cost: fileChunkingCost,
       description: pricing.fileChunking.description,
     };
-    newTotal += fileChunkingCost;
+    newTotal += fileChunkingCost.price;
+    newDiscount += fileChunkingCost.usageDiscount;
 
     const analyticsEventsCost = calculatePrice('analyticsEvents', usage.analyticsEvents);
     newCostItems.analyticsEvents = {
@@ -245,7 +264,8 @@ const PricingCalculator = () => {
       cost: analyticsEventsCost,
       description: pricing.analyticsEvents.description,
     };
-    newTotal += analyticsEventsCost;
+    newTotal += analyticsEventsCost.price;
+    newDiscount += analyticsEventsCost.usageDiscount;
 
     const namespacesCost = calculatePrice('namespaces', usage.namespaces);
     newCostItems.namespaces = {
@@ -255,7 +275,8 @@ const PricingCalculator = () => {
       cost: namespacesCost,
       description: pricing.namespaces.description,
     };
-    newTotal += namespacesCost;
+    newTotal += namespacesCost.price;
+    newDiscount += namespacesCost.usageDiscount;
 
     const usersCost = calculatePrice('users', usage.users);
     newCostItems.users = {
@@ -265,7 +286,8 @@ const PricingCalculator = () => {
       cost: usersCost,
       description: pricing.users.description,
     };
-    newTotal += usersCost;
+    newTotal += usersCost.price;
+    newDiscount += usersCost.usageDiscount;
 
     const componentLoadsCost = calculatePrice('componentLoads', usage.componentLoads);
     newCostItems.componentLoads = {
@@ -275,10 +297,31 @@ const PricingCalculator = () => {
       cost: componentLoadsCost,
       description: pricing.componentLoads.description,
     };
-    newTotal += componentLoadsCost;
+    newTotal += componentLoadsCost.price;
+    newDiscount += componentLoadsCost.usageDiscount;
 
     // Update both the total and costItems states
-    setTotal(newTotal);
+    console.log(newTotal, newDiscount);
+
+    console.log("All, prices",
+      "searchInference", searchInferenceCost,
+      "vectorInference", vectorInferenceCost,
+      "chunkStorage", chunkStorageCost,
+      "fileStorage", fileStorageCost,
+      "webCrawls", webCrawlsCost,
+      "chatTokens", chatTokensCost,
+      "ocrPages", ocrPagesCost,
+      "fileChunking", fileChunkingCost,
+      "analyticsEvents", analyticsEventsCost,
+      "namespaces", namespacesCost,
+      "users", usersCost,
+      "componentLoads", componentLoadsCost
+    )
+
+    setTotal({
+      price: newTotal,
+      usageDiscount: newDiscount,
+    });
     setCostItems(newCostItems);
   }, [usage]);
 
@@ -301,7 +344,7 @@ const PricingCalculator = () => {
 
   // Get active cost items (cost > 0)
   const getActiveCostItems = () => {
-    return Object.values(costItems).filter((item) => item.cost > 0);
+    return Object.values(costItems).filter((item) => item.cost.price > 0);
   };
 
   return (
@@ -385,7 +428,7 @@ const PricingCalculator = () => {
                   />
                   <div className="flex mb-2">
                     <label className="dark:text-gray-300 mr-2">Costs:</label>
-                    <div>{formatCurrency(costItems.searchInference?.cost || 0)}</div>
+                    <div>{formatCurrency(costItems.searchInference?.cost.price || 0)}</div>
                   </div>
                 </div>
                 <div className="mb-6">
@@ -409,7 +452,7 @@ const PricingCalculator = () => {
                     </div>
                     <div className="flex mb-2">
                       <label className="dark:text-gray-300 mr-2">Costs:</label>
-                      <div>{formatCurrency(costItems.chatTokens?.cost || 0)}</div>
+                      <div>{formatCurrency(costItems.chatTokens?.cost.price || 0)}</div>
                     </div>
                   </div>
                 </div>
@@ -426,7 +469,7 @@ const PricingCalculator = () => {
                   </div>
                   <PriceSlider
                     min={1}
-                    max={10000}
+                    max={200_000}
                     markers={[1, 10, 100, 1000, 10_000, 100_000, 200_000]}
                     defaultValue={usage.vectorInference}
                     beforeValueText="Processing"
@@ -435,7 +478,7 @@ const PricingCalculator = () => {
                   />
                   <div className="flex mb-2">
                     <label className="dark:text-gray-300 mr-2">Costs:</label>
-                    <div>{formatCurrency(costItems.vectorInference?.cost || 0)}</div>
+                    <div>{formatCurrency(costItems.vectorInference?.cost.price || 0)}</div>
                   </div>
                 </div>
                 <div className="mb-6">
@@ -458,7 +501,7 @@ const PricingCalculator = () => {
                     </div>
                     <div className="flex mb-2">
                       <label className="dark:text-gray-300 mr-2">Costs:</label>
-                      <div>{formatCurrency(costItems.chunkStorage?.cost || 0)}</div>
+                      <div>{formatCurrency(costItems.chunkStorage?.cost.price || 0)}</div>
                     </div>
                   </div>
                 </div>
@@ -482,7 +525,7 @@ const PricingCalculator = () => {
                     </div>
                     <div className="flex mb-2">
                       <label className="dark:text-gray-300 mr-2">Costs:</label>
-                      <div>{formatCurrency(costItems.fileStorage?.cost || 0)}</div>
+                      <div>{formatCurrency(costItems.fileStorage?.cost.price || 0)}</div>
                     </div>
                   </div>
                 </div>
@@ -513,7 +556,7 @@ const PricingCalculator = () => {
                     </div>
                     <div className="flex mb-2">
                       <label className="dark:text-gray-300 mr-2">Costs:</label>
-                      <div>{formatCurrency(costItems.webCrawls?.cost || 0)}</div>
+                      <div>{formatCurrency(costItems.webCrawls?.cost.price || 0)}</div>
                     </div>
                   </div>
                 </div>
@@ -539,7 +582,7 @@ const PricingCalculator = () => {
                     </div>
                     <div className="flex mb-2">
                       <label className="dark:text-gray-300 mr-2">Costs:</label>
-                      <div>{formatCurrency(costItems.ocrPages?.cost || 0)}</div>
+                      <div>{formatCurrency(costItems.ocrPages?.cost.price || 0)}</div>
                     </div>
                   </div>
                 </div>
@@ -569,7 +612,7 @@ const PricingCalculator = () => {
                     </div>
                     <div className="flex mb-2">
                       <label className="dark:text-gray-300 mr-2">Costs:</label>
-                      <div>{formatCurrency(costItems.analyticsEvents?.cost || 0)}</div>
+                      <div>{formatCurrency(costItems.analyticsEvents?.cost.price || 0)}</div>
                     </div>
                   </div>
                 </div>
@@ -583,23 +626,23 @@ const PricingCalculator = () => {
 
                 <div>
                   <div className="flex justify-between mb-2">
-                    <label className=" dark:text-gray-300">Namespaces</label>
+                    <label className=" dark:text-gray-300">Datasets (Namespaces)</label>
                   </div>
 
                   <div className="relative">
                     <PriceSlider
                       min={1}
-                      max={100}
-                      markers={[1, 5, 15, 50, 100]}
+                      max={10_000}
+                      markers={[1, 10, 15, 50, 100, 1_000, 5_000, 10_000]}
                       defaultValue={usage.namespaces}
                       beforeValueText="Using"
-                      afterValueText="namespaces"
+                      afterValueText="datasets"
                       onChange={(value) => handleUsageChange('namespaces', value)}
                     />
                   </div>
                   <div className="flex mb-2">
                     <label className="dark:text-gray-300 mr-2">Costs:</label>
-                    <div>{formatCurrency(costItems.namespaces?.cost || 0)}</div>
+                    <div>{formatCurrency(costItems.namespaces?.cost.price || 0)}</div>
                   </div>
                 </div>
 
@@ -621,7 +664,7 @@ const PricingCalculator = () => {
                   </div>
                   <div className="flex mb-2">
                     <label className="dark:text-gray-300 mr-2">Costs:</label>
-                    <div>{formatCurrency(costItems.users?.cost || 0)}</div>
+                    <div>{formatCurrency(costItems.users?.cost.price || 0)}</div>
                   </div>
                 </div>
 
@@ -643,7 +686,7 @@ const PricingCalculator = () => {
                   </div>
                   <div className="flex mb-2">
                     <label className="dark:text-gray-300 mr-2">Costs:</label>
-                    <div>{formatCurrency(costItems.componentLoads?.cost || 0)}</div>
+                    <div>{formatCurrency(costItems.componentLoads?.cost.price || 0)}</div>
                   </div>
                 </div>
               </>
@@ -670,12 +713,15 @@ const PricingCalculator = () => {
           </h3>
 
           {/* Display active cost items */}
-          <div className="space-y-4 max-h-96 overflow-y-auto pr-2">
+          <div className="space-y-4 overflow-y-auto pr-2">
             {getActiveCostItems().map((item, index) => (
               <div key={index} className="border-b border-gray-700 pb-3">
                 <div className="flex justify-between mb-1">
                   <span className="font-medium">{item.name}</span>
-                  <span className="font-medium">{formatCurrency(item.cost)}</span>
+                  <div className='flex flex-col justify-end items-end'>
+                    <span className="font-medium">{formatCurrency(item.cost.price)}</span>
+                    <span className="font-medium text-red-500">-{formatCurrency(item.cost.usageDiscount)}</span>
+                  </div>
                 </div>
                 <div className="text-sm dark:text-gray-400 text-gray-700">
                   {item.amount.toLocaleString()} {item.unit}
@@ -697,9 +743,15 @@ const PricingCalculator = () => {
             <h3 className="text-xl font-semibold">Estimated total</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400">for all products & add-ons</p>
           </div>
-          <div className="text-3xl font-bold mt-4 md:mt-0">
-            {formatCurrency(total)}{' '}
-            <span className="text-sm font-normal text-gray-600 dark:text-gray-400">/ month</span>
+          <div className='flex flex-col align-end'>
+            <div className="text-3xl font-bold mt-4 md:mt-0">
+              {formatCurrency(total.price + total.usageDiscount)}{' '}
+              <span className="text-sm font-normal text-gray-600 dark:text-gray-400">/ month</span>
+            </div>
+            <div className="text-3xl font-bold mt-4 md:mt-0 text-red-500">
+              -{formatCurrency(total.usageDiscount)}{' '}
+              <span className="text-sm font-normal text-gray-600 dark:text-gray-400">/ month</span>
+            </div>
           </div>
           <div className="mt-4 md:mt-0">
             <button className="bg-primary text-white hover:bg-fuchsia-700 py-2 px-6 rounded-lg font-medium transition duration-200">
