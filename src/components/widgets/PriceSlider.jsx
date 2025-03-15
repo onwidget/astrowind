@@ -1,5 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
 
+// Format value for display (with commas)
+export const formatValue = (val) => {
+  // Format with Thousand, Million and Billion suffixes Remove the the extra decimal if it's a whole number
+  if (val >= 1000000000) return (val / 1000000000).toFixed(1) + 'B';
+  if (val >= 1000000) return (val / 1000000).toFixed(1) + 'M';
+  if (val >= 1000) return (val / 1000).toFixed(1) + 'K';
+  return val.toLocaleString();
+};
+
 const PriceSlider = ({
   min = 10,
   max = 10000,
@@ -15,14 +24,9 @@ const PriceSlider = ({
   const [value, setValue] = useState(defaultValue);
   const [inputValue, setInputValue] = useState(defaultValue.toString());
   const [isDragging, setIsDragging] = useState(false);
-  const [showTooltip, setShowTooltip] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(true);
   const sliderRef = useRef(null);
   const inputRef = useRef(null);
-
-  // Format value for display (with commas)
-  const formatValue = (val) => {
-    return val.toLocaleString();
-  };
 
   // Parse value from formatted string
   const parseValue = (str) => {
@@ -75,7 +79,7 @@ const PriceSlider = ({
 
   const handleMouseUp = () => {
     setIsDragging(false);
-    setTimeout(() => setShowTooltip(false), 1000);
+    // setTimeout(() => setShowTooltip(false), 1000);
   };
 
   const handleMouseMove = (e) => {
