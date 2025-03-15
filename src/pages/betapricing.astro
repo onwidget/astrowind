@@ -2,8 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import PriceSlider from '~/components/widgets/PriceSlider';
-import PricingCalculator from '~/components/widgets/PricingCalculator';
+import PricingCalculatorTwo from '~/components/widgets/PricingCalculatorTwo';
 
 const metadata = {
   title: 'Pricing',
@@ -13,85 +12,8 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
 
-  <HeroText
-    title="Pricing that scales with you"
-    callToAction={{
-      target: '_blank',
-      text: 'Get started free',
-      href: 'https://dashboard.trieve.ai',
-    }}
-  />
-
-  <!-- Pricing Widget ******************* -->
-
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto text-black dark:text-white rounded-xl shadow-md overflow-hidden mt-2">
-      <div class="w-full p-6">
-        <h3 class="text-xl font-semibold mb-6 flex items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5 mr-2 text-fuchsia-400"
-            viewBox="0 0 20 20"
-            fill="currentColor">
-            <path
-              fill-rule="evenodd"
-              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-              clip-rule="evenodd"></path>
-          </svg>
-          How our pricing works
-        </h3>
-
-        <div class="flex align-top">
-          <div class="rounded-lg p-4">
-            <h4 class="text-lg mb-2 flex items-center dark:text-fuchsia-300 text-fuchsia-400">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  fill-rule="evenodd"
-                  d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"></path>
-              </svg>
-              Only pay for products you use
-            </h4>
-            <p class="dark:text-gray-300 text-sm ml-7">Check or uncheck products to include in your estimate</p>
-          </div>
-
-          <div class="rounded-lg p-4">
-            <h4 class="text-lg mb-2 flex items-center dark:text-fuchsia-300 text-fuchsia-400">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  fill-rule="evenodd"
-                  d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"></path>
-              </svg>
-              Generous free tier for each product
-            </h4>
-            <p class="dark:text-gray-300 text-sm ml-7">
-              1M free events monthly
-              <br />
-              <span class="text-xs text-gray-400">(resets monthly)</span>
-            </p>
-          </div>
-
-          <div class="rounded-lg p-4">
-            <h4 class="text-lg mb-2 flex items-center dark:text-fuchsia-300 text-fuchsia-400">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  fill-rule="evenodd"
-                  d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"></path>
-              </svg>
-              Volume discounts
-            </h4>
-            <p class="dark:text-gray-300 text-sm ml-7">
-              6.67% discount per order of magnitude
-              <br />
-              <span class="text-xs text-gray-400">(up to 26.67% maximum)</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <PricingCalculator client:only="react" />
+    <PricingCalculatorTwo client:only="react" />
   </div>
 
   <CallToAction
