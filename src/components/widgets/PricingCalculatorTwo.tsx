@@ -250,10 +250,10 @@ const PricingCalculatorTwo = () => {
         >
           <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
         </svg>
-        <p>
+        <h3 id="trieve-cloud-pricing">
           Pricing calculator
-        </p>
-        <p className="text-sm font-thin pl-2 self-end">Estimate your price</p>
+        </h3>
+        <p className="text-sm font-thin pl-2 self-end">Trieve Cloud Pricing</p>
       </div>
 
       {/* Main tab navigation */}
@@ -272,16 +272,10 @@ const PricingCalculatorTwo = () => {
             Ingestion
           </button>
           <button
-            onClick={() => setActiveTab('ai')}
-            className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'ai' ? 'text-fuchsia-400 border-b-2 border-fuchsia-400' : ''}`}
-          >
-            Analytics
-          </button>
-          <button
             onClick={() => setActiveTab('infrastructure')}
             className={`px-6 py-4 text-sm font-medium whitespace-nowrap ${activeTab === 'infrastructure' ? 'text-fuchsia-400 border-b-2 border-fuchsia-400' : ''}`}
           >
-            Platform
+            Platform + Analytics
           </button>
         </div>
       </div>
@@ -447,34 +441,11 @@ const PricingCalculatorTwo = () => {
                 </div>
               </>
             )}
-            {/* AI & Analytics Tab Content */}
-            {activeTab === 'ai' && (
-              <>
-                <div>
-                  <h3 className="text-lg font-medium mb-4">Analytics</h3>
-
-                  <div>
-                    <div className="relative">
-                      <PriceSlider
-                        min={100}
-                        max={10000000}
-                        markers={[100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000]}
-                        defaultValue={usage.analyticsEvents}
-                        beforeValueText="Tracking"
-                        afterValueText="analytics events"
-                        onChange={(value) => handleUsageChange('analyticsEvents', value)}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </>
-            )}
 
             {/* Infrastructure Tab Content */}
             {activeTab === 'infrastructure' && (
               <>
-                <h3 className="text-lg font-medium mb-4">Infrastructure Settings</h3>
-
+                <h3 className="text-lg font-medium mb-4">Platform</h3>
                 <div>
                   <div className="flex justify-between mb-2">
                     <label className=" dark:text-gray-300">Datasets (Namespaces)</label>
@@ -511,6 +482,24 @@ const PricingCalculatorTwo = () => {
                   </div>
                 </div>
 
+                <div>
+                  <h3 className="text-lg font-medium mb-4">Analytics</h3>
+
+                  <div>
+                    <div className="relative">
+                      <PriceSlider
+                        min={100}
+                        max={10000000}
+                        markers={[100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000]}
+                        defaultValue={usage.analyticsEvents}
+                        beforeValueText="Tracking"
+                        afterValueText="analytics events"
+                        onChange={(value) => handleUsageChange('analyticsEvents', value)}
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 <div className="mt-6">
                   <div className="flex justify-between mb-2">
                     <label className="dark:text-gray-300">Search Component Loads</label>
@@ -528,6 +517,7 @@ const PricingCalculatorTwo = () => {
                     />
                   </div>
                 </div>
+
               </>
             )}
           </div>
