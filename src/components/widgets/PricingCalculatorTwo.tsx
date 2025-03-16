@@ -13,7 +13,6 @@ interface Usage {
   fileStoredGb: number;
   // Analytics
   analyticsEvents: number;
-  analyticsStored: number;
   // Platform fee
   datasets: number;
   users: number;
@@ -45,17 +44,16 @@ interface CostItem {
 };
 
 const defaultUsage: Usage = {
-  chunksStored: 500_000,
-  messagesSent: 10_000,
-  searchesSent: 10_000,
+  chunksStored: 1_000,
+  messagesSent: 1_000,
+  searchesSent: 1_000,
   fileStoredGb: 5,
-  pagesCrawled: 10_000,
-  writesPerMo: 1_000_000,
+  pagesCrawled: 10,
+  writesPerMo: 10_000,
   analyticsEvents: 100_000,
-  analyticsStored: 100_000,
-  ocrPages: 1_000,
-  componentLoads: 10_000,
-  datasets: 2,
+  ocrPages: 100,
+  componentLoads: 1_000,
+  datasets: 10,
   users: 5,
 };
 
@@ -70,43 +68,56 @@ const defaultAssumptions: Assumptions = {
 };
 
 const calculateUsageCost = (usage: Usage, assumptions: Assumptions) => {
-  const storageUsedBytes = usage.chunksStored * ((assumptions.averageSparseSize * 4) + (assumptions.vectorDimension * 4) + assumptions.averagePayloadSizeBytes);
+  // First 1000 chunks are free.
+  const storagePerChunk = ((assumptions.averageSparseSize * 4) + (assumptions.vectorDimension * 4) + assumptions.averagePayloadSizeBytes);
+  const storageUsedBytes = Math.max(0, usage.chunksStored - 1000) * storagePerChunk;
+  // First 10,000 searches are free.
   const searchTokens = usage.searchesSent * assumptions.tokensPerSearch;
-  const messageTokens = usage.messagesSent * assumptions.tokensPerSearch;
+  const searchTokensCalc = Math.max(0, usage.searchesSent - 10_000) * assumptions.tokensPerSearch;
+  // First 1,000 messages are free.
+  const messageTokens = usage.messagesSent * assumptions.tokensPerMessage;
+  const messageTokensCalc = Math.max(0, usage.messagesSent - 1_000) * assumptions.tokensPerMessage;
+  // First 10,000 writes are free.
   const writeTokens = usage.writesPerMo * assumptions.tokensPerChunk;
+  const writeTokensCalc = Math.max(0, usage.writesPerMo - 10_000) * assumptions.tokensPerChunk;
 
-
-  return {
+  let costs = {
 
     // Vector / Search costs
-    vectorStorageGB: storageUsedBytes / 1_000_000_000,
+    vectorStorageGB: storagePerChunk * usage.chunksStored / 1_000_000_000,
     // Cost / mo / GB is $10.1675 per GB. (including margin)
     vectorDBRamCost: storageUsedBytes / 1_000_000_000 * 10.1675,
     // Cost / mo / GB is $0.42 / GB. (including margin)
-    vectorDbStorageCost: storageUsedBytes / 1_000_000_000 * 0.42,
+    vectorDbStorageCost: storageUsedBytes / 1_000_000_000 * (0.42 + 1),
     // Cost / search token = $0.04 * 5 per token. (including margin)
     searchTokens,
-    searchCost: searchTokens * 0.20 / 1_000_000,
-    // Cost / chat token = $1.91 * 1.4 per 1M token. (including margin)
+    searchCost: searchTokensCalc * 0.20 / 1_000_000,
+    // Cost / chat token = $2.52 * 1.4 per 1M token. (including margin)
     messageTokens,
-    messageCost: messageTokens * 1.91 * 1.4 / 1_000_000,
+    messageCost: messageTokensCalc * 2.52 * 1.4 / 1_000_000,
     // Ingest charge is $0.02 * 1.4 per 1M token
-    writeTokens: writeTokens,
-    writesCost: writeTokens * 0.02 / 1_000_000,
-    datasetCost: usage.datasets * 0.05,
+    writeTokens,
+    writesCost: writeTokensCalc * 0.02 / 1_000_000,
+    // First 5 datasets are free
+    datasetCost: Math.max(0, usage.datasets - 10) * 0.05,
+    scrapeCost: Math.max(0, usage.pagesCrawled - 10) * 0.00086,
 
     // Analytics Costs
-
-    analyticsCost: usage.analyticsEvents * 0.01,
-    analyticsStorageCost: usage.analyticsStored * 0.01,
+    // First 100,000 events are free
+    analyticsCost: Math.max(0, usage.analyticsEvents - 100_000) * 0.0001,
 
     // Ingestion Costs
     // File storage cost is $0.023 / GB
-    fileStorageCost: usage.fileStoredGb * 0.023,
-    ocrCost: usage.ocrPages * 0.01,
-    componentCost: usage.componentLoads * 0.01,
-    userCost: usage.users * 5
+    fileStorageCost: Math.max(0, usage.fileStoredGb - 10) * 0.023,
+    // First 100 ocr pages are free
+    ocrCost: Math.max(0, usage.ocrPages - 100) * 0.01,
+    componentCost: Math.max(0, usage.componentLoads - 1_000) * 0.01,
+    userCost: Math.max(0, usage.users - 5) * 5,
+    total: 0
   };
+
+  costs.total = costs.searchCost + costs.messageCost + costs.writesCost + costs.datasetCost + costs.scrapeCost + costs.analyticsCost + costs.fileStorageCost + costs.ocrCost + costs.componentCost + costs.userCost;
+  return costs;
 }
 
 // Format currency
@@ -132,7 +143,7 @@ const PricingCalculatorTwo = () => {
 
     setCostItems([
       {
-        name: "Vector Storage",
+        name: "Vectors",
         tooltip: "Vector dimension and payload size may vary",
         total: cost.vectorDBRamCost + cost.vectorDbStorageCost,
         breakdown: [
@@ -149,62 +160,63 @@ const PricingCalculatorTwo = () => {
         unit: "GBs stored",
       },
       {
-        name: "Writes",
-        tooltip: "Assuming 300 average tokens / chunk",
-        total: cost.writesCost,
-        breakdown: [],
-        amount: cost.writeTokens,
-        unit: "tokens written",
-      },
-      {
         name: "Queries",
         tooltip: "Assuming 300 average tokens / chunk",
         total: cost.searchCost + cost.messageCost,
         breakdown: [
           {
+            name: "Search",
+            price: cost.searchCost,
+          },
+          {
             name: "Messages",
             price: cost.messageCost,
           },
-          {
-            name: "Search",
-            price: cost.searchCost,
-          }
         ],
         amount: cost.searchTokens + cost.messageTokens,
         unit: "tokens processed",
       },
       {
-        name: "Files",
-        tooltip: "",
-        total: cost.fileStorageCost,
-        breakdown: [{
-          name: `File Storage (${usage.fileStoredGb} GB)`,
-          price: cost.fileStorageCost
-        },
-        {
-          name: `File OCR (${usage.ocrPages} pages)`,
-          price: 0
-        }
-        ],
-        amount: 0,
-        unit: "",
+        name: "Writes",
+        tooltip: "Assuming 300 average tokens / chunk",
+        total: cost.writesCost,
+        breakdown: [],
+        amount: cost.writeTokens,
+        unit: "tokens writes",
       },
       {
         name: "Web Scrape",
         tooltip: "Number of pages crawled",
-        total: cost.fileStorageCost,
+        total: cost.scrapeCost,
         breakdown: [],
         amount: usage.pagesCrawled,
         unit: "Pages crawled",
       },
       {
-        name: "Platform",
-        tooltip: "Number of component loads",
-        total: cost.componentCost,
+        name: "Files",
+        tooltip: "",
+        total: cost.fileStorageCost + cost.ocrCost,
         breakdown: [
           {
-            name: `Component (${usage.componentLoads} loads)`,
-            price: cost.componentCost
+            name: `File OCR (${usage.ocrPages} pages)`,
+            price: cost.ocrCost
+          },
+          {
+            name: `File Storage (${usage.fileStoredGb} GB)`,
+            price: cost.fileStorageCost
+          },
+        ],
+        amount: 0,
+        unit: "",
+      },
+      {
+        name: "Platform",
+        tooltip: "Number of component loads",
+        total: cost.componentCost + cost.analyticsCost + cost.datasetCost + cost.userCost,
+        breakdown: [
+          {
+            name: `${formatValue(usage.analyticsEvents)} Analytics Events`,
+            price: cost.analyticsCost
           },
           {
             name: `${usage.datasets} Datasets`,
@@ -213,12 +225,21 @@ const PricingCalculatorTwo = () => {
           {
             name: `${usage.users} Users`,
             price: cost.userCost
-          }
+          },
+          {
+            name: `Component (${formatValue(usage.componentLoads)} loads)`,
+            price: cost.componentCost
+          },
         ],
-        amount: usage.componentLoads,
-        unit: "Component loads",
+        amount: 0,
+        unit: "",
       },
     ])
+
+    setTotal({
+      price: cost.total,
+      usageDiscount: 0
+    });
   }, [usage, assumptionsUsed]);
 
   const [total, setTotal] = useState({
@@ -233,6 +254,13 @@ const PricingCalculatorTwo = () => {
       ...prev,
       [product]: parseInt(value, 10) || 0,
     }));
+  };
+
+  const handleAssumptionsChange = (product, value) => {
+    setAssumptionsUsed((prev) => ({
+      ...prev,
+      [product]: parseInt(value, 10) || 0,
+    }))
   };
 
   return (
@@ -289,17 +317,19 @@ const PricingCalculatorTwo = () => {
             {activeTab === 'search' && (
               <>
                 <div className='flex space-x-4'>
-                  <div>
+                  <div className='w-full'>
                     <label
                       htmlFor="frequency"
-                      className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300"
+                      className="block text-gray-700 mb-1 dark:text-gray-300"
                     >
                       Vector Dimension
                     </label>
                     <select
                       id="frequency"
-                      className="block px-7 py-2 border border-gray-300 rounded-md shadow-sm dark:text-gray-300 dark:bg-gray-600"
+                      className="block w-full px-7 py-2 rounded-md dark:text-gray-300 dark:bg-gray-800"
                       defaultValue="768"
+                      value={assumptionsUsed.vectorDimension}
+                      onChange={(e) => handleAssumptionsChange('vectorDimension', e.target.value)}
                     >
                       <option value="768">768</option>
                       <option value="1024">1024</option>
@@ -308,33 +338,38 @@ const PricingCalculatorTwo = () => {
                     </select>
                   </div>
 
-                  <div>
+                  <div className='w-full'>
                     <label
                       htmlFor="frequency"
-                      className="block text-sm font-medium text-gray-700 mb-1 dark:text-gray-300 "
+                      className="block text-gray-700 mb-1 dark:text-gray-300 "
                     >
-                      Payload Size TODO
+                      Payload Size
                     </label>
                     <select
                       id="frequency"
-                      className="block px-7 py-2 border border-gray-300 rounded-md shadow-sm dark:bg-gray-600"
+                      className="block w-full px-7 py-2 border rounded-md shadow-sm dark:bg-gray-800"
                       defaultValue="1536"
+                      value={assumptionsUsed.averagePayloadSizeBytes}
+                      onChange={(e) => handleAssumptionsChange('averagePayloadSizeBytes', e.target.value)}
                     >
-                      <option value="768">768</option>
-                      <option value="1024">1024</option>
-                      <option value="1536">1536</option>
-                      <option value="3072">3072</option>
+                      <option value="512">512 bytes</option>
+                      <option value="1024">1 KB</option>
+                      <option value="4096">4 KB</option>
+                      <option value="8192">8 KB</option>
                     </select>
                   </div>
                 </div>
                 <div className="mb-6">
-                  <h3 className="text-lg font-medium mb-4">Chunks Stored</h3>
+                  <div className='flex space-x-2 mb-4 items-end'>
+                    <h3 className="text-xl font-medium">Chunks Stored</h3>
+                    <p className='text-sm'>First 1,000 chunks are free!</p>
+                  </div>
                   <div>
                     <div className="relative">
                       <PriceSlider
-                        min={1}
+                        min={1000}
                         max={1_000_000_000}
-                        markers={[1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000, 100_000_000, 1_000_000_000]}
+                        markers={[1_000, 10_000, 100_000, 1_000_000, 10_000_000, 100_000_000, 1_000_000_000]}
                         defaultValue={usage.chunksStored}
                         beforeValueText=""
                         afterValueText="chunks"
@@ -344,28 +379,34 @@ const PricingCalculatorTwo = () => {
                   </div>
                 </div>
                 <div className="mb-6">
-                  <h3 className="text-lg font-medium mb-4">Searches / month</h3>
+                  <div className='flex space-x-2 mb-4 items-end'>
+                    <h3 className="text-xl font-medium">Searches / month</h3>
+                    <p className='text-sm'>First 10,000 searches are free!</p>
+                  </div>
                   <PriceSlider
-                    min={1}
-                    max={100_000_000}
-                    markers={[1, 10, 100, 1_000, 10_000, 100_000, 1_000_000, 1_000_000, 10_000_000, 100_000_000]}
+                    min={10_000}
+                    max={100_000_00000}
+                    markers={[10_000, 100_000, 1_000_000, 1_000_000, 10_000_000, 100_000_000, 100_000_0000, 100_000_00000]}
                     defaultValue={usage.searchesSent}
                     beforeValueText=""
-                    afterValueText="searches per month"
+                    afterValueText="searches"
                     onChange={(value) => handleUsageChange('searchesSent', value)}
                   />
                 </div>
                 <div className="mb-6">
-                  <h3 className="text-lg font-medium mb-4">Messages / month</h3>
+                  <div className='flex space-x-2 mb-4 items-end'>
+                    <h3 className="text-lg font-medium">Messages / month</h3>
+                    <p className='text-sm'>First 1,000 messages are free!</p>
+                  </div>
                   <div>
                     <div className="relative">
                       <PriceSlider
-                        min={10}
-                        max={100000}
-                        markers={[10, 100, 1_000, 10_000, 100_000]}
+                        min={1_000}
+                        max={100_000_000}
+                        markers={[1_000, 10_000, 100_000, 1_000_000, 10_000_000, 100_000_000]}
                         defaultValue={usage.messagesSent}
                         beforeValueText=""
-                        afterValueText="messages per month"
+                        afterValueText="messages"
                         onChange={(value) => handleUsageChange('messagesSent', value)}
                       />
                     </div>
@@ -373,14 +414,17 @@ const PricingCalculatorTwo = () => {
                 </div>
 
                 <div className="mb-6">
-                  <h3 className="text-lg font-medium mb-4">Writes / month</h3>
+                  <div className='flex space-x-2 mb-4 items-end'>
+                    <h3 className="text-lg font-medium">Writes / month</h3>
+                    <p className='text-sm'>First 10,000 writes are free!</p>
+                  </div>
                   <PriceSlider
-                    min={1}
+                    min={10_000}
                     max={100_000_000}
-                    markers={[1, 10, 100, 1000, 10_000, 100_000,  1_000_000, 10_000000, 10_0000000]}
+                    markers={[10_000, 100_000, 1_000_000, 10_000000, 10_0000000]}
                     defaultValue={usage.writesPerMo}
                     beforeValueText=""
-                    afterValueText="writes per month"
+                    afterValueText="writes"
                     onChange={(value) => handleUsageChange('writesPerMo', value)}
                   />
                 </div>
@@ -390,14 +434,16 @@ const PricingCalculatorTwo = () => {
             {activeTab === 'ingestion' && (
               <>
                 <div className="mb-6">
-                  <h3 className="text-lg font-medium mb-4">Website Crawler</h3>
-
+                  <div className='flex space-x-2 mb-4 items-end'>
+                    <h3 className="text-lg font-medium">Website Crawler</h3>
+                    <p className='text-sm'>First 10 pages are free!</p>
+                  </div>
                   <div>
                     <div className="relative">
                       <PriceSlider
                         min={10}
                         max={100000}
-                        markers={[10, 100, 1000, 10000, 100000]}
+                        markers={[10, 100, 1000, 10000, 100000, 1000000, 10000000]}
                         defaultValue={usage.pagesCrawled}
                         beforeValueText="Crawling"
                         afterValueText="web pages per month"
@@ -408,23 +454,29 @@ const PricingCalculatorTwo = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-medium mb-4">OCR Processing</h3>
+                  <div className='flex space-x-2 mb-4 items-end'>
+                    <h3 className="text-lg font-medium">OCR Processing</h3>
+                    <p className='text-sm'>First 100 pages are free!</p>
+                  </div>
                   <div>
                     <div className="relative">
                       <PriceSlider
-                        min={10}
+                        min={100}
                         max={100000}
-                        markers={[10, 100, 1000, 10000, 100000]}
+                        markers={[100, 1000, 10000, 100000, 1000000, 10000000]}
                         defaultValue={usage.ocrPages}
                         beforeValueText=""
-                        afterValueText="pages per month"
+                        afterValueText="pages"
                         onChange={(value) => handleUsageChange('ocrPages', value)}
                       />
                     </div>
                   </div>
                 </div>
                 <div className="mb-6">
-                  <h3 className="text-lg font-medium mb-4">File Storage</h3>
+                  <div className='flex space-x-2 mb-4 items-end'>
+                    <h3 className="text-lg font-medium">File Storage</h3>
+                    <p className='text-sm'>First 10GB are free!</p>
+                  </div>
                   <div>
                     <div className="relative">
                       <PriceSlider
@@ -447,15 +499,16 @@ const PricingCalculatorTwo = () => {
               <>
                 <h3 className="text-lg font-medium mb-4">Platform</h3>
                 <div>
-                  <div className="flex justify-between mb-2">
-                    <label className=" dark:text-gray-300">Datasets (Namespaces)</label>
+                  <div className='flex space-x-2 mb-4 items-end'>
+                    <h3 className="text-lg font-medium">Datasets</h3>
+                    <p className='text-sm'>First 10 datasets free!</p>
                   </div>
 
                   <div className="relative">
                     <PriceSlider
-                      min={1}
+                      min={9}
                       max={10_000}
-                      markers={[1, 10, 15, 50, 100, 1_000, 5_000, 10_000]}
+                      markers={[10, 15, 50, 100, 1_000, 5_000, 10_000]}
                       defaultValue={usage.datasets}
                       beforeValueText="Using"
                       afterValueText="datasets"
@@ -468,12 +521,16 @@ const PricingCalculatorTwo = () => {
                   <div className="flex justify-between mb-2">
                     <label className=" dark:text-gray-300">Users</label>
                   </div>
+                  <div className='flex space-x-2 mb-4 items-end'>
+                    <h3 className="text-lg font-medium">Users</h3>
+                    <p className='text-sm'>First 5 users free!</p>
+                  </div>
 
                   <div className="relative">
                     <PriceSlider
-                      min={1}
-                      max={100}
-                      markers={[1, 5, 10, 25, 50, 100]}
+                      min={5}
+                      max={50}
+                      markers={[5, 7, 10, 15, 20, 25, 50]}
                       defaultValue={usage.users}
                       beforeValueText="With"
                       afterValueText="users"
@@ -483,14 +540,17 @@ const PricingCalculatorTwo = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-medium mb-4">Analytics</h3>
+                  <div className='flex space-x-2 mb-4 items-end'>
+                    <h3 className="text-lg font-medium">Analytics</h3>
+                    <p className='text-sm'>First 100k events free!</p>
+                  </div>
 
                   <div>
                     <div className="relative">
                       <PriceSlider
-                        min={100}
-                        max={10000000}
-                        markers={[100, 1_000, 10_000, 100_000, 1_000_000, 10_000_000]}
+                        min={10_00_00}
+                        max={100_000_000_000}
+                        markers={[100_000, 1_000_000, 1_000_000, 10_000_000, 100_000_000, 1_000_000_000, 10_000_000_000, 100_000_000_000]}
                         defaultValue={usage.analyticsEvents}
                         beforeValueText="Tracking"
                         afterValueText="analytics events"
@@ -501,15 +561,16 @@ const PricingCalculatorTwo = () => {
                 </div>
 
                 <div className="mt-6">
-                  <div className="flex justify-between mb-2">
-                    <label className="dark:text-gray-300">Search Component Loads</label>
+                  <div className='flex space-x-2 mb-4 items-end'>
+                    <h3 className="text-lg font-medium">Search Component Loads</h3>
+                    <p className='text-sm'>First 1k loads free!</p>
                   </div>
 
                   <div className="relative">
                     <PriceSlider
-                      min={100}
+                      min={1000}
                       max={10000000}
-                      markers={[100, 1000, 10000, 100000, 1000000, 10000000]}
+                      markers={[1000, 10000, 100000, 1000000, 10000000]}
                       defaultValue={usage.componentLoads}
                       beforeValueText="With"
                       afterValueText="component loads"
@@ -547,13 +608,16 @@ const PricingCalculatorTwo = () => {
               <div key={index} className="border-b border-gray-700 pb-3">
                 <div className='flex justify-between'>
                   <span className="text-xl font-medium">{item.name}</span>
-                  <span className="">Total <span className="font-medium">{formatCurrency(item.total)}</span></span>
+                  {item.total > 0 ?
+                    <span className="">Total <span className="font-medium">{formatCurrency(item.total)}</span></span>
+                    : <div>FREE</div>
+                  }
                 </div>
                 {item.amount > 0 &&
                   <div className="text-sm dark:text-gray-400 text-gray-700 mb-3">
                     {formatValue(item.amount)} {item.unit}
                   </div>}
-                {item.breakdown.map((breakdownItem, index) => (
+                {item.total > 0 && item.breakdown.map((breakdownItem, index) => (
                   <div className="flex justify-between mb-1">
                     <span className="text-sm font-medium">{breakdownItem.name}</span>
                     <div className='flex flex-col justify-end items-end'>
@@ -579,14 +643,16 @@ const PricingCalculatorTwo = () => {
             <p className="text-sm text-gray-600 dark:text-gray-400">for all products & add-ons</p>
           </div>
           <div className='flex flex-col align-end'>
-            <div className="text-3xl font-bold mt-4 md:mt-0">
-              {formatCurrency(total.price + total.usageDiscount)}{' '}
-              <span className="text-sm font-normal text-gray-600 dark:text-gray-400">/ month</span>
-            </div>
-            <div className="text-3xl font-bold mt-4 md:mt-0 text-red-500">
-              -{formatCurrency(total.usageDiscount)}{' '}
-              <span className="text-sm font-normal text-gray-600 dark:text-gray-400">/ month</span>
-            </div>
+            {total.price > 0 ? (
+              <div className="text-3xl font-bold mt-4 md:mt-0">
+                {formatCurrency(total.price + total.usageDiscount)}{' '}
+                <span className="text-sm font-normal text-gray-600 dark:text-gray-400">/ month</span>
+              </div>
+            ) : (
+              <div className="text-3xl font-bold mt-4 md:mt-0">
+                FREE!
+              </div>
+            )}
           </div>
           <div className="mt-4 md:mt-0">
             <button className="bg-primary text-white hover:bg-fuchsia-700 py-2 px-6 rounded-lg font-medium transition duration-200">
