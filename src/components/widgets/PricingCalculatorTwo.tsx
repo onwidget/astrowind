@@ -132,8 +132,36 @@ const formatCurrency = (amount: number) => {
 
 const PricingCalculatorTwo = () => {
 
-  const [usage, setUsage] = useState<Usage>(defaultUsage);
-  const [assumptionsUsed, setAssumptionsUsed] = useState<Assumptions>(defaultAssumptions);
+  const pullUsageFromPath = () => {
+    const searchParams = new URLSearchParams(window.location.search);
+
+    return {
+      searchesSent: parseInt(searchParams.get('searchesSent') || defaultUsage.searchesSent.toString()),
+      messagesSent: parseInt(searchParams.get('messagesSent') || defaultUsage.messagesSent.toString()),
+      writesPerMo: parseInt(searchParams.get('writesPerMo') || defaultUsage.writesPerMo.toString()),
+      chunksStored: parseInt(searchParams.get('chunksStored') || defaultUsage.chunksStored.toString()),
+      datasets: parseInt(searchParams.get('datasets') || defaultUsage.datasets.toString()),
+      pagesCrawled: parseInt(searchParams.get('pagesCrawled') || defaultUsage.pagesCrawled.toString()),
+      analyticsEvents: parseInt(searchParams.get('analyticsEvents') || defaultUsage.analyticsEvents.toString()),
+      fileStoredGb: parseInt(searchParams.get('fileStoredGb') || defaultUsage.fileStoredGb.toString()),
+      ocrPages: parseInt(searchParams.get('ocrPages') || defaultUsage.ocrPages.toString()),
+      componentLoads: parseInt(searchParams.get('componentLoads') || defaultUsage.componentLoads.toString()),
+      users: parseInt(searchParams.get('users') || defaultUsage.users.toString()),
+    };
+  }
+
+  const pullAssumptionsFromPath = () => {
+    const searchParams = new URLSearchParams(window.location.search);
+
+    return {
+      ...defaultAssumptions,
+      vectorDimension: parseInt(searchParams.get('vectorDimension') || defaultAssumptions.vectorDimension.toString()),
+      averagePayloadSizeBytes: parseInt(searchParams.get('averagePayloadSizeBytes') || defaultAssumptions.averagePayloadSizeBytes.toString()),
+    };
+  }
+
+  const [usage, setUsage] = useState<Usage>(pullUsageFromPath());
+  const [assumptionsUsed, setAssumptionsUsed] = useState<Assumptions>(pullAssumptionsFromPath());
 
   // New state to track individual cost items
   const [costItems, setCostItems] = useState<CostItem[]>([]);
@@ -254,6 +282,11 @@ const PricingCalculatorTwo = () => {
       ...prev,
       [product]: parseInt(value, 10) || 0,
     }));
+
+    // Update URL search params
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set(product, value);
+    window.history.replaceState(null, '', `${window.location.pathname}?${searchParams.toString()}`);
   };
 
   const handleAssumptionsChange = (product, value) => {
@@ -261,6 +294,11 @@ const PricingCalculatorTwo = () => {
       ...prev,
       [product]: parseInt(value, 10) || 0,
     }))
+
+    // Update URL search params
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set(product, value);
+    window.history.replaceState(null, '', `${window.location.pathname}?${searchParams.toString()}`);
   };
 
   return (
