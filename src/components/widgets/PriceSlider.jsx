@@ -3,9 +3,21 @@ import { useState, useRef, useEffect } from 'react';
 // Format value for display (with commas)
 export const formatValue = (val) => {
   // Format with Thousand, Million and Billion suffixes Remove the the extra decimal if it's a whole number
-  if (val >= 1000000000) return (val / 1000000000).toFixed(1) + 'B';
-  if (val >= 1000000) return (val / 1000000).toFixed(1) + 'M';
-  if (val >= 1000) return (val / 1000).toFixed(1) + 'K';
+  if (val >= 1000000000) {
+    let truncated = (val / 1000000000).toFixed(1);
+    truncated = truncated.replace('.0', '');
+    return truncated + 'B';
+  }
+  if (val >= 1000000) {
+    let truncated = (val / 1000000).toFixed(1);
+    truncated = truncated.replace('.0', '');
+    return truncated + 'M';
+  }
+  if (val >= 1000) {
+    let truncated = (val / 1000).toFixed(1);
+    truncated = truncated.replace('.0', '');
+    return truncated + 'K';
+  }
   return val.toLocaleString();
 };
 
