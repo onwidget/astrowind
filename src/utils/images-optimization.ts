@@ -212,7 +212,7 @@ const getBreakpoints = ({
 };
 
 /* ** */
-export const astroAsseetsOptimizer: ImagesOptimizer = async (
+export const astroAssetsOptimizer: ImagesOptimizer = async (
   image,
   breakpoints,
   _width,
