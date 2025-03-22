@@ -51,6 +51,5 @@ export const socialLinks = {
   socialLinks: [
     { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/in/jonathan-ronn' },
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/JonathanRonn' },
-    { ariaLabel: 'Lichess', icon: 'tabler:chess-king', href: 'https://lichess.org/@/cptcanuck' }
   ]
 }

@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import TypeWriterText from '~/components/widgets/TypeWriterText.astro';
 
 const metadata = {
   title: 'Jonathan Ronn - Portfolio',
@@ -17,8 +18,7 @@ const metadata = {
     image={{ src: '~/assets/images/jon-hero.webp', alt: 'Jon Ronn Hero Image' }}
   >
     <Fragment slot="title">
-      Hi there I'm 
-      <span class="text-accent dark:text-white highlight"> Jon Ronn</span>
+      <TypeWriterText />
     </Fragment>
 
     <Fragment slot="subtitle">
@@ -29,7 +29,7 @@ const metadata = {
     </Fragment>
   </Hero>
 
-  <!-- HighlightedPosts Widget ******* -->
+  <!-- TODO: add skills section -->
 
   <BlogLatestPosts
     title="See my Blog"
