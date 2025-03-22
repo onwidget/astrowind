@@ -1,0 +1,23 @@
+---
+
+---
+
+<div id="typed-strings" class="prose">
+  <p>Hello!</p>
+  <p>I'm <span class="text-primary">Jon</span></p>
+</div>
+<span id="typewriter"></span>
+
+<script>
+  import Typed from 'typed.js';
+
+  document.addEventListener('astro:page-load', ()=>{
+    new Typed('#typewriter', {
+    stringsElement: '#typed-strings',
+    typeSpeed: 100,
+    backSpeed: 100,
+    backDelay: 500,
+    showCursor: false
+  });
+  })
+</script>

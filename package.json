@@ -32,6 +32,7 @@
     "astro-icon": "^1.1.5",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
+    "typed.js": "^2.1.0",
     "unpic": "^3.22.0"
   },
   "devDependencies": {
@@ -42,6 +43,7 @@
     "@iconify-json/flat-color-icons": "^1.2.1",
     "@iconify-json/tabler": "^1.2.14",
     "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.0.8",
     "@types/eslint__js": "^8.42.3",
     "@types/js-yaml": "^4.0.9",
     "@types/lodash.merge": "^4.6.9",
@@ -58,10 +60,8 @@
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1",
     "reading-time": "^1.5.0",
-    "sharp": "0.33.5",
     "tailwind-merge": "^2.6.0",
     "tailwindcss": "^4.0.8",
-    "@tailwindcss/vite": "^4.0.8",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.21.0",
     "unist-util-visit": "^5.0.0"
