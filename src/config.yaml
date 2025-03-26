@@ -1,6 +1,7 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Dundonald Show 2025
+  description: Dundonald Farmers' Society Open Show 2025
+  site: 'https://dundonald-show.org.uk'
   base: '/'
   trailingSlash: false
 
@@ -9,14 +10,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
+    default: Dundonald Farmers Society
     template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+  description: "\U0001F680 Dundonald Farmers' Society Open Show 2025"
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Dundonald Farmers Society
     images:
       - url: '~/assets/images/default.png'
         width: 1200

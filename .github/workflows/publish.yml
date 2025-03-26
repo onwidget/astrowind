@@ -1,0 +1,49 @@
+name: Generate a build and push to Hostinger static files
+
+on:
+  push:
+    branches:
+      - main # The branch name your are commit the new changes
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
+
+    name: Build and Push
+    steps:
+      - name: git-checkout
+        uses: actions/checkout@v4
+
+      - name: Install all dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build # The build command of your project
+
+
+      # - name: executing remote ssh commands using ssh key
+      #   uses: appleboy/ssh-action@v1.0.3
+      #   with:
+      #     host: ${{ secrets.HOSTINGER_HOST }}
+      #     username: ${{ secrets.HOSTINGER_USERNAME }}
+      #     key: ${{ secrets.HOSTINGER_KEY }}
+      #     port: ${{ secrets.HOSTINGER_PORT }}
+      #     script: |
+      #       whoami
+      #       pwd
+      #       cd domains/dundonald-show.org.uk/public_html/
+      #       ls -al
+
+      - name: copy file via ssh scp key
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOSTINGER_HOST }}
+          username: ${{ secrets.HOSTINGER_USERNAME }}
+          key: ${{ secrets.HOSTINGER_KEY }}
+          port: ${{ secrets.HOSTINGER_PORT }}
+          source: /home/runner/work/astrowind-fork/astrowind-fork/dist/
+          target: domains/dundonald-show.org.uk/public_html/
+          strip_components: 3
