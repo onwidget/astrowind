@@ -28,11 +28,11 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
     image &&
       (link ? (
         <a class="relative block group" href={link ?? 'javascript:void(0)'}>
-          <div class="relative h-0 pb-[56.25%] md:pb-[75%] md:h-72 lg:pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded shadow-lg">
+          <div class="relative h-0 pb-[56.25%] md:pb-[75%] md:h-72 lg:pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded-sm shadow-lg">
             {image && (
               <Image
                 src={image}
-                class="absolute inset-0 object-cover w-full h-full mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+                class="absolute inset-0 object-cover w-full h-full mb-6 rounded-sm shadow-lg bg-gray-400 dark:bg-slate-700"
                 widths={[400, 900]}
                 width={900}
                 sizes="(max-width: 900px) 400px, 900px"
@@ -45,11 +45,11 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
           </div>
         </a>
       ) : (
-        <div class="relative h-0 pb-[56.25%] md:pb-[75%] md:h-72 lg:pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded shadow-lg">
+        <div class="relative h-0 pb-[56.25%] md:pb-[75%] md:h-72 lg:pb-[56.25%] overflow-hidden bg-gray-400 dark:bg-slate-700 rounded-sm shadow-lg">
           {image && (
             <Image
               src={image}
-              class="absolute inset-0 object-cover w-full h-full mb-6 rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+              class="absolute inset-0 object-cover w-full h-full mb-6 rounded-sm shadow-lg bg-gray-400 dark:bg-slate-700"
               widths={[400, 900]}
               width={900}
               sizes="(max-width: 900px) 400px, 900px"
@@ -106,7 +106,7 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
       </h2>
     </header>
 
-    {post.excerpt && <p class="flex-grow text-muted dark:text-slate-400 text-lg">{post.excerpt}</p>}
+    {post.excerpt && <p class="grow text-muted dark:text-slate-400 text-lg">{post.excerpt}</p>}
     {
       post.tags && Array.isArray(post.tags) ? (
         <footer class="mt-5">
