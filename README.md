@@ -1,5 +1,4 @@
 # 🚀 AstroWind
-## Testing Github Actions secrets - delete me
 
 <img src="https://raw.githubusercontent.com/onwidget/.github/main/resources/astrowind/lighthouse-score.png" align="right"
      alt="AstroWind Lighthouse Score" width="100" height="358">
@@ -34,7 +33,6 @@
 <summary>Table of Contents</summary>
 
 - [🚀 AstroWind](#-astrowind)
-  - [Testing Github Actions secrets - delete me](#testing-github-actions-secrets---delete-me)
   - [Demo](#demo)
   - [🔔 Upcoming: AstroWind 2.0 – We Need Your Vision!](#-upcoming-astrowind-20--we-need-your-vision)
   - [Getting started](#getting-started)
