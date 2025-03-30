@@ -1,4 +1,3 @@
-
 https://dundonald-show.org.uk/
 
 [ISP for website & email](https://hpanel.hostinger.com/websites/dundonald-show.org.uk)
@@ -12,8 +11,6 @@ https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/28198
 https://find-and-update.company-information.service.gov.uk/company/CS000437
 
 https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC013821
-
-
 
 =============
 

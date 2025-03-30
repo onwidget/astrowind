@@ -33,11 +33,11 @@ export const headerData = {
         },
         {
           text: 'Ring D1: Canine Any Variety',
-          href: getPermalink('/rings/ring4'),
+          href: getPermalink('/rings/ringd1'),
         },
         {
-          text: 'Ring D1: Canine Best of',
-          href: getPermalink('/rings/ring4'),
+          text: 'Ring D2: Canine Best of',
+          href: getPermalink('/rings/ringd2'),
         },
       ],
     },

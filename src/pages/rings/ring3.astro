@@ -1,0 +1,82 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = {
+  title: 'Dundonald Farmers Society 2025 Open Show',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="ring2"
+    tagline="Ring 3"
+    title="Equine Show Ring"
+    subtitle="T O _ B E _ C O M P L E T E D"
+    items={[
+      {
+        title: 'Events & Prizes',
+        description:
+          'Starting at cross poles and working up, throught out the day, to 1 metre plus. Rosettes to 6th place in each class, with a trophy for the overall winner of each class.',
+        icon: 'tabler:brand-tailwind',
+      },
+      {
+        title: 'Courses',
+        description:
+          'Course generously built and judged by the West of Scotland Working Hunter Academy & Mr David Picken & Associates',
+        icon: 'tabler:components',
+      },
+    ]}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Classes"
+    subtitle="Classes start at 09:00"
+    tagline="Components"
+    items={[
+      {
+        title: 'Class xx: Small Hunter',
+        description: 'SMALL HUNTER, mare or gelding, four years old or over exceeding 148cm and not exceeding 158cm.',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class xx: Ridden Hunter',
+        description: 'RIDDEN HUNTER, mare or gelding, four years old or over exceeding 158cm.',
+        icon: 'flat-color-icons:gallery',
+      },
+      {
+        title: 'Class xx: Riding Horse',
+        description: 'RIDING HORSE, mare or gelding, four years old or over exceeding 148cm.',
+        icon: 'flat-color-icons:document',
+      },
+      {
+        title: 'Class xx: Cob',
+        description: 'COB – Hogged or Traditional. Any Height',
+        icon: 'flat-color-icons:document',
+      },
+      {
+        title: 'Class xx: X-Racehorse',
+        description:
+          'X-RACEHORSE – to be shown under saddle. Must have been in training or raced. Open to racehorses and trotting horses.',
+        icon: 'flat-color-icons:document',
+      },
+      {
+        title: 'Class xx: Standard Bred',
+        description:
+          'STANDARD BRED – to be shown under saddle, Canter is optional. <span>Kindly Sponsored by Andie J Alcroft.</span>',
+        icon: 'flat-color-icons:currency-exchange',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+</Layout>
