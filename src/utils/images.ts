@@ -71,7 +71,7 @@ export const adaptOpenGraphImages = async (
           };
         }
 
-        let _image: { src: string; width: number; height?: number; } | undefined = { src: '', width: 0 };
+        let _image: { src: string; width: number; height?: number } | undefined = { src: '', width: 0 };
 
         if (
           typeof resolvedImage === 'string' &&
@@ -88,11 +88,11 @@ export const adaptOpenGraphImages = async (
         }
 
         if (_image && typeof _image === 'object') {
-            return {
+          return {
             url: 'src' in _image && typeof _image.src === 'string' ? String(new URL(_image.src, astroSite)) : '',
             width: 'width' in _image && typeof _image.width === 'number' ? _image.width : defaultWidth,
             height: 'height' in _image && typeof _image.height === 'number' ? _image.height : defaultHeight,
-            };
+          };
         }
         return {
           url: '',

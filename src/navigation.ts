@@ -1,4 +1,5 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+// import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
@@ -100,72 +101,6 @@ export const headerData = {
         {
           text: 'Privacy policy',
           href: getPermalink('/privacy'),
-        },
-      ],
-    },
-
-    {
-      text: 'Dev Pages',
-      links: [
-        {
-          text: 'Home-SaaS',
-          href: getPermalink('/homes/saas'),
-        },
-        {
-          text: 'Home-Startup',
-          href: getPermalink('/homes/startup'),
-        },
-        {
-          text: 'Home-Mobile App',
-          href: getPermalink('/homes/mobile-app'),
-        },
-        {
-          text: 'Home-Personal',
-          href: getPermalink('/homes/personal'),
-        },
-        {
-          text: 'Land:Lead Generation',
-          href: getPermalink('/landing/lead-generation'),
-        },
-        {
-          text: 'Land:Long-form Sales',
-          href: getPermalink('/landing/sales'),
-        },
-        {
-          text: 'Land:Click-Through',
-          href: getPermalink('/landing/click-through'),
-        },
-        {
-          text: 'Land:Product Details (or Services)',
-          href: getPermalink('/landing/product'),
-        },
-        {
-          text: 'Land:Coming Soon or Pre-Launch',
-          href: getPermalink('/landing/pre-launch'),
-        },
-        {
-          text: 'Land:Subscription',
-          href: getPermalink('/landing/subscription'),
-        },
-        {
-          text: 'Blog:Blog List',
-          href: getBlogPermalink(),
-        },
-        {
-          text: 'Blog:Article',
-          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
-        },
-        {
-          text: 'Blog:Article (with MDX)',
-          href: getPermalink('markdown-elements-demo-post', 'post'),
-        },
-        {
-          text: 'Blog:Category Page',
-          href: getPermalink('tutorials', 'category'),
-        },
-        {
-          text: 'Blog:Tag Page',
-          href: getPermalink('astro', 'tag'),
         },
       ],
     },
@@ -308,11 +243,15 @@ export const footerData = {
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
+    // { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
+    // { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
+    {
+      ariaLabel: 'Facebook',
+      icon: 'tabler:brand-facebook',
+      href: 'https://www.facebook.com/profile.php?id=100032848585944',
+    },
+    // { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
+    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/Ian-T-Price/astrowind-fork' },
   ],
   footNote: `
     <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="https://onwidget.com/favicon/favicon-32x32.png" alt="onWidget logo" loading="lazy"></img>
