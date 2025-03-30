@@ -7,9 +7,10 @@ import { SITE } from 'astrowind:config';
 >
   <img src="/dundonald_cow.jpg" alt="Custom Emoji" width="32" height="32"> {SITE?.name}
 </span> -->
-
 <span
   class="flex items-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
 >
-  <img src="/dundonald_cow.jpg" alt="Dundonald cow Emoji" class="w-8 h-8 m-1 inline-block" width="32" height="32">{SITE?.name}
+  <img src="/dundonald_cow.jpg" alt="Dundonald cow Emoji" class="w-8 h-8 m-1 inline-block" width="32" height="32" />{
+    SITE?.name
+  }
 </span>

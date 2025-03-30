@@ -9,25 +9,32 @@ export const headerData = {
         {
           text: 'Ring A1: Beef Cattle',
           href: getPermalink('/rings/ringa1'),
-        }, {
+        },
+        {
           text: 'Ring A2: Sheep',
           href: getPermalink('/rings/ringa2'),
-        }, {
+        },
+        {
           text: 'Ring A3: Clydesdale Horses',
           href: getPermalink('/rings/ringa3'),
-        }, {
+        },
+        {
           text: 'Ring 1: Light Horses',
           href: getPermalink('/rings/ring1'),
-        }, {
+        },
+        {
           text: 'Ring 2: Working Equitation',
           href: getPermalink('/rings/ring2'),
-        }, {
+        },
+        {
           text: 'Ring 3: Equine Show Ring',
           href: getPermalink('/rings/ring3'),
-        }, {
+        },
+        {
           text: 'Ring D1: Canine Any Variety',
           href: getPermalink('/rings/ring4'),
-        }, {
+        },
+        {
           text: 'Ring D1: Canine Best of',
           href: getPermalink('/rings/ring4'),
         },
@@ -163,7 +170,6 @@ export const headerData = {
       ],
     },
 
-
     // {
     //   text: 'Home Alts',
     //   links: [
@@ -246,7 +252,6 @@ export const headerData = {
     //   text: 'Widgets',
     //   href: '#',
     // },
-
   ],
   actions: [{ text: 'Download Programme', href: '/pdfs/Dundonald-Show-Catalog-2024.pdf', target: '_blank' }],
 };
