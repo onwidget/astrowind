@@ -248,7 +248,7 @@ export const headerData = {
     // },
 
   ],
-  actions: [{ text: 'Download Programme', href: '/public/pdfs/Dundonald-Show-Catalog-2024.pdf', target: '_blank' }],
+  actions: [{ text: 'Download Programme', href: '/pdfs/Dundonald-Show-Catalog-2024.pdf', target: '_blank' }],
 };
 
 export const footerData = {

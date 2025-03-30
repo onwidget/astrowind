@@ -6,7 +6,7 @@ import ToggleMenu from '~/components/common/ToggleMenu.astro';
 import Button from '~/components/ui/Button.astro';
 
 import { getHomePermalink } from '~/utils/permalinks';
-import { trimSlash, getAsset } from '~/utils/permalinks';
+import { getAsset } from '~/utils/permalinks';
 
 interface Link {
   text?: string;
@@ -47,7 +47,6 @@ const {
 } = Astro.props;
 ---
 
-<!-- This would likely be in src/components/widgets/Header.astro or similar -->
 <header
   class:list={[
     { sticky: isSticky, relative: !isSticky },
@@ -78,49 +77,55 @@ const {
       class="items-center w-full md:w-auto hidden md:flex text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:mx-5"
       aria-label="Main navigation"
     >
-    <ul class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium">
-      {
-        links.map(({ text, href, links, ariaLabel }) => (
-          <li class={links?.length ? 'dropdown' : ''} data-href={href}>
-            {links?.length ? (
-              <>
-                <button
-                  class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center"
+      <ul
+        class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium"
+      >
+        {
+          links.map(({ text, href, links, ariaLabel }) => (
+            <li class={links?.length ? 'dropdown' : ''} data-href={href}>
+              {links?.length ? (
+                <>
+                  <button
+                    class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center"
+                    aria-label={ariaLabel ?? text}
+                    data-parent-href={href}
+                  >
+                    {text}{' '}
+                    {links?.length && (
+                      <Icon
+                        name="tabler:chevron-down"
+                        class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline"
+                      />
+                    )}
+                  </button>
+                  <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
+                    {links.map(({ text: text2, href: href2 }) => (
+                      <li>
+                        <a
+                          class:list={[
+                            'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:md:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
+                          ]}
+                          href={href2}
+                        >
+                          {text2}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <a
+                  class:list={['hover:text-link dark:hover:text-white px-4 py-3 flex items-center']}
+                  href={href}
                   aria-label={ariaLabel ?? text}
-                  data-parent-href={href}
                 >
-                  {text} {links?.length && <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />}
-                </button>
-                <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
-                  {links.map(({ text: text2, href: href2 }) => (
-                    <li>
-                      <a
-                        class:list={[
-                          'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:md:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
-                        ]}
-                        href={href2}
-                      >
-                        {text2}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </>
-            ) : (
-              <a
-                class:list={[
-                  'hover:text-link dark:hover:text-white px-4 py-3 flex items-center',
-                ]}
-                href={href}
-                aria-label={ariaLabel ?? text}
-              >
-                {text}
-              </a>
-            )}
-          </li>
-        ))
-      }
-    </ul>
+                  {text}
+                </a>
+              )}
+            </li>
+          ))
+        }
+      </ul>
     </nav>
     <div
       class:list={[
@@ -146,12 +151,11 @@ const {
         {
           actions?.length ? (
             <span class="ml-4 rtl:ml-0 rtl:mr-4">
-              {actions.map((btnProps) => (
-                <Button
-                  {...btnProps}
-                  class:list={['ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm', btnProps.class]}
-                />
-              ))}
+              {actions.map((btnProps) => {
+                // Extract class:list to avoid TypeScript error
+                const { 'class:list': classList, ...otherProps } = btnProps;
+                return <Button {...otherProps} />;
+              })}
             </span>
           ) : (
             ''
@@ -162,15 +166,46 @@ const {
   </div>
 </header>
 
-<!-- This is the script that needs to be modified for dropdown with clickable parent -->
 <script>
-  // First, handle the dropdown functionality
+  // Handle header opacity on scroll
+  function setupHeaderScroll() {
+    const header = document.querySelector('header');
+
+    if (!header) return;
+
+    // Classes to add when scrolled
+    const scrolledClasses = ['bg-white/90', 'dark:bg-slate-900/90', 'backdrop-blur-sm', 'shadow-md'];
+
+    // Function to update header based on scroll position
+    const updateHeaderClass = () => {
+      if (window.scrollY > 10) {
+        // Add classes when scrolled down
+        scrolledClasses.forEach((cls) => header.classList.add(cls));
+      } else {
+        // Remove classes when at top
+        scrolledClasses.forEach((cls) => header.classList.remove(cls));
+      }
+    };
+
+    // Run once on load
+    updateHeaderClass();
+
+    // Add scroll listener
+    window.addEventListener('scroll', updateHeaderClass, { passive: true });
+  }
+
+  // Handle dropdown menus with clickable parent
   function setupDropdowns() {
-    const dropdownButtons = document.querySelectorAll('.dropdown button');
+    const dropdownButtons = document.querySelectorAll<HTMLButtonElement>('.dropdown button');
 
     dropdownButtons.forEach((button) => {
+      // Use non-null assertion with type guard
       const dropdown = button.closest('.dropdown');
-      const menu = dropdown.querySelector('.dropdown-menu');
+      if (!dropdown) return;
+
+      const menu = dropdown.querySelector<HTMLUListElement>('.dropdown-menu');
+      if (!menu) return;
+
       const parentHref = button.getAttribute('data-parent-href');
 
       let isOpen = false;
@@ -187,12 +222,13 @@ const {
 
       // Handle clicks on the button
       button.addEventListener('click', (e) => {
+        const target = e.target as Node;
         // For desktop view
         if (window.innerWidth >= 768) {
-          const icon = button.querySelector('svg') || button.querySelector('i');
+          const icon = button.querySelector<HTMLElement>('svg') || button.querySelector<HTMLElement>('i');
 
           // If clicked on the icon, toggle the dropdown
-          if (icon && icon.contains(e.target)) {
+          if (icon && icon.contains(target)) {
             e.preventDefault();
             toggleDropdown();
           }
@@ -209,44 +245,13 @@ const {
 
       // Close on click outside
       document.addEventListener('click', (e) => {
-        if (isOpen && !dropdown.contains(e.target)) {
+        const target = e.target as Node;
+        if (isOpen && !dropdown.contains(target)) {
           isOpen = false;
           menu.classList.add('md:hidden');
         }
       });
     });
-  }
-
-  // Handle header opacity on scroll - this is the key part for your issue
-  function setupHeaderScroll() {
-    const header = document.querySelector('header');
-
-    if (!header) return;
-
-    // Classes to add when scrolled
-    const scrolledClasses = [
-      'bg-white/90',
-      'dark:bg-slate-900/90',
-      'backdrop-blur-sm',
-      'shadow-md'
-    ];
-
-    // Function to update header based on scroll position
-    const updateHeaderClass = () => {
-      if (window.scrollY > 10) {
-        // Add classes when scrolled down
-        scrolledClasses.forEach(cls => header.classList.add(cls));
-      } else {
-        // Remove classes when at top
-        scrolledClasses.forEach(cls => header.classList.remove(cls));
-      }
-    };
-
-    // Run once on load
-    updateHeaderClass();
-
-    // Add scroll listener
-    window.addEventListener('scroll', updateHeaderClass, { passive: true });
   }
 
   // Run both functions on page load
