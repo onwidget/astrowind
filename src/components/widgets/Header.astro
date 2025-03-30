@@ -17,9 +17,13 @@ interface Link {
   links?: Array<Link>;
 }
 
-interface ActionLink extends Link {
-  class?: string;
-  type?: string;
+type ClassList = string | string[] | Record<string, boolean> | (string | Record<string, boolean> | string[])[];
+
+interface ActionLink extends Omit<Link, 'links'> {
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
+  classes?: Record<string, string>;
+  type?: 'button' | 'submit' | 'reset';
+  'class:list'?: ClassList;
 }
 
 interface MenuLink extends Link {
@@ -130,7 +134,7 @@ const {
     <div
       class:list={[
         { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'left' },
-        'hidden md:self-center flex md:flex items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-3 md:p-0',
+        'hidden md:flex md:self-center items-center md:mb-0 fixed w-full md:w-auto md:static justify-end left-0 rtl:left-auto rtl:right-0 bottom-0 p-3 md:p-0',
       ]}
     >
       <div class="items-center flex justify-between w-full md:w-auto">
@@ -152,9 +156,9 @@ const {
           actions?.length ? (
             <span class="ml-4 rtl:ml-0 rtl:mr-4">
               {actions.map((btnProps) => {
-                // Extract class:list to avoid TypeScript error
+                // Extract class:list and pass the rest of the props to Button
                 const { 'class:list': classList, ...otherProps } = btnProps;
-                return <Button {...otherProps} />;
+                return <Button {...otherProps} class:list={classList} />;
               })}
             </span>
           ) : (
