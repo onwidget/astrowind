@@ -1,0 +1,467 @@
+---
+import Note from '~/components/widgets/Note.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/ui/Headline.astro';
+import Announcement from '~/components/widgets/Announcement.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import Brands from '~/components/widgets/Brands.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Prices from '~/components/widgets/Pricing.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import WidgetTitle from '~/components/widgets/WidgetTitle.astro';
+
+const metadata = {
+  title: 'Widgets',
+};
+---
+
+<Layout metadata={metadata}>
+  <WidgetWrapper>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+    <WidgetTitle title="Announcement" />
+    <p>This widget does not appear in small screens.</p>
+    <Announcement />
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="Blog Latest Posts" />
+    <BlogLatestPosts
+      title="Component that shows latest posts"
+      information={`The blog is used to display AstroWind documentation.
+                    Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
+                    Astro is a very interesting technology. Thanks.`}
+    />
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="Brands" />
+    <Brands
+      title="Brands Widget"
+      subtitle="Mosaic of Brands"
+      icons={[]}
+      images={[
+        { src: 'https://cdn.pixabay.com/photo/2015/04/13/17/45/icon-720944_1280.png', alt: 'Youtube' },
+        { src: 'https://cdn.pixabay.com/photo/2013/02/12/09/07/microsoft-80658_1280.png', alt: 'Microsoft' },
+        { src: 'https://cdn.pixabay.com/photo/2015/04/23/17/41/node-js-736399_1280.png', alt: 'Node JS' },
+        { src: 'https://cdn.pixabay.com/photo/2015/10/31/12/54/google-1015751_1280.png', alt: 'Google' },
+        { src: 'https://cdn.pixabay.com/photo/2021/12/06/13/45/meta-6850393_1280.png', alt: 'Meta' },
+        { src: 'https://cdn.pixabay.com/photo/2013/01/29/22/53/yahoo-76684_1280.png', alt: 'Yahoo' },
+      ]}
+    />
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="Call To Action" />
+    <CallToAction
+      actions={[
+        {
+          variant: 'primary',
+          target: '_blank',
+          text: 'Get templates',
+          href: 'https://github.com/onwidget/astrowind',
+          icon: 'tabler:download',
+        },
+      ]}
+    >
+      <Fragment slot="title">Be a part of our vision</Fragment>
+
+      <Fragment slot="subtitle">
+        Discover a dynamic work environment, unparalleled growth opportunities, and the chance to make a meaningful
+        impact.
+      </Fragment>
+    </CallToAction>
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="Content" />
+    <Content
+      isReversed
+      items={[
+        {
+          title: 'User-friendly interface',
+          description:
+            'An intuitive and easy-to-navigate interface that allows users to quickly browse and find the templates they need.',
+          icon: 'tabler:wand',
+        },
+        {
+          title: 'Personalization options',
+          description:
+            'Include basic customization tools that let users modify text, colors, images, and other elements within the templates.',
+          icon: 'tabler:settings',
+        },
+        {
+          title: 'Ready-to-use components',
+          description:
+            'Enhance your designs with ready-to-use elements like graphics, icons, and layouts, saving you time and boosting visual appeal.',
+          icon: 'tabler:template',
+        },
+        {
+          title: 'Preview Mode',
+          description:
+            'Provide a preview of each template, allowing users to see how it looks before making a purchase.',
+          icon: 'tabler:carousel-horizontal',
+        },
+      ]}
+      image={{
+        src: 'https://images.unsplash.com/photo-1576153192621-7a3be10b356e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80',
+        alt: 'Colorful Image',
+      }}
+    />
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="FAQs" />
+    <FAQs
+      title="FAQ Title"
+      subtitle="Subtitle."
+      tagline="FAQs tagline"
+      classes={{ container: 'max-w-6xl' }}
+      items={[
+        {
+          title: 'Why AstroWind?',
+          description: 'Michael Knight a young loner on a crusade to champion the cause of the innocent.',
+        },
+        {
+          title: 'What do I need to start?',
+          description: 'Space, the final frontier. These are the voyages of the Starship Enterprise.',
+        },
+        {
+          title: 'How to install the Astro + Tailwind CSS template?',
+          description: 'Well, the way they make shows is, they make one show.',
+        },
+        {
+          title: "What's something that you don't understand?",
+          description: 'A flower in my garden, a mystery in my panties.',
+        },
+      ]}
+    />
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="Features" />
+    <Features
+      id="features"
+      title="Features Title"
+      subtitle="Features sub title. 3 Columns"
+      columns={3}
+      items={[
+        {
+          title: 'Modern and Professional Design',
+          description: 'Have a contemporary design that reflects current design trends.',
+          icon: 'tabler:artboard',
+        },
+        {
+          title: 'Responsive and Mobile-Friendly',
+          description: 'Adapt seamlessly to different screen sizes.',
+          icon: 'tabler:picture-in-picture',
+        },
+        {
+          title: 'Customizability',
+          description: 'Easily customizable to match brand identity.',
+          icon: 'tabler:adjustments-horizontal',
+        },
+      ]}
+    />
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="Features2" />
+    <Features2
+      title="Features 2"
+      tagline="Tagline: 4 Columns"
+      columns={4}
+      items={[
+        { title: 'EE.UU', description: '1234 Lorem Ipsum St, 12345, Miami' },
+        { title: 'Spain', description: '5678 Lorem Ipsum St, 56789, Madrid' },
+        { title: 'Australia', description: '9012 Lorem Ipsum St, 90123, Sydney' },
+        { title: 'Brazil', description: '3456 Lorem Ipsum St, 34567, São Paulo' },
+      ]}
+    />
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="Features3" />
+    <Features3
+      columns={3}
+      isAfterContent={true}
+      subtitle="Subtitle: 3 Columns, afterContent"
+      items={[
+        { title: 'Title ', description: 'Rutrum non odio at vehicula.', icon: 'tabler:template' },
+        { title: 'Blog', description: 'Nullam efficitur volutpat sem sed fringilla.', icon: 'tabler:template' },
+        { title: 'Business', description: 'Morbi et elit finibus, facilisis justo ut.', icon: 'tabler:template' },
+      ]}
+      image={{
+        src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+        alt: 'Colorful Image',
+      }}
+    />
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="HeadLine" />
+    <Headline
+      title="Title"
+      subtitle="Subtitle"
+      tagline="TagLine"
+      classes={{
+        container: 'text-center md:text-left rtl:md:text-right',
+        title: 'mb-4 text-3xl lg:text-4xl font-bold font-heading',
+        subtitle: 'text-xl text-muted dark:text-slate-400',
+      }}
+    />
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="Hero" />
+    <Hero
+      tagline="About us"
+      image={{
+        src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+        alt: 'Caos Image',
+      }}
+    >
+      <Fragment slot="title">
+        Elevate your online presence with our <br />
+        <span class="text-accent dark:text-white highlight"> Beautiful Website Templates</span>
+      </Fragment>
+      <Fragment slot="subtitle">
+        Donec efficitur, ipsum quis congue luctus, mauris magna convallis mauris, eu auctor nisi lectus non augue.
+      </Fragment>
+    </Hero>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="Hero2" />
+    <Hero2
+      tagline="SaaS Web Demo"
+      actions={[
+        { variant: 'primary', target: '_blank', text: 'Get Started', href: 'https://github.com/onwidget/astrowind' },
+        { text: 'Learn more', href: '#features' },
+      ]}
+      image={{
+        src: 'https://images.unsplash.com/photo-1580481072645-022f9a6dbf27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+        alt: 'AstroWind Hero Image',
+      }}
+    >
+      <Fragment slot="title">
+        Simplify web design with Astrowind: <br /> your ultimate <span class="text-accent dark:text-white highlight"
+          >SaaS</span
+        > companion<br />
+      </Fragment>
+      <Fragment slot="subtitle">
+        <span class="hidden sm:inline">
+          Elevate your website creation process with <span class="font-semibold">AstroWind</span>'s SaaS solutions.
+        </span>
+        Seamlessly blend the power of Astro 4.0 and Tailwind CSS to craft websites that resonate with your brand and audience.
+      </Fragment>
+    </Hero2>
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="HeroText" />
+    <HeroText
+      tagline="Pricing"
+      title="Stellar Pricing for Every Journey"
+      subtitle="Choose the perfect plan that aligns with your cosmic goals."
+    />
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="Note" />
+    <Note note="This is the content of the note" subtitle="Subtitle" icon="tabler:info-square" />
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="Pricing" />
+    <Prices
+      title="Our prices"
+      subtitle="Only pay for what you need"
+      prices={[
+        {
+          title: 'basic',
+          subtitle: 'Optimal choice for personal use',
+          price: 29,
+          period: 'per month',
+          items: [
+            { description: 'Etiam in libero, et volutpat' },
+            { description: 'Aenean ac nunc dolor tristique' },
+            { description: 'Cras scelerisque accumsan lib' },
+            { description: 'In hac habitasse' },
+          ],
+          callToAction: { target: '_blank', text: 'Get started', href: '#' },
+        },
+        {
+          title: 'standard',
+          subtitle: 'Optimal choice for small teams',
+          price: 69,
+          period: 'Per Month',
+          items: [
+            { description: 'Proin vel laoreet' },
+            { description: 'Ut efficitur habitasse egestas' },
+            { description: 'Volutpat hac curabitur' },
+            { description: 'Pellentesque blandit ut nibh' },
+            { description: 'Donec fringilla sem' },
+          ],
+          callToAction: { target: '_blank', text: 'Get started', href: '#' },
+          hasRibbon: true,
+          ribbonTitle: 'popular',
+        },
+        {
+          title: 'premium',
+          subtitle: 'Optimal choice for companies',
+          price: 199,
+          period: 'Per Month',
+          items: [
+            { description: 'Curabitur suscipit risus' },
+            { description: 'Aliquam habitasse malesuada' },
+            { description: 'Suspendisse sit amet blandit' },
+            { description: 'Suspendisse auctor blandit dui' },
+          ],
+          callToAction: { target: '_blank', text: 'Get started', href: '#' },
+        },
+      ]}
+    />
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="Stats" />
+    <Stats
+      title="Statistics about us"
+      stats={[
+        { title: 'Offices', amount: '4' },
+        { title: 'Employees', amount: '248' },
+        { title: 'Templates', amount: '12' },
+        { title: 'Awards', amount: '24' },
+      ]}
+    />
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="Steps" />
+    <Steps
+      title="Get your dream website up and running in no time with AstroWind."
+      items={[
+        {
+          title: 'Step 1: <span class="font-medium">Download</span>',
+          description: "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'.",
+          icon: 'tabler:package',
+        },
+        {
+          title: 'Step 2: <span class="font-medium">Add content</span>',
+          description: 'Pour your vision into it. Add images, text, and all that jazz.',
+          icon: 'tabler:letter-case',
+        },
+        {
+          title: 'Step 3: <span class="font-medium">Customize styles</span>',
+          description: 'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right.',
+          icon: 'tabler:paint',
+        },
+        {
+          title: 'Ready!',
+          icon: 'tabler:check',
+        },
+      ]}
+      image={{
+        src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+        alt: 'Steps image',
+      }}
+    />
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="Steps2" />
+    <Steps2
+      title="Reach out to us"
+      subtitle="Have questions? Feel free to contact us using the form below."
+      callToAction={{ text: 'Contact us', href: '/' }}
+      items={[
+        { title: 'Email us', description: 'contact@support.com', icon: 'tabler:mail' },
+        { title: 'Call us', description: '+1 (234) 567-890', icon: 'tabler:headset' },
+        { title: 'Follow us', description: '@example', icon: 'tabler:brand-twitter' },
+      ]}
+    />
+  </WidgetWrapper>
+
+  <WidgetWrapper>
+    <WidgetTitle title="Testimonials" />
+    <Testimonials
+      title="Words from real customers"
+      testimonials={[
+        {
+          testimonial: `The designs are not only visually appealing but also highly professional.`,
+          name: 'Emily Kennedy',
+          job: 'Front-end developer',
+          image: {
+            src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
+            alt: 'Emily Kennedy Image',
+          },
+        },
+        {
+          testimonial: `It beautifully showcases my work, with its clean and elegant design.`,
+          name: 'Sarah Hansen',
+          job: 'Photographer',
+          image: {
+            src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+            alt: 'Sarah Hansen Image',
+          },
+        },
+        {
+          testimonial: `I discovered these templates and I'm impressed by their variety and quality.`,
+          name: 'Mark Wilkinson',
+          job: 'Small business owner',
+          image: {
+            src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
+            alt: 'Mark Wilkinson Image',
+          },
+        },
+      ]}
+      callToAction={{
+        target: '_blank',
+        text: 'More testimonials...',
+        href: 'https://github.com/onwidget/astrowind',
+        icon: 'tabler:chevron-right',
+      }}
+    />
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </WidgetWrapper>
+</Layout>
