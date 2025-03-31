@@ -30,6 +30,7 @@ date of the Show.
 (f) Passports must accompany all cattle.
 
 ## 3 All entries must be prepaid
+
 ### Except where otherwise stated
 
 Acceptance of entries by the Secretary cannot be taken as proof of eligibility.
@@ -46,12 +47,10 @@ the Secretary but at an increased entry fee.
 No protest or complaint can be accepted after the Day of the Show. A protest or complaint must be made in
 writing and the sum of £10 must be deposited with the Secretary and will be forfeited if the dipute is not upheld.
 
-
 ## 5 Jurisdiction
 
 All disputes regarding these Regulations will be settled by the Committee from whose decision there is no
 appeal. This does not affect matters which are covered by B.D.S., B.S.P.S., VHS, Kennel or C.H.S. Club Rules.
-
 
 ## 6 Trophies
 

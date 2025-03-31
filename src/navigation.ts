@@ -224,7 +224,6 @@ export const footerData = {
         { text: 'Canine', href: '/stars/canine' },
         { text: 'Equine', href: '/stars/equine' },
         { text: 'Ovine', href: '/stars/ovine' },
-
       ],
     },
     {
@@ -242,7 +241,6 @@ export const footerData = {
         { text: 'Contact', href: '/info/contact' },
         { text: 'About', href: '/info/about' },
         { text: 'Rules & Regulations', href: getPermalink('/rules') },
-
       ],
     },
   ],

@@ -2,3 +2,5 @@ dist
 node_modules
 .github
 .changeset
+archive
+.vscode
