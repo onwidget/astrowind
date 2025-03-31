@@ -43,6 +43,7 @@ export const headerData = {
     },
     {
       text: 'The Stars',
+      href: getPermalink('/stars'),
       links: [
         {
           text: 'Bovine',
@@ -64,10 +65,19 @@ export const headerData = {
     },
     {
       text: 'Sponsors',
+      href: getPermalink('/sponsors'),
       links: [
         {
-          text: 'Sponsor 1',
-          href: getPermalink('/sponsors/sponsor1'),
+          text: 'Platinum Sponsors',
+          href: getPermalink('/sponsors/platinum'),
+        },
+        {
+          text: 'Gold Sponsors',
+          href: getPermalink('/sponsors/gold'),
+        },
+        {
+          text: 'Silver Sponsors',
+          href: getPermalink('/sponsors/silver'),
         },
       ],
     },

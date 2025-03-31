@@ -1,0 +1,94 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = {
+  title: 'Dundonald Farmers Society 2025 Open Show',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="stars"
+    tagline="Stars of the show"
+    title="Stars of the show"
+    subtitle="At <span class='font-bold'>Dundonal Show</span>, our event revolves around four key animals that are at the heart of our rural community: <span class='font-bold'>Cattle, Dogs, Horses and Sheep</span>. Whether you're a breeder, a farmer, or simply an animal lover, there’s plenty to see and enjoy!"
+    items={[
+      {
+        title: '🐂Cattle (Bovine) – Strength & Quality',
+        description:
+          "Come and see some of the finest cattle from local farms, expertly presented for judging. Whether you're interested in beef or dairy breeds, our show celebrates the hard work and dedication that goes into breeding and raising top-quality livestock.",
+        icon: 'tabler:components',
+      },
+      {
+        title: '🐕Dogs (Canine) – Skill & Loyalty',
+        description:
+          'Dogs are an essential part of rural life, whether they’re working on the farm or being loving companions. Our show features incredible working dog demonstrations and showcases of some of the region’s best sheepdogs and farm dogs.',
+        icon: 'tabler:components',
+      },
+      {
+        title: '🐎Horses (Equine) – Power & Grace',
+        description:
+          'Horses have always played a vital role in country life, from working the land to competing in equestrian sports. Our show brings together riders, handlers, and horses of all breeds and disciplines for an exciting day of events.',
+        icon: 'tabler:components',
+      },
+      {
+        title: "🐑 Sheep (Ovine) – Tradition & Skill",
+        description:
+          'Sheep farming is at the heart of our countryside, and our show gives you a chance to see some of the best local breeds up close. From competitive judging to expert husbandry, there’s plenty to enjoy.',
+        icon: 'tabler:components',
+      },
+    ]}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Classes"
+    subtitle="Classes start at 09:00"
+    tagline="Components"
+    items={[
+      {
+        title: 'Class xx: Small Hunter',
+        description: 'SMALL HUNTER, mare or gelding, four years old or over exceeding 148cm and not exceeding 158cm.',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class xx: Ridden Hunter',
+        description: 'RIDDEN HUNTER, mare or gelding, four years old or over exceeding 158cm.',
+        icon: 'flat-color-icons:gallery',
+      },
+      {
+        title: 'Class xx: Riding Horse',
+        description: 'RIDING HORSE, mare or gelding, four years old or over exceeding 148cm.',
+        icon: 'flat-color-icons:document',
+      },
+      {
+        title: 'Class xx: Cob',
+        description: 'COB – Hogged or Traditional. Any Height',
+        icon: 'flat-color-icons:document',
+      },
+      {
+        title: 'Class xx: X-Racehorse',
+        description:
+          'X-RACEHORSE – to be shown under saddle. Must have been in training or raced. Open to racehorses and trotting horses.',
+        icon: 'flat-color-icons:document',
+      },
+      {
+        title: 'Class xx: Standard Bred',
+        description:
+          'STANDARD BRED – to be shown under saddle, Canter is optional. <span>Kindly Sponsored by Andie J Alcroft.</span>',
+        icon: 'flat-color-icons:currency-exchange',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+</Layout>
