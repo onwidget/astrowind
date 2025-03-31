@@ -83,6 +83,7 @@ export const headerData = {
     },
     {
       text: 'Info',
+      href: getPermalink('/info'),
       links: [
         // {
         //   text: 'Features (Anchor Link)',
@@ -90,14 +91,14 @@ export const headerData = {
         // },
         {
           text: 'Show Programmes',
-          href: getPermalink('/programmes'),
+          href: getPermalink('/info/programmes'),
         },
+        // {
+        //   text: 'Pricing',
+        //   href: getPermalink('/pricing'),
+        // },
         {
-          text: 'Pricing',
-          href: getPermalink('/pricing'),
-        },
-        {
-          text: 'About the show',
+          text: 'About Us',
           href: getPermalink('/about'),
         },
         {
@@ -105,13 +106,13 @@ export const headerData = {
           href: getPermalink('/contact'),
         },
         {
-          text: 'Terms',
-          href: getPermalink('/terms'),
+          text: 'Rules & Regulations',
+          href: getPermalink('/rules'),
         },
-        {
-          text: 'Privacy policy',
-          href: getPermalink('/privacy'),
-        },
+        // {
+        //   text: 'Privacy policy',
+        //   href: getPermalink('/privacy'),
+        // },
       ],
     },
 
@@ -204,53 +205,50 @@ export const headerData = {
 export const footerData = {
   links: [
     {
-      title: 'Rings',
+      title: 'Show Rings',
       links: [
-        { text: 'Features', href: '#' },
-        { text: 'Security', href: '#' },
-        { text: 'Team', href: '#' },
-        { text: 'Enterprise', href: '#' },
-        { text: 'Customer stories', href: '#' },
-        { text: 'Pricing', href: '#' },
-        { text: 'Resources', href: '#' },
+        { text: 'Ring A1: Beef Cattle', href: '/rings/ringa1' },
+        { text: 'Ring A2: Sheep', href: '/rings/ringa2' },
+        { text: 'Ring A3: Horses', href: '/rings/ringa3' },
+        { text: 'Ring 1: Light Horses', href: '/rings/ring1' },
+        { text: 'Ring 2: Working Equitation', href: '/rings/ring2' },
+        { text: 'Ring 3: Equine Show Ring', href: '/rings/ring3' },
+        { text: 'Ring D1: Canine Any Variety', href: '/rings/ringd1' },
+        { text: 'Ring D2: Canine Best of', href: '/rings/ringd2' },
       ],
     },
     {
       title: 'The Stars',
       links: [
-        { text: 'Developer API', href: '#' },
-        { text: 'Partners', href: '#' },
-        { text: 'Atom', href: '#' },
-        { text: 'Electron', href: '#' },
-        { text: 'AstroWind Desktop', href: '#' },
+        { text: 'Bovine', href: '/stars/bovine' },
+        { text: 'Canine', href: '/stars/canine' },
+        { text: 'Equine', href: '/stars/equine' },
+        { text: 'Ovine', href: '/stars/ovine' },
+
       ],
     },
     {
-      title: 'Sponsers',
+      title: 'Sponsors',
       links: [
-        { text: 'Docs', href: '#' },
-        { text: 'Community Forum', href: '#' },
-        { text: 'Professional Services', href: '#' },
-        { text: 'Skills', href: '#' },
-        { text: 'Status', href: '#' },
+        { text: 'Platinum', href: '/sponsors/platinum' },
+        { text: 'Gold', href: '/sponsors/gold' },
+        { text: 'Silver', href: '/sponsors/silver' },
       ],
     },
     {
       title: 'Information',
       links: [
-        { text: 'About', href: '#' },
-        { text: 'Blog', href: '#' },
-        { text: 'Careers', href: '#' },
-        { text: 'Press', href: '#' },
-        { text: 'Inclusion', href: '#' },
-        { text: 'Social Impact', href: '#' },
-        { text: 'Shop', href: '#' },
+        { text: 'Show Programmes', href: '/info/programmes' },
+        { text: 'Contact', href: '/info/contact' },
+        { text: 'About', href: '/info/about' },
+        { text: 'Rules & Regulations', href: getPermalink('/rules') },
+
       ],
     },
   ],
   secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
+    // { text: 'Rules', href: getPermalink('/rules') },
+    // { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
   socialLinks: [
     // { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },

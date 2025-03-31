@@ -1,0 +1,48 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+// import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = {
+  title: 'Dundonald Farmers Society 2025 Open Show',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Show programmes"
+    subtitle="Current and past Show Programmes in PDF format."
+    tagline="I n f o r m a t i o n"
+    items={[
+      {
+        title: "2025 Show Programme",
+        description: "Coming soon...",
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: '2024 Show Programme',
+        description: "<span class='font-bold text-blue-600'><a href='/pdfs/Dundonald-Show-Catalog-2024.pdf' target='_blank'> Show Programme </a></span>",
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: '2023 Show Programme',
+        description: "<span class='font-bold text-blue-600'><a href='/pdfs/Dundonald-Show-Catalog-2023.pdf' target='_blank'> Show Programme </a></span>",
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: '2022 Show Programme',
+        description: "<span class='font-bold text-blue-600'><a href='/pdfs/Dundonald-Show-Catalog-2022.pdf' target='_blank'> Show Programme </a></span>",
+        icon: 'flat-color-icons:template',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+</Layout>

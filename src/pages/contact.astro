@@ -1,7 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
+// import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 
 const metadata = {
@@ -12,9 +12,9 @@ const metadata = {
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  <HeroText tagline="C o n t a c t" title="Let's Connect!" />
 
-  <ContactUs
+  <!-- <ContactUs
     id="form"
     title="Drop us a message today!"
     subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
@@ -37,8 +37,8 @@ const metadata = {
       label:
         'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
     }}
-    description="Our support team typically responds within 24 business hours."
-  />
+    description="Our team are all volunteers but typically respond within 24 business hours."
+  /> -->
 
   <!-- Features2 Widget ************** -->
 
@@ -46,32 +46,36 @@ const metadata = {
     title="We are here to help!"
     items={[
       {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
+        title: '🐂 Bovine & 🐑 Ovine support',
+        description:
+          'John Murry: 07711 261 065 <br/><a href="mailto:bovine@dundonald-show.org.uk?subject=Mail from Dundonald Show WebSite&amp;body=For the attention of the Dundonald Show Bovine/Ovine team">Bovine@dundonald-show.org.uk</a>',
       },
       {
-        title: 'Contact sales',
+        title: '🐕 Canine support',
         description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
+          'Maggie McNamara: 07986 288 110 <br/><a href="mailto:canine@dundonald-show.org.uk?subject=Mail from Dundonald Show WebSite&amp;body=For the attention of the Dundonald Show Canine team">Canine@dundonald-show.org.uk</a>',
       },
       {
-        title: 'Technical support',
+        title: '🐎 Equine support',
         description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
+          'Julie Stewart: 07808 774 174 <br/><a href="mailto:equine@dundonald-show.org.uk?subject=Mail from Dundonald Show WebSite&amp;body=For the attention of the Dundonald Show team">Equine@dundonald-show.org.uk</a>',
       },
       {
         title: 'Phone',
-        description: '+1 (234) 567-890',
+        description: 'Maggie McNamara: 07986 288 110 <br/> On show day, Russell: 07753 929 251',
         icon: 'tabler:headset',
       },
       {
         title: 'Email',
-        description: 'contact@support.com',
+        description:
+          '<a href="mailto:info@dundonald-show.org.uk?subject=Mail from Dundonald Show WebSite&amp;body=For tthe attention of the Dundonald Show team">info@dundonald-show.org.uk</a>',
         icon: 'tabler:mail',
       },
       {
         title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
+        description:
+          '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6037.983007279328!2d-4.648817447698925!3d55.57288863065822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4889d11c16c22939%3A0xc8718b598af60797!2sDundonald%20Show!5e1!3m2!1sen!2suk!4v1743440379365!5m2!1sen!2suk" width="400" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+        // Dundonald Camp Track, Ayr Road, Irvine (A78), KA11 5AX
         icon: 'tabler:map-pin',
       },
     ]}

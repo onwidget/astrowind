@@ -20,29 +20,30 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <!-- Features Widget *************** -->
-
+  <!-- <span className='text-blue-700;'><a href="/info/programmes"> Show Programmes </a></span>  -->
   <Features
-    id="sponsors"
-    tagline="Summary of the Sponsors"
-    title="Sponsors: The lifeblood of our show"
-    subtitle="Our show is made possible by the generous support of our sponsors. Thank you to all our sponsors for making this show possible."
+    id="info"
+    tagline="I n f o r m a t i o n"
+    title="Everything you need to know about the show"
+    subtitle="The Dundonald Farmers Society 2025 Open Show is a unique and exciting event that celebrates the rich history and traditions of the Scottish countryside. This year's show will take place on April 26th 2025, and will feature a range of activities and events designed to showcase the best of Scottish agriculture and rural life."
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: 'Show Programmes',
         description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
+          "The current and past <span class='font-bold text-blue-600'><a href='/info/programmes'> Show Programmes </a></span> are available in PDF format.",
         icon: 'tabler:brand-tailwind',
+        // link: '/info/programmes',
       },
       {
-        title: 'Ready-to-use Components',
+        title: 'Show Rules',
         description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
+          'Rules and regulations of the Show',
         icon: 'tabler:components',
       },
       {
-        title: 'Best Practices',
+        title: 'Pricing',
         description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
+          'The costs of class entries, trade stands tickets and sponsorship.',
         icon: 'tabler:list-check',
       },
       {
