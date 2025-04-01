@@ -17,3 +17,5 @@ https://newsquest.newsprints.co.uk/scotland/the-scottish-farmer/shows-and-events
 =============
 
 https://www.freecodecamp.org/news/how-to-use-prettier-in-visual-studio-code/
+
+[cow 🐄](https://www.fileformat.info/info/unicode/char/1f404/index.htm)

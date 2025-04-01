@@ -12,7 +12,7 @@ metadata:
   title:
     default: Dundonald Farmers Society
     template: '%s — AstroWind'
-  description: "\U0001F680 Dundonald Farmers' Society Open Show 2025"
+  description: "\U0001F404 Dundonald Farmers' Society Open Show 2025"
   robots:
     index: true
     follow: true

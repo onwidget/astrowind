@@ -8,7 +8,7 @@ export const headerData = {
       href: getPermalink('/rings'),
       links: [
         {
-          text: 'Ring A1: Beef Cattle',
+          text: 'Ring A1: Cattle',
           href: getPermalink('/rings/ringa1'),
         },
         {
@@ -207,7 +207,7 @@ export const footerData = {
     {
       title: 'Show Rings',
       links: [
-        { text: 'Ring A1: Beef Cattle', href: '/rings/ringa1' },
+        { text: 'Ring A1: Cattle', href: '/rings/ringa1' },
         { text: 'Ring A2: Sheep', href: '/rings/ringa2' },
         { text: 'Ring A3: Horses', href: '/rings/ringa3' },
         { text: 'Ring 1: Light Horses', href: '/rings/ring1' },
