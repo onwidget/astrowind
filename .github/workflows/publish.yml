@@ -14,11 +14,24 @@ jobs:
 
     name: Build and Push
     steps:
-      - name: git-checkout
+      - name: git-checkout - Node.js v${{ matrix.node-version }}
         uses: actions/checkout@v4
 
+      - name: Use Node.js v${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+        # Clean Installation CI
       - name: Install all dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Run Astro & Prettier Fixes
+        run: npm run fix
+
+      - name: Run Astro & Prettier Checks
+        run: npm run check
 
       - name: Build
         run: npm run build # The build command of your project

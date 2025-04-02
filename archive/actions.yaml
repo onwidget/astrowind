@@ -1,4 +1,5 @@
-name: GitHub Actions
+name: Build and Check
+# This workflow builds the project and runs checks on it.
 
 on:
   pull_request:
@@ -19,6 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js v${{ matrix.node-version }}
+
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
@@ -37,4 +39,5 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run fix
       - run: npm run check
