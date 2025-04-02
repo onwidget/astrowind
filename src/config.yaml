@@ -67,7 +67,7 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      id: "G-8SCEELT1H4" # or "G-XXXXXXXXXX"
+      id: 'G-8SCEELT1H4' # or "G-XXXXXXXXXX"
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
