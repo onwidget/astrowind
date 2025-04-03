@@ -54,18 +54,22 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
         ))
     }
   </div>
-
-  <h3 class="text-xl sm:text-2xl font-bold leading-tight mb-2 font-heading dark:text-slate-300">
+  
     {
-      link ? (
-        <a class="inline-block hover:text-primary dark:hover:text-blue-700 transition ease-in duration-200" href={link}>
+      !APP_BLOG?.post?.isEnabled ? (
+        post.title
+      ) : (
+        <a
+          href={getPermalink(post.permalink, 'post')}
+          class="inline-block hover:text-primary dark:hover:text-blue-700  transition ease-in duration-200"
+        >
+        <h3 class="mb-2 text-xl font-bold leading-tight sm:text-2xl font-heading">
           {post.title}
+        </h3> 
         </a>
       ) : (
         post.title
       )
     }
-  </h3>
-
   <p class="text-muted dark:text-slate-400 text-lg">{post.excerpt}</p>
 </article>
