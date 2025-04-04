@@ -1,4 +1,4 @@
-name: Generate a build and push to Hostinger static files
+name: Build & push to Hostinger static files
 
 on:
   push:
