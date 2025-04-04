@@ -20,16 +20,19 @@ export const headerData = {
           href: getPermalink('/rings/ringa3'),
         },
         {
-          text: 'Ring 1: Light Horses',
+          text: 'Ring 1: Working Hunter',
           href: getPermalink('/rings/ring1'),
         },
         {
-          text: 'Ring 2: Working Equitation',
+          text: 'Ring 2: Equine Show Ring',
           href: getPermalink('/rings/ring2'),
         },
         {
-          text: 'Ring 3: Equine Show Ring',
+          text: 'Ring 3: Hazards & Obedience',
           href: getPermalink('/rings/ring3'),
+        }, {
+          text: 'Ring 4: Clead Round Jump Off',
+          href: getPermalink('/rings/ring4'),
         },
         {
           text: 'Ring D1: Canine Any Variety',
@@ -212,7 +215,8 @@ export const footerData = {
         { text: 'Ring A3: Horses', href: '/rings/ringa3' },
         { text: 'Ring 1: Working Hunter', href: '/rings/ring1' },
         { text: 'Ring 2: Equine Show Ring', href: '/rings/ring2' },
-        { text: 'Ring 3: Hazards & Obedience', href: '/rings/ring3' },
+        { text: 'Ring 3: Hazards', href: '/rings/ring3' },
+        { text: 'Ring 4: Clear Round', href: '/rings/ring4' },
         { text: 'Ring D1: Canine Any Variety', href: '/rings/ringd1' },
         { text: 'Ring D2: Canine Best of', href: '/rings/ringd2' },
       ],
