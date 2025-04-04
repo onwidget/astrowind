@@ -31,7 +31,7 @@ export const headerData = {
           text: 'Ring 3: Hazards & Obedience',
           href: getPermalink('/rings/ring3'),
         }, {
-          text: 'Ring 4: Clead Round Jump Off',
+          text: 'Ring 4: Clear Round Jump Off',
           href: getPermalink('/rings/ring4'),
         },
         {
