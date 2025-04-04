@@ -50,17 +50,17 @@ const defaultUsage: Usage = {
   fileStoredGb: 5,
   pagesCrawled: 10,
   writesPerMo: 10_000,
-  analyticsEvents: 100_000,
+  analyticsEvents: 1_000_000,
   ocrPages: 100,
   componentLoads: 1_000,
-  datasets: 10,
+  datasets: 2,
   users: 5,
 };
 
 const defaultAssumptions: Assumptions = {
   averageSparseSize: 256, // Used for writes per month and vector storage
   vectorDimension: 1536, // Used for writes per month and vector storage
-  averagePayloadSizeBytes: 2000, // Used for writes per month
+  averagePayloadSizeBytes: 4096, // Used for writes per month
   tokensPerSearch: 12.65, // Used for searches per month
   tokensPerMessage: 26.3, // Used for messages per month
   tokensPerChunk: 300, // Used for writes per month
@@ -73,50 +73,40 @@ const calculateUsageCost = (usage: Usage, assumptions: Assumptions) => {
   const storageUsedBytes = Math.max(0, usage.chunksStored - 1000) * storagePerChunk;
   // First 10,000 searches are free.
   const searchTokens = usage.searchesSent * assumptions.tokensPerSearch;
-  const searchTokensCalc = Math.max(0, usage.searchesSent - 10_000) * assumptions.tokensPerSearch;
+  const searchTokensCalc = Math.max(0, searchTokens - 100_000);
   // First 1,000 messages are free.
   const messageTokens = usage.messagesSent * assumptions.tokensPerMessage;
-  const messageTokensCalc = Math.max(0, usage.messagesSent - 1_000) * assumptions.tokensPerMessage;
+  const messageTokensCalc = Math.max(0, messageTokens - 263_000) * assumptions.tokensPerMessage;
   // First 10,000 writes are free.
   const writeTokens = usage.writesPerMo * assumptions.tokensPerChunk;
-  const writeTokensCalc = Math.max(0, usage.writesPerMo - 10_000) * assumptions.tokensPerChunk;
+  const writeTokensCalc = Math.max(0, usage.writesPerMo - 100_000) * assumptions.tokensPerChunk;
+
+  // assuming 4KB per chunk
+  const ingestionStorageGB = usage.writesPerMo * assumptions.averagePayloadSizeBytes / 1_000_000_000;
 
   let costs = {
-
     // Vector / Search costs
     vectorStorageGB: storagePerChunk * usage.chunksStored / 1_000_000_000,
-    // Cost / mo / GB is $10.1675 per GB. (including margin)
-    vectorDBRamCost: storageUsedBytes / 1_000_000_000 * 10.1675,
-    // Cost / mo / GB is $1.42 / GB. (including margin)
-    vectorDbStorageCost: storageUsedBytes / 1_000_000_000 * 1.42,
-    // Cost / search token = $0.04 * 5 per token. (including margin)
+    vectorCost: storageUsedBytes / 1_000_000_000 * 12.07,
     searchTokens,
-    searchCost: searchTokensCalc * 0.20 / 1_000_000,
-    // Cost / chat token = $2.52 * 1.4 per 1M token. (including margin)
+    searchCost: searchTokensCalc * 0.028 / 1_000_000,
     messageTokens,
-    messageCost: messageTokensCalc * 2.52 * 1.4 / 1_000_000,
-    // Ingest charge is $0.02 * 1.4 per 1M token
+    messageCost: messageTokensCalc * 3.528 / 1_000_000,
     writeTokens,
     writesCost: writeTokensCalc * 0.028 / 1_000_000,
-    // First 5 datasets are free
-    datasetCost: Math.max(0, usage.datasets - 10) * 0.05,
+    datasetCost: Math.max(0, usage.datasets - 2) * 0.05,
     scrapeCost: Math.max(0, usage.pagesCrawled - 10) * 0.00086,
-
-    // Analytics Costs
-    // First 100,000 events are free
-    analyticsCost: Math.max(0, usage.analyticsEvents - 100_000) * 0.0001,
-
-    // Ingestion Costs
-    // File storage cost is $0.023 / GB
-    fileStorageCost: Math.max(0, usage.fileStoredGb - 10) * 0.023,
-    // First 100 ocr pages are free
-    ocrCost: Math.max(0, (usage.ocrPages * assumptions.tokensPerPage) - 100) * 0.016,
+    ingestionStorageGB,
+    ingestCostGb: Math.max(ingestionStorageGB - 1, 0) * 2,
+    analyticsCost: Math.max(0, usage.analyticsEvents - 1_000_000) * 0.0001,
+    fileStorageCost: Math.max(0, usage.fileStoredGb - 10) * 0.046,
+    ocrCost: Math.max(0, (usage.ocrPages * assumptions.tokensPerPage) - 100) * 0.01,
     componentCost: Math.max(0, usage.componentLoads - 1_000) * 0.01,
     userCost: Math.max(0, usage.users - 5) * 5,
     total: 0
   };
 
-  costs.total = costs.vectorDBRamCost + costs.vectorDbStorageCost + costs.searchCost + costs.messageCost + costs.writesCost + costs.datasetCost + costs.scrapeCost + costs.analyticsCost + costs.fileStorageCost + costs.ocrCost + costs.componentCost + costs.userCost;
+  costs.total = costs.ingestCostGb + costs.vectorCost + costs.searchCost + costs.messageCost + costs.writesCost + costs.datasetCost + costs.scrapeCost + costs.analyticsCost + costs.fileStorageCost + costs.ocrCost + costs.componentCost + costs.userCost;
   return costs;
 }
 
@@ -173,16 +163,8 @@ const PricingCalculatorTwo = () => {
       {
         name: "Vectors",
         tooltip: "Vector dimension and payload size may vary",
-        total: cost.vectorDBRamCost + cost.vectorDbStorageCost,
+        total: cost.vectorCost,
         breakdown: [
-          {
-            name: "RAM Cost",
-            price: cost.vectorDBRamCost,
-          },
-          {
-            name: "Storage Cost",
-            price: cost.vectorDbStorageCost,
-          }
         ],
         amount: cost.vectorStorageGB,
         unit: "GBs stored",
@@ -208,9 +190,18 @@ const PricingCalculatorTwo = () => {
         name: "Writes",
         tooltip: "Assuming 300 average tokens / chunk",
         total: cost.writesCost,
-        breakdown: [],
-        amount: cost.writeTokens,
-        unit: "tokens writes",
+        breakdown: [
+          {
+            name: formatValue(cost.writeTokens) + " Token Writes",
+            price: cost.writesCost,
+          },
+          {
+            name: cost.ingestionStorageGB.toLocaleString("default", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " GB(s) ingested",
+            price: cost.ingestCostGb
+          }
+        ],
+        amount: 0,
+        unit: "",
       },
       {
         name: "Web Scrape",
@@ -254,10 +245,6 @@ const PricingCalculatorTwo = () => {
             name: `${usage.users} Users`,
             price: cost.userCost
           },
-          {
-            name: `Component (${formatValue(usage.componentLoads)} loads)`,
-            price: cost.componentCost
-          },
         ],
         amount: 0,
         unit: "",
@@ -282,18 +269,6 @@ const PricingCalculatorTwo = () => {
       ...prev,
       [product]: parseInt(value, 10) || 0,
     }));
-
-    // Update URL search params
-    const searchParams = new URLSearchParams(window.location.search);
-    searchParams.set(product, value);
-    window.history.replaceState(null, '', `${window.location.pathname}?${searchParams.toString()}`);
-  };
-
-  const handleAssumptionsChange = (product, value) => {
-    setAssumptionsUsed((prev) => ({
-      ...prev,
-      [product]: parseInt(value, 10) || 0,
-    }))
 
     // Update URL search params
     const searchParams = new URLSearchParams(window.location.search);
@@ -354,53 +329,10 @@ const PricingCalculatorTwo = () => {
             {/* Search Tab Content */}
             {activeTab === 'search' && (
               <>
-                <div className='flex space-x-4'>
-                  <div className='w-full'>
-                    <label
-                      htmlFor="frequency"
-                      className="block text-gray-700 mb-1 dark:text-gray-300"
-                    >
-                      Vector Dimension
-                    </label>
-                    <select
-                      id="frequency"
-                      className="block w-full px-7 py-2 rounded-md dark:text-gray-300 dark:bg-gray-800"
-                      defaultValue="768"
-                      value={assumptionsUsed.vectorDimension}
-                      onChange={(e) => handleAssumptionsChange('vectorDimension', e.target.value)}
-                    >
-                      <option value="768">768</option>
-                      <option value="1024">1024</option>
-                      <option value="1536">1536</option>
-                      <option value="3072">3072</option>
-                    </select>
-                  </div>
-
-                  <div className='w-full'>
-                    <label
-                      htmlFor="frequency"
-                      className="block text-gray-700 mb-1 dark:text-gray-300 "
-                    >
-                      Payload Size
-                    </label>
-                    <select
-                      id="frequency"
-                      className="block w-full px-7 py-2 border rounded-md shadow-sm dark:bg-gray-800"
-                      defaultValue="1536"
-                      value={assumptionsUsed.averagePayloadSizeBytes}
-                      onChange={(e) => handleAssumptionsChange('averagePayloadSizeBytes', e.target.value)}
-                    >
-                      <option value="512">512 bytes</option>
-                      <option value="1024">1 KB</option>
-                      <option value="4096">4 KB</option>
-                      <option value="8192">8 KB</option>
-                    </select>
-                  </div>
-                </div>
                 <div className="mb-6">
                   <div className='flex space-x-2 mb-4 items-end'>
                     <h3 className="text-xl font-medium">Chunks Stored</h3>
-                    <p className='text-sm'>First 1,000 chunks are free!</p>
+                    <p className='text-sm'>First 1,000 chunks (11MB) are free!</p>
                   </div>
                   <div>
                     <div className="relative">
@@ -419,7 +351,7 @@ const PricingCalculatorTwo = () => {
                 <div className="mb-6">
                   <div className='flex space-x-2 mb-4 items-end'>
                     <h3 className="text-xl font-medium">Searches / month</h3>
-                    <p className='text-sm'>First 10,000 searches are free!</p>
+                    <p className='text-sm'>First 3M tokens are free!</p>
                   </div>
                   <PriceSlider
                     min={10_000}
@@ -434,7 +366,7 @@ const PricingCalculatorTwo = () => {
                 <div className="mb-6">
                   <div className='flex space-x-2 mb-4 items-end'>
                     <h3 className="text-lg font-medium">Messages / month</h3>
-                    <p className='text-sm'>First 1,000 messages are free!</p>
+                    <p className='text-sm'>First 263,000 message tokens free!</p>
                   </div>
                   <div>
                     <div className="relative">
@@ -597,26 +529,6 @@ const PricingCalculatorTwo = () => {
                     </div>
                   </div>
                 </div>
-
-                <div className="mt-6">
-                  <div className='flex space-x-2 mb-4 items-end'>
-                    <h3 className="text-lg font-medium">Search Component Loads</h3>
-                    <p className='text-sm'>First 1k loads free!</p>
-                  </div>
-
-                  <div className="relative">
-                    <PriceSlider
-                      min={1000}
-                      max={10000000}
-                      markers={[1000, 10000, 100000, 1000000, 10000000]}
-                      defaultValue={usage.componentLoads}
-                      beforeValueText="With"
-                      afterValueText="component loads"
-                      onChange={(value) => handleUsageChange('componentLoads', value)}
-                    />
-                  </div>
-                </div>
-
               </>
             )}
           </div>
