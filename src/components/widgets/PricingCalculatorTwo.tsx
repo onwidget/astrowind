@@ -87,8 +87,8 @@ const calculateUsageCost = (usage: Usage, assumptions: Assumptions) => {
     vectorStorageGB: storagePerChunk * usage.chunksStored / 1_000_000_000,
     // Cost / mo / GB is $10.1675 per GB. (including margin)
     vectorDBRamCost: storageUsedBytes / 1_000_000_000 * 10.1675,
-    // Cost / mo / GB is $0.42 / GB. (including margin)
-    vectorDbStorageCost: storageUsedBytes / 1_000_000_000 * (0.42 + 1),
+    // Cost / mo / GB is $1.42 / GB. (including margin)
+    vectorDbStorageCost: storageUsedBytes / 1_000_000_000 * 1.42,
     // Cost / search token = $0.04 * 5 per token. (including margin)
     searchTokens,
     searchCost: searchTokensCalc * 0.20 / 1_000_000,
@@ -97,7 +97,7 @@ const calculateUsageCost = (usage: Usage, assumptions: Assumptions) => {
     messageCost: messageTokensCalc * 2.52 * 1.4 / 1_000_000,
     // Ingest charge is $0.02 * 1.4 per 1M token
     writeTokens,
-    writesCost: writeTokensCalc * 0.02 / 1_000_000,
+    writesCost: writeTokensCalc * 0.028 / 1_000_000,
     // First 5 datasets are free
     datasetCost: Math.max(0, usage.datasets - 10) * 0.05,
     scrapeCost: Math.max(0, usage.pagesCrawled - 10) * 0.00086,
@@ -110,7 +110,7 @@ const calculateUsageCost = (usage: Usage, assumptions: Assumptions) => {
     // File storage cost is $0.023 / GB
     fileStorageCost: Math.max(0, usage.fileStoredGb - 10) * 0.023,
     // First 100 ocr pages are free
-    ocrCost: Math.max(0, usage.ocrPages - 100) * 0.01,
+    ocrCost: Math.max(0, (usage.ocrPages * assumptions.tokensPerPage) - 100) * 0.016,
     componentCost: Math.max(0, usage.componentLoads - 1_000) * 0.01,
     userCost: Math.max(0, usage.users - 5) * 5,
     total: 0

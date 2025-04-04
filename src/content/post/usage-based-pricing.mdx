@@ -1,0 +1,160 @@
+---
+publishDate: 2025-04-02T22:10:00Z
+author: Denzell Ford
+title: Trieve's New Usage-Based Pricing Model
+excerpt: Unmetered In-VPC Embeddings and Rerankers at Ridiculously Low Latency
+image: https://cdn.trieve.ai/blog/tvi-blog/tvi-blog-graphic.webp
+category: Announcements
+tags:
+  - TVI
+  - self-hosting
+  - AWS
+  - embeddings
+---
+
+# Trieve's New Usage-Based Pricing Model
+
+The painpoints of having a tiered based pricing stratedgy.
+
+## Restrictive and Large Pricing Tiers
+
+Trieve's initial initial pricing was baed on tiers of the largest costs to us: *Chunks stored*, *File Storage*, and *AI Messages*, and *Datasets*. These price tiers became restrictive for many of our customers with varying usecases. i.e Some customers such as HostAI and vapi use Trieve in a multi-tenant fashion. Each customer gets their own dataset. As they grow in dataset count, they had pains of needing to scale to a higher tier plan without ever exceeding the chunk or message count limits. Other's had a single index usecase where the main use from Trieve was using the advanced chat and search features on a large dataset.
+
+## New Features
+
+Trieve has also grown in the past year with many features that weren't readily apparent from our pricing table. We added a first party integraiton to [chunkr](https://chunkr.ai), and our very own [pdf2md](https://pdf2md.trieve.ai) service. We maintain a fork of [Firecrawl](https://www.firecrawl.dev/) for seamless website scraping into a search index. As well as a full analytics suite for 
+
+## Pricing Table
+
+<table>
+	<thead>
+		<tr>
+			<th>Product</th>
+			<th>Free Tier</th>
+			<th>Cost above free tier</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Users</td>
+			<td>First 5 Users free</td>
+			<td>$5 / User</td>
+		</tr>
+		<tr>
+			<td className="font-bold text-center" colSpan={3}>
+				Storage Cost
+			</td>
+		</tr>
+		<tr>
+			<td>[Chunk Storage](#storage-charge)</td>
+			<td>1000 Chunks (11 MB)</td>
+			<td>$132 / 1M chunks ($12.07 / GB)</td>
+		</tr>
+		<tr>
+			<td>[File Storage](#file-storage)</td>
+			<td>10 GB</td>
+			<td>$0.046 / GB</td>
+		</tr>
+		<tr>
+			<td>[Datasets](#datasets)</td>
+			<td>2 datasets</td>
+			<td>$0.05 / dataset</td>
+		</tr>
+		<tr>
+			<td className="font-bold text-center" colSpan={3}>
+				Ingestion (Resets at end of month)
+			</td>
+		</tr>
+		<tr>
+			<td>[Write Tokens](#search-and-write-tokens)</td>
+			<td>First 3M tokens / mo free</td>
+			<td>$0.028 / 1M tokens</td>
+		</tr>
+		<tr>
+			<td>[File OCR](#file-ocr)</td>
+			<td>First 100 / mo free</td>
+			<td>$0.01 / Page</td>
+		</tr>
+		<tr>
+			<td>[Web Crawling](#web-crawling)</td>
+			<td>First 10 pages / mo free</td>
+			<td>$0.00086 / Page Crawled</td>
+		</tr>
+		<tr>
+			<td>[Bytes Ingested](#bytes-ingested)</td>
+			<td>First 1 GB</td>
+			<td>$2 / GB ingested</td>
+		</tr>
+		<tr>
+			<td className="font-bold text-center" colSpan={3}>
+				Per Search charges
+			</td>
+		</tr>
+		<tr>
+			<td>[Search Tokens](#search-and-write-tokens)</td>
+			<td>First 3M tokens / mo free</td>
+			<td>$0.028 / 1M tokens</td>
+		</tr>
+		<tr>
+			<td>[Message Tokens](#message-tokens)</td>
+			<td>First 263,000 tokens / mo free</td>
+			<td>$3.528 / 1M tokens</td>
+		</tr>
+		<tr>
+			<td>[Analytic Events](#analytics)</td>
+			<td>First 1M events / mo free</td>
+			<td>$0.0001 / event</td>
+		</tr>
+	</tbody>
+</table>
+
+## Pricing Breakdown
+
+To provide a better understanding of the cost of Trieve we have broken down the cost of Trieve into the following categories.
+
+### Chunk Storage.
+
+Chunk storage is our most costly metric, we hold all the vectors, payload indices and metadata in RAM with 2x replication. Holding all of these in RAM allows us to provide the lowest possible latency for all of our searches.
+
+We measure the size of a single chunk in Trieve to be `((1536*4 bytes per vector + 256 * 4 bytes per sparse vector + 4096 bytes per payload )) = 11,264 bytes`.
+
+We host `n4-standard-64` machines and use `hyperdisk-balanced` nvme.ssd's for our vector db storage layer. The cost per GB is `$8.65 /GB of RAM + 0.2 / GB = $8.67 / GB`. We charge a ~40% margin which comes out to $12.06 / GB.
+
+### File Storage
+
+S3 charges $0.023/GB. We charge $0.046 / GB which is a 100% upcharge on s3 storage.
+
+### Datasets
+
+We charge $0.05 / Dataset. Each dataset created adds a new index into our vector db's HNSW index. Each dataset also gets a ingestion queue for files, crawls and chunks each have equal priotiy
+
+### Search and Write Tokens
+
+OpenAI's `text-embedding-3-small` charges $0.02 / M tokens. We charge a 40% margin to embed the input $0.02 * 1.4 margin = __$0.028/M tokens__. We charge the same fee for both searches and writes.
+
+### File OCR
+
+We charge $0.01 / Page with the first 100 pages free. PDF pages average about 800 tokens. Using gpt-4o for pdf2md ocr ingestion our raw cost is 800 tokens * (0.00001 llm cost / token) =  $0.008 / page. Accounting for our margin, it comes out to __$0.01 / page__.
+
+### Web Crawling
+
+For webcrawling, we want to keep our price at the industry standard level which seems to be around $86 / 100,000 pages or __$0.00086 per page__.  We kept our pricing quite similar for that reason.
+
+
+### Bytes Ingested
+
+For Bytes ingested, the first 1GB of bytes ingested are free, any overages at the end of the month is is $2 per GB. This is to account for any networking costs, we set our pricing equal to $2 / GB to reflect the write charge of other databases such as turbopuffer.
+
+### Message Tokens
+
+For AI messages we charge per token. We allow proxying openrouter or OpenAI through Trieve. Trieve AI messages also include an embedding and search step which is bundled into the cost of an AI message.
+For each message we have to create an embeddding and conduct an llm inferecne step. OpenAI's `gtp-4o-mini` model charges us $0.6 / 1M tokens and `text-embedding-3-small` charges $0.02
+
+### Analytics
+
+Trieve provides analytics for all searches and chat messages automatically. The fist 1 million searches and messages a month are free and have a 5 year retention period. Any additional events over are $0.0001 / event. Each event contains the full message paylaod on top of 
+
+## Trieve Enterprise
+
+The prices for our public cloud service are listed above, however Trieve also offers Enterprise services and dedicated cloud services that come with SLA guarantees. If you require a custom quote for a large scale usecase, please contact us, we will be happy to provide a bulk discount quote for any custom inquires.
+
