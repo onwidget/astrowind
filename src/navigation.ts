@@ -16,8 +16,12 @@ export const headerData = {
           href: getPermalink('/rings/ringa2'),
         },
         {
-          text: 'Ring A3: Clydesdale Horses',
-          href: getPermalink('/rings/ringa3'),
+          text: 'Ring D1: Canine Any Variety',
+          href: getPermalink('/rings/ringd1'),
+        },
+        {
+          text: 'Ring D2: Canine Best of',
+          href: getPermalink('/rings/ringd2'),
         },
         {
           text: 'Ring 1: Working Hunter',
@@ -35,12 +39,8 @@ export const headerData = {
           href: getPermalink('/rings/ring4'),
         },
         {
-          text: 'Ring D1: Canine Any Variety',
-          href: getPermalink('/rings/ringd1'),
-        },
-        {
-          text: 'Ring D2: Canine Best of',
-          href: getPermalink('/rings/ringd2'),
+          text: 'Ring 5: Clydesdale Horses',
+          href: getPermalink('/rings/ring5'),
         },
       ],
     },
