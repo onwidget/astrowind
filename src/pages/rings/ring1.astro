@@ -6,11 +6,11 @@ import Layout from '~/layouts/PageLayout.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 // import Steps from '~/components/widgets/Steps.astro';
-// import Content from '~/components/widgets/Content.astro';
+import Content from '~/components/widgets/Content.astro';
 // import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 // import FAQs from '~/components/widgets/FAQs.astro';
 // import Stats from '~/components/widgets/Stats.astro';
-// import CallToAction from '~/components/widgets/CallToAction.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Dundonald Farmers Society 2025 Open Show',
@@ -24,8 +24,8 @@ const metadata = {
   <Features
     id="ring1"
     tagline="Ring 1"
-    title="Light Horses"
-    subtitle="Working Hunter by the West of Scotland Working Hunter Academy"
+    title="Working Hunter"
+    subtitle="By the West of Scotland Working Hunter Academy"
     items={[
       {
         title: 'Events & Prizes',
@@ -193,62 +193,59 @@ const metadata = {
 
   <Features2
     title="Classes"
-    subtitle="Classes start at 09:00"
-    tagline="Components"
+    tagline="Working Hunter"
+    subtitle="Classes start at 09:00. All classes are in Ring 1.<br /> Prize for Best Junior (Under 12)<br /> Prize for Best Veteran<br />"
     items={[
       {
-        title: 'Class xx: Small Hunter',
-        description: 'SMALL HUNTER, mare or gelding, four years old or over exceeding 148cm and not exceeding 158cm.',
+        title: 'Class 11: Working Hunter: Starting cross poles',
+        description: '',
         icon: 'flat-color-icons:template',
       },
       {
-        title: 'Class xx: Ridden Hunter',
-        description: 'RIDDEN HUNTER, mare or gelding, four years old or over exceeding 158cm.',
+        title: 'Class 12: Working Hunter: 30cm',
+        description: '',
         icon: 'flat-color-icons:gallery',
       },
       {
-        title: 'Class xx: Riding Horse',
-        description: 'RIDING HORSE, mare or gelding, four years old or over exceeding 148cm.',
+        title: 'Class 13: Working Hunter: 40cm',
+        description: '',
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Class xx: Cob',
-        description: 'COB – Hogged or Traditional. Any Height',
+        title: 'Class 14: Working Hunter: 50cm',
+        description: 'Championship Trophy: W. M. Townly Memorial Trophy Challenge',
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Class xx: X-Racehorse',
-        description:
-          'X-RACEHORSE – to be shown under saddle. Must have been in training or raced. Open to racehorses and trotting horses.',
+        title: 'Class 15: Working Hunter: 60cm',
+        description: 'Championship Trophy: The Morag Hay Memorial Trophy, awarded to the champion jumping over 60cm.',
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Class xx: Standard Bred',
-        description:
-          'STANDARD BRED – to be shown under saddle, Canter is optional. <span>Kindly Sponsored by Andie J Alcroft.</span>',
+        title: 'Class 16: Working Hunter: 70cm',
+        description: 'Championship Trophy: The Morag Hay Memorial Trophy, awarded to the champion jumping over 60cm.',
         icon: 'flat-color-icons:currency-exchange',
       },
-      // {
-      //   title: 'Testimonial',
-      //   description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-      //   icon: 'flat-color-icons:voice-presentation',
-      // },
-      // {
-      //   title: 'Contact',
-      //   description:
-      //     'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-      //   icon: 'flat-color-icons:business-contact',
-      // },
-      // {
-      //   title: 'Footers',
-      //   description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-      //   icon: 'flat-color-icons:database',
-      // },
-    ]}
+      {
+        title: 'Class 17: Working Hunter: 80cm',
+        description: 'Championship Trophy: The Morag Hay Memorial Trophy, awarded to the champion jumping over 60cm.',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 18: Working Hunter: 90cm',
+        description: 'Championship Trophy: The Morag Hay Memorial Trophy, awarded to the champion jumping over 60cm.',
+        icon: 'flat-color-icons:gallery',
+      },
+      {
+        title: 'Class 19: Working Hunter: 100cm',
+        description: 'Championship Trophy: The Morag Hay Memorial Trophy, awarded to the champion jumping over 60cm.',
+        icon: 'flat-color-icons:document',
+      },
+]}
   >
-    <Fragment slot="bg">
+    <!-- <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
+    </Fragment> -->
   </Features2>
 
   <!-- HighlightedPosts Widget ******* -->
@@ -315,24 +312,25 @@ const metadata = {
 
   <!-- CallToAction Widget *********** -->
 
-  <!-- <CallToAction
+  <CallToAction
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
+        text: 'Book your classes now',
+        href: 'https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050',
         target: '_blank',
         icon: 'tabler:download',
       },
     ]}
   >
     <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+      <!-- Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span> -->
+      Equo Events Online booking system
     </Fragment>
 
     <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
+      A show management and entry system powered by Horse & Hound <br class="hidden md:inline" />Don't waste more time!
+      :P
     </Fragment>
-  </CallToAction> -->
+  </CallToAction>
 </Layout>
