@@ -1,7 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
-// import Features from '~/components/widgets/Features.astro';
+import Hero from '~/components/widgets/Hero.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 
 const metadata = {
@@ -12,6 +11,16 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <!-- Features2 Widget ************** -->
+
+  <Hero image={{ src: '~/assets/images/Dundonald Showground Map.nobackground.webp', alt: 'Dundonald Showground map', width: 920, height: 544 }}>
+    <Fragment slot="title">
+      Dundonald Showground
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <p>Dundonald Camp Track, Ayr Road, Irvine(A78), KA11 5AX</p>
+    </Fragment>
+  </Hero>
 
   <Features2
     title="Showground Maps"
@@ -28,6 +37,16 @@ const metadata = {
         description: "<span class='font-bold text-blue-600'><a href='/pdfs/Dundonald Showground Map.nobackground.pdf' target='_blank'>PDF file with clear background</a></span>",
         icon: 'flat-color-icons:template',
       },
+      // {
+      //   title: '2025 Showground Map',
+      //   description: "<span class='font-bold text-blue-600'><a href='/images/Dundonald Showground Map.webp' target='_blank'><img width='220' height='250' border='0' align='center'  src=''/>WebP file with photo background</a></span>",
+      //   icon: 'flat-color-icons:template',
+      // },
+      // {
+      //   title: '2025 Showground Map',
+      //   description: "<span class='font-bold text-blue-600'><a href='/images/Dundonald Showground Map.nobackground.webp' target='_blank'>WebP file with clear background</a></span>",
+      //   icon: 'flat-color-icons:template',
+      // },
     ]}
   >
     <Fragment slot="bg">
