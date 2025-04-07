@@ -1,0 +1,37 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+// import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = {
+  title: 'Dundonald Farmers Society 2025 Open Show',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Showground Maps"
+    subtitle="2025 Showground maps in a variety of formats."
+    tagline="I n f o r m a t i o n"
+    items={[
+      {
+        title: '2025 Showground Map',
+        description: "<span class='font-bold text-blue-600'><a href='/pdfs/Dundonald Showground Map.pdf' target='_blank'>PDF file with photo background</a></span>",
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: '2025 Showground Map',
+        description: "<span class='font-bold text-blue-600'><a href='/pdfs/Dundonald Showground Map.nobackground.pdf' target='_blank'>PDF file with clear background</a></span>",
+        icon: 'flat-color-icons:template',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+</Layout>

@@ -96,6 +96,10 @@ export const headerData = {
           text: 'Show Programmes',
           href: getPermalink('/info/programmes'),
         },
+        {
+          text: 'Showground Maps',
+          href: getPermalink('/info/showground'),
+        },
         // {
         //   text: 'Pricing',
         //   href: getPermalink('/pricing'),
