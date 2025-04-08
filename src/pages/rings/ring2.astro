@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Dundonald Farmers Society 2025 Open Show',
@@ -16,19 +17,19 @@ const metadata = {
   <Features
     id="ring2"
     tagline="Ring 2"
-    title="Working Equitation"
-    subtitle="T O _ B E _ C O M P L E T E D"
+    title="Showing Ring"
+    subtitle="A variety of classes are available, from Lead Rein to Concours du Elegance. The show is open to all breeds and types of horse and pony."
     items={[
       {
         title: 'Events & Prizes',
         description:
-          'Starting at cross poles and working up, throught out the day, to 1 metre plus. Rosettes to 6th place in each class, with a trophy for the overall winner of each class.',
+          'For all Ring 2 classes, first and second place go forward to Supreme Champion.',
         icon: 'tabler:brand-tailwind',
       },
       {
         title: 'Courses',
         description:
-          'Course generously built and judged by the West of Scotland Working Hunter Academy & Mr David Picken & Associates',
+          'A variety of courses, from beginner to advanced, are available, in addition to standard showing ring.',
         icon: 'tabler:components',
       },
     ]}
@@ -38,39 +39,45 @@ const metadata = {
 
   <Features2
     title="Classes"
-    subtitle="Classes start at 09:00"
+    subtitle="Classes start at 09:00. All classes are in Ring 2<br />Entry per class: £12 online, £15 on the day. £5 First Aid cover per entrant"
     tagline="Components"
     items={[
       {
-        title: 'Class xx: Small Hunter',
-        description: 'SMALL HUNTER, mare or gelding, four years old or over exceeding 148cm and not exceeding 158cm.',
+        title: 'Class 21: Riding Club Equine: Open, over 14.2',
+        description: 'Judge: Ms Denise Smith<br />Prizes: Obstacle course: Competitors will need to negotiate a small jump and a gate. A mounting block is provided for those who need to dismount for the gate.',
         icon: 'flat-color-icons:template',
       },
       {
-        title: 'Class xx: Ridden Hunter',
-        description: 'RIDDEN HUNTER, mare or gelding, four years old or over exceeding 158cm.',
+        title: 'Class 22: Ridden Hunter: Open, over 14.2 ',
+        description: 'Class will be split into Light and Heavy if entries permit.<br />PLEASE state Light or Heavy on your entry',
         icon: 'flat-color-icons:gallery',
       },
       {
-        title: 'Class xx: Riding Horse',
-        description: 'RIDING HORSE, mare or gelding, four years old or over exceeding 148cm.',
+        title: 'Class 23: Best Turned Out',
+        description: 'Prizes: Winners Trophy: The Mary Lockhart PerpetualTrophy',
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Class xx: Cob',
-        description: 'COB – Hogged or Traditional. Any Height',
+        title: 'Class 24: Concours du Elegance: Any height',
+        description: 'In hand or ridden<br />Class will be split into In hand and Mounted if entries permit.<br />PLEASE state In hand or Mounted on your entry',
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Class xx: X-Racehorse',
+        title: 'Class 25: Lead Rein & Thelwell type pony',
         description:
-          'X-RACEHORSE – to be shown under saddle. Must have been in training or raced. Open to racehorses and trotting horses.',
+          'Judge: Mr Tom Best',
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Class xx: Standard Bred',
+        title: 'Class 26: Mountain & Moorland: In Hand',
         description:
-          'STANDARD BRED – to be shown under saddle, Canter is optional. <span>Kindly Sponsored by Andie J Alcroft.</span>',
+          'Judge: Mr Tom Best<br />Prizes: All 1st & 2nd prize winners of M&M of small ponies will go forward for the Kerr Billy Trophy<br />Class will be split into Mountain and Moorland if entries permit.<br />PLEASE state Mountain or Moorland on your entry',
+        icon: 'flat-color-icons:currency-exchange',
+      },
+      {
+        title: 'Class 27: Mountain & Moorland: Ridden',
+        description:
+          'Judge: Mr Tom Best<br />Prizes: All 1st & 2nd prize winners of M&M of small ponies will go forward for the Kerr Billy Trophy<br />Class will be split into Mountain and Moorland if entries permit.<br />PLEASE state Mountain or Moorland on your entry',
         icon: 'flat-color-icons:currency-exchange',
       },
     ]}
@@ -79,4 +86,28 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Features2>
+
+  <!-- CallToAction Widget *********** -->
+
+    <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book your classes now',
+        href: 'https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050',
+        target: '_blank',
+        icon: 'tabler:download',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      <!-- Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span> -->
+      Equo Events Online booking system
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      A show management and entry system powered by Horse & Hound <br class="hidden md:inline" />Don't waste more time!
+      :P
+    </Fragment>
+  </CallToAction>
 </Layout>
