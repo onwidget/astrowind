@@ -10,9 +10,8 @@ import compress from 'astro-compress';
 import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs';
 import { SITE } from './src/config.mjs';
 import alpinejs from '@astrojs/alpinejs';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const whenExternalScripts = (items = []) =>
-  SITE.googleAnalyticsId ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 // https://astro.build/config
 export default defineConfig({
@@ -35,13 +34,11 @@ export default defineConfig({
     //   serviceEntryPoint: '@astrojs/image/sharp',
     // }),
     mdx(),
-    ...whenExternalScripts(() =>
-      partytown({
-        config: {
-          forward: ['dataLayer.push'],
-        },
-      })
-    ),
+    partytown({
+      config: {
+        forward: ['dataLayer.push', 'fbq'],
+      },
+    }),
     compress({
       css: true,
       html: {

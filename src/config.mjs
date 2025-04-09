@@ -27,6 +27,8 @@ const CONFIG = {
   googleAnalyticsId: 'G-EPTDDS3QS3', // or "G-XXXXXXXXXX",
   googleSiteVerificationId: '',
 
+  facebookPixelId: '275903197408746',
+
   blog: {
     disabled: false,
     postsPerPage: 4,
