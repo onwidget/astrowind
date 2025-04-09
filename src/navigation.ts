@@ -35,7 +35,7 @@ export const headerData = {
           text: 'Ring 3: Hazards & Obedience',
           href: getPermalink('/rings/ring3'),
         }, {
-          text: 'Ring 4: Clear Round Jump Off',
+          text: 'Ring 4: Show Jumping',
           href: getPermalink('/rings/ring4'),
         },
         {
@@ -44,28 +44,28 @@ export const headerData = {
         },
       ],
     },
-    {
-      text: 'The Stars',
-      href: getPermalink('/stars'),
-      links: [
-        {
-          text: 'Bovine',
-          href: getPermalink('/stars/bovine'),
-        },
-        {
-          text: 'Canine',
-          href: getPermalink('/stars/canine'),
-        },
-        {
-          text: 'Equine',
-          href: getPermalink('/stars/equine'),
-        },
-        {
-          text: 'Ovine',
-          href: getPermalink('/stars/ovine'),
-        },
-      ],
-    },
+    // {
+    //   text: 'The Stars',
+    //   href: getPermalink('/stars'),
+    //   links: [
+    //     {
+    //       text: 'Bovine',
+    //       href: getPermalink('/stars/bovine'),
+    //     },
+    //     {
+    //       text: 'Canine',
+    //       href: getPermalink('/stars/canine'),
+    //     },
+    //     {
+    //       text: 'Equine',
+    //       href: getPermalink('/stars/equine'),
+    //     },
+    //     {
+    //       text: 'Ovine',
+    //       href: getPermalink('/stars/ovine'),
+    //     },
+    //   ],
+    // },
     {
       text: 'Sponsors',
       href: getPermalink('/sponsors'),

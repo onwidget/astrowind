@@ -1,8 +1,11 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import  { headerDataRings } from '~/navigation-rings';
 
+import Header from '~/components/widgets/Header.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Dundonald Farmers Society 2025 Open Show',
@@ -11,66 +14,95 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Features Widget *************** -->
 
+  <!-- sub-navigation menu for rings-->
+  <Fragment slot="header">
+    <Header {...headerDataRings} isSticky showToggleTheme />
+  </Fragment>
+
+  <!-- Features Widget *************** -->
   <Features
-    id="ring4"
+    id="ring"
     tagline="Ring 4"
-    title="Clear Round Jump Off"
-    subtitle="T O _ B E _ C O M P L E T E D"
+    title="Show Jumping"
+    subtitle=""
     items={[
       {
-        title: 'Events & Prizes',
+        title: 'Event',
         description:
-          'Starting at cross poles and working up, throught out the day, to 1 metre plus. Rosettes to 6th place in each class, with a trophy for the overall winner of each class.',
+          "- Show jumping is designed to test the horse and rider's speed, accuracy, and agility. The obsticles often include sharp turns, tight combinations, and a variety of jump heights and widths.<br />- All Classes can be ridden H C non competitively and if needed jumps can be missed out. A maximum time limit will be given and you have to jump within the allocated time.",
         icon: 'tabler:brand-tailwind',
       },
       {
-        title: 'Courses',
+        title: 'Course',
         description:
-          'Course generously built and judged by the West of Scotland Working Hunter Academy & Mr David Picken & Associates',
+        '- Course generously built and maintained by Angela Hopkins, Emma Hopkins (Angela’s Ark ) and wonderful volunteers.<br />- Classes 30cm to 80cm will be jumped by ponies and horses and run on A2 style clear 1st round timed jump off. 2nd round straight away',
         icon: 'tabler:components',
+      },
+      {
+        title: 'Prizes',
+        description:
+          '- Rosettes to 6th place in each class<br />- Ponies and horses will be allocated their own rosettes<br />- Rosettes will be awarded to all clear rounds.',
+        icon: 'tabler:brand-tailwind',
+      },
+      {
+        title: 'Regulations',
+        description:
+          'Timings for the round will be undertaken by the judge or their assistant using a stop watch. Their decision is final and not open to challenge.',
+        icon: 'tabler:brand-tailwind',
       },
     ]}
   />
 
   <!-- Features2 Widget ************** -->
-
   <Features2
+  id="classes"
     title="Classes"
-    subtitle="Classes start at 09:00"
-    tagline="Components"
+    subtitle="Classes start at 09:00. All classes are in Ring 4<br />Entry per class: £12 online, £15 on the day. £5 First Aid cover per entrant"
+    tagline="Hazard & Obedience"
     items={[
       {
-        title: 'Class xx: Small Hunter',
-        description: 'SMALL HUNTER, mare or gelding, four years old or over exceeding 148cm and not exceeding 158cm.',
+        title: 'Class 41 Cross poles, Riders under 10, Lead rein ',
+        description: 'Judge: TBC<br />Prizes: TBC<br />Please note rider may not enter any other showjumping class competitively. <br />The pony can be ridden by a different rider in later classes.<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472709" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:template',
       },
       {
-        title: 'Class xx: Ridden Hunter',
-        description: 'RIDDEN HUNTER, mare or gelding, four years old or over exceeding 158cm.',
+        title: 'Class 42 Cross poles, Riders under 10, First Ridden',
+        description: 'Judge: TBC<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473309" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:gallery',
       },
       {
-        title: 'Class xx: Riding Horse',
-        description: 'RIDING HORSE, mare or gelding, four years old or over exceeding 148cm.',
+        title: 'Class 43 Showjumping: 30cm',
+        description: 'Judge: TBC<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473310" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Class xx: Cob',
-        description: 'COB – Hogged or Traditional. Any Height',
+        title: 'Class 44 Showjumping: 40cm',
+        description: 'Judge: TBC<br />Prizes: The Tequila Sunrise Trophy kindly awarded by Angela and Emma Hopkin<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=4723311" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Class xx: X-Racehorse',
+        title: 'Class 45 Showjumping: 50cm',
         description:
-          'X-RACEHORSE – to be shown under saddle. Must have been in training or raced. Open to racehorses and trotting horses.',
+          'Judge: TBC<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473312" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Class xx: Standard Bred',
+        title: 'Class 46 Showjumping: 60cm',
         description:
-          'STANDARD BRED – to be shown under saddle, Canter is optional. <span>Kindly Sponsored by Andie J Alcroft.</span>',
+          'Judge: TBC<br />Prizes: The Pirate Trophy kindly awarded by Angela and Emma Hopkin<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473313" target="_blank" class="text-blue-900">Book Online</a>',
+        icon: 'flat-color-icons:currency-exchange',
+      },
+      {
+        title: 'Class 47 Showjumping: 70cm',
+        description:
+          'Judge: TBC<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473314" target="_blank" class="text-blue-900">Book Online</a>',
+        icon: 'flat-color-icons:currency-exchange',
+      },
+      {
+        title: 'Class 86 Showjumping: 80cm',
+        description:
+          'Judge: TBC<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473315" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:currency-exchange',
       },
     ]}
@@ -79,4 +111,28 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Features2>
+
+    <!-- CallToAction Widget *********** -->
+    <CallToAction
+    id="calltoaction"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book your classes now',
+        href: 'https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050',
+        target: '_blank',
+        icon: 'tabler:download',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      <!-- Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span> -->
+      Equo Events Online booking system
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      A show management and entry system powered by Horse & Hound <br class="hidden md:inline" />Don't waste more time!
+      :P
+    </Fragment>
+  </CallToAction>
 </Layout>

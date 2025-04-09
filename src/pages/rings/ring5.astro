@@ -1,8 +1,11 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import  { headerDataRings } from '~/navigation-rings';
 
+import Header from '~/components/widgets/Header.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Dundonald Farmers Society 2025 Open Show',
@@ -11,10 +14,14 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Features Widget *************** -->
 
-  <Features
-    id="ring2"
+  <!-- sub-navigation menu for rings-->
+  <Fragment slot="header">
+    <Header {...headerDataRings} isSticky showToggleTheme />
+  </Fragment>
+
+  <!-- Features Widget *************** -->  <Features
+    id="ring"
     tagline="Ring 5"
     title="Cyldesdale Horses"
     subtitle="T O _ B E _ C O M P L E T E D"
@@ -37,6 +44,7 @@ const metadata = {
   <!-- Features2 Widget ************** -->
 
   <Features2
+  id="classes"
     title="Classes"
     subtitle="Classes start at 09:00"
     tagline="Components"
@@ -79,4 +87,28 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Features2>
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    id="calltoaction"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book your classes now',
+        href: 'https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050',
+        target: '_blank',
+        icon: 'tabler:download',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      <!-- Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span> -->
+      Equo Events Online booking system
+    </Fragment>
+    <Fragment slot="subtitle">
+      A show management and entry system powered by Horse & Hound <br class="hidden md:inline" />Don't waste more time!
+      :P
+    </Fragment>
+  </CallToAction>
+  
 </Layout>

@@ -1,8 +1,11 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import  { headerDataRings } from '~/navigation-rings';
 
+import Header from '~/components/widgets/Header.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Dundonald Farmers Society 2025 Open Show',
@@ -11,66 +14,77 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Features Widget *************** -->
 
+  <!-- sub-navigation menu for rings-->
+  <Fragment slot="header">
+    <Header {...headerDataRings} isSticky showToggleTheme />
+  </Fragment>
+
+  <!-- Features Widget *************** -->
   <Features
-    id="ring3"
+    id="ring"
     tagline="Ring 3"
-    title="Equine Show Ring"
-    subtitle="T O _ B E _ C O M P L E T E D"
+    title="Hazards & Obedience"
+    subtitle="Working Equitation Style competition based on the Ease of Handling Test which consists of a course of obstacles, replicating those that may be found when working in the countryside."
     items={[
       {
-        title: 'Events & Prizes',
+        title: 'Event',
         description:
-          'Starting at cross poles and working up, throught out the day, to 1 metre plus. Rosettes to 6th place in each class, with a trophy for the overall winner of each class.',
+          'A range of common hazards; for example, a gate, a bridge and a jump. There are also other more technical obstacles such as the parallel slalom, straight slalom, barrels and bulls (NOT real 😊).',
         icon: 'tabler:brand-tailwind',
       },
       {
         title: 'Courses',
         description:
-          'Course generously built and judged by the West of Scotland Working Hunter Academy & Mr David Picken & Associates',
+        'Course generously built and judged by Julie Stewart & Associates of <a href="https://kilmarnockequestrian.scot/" target="_blank" class="text-blue-900">Kilmarnock Equestrian Centre</a>',
         icon: 'tabler:components',
+      },
+      {
+        title: 'Prizes',
+        description:
+          '- For all Ring 3 classes, first and second place go forward to Open Supreme Speed round<br />- Rosettes to 6th place in each class',
+        icon: 'tabler:brand-tailwind',
       },
     ]}
   />
 
   <!-- Features2 Widget ************** -->
-
   <Features2
+  id="classes"
     title="Classes"
-    subtitle="Classes start at 09:00"
-    tagline="Components"
+    subtitle="Classes start at 09:00. All classes are in Ring 3<br />Entry per class: £12 online, £15 on the day. £5 First Aid cover per entrant"
+    tagline="Hazard & Obedience"
     items={[
       {
-        title: 'Class xx: Small Hunter',
-        description: 'SMALL HUNTER, mare or gelding, four years old or over exceeding 148cm and not exceeding 158cm.',
+        title: 'Class 31 Novice: horses under 14.2 ',
+        description: 'Judge: Ms Jill McGuiggan<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472698" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:template',
       },
       {
-        title: 'Class xx: Ridden Hunter',
-        description: 'RIDDEN HUNTER, mare or gelding, four years old or over exceeding 158cm.',
+        title: 'Class 32 Novice: horses over 14.2',
+        description: 'Judge: Ms Jill McGuiggan<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472696" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:gallery',
       },
       {
-        title: 'Class xx: Riding Horse',
-        description: 'RIDING HORSE, mare or gelding, four years old or over exceeding 148cm.',
+        title: 'Class 33 Intermediate: horses under 14.2 ',
+        description: 'Judge: Ms Jill McGuiggan<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472699" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Class xx: Cob',
-        description: 'COB – Hogged or Traditional. Any Height',
+        title: 'Class 34 Intermediate: horses over 14.2 ',
+        description: 'Judge: Ms Jill McGuiggan<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472697" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Class xx: X-Racehorse',
+        title: 'Class 35 Open: horses under 14.2 ',
         description:
-          'X-RACEHORSE – to be shown under saddle. Must have been in training or raced. Open to racehorses and trotting horses.',
+          'Judge: Ms Jill McGuiggan<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472700" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Class xx: Standard Bred',
+        title: 'Class 36 Open: horses over 14.2',
         description:
-          'STANDARD BRED – to be shown under saddle, Canter is optional. <span>Kindly Sponsored by Andie J Alcroft.</span>',
+          'Judge: Ms Jill McGuiggan<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472701" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:currency-exchange',
       },
     ]}
@@ -79,4 +93,28 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Features2>
+
+    <!-- CallToAction Widget *********** -->
+    <CallToAction
+    id="calltoaction"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Book your classes now',
+        href: 'https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050',
+        target: '_blank',
+        icon: 'tabler:download',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      <!-- Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span> -->
+      Equo Events Online booking system
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      A show management and entry system powered by Horse & Hound <br class="hidden md:inline" />Don't waste more time!
+      :P
+    </Fragment>
+  </CallToAction>
 </Layout>
