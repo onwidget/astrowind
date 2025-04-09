@@ -1,10 +1,12 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import { headerDataRings } from '~/navigation-rings';
 
-// import Hero from '~/components/widgets/Hero.astro';
-// import Note from '~/components/widgets/Note.astro';
+import Header from '~/components/widgets/Header.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+// import Hero from '~/components/widgets/Hero.astro';
+// import Note from '~/components/widgets/Note.astro';
 // import Steps from '~/components/widgets/Steps.astro';
 // import Content from '~/components/widgets/Content.astro';
 // import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
@@ -19,10 +21,15 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <!-- sub-navigation menu for rings-->
+  <Fragment slot="header">
+    <Header {...headerDataRings} isSticky showToggleTheme />
+  </Fragment>
+
   <!-- Features Widget *************** -->
 
   <Features
-    id="ring1"
+    id="ring"
     tagline="Ring 1"
     title="Working Hunter"
     subtitle="By the West of Scotland Working Hunter Academy"
@@ -42,7 +49,7 @@ const metadata = {
       {
         title: 'Prizes',
         description:
-          '- Rosettes to 6th place in each class, with a trophy for the overall winner of each class.<br />- Prize for Best Junior (Under 12)<br />- Prize for Best Veteran<br />- Trophies for extra Challenges; See Classes below<br />- Extra Challenge trophy, the "Hayborough Challenge Trophy" awarded; Kindly presented by Mrs Sally Gray',
+          '- Rosettes to 6th place in each class, with a trophy for the overall winner of each class.<br />- Prize for Best Junior (Under 12)<br />- Prize for Best Veteran<br />- Trophies for extra Challenges; See Classes below<br />- Extra Challenge trophy, the "Hyborough Challenge Trophy" awarded; Kindly presented by Mrs Sally Gray',
         icon: 'tabler:brand-tailwind',
       },
       {
@@ -204,53 +211,54 @@ const metadata = {
   <!-- Features2 Widget ************** -->
 
   <Features2
+    id="classes"
     title="Classes"
     tagline="Working Hunter"
     subtitle="Classes start at 09:00. All classes are in Ring 1<br />Entry per class: £12 online, £15 on the day. £5 First Aid cover per entrant<br /> Prize for Best Junior (Under 12)<br /> Prize for Best Veteran<br />"
     items={[
       {
         title: 'Class 11: Working Hunter: Starting cross poles',
-        description: '<a href="https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050" target="_blank" class="text-blue-900">Book Online</a>',
+        description: '<a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472689" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:template',
       },
       {
         title: 'Class 12: Working Hunter: 30cm',
-        description: '<a href="https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050" target="_blank" class="text-blue-900">Book Online</a>',
+        description: '<a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472690" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:gallery',
       },
       {
         title: 'Class 13: Working Hunter: 40cm',
-        description: '<a href="https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050" target="_blank" class="text-blue-900">Book Online</a>',
+        description: '<a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472691" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Class 14: Working Hunter: 50cm',
-        description: 'Championship Trophy: W. M. Townly Memorial Trophy Challenge<br /> <a href="https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050" target="_blank" class="text-blue-900">Book Online</a>',
+        description: 'Championship Trophy: W. M. Townly Memorial Trophy Challenge<br /> <a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472692" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Class 15: Working Hunter: 60cm',
-        description: 'Championship Trophy: The Morag Hay Memorial Trophy, awarded to the champion jumping over 60cm.<br /> <a href="https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050" target="_blank" class="text-blue-900">Book Online</a>',
+        description: 'Championship Trophy: The Morag Hay Memorial Trophy, awarded to the champion jumping over 60cm.<br /> <a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472693" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Class 16: Working Hunter: 70cm',
-        description: 'Championship Trophy: The Morag Hay Memorial Trophy, awarded to the champion jumping over 60cm.<br /><a href="https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050" target="_blank" class="text-blue-900">Book Online</a>',
+        description: 'Championship Trophy: The Morag Hay Memorial Trophy, awarded to the champion jumping over 60cm.<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472694" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:currency-exchange',
       },
       {
         title: 'Class 17: Working Hunter: 80cm',
-        description: 'Championship Trophy: The Morag Hay Memorial Trophy, awarded to the champion jumping over 60cm.<br /><a href="https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050" target="_blank" class="text-blue-900">Book Online</a>',
+        description: 'Championship Trophy: The Morag Hay Memorial Trophy, awarded to the champion jumping over 60cm.<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472695" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:template',
       },
       {
         title: 'Class 18: Working Hunter: 90cm',
-        description: 'Championship Trophy: The Morag Hay Memorial Trophy, awarded to the champion jumping over 60cm.<br /><a href="https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050" target="_blank" class="text-blue-900">Book Online</a>',
+        description: 'Championship Trophy: The Morag Hay Memorial Trophy, awarded to the champion jumping over 60cm.<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473099" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:gallery',
       },
       {
         title: 'Class 19: Working Hunter: 100cm',
-        description: 'Championship Trophy: The Morag Hay Memorial Trophy, awarded to the champion jumping over 60cm.<br /><a href="https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050" target="_blank" class="text-blue-900">Book Online</a>',
+        description: 'Championship Trophy: The Morag Hay Memorial Trophy, awarded to the champion jumping over 60cm.<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473100" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
 ]}
@@ -325,6 +333,7 @@ const metadata = {
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
+    id="calltoaction"
     actions={[
       {
         variant: 'primary',

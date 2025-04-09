@@ -1,6 +1,8 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import  { headerDataRings } from '~/navigation-rings';
 
+import Header from '~/components/widgets/Header.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
@@ -12,10 +14,15 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Features Widget *************** -->
 
+    <!-- sub-navigation menu for rings-->
+    <Fragment slot="header">
+      <Header {...headerDataRings} isSticky showToggleTheme />
+    </Fragment>
+
+  <!-- Features Widget *************** -->
   <Features
-    id="ring2"
+    id="ring"
     tagline="Ring 2"
     title="Showing Ring"
     subtitle="A variety of classes are available, from Lead Rein to Concours du Elegance. The show is open to all breeds and types of horse and pony."
@@ -38,46 +45,47 @@ const metadata = {
   <!-- Features2 Widget ************** -->
 
   <Features2
+    id="classes"
     title="Classes"
     subtitle="Classes start at 09:00. All classes are in Ring 2<br />Entry per class: £12 online, £15 on the day. £5 First Aid cover per entrant"
     tagline="Components"
     items={[
       {
         title: 'Class 21: Riding Club Equine: Open, over 14.2',
-        description: 'Judge: Ms Denise Smith<br />Prizes: Obstacle course: Competitors will need to negotiate a small jump and a gate. A mounting block is provided for those who need to dismount for the gate.',
+        description: 'Judge: Ms Denise Smith<br />Prizes: Obstacle course: Competitors will need to negotiate a small jump and a gate. A mounting block is provided for those who need to dismount for the gate.<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472702" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:template',
       },
       {
         title: 'Class 22: Ridden Hunter: Open, over 14.2 ',
-        description: 'Class will be split into Light and Heavy if entries permit.<br />PLEASE state Light or Heavy on your entry',
+        description: 'Class will be split into Light and Heavy if entries permit.<br />PLEASE state Light or Heavy on your entry<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472703" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:gallery',
       },
       {
         title: 'Class 23: Best Turned Out',
-        description: 'Prizes: Winners Trophy: The Mary Lockhart PerpetualTrophy',
+        description: 'Prizes: Winners Trophy: The Mary Lockhart PerpetualTrophy<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472704" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Class 24: Concours du Elegance: Any height',
-        description: 'In hand or ridden<br />Class will be split into In hand and Mounted if entries permit.<br />PLEASE state In hand or Mounted on your entry',
+        description: 'In hand or ridden<br />Class will be split into In hand and Mounted if entries permit.<br />PLEASE state In hand or Mounted on your entry<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472705" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Class 25: Lead Rein & Thelwell type pony',
         description:
-          'Judge: Mr Tom Best',
+          'Judge: Mr Tom Best<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472706" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Class 26: Mountain & Moorland: In Hand',
         description:
-          'Judge: Mr Tom Best<br />Prizes: All 1st & 2nd prize winners of M&M of small ponies will go forward for the Kerr Billy Trophy<br />Class will be split into Mountain and Moorland if entries permit.<br />PLEASE state Mountain or Moorland on your entry',
+          'Judge: Mr Tom Best<br />Prizes: All 1st & 2nd prize winners of M&M of small ponies will go forward for the Kerr Billy Trophy<br />Class will be split into Mountain and Moorland if entries permit.<br />PLEASE state Mountain or Moorland on your entry<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472707" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:currency-exchange',
       },
       {
         title: 'Class 27: Mountain & Moorland: Ridden',
         description:
-          'Judge: Mr Tom Best<br />Prizes: All 1st & 2nd prize winners of M&M of small ponies will go forward for the Kerr Billy Trophy<br />Class will be split into Mountain and Moorland if entries permit.<br />PLEASE state Mountain or Moorland on your entry',
+          'Judge: Mr Tom Best<br />Prizes: All 1st & 2nd prize winners of M&M of small ponies will go forward for the Kerr Billy Trophy<br />Class will be split into Mountain and Moorland if entries permit.<br />PLEASE state Mountain or Moorland on your entry<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472708" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:currency-exchange',
       },
     ]}
@@ -90,6 +98,7 @@ const metadata = {
   <!-- CallToAction Widget *********** -->
 
     <CallToAction
+    id="calltoaction"
     actions={[
       {
         variant: 'primary',
