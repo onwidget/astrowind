@@ -45,7 +45,7 @@ the Secretary but at an increased entry fee.
 ## 4 Protests or complaints
 
 No protest or complaint can be accepted after the Day of the Show. A protest or complaint must be made in
-writing and the sum of £10 must be deposited with the Secretary and will be forfeited if the dipute is not upheld.
+writing and the sum of £10 must be deposited with the Secretary and will be forfeited if the dispute is not upheld.
 
 ## 5 Jurisdiction
 
