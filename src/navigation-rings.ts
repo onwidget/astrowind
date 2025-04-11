@@ -66,10 +66,6 @@ export const headerDataRings = {
       text: 'Info',
       href: getPermalink('/info'),
       links: [
-        // {
-        //   text: 'Features (Anchor Link)',
-        //   href: getPermalink('/#features'),
-        // },
         {
           text: 'Show Programmes',
           href: getPermalink('/info/programmes'),
@@ -78,10 +74,6 @@ export const headerDataRings = {
           text: 'Showground Maps',
           href: getPermalink('/info/showground'),
         },
-        // {
-        //   text: 'Pricing',
-        //   href: getPermalink('/pricing'),
-        // },
         {
           text: 'About Us',
           href: getPermalink('/about'),
@@ -94,10 +86,6 @@ export const headerDataRings = {
           text: 'Rules & Regulations',
           href: getPermalink('/rules'),
         },
-        // {
-        //   text: 'Privacy policy',
-        //   href: getPermalink('/privacy'),
-        // },
       ],
     },
     {
@@ -112,91 +100,8 @@ export const headerDataRings = {
       text: 'Book Online',
       href: '#calltoaction',
     },
-
-    // {
-    //   text: 'Home Alts',
-    //   links: [
-    //     {
-    //       text: 'SaaS',
-    //       href: getPermalink('/homes/saas'),
-    //     },
-    //     {
-    //       text: 'Startup',
-    //       href: getPermalink('/homes/startup'),
-    //     },
-    //     {
-    //       text: 'Mobile App',
-    //       href: getPermalink('/homes/mobile-app'),
-    //     },
-    //     {
-    //       text: 'Personal',
-    //       href: getPermalink('/homes/personal'),
-    //     },
-    //   ],
-    // },
-
-    // {
-    //   text: 'Landing',
-    //   links: [
-    //     {
-    //       text: 'Lead Generation',
-    //       href: getPermalink('/landing/lead-generation'),
-    //     },
-    //     {
-    //       text: 'Long-form Sales',
-    //       href: getPermalink('/landing/sales'),
-    //     },
-    //     {
-    //       text: 'Click-Through',
-    //       href: getPermalink('/landing/click-through'),
-    //     },
-    //     {
-    //       text: 'Product Details (or Services)',
-    //       href: getPermalink('/landing/product'),
-    //     },
-    //     {
-    //       text: 'Coming Soon or Pre-Launch',
-    //       href: getPermalink('/landing/pre-launch'),
-    //     },
-    //     {
-    //       text: 'Subscription',
-    //       href: getPermalink('/landing/subscription'),
-    //     },
-    //   ],
-    // },
-
-    // {
-    //   text: 'Blog',
-    //   links: [
-    //     {
-    //       text: 'Blog List',
-    //       href: getBlogPermalink(),
-    //     },
-    //     {
-    //       text: 'Article',
-    //       href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
-    //     },
-    //     {
-    //       text: 'Article (with MDX)',
-    //       href: getPermalink('markdown-elements-demo-post', 'post'),
-    //     },
-    //     {
-    //       text: 'Category Page',
-    //       href: getPermalink('tutorials', 'category'),
-    //     },
-    //     {
-    //       text: 'Tag Page',
-    //       href: getPermalink('astro', 'tag'),
-    //     },
-    //   ],
-    // },
-
-    // {
-    //   text: 'Widgets',
-    //   href: '#',
-    // },
   ],
-  actions: [{ text: 'Download Programme', href: '/pdfs/Dundonald-Show_equoevents.pdf', target: '_blank' }],
+  actions: [{ text: 'Download Programme', href: '/pdfs/Dundonald-Show_equine.pdf', target: '_blank' }],
 };
 
 export const footerData = {
@@ -210,7 +115,7 @@ export const footerData = {
         { text: 'Ring 1: Working Hunter', href: '/rings/ring1' },
         { text: 'Ring 2: Equine Show Ring', href: '/rings/ring2' },
         { text: 'Ring 3: Hazards', href: '/rings/ring3' },
-        { text: 'Ring 4: Clear Round', href: '/rings/ring4' },
+        { text: 'Ring 4: Show Jumping', href: '/rings/ring4' },
         { text: 'Ring D1: Canine Any Variety', href: '/rings/ringd1' },
         { text: 'Ring D2: Canine Best of', href: '/rings/ringd2' },
       ],

@@ -220,7 +220,7 @@ export const footerData = {
         { text: 'Ring 1: Working Hunter', href: '/rings/ring1' },
         { text: 'Ring 2: Equine Show Ring', href: '/rings/ring2' },
         { text: 'Ring 3: Hazards', href: '/rings/ring3' },
-        { text: 'Ring 4: Clear Round', href: '/rings/ring4' },
+        { text: 'Ring 4: Show Jumping', href: '/rings/ring4' },
         { text: 'Ring D1: Canine Any Variety', href: '/rings/ringd1' },
         { text: 'Ring D2: Canine Best of', href: '/rings/ringd2' },
       ],

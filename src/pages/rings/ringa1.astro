@@ -1,8 +1,11 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import  { headerDataRings } from '~/navigation-rings';
 
+import Header from '~/components/widgets/Header.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Dundonald Farmers Society 2025 Open Show',
@@ -11,24 +14,40 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Features Widget *************** -->
+  <!-- sub-navigation menu for rings-->
+  <Fragment slot="header">
+    <Header {...headerDataRings} isSticky showToggleTheme />
+  </Fragment>
 
+  <!-- Features Widget *************** -->
   <Features
-    id="ring2"
+    id="ring"
     tagline="Ring A1"
     title="Cattle"
-    subtitle="T O _ B E _ C O M P L E T E D"
+    subtitle="Cattle showing at an agricultural show involves exhibiting and judging cattle based on specific breed standards. The process includes selecting an animal with good conformation, body condition, and movement, and then preparing it for the show by ensuring it meets breed-specific standards for color, size, and other traits. Proper halter breaking, nutrition, and daily care are crucial for success. During the show, exhibitors must present their cattle effectively using techniques such as setting up the animal's position with a show stick to highlight its strengths and minimize weaknesses. Good sportsmanship is essential, and exhibitors must be prepared to accept both victories and losses gracefully"
     items={[
       {
-        title: 'Events & Prizes',
+        title: 'Events',
         description:
-          'Starting at cross poles and working up, throught out the day, to 1 metre plus. Rosettes to 6th place in each class, with a trophy for the overall winner of each class.',
+          'A variety of classes for Holstein Friesian, Ayrshire & other dairy breeds and beef cattle.',
         icon: 'tabler:brand-tailwind',
       },
       {
-        title: 'Courses',
+        title: 'Entries',
         description:
-          'Course generously built and judged by the West of Scotland Working Hunter Academy & Mr David Picken & Associates',
+        'Entries to be booked at the ringside trailer on the day of the show, before the commencement of the judging.',
+        icon: 'tabler:components',
+      },
+      {
+        title: 'Prizes',
+        description:
+          '<span class="font-medium text-blue-700">❊</span> Prizes: 1st £6 :: 2nd £4 :: 3rd £2<br /><span class="font-medium text-blue-700">❊</span> SUPREME CATTLE CHAMPIONSHIP for the JAMES D. DONALD PERPETUAL TROPHY <br /><span class="font-medium text-blue-700">❊</span> Section Champions and Reserves: Championship & £50 Prize money donated by <a href="https://thomasmurrayagri.co.uk/" target="_blank" class="text-blue-900">Thomas Murray Agricultural Engineers</a><br /><span class="font-medium text-blue-700">❊</span> POINT CHAMPIONSHIP for the HUGH SMITH CUP Awarded to the exhibitor with most points in classes 1 to 20. Points for the first three places in the classes plus one extra point per animal shown by exhibitor. <br /><span class="font-medium text-blue-700">❊</span> Champion: Voucher kindly donated by <a href="https://www.scotmin.com/" target="_blank" class="text-blue-900">Scotmin Nutrition</a>',
+        icon: 'tabler:brand-tailwind',
+      },
+      {
+        title: 'Legislation',
+        description:
+          '<span class="font-medium text-blue-700">❊</span> Scottish Government Legislation - Any animal coming from a Scottish Holding must have a "negative" herd status for BVD or be individually tested negative for the BVD virus. Any animal from a "not negative" herd cannot move to a show unless it has been individually tested negative for the BVD virus.<br /><span class="font-medium text-blue-700">❊</span> We suggest you check the ScotEID website for more information. Therefore before any animal is unloaded in the Cattle and Sheep Section you will need to have their relevant documentation checked by Mrs. Robert Young at her secretarial office on the Showground.',
         icon: 'tabler:components',
       },
     ]}
@@ -37,40 +56,38 @@ const metadata = {
   <!-- Features2 Widget ************** -->
 
   <Features2
+    id="classes"
     title="Classes"
     subtitle="Classes start at 09:00"
-    tagline="Components"
+    tagline="Cattle"
     items={[
       {
-        title: 'Class xx: Small Hunter',
-        description: 'SMALL HUNTER, mare or gelding, four years old or over exceeding 148cm and not exceeding 158cm.',
+        title: 'Class 1: Holstein Friesian, Heifer in Milk or Calf ',
+        description: 'Judge: Mr Callum Bryson, Whiteflat Farm<br />Prizes: 1st £6 :: 2nd £4 :: 3rd £2',
         icon: 'flat-color-icons:template',
       },
       {
-        title: 'Class xx: Ridden Hunter',
-        description: 'RIDDEN HUNTER, mare or gelding, four years old or over exceeding 158cm.',
+        title: 'Class 3: Holstein Friesian, Cow in Milk or Calf ',
+        description: 'Judge: Mr Callum Bryson, Whiteflat Farm<br />Prizes: 1st £6 :: 2nd £4 :: 3rd £2',
         icon: 'flat-color-icons:gallery',
       },
       {
-        title: 'Class xx: Riding Horse',
-        description: 'RIDING HORSE, mare or gelding, four years old or over exceeding 148cm.',
+        title: 'Class 5: Holstein Friesian, Cow or Heifer bred by Exhibitor',
+        description: 'Judge: Mr Callum Bryson, Whiteflat Farm<br />Prizes: 1st £6 :: 2nd £4 :: 3rd £2',
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Class xx: Cob',
-        description: 'COB – Hogged or Traditional. Any Height',
+        title: 'Class 7: Holstein Friesian,  Pair of Animals shown in other Classes',
+        description: 'Judge: Mr Callum Bryson, Whiteflat Farm<br />Prizes: 1st £6 :: 2nd £4 :: 3rd £2',
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Class xx: X-Racehorse',
-        description:
-          'X-RACEHORSE – to be shown under saddle. Must have been in training or raced. Open to racehorses and trotting horses.',
-        icon: 'flat-color-icons:document',
+        title: 'Class 9: Holstein Friesian, Bull or Heifer Calf ',
+        description: '<span class="font-semibold">Born between 1st May and 31st October in the previous year</span><br />Judge: Mr Callum Bryson, Whiteflat Farm<br />Prizes: 1st £6 :: 2nd £4 :: 3rd £2',        icon: 'flat-color-icons:document',
       },
       {
-        title: 'Class xx: Standard Bred',
-        description:
-          'STANDARD BRED – to be shown under saddle, Canter is optional. <span>Kindly Sponsored by Andie J Alcroft.</span>',
+        title: 'Class 11: Holstein Friesian, Bull or Heifer Calf',
+        description: '<span class="font-semibold">Born on or after 1st November in the previous year<br />Leaders to be under 14 years</span><br /> Judge: Mr Callum Bryson, Whiteflat <br />Prizes: 1st £6 :: 2nd £4 :: 3rd £2',
         icon: 'flat-color-icons:currency-exchange',
       },
     ]}
@@ -79,4 +96,29 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Features2>
+
+    <!-- CallToAction Widget *********** -->
+
+    <CallToAction
+    id="calltoaction"
+    actions={[
+      // {
+      //   variant: 'primary',
+      //   text: 'Book your classes now',
+      //   href: 'https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050',
+      //   target: '_blank',
+      //   icon: 'tabler:link',
+      // },
+    ]}
+  >
+    <Fragment slot="title">
+      <!-- Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span> -->
+      Entries to be booked at the ringside trailer
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      on the day of the show, before the commencement of the judging.
+    </Fragment>
+  </CallToAction>
+
 </Layout>
