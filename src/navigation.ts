@@ -206,7 +206,7 @@ export const headerData = {
     //   href: '#',
     // },
   ],
-  actions: [{ text: 'Download Programme', href: '/pdfs/Dundonald-Show_equoevents.pdf', target: '_blank' }],
+  actions: [{ text: 'Download Programme', href: '/pdfs/Dundonald-Show_equine.pdf', target: '_blank' }],
 };
 
 export const footerData = {
