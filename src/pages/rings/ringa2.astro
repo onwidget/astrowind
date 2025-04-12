@@ -1,8 +1,11 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import  { headerDataRings } from '~/navigation-rings';
 
+import Header from '~/components/widgets/Header.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'Dundonald Farmers Society 2025 Open Show',
@@ -11,67 +14,76 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Features Widget *************** -->
+  <!-- sub-navigation menu for rings-->
+  <Fragment slot="header">
+    <Header {...headerDataRings} isSticky showToggleTheme />
+  </Fragment>
 
+  <!-- Features Widget *************** -->
   <Features
-    id="ring2"
+    id="ring"
     tagline="Ring A2"
     title="Sheep"
-    subtitle="T O _ B E _ C O M P L E T E D"
+    subtitle="<span class='font-semibold'>All classes kindly sponsored by <a href='https://hillhousequarrygroup.co.uk/' target='_blank' class='text-blue-900'>Hillhouse Group</a></span>"
     items={[
       {
-        title: 'Events & Prizes',
+        title: 'Events',
         description:
-          'Starting at cross poles and working up, throught out the day, to 1 metre plus. Rosettes to 6th place in each class, with a trophy for the overall winner of each class.',
+          '<span class="font-medium text-blue-700">❊</span> A variety of showing classes for locally bred sheep breeds.<br /><span class="font-medium text-blue-700">❊</span> Juding will commence following the Cattle classes.',
         icon: 'tabler:brand-tailwind',
       },
       {
-        title: 'Courses',
+        title: 'Entries',
         description:
-          'Course generously built and judged by the West of Scotland Working Hunter Academy & Mr David Picken & Associates',
+        '<span class="font-medium text-blue-700">❊</span> Entries to be booked at the ringside trailer on the day of the show, before the commencement of the judging.<br /><span class="font-medium text-blue-700">❊</span> Individual Animals may only be entered in one class',
         icon: 'tabler:components',
+      },
+      {
+        title: 'Prizes',
+        description:
+          '<span class="font-medium text-blue-700">❊</span> Prizes: 1st £6 :: 2nd £4 :: 3rd £2<br /><span class="font-medium text-blue-700">❊</span> Section Champion: £20',
+        icon: 'tabler:trophy',
+      },
+      {
+        title: 'Legislation',
+        description:
+          '<span class="font-medium text-blue-700">❊</span> If entries come from M.V. Accredited flock, stock should be accompanied by a fully completed valid Green SAC Certificate.<br  /><span class="font-medium text-blue-700">❊</span> The sheep steward must be notified so that any regulations of the sheep and goat health scheme can be complied with.<br /><span class="font-medium text-blue-700">❊</span> A Scrapie approved section will be available for Scrapie Monitored Scheme (SMS) exhibitors. Scrapie monitored Certificate of Registration must be produced before admission to the Showfield.<br />',
+        icon: 'tabler:books',
       },
     ]}
   />
 
-  <!-- Features2 Widget ************** -->
-
+  <!-- Features2 Widget: Suffolk Sheep ************** -->
   <Features2
-    title="Classes"
-    subtitle="Classes start at 09:00"
-    tagline="Components"
+  id="classes"
+    title="Classes for Suffolk Sheep"
+    subtitle="Classes start at 10:00 All classes are in Ring A1<br />Entry per class: £3 on the day<br />Prizes for all classes: 1st £6 :: 2nd £4 :: 3rd £2<br />Section Champion: £20<br /><span class='font-semibold'>All classes kindly sponsored by <a href='https://hillhousequarrygroup.co.uk/' target='_blank' class='text-blue-900'>Hillhouse Group</a></span>"
+    tagline="Suffolk Sheep"
     items={[
       {
-        title: 'Class xx: Small Hunter',
-        description: 'SMALL HUNTER, mare or gelding, four years old or over exceeding 148cm and not exceeding 158cm.',
+        title: 'Class 21: Suffolk Sheep - Tup',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
         icon: 'flat-color-icons:template',
       },
       {
-        title: 'Class xx: Ridden Hunter',
-        description: 'RIDDEN HUNTER, mare or gelding, four years old or over exceeding 158cm.',
-        icon: 'flat-color-icons:gallery',
+        title: 'Class 22: Suffolk Sheep - Ewe',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
       },
       {
-        title: 'Class xx: Riding Horse',
-        description: 'RIDING HORSE, mare or gelding, four years old or over exceeding 148cm.',
-        icon: 'flat-color-icons:document',
+        title: 'Class 23: Suffolk Sheep - Ewe Hogg',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
       },
       {
-        title: 'Class xx: Cob',
-        description: 'COB – Hogged or Traditional. Any Height',
-        icon: 'flat-color-icons:document',
+        title: 'Class 24: Suffolk Sheep - Ewe Lamb',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
       },
       {
-        title: 'Class xx: X-Racehorse',
-        description:
-          'X-RACEHORSE – to be shown under saddle. Must have been in training or raced. Open to racehorses and trotting horses.',
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Class xx: Standard Bred',
-        description:
-          'STANDARD BRED – to be shown under saddle, Canter is optional. <span>Kindly Sponsored by Andie J Alcroft.</span>',
-        icon: 'flat-color-icons:currency-exchange',
+        title: 'Class 25: Suffolk Sheep - Tup Lamb',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
       },
     ]}
   >
@@ -79,4 +91,184 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Features2>
+
+  <!-- Features2 Widget: Blue Faced Leicester Sheep ************** -->
+  <Features2
+  id="classes"
+    title="Classes for Blue Faced Leicester Sheep"
+    subtitle="Classes start at 10:00 All classes are in Ring A1<br />Entry per class: £3 on the day<br />Prizes for all classes: 1st £6 :: 2nd £4 :: 3rd £2<br />Section Champion: £20<br /><span class='font-semibold'>All classes kindly sponsored by <a href='https://hillhousequarrygroup.co.uk/' target='_blank' class='text-blue-900'>Hillhouse Group</a></span>"
+    tagline="Blue Faced Leicester Sheep"
+    items={[
+      {
+        title: 'Class 26: Blue Faced Leicester Sheep - Tup',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 27: Blue Faced Leicester Sheep - Ewe',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 28: Blue Faced Leicester Sheep - Ewe Hogg',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 29: Blue Faced Leicester Sheep - Ewe Lamb',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 30: Blue Faced Leicester Sheep - Tup Lamb',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Features2 Widget: Texel Sheep ************** -->
+  <Features2
+  id="classes"
+    title="Classes for Texel Sheep"
+    subtitle="Classes start at 10:00 All classes are in Ring A1<br />Entry per class: £3 on the day<br />Prizes for all classes: 1st £6 :: 2nd £4 :: 3rd £2<br />Section Champion: £20<br /><span class='font-semibold'>All classes kindly sponsored by <a href='https://hillhousequarrygroup.co.uk/' target='_blank' class='text-blue-900'>Hillhouse Group</a></span>"
+    tagline="Texel Sheep"
+    items={[
+      {
+        title: 'Class 41: Texel Sheep - Tup',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 42: Texel Sheep - Ewe',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 43: Texel Sheep - Ewe Hogg',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 44: Texel Sheep - Ewe Lamb',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 45: Texel Sheep - Tup Lamb',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Features2 Widget: Continental Sheep ************** -->
+  <Features2
+  id="classes"
+    title="Classes for Continental Sheep"
+    subtitle="Classes start at 10:00 All classes are in Ring A1<br />Entry per class: £3 on the day<br />Prizes for all classes: 1st £6 :: 2nd £4 :: 3rd £2<br />Section Champion: £20<br /><span class='font-semibold'>All classes kindly sponsored by <a href='https://hillhousequarrygroup.co.uk/' target='_blank' class='text-blue-900'>Hillhouse Group</a></span>"
+    tagline="Continental Sheep"
+    items={[
+      {
+        title: 'Class 36: Continental Sheep - Tup',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 37: Continental Sheep - Ewe',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 38: Continental Sheep - Ewe Hogg',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 39: Continental Sheep - Ewe Lamb',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 40: Continental Sheep - Tup Lamb',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Features2 Widget: Any Other Native Breed ************** -->
+  <Features2
+  id="classes"
+    title="Classes for Any Other Native Breed"
+    subtitle="Classes start at 10:00 All classes are in Ring A1<br />Entry per class: £3 on the day<br />Prizes for all classes: 1st £6 :: 2nd £4 :: 3rd £2<br />Section Champion: £20<br /><span class='font-semibold'>All classes kindly sponsored by <a href='https://hillhousequarrygroup.co.uk/' target='_blank' class='text-blue-900'>Hillhouse Group</a></span>"
+    tagline="Any Other Native Breed"
+    items={[
+      {
+        title: 'Class 31: Any Other Native Breed - Tup',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 32: Any Other Native Breed - Ewe',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 33: Any Other Native Breed - Ewe Hogg',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 34: Any Other Native Breed - Ewe Lamb',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 35: Any Other Native Breed - Tup Lamb',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+      <!-- CallToAction Widget *********** -->
+      <CallToAction
+      id="calltoaction"
+      actions={[
+        // {
+        //   variant: 'primary',
+        //   text: 'Book your classes now',
+        //   href: 'https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050',
+        //   target: '_blank',
+        //   icon: 'tabler:link',
+        // },
+      ]}
+    >
+      <Fragment slot="title">
+        <!-- Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span> -->
+        Entries to be booked at the ringside trailer
+      </Fragment>
+
+      <Fragment slot="subtitle">
+        on the day of the show, before the commencement of the judging.
+      </Fragment>
+    </CallToAction>
+
 </Layout>
