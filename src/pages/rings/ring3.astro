@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import  { headerDataRings } from '~/navigation-rings';
+import { headerDataRings } from '~/navigation-rings';
 
 import Header from '~/components/widgets/Header.astro';
 import Features from '~/components/widgets/Features.astro';
@@ -11,13 +11,18 @@ const metadata = {
   title: 'Dundonald Farmers Society 2025 Open Show',
   ignoreTitleTemplate: true,
 };
+
+const showBookingOption = true; // Set to true to show "Book Online", false to hide it
+const showClasses = 'basic'; // Set to basic (default), or ring name to show the appropriate classes menus
+
+// Pass the flag to headerDataRings function
+const navigationData = headerDataRings(showBookingOption, showClasses);
 ---
 
 <Layout metadata={metadata}>
-
   <!-- sub-navigation menu for rings-->
   <Fragment slot="header">
-    <Header {...headerDataRings} isSticky showToggleTheme />
+    <Header {...navigationData} isSticky showToggleTheme />
   </Fragment>
 
   <!-- Features Widget *************** -->
@@ -36,7 +41,7 @@ const metadata = {
       {
         title: 'Courses',
         description:
-        'Course generously built and judged by Julie Stewart & Associates of <a href="https://kilmarnockequestrian.scot/" target="_blank" class="text-blue-900">Kilmarnock Equestrian Centre</a>',
+          'Course generously built and judged by Julie Stewart & Associates of <a href="https://kilmarnockequestrian.scot/" target="_blank" class="text-blue-900">Kilmarnock Equestrian Centre</a>',
         icon: 'tabler:components',
       },
       {
@@ -50,29 +55,33 @@ const metadata = {
 
   <!-- Features2 Widget ************** -->
   <Features2
-  id="classes"
+    id="classes"
     title="Classes"
     subtitle="Classes start at 09:00. All classes are in Ring 3<br />Entry per class: £12 online, £15 on the day. £5 First Aid cover per entrant"
     tagline="Hazard & Obedience"
     items={[
       {
         title: 'Class 31 Novice: horses under 14.2 ',
-        description: 'Judge: Ms Jill McGuiggan<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472698" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: Ms Jill McGuiggan<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472698" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:template',
       },
       {
         title: 'Class 32 Novice: horses over 14.2',
-        description: 'Judge: Ms Jill McGuiggan<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472696" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: Ms Jill McGuiggan<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472696" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:gallery',
       },
       {
         title: 'Class 33 Intermediate: horses under 14.2 ',
-        description: 'Judge: Ms Jill McGuiggan<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472699" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: Ms Jill McGuiggan<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472699" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Class 34 Intermediate: horses over 14.2 ',
-        description: 'Judge: Ms Jill McGuiggan<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472697" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: Ms Jill McGuiggan<br />Prizes: TBC<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472697" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
@@ -94,8 +103,8 @@ const metadata = {
     </Fragment>
   </Features2>
 
-    <!-- CallToAction Widget *********** -->
-    <CallToAction
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
     id="calltoaction"
     actions={[
       {

@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import  { headerDataRings } from '~/navigation-rings';
+import { headerDataRings } from '~/navigation-rings';
 
 import Header from '~/components/widgets/Header.astro';
 import Features from '~/components/widgets/Features.astro';
@@ -11,16 +11,22 @@ const metadata = {
   title: 'Dundonald Farmers Society 2025 Open Show',
   ignoreTitleTemplate: true,
 };
+
+const showBookingOption = true; // Set to true to show "Book Online", false to hide it
+const showClasses = 'basic'; // Set to basic (default), or ring name to show the appropriate classes menus
+
+// Pass the flag to headerDataRings function
+const navigationData = headerDataRings(showBookingOption, showClasses);
 ---
 
 <Layout metadata={metadata}>
-
   <!-- sub-navigation menu for rings-->
   <Fragment slot="header">
-    <Header {...headerDataRings} isSticky showToggleTheme />
+    <Header {...navigationData} isSticky showToggleTheme />
   </Fragment>
 
-  <!-- Features Widget *************** -->  <Features
+  <!-- Features Widget *************** -->
+  <Features
     id="ring"
     tagline="Ring 5"
     title="Cyldesdale Horses"
@@ -34,8 +40,7 @@ const metadata = {
       },
       {
         title: 'Classes',
-        description:
-        'A ranges of classes from In-Hand and Ridden through to a Dray of Heavy Horses',
+        description: 'A ranges of classes from In-Hand and Ridden through to a Dray of Heavy Horses',
         icon: 'tabler:components',
       },
       {
@@ -56,54 +61,63 @@ const metadata = {
   <!-- Features2 Widget ************** -->
 
   <Features2
-  id="classes"
+    id="classes"
     title="Classes"
     subtitle="Classes start from 11:30. All classes are in Ring 5<br />Entry per class: £5 online, £5 on the day. £5 First Aid cover per entrant"
     tagline="Cyldesdale Horses"
     items={[
       {
         title: 'Class 51: Mare Three Years and Over',
-        description: 'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473112" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473112" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:template',
       },
       {
         title: 'Class 52: Gelding Three Years and Over',
-        description: 'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><span class="font-semibold">Class kindly sponsored by <a href="https://www.scotlee.co.uk/" target="_blank" class="text-blue-900">Scotlee Transport Services Ltd</a></span><br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473113" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><span class="font-semibold">Class kindly sponsored by <a href="https://www.scotlee.co.uk/" target="_blank" class="text-blue-900">Scotlee Transport Services Ltd</a></span><br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473113" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:gallery',
       },
       {
         title: 'Class 53: Gelding or Filly, over 1 year of age but not exceeding 2 years of age',
-        description: 'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473114" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473114" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Class 54: Gelding or Filly not exceeding 1 years of age',
-        description: 'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473126" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473126" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Class 55: Bred by exhibitor ',
-        description: 'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><span class="font-semibold">Class kindly sponsored by Helen Duncan</span><br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473138" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><span class="font-semibold">Class kindly sponsored by Helen Duncan</span><br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473138" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Class 56: Young Handlers Class',
-        description: 'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: Prizes: 1st £6 :: 2nd £5 :: 3rd £4 :: 4th £3 :: 5th £2 :: 6th £1<br /><span class="font-medium text-blue-700">❊</span> An engraved medal will be presented to the winning handler who, by the day of the show, has not already qualified.<br /><span class="font-medium text-blue-700">❊</span> That person will also receive a Young Handler qualifier rosette on the day of the show.<br /><span class="font-medium text-blue-700">❊</span> A merit rosette will be given to all entrants in the class.<br /><span class="font-medium text-blue-700">❊</span> The capabilities of the handler are to be assessed, not the animal being led.<br /><span class="font-semibold">The Young Handler Scheme and The Young Handler Final are generously sponsored by the James Bennett Fund.</span><br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473150" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: Prizes: 1st £6 :: 2nd £5 :: 3rd £4 :: 4th £3 :: 5th £2 :: 6th £1<br /><span class="font-medium text-blue-700">❊</span> An engraved medal will be presented to the winning handler who, by the day of the show, has not already qualified.<br /><span class="font-medium text-blue-700">❊</span> That person will also receive a Young Handler qualifier rosette on the day of the show.<br /><span class="font-medium text-blue-700">❊</span> A merit rosette will be given to all entrants in the class.<br /><span class="font-medium text-blue-700">❊</span> The capabilities of the handler are to be assessed, not the animal being led.<br /><span class="font-semibold">The Young Handler Scheme and The Young Handler Final are generously sponsored by the James Bennett Fund.</span><br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473150" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:currency-exchange',
       },
       {
         title: 'Class 57: Ridden Class for riders 14 years of age or older',
-        description: 'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><span class="font-medium text-blue-700">❊</span> Rider has to be 14 years of age or older.<br /><span class="font-medium text-blue-700">❊</span> To be judged as a ridden hunter class<br /><span class="font-semibold">Class kindly sponsored by <a href="https://www.scotlee.co.uk/" target="_blank" class="text-blue-900">Scotlee Transport Services Ltd</a></span><br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473162" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><span class="font-medium text-blue-700">❊</span> Rider has to be 14 years of age or older.<br /><span class="font-medium text-blue-700">❊</span> To be judged as a ridden hunter class<br /><span class="font-semibold">Class kindly sponsored by <a href="https://www.scotlee.co.uk/" target="_blank" class="text-blue-900">Scotlee Transport Services Ltd</a></span><br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473162" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Class 58: Single Heavy Horse driven to a Ladies Cart or Stallion Cart',
-        description: 'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473174" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473174" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Class 59: Dray of Heavy Horses',
-        description: 'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><span class="font-semibold">Class kindly sponsored by W.P. Hair</span><br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473175" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: Amanda Stewart, Hollinhillhead Farm<br />Prizes: 1st £10 :: 2nd £6 :: 3rd £4<br /><span class="font-semibold">Class kindly sponsored by W.P. Hair</span><br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=473175" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
     ]}
@@ -131,9 +145,7 @@ const metadata = {
       Equo Events Online booking system
     </Fragment>
     <Fragment slot="subtitle">
-      A show management and entry system powered by Horse & Hound <br />Don't waste more time!
-      :P
+      A show management and entry system powered by Horse & Hound <br />Don't waste more time! :P
     </Fragment>
   </CallToAction>
-
 </Layout>

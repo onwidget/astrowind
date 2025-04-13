@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import  { headerDataRings } from '~/navigation-rings';
+import { headerDataRings } from '~/navigation-rings';
 
 import Header from '~/components/widgets/Header.astro';
 import Features from '~/components/widgets/Features.astro';
@@ -11,12 +11,18 @@ const metadata = {
   title: 'Dundonald Farmers Society 2025 Open Show',
   ignoreTitleTemplate: true,
 };
+
+const showBookingOption = true; // Set to true to show "Book Online", false to hide it
+const showClasses = 'basic'; // Set to basic (default), or ring name to show the appropriate classes menus
+
+// Pass the flag to headerDataRings function
+const navigationData = headerDataRings(showBookingOption, showClasses);
 ---
 
 <Layout metadata={metadata}>
   <!-- sub-navigation menu for rings-->
   <Fragment slot="header">
-    <Header {...headerDataRings} isSticky showToggleTheme />
+    <Header {...navigationData} isSticky showToggleTheme />
   </Fragment>
 
   <!-- Features Widget *************** -->
@@ -35,7 +41,7 @@ const metadata = {
       {
         title: 'Entries',
         description:
-        '<span class="font-medium text-blue-700">❊</span> Entries to be booked at the ringside trailer on the day of the show, before the commencement of the judging.<br /><span class="font-medium text-blue-700">❊</span> Individual Animals may only be entered in one class',
+          '<span class="font-medium text-blue-700">❊</span> Entries to be booked at the ringside trailer on the day of the show, before the commencement of the judging.<br /><span class="font-medium text-blue-700">❊</span> Individual Animals may only be entered in one class',
         icon: 'tabler:components',
       },
       {
@@ -55,37 +61,37 @@ const metadata = {
 
   <!-- Features2 Widget: Suffolk Sheep ************** -->
   <Features2
-  id="classes"
-  title="Classes for Suffolk Sheep"
-  subtitle="Classes start at 10:00 All classes are in Ring A1<br />Entry per class: £3 on the day<br />Prizes for all classes: 1st £6 :: 2nd £4 :: 3rd £2<br />Section Champion: £20<br /><span class='font-semibold'>All classes kindly sponsored by <a href='https://hillhousequarrygroup.co.uk/' target='_blank' class='text-blue-900'>Hillhouse Group</a></span>"
-  tagline="Suffolk Sheep"
-  items={[
-    {
-      title: 'Class 21: Suffolk Sheep - Tup',
-      description: 'Judge: Kerry McDermid, South Boig Farm<br />',
-      icon: 'flat-color-icons:template',
-    },
-    {
-      title: 'Class 22: Suffolk Sheep - Ewe',
-      description: 'Judge: Kerry McDermid, South Boig Farm<br />',
-      icon: 'flat-color-icons:template',
-    },
-    {
-      title: 'Class 23: Suffolk Sheep - Ewe Hogg',
-      description: 'Judge: Kerry McDermid, South Boig Farm<br />',
-      icon: 'flat-color-icons:template',
-    },
-    {
-      title: 'Class 24: Suffolk Sheep - Ewe Lamb',
-      description: 'Judge: Kerry McDermid, South Boig Farm<br />',
-      icon: 'flat-color-icons:template',
-    },
-    {
-      title: 'Class 25: Suffolk Sheep - Tup Lamb',
-      description: 'Judge: Kerry McDermid, South Boig Farm<br />',
-      icon: 'flat-color-icons:template',
-    },
-  ]}
+    id="classes"
+    title="Classes for Suffolk Sheep"
+    subtitle="Classes start at 10:00 All classes are in Ring A1<br />Entry per class: £3 on the day<br />Prizes for all classes: 1st £6 :: 2nd £4 :: 3rd £2<br />Section Champion: £20<br /><span class='font-semibold'>All classes kindly sponsored by <a href='https://hillhousequarrygroup.co.uk/' target='_blank' class='text-blue-900'>Hillhouse Group</a></span>"
+    tagline="Suffolk Sheep"
+    items={[
+      {
+        title: 'Class 21: Suffolk Sheep - Tup',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 22: Suffolk Sheep - Ewe',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 23: Suffolk Sheep - Ewe Hogg',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 24: Suffolk Sheep - Ewe Lamb',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+      {
+        title: 'Class 25: Suffolk Sheep - Tup Lamb',
+        description: 'Judge: Kerry McDermid, South Boig Farm<br />',
+        icon: 'flat-color-icons:template',
+      },
+    ]}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -94,7 +100,7 @@ const metadata = {
 
   <!-- Features2 Widget: Blue Faced Leicester Sheep ************** -->
   <Features2
-  id="classes"
+    id="classes"
     title="Classes for Blue Faced Leicester Sheep"
     subtitle="Classes start at 10:00 All classes are in Ring A1<br />Entry per class: £3 on the day<br />Prizes for all classes: 1st £6 :: 2nd £4 :: 3rd £2<br />Section Champion: £20<br /><span class='font-semibold'>All classes kindly sponsored by <a href='https://hillhousequarrygroup.co.uk/' target='_blank' class='text-blue-900'>Hillhouse Group</a></span>"
     tagline="Blue Faced Leicester Sheep"
@@ -133,7 +139,7 @@ const metadata = {
 
   <!-- Features2 Widget: Texel Sheep ************** -->
   <Features2
-  id="classes"
+    id="classes"
     title="Classes for Texel Sheep"
     subtitle="Classes start at 10:00 All classes are in Ring A1<br />Entry per class: £3 on the day<br />Prizes for all classes: 1st £6 :: 2nd £4 :: 3rd £2<br />Section Champion: £20<br /><span class='font-semibold'>All classes kindly sponsored by <a href='https://hillhousequarrygroup.co.uk/' target='_blank' class='text-blue-900'>Hillhouse Group</a></span>"
     tagline="Texel Sheep"
@@ -172,7 +178,7 @@ const metadata = {
 
   <!-- Features2 Widget: Continental Sheep ************** -->
   <Features2
-  id="classes"
+    id="classes"
     title="Classes for Continental Sheep"
     subtitle="Classes start at 10:00 All classes are in Ring A1<br />Entry per class: £3 on the day<br />Prizes for all classes: 1st £6 :: 2nd £4 :: 3rd £2<br />Section Champion: £20<br /><span class='font-semibold'>All classes kindly sponsored by <a href='https://hillhousequarrygroup.co.uk/' target='_blank' class='text-blue-900'>Hillhouse Group</a></span>"
     tagline="Continental Sheep"
@@ -211,7 +217,7 @@ const metadata = {
 
   <!-- Features2 Widget: Any Other Native Breed ************** -->
   <Features2
-  id="classes"
+    id="classes"
     title="Classes for Any Other Native Breed"
     subtitle="Classes start at 10:00 All classes are in Ring A1<br />Entry per class: £3 on the day<br />Prizes for all classes: 1st £6 :: 2nd £4 :: 3rd £2<br />Section Champion: £20<br /><span class='font-semibold'>All classes kindly sponsored by <a href='https://hillhousequarrygroup.co.uk/' target='_blank' class='text-blue-900'>Hillhouse Group</a></span>"
     tagline="Any Other Native Breed"
@@ -248,27 +254,24 @@ const metadata = {
     </Fragment>
   </Features2>
 
-      <!-- CallToAction Widget *********** -->
-      <CallToAction
-      id="calltoaction"
-      actions={[
-        // {
-        //   variant: 'primary',
-        //   text: 'Book your classes now',
-        //   href: 'https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050',
-        //   target: '_blank',
-        //   icon: 'tabler:link',
-        // },
-      ]}
-    >
-      <Fragment slot="title">
-        <!-- Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span> -->
-        Entries to be booked at the ringside trailer
-      </Fragment>
+  <!-- CallToAction Widget *********** -->
+  <CallToAction
+    id="calltoaction"
+    actions={[
+      // {
+      //   variant: 'primary',
+      //   text: 'Book your classes now',
+      //   href: 'https://www.equoevents.co.uk/ViewEvent/ViewEventDetails/52050',
+      //   target: '_blank',
+      //   icon: 'tabler:link',
+      // },
+    ]}
+  >
+    <Fragment slot="title">
+      <!-- Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span> -->
+      Entries to be booked at the ringside trailer
+    </Fragment>
 
-      <Fragment slot="subtitle">
-        on the day of the show, before the commencement of the judging.
-      </Fragment>
-    </CallToAction>
-
+    <Fragment slot="subtitle"> on the day of the show, before the commencement of the judging. </Fragment>
+  </CallToAction>
 </Layout>

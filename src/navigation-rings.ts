@@ -10,7 +10,7 @@ export const headerDataRings = (showBookOnline: boolean = false, showClasses: st
       text: 'Classes',
       href: '#classes'
     },
-    ringd1: {
+    ringd: {
       text: 'Classes',
       href: '#classes',
       links: [

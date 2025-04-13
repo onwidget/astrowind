@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import  { headerDataRings } from '~/navigation-rings';
+import { headerDataRings } from '~/navigation-rings';
 
 import Header from '~/components/widgets/Header.astro';
 import Features from '~/components/widgets/Features.astro';
@@ -11,14 +11,19 @@ const metadata = {
   title: 'Dundonald Farmers Society 2025 Open Show',
   ignoreTitleTemplate: true,
 };
+
+const showBookingOption = true; // Set to true to show "Book Online", false to hide it
+const showClasses = 'basic'; // Set to basic (default), or ring name to show the appropriate classes menus
+
+// Pass the flag to headerDataRings function
+const navigationData = headerDataRings(showBookingOption, showClasses);
 ---
 
 <Layout metadata={metadata}>
-
-    <!-- sub-navigation menu for rings-->
-    <Fragment slot="header">
-      <Header {...headerDataRings} isSticky showToggleTheme />
-    </Fragment>
+  <!-- sub-navigation menu for rings-->
+  <Fragment slot="header">
+    <Header {...navigationData} isSticky showToggleTheme />
+  </Fragment>
 
   <!-- Features Widget *************** -->
   <Features
@@ -52,22 +57,26 @@ const metadata = {
     items={[
       {
         title: 'Class 21: Riding Club Equine: Open, over 14.2',
-        description: 'Judge: Ms Denise Smith<br />Prizes: TBC<br />Obstacle course: Competitors will need to negotiate a small jump and a gate. A mounting block is provided for those who need to dismount for the gate.<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472702" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: Ms Denise Smith<br />Prizes: TBC<br />Obstacle course: Competitors will need to negotiate a small jump and a gate. A mounting block is provided for those who need to dismount for the gate.<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472702" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:template',
       },
       {
         title: 'Class 22: Ridden Hunter: Open, over 14.2 ',
-        description: 'Judge: TBC<br />Prizes: TBC<br /><span class="font-medium text-blue-700">❊</span> Class will be split into Light and Heavy if entries permit.<br /><span class="font-medium text-blue-700">❊</span> PLEASE state Light or Heavy on your entry<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472703" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: TBC<br />Prizes: TBC<br /><span class="font-medium text-blue-700">❊</span> Class will be split into Light and Heavy if entries permit.<br /><span class="font-medium text-blue-700">❊</span> PLEASE state Light or Heavy on your entry<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472703" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:gallery',
       },
       {
         title: 'Class 23: Best Turned Out',
-        description: 'Judge: TBC<br />Prizes: Winners Trophy: The Mary Lockhart PerpetualTrophy<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472704" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: TBC<br />Prizes: Winners Trophy: The Mary Lockhart PerpetualTrophy<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472704" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
         title: 'Class 24: Concours du Elegance: Any height',
-        description: 'Judge: TBC<br />Prizes: TBC<br />In hand or ridden<br /><span class="font-medium text-blue-700">❊</span> Class will be split into In hand and Ridden if entries permit.<br /><span class="font-medium text-blue-700">❊</span> PLEASE state In hand or Ridden on your entry<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472705" target="_blank" class="text-blue-900">Book Online</a>',
+        description:
+          'Judge: TBC<br />Prizes: TBC<br />In hand or ridden<br /><span class="font-medium text-blue-700">❊</span> Class will be split into In hand and Ridden if entries permit.<br /><span class="font-medium text-blue-700">❊</span> PLEASE state In hand or Ridden on your entry<br /><a href="https://www.equoevents.co.uk/EnterEvent/EnterEvent/52050?eventClassId=472705" target="_blank" class="text-blue-900">Book Online</a>',
         icon: 'flat-color-icons:document',
       },
       {
@@ -96,7 +105,7 @@ const metadata = {
   </Features2>
 
   <!-- CallToAction Widget *********** -->
-    <CallToAction
+  <CallToAction
     id="calltoaction"
     actions={[
       {
