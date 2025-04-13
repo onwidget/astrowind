@@ -43,6 +43,10 @@ export default defineConfig({
           'voice-presentation',
           'business-contact',
           'database',
+          ],
+        'fluent': [
+          'animal-paw-print-24-regular',
+          'animal-dog-24-regular',
         ],
       },
     }),

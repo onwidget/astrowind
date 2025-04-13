@@ -1,9 +1,11 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import { headerDataRings } from '~/navigation-rings';
 
+import Header from '~/components/widgets/Header.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-
+import CallToAction from '~/components/widgets/CallToAction.astro';
 const metadata = {
   title: 'Dundonald Farmers Society 2025 Open Show',
   ignoreTitleTemplate: true,
@@ -11,67 +13,68 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Features Widget *************** -->
+  <!-- sub-navigation menu for rings-->
+  <Fragment slot="header">
+    <Header {...headerDataRings} isSticky showToggleTheme />
+  </Fragment>
 
+  <!-- Features Widget *************** -->
   <Features
-    id="ring2"
+    id="ring"
     tagline="Ring D1"
     title="Canine: Any variety"
-    subtitle="T O _ B E _ C O M P L E T E D"
+    subtitle="<span class='font-semibold'>All classes kindly sponsored by <a href='https://www.maggiesmuddymutts.co.uk/' target='_blank' class='text-blue-900'>Maggie`s Muddy Mutts</a></span>"
     items={[
       {
-        title: 'Events & Prizes',
-        description:
-          'Starting at cross poles and working up, throught out the day, to 1 metre plus. Rosettes to 6th place in each class, with a trophy for the overall winner of each class.',
+        title: 'Events',
+        description: 'A combination of deft demonstrations, Any Variety of hound and the Best Of the canine world',
         icon: 'tabler:brand-tailwind',
       },
       {
         title: 'Courses',
         description:
-          'Course generously built and judged by the West of Scotland Working Hunter Academy & Mr David Picken & Associates',
+          "Course generously built and judged by <a href='https://www.maggiesmuddymutts.co.uk/' target='_blank' class='text-blue-900'>Maggie`s Muddy Mutts</a>",
         icon: 'tabler:components',
+      },
+      {
+        title: 'Prizes',
+        description:
+          '<span class="font-medium text-blue-700">❊</span> Best in Show open to all 1st place winners<br /><span class="font-medium text-blue-700">❊</span> Prizes: 1st £5 :: 2nd £3 :: 3rd £2<br /><span class="font-medium text-blue-700">❊</span> Places 1st to 3rd with rosettes',
+        icon: 'tabler:trophy',
+      },
+      {
+        title: 'Regulations',
+        description:
+          '<span class="font-medium text-blue-700">❊</span> Held under Kennel Club Rules and Regulations<br  /><span class="font-medium text-blue-700">❊</span> Note: Dogs competing do not require to be registered at the Kennel Club.<br /><span class="font-medium text-blue-700">❊</span> <span class="font-semibold">All Pitbull type dogs must be on lead and muzzled at ALL times.</span>',
+        icon: 'tabler:books',
       },
     ]}
   />
 
-  <!-- Features2 Widget ************** -->
-
+  <!-- Features2 Widget: Demonstrations ************** -->
   <Features2
-    title="Classes"
-    subtitle="Classes start at 09:00"
-    tagline="Components"
+    id="classes"
+    title="Demonstrations"
+    subtitle="Demonstrations start at 10:30 in Rings D1 & D2"
+    tagline="Canines on show"
     items={[
       {
-        title: 'Class xx: Small Hunter',
-        description: 'SMALL HUNTER, mare or gelding, four years old or over exceeding 148cm and not exceeding 158cm.',
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Class xx: Ridden Hunter',
-        description: 'RIDDEN HUNTER, mare or gelding, four years old or over exceeding 158cm.',
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Class xx: Riding Horse',
-        description: 'RIDING HORSE, mare or gelding, four years old or over exceeding 148cm.',
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Class xx: Cob',
-        description: 'COB – Hogged or Traditional. Any Height',
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Class xx: X-Racehorse',
+        title: 'Flyball Demonstration',
         description:
-          'X-RACEHORSE – to be shown under saddle. Must have been in training or raced. Open to racehorses and trotting horses.',
-        icon: 'flat-color-icons:document',
+          '<span class="font-medium text-blue-700">❊</span> <span class="font-semibold">Start Time: 10:30</span><br />Flyball is a relay race for dogs where teams of four dogs compete against each other to complete a course as quickly as possible. Each dog must jump over a series of four hurdles, trigger a flyball box to release a ball, retrieve the ball, and then return over the hurdles to the start line. ',
+        icon: 'tabler:ball-tennis',
       },
       {
-        title: 'Class xx: Standard Bred',
+        title: 'Heelwork to music demonstration by Maggie and Skittles',
         description:
-          'STANDARD BRED – to be shown under saddle, Canter is optional. <span>Kindly Sponsored by Andie J Alcroft.</span>',
-        icon: 'flat-color-icons:currency-exchange',
+          '<span class="font-medium text-blue-700">❊</span> <span class="font-semibold">Start Time: 11:00</span><br />This fun to learn fast growing canine sport is fabulous for strengthening the bond between both owner and dog, and an expression of that partnership through dog training, music and choreography.',
+        icon: 'tabler:music',
+      },
+      {
+        title: 'Flyball Demonstration',
+        description:
+          '<span class="font-medium text-blue-700">❊</span> <span class="font-semibold">Start Time: 11:30</span><br />Flyball is a relay race for dogs where teams of four dogs compete against each other to complete a course as quickly as possible. Each dog must jump over a series of four hurdles, trigger a flyball box to release a ball, retrieve the ball, and then return over the hurdles to the start line. ',
+        icon: 'tabler:ball-tennis',
       },
     ]}
   >
@@ -79,4 +82,44 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Features2>
+
+  <!-- Features2 Widget ************** -->
+  <Features2
+    id="classes"
+    title="Classes"
+    subtitle="Classes start at 12:30 All classes are in Ring D1<br />Entry per class: £2 on the day<br />Prizes for all classes: 1st £5 :: 2nd £3 :: 3rd £2<br /><span class='font-medium text-blue-700;'>❊</span> Best in Show open to all 1st place winners<br /><span class='font-semibold'>All classes kindly sponsored by <a href='https://www.maggiesmuddymutts.co.uk/' target='_blank' class='text-blue-900'>Maggie`s Muddy Mutts</a></span>"
+    tagline="Any Variety of Canine"
+    items={[
+      {
+        title: 'Any Variety Gundog',
+        description: 'Judge: TBC',
+        icon: 'fluent:animal-dog-24-regular',
+      },
+      {
+        title: 'Any variety working or Pastoral',
+        description: 'Judge: TBC',
+        icon: 'fluent:animal-paw-print-24-regular',
+      },
+      {
+        title: 'Any variety terrier or toy',
+        description: 'Judge: TBC',
+        icon: 'fluent:animal-dog-24-regular',
+      },
+      {
+        title: 'Any variety utility or hound',
+        description: 'Judge: TBC',
+        icon: 'fluent:animal-paw-print-24-regular',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- CallToAction Widget *********** -->
+  <CallToAction id="calltoaction" actions={[]}>
+    <Fragment slot="title"> Entries to be booked at the ringside trailer </Fragment>
+    <Fragment slot="subtitle"> on the day of the show, before the commencement of the judging. </Fragment>
+  </CallToAction>
 </Layout>
