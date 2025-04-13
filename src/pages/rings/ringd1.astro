@@ -10,12 +10,18 @@ const metadata = {
   title: 'Dundonald Farmers Society 2025 Open Show',
   ignoreTitleTemplate: true,
 };
+
+const showBookingOption = true; // Set to true to show "Book Online", false to hide it
+const showClasses = "ringd1"; // Set to basic (default), or ring name to show the appropriate classes menus
+
+// Pass the flag to headerDataRings function
+const navigationData = headerDataRings(showBookingOption, showClasses);
 ---
 
 <Layout metadata={metadata}>
   <!-- sub-navigation menu for rings-->
   <Fragment slot="header">
-    <Header {...headerDataRings} isSticky showToggleTheme />
+    <Header {...navigationData} isSticky showToggleTheme />
   </Fragment>
 
   <!-- Features Widget *************** -->
@@ -53,7 +59,7 @@ const metadata = {
 
   <!-- Features2 Widget: Demonstrations ************** -->
   <Features2
-    id="classes"
+    id="demonstrations"
     title="Demonstrations"
     subtitle="Demonstrations start at 10:30 in Rings D1 & D2"
     tagline="Canines on show"

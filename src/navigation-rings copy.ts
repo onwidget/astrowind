@@ -1,34 +1,8 @@
 // import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 import { getPermalink } from './utils/permalinks';
 
-// Convert headerDataRings from an object to a function that accepts a showBookOnline parameter
-export const headerDataRings = (showBookOnline: boolean = false, showClasses: string = "basic") => {
-
-  // Define class menu configurations
-  const classMenuOptions = {
-    basic: {
-      text: 'Classes',
-      href: '#classes'
-    },
-    ringd1: {
-      text: 'Classes',
-      href: '#classes',
-      links: [
-        {
-          text: 'Demonstrations',
-          href: '#demonstrations',
-        },
-        {
-          text: 'Classes',
-          href: '#classes'
-            },
-      ]
-    },
-    // Add more options as needed
-  };
-
-  // Create the base links array
-  const links = [
+export const headerDataRings = {
+  links: [
     {
       text: 'Show Rings',
       href: getPermalink('/rings'),
@@ -60,8 +34,7 @@ export const headerDataRings = (showBookOnline: boolean = false, showClasses: st
         {
           text: 'Ring 3: Hazards & Obedience',
           href: getPermalink('/rings/ring3'),
-        },
-        {
+        }, {
           text: 'Ring 4: Show Jumping',
           href: getPermalink('/rings/ring4'),
         },
@@ -71,6 +44,24 @@ export const headerDataRings = (showBookOnline: boolean = false, showClasses: st
         },
       ],
     },
+    // {
+    //   text: 'Sponsors',
+    //   href: getPermalink('/sponsors'),
+    //   links: [
+    //     {
+    //       text: 'Platinum Sponsors',
+    //       href: getPermalink('/sponsors/platinum'),
+    //     },
+    //     {
+    //       text: 'Gold Sponsors',
+    //       href: getPermalink('/sponsors/gold'),
+    //     },
+    //     {
+    //       text: 'Silver Sponsors',
+    //       href: getPermalink('/sponsors/silver'),
+    //     },
+    //   ],
+    // },
     {
       text: 'Info',
       href: getPermalink('/info'),
@@ -101,44 +92,17 @@ export const headerDataRings = (showBookOnline: boolean = false, showClasses: st
       text: 'Ring Details',
       href: '#ring',
     },
-  ];
-
-  // Conditionally add the appropriate Classes menu item
-  if (showClasses && classMenuOptions[showClasses]) {
-    links.push(classMenuOptions[showClasses]);
-  }
-
-  // Conditionally add the "Book Online" menu item if showBookOnline is true
-  if (showBookOnline) {
-    links.push({
+    {
+      text: 'Classes',
+      href: '#classes',
+    },
+    {
       text: 'Book Online',
       href: '#calltoaction',
-    });
-  }
-
-  return {
-    links,
-    actions: [{ text: 'Download Programme', href: '/pdfs/Dundonald-Show_equine.pdf', target: '_blank' }],
-  };
+    },
+  ],
+  actions: [{ text: 'Download Programme', href: '/pdfs/Dundonald-Show_equine.pdf', target: '_blank' }],
 };
-// {
-//   text: 'Sponsors',
-//   href: getPermalink('/sponsors'),
-//   links: [
-//     {
-//       text: 'Platinum Sponsors',
-//       href: getPermalink('/sponsors/platinum'),
-//     },
-//     {
-//       text: 'Gold Sponsors',
-//       href: getPermalink('/sponsors/gold'),
-//     },
-//     {
-//       text: 'Silver Sponsors',
-//       href: getPermalink('/sponsors/silver'),
-//     },
-//   ],
-// },
 
 export const footerData = {
   links: [
