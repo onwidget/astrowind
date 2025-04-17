@@ -1,5 +1,6 @@
 site:
-  name: AstroWind
+  name: Klara
+  #todo update site
   site: 'https://astrowind.vercel.app'
   base: '/'
   trailingSlash: false

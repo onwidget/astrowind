@@ -13,7 +13,7 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'useKlara | AI Phone Assistant for Small Businesses',
   ignoreTitleTemplate: true,
 };
 ---
@@ -25,28 +25,23 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
+        text: 'Join the waitlist today', href: '#features' 
       },
       { text: 'Learn more', href: '#features' },
     ]}
     image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white highlight"> Astro 5.0</span> + Tailwind CSS
+      <span class="hidden xl:inline">Use</span>
+      <span class="text-accent dark:text-white highlight"> Klara</span> to retain clients
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 5.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
-      Blogs.
+        <span class="font-semibold">Klara</span> handles your missed calls with AI-powered text responses, helping you schedule services and retain customers.
+        </span>
+      <span class="block mb-1 sm:hidden font-bold text-blue-600">AI text based assistant</span>
+      Never miss an opportunity again.
     </Fragment>
   </Hero>
 
@@ -59,43 +54,37 @@ const metadata = {
   <Features
     id="features"
     tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023 and 2024."
+    title="What you get with Klara"
+    subtitle="We've created a highly performant versatile AI assistant that takes care of your clients regardless of your availablity. Buy back thousands in hours of your time, for pennies on the dollar."
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: 'Auto reply texts for missed calls',
         description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
-      },
-      {
-        title: 'Ready-to-use Components',
-        description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
-      },
-      {
-        title: 'Best Practices',
-        description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
-      },
-      {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
+          'If you miss a call, Klara will create a text groupchat with you and request the caller for more information.',
         icon: 'tabler:arrows-right-left',
       },
       {
-        title: 'Open to new ideas and contributions',
+        title: 'Schedule appointments',
         description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
+          'Klara can automatically schedule pre-defined services or appointments onto your calendar with your allocated time slots.',
+        icon: 'tabler:list-check',
+      },
+      {
+        title: 'Secure',
+        description:
+          'Klara will never share any details about your clients or interations with us. Each conversation between clients remain unique and seperate.',
+        icon: 'tabler:components',
+      },
+      {
+        title: 'Consistent Value',
+        description:
+          'Klara is designed for small businesses who don\'t have the resources to hire a personal scheduling assistant.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Intelligent',
+        description:
+          "Klara knows your business hours, services and rates. Klara can answer questions to clients on your behalf.",
         icon: 'tabler:bulb',
       },
     ]}
