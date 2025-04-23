@@ -34,6 +34,7 @@
 
 - [Demo](#demo)
 - [Upcoming: AstroWind 2.0 – We Need Your Vision!](#-upcoming-astrowind-20--we-need-your-vision)
+- [TL;DR](#tldr)
 - [Getting started](#getting-started)
   - [Project structure](#project-structure)
   - [Commands](#commands)
@@ -62,6 +63,13 @@ We're embarking on an exciting journey with **AstroWind 2.0**, and we want you t
 [Share Your Feedback in Our Discussion!](https://github.com/onwidget/astrowind/discussions/392)
 
 <br>
+
+
+## TL;DR
+
+```shell
+npm create astro@latest -- --template onwidget/astrowind
+```
 
 ## Getting started
 
