@@ -1,0 +1,62 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const { title = "Technologies I Use", subtitle = "Some of the technologies I've worked with:" } = Astro.props;
+
+const technologies = [
+  { name: 'Python', icon: 'skill-icons:python-dark' },
+  { name: 'GitHub', icon: 'skill-icons:github-dark' },
+  { name: 'VS Code', icon: 'skill-icons:vscode-dark' },
+  { name: 'Terminal', icon: 'skill-icons:bash-dark' },
+  { name: 'Bash', icon: 'skill-icons:bash-dark' },
+  { name: 'AWS', icon: 'skill-icons:aws-dark' },
+  { name: 'Linux', icon: 'skill-icons:linux-dark' },
+  { name: 'Cloudflare', icon: 'skill-icons:cloudflare-dark' },
+  { name: 'Docker', icon: 'skill-icons:docker' },
+  { name: 'Electron', icon: 'skill-icons:electron' },
+  { name: 'Notion', icon: 'skill-icons:notion-dark' },
+  { name: 'Supabase', icon: 'skill-icons:supabase-dark' },
+  { name: 'Tauri', icon: 'skill-icons:tauri-light' },
+  { name: 'Vite', icon: 'skill-icons:vite-dark' },
+  { name: 'Windows', icon: 'skill-icons:windows-dark' },
+  { name: 'Markdown', icon: 'skill-icons:markdown-dark' }
+];
+---
+
+<section class="relative">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="py-12 md:py-20">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+          {title}
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-slate-400">
+          {subtitle}
+        </p>
+      </div>
+      <div class="grid grid-cols-3 md:grid-cols-5 gap-8 mt-12">
+        {
+          technologies.map((tech) => (
+            <div class="flex flex-col items-center">
+              <div class="h-12 w-12">
+                {tech.icon ? (
+                  <Icon name={tech.icon} class="w-full h-full" />
+                ) : (
+                  <div class="w-full h-full bg-gray-200 rounded-md flex items-center justify-center">
+                    <span class="text-xs">{tech.name[0]}</span>
+                  </div>
+                )}
+              </div>
+              <span class="mt-2 text-sm text-gray-600 dark:text-slate-400">{tech.name}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
