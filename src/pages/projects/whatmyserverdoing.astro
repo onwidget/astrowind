@@ -7,7 +7,8 @@ import serverMonitorDashboard from '~/assets/images/WhatMyServerDoing-Dashboard.
 
 const metadata = {
   title: 'WhatMyServerDoing - Server Resource Monitoring Tool',
-  description: 'A cross-platform server monitoring tool built with Tauri and Go, enabling real-time monitoring of multiple server resources through an elegant interface.',
+  description:
+    'A cross-platform server monitoring tool built with Tauri and Go, enabling real-time monitoring of multiple server resources through an elegant interface.',
   pubDate: new Date('2025-04-29'),
 };
 
@@ -19,7 +20,7 @@ const post = {
   description: metadata.description,
   publishDate: metadata.pubDate,
   image: serverMonitorImage,
-  github: 'https://github.com/neerajlovecyber/WhatMyServerDoing'
+  github: 'https://github.com/neerajlovecyber/WhatMyServerDoing',
 };
 ---
 
@@ -27,27 +28,29 @@ const post = {
   <SinglePost post={post} url={post.permalink}>
     <div class="prose dark:prose-invert max-w-none">
       <h1 class="text-4xl font-bold mb-8">WhatMyServerDoing</h1>
-      
+
       <p class="lead mb-8">
-        WhatMyServerDoing is a powerful server resource monitoring tool that combines the performance of Go 
-        with the modern UI capabilities of Tauri. This cross-platform application allows you to monitor 
-        multiple servers simultaneously through an elegant and intuitive interface.
+        WhatMyServerDoing is a powerful server resource monitoring tool that combines the performance of Go with the
+        modern UI capabilities of Tauri. This cross-platform application allows you to monitor multiple servers
+        simultaneously through an elegant and intuitive interface.
       </p>
       <Image src={serverMonitorImage} alt="WhatMyServerDoing Screenshot" class="w-full h-auto rounded-lg mb-8" />
-      <Image src={serverMonitorDashboard} alt="WhatMyServerDoing Dashboard Screenshot" class="w-full h-auto rounded-lg mb-8" />
+      <Image
+        src={serverMonitorDashboard}
+        alt="WhatMyServerDoing Dashboard Screenshot"
+        class="w-full h-auto rounded-lg mb-8"
+      />
 
       <h2>Key Features</h2>
-      
+
       <h3>Multi-Server Monitoring</h3>
       <p>
-        Monitor multiple servers simultaneously from a single dashboard. Keep track of all your 
-        infrastructure in one place.
+        Monitor multiple servers simultaneously from a single dashboard. Keep track of all your infrastructure in one
+        place.
       </p>
 
       <h3>Real-time Resource Tracking</h3>
-      <p>
-        Get real-time insights into server resources including:
-      </p>
+      <p>Get real-time insights into server resources including:</p>
       <ul>
         <li>CPU usage and load</li>
         <li>Memory utilization</li>
@@ -56,9 +59,7 @@ const post = {
       </ul>
 
       <h3>Secure Authentication</h3>
-      <p>
-        Features a secure login system to ensure only authorized personnel can access server monitoring data.
-      </p>
+      <p>Features a secure login system to ensure only authorized personnel can access server monitoring data.</p>
 
       <h2>Technical Stack</h2>
       <ul>
@@ -78,20 +79,20 @@ const post = {
       <div class="mt-8 bg-gray-100 dark:bg-gray-800 p-8 rounded-lg">
         <h2 class="text-2xl font-bold mb-4">Try It Now</h2>
         <p>
-          Ready to take control of your server monitoring? Download WhatMyServerDoing and start 
-          monitoring your servers effectively.
+          Ready to take control of your server monitoring? Download WhatMyServerDoing and start monitoring your servers
+          effectively.
         </p>
         <div class="flex gap-4 mt-6">
-          <a 
-            href="https://github.com/neerajlovecyber/WhatMyServerDoing/releases/latest" 
+          <a
+            href="https://github.com/neerajlovecyber/WhatMyServerDoing/releases/latest"
             class="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
             target="_blank"
             rel="noopener noreferrer"
           >
             Download Now
           </a>
-          <a 
-            href="https://github.com/neerajlovecyber/WhatMyServerDoing" 
+          <a
+            href="https://github.com/neerajlovecyber/WhatMyServerDoing"
             class="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
             target="_blank"
             rel="noopener noreferrer"

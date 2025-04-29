@@ -3,21 +3,21 @@ import { Icon } from 'astro-icon/components';
 import Button from '~/components/ui/Button.astro';
 
 const socialLinks = [
-  { 
+  {
     icon: 'tabler:brand-github',
     href: 'https://github.com/neerajlovecyber',
-    label: 'GitHub'
+    label: 'GitHub',
   },
   {
     icon: 'tabler:brand-linkedin',
     href: 'https://linkedin.com/in/neerajlovecyber',
-    label: 'LinkedIn'
+    label: 'LinkedIn',
   },
   {
     icon: 'tabler:mail',
     href: 'mailto:neerajlovecyber@gmail.com',
-    label: 'Email'
-  }
+    label: 'Email',
+  },
 ];
 
 const {
@@ -84,17 +84,19 @@ const {
           }
         </div>
         <div class="flex items-center justify-center gap-4 mt-6">
-          {socialLinks.map((link) => (
-            <a
-              href={link.href}
-              class="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-white transition duration-150"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={link.label}
-            >
-              <Icon name={link.icon} class="w-6 h-6" />
-            </a>
-          ))}
+          {
+            socialLinks.map((link) => (
+              <a
+                href={link.href}
+                class="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-white transition duration-150"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+              >
+                <Icon name={link.icon} class="w-6 h-6" />
+              </a>
+            ))
+          }
         </div>
         {content && <Fragment set:html={content} />}
       </div>

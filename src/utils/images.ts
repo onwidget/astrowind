@@ -46,7 +46,7 @@ export const findImage = async (
   return images && typeof images[key] === 'function'
     ? ((await images[key]()) as { default: ImageMetadata })['default']
     : null;
-}
+};
 
 interface OptimizedImage {
   src?: string;
