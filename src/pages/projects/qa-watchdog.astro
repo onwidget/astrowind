@@ -1,0 +1,116 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import SinglePost from '~/components/blog/SinglePost.astro';
+import Image from '~/components/common/Image.astro';
+import { Icon } from 'astro-icon/components';
+
+const metadata = {
+  title: 'QA WatchDog : A QA Checklist Project with Python and QT',
+  description: 'A Python-based tool designed to simplify QA testing with secure multi-user login, easy installation, and organized test checklists.',
+  pubDate: new Date('2025-04-29'),
+};
+
+const post = {
+  id: 'qa-watchdog',
+  slug: 'qa-watchdog',
+  permalink: '/projects/qa-watchdog',
+  title: metadata.title,
+  description: metadata.description,
+  publishDate: metadata.pubDate,
+  image: '~/assets/images/qa-watchdog.png', // Update with your banner image path
+};
+---
+
+<Layout metadata={metadata}>
+  <SinglePost post={post} url={post.permalink}>
+    <div class="prose dark:prose-invert max-w-none">
+      <h1 class="text-4xl font-bold mb-8">QA WatchDog</h1>
+      
+      <p class="lead mb-8">
+        QA WatchDog is a Python-based tool created by Neeraj Singh, designed to streamline and simplify 
+        the QA testing process. With a strong focus on user-friendliness and collaboration, this tool 
+        empowers QA testers to efficiently track progress and manage their testing checklists.
+      </p>
+
+      <h2>Key Features</h2>
+      <h3>1. User Login</h3>
+      <Image
+        src="~/assets/images/qa-watchdog-login.png"
+        alt="QA WatchDog Login"
+        class="rounded-lg shadow-lg"
+      />
+      <p>
+        Collaboration is at the heart of QA testing, and QA WatchDog understands that. It allows 
+        multiple users to log in simultaneously, ensuring seamless teamwork.
+      </p>
+
+      <h3>2. Simple Installation</h3>
+      <p>
+        Gone are the days of complex installations. QA WatchDog offers a hassle-free installation 
+        process. You can download the setup file from the Releases page and get started in no time.
+      </p>
+
+      <h3>3. Organize with Multiple Checklists</h3>
+      <p>
+        Say goodbye to scattered checklists. QA WatchDog enables you to manage all your QA test 
+        checklists conveniently within a single account, keeping everything organized and easily accessible.
+      </p>
+
+      <h2>Getting Started</h2>
+      <ol>
+        <li><strong>Download:</strong> Visit the Releases page to download the setup file.</li>
+        <li><strong>Install:</strong> Run the downloaded file to breeze through the installation process.</li>
+        <li><strong>Launch:</strong> Open the app, create your account, and you're ready to dive in!</li>
+        <li><strong>Explore:</strong> Start crafting checklists and experience smoother QA testing.</li>
+      </ol>
+
+      <h2>Contributing</h2>
+      <p>
+        At QA WatchDog, user feedback and contributions are highly appreciated. The project is open source 
+        under the MIT License, allowing modifications and distribution as per the license terms.
+      </p>
+
+      <h2>Connect</h2>
+      <p>
+        If you have questions, ideas, or just want to say hello, you can reach out to Neeraj Singh at:
+      </p>
+      <ul>
+        <li>Email: <a href="mailto:neerajlovecyber@gmail.com" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium">neerajlovecyber@gmail.com</a></li>
+        <li>LinkedIn: <a href="https://linkedin.com/in/neerajlovecyber" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a></li>
+      </ul>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+        <Image
+          src="~/assets/images/qa-watchdog/demo-1.png"
+          alt="QA WatchDog Demo 1"
+          class="rounded-lg shadow-lg"
+        />
+        <Image
+          src="~/assets/images/qa-watchdog/demo-2.png"
+          alt="QA WatchDog Demo 2"
+          class="rounded-lg shadow-lg"
+        />
+      </div>
+
+      <div class="mt-8 bg-gray-100 dark:bg-gray-800 p-8 rounded-lg text-center">
+        <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
+          Ready to streamline your QA testing process?
+        </h3>
+        <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
+          Download QA WatchDog now and experience the difference in managing your QA testing workflows!
+        </p>
+        <a 
+          href="https://github.com/neerajlovecyber/QA-WatchDog" 
+          class="inline-block px-8 py-3 text-xl font-bold text-white rounded-lg transition-colors duration-200 "
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="flex items-center justify-center gap-2 font-extrabold">
+            <Icon name="tabler:download" class="w-6 h-6" />
+            Download QA WatchDog
+          </span>
+        </a>
+      </div>
+    </div>
+  </SinglePost>
+</Layout>

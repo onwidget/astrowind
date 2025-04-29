@@ -1,0 +1,109 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import SinglePost from '~/components/blog/SinglePost.astro';
+import { Image } from 'astro:assets';
+import rawDumpToolImage from '~/assets/images/raw-dump-tool.jpeg';
+import rawDumpToolImage2 from '~/assets/images/raw-dump-tool-security.png';
+
+const metadata = {
+  title: 'Raw Dump Tool - Memory Dumping Forensics Tool',
+  description: 'A Python-based GUI Memory Dumping Forensics Tool for digital investigators, featuring encryption, tamper detection, and comprehensive analysis capabilities.',
+  pubDate: new Date('2025-04-29'),
+};
+
+const post = {
+  id: 'raw-dump-tool',
+  slug: 'raw-dump-tool',
+  permalink: '/projects/raw-dump-tool',
+  title: metadata.title,
+  description: metadata.description,
+  publishDate: metadata.pubDate,
+  image: rawDumpToolImage,
+  github: 'https://github.com/neerajlovecyber/raw-dump-tool'
+};
+---
+
+<Layout metadata={metadata}>
+  <SinglePost post={post} url={post.permalink}>
+    <div class="prose dark:prose-invert max-w-none">
+      <h1 class="text-4xl font-bold mb-8">Raw Dump Tool</h1>
+      
+      <p class="lead mb-8">
+        In the realm of digital forensics, the ability to extract and analyze volatile memory (RAM) contents is paramount. 
+        Raw Dump Tool is a Python-based Graphical User Interface (GUI) Memory Dumping Forensics Tool, designed to streamline 
+        the process of memory extraction, analysis, and data security.
+      </p>
+
+      <h2>Features that Empower</h2>
+      
+      <h3>Dump File Encryption & Decryption</h3>
+      <p>
+        One of the standout features is its ability to not only extract volatile memory but also encrypt 
+        the resulting memory dump file. This encryption ensures that sensitive data collected from the target 
+        system remains protected, accessible only to authorized individuals.
+      </p>
+
+      <h3>Dump File Tamper Detection</h3>
+      <p>
+        Maintaining the integrity and authenticity of collected evidence is crucial. The tool incorporates 
+        tamper detection mechanisms designed to identify any unauthorized alterations to the memory dump file.
+      </p>
+
+      <div class="my-8">
+        <Image
+          src={rawDumpToolImage}
+          alt="Raw Dump Tool Demo"
+          class="rounded-lg shadow-lg"
+          width={800}
+          height={450}
+        />
+        <Image
+          src={rawDumpToolImage2}
+          alt="Raw Dump Tool Demo"
+          class="rounded-lg shadow-lg"
+          width={800}
+          height={450}
+        />
+      </div>
+
+      <h2>Getting Started</h2>
+      <ol>
+        <li><strong>Clone the Repository:</strong> Find the Raw Dump Tool on GitHub</li>
+        <li><strong>Run the Executable:</strong> Execute the provided executable file (requires internet connection)</li>
+        <li><strong>Configure Options:</strong> Choose appropriate options for memory dumping, encryption, and decryption</li>
+        <li><strong>Start the Dumping Process:</strong> Initiate through the user-friendly interface</li>
+        <li><strong>Analyze the Dump:</strong> Tool automatically analyzes memory contents</li>
+        <li><strong>Encryption (Optional):</strong> Specify encryption key for additional security</li>
+        <li><strong>Begin Analysis:</strong> Start your digital forensics investigation</li>
+      </ol>
+
+      <h2>Join the Community</h2>
+      <p>
+        Your contributions are highly appreciated! You can help improve the tool through:
+      </p>
+      <ul>
+        <li>Bug Reports</li>
+        <li>Feature Requests</li>
+        <li>Pull Requests</li>
+      </ul>
+
+      <h2>Licensing</h2>
+      <p>
+        The Raw Dump Tool is licensed under the MIT License, allowing you the freedom to modify 
+        and distribute while adhering to the license terms.
+      </p>
+
+      <div class=" bg-gray-100 dark:bg-gray-800 p-8  rounded-lg">
+        <h2 class="text-2xl font-bold mb-4">Get in Touch</h2>
+        <p>
+          Have questions or suggestions? Reach out to Neeraj Singh:
+        </p>
+        <ul class="">
+          <li>Email: <a href="mailto:neerajlovecyber@gmail.com" class="text-blue-600 hover:text-blue-800">neerajlovecyber@gmail.com</a></li>
+          <li>LinkedIn: <a href="https://linkedin.com/in/neerajlovecyber" class="text-blue-600 hover:text-blue-800" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a></li>
+          <li>GitHub: <a href="https://github.com/neerajlovecyber/raw-dump-tool" class="text-blue-600 hover:text-blue-800" target="_blank" rel="noopener noreferrer">View Project Repository</a></li>
+        </ul>
+      </div>
+    </div>
+  </SinglePost>
+</Layout>
