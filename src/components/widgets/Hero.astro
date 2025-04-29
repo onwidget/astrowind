@@ -1,18 +1,32 @@
 ---
-import Image from '~/components/common/Image.astro';
+import { Icon } from 'astro-icon/components';
 import Button from '~/components/ui/Button.astro';
 
-import type { Hero as Props } from '~/types';
+const socialLinks = [
+  { 
+    icon: 'tabler:brand-github',
+    href: 'https://github.com/neerajlovecyber',
+    label: 'GitHub'
+  },
+  {
+    icon: 'tabler:brand-linkedin',
+    href: 'https://linkedin.com/in/neerajlovecyber',
+    label: 'LinkedIn'
+  },
+  {
+    icon: 'tabler:mail',
+    href: 'mailto:contact@neerajlovecyber.com',
+    label: 'Email'
+  }
+];
 
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   tagline,
-
   content = await Astro.slots.render('content'),
   actions = await Astro.slots.render('actions'),
   image = await Astro.slots.render('image'),
-
   id,
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
@@ -68,6 +82,19 @@ const {
               </div>
             )
           }
+        </div>
+        <div class="flex items-center justify-center gap-4 mt-6">
+          {socialLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-white transition duration-150"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.label}
+            >
+              <Icon name={link.icon} class="w-6 h-6" />
+            </a>
+          ))}
         </div>
         {content && <Fragment set:html={content} />}
       </div>
