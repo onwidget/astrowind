@@ -1,0 +1,63 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/blog/Headline.astro';
+
+const metadata = {
+  title: 'Projects',
+  description: 'View my projects and work',
+};
+
+const projects = [
+  {
+    slug: 'sample-project-1',
+    title: 'Sample Project 1',
+    description: 'This is a sample project article for Project 1.',
+    image: 'https://images.unsplash.com/photo-1627163439134-7a8c47e08208?q=80&w=2532&auto=format&fit=crop',
+    publishDate: new Date('2025-04-29'),
+  },
+  {
+    slug: 'sample-project-2',
+    title: 'Sample Project 2',
+    description: 'This is a sample project article for Project 2.',
+    image: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=2728&auto=format&fit=crop',
+    publishDate: new Date('2025-04-29'),
+  },
+  {
+    slug: 'sample-project-3',
+    title: 'Sample Project 3',
+    description: 'This is a sample project article for Project 3.',
+    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2670&auto=format&fit=crop',
+    publishDate: new Date('2025-04-29'),
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+    <Headline subtitle="Check out my latest projects and work"> Projects </Headline>
+    <div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-3 -mb-6">
+      {
+        projects.map((project) => (
+          <a
+            href={`/projects/${project.slug}`}
+            class="relative flex flex-col p-6 bg-white dark:bg-slate-900 rounded-lg shadow hover:shadow-lg transition border border-transparent dark:border-slate-800"
+          >
+            <div class="flex-grow">
+              {project.image && (
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  class="object-cover w-full h-36 mb-4 rounded"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+              <h2 class="text-2xl font-bold leading-tight mb-2">{project.title}</h2>
+              <p class="text-muted dark:text-slate-400">{project.description}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

@@ -4,12 +4,12 @@ export const headerData = {
   links: [
     {
       text: 'Blog',
-      href: getBlogPermalink()
+      href: getBlogPermalink(),
     },
 
     {
       text: 'Projects',
-      href: getPermalink('/'),
+      href: getPermalink('/projects'),
     },
     {
       text: 'Resume',
@@ -36,9 +36,6 @@ export const headerData = {
         },
       ],
     },
-    
-   
-   
   ],
   actions: [{ text: 'Hire Me', href: 'https://wa.me/917988815263', target: '_blank' }],
 };
