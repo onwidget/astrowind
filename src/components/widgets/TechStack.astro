@@ -24,7 +24,11 @@ const technologies = [
   { name: 'Tauri', icon: 'skill-icons:tauri-light' },
   { name: 'Vite', icon: 'skill-icons:vite-dark' },
   { name: 'Windows', icon: 'skill-icons:windows-dark' },
-  { name: 'Markdown', icon: 'skill-icons:markdown-dark' }
+  { name: 'Markdown', icon: 'skill-icons:markdown-dark' },
+  { name: 'Maven', icon: 'skill-icons:maven-dark' },
+  { name: 'Java', icon: 'skill-icons:java-dark' },
+  { name: 'MySQL', icon: 'skill-icons:mysql-dark' },
+  { name: 'WordPress', icon: 'skill-icons:wordpress' }
 ];
 ---
 
@@ -39,20 +43,20 @@ const technologies = [
           {subtitle}
         </p>
       </div>
-      <div class="grid grid-cols-3 md:grid-cols-5 gap-8 mt-12">
+      <div class="flex flex-wrap justify-center gap-4 mt-12">
         {
           technologies.map((tech) => (
-            <div class="flex flex-col items-center">
-              <div class="h-12 w-12">
+            <div class="flex items-center bg-gray-100 dark:bg-gray-800 rounded-full px-4 py-2 transition-transform hover:scale-110">
+              <div class="h-6 w-6 mr-2">
                 {tech.icon ? (
                   <Icon name={tech.icon} class="w-full h-full" />
                 ) : (
-                  <div class="w-full h-full bg-gray-200 rounded-md flex items-center justify-center">
+                  <div class="w-full h-full bg-gray-200 rounded-full flex items-center justify-center">
                     <span class="text-xs">{tech.name[0]}</span>
                   </div>
                 )}
               </div>
-              <span class="mt-2 text-sm text-gray-600 dark:text-slate-400">{tech.name}</span>
+              <span class="text-sm text-gray-700 dark:text-gray-300">{tech.name}</span>
             </div>
           ))
         }
