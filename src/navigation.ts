@@ -31,7 +31,7 @@ export const headerData = {
    
    
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  actions: [{ text: 'Hire Me', href: 'https://wa.me/917988815263', target: '_blank' }],
 };
 
 export const footerData = {
