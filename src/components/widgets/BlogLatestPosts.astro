@@ -45,7 +45,7 @@ const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
         </div>
 
         {APP_BLOG.list.isEnabled && linkText && linkUrl && (
-          <div class="flex items-center">
+          <div class="hidden lg:flex lg:items-center">
             <Button variant="primary" href={linkUrl} class="w-auto">
               {linkText}
             </Button>
@@ -56,6 +56,14 @@ const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
       {information && <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md mb-8" set:html={information} />}
 
       <Grid posts={posts} />
+
+      {APP_BLOG.list.isEnabled && linkText && linkUrl && (
+        <div class="flex justify-center mt-8 lg:hidden">
+          <Button variant="primary" href={linkUrl} class="w-auto">
+            {linkText}
+          </Button>
+        </div>
+      )}
     </WidgetWrapper>
   ) : (
     <Fragment />
