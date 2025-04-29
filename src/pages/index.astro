@@ -4,6 +4,7 @@ import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import TechStack from '~/components/widgets/TechStack.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 
 const metadata = {
   title: 'Neeraj Singh - Cybersecurity Engineer & Software Testing Professional',
@@ -57,7 +58,11 @@ const metadata = {
   />
 
   <TechStack />
-
+  <BlogLatestPosts
+  title="Latest Posts"
+  information={`Explore my recent insights on cybersecurity, testing, and tech, sharing practical knowledge from the field
+              `}
+/>
   <CallToAction
     actions={[
       {
