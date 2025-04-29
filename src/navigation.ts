@@ -22,15 +22,7 @@ export const headerData = {
     {
       text: 'Pages',
       links: [
-        {
-          text: 'About us',
-          href: getPermalink('/about'),
-        },
-        {
-          text: 'Contact',
-          href: getPermalink('/contact'),
-        },
-        {
+          {
           text: 'Terms',
           href: getPermalink('/terms'),
         },
