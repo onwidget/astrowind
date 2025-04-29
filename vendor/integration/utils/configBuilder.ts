@@ -82,7 +82,7 @@ export interface UIConfig {
   theme: string;
 }
 
-const DEFAULT_SITE_NAME = 'Website';
+const DEFAULT_SITE_NAME = 'Neerajlovecyber';
 
 const getSite = (config: Config) => {
   const _default = {

@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Neerajlovecyber
+  site: 'https://Neerajlovecyber.vercel.app'
   base: '/'
   trailingSlash: false
 
@@ -16,7 +16,7 @@ metadata:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Neerajlovecyber
     images:
       - url: '~/assets/images/default.png'
         width: 1200
