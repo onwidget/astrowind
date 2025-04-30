@@ -19,3 +19,49 @@ body {
 .font-inter {
   font-family: 'Inter', sans-serif;
 }
+
+/* Ensure links in project buttons have no styling */
+.prose .btn a,
+.prose a.btn,
+.prose .btn-primary a,
+.prose a.btn-primary {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.prose .btn a:hover,
+.prose a.btn:hover,
+.prose .btn-primary a:hover,
+.prose a.btn-primary:hover {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+/* Stronger icon and link color overrides for buttons */
+.btn-primary svg,
+.btn-primary [astro-icon],
+.btn-primary a,
+.btn-primary a:hover,
+.btn-primary a:visited,
+a.btn-primary,
+a.btn-primary:hover,
+a.btn-primary:visited,
+.prose .btn-primary a,
+.prose a.btn-primary,
+.prose .btn-primary a:hover,
+.prose a.btn-primary:hover,
+.prose .btn-primary a:visited,
+.prose a.btn-primary:visited {
+  color: white !important;
+  fill: white !important;
+  stroke: white !important;
+  text-decoration: none !important;
+}
+
+/* Additional specific override for blog post content */
+.prose a.btn-primary,
+.prose a.btn-primary *,
+.prose .btn-primary a,
+.prose .btn-primary * {
+  color: white !important;
+}
