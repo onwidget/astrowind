@@ -4,6 +4,8 @@ import SinglePost from '~/components/blog/SinglePost.astro';
 import { Image } from 'astro:assets';
 import rawDumpToolImage from '~/assets/images/raw-dump-tool.jpeg';
 import rawDumpToolImage2 from '~/assets/images/raw-dump-tool-security.png';
+import Button from '~/components/ui/Button.astro';
+import { Icon } from 'astro-icon/components';
 
 const metadata = {
   title: 'Raw Dump Tool - Memory Dumping Forensics Tool',
@@ -107,6 +109,25 @@ const post = {
               rel="noopener noreferrer">View Project Repository</a>
           </li>
         </ul>
+      </div>
+
+      <div class="mt-8 bg-gray-100 dark:bg-gray-800 p-8 rounded-lg text-center">
+        <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">
+          Ready to enhance your digital forensics toolkit?
+        </h3>
+        <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
+          Download Raw Dump Tool now and streamline your memory analysis workflows!
+        </p>
+        <Button
+          variant="primary"
+          href="https://github.com/neerajlovecyber/RawDumpTool"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-xl"
+        >
+          <Icon name="tabler:download" class="w-6 h-6 mr-2" />
+          Download Raw Dump Tool
+        </Button>
       </div>
     </div>
   </SinglePost>

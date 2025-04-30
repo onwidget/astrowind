@@ -4,6 +4,8 @@ import SinglePost from '~/components/blog/SinglePost.astro';
 import { Image } from 'astro:assets';
 import serverMonitorImage from '~/assets/images/WhatMyServerDoing.png';
 import serverMonitorDashboard from '~/assets/images/WhatMyServerDoing-Dashboard.png';
+import Button from '~/components/ui/Button.astro';
+import { Icon } from 'astro-icon/components';
 
 const metadata = {
   title: 'WhatMyServerDoing - Server Resource Monitoring Tool',
@@ -76,30 +78,21 @@ const post = {
         <li><strong>Monitor:</strong> Start tracking your server resources in real-time</li>
       </ol>
 
-      <div class="mt-8 bg-gray-100 dark:bg-gray-800 p-8 rounded-lg">
-        <h2 class="text-2xl font-bold mb-4">Try It Now</h2>
-        <p>
-          Ready to take control of your server monitoring? Download WhatMyServerDoing and start monitoring your servers
-          effectively.
+      <div class="mt-8 bg-gray-100 dark:bg-gray-800 p-8 rounded-lg text-center">
+        <h3 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Ready to monitor your servers?</h3>
+        <p class="text-lg mb-6 text-gray-600 dark:text-gray-300">
+          Download WhatMyServerDoing now and take control of your server monitoring!
         </p>
-        <div class="flex gap-4 mt-6">
-          <a
-            href="https://github.com/neerajlovecyber/WhatMyServerDoing/releases/latest"
-            class="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download Now
-          </a>
-          <a
-            href="https://github.com/neerajlovecyber/WhatMyServerDoing"
-            class="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-white rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View on GitHub
-          </a>
-        </div>
+        <Button
+          variant="primary"
+          href="https://github.com/neerajlovecyber/WhatMyServerDoing"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-xl"
+        >
+          <Icon name="tabler:download" class="w-6 h-6 mr-2" />
+          Download WhatMyServerDoing
+        </Button>
       </div>
     </div>
   </SinglePost>

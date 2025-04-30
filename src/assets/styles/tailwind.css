@@ -36,7 +36,7 @@
   }
 
   .btn-primary {
-    @apply btn font-semibold bg-primary text-white border-primary hover:bg-secondary hover:border-secondary hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
+    @apply btn font-semibold bg-accent text-white border-accent hover:opacity-90 hover:text-white dark:text-white dark:bg-accent dark:border-accent dark:hover:opacity-90;
   }
 
   .btn-secondary {
