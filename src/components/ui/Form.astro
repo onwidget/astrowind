@@ -2,14 +2,30 @@
 import type { Form as Props } from '~/types';
 import Button from '~/components/ui/Button.astro';
 
-const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props;
+const { inputs, textarea, disclaimer, button = 'Contact us', description = '', form } = Astro.props;
 ---
 
-<form>
+<script is:inline>
+  function handleSubmit(e) {
+    if (!document.getElementById('disclaimer').checked) {
+      e.preventDefault();
+      alert('Please accept the terms.');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const formElement = document.querySelector('form');
+    if (formElement) {
+      formElement.addEventListener('submit', handleSubmit);
+    }
+  });
+</script>
+
+<form {...form}>
   {
     inputs &&
       inputs.map(
-        ({ type = 'text', name, label = '', autocomplete = 'on', placeholder = '' }) =>
+        ({ type = 'text', name, label = '', autocomplete = 'on', placeholder = '', required }) =>
           name && (
             <div class="mb-6">
               {label && (
@@ -23,6 +39,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
                 id={name}
                 autocomplete={autocomplete}
                 placeholder={placeholder}
+                required={required}
                 class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
               />
             </div>
@@ -41,6 +58,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
           name={textarea.name ? textarea.name : 'message'}
           rows={textarea.rows ? textarea.rows : 4}
           placeholder={textarea.placeholder}
+          required={textarea.required}
           class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
         />
       </div>
