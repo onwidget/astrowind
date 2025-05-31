@@ -9,6 +9,8 @@ import ProjectList from '~/components/projects/ProjectList.astro';
 import { featuredProjects } from '~/data/projects';
 import { experiences } from '~/data/experience';
 import Experience from '~/components/widgets/Experience.astro';
+import { achievements, certifications } from '~/data/achievements';
+import AchievementsAndCertifications from '~/components/widgets/AchievementsAndCertifications.astro';
 
 const metadata = {
   title: 'Neeraj Singh - Cybersecurity Engineer & Software Testing Professional',
@@ -75,7 +77,13 @@ const metadata = {
       </p>
     </div>
     <Experience experiences={experiences} />
- 
+  </section>
+
+  <!-- Achievements and Certifications -->
+  <AchievementsAndCertifications
+    achievements={achievements}
+    certifications={certifications}
+  />
 
   <!-- Featured Projects -->
   <section class="px-4 py-16 mx-auto max-w-6xl lg:py-20">
