@@ -16,31 +16,39 @@ const { metadata } = Astro.props;
 
 <html lang="en" class="light">
   <head>
+    <title>{metadata?.title || 'Your Default Title'}</title>
+    <meta name="description" content={metadata?.description || 'Default meta description for your site'} />
+
     <!-- Add Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-<Layout metadata={metadata}>
-  <slot name="header">
-    <Header {...headerData} isSticky showRssFeed showToggleTheme />
-  </slot>
-  <div id="scroll-progress"></div>
-  <main>
-    <slot />
-  </main>
-  <slot name="footer">
-    <Footer {...footerData} />
-  </slot>
+    <Layout metadata={metadata}>
+      <slot name="header">
+        <Header {...headerData} isSticky showRssFeed showToggleTheme />
+      </slot>
+      <div id="scroll-progress"></div>
+      <main>
+        <slot />
+      </main>
+      <slot name="footer">
+        <Footer {...footerData} />
+      </slot>
 
-  <script is:inline>
-    window.addEventListener("scroll", function () {
-      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = window.scrollY;
-      const progressBar = document.getElementById("scroll-progress");
-      const progress = (scrolled / scrollableHeight) * 100;
-      progressBar.style.width = progress + "%";
-    });
-  </script>
-</Layout>
+      <script is:inline>
+        window.addEventListener("scroll", function () {
+          const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+          const scrolled = window.scrollY;
+          const progressBar = document.getElementById("scroll-progress");
+          const progress = (scrolled / scrollableHeight) * 100;
+          progressBar.style.width = progress + "%";
+        });
+      </script>
+    </Layout>
+  </body>
+</html>
