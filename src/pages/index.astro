@@ -7,6 +7,8 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import ProjectList from '~/components/projects/ProjectList.astro';
 import { featuredProjects } from '~/data/projects';
+import { experiences } from '~/data/experience';
+import Experience from '~/components/widgets/Experience.astro';
 
 const metadata = {
   title: 'Neeraj Singh - Cybersecurity Engineer & Software Testing Professional',
@@ -61,6 +63,19 @@ const metadata = {
   />
 
   <TechStack />
+
+  <!-- Professional Experience -->
+  <section class="px-4 py-16 mx-auto max-w-6xl lg:py-20">
+    <div class="mb-10 md:mx-auto text-center md:mb-12 max-w-3xl">
+      <h2 class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+        Professional Experience
+      </h2>
+      <p class="max-w-3xl mx-auto sm:text-center text-xl text-gray-600 dark:text-slate-400">
+        A brief overview of my professional journey in cybersecurity and software testing
+      </p>
+    </div>
+    <Experience experiences={experiences} />
+ 
 
   <!-- Featured Projects -->
   <section class="px-4 py-16 mx-auto max-w-6xl lg:py-20">
