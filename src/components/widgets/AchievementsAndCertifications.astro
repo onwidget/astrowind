@@ -27,8 +27,6 @@ const {
   title = 'Achievements & Certifications',
   subtitle = 'My professional accomplishments and credentials'
 } = Astro.props;
-
-let activeTab = 'certifications';
 ---
 
 <div class="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
@@ -37,39 +35,27 @@ let activeTab = 'certifications';
     <p class="mt-4 text-lg leading-6 text-gray-600 dark:text-gray-400">{subtitle}</p>
   </div>
 
-  <!-- New Centered Tabs -->
+  <!-- Tabs -->
   <div class="mb-8 flex justify-center">
     <div class="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-800 p-1 shadow-inner">
-      <button
-      class="tab-btn px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 focus:outline-none"
-      data-tab="certifications"
-      class:active={activeTab === 'certifications'}
-    >
-      Certifications
-    </button>
-      <button
-        class="tab-btn px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 focus:outline-none"
-        data-tab="achievements"
-        class:active={activeTab === 'achievements'}
-      >
+      <button class="tab-btn px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 focus:outline-none" data-tab="certifications">
+        Certifications
+      </button>
+      <button class="tab-btn px-5 py-2 text-sm font-medium rounded-full transition-all duration-300 focus:outline-none" data-tab="achievements">
         Achievements
       </button>
-
     </div>
   </div>
 
   <!-- Content -->
   <div class="relative overflow-hidden">
 
-
-    <!-- Certifications Tab -->
+    <!-- Certifications -->
     <div id="certifications-tab" class="tab-content hidden">
-      <div class="flex space-x-4 overflow-x-auto pb-4 snap-x">
+      <div id="certifications-carousel" class="carousel flex space-x-4 overflow-x-auto snap-x no-scrollbar pb-2 scroll-smooth">
         {certifications.map((certification) => (
           <div class="flex-none w-80 snap-center bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-            {certification.imageUrl && (
-              <img src={certification.imageUrl} alt={certification.title} class="w-full h-48 object-cover" />
-            )}
+            {certification.imageUrl && <img src={certification.imageUrl} alt={certification.title} class="w-full h-48 object-cover" />}
             <div class="p-4">
               <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{certification.title}</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400">{certification.issuer}</p>
@@ -79,37 +65,41 @@ let activeTab = 'certifications';
                   href={certification.credentialUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="mt-2 inline-flex items-center text-sm text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
+                  class="mt-2 inline-flex items-center text-sm text-[var(--aw-color-accent)] hover:underline"
                 >
                   View Credential
-                  <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
                 </a>
               )}
             </div>
           </div>
         ))}
       </div>
+      <!-- Progress Bar -->
+      <div class="progress-wrapper mt-2 h-1 w-full bg-gray-300 dark:bg-gray-700 rounded">
+        <div id="certifications-progress" class="progress-bar h-1 rounded w-0"></div>
+      </div>
+    </div>
+
+    <!-- Achievements -->
+    <div id="achievements-tab" class="tab-content hidden">
+      <div id="achievements-carousel" class="carousel flex space-x-4 overflow-x-auto snap-x no-scrollbar pb-2 scroll-smooth">
+        {achievements.map((achievement) => (
+          <div class="flex-none w-80 snap-center bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+            {achievement.imageUrl && <img src={achievement.imageUrl} alt={achievement.title} class="w-full h-48 object-cover" />}
+            <div class="p-4">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{achievement.title}</h3>
+              <time class="text-sm text-gray-500 dark:text-gray-400">{achievement.date}</time>
+              <p class="mt-2 text-gray-600 dark:text-gray-300">{achievement.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <!-- Progress Bar -->
+      <div class="progress-wrapper mt-2 h-1 w-full bg-gray-300 dark:bg-gray-700 rounded">
+        <div id="achievements-progress" class="progress-bar h-1 rounded w-0"></div>
+      </div>
     </div>
   </div>
-      <!-- Achievements Tab -->
-      <div id="achievements-tab" class="tab-content">
-        <div class="flex space-x-4 overflow-x-auto pb-4 snap-x">
-          {achievements.map((achievement) => (
-            <div class="flex-none w-80 snap-center bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-              {achievement.imageUrl && (
-                <img src={achievement.imageUrl} alt={achievement.title} class="w-full h-48 object-cover" />
-              )}
-              <div class="p-4">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{achievement.title}</h3>
-                <time class="text-sm text-gray-500 dark:text-gray-400">{achievement.date}</time>
-                <p class="mt-2 text-gray-600 dark:text-gray-300">{achievement.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
 </div>
 
 <style>
@@ -119,40 +109,76 @@ let activeTab = 'certifications';
   }
 
   .tab-btn:not(.active) {
-    @apply text-gray-600 dark:text-gray-400 hover:text-[var(--aw-color-accent)];
+    @apply text-gray-600 dark:text-gray-400;
+  }
+
+  .tab-btn:hover {
+    color: var(--aw-color-accent);
+  }
+
+  .progress-bar {
+    background-color: var(--aw-color-accent);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 </style>
 
-
 <script>
   function setupTabs() {
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
 
-    function switchTab(tabId) {
-      tabButtons.forEach(btn => {
-        if (btn.dataset.tab === tabId) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
-
-      tabContents.forEach(content => {
-        content.classList.toggle('hidden', content.id !== `${tabId}-tab`);
-      });
+    function switchTab(tab) {
+      tabs.forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tab));
+      contents.forEach(c => c.classList.toggle('hidden', c.id !== `${tab}-tab`));
     }
 
-    tabButtons.forEach(button => {
+    tabs.forEach(button => {
       button.addEventListener('click', () => {
-        const tabId = button.dataset.tab;
-        switchTab(tabId);
+        switchTab(button.dataset.tab);
       });
     });
 
-    document.addEventListener('DOMContentLoaded', () => switchTab('certifications'));
-
+    document.addEventListener('DOMContentLoaded', () => {
+      switchTab('certifications');
+      setupScrollProgress('certifications-carousel', 'certifications-progress');
+      setupScrollProgress('achievements-carousel', 'achievements-progress');
+    });
   }
+
+  function setupScrollProgress(carouselId, barId) {
+  const carousel = document.getElementById(carouselId);
+  const progressBar = document.getElementById(barId);
+  const progressWrapper = progressBar?.parentElement;
+
+  if (!carousel || !progressBar || !progressWrapper) return;
+
+  function updateProgress() {
+    const scrollLeft = carousel.scrollLeft;
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+    if (maxScroll <= 0) {
+      progressWrapper.style.display = 'none';
+    } else {
+      progressWrapper.style.display = 'block';
+      const percent = (scrollLeft / maxScroll) * 100;
+      progressBar.style.width = `${percent}%`;
+    }
+  }
+
+  // Initial check
+  updateProgress();
+
+  // Update on scroll and resize
+  carousel.addEventListener('scroll', updateProgress);
+  window.addEventListener('resize', updateProgress);
+}
 
   setupTabs();
 </script>
