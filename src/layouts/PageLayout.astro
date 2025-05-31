@@ -19,14 +19,6 @@ const { metadata } = Astro.props;
     <title>{metadata?.title || 'Your Default Title'}</title>
     <meta name="description" content={metadata?.description || 'Default meta description for your site'} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Add Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <Layout metadata={metadata}>
@@ -53,3 +45,4 @@ const { metadata } = Astro.props;
     </Layout>
   </body>
 </html>
+
