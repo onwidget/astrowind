@@ -88,7 +88,7 @@ const { post, url } = Astro.props;
               width={900}
               height={506}
               loading="eager"
-              decoding="is:inline"
+              decoding="async"
             />
           </div>
         ) : (
@@ -105,21 +105,6 @@ const { post, url } = Astro.props;
       <slot />
     </div>
 
-    <!-- Ad Unit 2: Between posts (middle of content) -->
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 my-8">
-      <script is:inline src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971"
-           crossorigin="anonymous"></script>
-      <!-- inbtwnposts -->
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-1193332880003971"
-           data-ad-slot="1480860443"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
 
     <div class="mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row">
       <PostTags tags={post.tags} class="mr-5 rtl:mr-0 rtl:ml-5" />
