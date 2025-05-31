@@ -88,6 +88,7 @@ const { projects, title = 'Projects', subtitle = 'Check out my latest projects a
 >
   <Icon name="tabler:book" class="w-5 h-5 mr-0.5" />
   Read More
+  <span class="sr-only">about {project.title}</span>
 </Button>
               {project.github && (
                 <Button variant="secondary" href={project.github} target="_blank" rel="noopener noreferrer">
