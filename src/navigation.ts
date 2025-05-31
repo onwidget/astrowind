@@ -17,7 +17,7 @@ export const headerData = {
     },
     {
       text: 'Resume',
-      href: getPermalink('/resume'),
+      href: "https://docs.google.com/document/d/1mL0NwbmSpPKlDcUX-fI1Pn7x0Rt-1clKXGPp0mpV4sU/export?format=pdf",
     },
     {
       text: 'Pages',
