@@ -81,10 +81,14 @@ const { projects, title = 'Projects', subtitle = 'Check out my latest projects a
               <p class="text-muted dark:text-slate-400 mb-4">{project.description}</p>
             </div>
             <div class="flex gap-3 mt-auto">
-              <Button variant="primary" href={`/projects/${project.slug}`}>
-                <Icon name="tabler:book" class="w-5 h-5 mr-0.5" />
-                Read More
-              </Button>
+              <Button
+  variant="primary"
+  href={`/projects/${project.slug}`}
+  aria-label={`Read more about ${project.title}`}
+>
+  <Icon name="tabler:book" class="w-5 h-5 mr-0.5" />
+  Read More
+</Button>
               {project.github && (
                 <Button variant="secondary" href={project.github} target="_blank" rel="noopener noreferrer">
                   <Icon name="tabler:brand-github" class="w-5 h-5 mr-0.5" />
