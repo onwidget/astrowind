@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 export interface Achievement {
   title: string;
   date: string;
@@ -55,7 +57,7 @@ const {
       <div id="certifications-carousel" class="carousel flex space-x-4 overflow-x-auto snap-x no-scrollbar pb-2 scroll-smooth">
         {certifications.map((certification) => (
           <div class="flex-none w-80 snap-center bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-            {certification.imageUrl && <img src={certification.imageUrl} alt={certification.title} class="w-full h-48 object-cover" />}
+            {certification.imageUrl && <Image src={certification.imageUrl} alt={certification.title} class="w-full h-48 object-cover" width={320} height={192} />}
             <div class="p-4">
               <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{certification.title}</h3>
               <p class="text-sm text-gray-600 dark:text-gray-400">{certification.issuer}</p>
@@ -85,7 +87,7 @@ const {
       <div id="achievements-carousel" class="carousel flex space-x-4 overflow-x-auto snap-x no-scrollbar pb-2 scroll-smooth">
         {achievements.map((achievement) => (
           <div class="flex-none w-80 snap-center bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-            {achievement.imageUrl && <img src={achievement.imageUrl} alt={achievement.title} class="w-full h-48 object-cover" />}
+            {achievement.imageUrl && <Image src={achievement.imageUrl} alt={achievement.title} class="w-full h-48 object-cover" width={320} height={192} />}
             <div class="p-4">
               <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{achievement.title}</h3>
               <time class="text-sm text-gray-500 dark:text-gray-400">{achievement.date}</time>
