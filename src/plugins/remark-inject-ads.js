@@ -2,21 +2,23 @@ import { visit } from 'unist-util-visit';
 
 export function remarkInjectAds() {
   return (tree) => {
-    const targets = []; // Store { type, index, parent }
+    const targets = []; // Store { index, parent }
+
+    // First pass: collect all paragraphs and h2 headings
     visit(tree, (node, index, parent) => {
       if (!parent) return;
       if (node.type === 'heading' && node.depth === 2) {
-        targets.push({ type: 'heading', index, parent });
+        targets.push({ index, parent });
       }
       if (node.type === 'paragraph') {
-        targets.push({ type: 'paragraph', index, parent });
+        targets.push({ index, parent });
       }
     });
 
     const total = targets.length;
-
     if (total === 0) return;
 
+    // Choose positions to insert ads (25%, 50%, 75%)
     const positions = [
       Math.floor(total * 0.25),
       Math.floor(total * 0.5),
@@ -25,9 +27,10 @@ export function remarkInjectAds() {
 
     const adSlots = ["1480860443", "7774806053", "4637500964"];
 
-    positions.forEach((pos, i) => {
+    // Prepare ads to insert
+    const adsToInsert = positions.map((pos, i) => {
       const target = targets[pos];
-      if (!target) return;
+      if (!target) return null;
 
       const adNode = {
         type: 'html',
@@ -47,7 +50,15 @@ export function remarkInjectAds() {
         `
       };
 
-      target.parent.children.splice(target.index + 1, 0, adNode);
-    });
+      return { parent: target.parent, index: target.index + 1, node: adNode };
+    }).filter(Boolean);
+
+    // Sort insertions in descending index order to avoid index shifting
+    adsToInsert.sort((a, b) => b.index - a.index);
+
+    // Insert each ad node into the correct parent
+    for (const { parent, index, node } of adsToInsert) {
+      parent.children.splice(index, 0, node);
+    }
   };
 }
