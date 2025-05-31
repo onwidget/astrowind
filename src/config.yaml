@@ -9,9 +9,9 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Neerajlovecyber
+    template: '%s — Neerajlovecyber'
+  description: "\U0001F680 Welcome to Neerajlovecyber,Our blog covers reverse engineering, cybersecurity, crypto forensics, CTF challenges, HackTheBox, TryHackMe walkthroughs, penetration testing, cheatsheets, ethical hacking techniques, and vulnerability assessments for security enthusiasts and professionals"
   robots:
     index: true
     follow: true
@@ -66,7 +66,7 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
+      id: "G-GQMKSE94S0"
 
 ui:
-  theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  theme: 'dark' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
