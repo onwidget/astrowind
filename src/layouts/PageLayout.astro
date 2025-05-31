@@ -19,16 +19,33 @@ const { metadata } = Astro.props;
     <title>{metadata?.title || 'Your Default Title'}</title>
     <meta name="description" content={metadata?.description || 'Default meta description for your site'} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- Google AdSense Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971"
+     crossorigin="anonymous"></script>
   </head>
   <body>
     <Layout metadata={metadata}>
       <slot name="header">
         <Header {...headerData} isSticky showRssFeed showToggleTheme />
       </slot>
+
+      <!-- Top of Page AdSense Ad Block -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-1193332880003971"
+           data-ad-slot="5667517461"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script is:inline>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
       <div id="scroll-progress"></div>
       <main>
         <slot />
       </main>
+
       <slot name="footer">
         <Footer {...footerData} />
       </slot>
@@ -45,4 +62,3 @@ const { metadata } = Astro.props;
     </Layout>
   </body>
 </html>
-
