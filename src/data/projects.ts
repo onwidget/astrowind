@@ -2,6 +2,8 @@ import qaWatchdogImage from '~/assets/images/qa-watchdog.png';
 import rawDumpToolImage from '~/assets/images/raw-dump-tool.jpeg';
 import serverMonitorImage from '~/assets/images/WhatMyServerDoing.png';
 
+export type ProjectStatus = ('completed' | 'in-development' | 'latest')[];
+
 export const projects = [
   {
     slug: 'whatmyserverdoing',
@@ -11,6 +13,7 @@ export const projects = [
     image: serverMonitorImage,
     publishDate: new Date('2025-04-29'),
     github: 'https://github.com/neerajlovecyber/WhatMyServerDoing',
+    status: ['in-development', 'latest'] as ProjectStatus,
   },
   {
     slug: 'raw-dump-tool',
@@ -20,6 +23,7 @@ export const projects = [
     image: rawDumpToolImage,
     publishDate: new Date('2025-04-29'),
     github: 'https://github.com/neerajlovecyber/RawDumpTool',
+    status: ['completed'] as ProjectStatus,
   },
   {
     slug: 'qa-watchdog',
@@ -29,6 +33,7 @@ export const projects = [
     image: qaWatchdogImage,
     publishDate: new Date('2025-04-29'),
     github: 'https://github.com/neerajlovecyber/qa-watchdog',
+    status: ['completed'] as ProjectStatus,
   },
 ];
 
