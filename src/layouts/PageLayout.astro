@@ -25,27 +25,29 @@ const { metadata } = Astro.props;
      crossorigin="anonymous"></script>
   </head>
   <body>
-    <Layout metadata={metadata}>
-      <slot name="header">
-        <Header {...headerData} isSticky showRssFeed showToggleTheme />
-      </slot>
 
-      <!-- Top of Page AdSense Ad Block -->
+    <!-- Place the Ad Outside the Layout component -->
+    <div style="margin: 1rem auto; text-align: center;">
       <ins class="adsbygoogle"
            style="display:block"
-           data-ad-client="ca-pub-1193332880003971"
+           data-ad-client="data-ad-slot"
            data-ad-slot="5667517461"
            data-ad-format="auto"
            data-full-width-responsive="true"></ins>
       <script is:inline>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
+    </div>
 
+    <!-- Page Content Layout -->
+    <Layout metadata={metadata}>
+      <slot name="header">
+        <Header {...headerData} isSticky showRssFeed showToggleTheme />
+      </slot>
       <div id="scroll-progress"></div>
       <main>
         <slot />
       </main>
-
       <slot name="footer">
         <Footer {...footerData} />
       </slot>
