@@ -1,6 +1,6 @@
 site:
   name: NeerajLoveCyber
-  site: 'https://Neerajlovecyber.vercel.app'
+  site: 'https://Neerajlovecyber.com'
   base: '/'
   trailingSlash: false
 
@@ -67,6 +67,7 @@ analytics:
   vendors:
     googleAnalytics:
       id: "G-GQMKSE94S0"
+      partytown: false
 
 ui:
   theme: 'dark' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
