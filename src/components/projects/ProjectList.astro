@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import Button from '~/components/ui/Button.astro';
 import { Image } from 'astro:assets';
+import AdProjectlist from '~/components/ads/AdProjectlist.astro';
 import type { ProjectStatus } from '~/data/projects';
 
 export interface Project {
@@ -26,18 +27,9 @@ const { projects, title = 'Projects', subtitle = 'Check out my latest projects a
 <div class="flex flex-col gap-6">
   <!-- Google AdSense Ad -->
   <div class="w-full">
-    <script  is:inline  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971"
-         crossorigin="anonymous"></script>
-    <!-- top page -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-1193332880003971"
-         data-ad-slot="5667517461"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+  <AdProjectlist />
+  
+
   </div>
   {
     projects.map((project) => (
