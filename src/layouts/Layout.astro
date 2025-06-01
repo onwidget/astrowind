@@ -57,34 +57,42 @@ const { language, textDirection } = I18N;
         }
     
         function reloadAds() {
-          const ads = document.querySelectorAll('ins.adsbygoogle[data-ad-status="pending"]');
+          const ads = document.querySelectorAll('ins.adsbygoogle:not([data-adsbygoogle-status])');
           ads.forEach(ad => {
             try {
               (adsbygoogle = window.adsbygoogle || []).push({});
-              ad.setAttribute("data-ad-status", "done");
             } catch (e) {
-              console.error("AdSense error:", e);
+              console.warn("AdSense error:", e);
             }
           });
         }
     
-        // Initial load
-        window.addEventListener("DOMContentLoaded", () => {
-          loadAdsScript();
+        // Load script initially
+        loadAdsScript();
+    
+        // Watch for newly inserted ads
+        const observer = new MutationObserver(() => {
           reloadAds();
         });
     
-        // Astro View Transition: after navigation, wait for DOM to update
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+    
+        // Also trigger on page load
+        window.addEventListener("DOMContentLoaded", reloadAds);
+    
+        // And Astro navigation
         window.addEventListener("astro:after-swap", () => {
-          setTimeout(() => {
-            reloadAds();
-          }, 250); // small delay ensures DOM is fully updated
+          setTimeout(reloadAds, 200); // ensure DOM is updated
         });
       })();
     </script>
     
+    
   
-
+</head>
   <body class="antialiased text-default bg-page tracking-tight">
     <slot />
 
