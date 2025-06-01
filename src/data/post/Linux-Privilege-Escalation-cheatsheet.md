@@ -369,17 +369,19 @@ karen@ip-10–10–242–200:/home/ubuntu/sharedfolder$ ./pwned
 root@ip-10–10–242–200:/home/ubuntu/sharedfolder# 
 ``` 
   
-if you enjoyed my blog you can check out my boys blog at 
-  
-<mcreference link="https://trustie.medium.com/?source=post_page-----3fb61a09f7ba--------------------------------" index="0">0</mcreference>  
-  
-to practice linux privesc go to 
-  
-<mcreference link="https://tryhackme.com/module/privilege-escalation?source=post_page-----3fb61a09f7ba--------------------------------" index="1">1</mcreference>  
-  
-References: 
-  
-- https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_-_linux.html 
-- <mcreference link="https://cloud.netapp.com/blog/azure-anf-blg-linux-nfs-server-how-to-set-up-server-and-client#:~:text=Network%20File%20Sharing%20(NFS)%20is,have%20access%20to%20the%20folder" index="2">2</mcreference> . 
-- <mcreference link="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md" index="3">3</mcreference>  
-- <mcreference link="https://book.hacktricks.xyz/linux-unix/privilege-escalation" index="4">4</mcreference>
+If you enjoyed my blog, you can check out my boy's blog here:
+
+[**trustie_rity on Medium**](https://trustie.medium.com)
+
+---
+
+To practice Linux privilege escalation, visit:
+
+[**TryHackMe – Privilege Escalation Module**](https://tryhackme.com/module/privilege-escalation)
+
+## References
+
+- [Total OSCP Guide – Linux Privilege Escalation](https://sushant747.gitbooks.io/total-oscp-guide/content/privilege_escalation_-_linux.html)
+- [NetApp Blog – How to Set Up a Linux NFS Server and Client](https://cloud.netapp.com/blog/azure-anf-blg-linux-nfs-server-how-to-set-up-server-and-client#:~:text=Network%20File%20Sharing%20(NFS)%20is,have%20access%20to%20the%20folder)
+- [PayloadsAllTheThings – Linux Privilege Escalation](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md)
+- [HackTricks – Linux/Unix Privilege Escalation](https://book.hacktricks.xyz/linux-unix/privilege-escalation)
