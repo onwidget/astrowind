@@ -2,9 +2,9 @@ import { visit } from 'unist-util-visit';
 
 export function remarkInjectAds() {
   return (tree) => {
-    const targets: { index: number; parent: any }[] = [];
+    const targets = []; // Collect nodes (paragraphs and h2 headings)
 
-    // Collect paragraph and h2 heading nodes
+    // First pass: collect all paragraph and heading level 2 nodes
     visit(tree, (node, index, parent) => {
       if (!parent) return;
       if (node.type === 'heading' && node.depth === 2) {
@@ -18,15 +18,16 @@ export function remarkInjectAds() {
     const total = targets.length;
     if (total === 0) return;
 
-    // Choose 3 positions (25%, 50%, 75%)
+    // Decide where to insert the ads
     const positions = [
       Math.floor(total * 0.25),
       Math.floor(total * 0.5),
       Math.floor(total * 0.75)
     ];
 
-    const adSlots = ['1480860443', '7774806053', '4637500964'];
+    const adSlots = ["1480860443", "7774806053", "4637500964"];
 
+    // Create ad nodes for the positions
     const adsToInsert = positions.map((pos, i) => {
       const target = targets[pos];
       if (!target) return null;
@@ -34,29 +35,27 @@ export function remarkInjectAds() {
       const adNode = {
         type: 'html',
         value: `
-<div class="my-8 not-prose w-full flex justify-center">
-  <div class="w-full max-w-3xl">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-1193332880003971"
-         data-ad-slot="${adSlots[i]}"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-  </div>
-</div>
-        `.trim()
+          <div class="my-8 not-prose w-full flex justify-center">
+            <div class="w-full max-w-3xl">
+              <ins class="adsbygoogle"
+                   style="display:block"
+                   data-ad-client="ca-pub-1193332880003971"
+                   data-ad-slot="${adSlots[i]}"
+                   data-ad-format="auto"
+                   data-full-width-responsive="true"
+                   data-ad-status="pending"></ins>
+            </div>
+          </div>
+        `
       };
 
-      return {
-        parent: target.parent,
-        index: target.index + 1,
-        node: adNode
-      };
+      return { parent: target.parent, index: target.index + 1, node: adNode };
     }).filter(Boolean);
 
-    // Insert ads in reverse order to prevent index shifting
+    // Sort by descending index to avoid position shifts while inserting
     adsToInsert.sort((a, b) => b.index - a.index);
 
+    // Insert the ad nodes
     for (const { parent, index, node } of adsToInsert) {
       parent.children.splice(index, 0, node);
     }
