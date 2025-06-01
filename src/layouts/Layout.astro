@@ -40,48 +40,42 @@ const { language, textDirection } = I18N;
     <ClientRouter fallback="swap" />
 
     <!-- AdSense Script -->
-    <script  is:inline src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971"
-         crossorigin="anonymous"></script>
+    <script is:inline src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971" crossorigin="anonymous"></script>
   </head>
   
   <body class="antialiased text-default bg-page tracking-tight">
     <slot />
 
     <BasicScripts />
-    
+
     <!-- Enhanced AdSense View Transition Handler -->
-    <script is:inline >
+    <script is:inline>
       function initializeAds() {
-        console.log('Initializing ads...');
-        if (typeof window !== 'undefined' && window.adsbygoogle) {
-          const ads = document.querySelectorAll('.adsbygoogle');
-          console.log(`Found ${ads.length} ads to initialize`);
-          
-          ads.forEach((ad, index) => {
-            // Check if ad is already initialized
-            if (!ad.hasAttribute('data-adsbygoogle-status') && !ad.hasAttribute('data-ad-status')) {
-              try {
-                console.log(`Initializing ad ${index + 1} with slot: ${ad.getAttribute('data-ad-slot')}`);
-                window.adsbygoogle.push({});
-                console.log(`Ad ${index + 1} initialized successfully`);
-              } catch (e) {
-                console.log(`AdSense init error for ad ${index + 1}:`, e);
-              }
-            } else {
-              console.log(`Ad ${index + 1} already initialized (status: ${ad.getAttribute('data-adsbygoogle-status')})`);
-            }
-          });
-        } else {
-          console.log('AdSense not ready yet, retrying...');
-          setTimeout(initializeAds, 500);
+        if (typeof window === 'undefined' || !window.adsbygoogle) {
+          console.log('AdSense not ready, retrying...');
+          return setTimeout(initializeAds, 500);
         }
+
+        const ads = Array.from(document.querySelectorAll('.adsbygoogle')).filter(
+          ad => ad.offsetParent !== null // visible ads only
+        );
+
+        console.log(`Initializing ${ads.length} visible ad(s)...`);
+        ads.forEach((ad, index) => {
+          if (!ad.hasAttribute('data-adsbygoogle-status') && !ad.hasAttribute('data-ad-status')) {
+            try {
+              window.adsbygoogle.push({});
+              console.log(`✅ Ad ${index + 1} initialized`);
+            } catch (e) {
+              console.warn(`❌ Failed to initialize ad ${index + 1}`, e);
+            }
+          }
+        });
       }
 
       function clearAds() {
-        console.log('Clearing ads before navigation');
         const ads = document.querySelectorAll('.adsbygoogle');
         ads.forEach((ad, index) => {
-          console.log(`Clearing ad ${index + 1}`);
           ad.innerHTML = '';
           ad.removeAttribute('data-adsbygoogle-status');
           ad.removeAttribute('data-ad-status');
@@ -89,72 +83,50 @@ const { language, textDirection } = I18N;
         });
       }
 
-      // Handle AdSense with view transitions
-      document.addEventListener('astro:before-preparation', () => {
-        clearAds();
-      });
-
+      // View transition events
+      document.addEventListener('astro:before-preparation', clearAds);
       document.addEventListener('astro:after-swap', () => {
-        console.log('Navigation completed, reinitializing ads');
-        // Wait for DOM to be fully ready
-        setTimeout(() => {
-          initializeAds();
-        }, 300);
+        console.log('Reinitializing ads after swap...');
+        setTimeout(initializeAds, 300);
       });
 
-      // Handle initial page load
+      // Initial load
       document.addEventListener('DOMContentLoaded', () => {
-        console.log('DOM loaded, initializing ads');
-        setTimeout(() => {
-          initializeAds();
-        }, 100);
+        console.log('DOM loaded, initializing ads...');
+        setTimeout(initializeAds, 100);
       });
 
-      // Fallback initialization for slower connections
+      // Final fallback
       window.addEventListener('load', () => {
-        console.log('Window fully loaded, checking ads again');
-        setTimeout(() => {
-          // Only initialize if there are uninitialized ads
-          const uninitializedAds = document.querySelectorAll('.adsbygoogle:not([data-adsbygoogle-status])');
-          if (uninitializedAds.length > 0) {
-            console.log(`Found ${uninitializedAds.length} uninitialized ads, retrying...`);
-            initializeAds();
-          }
-        }, 500);
-      });
-
-      // Watch for dynamically added ads
-      const observer = new MutationObserver((mutations) => {
-        let hasNewAds = false;
-        mutations.forEach((mutation) => {
-          if (mutation.type === 'childList') {
-            mutation.addedNodes.forEach((node) => {
-              if (node.nodeType === 1) { // Element node
-                if (node.classList && node.classList.contains('adsbygoogle')) {
-                  hasNewAds = true;
-                } else if (node.querySelectorAll) {
-                  const newAds = node.querySelectorAll('.adsbygoogle');
-                  if (newAds.length > 0) {
-                    hasNewAds = true;
-                  }
-                }
-              }
-            });
-          }
-        });
-        
-        if (hasNewAds) {
-          console.log('New ads detected, initializing...');
-          setTimeout(initializeAds, 100);
+        const uninitialized = document.querySelectorAll('.adsbygoogle:not([data-adsbygoogle-status])');
+        if (uninitialized.length > 0) {
+          console.log(`Retrying ${uninitialized.length} uninitialized ad(s)...`);
+          setTimeout(initializeAds, 500);
         }
       });
 
-      // Start observing after DOM is loaded
+      // Mutation observer for dynamic ads
+      const observer = new MutationObserver((mutations) => {
+        let shouldInit = false;
+        for (const mutation of mutations) {
+          mutation.addedNodes.forEach(node => {
+            if (
+              node.nodeType === 1 &&
+              (node.classList?.contains('adsbygoogle') || node.querySelector?.('.adsbygoogle'))
+            ) {
+              shouldInit = true;
+            }
+          });
+        }
+
+        if (shouldInit) {
+          console.log('Detected new ad(s), initializing...');
+          setTimeout(initializeAds, 300);
+        }
+      });
+
       document.addEventListener('DOMContentLoaded', () => {
-        observer.observe(document.body, {
-          childList: true,
-          subtree: true
-        });
+        observer.observe(document.body, { childList: true, subtree: true });
       });
     </script>
   </body>
