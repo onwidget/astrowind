@@ -40,55 +40,6 @@ const { language, textDirection } = I18N;
     <ClientRouter fallback="swap" />
 
 
-    <script>
-      (function () {
-        function loadAdsScript() {
-          if (window.adsbygoogleLoaded) return;
-    
-          const s = document.createElement("script");
-          s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971";
-          s.async = true;
-          s.crossOrigin = "anonymous";
-          s.onload = () => {
-            window.adsbygoogleLoaded = true;
-            reloadAds();
-          };
-          document.head.appendChild(s);
-        }
-    
-        function reloadAds() {
-          const ads = document.querySelectorAll('ins.adsbygoogle:not([data-adsbygoogle-status])');
-          ads.forEach(ad => {
-            try {
-              (adsbygoogle = window.adsbygoogle || []).push({});
-            } catch (e) {
-              console.warn("AdSense error:", e);
-            }
-          });
-        }
-    
-        // Load script initially
-        loadAdsScript();
-    
-        // Watch for newly inserted ads
-        const observer = new MutationObserver(() => {
-          reloadAds();
-        });
-    
-        observer.observe(document.body, {
-          childList: true,
-          subtree: true
-        });
-    
-        // Also trigger on page load
-        window.addEventListener("DOMContentLoaded", reloadAds);
-    
-        // And Astro navigation
-        window.addEventListener("astro:after-swap", () => {
-          setTimeout(reloadAds, 200); // ensure DOM is updated
-        });
-      })();
-    </script>
     
     
   
