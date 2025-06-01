@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-
+import Adfooter from '../ads/Adfooter.astro';
 
 interface Link {
   text?: string;
@@ -56,5 +56,6 @@ const { socialLinks = [], footNote = '', theme = 'light' } = Astro.props;
         <Fragment set:html={footNote} />
       </div>
     </div>
+     <Adfooter />
   </div>
 </footer>
