@@ -40,7 +40,7 @@ const { language, textDirection } = I18N;
     <ClientRouter fallback="swap" />
 
     <!-- AdSense Script -->
-    <script type="text/partytown" is:inline src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971"
+    <script  is:inline src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971"
          crossorigin="anonymous"></script>
   </head>
   
@@ -50,7 +50,7 @@ const { language, textDirection } = I18N;
     <BasicScripts />
     
     <!-- Enhanced AdSense View Transition Handler -->
-    <script is:inline type="text/partytown">
+    <script is:inline >
       function initializeAds() {
         console.log('Initializing ads...');
         if (typeof window !== 'undefined' && window.adsbygoogle) {
