@@ -16,14 +16,14 @@ metadata:
 
 Privilege escalation is where a computer user uses system flaws or configuration errors to gain access to other user accounts in a computer system. By acquiring other accounts they get to access more files and they can also run administrator commands. 
   
-## LinPeas: 
-  
-<mcreference link="https://github.com/carlospolop/PEASS-ng.git?source=post_page-----3fb61a09f7ba--------------------------------" index="0">0</mcreference>
-  
-## LinEnum: 
-  
-<mcreference link="https://github.com/rebootuser/LinEnum?source=post_page-----3fb61a09f7ba--------------------------------" index="1">1</mcreference>
-  
+## LinPEAS
+
+[LinPEAS GitHub Repository](https://github.com/carlospolop/PEASS-ng.git)
+
+## LinEnum
+
+[LinEnum GitHub Repository](https://github.com/rebootuser/LinEnum)
+
 # **In privilege escalations, there are two types of privilege escalations** 
   
 1. Vertical privilege escalation. 
