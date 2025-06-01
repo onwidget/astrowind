@@ -19,7 +19,11 @@ const { post, url } = Astro.props;
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
  
 <!-- Ad Unit 1: Top of posts list view -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971"
+
+
+
+  <article>
+    <script is:inline data-astro-rerun   src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971"
      crossorigin="anonymous"></script>
 <!-- top of posts list view -->
 <ins class="adsbygoogle"
@@ -31,9 +35,6 @@ const { post, url } = Astro.props;
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-
-
-  <article>
     <header
       class={post.image
         ? 'intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade'
@@ -111,13 +112,7 @@ const { post, url } = Astro.props;
       <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600" />
     </div>
 
-<!-- Ad Unit 2: Bottom of article -->
-<div class="max-w-3xl mx-auto px-4 sm:px-6 mt-8">
-  <ins class="adsbygoogle block "
-       style="display:inline-block;width:320px;height:100px"
-       data-ad-client="ca-pub-1193332880003971"
-       data-ad-slot="4258033182"
-       id="ad-bottom-mobile"></ins>
+
 
 </div>
 
