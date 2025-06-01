@@ -40,13 +40,11 @@ const { language, textDirection } = I18N;
     <ClientRouter fallback="swap" />
 
 
-<script is:inline src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971"
-     crossorigin="anonymous"></script>
-
-     <script>
+    <script>
       (function () {
-        // Load AdSense script only once
-        if (!window.adsbygoogleLoaded) {
+        function loadAdsScript() {
+          if (window.adsbygoogleLoaded) return;
+    
           const s = document.createElement("script");
           s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971";
           s.async = true;
@@ -56,9 +54,6 @@ const { language, textDirection } = I18N;
             reloadAds();
           };
           document.head.appendChild(s);
-        } else {
-          // Already loaded? Run ad loader
-          reloadAds();
         }
     
         function reloadAds() {
@@ -73,54 +68,21 @@ const { language, textDirection } = I18N;
           });
         }
     
-        // Run after page navigation (Astro specific)
-        window.addEventListener("astro:after-swap", reloadAds);
+        // Initial load
+        window.addEventListener("DOMContentLoaded", () => {
+          loadAdsScript();
+          reloadAds();
+        });
     
-        // Also run on initial load
-        window.addEventListener("DOMContentLoaded", reloadAds);
+        // Astro View Transition: after navigation, wait for DOM to update
+        window.addEventListener("astro:after-swap", () => {
+          setTimeout(() => {
+            reloadAds();
+          }, 250); // small delay ensures DOM is fully updated
+        });
       })();
     </script>
     
-
-  </head>
-  
-  <script>
-    (function () {
-      // Load AdSense script only once
-      if (!window.adsbygoogleLoaded) {
-        const s = document.createElement("script");
-        s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971";
-        s.async = true;
-        s.crossOrigin = "anonymous";
-        s.onload = () => {
-          window.adsbygoogleLoaded = true;
-          reloadAds();
-        };
-        document.head.appendChild(s);
-      } else {
-        // Already loaded? Run ad loader
-        reloadAds();
-      }
-  
-      function reloadAds() {
-        const ads = document.querySelectorAll('ins.adsbygoogle[data-ad-status="pending"]');
-        ads.forEach(ad => {
-          try {
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            ad.setAttribute("data-ad-status", "done");
-          } catch (e) {
-            console.error("AdSense error:", e);
-          }
-        });
-      }
-  
-      // Run after page navigation (Astro specific)
-      window.addEventListener("astro:after-swap", reloadAds);
-  
-      // Also run on initial load
-      window.addEventListener("DOMContentLoaded", reloadAds);
-    })();
-  </script>
   
 
   <body class="antialiased text-default bg-page tracking-tight">
