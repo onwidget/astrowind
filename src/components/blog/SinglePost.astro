@@ -4,6 +4,7 @@ import Image from '~/components/common/Image.astro';
 import PostTags from '~/components/blog/Tags.astro';
 import SocialShare from '~/components/common/SocialShare.astro';
 import { getPermalink } from '~/utils/permalinks';
+import AdUnit from '~/components/AdUnit.astro';
 import { getFormattedDate } from '~/utils/utils';
 import type { Post } from '~/types';
 
@@ -17,20 +18,12 @@ const { post, url } = Astro.props;
 
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
   <!-- Ad Unit 1: Top of posts list view -->
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 mb-8">
-    <script is:inline src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971"
-         crossorigin="anonymous"></script>
-    <!-- top of posts list view -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-1193332880003971"
-         data-ad-slot="7060490188"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  </div>
+ <!-- Replace your existing ad blocks with: -->
+<div class="max-w-3xl mx-auto px-4 sm:px-6 mb-8">
+  <AdUnit slot="7060490188" />
+</div>
+
+
 
   <article>
     <header
@@ -112,19 +105,9 @@ const { post, url } = Astro.props;
     </div>
 
     <!-- Ad Unit 3: Bottom of article -->
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 mt-8">
-      <script is:inline  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971"
-           crossorigin="anonymous"></script>
-      <!-- bottm of article -->
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-1193332880003971"
-           data-ad-slot="4258033182"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
+<!-- And at the bottom: -->
+<div class="max-w-3xl mx-auto px-4 sm:px-6 mt-8">
+  <AdUnit slot="4258033182" />
+</div>
   </article>
 </section>

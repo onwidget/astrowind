@@ -1,0 +1,38 @@
+---
+export interface Props {
+  slot: string;
+  format?: string;
+  style?: string;
+}
+
+const { slot, format = "auto", style = "display:block" } = Astro.props;
+---
+
+<div class="ad-container">
+  <ins class="adsbygoogle"
+       style={style}
+       data-ad-client="ca-pub-1193332880003971"
+       data-ad-slot={slot}
+       data-ad-format={format}
+       data-full-width-responsive="true"></ins>
+</div>
+
+<script is:inline define:vars={{ slot }}>
+  function loadAd() {
+    if (typeof window !== 'undefined') {
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.log('AdSense error:', e);
+      }
+    }
+  }
+
+  // Load ad initially
+  loadAd();
+
+  // Reload ad after navigation
+  document.addEventListener('astro:after-swap', () => {
+    setTimeout(loadAd, 200);
+  });
+</script>
