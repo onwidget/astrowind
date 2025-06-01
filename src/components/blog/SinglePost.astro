@@ -4,10 +4,9 @@ import Image from '~/components/common/Image.astro';
 import PostTags from '~/components/blog/Tags.astro';
 import SocialShare from '~/components/common/SocialShare.astro';
 import { getPermalink } from '~/utils/permalinks';
-import AdUnit from '~/components/AdUnit.astro';
 import { getFormattedDate } from '~/utils/utils';
 import type { Post } from '~/types';
-
+import AdBanner from '~/components/ads/AdBanner.astro';
 export interface Props {
   post: Post;
   url: string | URL;
@@ -21,20 +20,9 @@ const { post, url } = Astro.props;
 <!-- Ad Unit 1: Top of posts list view -->
 
 
+<AdBanner />
 
   <article>
-    <script is:inline data-astro-rerun   src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1193332880003971"
-     crossorigin="anonymous"></script>
-<!-- top of posts list view -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1193332880003971"
-     data-ad-slot="7060490188"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
     <header
       class={post.image
         ? 'intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade'
@@ -112,10 +100,7 @@ const { post, url } = Astro.props;
       <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600" />
     </div>
 
+    <!-- Ad Unit 2: Bottom of article -->
 
-
-</div>
-
-    </div>
   </article>
 </section>
