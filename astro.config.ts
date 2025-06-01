@@ -29,7 +29,13 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     sitemap(),
-    mdx(),
+    mdx({
+      remarkPlugins: [],
+      rehypePlugins: [],
+      // Ensure proper character encoding
+      extendMarkdownConfig: true,
+      gfm: true,
+    }),
     icon({
       include: {
         tabler: ['*'],

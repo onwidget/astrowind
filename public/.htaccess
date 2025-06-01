@@ -1,0 +1,2 @@
+# Add charset header
+AddCharset UTF-8 .html .htm .md .mdx .xml .txt
