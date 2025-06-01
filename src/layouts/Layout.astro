@@ -1,3 +1,30 @@
+---
+import '~/assets/styles/tailwind.css';
+import AdUnit from '~/components/AdUnit.astro';
+import { I18N } from 'astrowind:config';
+
+import CommonMeta from '~/components/common/CommonMeta.astro';
+import Favicons from '~/components/Favicons.astro';
+import CustomStyles from '~/components/CustomStyles.astro';
+import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
+import Metadata from '~/components/common/Metadata.astro';
+import SiteVerification from '~/components/common/SiteVerification.astro';
+import Analytics from '~/components/common/Analytics.astro';
+import BasicScripts from '~/components/common/BasicScripts.astro';
+
+// Comment the line below to disable View Transitions
+import { ClientRouter } from 'astro:transitions';
+
+import type { MetaData as MetaDataType } from '~/types';
+
+export interface Props {
+  metadata?: MetaDataType;
+}
+
+const { metadata = {} } = Astro.props;
+const { language, textDirection } = I18N;
+---
+
 <!doctype html>
 <html lang={language} dir={textDirection} class="2xl:text-[20px]">
   <head>
@@ -22,45 +49,54 @@
 
     <BasicScripts />
     
-    <!-- Updated AdSense View Transition Handler -->
+    <!-- Enhanced AdSense View Transition Handler -->
     <script is:inline>
       function initializeAds() {
+        console.log('Initializing ads...');
         if (typeof window !== 'undefined' && window.adsbygoogle) {
           const ads = document.querySelectorAll('.adsbygoogle');
           console.log(`Found ${ads.length} ads to initialize`);
           
           ads.forEach((ad, index) => {
             // Check if ad is already initialized
-            if (!ad.hasAttribute('data-adsbygoogle-status')) {
+            if (!ad.hasAttribute('data-adsbygoogle-status') && !ad.hasAttribute('data-ad-status')) {
               try {
+                console.log(`Initializing ad ${index + 1} with slot: ${ad.getAttribute('data-ad-slot')}`);
                 window.adsbygoogle.push({});
-                console.log(`Ad ${index + 1} initialized`);
+                console.log(`Ad ${index + 1} initialized successfully`);
               } catch (e) {
                 console.log(`AdSense init error for ad ${index + 1}:`, e);
               }
             } else {
-              console.log(`Ad ${index + 1} already initialized`);
+              console.log(`Ad ${index + 1} already initialized (status: ${ad.getAttribute('data-adsbygoogle-status')})`);
             }
           });
+        } else {
+          console.log('AdSense not ready yet, retrying...');
+          setTimeout(initializeAds, 500);
         }
       }
 
-      // Handle AdSense with view transitions
-      document.addEventListener('astro:before-preparation', () => {
+      function clearAds() {
         console.log('Clearing ads before navigation');
-        // Clear existing ads before navigation
         const ads = document.querySelectorAll('.adsbygoogle');
         ads.forEach((ad, index) => {
           console.log(`Clearing ad ${index + 1}`);
           ad.innerHTML = '';
           ad.removeAttribute('data-adsbygoogle-status');
           ad.removeAttribute('data-ad-status');
+          ad.removeAttribute('data-google-query-id');
         });
+      }
+
+      // Handle AdSense with view transitions
+      document.addEventListener('astro:before-preparation', () => {
+        clearAds();
       });
 
       document.addEventListener('astro:after-swap', () => {
-        console.log('Reinitializing ads after navigation');
-        // Wait a bit longer for DOM to be ready
+        console.log('Navigation completed, reinitializing ads');
+        // Wait for DOM to be fully ready
         setTimeout(() => {
           initializeAds();
         }, 300);
@@ -68,18 +104,57 @@
 
       // Handle initial page load
       document.addEventListener('DOMContentLoaded', () => {
-        console.log('Page loaded, initializing ads');
+        console.log('DOM loaded, initializing ads');
         setTimeout(() => {
           initializeAds();
         }, 100);
       });
 
-      // Fallback initialization
+      // Fallback initialization for slower connections
       window.addEventListener('load', () => {
-        console.log('Window loaded, checking ads again');
+        console.log('Window fully loaded, checking ads again');
         setTimeout(() => {
-          initializeAds();
+          // Only initialize if there are uninitialized ads
+          const uninitializedAds = document.querySelectorAll('.adsbygoogle:not([data-adsbygoogle-status])');
+          if (uninitializedAds.length > 0) {
+            console.log(`Found ${uninitializedAds.length} uninitialized ads, retrying...`);
+            initializeAds();
+          }
         }, 500);
+      });
+
+      // Watch for dynamically added ads
+      const observer = new MutationObserver((mutations) => {
+        let hasNewAds = false;
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'childList') {
+            mutation.addedNodes.forEach((node) => {
+              if (node.nodeType === 1) { // Element node
+                if (node.classList && node.classList.contains('adsbygoogle')) {
+                  hasNewAds = true;
+                } else if (node.querySelectorAll) {
+                  const newAds = node.querySelectorAll('.adsbygoogle');
+                  if (newAds.length > 0) {
+                    hasNewAds = true;
+                  }
+                }
+              }
+            });
+          }
+        });
+        
+        if (hasNewAds) {
+          console.log('New ads detected, initializing...');
+          setTimeout(initializeAds, 100);
+        }
+      });
+
+      // Start observing after DOM is loaded
+      document.addEventListener('DOMContentLoaded', () => {
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
       });
     </script>
   </body>
