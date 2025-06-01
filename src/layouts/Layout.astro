@@ -1,30 +1,3 @@
----
-import '~/assets/styles/tailwind.css';
-import AdUnit from '~/components/AdUnit.astro';
-import { I18N } from 'astrowind:config';
-
-import CommonMeta from '~/components/common/CommonMeta.astro';
-import Favicons from '~/components/Favicons.astro';
-import CustomStyles from '~/components/CustomStyles.astro';
-import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
-import Metadata from '~/components/common/Metadata.astro';
-import SiteVerification from '~/components/common/SiteVerification.astro';
-import Analytics from '~/components/common/Analytics.astro';
-import BasicScripts from '~/components/common/BasicScripts.astro';
-
-// Comment the line below to disable View Transitions
-import { ClientRouter } from 'astro:transitions';
-
-import type { MetaData as MetaDataType } from '~/types';
-
-export interface Props {
-  metadata?: MetaDataType;
-}
-
-const { metadata = {} } = Astro.props;
-const { language, textDirection } = I18N;
----
-
 <!doctype html>
 <html lang={language} dir={textDirection} class="2xl:text-[20px]">
   <head>
@@ -49,14 +22,36 @@ const { language, textDirection } = I18N;
 
     <BasicScripts />
     
-    <!-- AdSense View Transition Handler -->
+    <!-- Updated AdSense View Transition Handler -->
     <script is:inline>
+      function initializeAds() {
+        if (typeof window !== 'undefined' && window.adsbygoogle) {
+          const ads = document.querySelectorAll('.adsbygoogle');
+          console.log(`Found ${ads.length} ads to initialize`);
+          
+          ads.forEach((ad, index) => {
+            // Check if ad is already initialized
+            if (!ad.hasAttribute('data-adsbygoogle-status')) {
+              try {
+                window.adsbygoogle.push({});
+                console.log(`Ad ${index + 1} initialized`);
+              } catch (e) {
+                console.log(`AdSense init error for ad ${index + 1}:`, e);
+              }
+            } else {
+              console.log(`Ad ${index + 1} already initialized`);
+            }
+          });
+        }
+      }
+
       // Handle AdSense with view transitions
       document.addEventListener('astro:before-preparation', () => {
         console.log('Clearing ads before navigation');
         // Clear existing ads before navigation
         const ads = document.querySelectorAll('.adsbygoogle');
-        ads.forEach(ad => {
+        ads.forEach((ad, index) => {
+          console.log(`Clearing ad ${index + 1}`);
           ad.innerHTML = '';
           ad.removeAttribute('data-adsbygoogle-status');
           ad.removeAttribute('data-ad-status');
@@ -65,38 +60,26 @@ const { language, textDirection } = I18N;
 
       document.addEventListener('astro:after-swap', () => {
         console.log('Reinitializing ads after navigation');
-        // Reinitialize AdSense after navigation
+        // Wait a bit longer for DOM to be ready
         setTimeout(() => {
-          if (typeof window !== 'undefined' && window.adsbygoogle) {
-            const ads = document.querySelectorAll('.adsbygoogle');
-            console.log(`Found ${ads.length} ads to reinitialize`);
-            ads.forEach((ad, index) => {
-              try {
-                window.adsbygoogle.push({});
-                console.log(`Ad ${index + 1} reinitialized`);
-              } catch (e) {
-                console.log('AdSense reinit error:', e);
-              }
-            });
-          }
-        }, 200);
+          initializeAds();
+        }, 300);
       });
 
-      // Also handle initial page load
+      // Handle initial page load
       document.addEventListener('DOMContentLoaded', () => {
         console.log('Page loaded, initializing ads');
-        if (typeof window !== 'undefined' && window.adsbygoogle) {
-          const ads = document.querySelectorAll('.adsbygoogle');
-          console.log(`Found ${ads.length} ads to initialize`);
-          ads.forEach((ad, index) => {
-            try {
-              window.adsbygoogle.push({});
-              console.log(`Ad ${index + 1} initialized`);
-            } catch (e) {
-              console.log('AdSense init error:', e);
-            }
-          });
-        }
+        setTimeout(() => {
+          initializeAds();
+        }, 100);
+      });
+
+      // Fallback initialization
+      window.addEventListener('load', () => {
+        console.log('Window loaded, checking ads again');
+        setTimeout(() => {
+          initializeAds();
+        }, 500);
       });
     </script>
   </body>
