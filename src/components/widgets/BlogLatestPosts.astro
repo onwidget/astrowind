@@ -45,7 +45,7 @@ const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
             set:html={title}
           />
         </div>
-        <AdBloglist />
+        
         {APP_BLOG.list.isEnabled && linkText && linkUrl && (
           <div class="hidden lg:flex lg:items-center">
             <Button variant="primary" href={linkUrl} class="w-auto">

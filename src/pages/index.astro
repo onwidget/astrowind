@@ -11,6 +11,7 @@ import { experiences } from '~/data/experience';
 import Experience from '~/components/widgets/Experience.astro';
 import { achievements, certifications } from '~/data/achievements';
 import AchievementsAndCertifications from '~/components/widgets/AchievementsAndCertifications.astro';
+import AdBloglist from '~/components/ads/AdBloglist.astro';
 
 const metadata = {
   title: 'Neeraj Singh - Cybersecurity Engineer & Software Testing Professional',
@@ -111,6 +112,7 @@ const metadata = {
   <BlogLatestPosts
     title="Latest Blog Posts"
   />
+  <AdBloglist />
   <CallToAction
     actions={[
       {
