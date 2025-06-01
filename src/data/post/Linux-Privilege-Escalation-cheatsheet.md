@@ -108,8 +108,8 @@ By running sudo -l we can see all the binaries a user can do. we first run sudo 
   
 Then we headed to *GTFO and search if one of the binaries can be used to maintain privilege 
   
-<mcreference link="https://gtfobins.github.io/?source=post_page-----3fb61a09f7ba--------------------------------" index="2">2</mcreference>
-  
+- [GTFOBins – Unix Privilege Escalation via Binaries](https://gtfobins.github.io)
+
 ```bash
 $ sudo -l 
 Matching Defaults entries for karen on ip-10–10–148–237: 
