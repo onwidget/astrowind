@@ -1,16 +1,24 @@
 // public/adsense-loader.js
-function reloadAds() {
-    if (typeof window.adsbygoogle !== 'undefined') {
-      document.querySelectorAll('ins.adsbygoogle').forEach(ad => {
-        try {
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (e) {
-          console.error('AdSense error:', e);
-        }
-      });
+
+function pushAds() {
+  if (!window.adsbygoogle) return;
+
+  document.querySelectorAll("ins.adsbygoogle").forEach((el) => {
+    // Only push if not already filled
+    if (!el.getAttribute("data-adsbygoogle-status")) {
+      try {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.warn("AdSense push error:", e);
+      }
     }
-  }
-  
-  // Hook to client-side navigation
-  window.addEventListener('astro:after-swap', reloadAds);
-  
+  });
+}
+
+// Run on page load
+window.addEventListener("load", pushAds);
+
+// Run after Astro View Transition completes
+window.addEventListener("astro:after-swap", () => {
+  setTimeout(pushAds, 500); // Small delay to let the new content fully render
+});
