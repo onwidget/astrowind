@@ -46,22 +46,22 @@ SQL Injection occurs when user-supplied data is not properly validated, filtered
 ## Why SQL Injection Happens 
 
 SQL Injection vulnerabilities typically arise due to: 
-
+```
 -> Lack of input validation 
 -> Improper use of parameterized queries 
 -> Insufficient error handling 
 -> Over-privileged database accounts 
-
+```
 ## SQL Injection Prevention 
 
 To prevent SQL Injection attacks: 
-
+```
 -> Use parameterized queries 
 -> Implement input validation and sanitization 
 -> Employ the principle of least privilege for database accounts 
 -> Use stored procedures 
 -> Keep software and systems updated 
-
+```
 ## Popular SQL Injection Interview Questions 
 
 
@@ -72,10 +72,12 @@ To prevent SQL Injection attacks:
         
  
     2. How can you detect SQL Injection vulnerabilities? 
+    ```
         -> Manual testing with crafted inputs 
         -> Automated scanning tools (e.g., sqlmap) 
         -> Code review 
         -> Penetration testing 
+    ```
  
     3. What is blind SQL Injection? 
         
