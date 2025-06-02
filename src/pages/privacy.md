@@ -3,7 +3,7 @@ title: 'Privacy Policy'
 layout: '~/layouts/MarkdownLayout.astro'
 ---
 
-_Last updated_: April 29, 2025
+_Last updated_: April 31, 2025
 
 This Privacy Policy describes our policies and procedures regarding the collection, use, and disclosure of your information when you use neerajlovecyber.com and informs you about your privacy rights.
 
