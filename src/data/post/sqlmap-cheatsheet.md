@@ -38,7 +38,7 @@ SQL Injection is a code injection technique that exploits vulnerabilities in the
 
 SQL Injection occurs when user-supplied data is not properly validated, filtered, or sanitized by web applications. This allows attackers to modify an applications SQL queries, potentially letting them: 
 
-- Bypass authentication 
+- Bypass authentication
 - Retrieve sensitive information 
 - Modify database contents 
 - Execute administration operations on the database 
