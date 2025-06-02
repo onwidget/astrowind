@@ -56,7 +56,7 @@ SQL Injection vulnerabilities typically arise due to:
 
 To prevent SQL Injection attacks: 
 
-- Use parameterized queries 
+- Use parameterized queries
 - Implement input validation and sanitization 
 - Employ the principle of least privilege for database accounts 
 - Use stored procedures 
