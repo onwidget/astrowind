@@ -38,48 +38,46 @@ SQL Injection is a code injection technique that exploits vulnerabilities in the
 
 SQL Injection occurs when user-supplied data is not properly validated, filtered, or sanitized by web applications. This allows attackers to modify an applications SQL queries, potentially letting them: 
 
-- Bypass authentication 
-- Retrieve sensitive information 
-- Modify database contents 
-- Execute administration operations on the database 
+1. Bypass authentication 
+2. Retrieve sensitive information 
+3. Modify database contents 
+4. Execute administration operations on the database 
 
 ## Why SQL Injection Happens 
 
 SQL Injection vulnerabilities typically arise due to: 
 
-- Lack of input validation 
-- Improper use of parameterized queries 
-- Insufficient error handling 
-- Over-privileged database accounts 
+-> Lack of input validation 
+-> Improper use of parameterized queries 
+-> Insufficient error handling 
+-> Over-privileged database accounts 
 
 ## SQL Injection Prevention 
 
 To prevent SQL Injection attacks: 
 
-- Use parameterized queries 
-- Implement input validation and sanitization 
-- Employ the principle of least privilege for database accounts 
-- Use stored procedures 
-- Keep software and systems updated 
+-> Use parameterized queries 
+-> Implement input validation and sanitization 
+-> Employ the principle of least privilege for database accounts 
+-> Use stored procedures 
+-> Keep software and systems updated 
 
 ## Popular SQL Injection Interview Questions 
 
-- 
+
     1. What is the difference between first-order and second-order SQL Injection? 
         
         First-order: The injected SQL executes immediately. 
         Second-order: The payload is stored in the database and executed later when retrieved. 
         
-- 
-    1. How can you detect SQL Injection vulnerabilities? 
-        
-    - Manual testing with crafted inputs
-    - Code review 
-    - Penetration testing 
-    - Automated scanning tools
-        
-- 
-    1. What is blind SQL Injection? 
+ 
+    2. How can you detect SQL Injection vulnerabilities? 
+        -> Manual testing with crafted inputs 
+        -> Automated scanning tools (e.g., sqlmap) 
+        -> Code review 
+        -> Penetration testing 
+ 
+    3. What is blind SQL Injection? 
         
         Blind SQL Injection occurs when an application is vulnerable to SQL Injection, but its HTTP responses dont contain the results of the relevant SQL query or the details of database errors. 
         
