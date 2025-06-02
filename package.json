@@ -28,6 +28,7 @@
     "@astrolib/seo": "^1.0.0-beta.8",
     "@fontsource-variable/inter": "^5.2.5",
     "@iconify-json/skill-icons": "^1.2.0",
+    "@vercel/speed-insights": "^1.2.0",
     "astro": "^5.7.3",
     "astro-embed": "^0.9.0",
     "astro-icon": "^1.1.5",
