@@ -17,3 +17,31 @@ export interface MetaData {
   category?: string;
   tags?: string[];
 }
+
+export interface Post {
+  id: string;
+  slug: string;
+  permalink: string;
+
+  publishDate: Date;
+  updateDate?: Date;
+
+  title: string;
+  excerpt?: string;
+  image?: string;
+
+  category?: TaxonomyType;
+  tags?: Array<TaxonomyType>;
+  author?: string;
+
+  draft?: boolean;
+
+  metadata?: MetaData;
+
+  Content?: any;
+  content?: string;
+  
+  headings?: Array<{ depth: number; slug: string; text: string }>;
+
+  readingTime?: number;
+}

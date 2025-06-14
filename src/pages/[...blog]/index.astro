@@ -28,6 +28,9 @@ const { post } = Astro.props as Props;
 const url = getCanonical(getPermalink(post.permalink, 'post'));
 const image = await findImageWithFallback(post.image);
 
+// Extract headings from the rendered content
+const { Content, headings } = post;
+
 const metadata = merge(
   {
     title: post.title,
@@ -68,7 +71,12 @@ if (post.category) {
 ---
 
 <Layout metadata={metadata}>
-  <SinglePost post={{ ...post, image: image }} url={url} breadcrumbItems={breadcrumbItems}>
+  <SinglePost 
+    post={{ ...post, image: image }} 
+    url={url} 
+    breadcrumbItems={breadcrumbItems}
+    headings={headings || []}
+  >
     {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
   </SinglePost>
   

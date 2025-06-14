@@ -1,0 +1,139 @@
+---
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  headings: Array<{ depth: number; slug: string; text: string }>;
+  title?: string;
+  class?: string;
+}
+
+const { headings = [], title = "Table of Contents", class: className = "" } = Astro.props;
+
+// Filter headings to include only h2 and h3
+const filteredHeadings = headings.filter(heading => heading.depth >= 2 && heading.depth <= 3);
+
+// Create counters for numbering
+let h2Counter = 0;
+let h3Counter = 0;
+---
+
+<div class={`toc-container bg-gray-50 dark:bg-slate-800 px-4 pb-4 rounded-lg ${className}`}>
+  <div class="flex justify-between items-center cursor-pointer " id="toc-header">
+    <h4 class="text-base font-bold -mt-4">{title}</h4>
+    <button 
+      id="toc-toggle" 
+      class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+      aria-label="Toggle table of contents"
+    >
+      <Icon name="tabler:chevron-up" class="w-5 h-5" id="toc-chevron" />
+    </button>
+  </div>
+  
+  <div id="toc-content" class="">
+    {filteredHeadings.length > 0 ? (
+      <ol class="list-none space-y-1 m-0">
+        {filteredHeadings.map((heading) => {
+          if (heading.depth === 2) {
+            h2Counter++;
+            h3Counter = 0; // Reset h3 counter for each new h2
+            return (
+              <li class="toc-item">
+                <a 
+                  href={`#${heading.slug}`}
+                  class="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white flex no-underline text-sm"
+                >
+                  <span class="mr-2">{h2Counter}.</span>
+                  <span>{heading.text}</span>
+                </a>
+              </li>
+            );
+          } else if (heading.depth === 3) {
+            h3Counter++;
+            return (
+              <li class="toc-item ml-4">
+                <a 
+                  href={`#${heading.slug}`}
+                  class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white text-xs flex no-underline"
+                >
+                  <span class="mr-2">{h2Counter}.{h3Counter}</span>
+                  <span>{heading.text}</span>
+                </a>
+              </li>
+            );
+          }
+          return null;
+        })}
+      </ol>
+    ) : (
+      <p class="text-xs text-gray-500 dark:text-gray-400 m-0">No headings found in this article.</p>
+    )}
+  </div>
+</div>
+
+<style>
+  /* Override any global link styles */
+  .toc-container a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+  
+  .toc-container a:hover {
+    color: inherit !important;
+  }
+  
+  /* Light mode */
+  .toc-item a {
+    color: #374151 !important; /* gray-700 */
+  }
+  .toc-item a:hover {
+    color: #111827 !important; /* gray-900 */
+  }
+  
+  /* Dark mode */
+  :global(.dark) .toc-item a {
+    color: #D1D5DB !important; /* gray-300 */
+  }
+  :global(.dark) .toc-item a:hover {
+    color: #FFFFFF !important; /* white */
+  }
+  
+  /* Specific styles for h3 items */
+  .toc-item.ml-4 a {
+    color: #4B5563 !important; /* gray-600 */
+  }
+  :global(.dark) .toc-item.ml-4 a {
+    color: #9CA3AF !important; /* gray-400 */
+  }
+</style>
+
+<script>
+  // Wait for the DOM to be fully loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    const tocHeader = document.getElementById('toc-header');
+    const tocContent = document.getElementById('toc-content');
+    const tocChevron = document.getElementById('toc-chevron');
+    
+    if (tocHeader && tocContent && tocChevron) {
+      // Set initial state (expanded)
+      let isExpanded = true;
+      
+      // Function to toggle the TOC visibility
+      const toggleTOC = () => {
+        isExpanded = !isExpanded;
+        
+        if (isExpanded) {
+          tocContent.style.display = 'block';
+          tocChevron.classList.remove('rotate-180');
+        } else {
+          tocContent.style.display = 'none';
+          tocChevron.classList.add('rotate-180');
+        }
+      };
+      
+      // Add click event listener to the header
+      tocHeader.addEventListener('click', toggleTOC);
+    }
+  });
+</script>
+
+
