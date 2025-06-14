@@ -29,13 +29,16 @@ const generateBreadcrumbSchema = () => {
   const itemListElements = [homeItem];
 
   items.forEach((item, index) => {
-    itemListElements.push({
-      '@type': 'ListItem',
-      position: index + 2,
-      name: item.text,
-      item: new URL(item.href ?? Astro.url, Astro.site).toString()
-    });
+  itemListElements.push({
+    '@type': 'ListItem',
+    position: index + 2,
+    name: item.text,
+    item: item.href
+      ? new URL(item.href, Astro.site).toString()
+      : Astro.request.url
   });
+});
+
 
   return {
     '@context': 'https://schema.org',
