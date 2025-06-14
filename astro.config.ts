@@ -7,6 +7,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
+import react from '@astrojs/react'; // Add React integration
 import icon from 'astro-icon';
 import compress from 'astro-compress';
 import type { AstroIntegration } from 'astro';
@@ -25,6 +26,7 @@ export default defineConfig({
   output: 'static',
 
   integrations: [
+    react(), // Add React integration
     tailwind({
       applyBaseStyles: false,
     }),
@@ -32,7 +34,6 @@ export default defineConfig({
     mdx({
       remarkPlugins: [],
       rehypePlugins: [],
-      // Ensure proper character encoding
       extendMarkdownConfig: true,
       gfm: true,
     }),
