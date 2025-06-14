@@ -1,0 +1,91 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getHomePermalink } from '~/utils/permalinks';
+import { I18N } from 'astrowind:config';
+
+export interface BreadcrumbItem {
+  text: string;
+  href?: string;
+}
+
+export interface Props {
+  items: BreadcrumbItem[];
+  class?: string;
+  includeBreadcrumbSchema?: boolean;
+}
+
+const { items = [], class: className = 'text-sm', includeBreadcrumbSchema = true } = Astro.props;
+const { textDirection } = I18N || { textDirection: 'ltr' };
+
+// Generate BreadcrumbList schema
+const generateBreadcrumbSchema = () => {
+  const homeItem = {
+    '@type': 'ListItem',
+    position: 1,
+    name: 'Home',
+    item: new URL(getHomePermalink(), Astro.site).toString()
+  };
+  
+  const itemListElements = [homeItem];
+  
+  items.forEach((item, index) => {
+    itemListElements.push({
+      '@type': 'ListItem',
+      position: index + 2,
+      name: item.text,
+      ...(item.href && { item: new URL(item.href, Astro.site).toString() })
+    });
+  });
+  
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: itemListElements
+  };
+};
+
+const breadcrumbSchema = includeBreadcrumbSchema ? generateBreadcrumbSchema() : null;
+---
+
+<nav aria-label="Breadcrumb" class={`${className} text-gray-500 dark:text-slate-400`}>
+  <ol class="flex flex-wrap gap-1 items-center">
+    <li>
+      <a 
+        href={getHomePermalink()} 
+        class="hover:text-gray-900 dark:hover:text-white inline-flex items-center"
+        aria-label="Home"
+      >
+        <Icon name="tabler:home" class="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+      </a>
+    </li>
+    {
+      items.map(({ text, href }, index) => (
+        <li class="flex items-center gap-1">
+          <span class="opacity-60">
+            {textDirection === 'rtl' ? 
+              <Icon name="tabler:chevron-left" class="w-3 h-3 sm:w-3.5 sm:h-3.5" /> : 
+              <Icon name="tabler:chevron-right" class="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+            }
+          </span>
+          {href ? (
+            <a 
+              href={href} 
+              class="hover:text-gray-900 dark:hover:text-white truncate max-w-[100px] sm:max-w-none"
+              aria-current={index === items.length - 1 ? 'page' : undefined}
+              title={text}
+            >
+              {text}
+            </a>
+          ) : (
+            <span class="font-medium text-gray-900 dark:text-white truncate max-w-[120px] sm:max-w-none" aria-current="page" title={text}>{text}</span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+{breadcrumbSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+)}
+

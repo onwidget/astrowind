@@ -1,0 +1,126 @@
+---
+import { getAsset } from '~/utils/permalinks';
+import { SITE, METADATA } from 'astrowind:config';
+import type { MetaData } from '~/types';
+
+export interface Props extends MetaData {
+  dontUseTitleTemplate?: boolean;
+}
+
+const {
+  title,
+  description,
+  image: _image,
+  canonical,
+  noindex = false,
+  nofollow = false,
+  ogTitle = title,
+  ogType = 'website',
+  ogImage = _image,
+  twitterTitle = title,
+  twitterImage = _image,
+  twitterCard = 'summary_large_image',
+  publishDate,
+  updateDate,
+  author,
+  category,
+  tags,
+} = Astro.props;
+
+const image = typeof _image === 'string' ? new URL(_image, Astro.site) : _image;
+const ogImageUrl = typeof ogImage === 'string' ? new URL(ogImage, Astro.site) : ogImage;
+const twitterImageUrl = typeof twitterImage === 'string' ? new URL(twitterImage, Astro.site) : twitterImage;
+const canonicalUrl = canonical ? new URL(canonical, Astro.site) : new URL(Astro.url.pathname, Astro.site);
+
+// Generate structured data for blog posts
+const generateStructuredData = () => {
+  if (ogType === 'article') {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: title,
+      description: description,
+      image: ogImageUrl?.href || getAsset('/default-og-image.jpg'),
+      datePublished: publishDate ? new Date(publishDate).toISOString() : null,
+      dateModified: updateDate ? new Date(updateDate).toISOString() : (publishDate ? new Date(publishDate).toISOString() : null),
+      author: author ? {
+        '@type': 'Person',
+        name: author
+      } : {
+        '@type': 'Person',
+        name: SITE.name,
+        url: SITE.origin
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: SITE.name,
+        logo: {
+          '@type': 'ImageObject',
+          url: getAsset('/logo.png')
+        }
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': canonicalUrl.href
+      }
+    };
+  } else if (ogType === 'website') {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: SITE.name,
+      description: METADATA.description,
+      url: SITE.origin
+    };
+  }
+  return null;
+};
+
+const structuredData = generateStructuredData();
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>{title ? (SITE.title ? `${title} — ${SITE.title}` : title) : SITE.title}</title>
+
+<meta name="title" content={title ? (SITE.title ? `${title} — ${SITE.title}` : title) : SITE.title} />
+{description && <meta name="description" content={description} />}
+
+{canonical && <link rel="canonical" href={canonicalUrl} />}
+
+{noindex && <meta name="robots" content="noindex" />}
+{nofollow && <meta name="robots" content="nofollow" />}
+
+<!-- Open Graph -->
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:title" content={ogTitle} />
+{description && <meta property="og:description" content={description} />}
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:type" content={ogType} />
+{ogImageUrl ? (
+  <>
+    <meta property="og:image" content={ogImageUrl.href} />
+    {ogImageUrl.width && <meta property="og:image:width" content={String(ogImageUrl.width)} />}
+    {ogImageUrl.height && <meta property="og:image:height" content={String(ogImageUrl.height)} />}
+  </>
+) : (
+  <meta property="og:image" content={getAsset('/default-og-image.jpg')} />
+)}
+
+<!-- Twitter -->
+<meta name="twitter:title" content={twitterTitle} />
+{description && <meta name="twitter:description" content={description} />}
+<meta name="twitter:card" content={twitterCard} />
+{twitterImageUrl ? (
+  <>
+    <meta name="twitter:image" content={twitterImageUrl.href} />
+  </>
+) : (
+  <meta name="twitter:image" content={getAsset('/default-og-image.jpg')} />
+)}
+
+<!-- Add structured data for rich results -->
+{structuredData && (
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+)}
