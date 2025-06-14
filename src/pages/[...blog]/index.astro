@@ -42,6 +42,12 @@ const metadata = merge(
         ? { images: [{ url: image, width: (image as ImageMetadata)?.width, height: (image as ImageMetadata)?.height }] }
         : {}),
     },
+    publishDate: post.publishDate,
+    updateDate: post.updateDate,
+    author: post.author,
+    category: post.category?.title,
+    tags: post.tags?.map(tag => tag.title),
+    image: image,
   },
   { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
 ) as MetaData;

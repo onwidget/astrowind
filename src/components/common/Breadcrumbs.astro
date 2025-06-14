@@ -11,10 +11,40 @@ export interface BreadcrumbItem {
 export interface Props {
   items: BreadcrumbItem[];
   class?: string;
+  includeBreadcrumbSchema?: boolean;
 }
 
-const { items = [], class: className = 'text-sm' } = Astro.props;
+const { items = [], class: className = 'text-sm', includeBreadcrumbSchema = true } = Astro.props;
 const { textDirection } = I18N || { textDirection: 'ltr' };
+
+// Generate BreadcrumbList schema
+const generateBreadcrumbSchema = () => {
+  const homeItem = {
+    '@type': 'ListItem',
+    position: 1,
+    name: 'Home',
+    item: new URL(getHomePermalink(), Astro.site).toString()
+  };
+  
+  const itemListElements = [homeItem];
+  
+  items.forEach((item, index) => {
+    itemListElements.push({
+      '@type': 'ListItem',
+      position: index + 2,
+      name: item.text,
+      ...(item.href && { item: new URL(item.href, Astro.site).toString() })
+    });
+  });
+  
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: itemListElements
+  };
+};
+
+const breadcrumbSchema = includeBreadcrumbSchema ? generateBreadcrumbSchema() : null;
 ---
 
 <nav aria-label="Breadcrumb" class={`${className} text-gray-500 dark:text-slate-400`}>
@@ -53,3 +83,7 @@ const { textDirection } = I18N || { textDirection: 'ltr' };
     }
   </ol>
 </nav>
+
+{breadcrumbSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+)}
