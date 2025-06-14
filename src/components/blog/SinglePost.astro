@@ -34,12 +34,12 @@ const { post, url, breadcrumbItems = [] } = Astro.props;
         ? 'intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade'
         : 'intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade'}
     >
-          {/* Add breadcrumbs below date */}
-          {breadcrumbItems.length > 0 && (
-            <div class="max-w-3xl mx-auto sm:px-6 pb-2 ">
-              <Breadcrumbs items={breadcrumbItems} />
-            </div>
-          )}
+        
+    {breadcrumbItems.length > 0 && (
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 ">
+        <Breadcrumbs items={breadcrumbItems} class="text-xs sm:text-sm overflow-x-auto whitespace-nowrap py-2 flex-nowrap" />
+      </div>
+    )}
       <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center">
         <p>
           <Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
