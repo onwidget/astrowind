@@ -25,18 +25,18 @@ const generateBreadcrumbSchema = () => {
     name: 'Home',
     item: new URL(getHomePermalink(), Astro.site).toString()
   };
-  
+
   const itemListElements = [homeItem];
-  
+
   items.forEach((item, index) => {
     itemListElements.push({
       '@type': 'ListItem',
       position: index + 2,
       name: item.text,
-      ...(item.href && { item: new URL(item.href, Astro.site).toString() })
+      item: new URL(item.href ?? Astro.url, Astro.site).toString()
     });
   });
-  
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -88,4 +88,3 @@ const breadcrumbSchema = includeBreadcrumbSchema ? generateBreadcrumbSchema() : 
 {breadcrumbSchema && (
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 )}
-
