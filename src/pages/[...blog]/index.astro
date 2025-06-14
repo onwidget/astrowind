@@ -9,7 +9,7 @@ import ToBlogLink from '~/components/blog/ToBlogLink.astro';
 
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
-import { findImage } from '~/utils/images';
+import { findImageWithFallback } from '~/utils/images';
 import type { MetaData } from '~/types';
 import RelatedPosts from '~/components/blog/RelatedPosts.astro';
 
@@ -24,7 +24,7 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { post } = Astro.props as Props;
 
 const url = getCanonical(getPermalink(post.permalink, 'post'));
-const image = (await findImage(post.image)) as ImageMetadata | string | undefined;
+const image = await findImageWithFallback(post.image);
 
 const metadata = merge(
   {
@@ -52,3 +52,4 @@ const metadata = merge(
   <ToBlogLink />
   <RelatedPosts post={post} />
 </Layout>
+
