@@ -8,14 +8,16 @@ import { getFormattedDate } from '~/utils/utils';
 import type { Post } from '~/types';
 import AdBannerBottom from '~/components/ads/AdBannerBottom.astro';
 import AdBanner from '~/components/ads/AdBanner.astro';
+import Breadcrumbs from '~/components/common/Breadcrumbs.astro';
 
 import { findImageWithFallback } from '~/utils/images';
 export interface Props {
   post: Post;
   url: string | URL;
+  breadcrumbItems?: Array<{ text: string; href?: string }>;
 }
 
-const { post, url } = Astro.props;
+const { post, url, breadcrumbItems = [] } = Astro.props;
 ---
 
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
@@ -32,6 +34,12 @@ const { post, url } = Astro.props;
         ? 'intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade'
         : 'intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade'}
     >
+          {/* Add breadcrumbs below date */}
+          {breadcrumbItems.length > 0 && (
+            <div class="max-w-3xl mx-auto sm:px-6 pb-2 ">
+              <Breadcrumbs items={breadcrumbItems} />
+            </div>
+          )}
       <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center">
         <p>
           <Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
@@ -65,6 +73,9 @@ const { post, url } = Astro.props;
           }
         </p>
       </div>
+      
+
+      
       <h1
         class="px-4 sm:px-6 py-6 max-w-3xl mx-auto text-4xl md:text-5xl font-bold leading-tighter tracking-tighter font-heading"
       >
