@@ -11,7 +11,7 @@ tags:
   - cheatsheet
 category: forensics
 metadata:
-  canonical: https://neerajlovecyber.com/blog/volatility-memory-forensics-cheatsheet
+  canonical: https://neerajlovecyber.com/blog/memory-forensics-volatility-cheatsheet-guide
 ---
 
 Memory forensics is a crucial aspect of digital investigations, helping analysts uncover valuable information from a system's volatile memory. Volatility, a powerful open-source tool, serves as an indispensable ally in the world of memory forensics. In this blog post, we will delve into the realm of volatility, exploring its capabilities and usage through a step-by-step guide.
