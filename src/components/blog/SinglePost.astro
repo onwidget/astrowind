@@ -75,7 +75,7 @@ const { post, url } = Astro.props;
           <div class="w-[94%] mx-auto">
             <Image
               src={post.image ? await findImageWithFallback(post.image) : await findImageWithFallback()}
-              class="max-w-full lg:max-w-[900px] mx-auto mb-6 rounded-[5%] bg-gray-400 dark:bg-slate-700"
+              class="max-w-full lg:max-w-[900px] mx-auto mb-6 rounded-lg bg-gray-400 dark:bg-slate-700"
               widths={[400, 900]}
               sizes="(max-width: 900px) 400px, 900px"
               alt={post?.excerpt || ''}
