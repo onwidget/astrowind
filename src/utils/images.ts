@@ -1,6 +1,7 @@
 import { isUnpicCompatible, unpicOptimizer, astroAssetsOptimizer } from './images-optimization';
 import type { ImageMetadata } from 'astro';
 import type { OpenGraph } from '@astrolib/seo';
+import defaultBlogImage from '../assets/images/default-blog-image.png';
 
 const load = async function () {
   let images: Record<string, () => Promise<unknown>> | undefined = undefined;
@@ -46,6 +47,15 @@ export const findImage = async (
   return images && typeof images[key] === 'function'
     ? ((await images[key]()) as { default: ImageMetadata })['default']
     : null;
+};
+
+export const findImageWithFallback = async (imageSrc?: string) => {
+  if (!imageSrc) {
+    return defaultBlogImage;
+  }
+  
+  const image = await findImage(imageSrc);
+  return image || defaultBlogImage;
 };
 
 interface OptimizedImage {
@@ -112,3 +122,4 @@ export const adaptOpenGraphImages = async (
 
   return { ...openGraph, ...(adaptedImages ? { images: adaptedImages } : {}) };
 };
+

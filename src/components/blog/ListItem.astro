@@ -8,7 +8,7 @@ import { APP_BLOG } from 'astrowind:config';
 import type { Post } from '~/types';
 
 import { getPermalink } from '~/utils/permalinks';
-import { findImage } from '~/utils/images';
+import { findImageWithFallback } from '~/utils/images';
 import { getFormattedDate } from '~/utils/utils';
 
 export interface Props {
@@ -16,7 +16,7 @@ export interface Props {
 }
 
 const { post } = Astro.props;
-const image = (await findImage(post.image)) as ImageMetadata | undefined;
+const image = (await findImageWithFallback(post.image)) as ImageMetadata | undefined;
 
 const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : '';
 ---

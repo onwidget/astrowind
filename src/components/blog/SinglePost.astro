@@ -9,6 +9,7 @@ import type { Post } from '~/types';
 import AdBannerBottom from '~/components/ads/AdBannerBottom.astro';
 import AdBanner from '~/components/ads/AdBanner.astro';
 
+import { findImageWithFallback } from '~/utils/images';
 export interface Props {
   post: Post;
   url: string | URL;
@@ -73,7 +74,7 @@ const { post, url } = Astro.props;
         post.image ? (
           <div class="w-[94%] mx-auto">
             <Image
-              src={post.image}
+              src={post.image ? await findImageWithFallback(post.image) : await findImageWithFallback()}
               class="max-w-full lg:max-w-[900px] mx-auto mb-6 rounded-[5%] bg-gray-400 dark:bg-slate-700"
               widths={[400, 900]}
               sizes="(max-width: 900px) 400px, 900px"

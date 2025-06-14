@@ -4,7 +4,7 @@ import type { Post } from '~/types';
 
 import Image from '~/components/common/Image.astro';
 
-import { findImage } from '~/utils/images';
+import { findImageWithFallback } from '~/utils/images';
 import { getPermalink } from '~/utils/permalinks';
 
 export interface Props {
@@ -12,7 +12,7 @@ export interface Props {
 }
 
 const { post } = Astro.props;
-const image = await findImage(post.image);
+const image = await findImageWithFallback(post.image);
 
 const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : '';
 ---
@@ -69,3 +69,4 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
 
   <p class="text-muted dark:text-slate-400 text-lg">{post.excerpt}</p>
 </article>
+
