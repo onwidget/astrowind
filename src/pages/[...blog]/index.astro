@@ -12,6 +12,7 @@ import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
 import { findImageWithFallback } from '~/utils/images';
 import type { MetaData } from '~/types';
+import type { BreadcrumbItem } from '~/components/common/Breadcrumbs.astro';
 import RelatedPosts from '~/components/blog/RelatedPosts.astro';
 
 export const prerender = true;
@@ -52,7 +53,7 @@ const metadata = merge(
 ) as MetaData;
 
 // Breadcrumb items
-const breadcrumbItems = [
+const breadcrumbItems: BreadcrumbItem[] = [
   { text: 'Blog', href: getBlogPermalink() },
   { text: String(post.title), href: url.toString() }
 ];
