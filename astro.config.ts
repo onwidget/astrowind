@@ -12,6 +12,7 @@ import icon from 'astro-icon';
 import compress from 'astro-compress';
 import type { AstroIntegration } from 'astro';
 import { remarkInjectAds } from './src/plugins/remark-inject-ads.js';
+import { remarkGithubEmbeds } from './src/plugins/remark-github-embeds.js';
 import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
@@ -83,7 +84,7 @@ export default defineConfig({
   },
 
   markdown: {
-    remarkPlugins: [readingTimeRemarkPlugin,remarkInjectAds],
+    remarkPlugins: [readingTimeRemarkPlugin, remarkInjectAds, remarkGithubEmbeds],
     rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
   },
 
