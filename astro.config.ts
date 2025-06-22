@@ -30,7 +30,10 @@ export default defineConfig({
   integrations: [
     // Add React integration
     react(),
-    expressiveCode(),
+    expressiveCode(
+      {
+      themes: ['rose-pine'],
+    }),
     tailwind({
       applyBaseStyles: false,
     }),
