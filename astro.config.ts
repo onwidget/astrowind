@@ -16,6 +16,8 @@ import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
+import expressiveCode from 'astro-expressive-code';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const hasExternalScripts = false;
@@ -26,7 +28,9 @@ export default defineConfig({
   output: 'static',
 
   integrations: [
-    react(), // Add React integration
+    // Add React integration
+    react(),
+    expressiveCode(),
     tailwind({
       applyBaseStyles: false,
     }),
@@ -53,13 +57,11 @@ export default defineConfig({
         ],
       },
     }),
-
     ...whenExternalScripts(() =>
       partytown({
         config: { forward: ['dataLayer.push'] },
       })
     ),
-
     compress({
       CSS: true,
       HTML: {
@@ -72,7 +74,6 @@ export default defineConfig({
       SVG: false,
       Logger: 1,
     }),
-
     astrowind({
       config: './src/config.yaml',
     }),
@@ -83,7 +84,7 @@ export default defineConfig({
   },
 
   markdown: {
-    remarkPlugins: [readingTimeRemarkPlugin,remarkInjectAds],
+    remarkPlugins: [readingTimeRemarkPlugin, remarkInjectAds],
     rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
   },
 
