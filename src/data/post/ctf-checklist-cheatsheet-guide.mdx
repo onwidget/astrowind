@@ -1,0 +1,278 @@
+---
+publishDate: 2024-07-30T12:00:00Z
+title: 'CTF Checklist/Cheatsheet: A Comprehensive Guide'
+slug: ctf-checklist-cheatsheet
+excerpt: A comprehensive checklist and cheatsheet for various Capture The Flag (CTF) categories, covering tools, techniques, and resources for web, rev, pwn, crypto, forensics, and more.
+image: ~/assets/images/posts/ctf-cheatsheet-banner.png
+tags:
+  - ctf
+  - security
+  - cheatsheet
+  - web exploitation
+  - reverse engineering
+  - pwn
+  - cryptography
+  - forensics
+  - osint
+  - python
+  - pyjail
+category: Security
+metadata:
+  canonical: https://example.com/blog/ctf-checklist-cheatsheet
+description: A comprehensive checklist and cheatsheet for Capture The Flag (CTF) competitions, covering various categories, tools, and techniques.
+---
+
+# CTF Checklist/Cheatsheet
+
+A collection of useful tools, techniques, and resources for various CTF categories.
+
+## Overall Useful Website/Tools
+
+- **hacktricks.xyz**: Comprehensive reference book for many CTF topics.
+  - Visit: [hacktricks.xyz](https://hacktricks.xyz)
+
+## — Web —
+
+### Tools
+- **webhook.site**: Get a request bin to inspect HTTP requests.
+  - Visit: [webhook.site](https://webhook.site)
+- **dirsearch**: Brute force directories and files on web servers.
+  - Repository: [maurosoria/dirsearch](https://github.com/maurosoria/dirsearch)
+- **GitTools**: Pull Git repositories from websites where `.git` is exposed.
+  - Repository: [internetwache/GitTools](https://github.com/internetwache/GitTools)
+- **php_filter_chain_generator**: Generate PHP filter chains for exploiting LFI/RFI vulnerabilities.
+  - Repository: [synacktiv/php_filter_chain_generator](https://github.com/synacktiv/php_filter_chain_generator)
+- **Postman**: Send HTTP requests and test APIs.
+  - Visit: [postman.com](https://www.postman.com)
+- **Burp Suite**: Intercept HTTP requests and perform various web security tests.
+  - Visit: [portswigger.net/burp](https://portswigger.net/burp)
+- **Wireshark**: Capture and analyze network traffic.
+  - Visit: [wireshark.org](https://www.wireshark.org)
+- **CSP Evaluator**: Evaluate Content Security Policies.
+  - Visit: [csp-evaluator.withgoogle.com](https://csp-evaluator.withgoogle.com)
+
+### Techniques & Tips
+- Add a dot (`.`) at the end of a domain to potentially bypass simple checks (e.g., `example.com.`).
+
+### DOM Clobbering
+- **blink SECCON CTF 2023**: Example of DOM Clobbering.
+  - Reference: Search for "blink SECCON CTF 2023 DOM Clobbering"
+
+### Cascading
+- **CSS Font Cascading**: Use `unicode-range` for cascading styles.
+  - People can use `unicode-range` to do cascading.
+- **Font side-channel (Font Review BuckeyeCTF 2023)**: Use linguistics to make page overflow to leak flags char by char.
+  - Reference: Search for "Font Review BuckeyeCTF 2023"
+- **STTF (Scroll-to-Text Fragment)**: Use `:target` in CSS to send requests if a scroll-to-text fragment matches.
+  - Reference: Search for "STTF CSS trick"
+
+### NoSQL Injection
+- **JSON Regex (Area51 BuckeyeCTF 2023)**: Input is in JSON and uses regex.
+  - Reference: Search for "Area51 BuckeyeCTF 2023 NoSQL Injection"
+
+### JWT (JSON Web Tokens)
+- **RS256 to HS256 (certs BuckeyeCTF 2023)**: Algorithm confusion attack.
+  - Reference: Search for "certs BuckeyeCTF 2023 JWT RS256 to HS256"
+
+### JSDom jail
+- **Optimized Admin Bot vsCTF 2023**: Use `spawnSync` for RCE (requires `process` and `spawn_sync`).
+  - Reference: Search for "Optimized Admin Bot vsCTF 2023 JSDom"
+
+### CORS bypass
+- **makes-sense ASIS-ctf-qual 2023**: Use shadow DOM to let an iframe access parent's document (`shadowContainer.attachShadow`).
+  - Goal: Make `e.source` in `window.onmessage = e=>(e.source == top && e.source.length == 0 ? eval(e.data) : '')` not undefined.
+  - Reference: Search for "makes-sense ASIS-ctf-qual 2023 CORS"
+
+### CSP bypass
+- **hacktricks.xyz**: Check this website for more CSP bypass tricks.
+- **JS polyglots**: Embed JavaScript code in multiple language image files. Then use `<script charset="ISO-8859-1" src=url></script>` to execute.
+  - References:
+    - [JS JPEG polyglot script](https://portswigger.net/research/bypassing-csp-using-polyglot-jpegs)
+    - [Bypassing CSP using polyglot JPEGs](https://portswigger.net/research/bypassing-csp-using-polyglot-jpegs) (Note: link seems duplicated in source, linking once)
+- **CSS side-channel**: Using `color-mix` to make a tab crash with a signal.
+  - References:
+    - [Issue report](https://bugs.chromium.org/p/chromium/issues/detail?id=1490504) (example: `color-mix(in srgb, CanvasText 0%, transparent)` can crash tabs)
+    - [Another-csp DiceCTF-2024-qual](https://github.com/dicegang/dicectf-quals-2024-challenges/tree/main/web/another-csp)
+
+### JavaScript Jail
+- **Inside of function**: Use `var process=this.constructor.constructor("return process;")();` to get the `process` object.
+  - Then use `var require = global.require || global.process.mainModule.constructor._load;` or `this.require` to get RCE.
+  - Example script: `spawnSync.js`
+
+## — Rev —
+
+### Tools
+- **disasm.pro**: Disassemble bytecode online.
+  - Visit: [disasm.pro](https://disasm.pro/)
+- **fernflower**: Decompile Java bytecode (by JetBrains).
+  - Repository: [JetBrains/intellij-community/plugins/java-decompiler/engine](https://github.com/JetBrains/intellij-community/tree/master/plugins/java-decompiler/engine) (Fernflower is integrated)
+- **angr**: Symbolic execution framework to find solutions or inputs.
+  - Visit: [angr.io](https://angr.io/)
+- **bytecode-viewer**: Compare different decompilers' output side-by-side.
+  - Repository: [Konloch/bytecode-viewer](https://github.com/Konloch/bytecode-viewer)
+- **zydis**: Disassembly library for x86/x64 bytecode.
+  - Visit: [zydis.re](https://zydis.re/)
+
+### Techniques & Tips
+- **Angr to find solution for input**:
+  - **Homework Help WolvCTF 2023**
+  - **Angry BuckeyeCTF 2022**
+
+## — Misc —
+
+### Tools
+- **z3**: SMT solver to find solutions under constraints.
+  - Repository: [Z3Prover/z3](https://github.com/Z3Prover/z3)
+- **dcode**: Decode various encodings.
+  - Visit: [dcode.fr](https://dcode.fr/en)
+- **CyberChef**: Combine multiple tools and operations for data manipulation.
+  - Visit: [gchq.github.io/CyberChef](https://gchq.github.io/CyberChef/)
+- **pylingual**: Decompile `.pyc` files.
+  - (Note: Might be a typo, `uncompyle6` or `decompyle3` are more common. If `pylingual` is specific, a link would be helpful.)
+- **ExtendMT19937Predictor**: Python random number (Mersenne Twister) predictor given 624 generated numbers.
+  - Repository: [keyj/TwisterReverse](https://github.com/keyj/TwisterReverse) (or similar MT19937 predictors)
+
+### Techniques & Tips
+- **Find solution under constraints**:
+  - Use z3-solver, e.g., "based emoji hackasat qual 2023".
+
+## — Forensics / OSINT —
+
+### Tools
+- **saucenao**: Search for image sources.
+  - Visit: [saucenao.com](https://saucenao.com/)
+- **aperisolve.com**: Online image steganography tool.
+  - Visit: [aperisolve.com](https://www.aperisolve.com/)
+- **photo-forensics**: Online image steganography tool.
+  - (Note: `fotoforensics.com` is a common tool, this might be it)
+  - Visit: [fotoforensics.com](https://fotoforensics.com/)
+- **stegseek**: Crack JPEG steganography passwords.
+  - Repository: [RickdeJager/stegseek](https://github.com/RickdeJager/stegseek)
+- **exiftool**: Print out EXIF metadata from files.
+  - Visit: [exiftool.org](https://exiftool.org/)
+- **maigret**: Search for social media accounts (a fork of Sherlock).
+  - Repository: [soxoj/maigret](https://github.com/soxoj/maigret)
+- **F5**: A common F5 steganography implementation.
+  - (Note: This refers to the F5 algorithm for steganography in JPEGs)
+- **Autopsy**: GUI tool for digital forensics.
+  - Visit: [autopsy.com](https://www.autopsy.com/)
+- **Volatility**: CLI tool for forensics memory dump analysis.
+  - Visit: [volatilityfoundation.org](https://www.volatilityfoundation.org/)
+- **zsteg**: Steganography detection for PNG and BMP files.
+  - Repository: [zed-0xff/zsteg](https://github.com/zed-0xff/zsteg)
+- **png chunk checker**: Inspect PNG file chunks.
+  - (Various online tools or scripts, e.g., using `tweakpng` or custom scripts)
+- **binwalk**: Firmware analysis tool, can identify embedded files and executables.
+  - Repository: [ReFirmLabs/binwalk](https://github.com/ReFirmLabs/binwalk)
+- **app.any.run**: Run anything online for 60s (free account), suitable for malware analysis.
+  - Visit: [app.any.run](https://app.any.run/)
+
+## — Crypto —
+
+### Tools
+- **RsaCtfTool**: Attack RSA encryption.
+  - Repository: [Ganapati/RsaCtfTool](https://github.com/Ganapati/RsaCtfTool)
+- **hashclash**: Generate MD5 collisions.
+  - Repository: [cr-marcstevens/hashclash](https://github.com/cr-marcstevens/hashclash)
+- **hashcat**: Advanced password recovery and hash cracking.
+  - Visit: [hashcat.net/hashcat](https://hashcat.net/hashcat/)
+- **yafu**: Factorize large numbers.
+  - Repository: [bbuhrow/yafu](https://github.com/bbuhrow/yafu)
+- **John the Ripper jumbo**: Password cracker.
+  - Visit: [openwall.com/john](https://www.openwall.com/john/)
+
+## — Pwn —
+
+### Tools
+- **checksec.sh**: Check binary security properties (NX, PIE, RELRO, etc.).
+  - Script: [slimm609/checksec.sh](https://github.com/slimm609/checksec.sh/blob/main/checksec)
+- **gef**: GDB plugin.
+  - Repository: [hugsy/gef](https://github.com/hugsy/gef)
+- **gdb-dashboard**: Modular visual interface for GDB.
+  - Repository: [cyrus-and/gdb-dashboard](https://github.com/cyrus-and/gdb-dashboard)
+- **pwndbg**: GDB plugin.
+  - Repository: [pwndbg/pwndbg](https://github.com/pwndbg/pwndbg)
+- **pwntools**: Utility for pwn in Python.
+  - Visit: [pwntools.com](http://docs.pwntools.com/en/stable/)
+- **shellcheck**: Static analysis tool for shell scripts.
+  - Visit: [shellcheck.net](https://www.shellcheck.net/)
+- **rp++ (rp)**: Fast ROP gadget finder (x86/x64/ARM/ARM64).
+  - Repository: [0vercl0k/rp](https://github.com/0vercl0k/rp)
+- **Compiler Explorer**: Online code to assembly viewer.
+  - Visit: [godbolt.org](https://godbolt.org/)
+- **Opcode and Instruction Reference**: For 32 and 64 bits.
+  - Visit: [sandpile.org](http://sandpile.org/x86/index.htm) or [intel.com manuals](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html)
+- **Syscall Reference**: For 64 bits or Linux System Call Table for x86_64.
+  - Visit: [syscalls.kernelgrok.com](https://syscalls.kernelgrok.com/) or [blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/](https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/)
+- **Detect It Easy (DIE)**: For detecting binary wrappers/packers.
+  - Visit: [ntinfo.biz](https://ntinfo.biz/)
+- **pwninit**: Fetch `ld` and `libc` for a given binary.
+  - Repository: [io12/pwninit](https://github.com/io12/pwninit)
+- **libc database (libc.blukat.me)**: Given some libc symbols and addresses, return libc version.
+  - Visit: [libc.blukat.me](https://libc.blukat.me/)
+
+### Techniques & Tips
+#### ROP
+- If you pop a non-privileged shell using `system()` or similar from a SUID binary, you can do a `setuid(0)` syscall beforehand to get a privileged shell.
+- `__nptl_change_stack_perm` can change stack NX permission.
+
+#### Leak address
+- **Leak libc, ld, stack, vdso, vvar addresses by an arbitrary read**: Sailing the C BuckeyeCTF-2024.
+  - Reference: Search for "Sailing the C BuckeyeCTF-2024"
+
+#### Disable ASLR temporary
+- `setarch \`uname -m\` -R [executable]` from StackOverflow.
+
+## — Purple Team —
+
+### Tools
+- **gtfobins**: Search for binaries that can be used to get a root shell under certain conditions (Red Team).
+  - Visit: [gtfobins.github.io](https://gtfobins.github.io/)
+- **revshells.com**: Generate reverse shell code (Red Team).
+  - Visit: [revshells.com](https://www.revshells.com/)
+- **PEASS-ng**: Enumerate Windows/Linux privilege escalation vectors (Red Team).
+  - Repository: [carlospolop/PEASS-ng](https://github.com/carlospolop/PEASS-ng)
+- **NetExec (formerly CrackMapExec)**: Network scanning and post-exploitation tool (Red Team).
+  - Repository: [Pennyw0rth/NetExec](https://github.com/Pennyw0rth/NetExec)
+- **Responder**: LLMNR, NBT-NS and MDNS poisoner, with MultiRelay capabilities (Red Team).
+  - Repository: [lgandx/Responder](https://github.com/lgandx/Responder)
+- **BloodHound**: Active Directory analysis framework (Red Team).
+  - Visit: [bloodhoundad.org](https://bloodhoundad.org/)
+- **pypykatz**: Windows security tools (Mimikatz) implementation in Python (Red Team).
+  - Repository: [skelsec/pypykatz](https://github.com/skelsec/pypykatz)
+- **GodPotato**: Windows 2012 ~ 2022 privilege escalation (Red Team).
+  - Repository: [BeichenDream/GodPotato](https://github.com/BeichenDream/GodPotato)
+- **Sliver**: Red Team framework.
+  - Visit: [sliver.sh](https://sliver.sh/)
+
+## Python Jail / Pyjail
+
+- **starship CrewCTF 2023**: Character limit: `@^_":,.` and ASCII letters.
+  - Payload: `type: @__build_class__.__self__.exec\r@__build_class__.__self__.input\rclass\x0cx:pass.`
+- **Bonus_The_Revenge_of_Checkpass_1 BxMCTF 2023**: `eval(inp, {'__builtins__': None}, None)`.
+  - Payload: `type: ().__class__.__bases__[0].__subclasses__().`
+- **Username_Decorator BxMCTF 2023**: Flask escape.
+  - Payload: `type: ().__class__.__bases__[0].__subclasses__().`
+- **Sneckos-lair laCTF 2025**: Obtain function with `__code__` attribute by type alias without ability to define function and access to builtins.
+  - Reference: Search for "Sneckos-lair laCTF 2025 pyjail"
+- `'f{32:c}'`: Can format an int to char (equivalent to `chr(32)`).
+- **Use other fonts to bypass alphabet filter**: E.g., use Italic alphabet from ItalicTextGenerator and use long underline like `＿𝘤𝘭𝘢𝘴𝘴＿`.
+  - Example: Zero uoftctf-2024.
+- **Boolean short circuit for side-channel**: `<` and `>` can short circuit.
+  - `"Aa" > "Aa" > 0` will be `False`.
+  - `"Ab" > "Aa" > 0` will raise a `TypeError` (so do other comparators).
+- **PWN pyjail**:
+  - Use `ctypes` to override the definition of functions (e.g., `os._exit`).
+    - Example: diligent-auditor DiceCTF-2024-qual.
+  - Use this behavior to do PWN.
+    - Example: IRS DiceCTF-2024-qual.
+  - Use UAF in fields like `issues#91153` audit hook POC.
+    - Reference: [Python Issues #91153](https://github.com/python/cpython/issues/91153)
+  - Use `vars()` and `|=` to add functions into globals (concat two dictionaries): `x=vars();x|=vars(list)`.
+  - Use `match` to get member method or properties (PEP 636): `case dict(items=items1): print(items1())`.
+  - Use `gc` module to get locals inside a function or deleted objects.
+    - Example: `import gc; [obj for obj in gc.get_objects() if isinstance(obj, type_you_are_looking_for)]`
+
+---
+
+*This cheatsheet is a compilation of various tools and techniques. Always ensure you have permission before using any tools on systems you do not own.*
