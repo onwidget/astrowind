@@ -7,6 +7,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
+import react from '@astrojs/react'; // Add React integration
 import icon from 'astro-icon';
 import compress from 'astro-compress';
 import type { AstroIntegration } from 'astro';
@@ -14,6 +15,8 @@ import { remarkInjectAds } from './src/plugins/remark-inject-ads.js';
 import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
+
+import expressiveCode from 'astro-expressive-code';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -25,6 +28,12 @@ export default defineConfig({
   output: 'static',
 
   integrations: [
+    // Add React integration
+    react(),
+    expressiveCode(
+      {
+      themes: ['rose-pine'],
+    }),
     tailwind({
       applyBaseStyles: false,
     }),
@@ -32,7 +41,6 @@ export default defineConfig({
     mdx({
       remarkPlugins: [],
       rehypePlugins: [],
-      // Ensure proper character encoding
       extendMarkdownConfig: true,
       gfm: true,
     }),
@@ -52,13 +60,11 @@ export default defineConfig({
         ],
       },
     }),
-
     ...whenExternalScripts(() =>
       partytown({
         config: { forward: ['dataLayer.push'] },
       })
     ),
-
     compress({
       CSS: true,
       HTML: {
@@ -71,7 +77,6 @@ export default defineConfig({
       SVG: false,
       Logger: 1,
     }),
-
     astrowind({
       config: './src/config.yaml',
     }),
@@ -82,7 +87,7 @@ export default defineConfig({
   },
 
   markdown: {
-    remarkPlugins: [readingTimeRemarkPlugin,remarkInjectAds],
+    remarkPlugins: [readingTimeRemarkPlugin, remarkInjectAds],
     rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
   },
 

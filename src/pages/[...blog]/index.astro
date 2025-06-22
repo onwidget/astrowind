@@ -6,13 +6,13 @@ import type { ImageMetadata } from 'astro';
 import Layout from '~/layouts/PageLayout.astro';
 import SinglePost from '~/components/blog/SinglePost.astro';
 import ToBlogLink from '~/components/blog/ToBlogLink.astro';
-import Breadcrumbs from '~/components/common/Breadcrumbs.astro';
 import { getBlogPermalink } from '~/utils/permalinks';
 
 import { getCanonical, getPermalink } from '~/utils/permalinks';
 import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
 import { findImageWithFallback } from '~/utils/images';
 import type { MetaData } from '~/types';
+import type { BreadcrumbItem } from '~/components/common/Breadcrumbs.astro';
 import RelatedPosts from '~/components/blog/RelatedPosts.astro';
 
 export const prerender = true;
@@ -27,6 +27,9 @@ const { post } = Astro.props as Props;
 
 const url = getCanonical(getPermalink(post.permalink, 'post'));
 const image = await findImageWithFallback(post.image);
+
+// Extract headings from the rendered content
+const { Content, headings } = post;
 
 const metadata = merge(
   {
@@ -53,26 +56,30 @@ const metadata = merge(
 ) as MetaData;
 
 // Breadcrumb items
-const breadcrumbItems = [
+const breadcrumbItems: BreadcrumbItem[] = [
   { text: 'Blog', href: getBlogPermalink() },
-  { text: post.title }
+  { text: String(post.title), href: url.toString() }
 ];
 
 // Add category to breadcrumbs if available
 if (post.category) {
   breadcrumbItems.splice(1, 0, { 
-    text: post.category.title, 
-    href: getPermalink(post.category.slug, 'category')
+    text: String(post.category.title), 
+    href: getPermalink(post.category.slug, 'category').toString()
   });
 }
 ---
 
 <Layout metadata={metadata}>
-  <SinglePost post={{ ...post, image: image }} url={url} breadcrumbItems={breadcrumbItems}>
+  <SinglePost 
+    post={{ ...post, image: image }} 
+    url={url} 
+    breadcrumbItems={breadcrumbItems}
+    headings={headings || []}
+  >
     {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
   </SinglePost>
   
   <ToBlogLink />
   <RelatedPosts post={post} />
 </Layout>
-

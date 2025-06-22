@@ -2,6 +2,7 @@
 import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
+import Metadata from '~/components/common/Metadata.astro';
 
 import { headerData, footerData } from '~/navigation';
 
@@ -16,9 +17,9 @@ const { metadata } = Astro.props;
 
 <html lang="en" class="light">
   <head>
-    <title>{metadata?.title || 'Your Default Title'}</title>
-    <meta name="description" content={metadata?.description || 'Default meta description for your site'} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="yandex-verification" content="df11e4d4f3f3ac81" />
+    <Metadata {...metadata} />
   </head>
   <body>
     <Layout metadata={metadata}>
