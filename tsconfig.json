@@ -6,7 +6,8 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"]
-    }
+    },
+    "types": ["eslint"]
   },
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist/"]
