@@ -1,6 +1,5 @@
 @import 'tailwindcss';
-
-@config '../../../tailwind.config.js';
+@plugin "@tailwindcss/typography";
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
@@ -20,6 +19,37 @@
   }
 }
 
+@theme {
+  /* Colors */
+  --color-primary: var(--aw-color-primary);
+  --color-secondary: var(--aw-color-secondary);
+  --color-accent: var(--aw-color-accent);
+  --color-default: var(--aw-color-text-default);
+  --color-muted: var(--aw-color-text-muted);
+  
+  /* Fonts */
+  --default-font-family: var(--aw-font-sans);
+  --font-heading: var(--aw-font-heading, ui-sans-serif), var(--font-sans);
+  
+  /* Animation effects  */
+  --animate-fade: fade-in-up 1s both;
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+  }
+
+/* Custom Variants */
+@custom-variant intersect (&:not([no-intersect]));
+/* The dark mode utilities will be applied whenever the data-theme attribute is set to 'dark' somewhere up the tree */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+  
 @utility bg-page {
   background-color: var(--aw-color-bg-page);
 }
