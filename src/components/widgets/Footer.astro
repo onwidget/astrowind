@@ -50,6 +50,14 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
             ))
           }
         </div>
+        <!-- Clock Component -->
+        <div class="mt-4 text-sm text-muted dark:text-gray-400">
+          <div class="flex items-center gap-2">
+            <Icon name="tabler:clock" class="w-4 h-4" />
+            <span id="current-time" class="font-mono">Loading...</span>
+          </div>
+          <div class="text-xs mt-1 opacity-75" id="current-date">Loading...</div>
+        </div>
       </div>
       {
         links.map(({ title, links }) => (
@@ -95,10 +103,51 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
           ''
         )
       }
-
       <div class="text-sm mr-4 dark:text-muted">
         <Fragment set:html={footNote} />
       </div>
     </div>
   </div>
 </footer>
+
+<script>
+  function updateClock() {
+    const now = new Date();
+    
+    // Format time (12-hour format with AM/PM)
+    const timeOptions: Intl.DateTimeFormatOptions = {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    };
+    
+    // Format date
+    const dateOptions: Intl.DateTimeFormatOptions = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    };
+    
+    const timeString = now.toLocaleTimeString('en-US', timeOptions);
+    const dateString = now.toLocaleDateString('en-US', dateOptions);
+    
+    const timeElement = document.getElementById('current-time');
+    const dateElement = document.getElementById('current-date');
+    
+    if (timeElement) timeElement.textContent = timeString;
+    if (dateElement) dateElement.textContent = dateString;
+  }
+  
+  // Update immediately
+  updateClock();
+  
+  // Update every second
+  setInterval(updateClock, 1000);
+  
+  // Handle page navigation in SPAs
+  document.addEventListener('astro:page-load', () => {
+    updateClock();
+  });
+</script>
