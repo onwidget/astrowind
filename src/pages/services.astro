@@ -1,224 +1,290 @@
----
-import CallToAction from '~/components/widgets/CallToAction.astro';
-import Content from '~/components/widgets/Content.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
-import Layout from '~/layouts/PageLayout.astro';
 
-const metadata = {
-  title: 'Services',
-};
+---
+import Layout from "~/layouts/PageLayout.astro";
+import Hero from "~/components/widgets/Hero.astro";
+import Features2 from "~/components/widgets/Features2.astro";
+import Content from "~/components/widgets/Content.astro";
+import CallToAction from "~/components/widgets/CallToAction.astro";
+import Steps from "~/components/widgets/Steps.astro";
+
+const metadata = { title: "Services" };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  <Hero tagline="Services">
+    <Fragment slot="bg">
+      <div class="absolute inset-0 codemyc-hero-bg"></div>
+    </Fragment>
+    <Fragment slot="title">
+      <span class="text-white">End-to-end technology services</span><br />
+      <span class="text-cyan-400">delivered by specialists</span>
+    </Fragment>
+    <Fragment slot="subtitle">
+      <span class="text-slate-300">
+        From government web portals to mobile applications, software architecture to data analytics,
+        Codemyc provides senior-led professional services that move the needle for your business.
+      </span>
+    </Fragment>
+    <Fragment slot="content">
+      <div class="flex flex-wrap justify-center gap-3 mt-8">
+        <a href="#institutional" class="px-4 py-2 rounded-full bg-white/10 text-white text-sm hover:bg-white/20 transition-colors border border-white/20">Institutional Portals</a>
+        <a href="#mobile" class="px-4 py-2 rounded-full bg-white/10 text-white text-sm hover:bg-white/20 transition-colors border border-white/20">Mobile Apps</a>
+        <a href="#architecture" class="px-4 py-2 rounded-full bg-white/10 text-white text-sm hover:bg-white/20 transition-colors border border-white/20">Software Architecture</a>
+        <a href="#analytics" class="px-4 py-2 rounded-full bg-white/10 text-white text-sm hover:bg-white/20 transition-colors border border-white/20">Data Analytics</a>
+        <a href="#integrations" class="px-4 py-2 rounded-full bg-white/10 text-white text-sm hover:bg-white/20 transition-colors border border-white/20">Integrations</a>
+      </div>
+    </Fragment>
+  </Hero>
 
-  <Hero
-    tagline="Services"
-    title="Elevate your projects with our stunning templates"
-    subtitle="Explore our meticulously crafted templates tailored to various industries and purposes. From captivating presentations to functional website designs, we offer the tools you need to succeed."
-    actions={[{ variant: 'primary', target: '_blank', text: 'Start exploring', href: '/' }]}
+  <!-- SERVICE 1: Institutional -->
+  <Content
+    id="institutional"
+    isReversed
+    tagline="Service 01"
+    title="Institutional and Government Web Portals"
+    items={[
+      {
+        title: "Compliance and accessibility built-in",
+        description: "We design every institutional portal to meet WCAG 2.1 AA accessibility standards and relevant government regulatory requirements from the ground up.",
+        icon: "tabler:shield-check",
+      },
+      {
+        title: "Secure by design",
+        description: "Government-grade security practices including penetration testing, secure authentication, data encryption, and audit logging.",
+        icon: "tabler:lock",
+      },
+      {
+        title: "Scalable CMS architecture",
+        description: "Headless CMS implementations that empower your content teams without requiring developer intervention for daily operations.",
+        icon: "tabler:database",
+      },
+      {
+        title: "Multilingual and multi-tenant ready",
+        description: "Built for organizations that serve diverse populations with complex content hierarchies and multi-language requirements.",
+        icon: "tabler:world",
+      },
+    ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'AstroWind Hero Image',
+      src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80",
+      alt: "Government and institutional web portals",
     }}
-  />
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Portals that governments and institutions trust</h3>
+      <p class="text-muted">We have delivered secure, accessible, and highly available web portals for public sector agencies, universities, and healthcare institutions. Our specialists understand the unique compliance, procurement, and operational requirements of institutional clients.</p>
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
 
-  <!-- Features2 Widget ************** -->
+  <!-- SERVICE 2: Mobile -->
+  <Content
+    id="mobile"
+    isAfterContent
+    tagline="Service 02"
+    title="Mobile Application Development"
+    items={[
+      {
+        title: "Cross-platform excellence",
+        description: "React Native and Flutter applications that deliver native-quality experiences on both iOS and Android from a single codebase.",
+        icon: "tabler:device-mobile",
+      },
+      {
+        title: "Full product lifecycle",
+        description: "From UX/UI design through development, QA, App Store submission, and post-launch monitoring and iteration.",
+        icon: "tabler:refresh",
+      },
+      {
+        title: "Performance-first engineering",
+        description: "Optimized render cycles, offline-first architectures, and lean bundle sizes that deliver fast, smooth experiences.",
+        icon: "tabler:rocket",
+      },
+      {
+        title: "Backend integration",
+        description: "Seamless integration with REST and GraphQL APIs, push notification systems, analytics, and third-party SDKs.",
+        icon: "tabler:plug-connected",
+      },
+    ]}
+    image={{
+      src: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80",
+      alt: "Mobile application development",
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Apps that users actually love using</h3>
+      <p class="text-muted">Our mobile team brings together design sensibility, engineering rigor, and deep platform knowledge to deliver applications that perform beautifully and keep users coming back. We handle every stage from concept to store.</p>
+    </Fragment>
+  </Content>
 
+  <!-- SERVICE 3: Architecture -->
+  <Content
+    id="architecture"
+    isReversed
+    isAfterContent
+    tagline="Service 03"
+    title="Software Architecture and Engineering"
+    items={[
+      {
+        title: "Microservices and distributed systems",
+        description: "Domain-driven microservice architectures designed for independent deployment, team autonomy, and horizontal scale.",
+        icon: "tabler:sitemap",
+      },
+      {
+        title: "Cloud-native infrastructure",
+        description: "AWS, GCP, and Azure deployments using infrastructure-as-code, managed Kubernetes, and serverless where appropriate.",
+        icon: "tabler:cloud",
+      },
+      {
+        title: "API-first design",
+        description: "RESTful and GraphQL APIs designed for developer experience, versioning, documentation, and long-term maintainability.",
+        icon: "tabler:api",
+      },
+      {
+        title: "Architecture reviews",
+        description: "Independent review of your existing architecture with concrete, prioritized recommendations for improvement.",
+        icon: "tabler:clipboard-check",
+      },
+    ]}
+    image={{
+      src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80",
+      alt: "Software architecture",
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Systems built to grow with your business</h3>
+      <p class="text-muted">Good architecture is invisible when it works, and catastrophic when it fails. Our architects design systems that are reliable, observable, and maintainable, with the right balance of simplicity and sophistication for your scale.</p>
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- SERVICE 4: Data -->
+  <Content
+    id="analytics"
+    isAfterContent
+    tagline="Service 04"
+    title="Data Analytics and Intelligence"
+    items={[
+      {
+        title: "Data pipeline engineering",
+        description: "End-to-end ETL/ELT pipelines that ingest, transform, and deliver clean, reliable data at the cadence your business requires.",
+        icon: "tabler:arrows-transfer-down",
+      },
+      {
+        title: "Business intelligence dashboards",
+        description: "Power BI, Tableau, and Metabase implementations giving leadership real-time visibility into the metrics that matter.",
+        icon: "tabler:chart-bar",
+      },
+      {
+        title: "Predictive analytics and ML",
+        description: "Applied machine learning models for forecasting, anomaly detection, customer segmentation, and process optimization.",
+        icon: "tabler:brain",
+      },
+      {
+        title: "Data warehouse design",
+        description: "Modern data warehouse architecture on Snowflake, BigQuery, or Redshift, designed for analytical workloads and BI tooling.",
+        icon: "tabler:building-warehouse",
+      },
+    ]}
+    image={{
+      src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80",
+      alt: "Data analytics",
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">From raw data to real decisions</h3>
+      <p class="text-muted">Most organizations are sitting on data goldmines they cannot access. Our data team transforms siloed, messy data into clean, reliable intelligence that gives your leaders the clarity to act with confidence.</p>
+    </Fragment>
+  </Content>
+
+  <!-- SERVICE 5: Integrations -->
+  <Content
+    id="integrations"
+    isReversed
+    isAfterContent
+    tagline="Service 05"
+    title="Seamless System Integration"
+    items={[
+      {
+        title: "ERP and CRM integration",
+        description: "Connect Salesforce, HubSpot, SAP, Oracle, and other enterprise platforms into a unified, real-time data ecosystem.",
+        icon: "tabler:refresh",
+      },
+      {
+        title: "Payment and fintech APIs",
+        description: "Secure integration of payment gateways, banking APIs, and financial data providers with full PCI compliance considerations.",
+        icon: "tabler:credit-card",
+      },
+      {
+        title: "Event-driven architecture",
+        description: "Kafka and RabbitMQ-based messaging systems for real-time, reliable event propagation across complex system landscapes.",
+        icon: "tabler:activity",
+      },
+      {
+        title: "Legacy system modernization",
+        description: "Strangler fig patterns and API wrapping strategies that let you modernize incrementally without big-bang rewrites.",
+        icon: "tabler:transform",
+      },
+    ]}
+    image={{
+      src: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80",
+      alt: "System integration",
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">One unified ecosystem, zero silos</h3>
+      <p class="text-muted">Fragmented systems create fragmented businesses. We design and implement integration layers that connect your tools, eliminate manual data transfer, and give your entire organization a single source of truth.</p>
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- ENGAGEMENT OPTIONS -->
   <Features2
-    title="Explore our diverse templates"
-    subtitle="Discover our selection below to streamline and elevate your projects."
+    tagline="Engagement Models"
+    title="How we work with clients"
+    subtitle="We adapt our engagement model to suit your organization, budget, and timeline."
     columns={3}
     items={[
       {
-        title: 'Educational',
-        description:
-          'By harmonizing instructional design and visual appeal, templates streamline content creation for varied materials, expediting development and cultivating engaging educational spaces.',
-        icon: 'tabler:school',
+        title: "Project-based",
+        description: "Fixed scope, defined deliverables, clear timeline. Ideal for organizations with a well-defined challenge and a clear outcome in mind.",
+        icon: "tabler:clipboard-list",
       },
       {
-        title: 'Interior Design',
-        description:
-          'Crafting functional, visually appealing spaces for residential and commercial use. Templates emphasize layout, colors, and furniture setups, offering a versatile toolkit for your design vision.',
-        icon: 'tabler:home-star',
+        title: "Embedded specialist",
+        description: "A Codemyc professional joins your team for a defined period, providing senior expertise on-demand while transferring knowledge to your staff.",
+        icon: "tabler:user-check",
       },
       {
-        title: 'Photography',
-        description: `Empowering photographers, our templates facilitate captivating storytelling. With a keen focus on layout, galleries, and typography, they cater to both professionals and enthusiasts.`,
-        icon: 'tabler:photo',
-      },
-      {
-        title: 'E-commerce',
-        description:
-          'Developing engaging online stores, our E-commerce templates ensure a dynamic presence to effectively showcase products. Ideal for startups or revamps.',
-        icon: 'tabler:shopping-cart',
-      },
-      {
-        title: 'Blog',
-        description:
-          'With attention to typography, these templates empower effective content presentation for writers at any stage, ensuring visually engaging and user-friendly blogs.',
-        icon: 'tabler:article',
-      },
-      {
-        title: 'Business',
-        description:
-          'Providing polished options for effective visual communication, these templates empower both startups and established companies for a professional brand presence.',
-        icon: 'tabler:building-store',
-      },
-      {
-        title: 'Branding',
-        description:
-          'Offering pre-designed elements for a consistent brand identity, including logos and marketing materials. Ideal for new ventures or revamps.',
-        icon: 'tabler:arrow-big-up-lines',
-      },
-      {
-        title: 'Medical',
-        description: `From presentations to patient forms, these tools enhance communication effectiveness for healthcare professionals. Ideal for medical practices and research pursuits.`,
-        icon: 'tabler:vaccine',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'With attention to detail, customization, and contemporary design, they empower designers to showcase ideas cohesively. Ideal for all levels of designers.',
-        icon: 'tabler:tie',
+        title: "Architecture advisory",
+        description: "Strategic technical guidance for CTO, VP Engineering, and product leadership, without full-time engagement. Reviews, roadmaps, and decision support.",
+        icon: "tabler:telescope",
       },
     ]}
-  />
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    items={[
-      {
-        title: 'High-Quality Designs',
-        description:
-          'Our templates feature top-tier designs that ensure a professional and polished appearance for your projects.',
-        icon: 'tabler:wand',
-      },
-      {
-        title: 'Customization Tools',
-        description:
-          'Tailor each template to your unique needs with user-friendly customization tools that let you personalize colors, fonts, and content.',
-        icon: 'tabler:settings',
-      },
-      {
-        title: 'Pre-Designed Elements',
-        description:
-          'Save time and effort with our ready-to-use elements, including graphics, icons, and layouts that enhance the visual appeal of your creations.',
-        icon: 'tabler:presentation',
-      },
-      {
-        title: 'Preview and Mockup Views',
-        description:
-          'Visualize the final outcome before making any changes using our preview and mockup views, ensuring your projects meet your expectations.',
-        icon: 'tabler:carousel-horizontal',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-      alt: 'Features Image',
-    }}
   >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-slate-900/30"></div>
     </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'Time Savings',
-        description:
-          'Streamline your workflow, enabling you to create stunning materials efficiently and allocate more time to your core tasks.',
-        icon: 'tabler:clock',
-      },
-      {
-        title: 'Professional Appearance',
-        description:
-          'Elevate your projects with the polished and sophisticated look that our templates provide, making a lasting impression on your audience.',
-        icon: 'tabler:school',
-      },
-      {
-        title: 'Cost-Efficiency',
-        description:
-          'Benefit from cost savings by avoiding the need for custom design work, as our templates offer professional-grade designs at a fraction of the cost.',
-        icon: 'tabler:coin',
-      },
-      {
-        title: 'Instant Download',
-        description:
-          'Enjoy immediate access to your chosen templates upon purchase, enabling you to begin working on your projects without delay.',
-        icon: 'tabler:file-download',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Benefits Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Benefits</h3>
-    </Fragment>
-  </Content>
-
-  <!-- Testimonials Widget *********** -->
-
-  <Testimonials
-    title="Words from real customers"
-    testimonials={[
-      {
-        testimonial: `The designs are not only visually appealing but also highly professional. The templates have saved me a significant amount of time while helping me make a lasting impression on my clients.`,
-        name: 'Emily Kennedy',
-        job: 'Front-end developer',
-        image: {
-          src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
-          alt: 'Emily Kennedy Image',
-        },
-      },
-      {
-        testimonial: `It beautifully showcases my work, with its clean and elegant design that lets my photographs shine. Customization was a breeze, even for a non-tech person like me. The result is a professional and immersive portfolio that's garnered numerous compliments.`,
-        name: 'Sarah Hansen',
-        job: 'Photographer',
-        image: {
-          src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Sarah Hansen Image',
-        },
-      },
-      {
-        testimonial: `I discovered these templates and I'm impressed by their variety and quality. They've helped me establish a consistent brand image across my marketing and social platforms, elevating my business's overall appearance.`,
-        name: 'Mark Wilkinson',
-        job: 'Small business owner',
-        image: {
-          src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
-          alt: 'Mark Wilkinson Image',
-        },
-      },
-    ]}
-    callToAction={{
-      target: '_blank',
-      text: 'More testimonials...',
-      href: 'https://github.com/onwidget/astrowind',
-      icon: 'tabler:chevron-right',
-    }}
-  />
-
-  <!-- CallToAction Widget *********** -->
+  </Features2>
 
   <CallToAction
     actions={[
-      {
-        variant: 'primary',
-        text: 'Start exploring',
-        href: '/',
-      },
+      { variant: "primary", text: "Discuss Your Project", href: "/contact", icon: "tabler:send" },
+      { text: "Meet Our Team", href: "/team" },
     ]}
-    title="Dive into our template collection"
-    subtitle="Whether you're in business, design, or education, our templates are here to elevate your projects."
-  />
+  >
+    <Fragment slot="title">
+      Not sure which service fits?<br /><span class="text-cyan-500">Let us figure it out together.</span>
+    </Fragment>
+    <Fragment slot="subtitle">
+      Tell us about your challenge and we will recommend the right approach, the right team, and a realistic plan.
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 codemyc-hero-bg"></div>
+    </Fragment>
+  </CallToAction>
 </Layout>
