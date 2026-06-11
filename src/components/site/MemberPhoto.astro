@@ -1,0 +1,26 @@
+---
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  image: ImageMetadata;
+  alt: string;
+  class?: string;
+}
+
+const { image, alt, class: className = '' } = Astro.props;
+---
+
+<figure class:list={['relative overflow-hidden rounded-2xl border border-edge', className]}>
+  <img
+    src={image.src}
+    alt={alt}
+    width={image.width}
+    height={image.height}
+    class="h-full w-full object-cover object-top"
+    style="filter: brightness(0.87) contrast(1.06) saturate(0.72);"
+    loading="eager"
+    decoding="async"
+  />
+  <!-- Dark-green wash to blend with site palette -->
+  <div class="pointer-events-none absolute inset-0" style="background: #0b1610; opacity: 0.2;"></div>
+</figure>

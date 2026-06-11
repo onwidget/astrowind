@@ -1,0 +1,198 @@
+---
+/**
+ * Member profile pages — /orlando, /diana, /<whoever-joins-next>.
+ * To publish a new member space, add an entry to src/data/team.ts; this
+ * route picks it up automatically.
+ */
+import SiteLayout from '~/layouts/SiteLayout.astro';
+import MediaPlaceholder from '~/components/site/MediaPlaceholder.astro';
+import MemberPhoto from '~/components/site/MemberPhoto.astro';
+import { team, type TeamMember } from '~/data/team';
+
+export function getStaticPaths() {
+  return team.map((member) => ({ params: { member: member.slug }, props: { member } }));
+}
+
+interface Props {
+  member: TeamMember;
+}
+const { member } = Astro.props;
+
+const metadata = {
+  title: `${member.name} — ${member.role.replaceAll('·', '—')}`,
+  description: member.owns,
+};
+
+const index = team.findIndex((m) => m.slug === member.slug);
+const next = team[(index + 1) % team.length];
+---
+
+<SiteLayout metadata={metadata}>
+  <!-- Profile hero -->
+  <section class="border-b border-edge bg-deep bg-dotgrid">
+    <div class="container-site grid items-center gap-12 pt-36 pb-20 md:grid-cols-[3fr_2fr]">
+      <div>
+        <p class="label-mono" data-reveal>{member.core ? 'Core team' : 'Network'} · /{member.slug}</p>
+        <h1 class="heading-display mt-5 text-4xl md:text-6xl" data-reveal>{member.name}</h1>
+        <p class="font-display mt-4 text-xl font-medium text-spore" data-reveal>{member.role}</p>
+        <p class="mt-6 max-w-xl leading-relaxed text-haze" data-reveal>{member.owns}</p>
+
+        <dl class="mt-10 space-y-2" data-reveal>
+          <div class="flex gap-3">
+            <dt class="label-mono w-24 shrink-0 pt-0.5">Base</dt>
+            <dd class="text-sm text-mist">{member.location} · GMT−3</dd>
+          </div>
+          <div class="flex gap-3">
+            <dt class="label-mono w-24 shrink-0 pt-0.5">Languages</dt>
+            <dd class="text-sm text-mist">{member.languages.join(' · ')}</dd>
+          </div>
+          {
+            member.links && member.links.length > 0 && (
+              <div class="flex gap-3">
+                <dt class="label-mono w-24 shrink-0 pt-0.5">Links</dt>
+                <dd class="text-sm">
+                  {member.links.map((l) => (
+                    <a href={l.href} target="_blank" rel="noopener" class="text-spore hover:underline">
+                      {l.label}
+                    </a>
+                  ))}
+                </dd>
+              </div>
+            )
+          }
+        </dl>
+      </div>
+
+      {member.photo.image
+        ? <MemberPhoto image={member.photo.image} alt={`Portrait of ${member.name}`} class="aspect-[4/5]" />
+        : <MediaPlaceholder brief={member.photo.brief} label={`Photo — ${member.name}`} class="aspect-[4/5]" />
+      }
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="border-b border-edge">
+    <div class="container-site grid grid-cols-1 gap-8 py-12 sm:grid-cols-3" data-reveal-group>
+      {
+        member.stats.map(({ value, label }) => (
+          <div>
+            <p class="font-display text-4xl font-semibold text-spore">{value}</p>
+            <p class="label-mono mt-2">{label}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Intro + focus -->
+  <section>
+    <div class="container-site grid gap-14 py-24 md:grid-cols-[3fr_2fr]">
+      <div>
+        <p class="label-mono" data-reveal>Who you’re working with</p>
+        <p class="heading-display mt-5 text-2xl leading-snug md:text-3xl" data-reveal>{member.intro}</p>
+      </div>
+      <div data-reveal>
+        <p class="label-mono mb-5">Owns the craft of</p>
+        <ul class="space-y-3">
+          {
+            member.focus.map((f) => (
+              <li class="flex items-center gap-3 text-sm text-mist">
+                <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-spore" aria-hidden="true" />
+                {f}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shipped -->
+  <section class="border-t border-edge bg-deep">
+    <div class="container-site py-24">
+      <p class="label-mono" data-reveal>Proof of work</p>
+      <h2 class="heading-display mt-4 text-3xl md:text-5xl" data-reveal>Shipped, in production</h2>
+
+      <div class="mt-14 space-y-8">
+        {
+          member.shipped.map((work) => (
+            <article class="card-moss p-8 md:p-10" data-reveal>
+              <div class="md:grid md:grid-cols-[2fr_3fr] md:gap-12">
+                <div>
+                  <h3 class="font-display text-2xl font-semibold text-mist">{work.title}</h3>
+                  <p class="mt-3 text-sm leading-relaxed text-haze">{work.context}</p>
+                  <ul class="mt-5 flex flex-wrap gap-2">
+                    {work.stack.map((s) => (
+                      <li class="rounded-full border border-edge px-3 py-1 font-mono text-[11px] text-haze">{s}</li>
+                    ))}
+                  </ul>
+                </div>
+                <ul class="mt-6 space-y-3 md:mt-0">
+                  {work.points.map((p) => (
+                    <li class="flex gap-3 text-sm leading-relaxed text-mist/90">
+                      <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-spore" aria-hidden="true" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="border-t border-edge">
+    <div class="container-site py-24">
+      <p class="label-mono" data-reveal>Certified, not just confident</p>
+      <h2 class="heading-display mt-4 text-3xl md:text-4xl" data-reveal>Credentials</h2>
+      <div class="mt-10 grid gap-4 sm:grid-cols-2" data-reveal-group>
+        {
+          member.certifications.map((c) => (
+            <div class="flex items-center justify-between gap-4 rounded-xl border border-edge bg-moss px-6 py-5">
+              <div>
+                <p class="font-display text-sm font-semibold text-mist">{c.name}</p>
+                <p class="mt-1 text-xs text-haze">{c.issuer}</p>
+              </div>
+              <span class="font-mono text-xs text-spore">{c.year}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Working with -->
+  <section class="border-t border-edge bg-deep bg-dotgrid">
+    <div class="container-site py-24">
+      <p class="label-mono" data-reveal>What it’s like to work with {member.name.split(' ')[0]}</p>
+      <blockquote class="heading-display mt-6 max-w-4xl text-2xl leading-snug md:text-3xl" data-reveal>
+        “{member.workingWith}”
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- CTA / next -->
+  <section class="border-t border-edge">
+    <div class="container-site flex flex-col items-start justify-between gap-8 py-20 md:flex-row md:items-center">
+      <div>
+        <h2 class="heading-display text-2xl md:text-3xl" data-reveal>
+          Want {member.name.split(' ')[0]} on your project?
+        </h2>
+        <a href="/contact" class="btn-spore mt-6 inline-flex" data-reveal>Start a project</a>
+      </div>
+      {
+        next.slug !== member.slug && (
+          <a href={`/${next.slug}`} class="group text-right" data-reveal>
+            <p class="label-mono">Next in the network</p>
+            <p class="font-display mt-2 text-2xl font-semibold text-mist transition-colors group-hover:text-spore">
+              {next.name} →
+            </p>
+          </a>
+        )
+      }
+    </div>
+  </section>
+</SiteLayout>

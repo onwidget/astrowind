@@ -1,0 +1,87 @@
+---
+import Wordmark from './Wordmark.astro';
+
+const links = [
+  { text: 'Services', href: '/services' },
+  { text: 'Team', href: '/team' },
+  { text: 'About', href: '/about' },
+  { text: 'Contact', href: '/contact' },
+];
+const current = Astro.url.pathname.replace(/\/$/, '');
+---
+
+<header id="site-header" class="fixed inset-x-0 top-0 z-50 transition-colors duration-300">
+  <div class="container-site flex items-center justify-between py-4">
+    <a href="/" class="shrink-0" aria-label="Codemyc — home">
+      <Wordmark />
+    </a>
+
+    <nav class="hidden items-center gap-8 md:flex" aria-label="Main">
+      {
+        links.map(({ text, href }) => (
+          <a
+            href={href}
+            aria-current={current === href ? 'page' : undefined}
+            class:list={[
+              'font-display text-sm font-medium transition-colors hover:text-spore',
+              current === href ? 'text-spore' : 'text-mist/80',
+            ]}
+          >
+            {text}
+          </a>
+        ))
+      }
+      <a href="/contact" class="btn-spore !py-2.5 !px-5 text-sm">Start a project</a>
+    </nav>
+
+    <button
+      id="menu-toggle"
+      class="flex h-10 w-10 items-center justify-center rounded-full border border-edge text-mist md:hidden"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <path class="menu-bar-top" d="M2 5h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+        <path class="menu-bar-bottom" d="M2 12h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-edge bg-ink/95 backdrop-blur-lg md:hidden" hidden>
+    <nav class="container-site flex flex-col gap-1 py-6" aria-label="Mobile">
+      {
+        links.map(({ text, href }) => (
+          <a href={href} class="font-display py-3 text-2xl font-semibold text-mist transition-colors hover:text-spore">
+            {text}
+          </a>
+        ))
+      }
+      <a href="/contact" class="btn-spore mt-4 self-start">Start a project</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  #site-header.scrolled {
+    background-color: color-mix(in srgb, var(--color-ink) 85%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-edge);
+  }
+</style>
+
+<script>
+  function setupMenu() {
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!toggle || !menu) return;
+    toggle.addEventListener('click', () => {
+      const open = menu.hasAttribute('hidden');
+      menu.toggleAttribute('hidden', !open);
+      menu.classList.toggle('hidden', !open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+  }
+  document.addEventListener('astro:page-load', setupMenu);
+</script>

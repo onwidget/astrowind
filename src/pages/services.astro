@@ -1,290 +1,176 @@
-
 ---
-import Layout from "~/layouts/PageLayout.astro";
-import Hero from "~/components/widgets/Hero.astro";
-import Features2 from "~/components/widgets/Features2.astro";
-import Content from "~/components/widgets/Content.astro";
-import CallToAction from "~/components/widgets/CallToAction.astro";
-import Steps from "~/components/widgets/Steps.astro";
+import SiteLayout from '~/layouts/SiteLayout.astro';
+import { coreTeam } from '~/data/team';
 
-const metadata = { title: "Services" };
+const metadata = {
+  title: 'Services',
+  description:
+    'Institutional platforms, web and mobile applications, AI integration, cloud and observability, and system integration — delivered by a senior nearshore team in your time zone.',
+};
+
+const services = [
+  {
+    id: 'institutional',
+    title: 'Institutional & government platforms',
+    lead: 'Public-sector software is our home turf: platforms where accessibility, security, and uptime are obligations, not features.',
+    items: [
+      'High-traffic government portals and intranets (Drupal 9/10/11)',
+      'Large-scale CMS migrations with full content-integrity validation',
+      'WCAG 2.1 accessibility auditing and remediation',
+      'Enterprise search (Apache Solr) and performance optimization',
+      'Compliance-ready documentation for procurement processes',
+    ],
+    proof: 'Proof: 67+ portals on Uruguay’s national platform, the official site of Montevideo, and full D7→D10 departmental migrations.',
+  },
+  {
+    id: 'web',
+    title: 'Web applications',
+    lead: 'Bespoke products and platforms, architecture-first, built by the same seniors who scoped them.',
+    items: [
+      'Product development from discovery to launch',
+      'Frontend engineering (React, TypeScript, web components)',
+      'Backend & APIs (Node.js, PHP/Symfony, Python)',
+      'Headless and decoupled CMS architectures',
+      'Testing as a habit: unit, end-to-end, and performance suites',
+    ],
+    proof: 'Proof: frontend leadership on the GeneXus web low-code IDE; production platforms across logistics, education, and energy.',
+  },
+  {
+    id: 'mobile',
+    title: 'Mobile applications',
+    lead: 'Cross-platform apps with production architecture — not prototypes wearing a release number.',
+    items: [
+      'Flutter apps with clean architecture and proven patterns',
+      'Firebase backends, analytics, and crash monitoring',
+      'Release pipelines (Codemagic, App/Play Store distribution)',
+      'Native SDK integration, including ML and biometrics',
+    ],
+    proof: 'Proof: technical lead on ECPASS, a biometric airport check-in and boarding app.',
+  },
+  {
+    id: 'ai',
+    title: 'AI integration',
+    lead: 'We make AI do real work on your data and systems — measured, secured, and maintained like any other production software.',
+    items: [
+      'RAG pipelines and vector search over your content',
+      'Agents and MCP servers operating on real business systems',
+      'Conversational interfaces (web, WhatsApp, Telegram)',
+      'Pragmatic model selection and cost control',
+    ],
+    proof: 'Proof: natural-language data operations on production CMS platforms via MCP; document classification with NLP.',
+  },
+  {
+    id: 'cloud',
+    title: 'Cloud, DevOps & observability',
+    lead: 'Infrastructure your team can operate, and telemetry that tells you what is actually happening.',
+    items: [
+      'Google Cloud and AWS architecture (Google ACE certified)',
+      'Containerization and orchestration (Docker, Swarm)',
+      'CI/CD with quality gates: tests, performance, accessibility, SEO',
+      'Full observability stacks: OpenTelemetry, Grafana, Prometheus, Loki, Tempo',
+    ],
+    proof: 'Proof: an observability platform we built runs in production across multiple client environments — and helps close their sales.',
+  },
+  {
+    id: 'integration',
+    title: 'System integration',
+    lead: 'The mycelium specialty: making systems that couldn’t talk to each other, talk.',
+    items: [
+      'Legacy modernization (including IBM i / AS400 ecosystems)',
+      'Third-party API integrations and SSO',
+      'EDI processing and SOAP-to-REST conversion',
+      'Data synchronization across heterogeneous platforms',
+    ],
+    proof: 'Proof: freight and logistics integrations spanning EDI, telematics APIs, and 40-year-old systems of record.',
+  },
+];
 ---
 
-<Layout metadata={metadata}>
-  <Hero tagline="Services">
-    <Fragment slot="bg">
-      <div class="absolute inset-0 codemyc-hero-bg"></div>
-    </Fragment>
-    <Fragment slot="title">
-      <span class="text-white">End-to-end technology services</span><br />
-      <span class="text-cyan-400">delivered by specialists</span>
-    </Fragment>
-    <Fragment slot="subtitle">
-      <span class="text-slate-300">
-        From government web portals to mobile applications, software architecture to data analytics,
-        Codemyc provides senior-led professional services that move the needle for your business.
-      </span>
-    </Fragment>
-    <Fragment slot="content">
-      <div class="flex flex-wrap justify-center gap-3 mt-8">
-        <a href="#institutional" class="px-4 py-2 rounded-full bg-white/10 text-white text-sm hover:bg-white/20 transition-colors border border-white/20">Institutional Portals</a>
-        <a href="#mobile" class="px-4 py-2 rounded-full bg-white/10 text-white text-sm hover:bg-white/20 transition-colors border border-white/20">Mobile Apps</a>
-        <a href="#architecture" class="px-4 py-2 rounded-full bg-white/10 text-white text-sm hover:bg-white/20 transition-colors border border-white/20">Software Architecture</a>
-        <a href="#analytics" class="px-4 py-2 rounded-full bg-white/10 text-white text-sm hover:bg-white/20 transition-colors border border-white/20">Data Analytics</a>
-        <a href="#integrations" class="px-4 py-2 rounded-full bg-white/10 text-white text-sm hover:bg-white/20 transition-colors border border-white/20">Integrations</a>
+<SiteLayout metadata={metadata}>
+  <!-- Hero -->
+  <section class="border-b border-edge bg-deep bg-dotgrid">
+    <div class="container-site pt-40 pb-20">
+      <p class="label-mono" data-reveal>Capabilities</p>
+      <h1 class="heading-display mt-5 max-w-3xl text-4xl md:text-6xl" data-reveal>
+        What we build, <span class="text-spore">and the proof behind it</span>
+      </h1>
+      <p class="mt-7 max-w-2xl text-lg leading-relaxed text-haze" data-reveal>
+        Every capability below is backed by named, delivered work — not a stock-photo services grid. If your problem
+        spans several of them, that’s what dynamic teams are for.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service sections -->
+  {
+    services.map((s, i) => (
+      <section id={s.id} class:list={['scroll-mt-24 border-b border-edge', i % 2 === 1 && 'bg-deep']}>
+        <div class="container-site grid gap-10 py-20 md:grid-cols-[2fr_3fr]">
+          <div data-reveal>
+            <p class="font-mono text-sm text-spore">{String(i + 1).padStart(2, '0')}</p>
+            <h2 class="heading-display mt-3 text-3xl md:text-4xl">{s.title}</h2>
+            <p class="mt-5 leading-relaxed text-haze">{s.lead}</p>
+            <p class="label-mono mt-8 leading-relaxed normal-case tracking-normal text-spore-dim">{s.proof}</p>
+          </div>
+          <ul class="space-y-4 md:pt-10" data-reveal-group>
+            {s.items.map((item) => (
+              <li class="flex gap-4 rounded-xl border border-edge bg-moss px-6 py-4 text-sm text-mist/90">
+                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-spore" aria-hidden="true" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    ))
+  }
+
+  <!-- How we price -->
+  <section class="border-b border-edge bg-deep bg-dotgrid">
+    <div class="container-site py-24">
+      <p class="label-mono" data-reveal>How we price</p>
+      <h2 class="heading-display mt-4 max-w-2xl text-3xl md:text-5xl" data-reveal>
+        Same seniority, smarter economics.
+      </h2>
+      <div class="mt-12 grid gap-8 md:grid-cols-3" data-reveal-group>
+        <div>
+          <h3 class="font-display text-lg font-semibold text-mist">Nearshore by structure</h3>
+          <p class="mt-3 text-sm leading-relaxed text-haze">
+            We’re based in Latin America with near-zero overhead. The savings against US/EU agency rates are real and
+            come from geography — never from junior substitutions.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-display text-lg font-semibold text-mist">You pay for the team you need</h3>
+          <p class="mt-3 text-sm leading-relaxed text-haze">
+            Teams are assembled per problem, so the quote covers the seniors doing the work — no project managers you
+            didn’t ask for, no idle bench baked into the rate.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-display text-lg font-semibold text-mist">Transparent from the first call</h3>
+          <p class="mt-3 text-sm leading-relaxed text-haze">
+            Scope, trade-offs, and a clear price before we start — and honest flags the moment anything threatens
+            either. Fixed-scope or monthly engagement, your pick.
+          </p>
+        </div>
       </div>
-    </Fragment>
-  </Hero>
+    </div>
+  </section>
 
-  <!-- SERVICE 1: Institutional -->
-  <Content
-    id="institutional"
-    isReversed
-    tagline="Service 01"
-    title="Institutional and Government Web Portals"
-    items={[
-      {
-        title: "Compliance and accessibility built-in",
-        description: "We design every institutional portal to meet WCAG 2.1 AA accessibility standards and relevant government regulatory requirements from the ground up.",
-        icon: "tabler:shield-check",
-      },
-      {
-        title: "Secure by design",
-        description: "Government-grade security practices including penetration testing, secure authentication, data encryption, and audit logging.",
-        icon: "tabler:lock",
-      },
-      {
-        title: "Scalable CMS architecture",
-        description: "Headless CMS implementations that empower your content teams without requiring developer intervention for daily operations.",
-        icon: "tabler:database",
-      },
-      {
-        title: "Multilingual and multi-tenant ready",
-        description: "Built for organizations that serve diverse populations with complex content hierarchies and multi-language requirements.",
-        icon: "tabler:world",
-      },
-    ]}
-    image={{
-      src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80",
-      alt: "Government and institutional web portals",
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Portals that governments and institutions trust</h3>
-      <p class="text-muted">We have delivered secure, accessible, and highly available web portals for public sector agencies, universities, and healthcare institutions. Our specialists understand the unique compliance, procurement, and operational requirements of institutional clients.</p>
-    </Fragment>
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- SERVICE 2: Mobile -->
-  <Content
-    id="mobile"
-    isAfterContent
-    tagline="Service 02"
-    title="Mobile Application Development"
-    items={[
-      {
-        title: "Cross-platform excellence",
-        description: "React Native and Flutter applications that deliver native-quality experiences on both iOS and Android from a single codebase.",
-        icon: "tabler:device-mobile",
-      },
-      {
-        title: "Full product lifecycle",
-        description: "From UX/UI design through development, QA, App Store submission, and post-launch monitoring and iteration.",
-        icon: "tabler:refresh",
-      },
-      {
-        title: "Performance-first engineering",
-        description: "Optimized render cycles, offline-first architectures, and lean bundle sizes that deliver fast, smooth experiences.",
-        icon: "tabler:rocket",
-      },
-      {
-        title: "Backend integration",
-        description: "Seamless integration with REST and GraphQL APIs, push notification systems, analytics, and third-party SDKs.",
-        icon: "tabler:plug-connected",
-      },
-    ]}
-    image={{
-      src: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80",
-      alt: "Mobile application development",
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Apps that users actually love using</h3>
-      <p class="text-muted">Our mobile team brings together design sensibility, engineering rigor, and deep platform knowledge to deliver applications that perform beautifully and keep users coming back. We handle every stage from concept to store.</p>
-    </Fragment>
-  </Content>
-
-  <!-- SERVICE 3: Architecture -->
-  <Content
-    id="architecture"
-    isReversed
-    isAfterContent
-    tagline="Service 03"
-    title="Software Architecture and Engineering"
-    items={[
-      {
-        title: "Microservices and distributed systems",
-        description: "Domain-driven microservice architectures designed for independent deployment, team autonomy, and horizontal scale.",
-        icon: "tabler:sitemap",
-      },
-      {
-        title: "Cloud-native infrastructure",
-        description: "AWS, GCP, and Azure deployments using infrastructure-as-code, managed Kubernetes, and serverless where appropriate.",
-        icon: "tabler:cloud",
-      },
-      {
-        title: "API-first design",
-        description: "RESTful and GraphQL APIs designed for developer experience, versioning, documentation, and long-term maintainability.",
-        icon: "tabler:api",
-      },
-      {
-        title: "Architecture reviews",
-        description: "Independent review of your existing architecture with concrete, prioritized recommendations for improvement.",
-        icon: "tabler:clipboard-check",
-      },
-    ]}
-    image={{
-      src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80",
-      alt: "Software architecture",
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Systems built to grow with your business</h3>
-      <p class="text-muted">Good architecture is invisible when it works, and catastrophic when it fails. Our architects design systems that are reliable, observable, and maintainable, with the right balance of simplicity and sophistication for your scale.</p>
-    </Fragment>
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- SERVICE 4: Data -->
-  <Content
-    id="analytics"
-    isAfterContent
-    tagline="Service 04"
-    title="Data Analytics and Intelligence"
-    items={[
-      {
-        title: "Data pipeline engineering",
-        description: "End-to-end ETL/ELT pipelines that ingest, transform, and deliver clean, reliable data at the cadence your business requires.",
-        icon: "tabler:arrows-transfer-down",
-      },
-      {
-        title: "Business intelligence dashboards",
-        description: "Power BI, Tableau, and Metabase implementations giving leadership real-time visibility into the metrics that matter.",
-        icon: "tabler:chart-bar",
-      },
-      {
-        title: "Predictive analytics and ML",
-        description: "Applied machine learning models for forecasting, anomaly detection, customer segmentation, and process optimization.",
-        icon: "tabler:brain",
-      },
-      {
-        title: "Data warehouse design",
-        description: "Modern data warehouse architecture on Snowflake, BigQuery, or Redshift, designed for analytical workloads and BI tooling.",
-        icon: "tabler:building-warehouse",
-      },
-    ]}
-    image={{
-      src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80",
-      alt: "Data analytics",
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">From raw data to real decisions</h3>
-      <p class="text-muted">Most organizations are sitting on data goldmines they cannot access. Our data team transforms siloed, messy data into clean, reliable intelligence that gives your leaders the clarity to act with confidence.</p>
-    </Fragment>
-  </Content>
-
-  <!-- SERVICE 5: Integrations -->
-  <Content
-    id="integrations"
-    isReversed
-    isAfterContent
-    tagline="Service 05"
-    title="Seamless System Integration"
-    items={[
-      {
-        title: "ERP and CRM integration",
-        description: "Connect Salesforce, HubSpot, SAP, Oracle, and other enterprise platforms into a unified, real-time data ecosystem.",
-        icon: "tabler:refresh",
-      },
-      {
-        title: "Payment and fintech APIs",
-        description: "Secure integration of payment gateways, banking APIs, and financial data providers with full PCI compliance considerations.",
-        icon: "tabler:credit-card",
-      },
-      {
-        title: "Event-driven architecture",
-        description: "Kafka and RabbitMQ-based messaging systems for real-time, reliable event propagation across complex system landscapes.",
-        icon: "tabler:activity",
-      },
-      {
-        title: "Legacy system modernization",
-        description: "Strangler fig patterns and API wrapping strategies that let you modernize incrementally without big-bang rewrites.",
-        icon: "tabler:transform",
-      },
-    ]}
-    image={{
-      src: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80",
-      alt: "System integration",
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">One unified ecosystem, zero silos</h3>
-      <p class="text-muted">Fragmented systems create fragmented businesses. We design and implement integration layers that connect your tools, eliminate manual data transfer, and give your entire organization a single source of truth.</p>
-    </Fragment>
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- ENGAGEMENT OPTIONS -->
-  <Features2
-    tagline="Engagement Models"
-    title="How we work with clients"
-    subtitle="We adapt our engagement model to suit your organization, budget, and timeline."
-    columns={3}
-    items={[
-      {
-        title: "Project-based",
-        description: "Fixed scope, defined deliverables, clear timeline. Ideal for organizations with a well-defined challenge and a clear outcome in mind.",
-        icon: "tabler:clipboard-list",
-      },
-      {
-        title: "Embedded specialist",
-        description: "A Codemyc professional joins your team for a defined period, providing senior expertise on-demand while transferring knowledge to your staff.",
-        icon: "tabler:user-check",
-      },
-      {
-        title: "Architecture advisory",
-        description: "Strategic technical guidance for CTO, VP Engineering, and product leadership, without full-time engagement. Reviews, roadmaps, and decision support.",
-        icon: "tabler:telescope",
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-slate-900/30"></div>
-    </Fragment>
-  </Features2>
-
-  <CallToAction
-    actions={[
-      { variant: "primary", text: "Discuss Your Project", href: "/contact", icon: "tabler:send" },
-      { text: "Meet Our Team", href: "/team" },
-    ]}
-  >
-    <Fragment slot="title">
-      Not sure which service fits?<br /><span class="text-cyan-500">Let us figure it out together.</span>
-    </Fragment>
-    <Fragment slot="subtitle">
-      Tell us about your challenge and we will recommend the right approach, the right team, and a realistic plan.
-    </Fragment>
-    <Fragment slot="bg">
-      <div class="absolute inset-0 codemyc-hero-bg"></div>
-    </Fragment>
-  </CallToAction>
-</Layout>
+  <!-- CTA -->
+  <section>
+    <div class="container-site flex flex-col items-start gap-8 py-24 md:flex-row md:items-center md:justify-between">
+      <div>
+        <h2 class="heading-display max-w-xl text-3xl md:text-4xl" data-reveal>
+          Not sure which of these your problem is? That’s normal.
+        </h2>
+        <p class="mt-4 max-w-xl text-haze" data-reveal>
+          Bring the problem as it actually is. {coreTeam[0].name.split(' ')[0]} and {coreTeam[1].name.split(' ')[0]}
+          will tell you what it needs — including the parts that don’t need us.
+        </p>
+      </div>
+      <a href="/contact" class="btn-spore shrink-0" data-reveal>Talk to the engineers</a>
+    </div>
+  </section>
+</SiteLayout>

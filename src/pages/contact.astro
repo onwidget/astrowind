@@ -1,106 +1,121 @@
-
 ---
-import Layout from "~/layouts/PageLayout.astro";
-import Hero from "~/components/widgets/Hero.astro";
-import Contact from "~/components/widgets/Contact.astro";
-import Features2 from "~/components/widgets/Features2.astro";
+import SiteLayout from '~/layouts/SiteLayout.astro';
 
-const metadata = { title: "Contact" };
+const metadata = {
+  title: 'Start a project',
+  description:
+    'Talk directly to the engineers. Scope, honest trade-offs, and a clear price — usually within days. Montevideo, Uruguay · GMT−3 · fluent English.',
+};
+
+const next = [
+  { n: '01', t: 'We read it — personally', d: 'Your message lands with Orlando and Diana, not a CRM queue.' },
+  { n: '02', t: 'A call with the engineers', d: 'Usually within two business days. Bring the problem as it actually is.' },
+  { n: '03', t: 'Scope and a clear price', d: 'What we’d build, who from the network would build it, honest trade-offs, and what it costs.' },
+];
 ---
 
-<Layout metadata={metadata}>
-  <Hero tagline="Contact">
-    <Fragment slot="bg">
-      <div class="absolute inset-0 codemyc-hero-bg"></div>
-    </Fragment>
-    <Fragment slot="title">
-      <span class="text-white">Let us talk about</span><br />
-      <span class="text-cyan-400">your next project</span>
-    </Fragment>
-    <Fragment slot="subtitle">
-      <span class="text-slate-300">
-        No forms that go into the void. No automated responses. When you reach out to Codemyc,
-        a senior professional reads your message and responds personally within one business day.
-      </span>
-    </Fragment>
-  </Hero>
+<SiteLayout metadata={metadata}>
+  <section class="border-b border-edge bg-deep bg-dotgrid">
+    <div class="container-site pt-40 pb-16">
+      <p class="label-mono" data-reveal>Contact</p>
+      <h1 class="heading-display mt-5 max-w-3xl text-4xl md:text-6xl" data-reveal>
+        Tell us the problem. <span class="text-spore">We’ll bring the team.</span>
+      </h1>
+      <p class="mt-7 max-w-2xl text-lg leading-relaxed text-haze" data-reveal>
+        No forms-into-the-void. Write to us and the founders answer — in fluent English, in your time zone.
+      </p>
+    </div>
+  </section>
 
-  <!-- WHAT TO EXPECT -->
-  <Features2
-    tagline="What happens next"
-    title="A straightforward conversation"
-    subtitle="We keep our sales process as lean as our engineering."
-    columns={3}
-    items={[
-      {
-        title: "1. You reach out",
-        description: "Send us a message describing your challenge, your timeline, and what a successful outcome looks like for you.",
-        icon: "tabler:send",
-      },
-      {
-        title: "2. We respond within 24 hours",
-        description: "A senior Codemyc professional will review your message and respond with relevant questions or a proposed call time.",
-        icon: "tabler:clock",
-      },
-      {
-        title: "3. Discovery call",
-        description: "A focused 30-minute call to understand your needs, answer your questions, and determine whether there is a good fit.",
-        icon: "tabler:phone-call",
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-slate-900/30"></div>
-    </Fragment>
-  </Features2>
+  <section>
+    <div class="container-site grid gap-16 py-20 md:grid-cols-[3fr_2fr]">
+      <!--
+        Form posts to Formspree. TODO(personalization): create a form at
+        https://formspree.io (free tier is fine) and replace YOUR_FORM_ID below —
+        or swap the action for your own endpoint.
+      -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6" data-reveal>
+        <div class="grid gap-6 sm:grid-cols-2">
+          <div>
+            <label for="name" class="label-mono mb-2 block">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              autocomplete="name"
+              class="w-full rounded-xl border border-edge bg-moss px-5 py-3.5 text-sm text-mist placeholder:text-haze/60"
+              placeholder="Your name"
+            />
+          </div>
+          <div>
+            <label for="email" class="label-mono mb-2 block">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              class="w-full rounded-xl border border-edge bg-moss px-5 py-3.5 text-sm text-mist placeholder:text-haze/60"
+              placeholder="you@company.com"
+            />
+          </div>
+        </div>
+        <div>
+          <label for="company" class="label-mono mb-2 block">Company / organization (optional)</label>
+          <input
+            id="company"
+            name="company"
+            type="text"
+            autocomplete="organization"
+            class="w-full rounded-xl border border-edge bg-moss px-5 py-3.5 text-sm text-mist placeholder:text-haze/60"
+            placeholder="Where the problem lives"
+          />
+        </div>
+        <div>
+          <label for="message" class="label-mono mb-2 block">The problem</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="6"
+            required
+            class="w-full rounded-xl border border-edge bg-moss px-5 py-3.5 text-sm text-mist placeholder:text-haze/60"
+            placeholder="As it actually is — messy is fine. What's broken, what's slow, what you wish existed."></textarea>
+        </div>
+        <button type="submit" class="btn-spore">Send it to the engineers</button>
+      </form>
 
-  <!-- CONTACT FORM -->
-  <Contact
-    id="form"
-    title="Send us a message"
-    subtitle="Tell us about your project and we will be in touch promptly."
-    inputs={[
-      {
-        type: "text",
-        name: "name",
-        label: "Your name",
-        placeholder: "John Smith",
-      },
-      {
-        type: "email",
-        name: "email",
-        label: "Email address",
-        placeholder: "john@company.com",
-      },
-    ]}
-    textarea={{
-      label: "Tell us about your project",
-      name: "message",
-      placeholder: "Describe your challenge, what you are trying to achieve, your rough timeline, and any relevant technical context...",
-      rows: 6,
-    }}
-    disclaimer={{
-      label: "By submitting this form, you agree that Codemyc may contact you regarding your enquiry. We respect your privacy and will never share your information.",
-    }}
-    description="We aim to respond to all enquiries within one business day."
-  />
+      <aside class="space-y-10">
+        <div data-reveal>
+          <p class="label-mono mb-3">Prefer email?</p>
+          <a href="mailto:hello@codemyc.com" class="font-display text-2xl font-semibold text-spore hover:underline">
+            hello@codemyc.com
+          </a>
+        </div>
 
-  <!-- ALTERNATIVE CONTACT -->
-  <Features2
-    tagline="Other ways to reach us"
-    title="Prefer a direct line?"
-    columns={2}
-    items={[
-      {
-        title: "LinkedIn",
-        description: "Connect with us on LinkedIn and send a direct message. We actively monitor our inbox there.",
-        icon: "tabler:brand-linkedin",
-      },
-      {
-        title: "Email directly",
-        description: "Prefer email? Reach us at hello@codemyc.com and a team member will respond within 24 hours.",
-        icon: "tabler:mail",
-      },
-    ]}
-  />
-</Layout>
+        <div data-reveal>
+          <p class="label-mono mb-4">What happens next</p>
+          <ol class="space-y-5">
+            {
+              next.map(({ n, t, d }) => (
+                <li class="flex gap-4">
+                  <span class="font-mono text-sm text-spore">{n}</span>
+                  <div>
+                    <p class="font-display text-sm font-semibold text-mist">{t}</p>
+                    <p class="mt-1 text-sm leading-relaxed text-haze">{d}</p>
+                  </div>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+
+        <div class="card-moss p-6" data-reveal>
+          <p class="label-mono">Base of operations</p>
+          <p class="mt-2 text-sm text-mist">Montevideo, Uruguay</p>
+          <p class="mt-1 text-sm text-haze">GMT−3 · overlapping the full business day of the Americas</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</SiteLayout>

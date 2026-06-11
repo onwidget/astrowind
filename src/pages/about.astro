@@ -1,159 +1,169 @@
-
 ---
-import Layout from "~/layouts/PageLayout.astro";
-import Hero from "~/components/widgets/Hero.astro";
-import Stats from "~/components/widgets/Stats.astro";
-import Features2 from "~/components/widgets/Features2.astro";
-import Steps2 from "~/components/widgets/Steps2.astro";
-import CallToAction from "~/components/widgets/CallToAction.astro";
+import SiteLayout from '~/layouts/SiteLayout.astro';
+import MyceliumCanvas from '~/components/site/MyceliumCanvas.astro';
+import MediaPlaceholder from '~/components/site/MediaPlaceholder.astro';
 
-const metadata = { title: "About Us" };
+const metadata = {
+  title: 'About',
+  description:
+    'Why Codemyc exists, what the name means, and how a small senior team in Montevideo ships software for governments, companies, and founders across the Americas.',
+};
+
+const values = [
+  {
+    t: 'Senior, not self-important',
+    d: 'We show credentials and delivered work instead of adjectives. Confidence is earned; we don’t announce it.',
+  },
+  {
+    t: 'Direct',
+    d: 'You hear what something costs, how long it takes, and what could go wrong — from the engineers, in the first conversation.',
+  },
+  {
+    t: 'Warm',
+    d: 'Small team, real people, real names. Working with us should feel like meeting us, not reading a brochure.',
+  },
+  {
+    t: 'Craft-obsessed',
+    d: 'We care about the boring parts — accessibility, security, maintainability — because that’s what battle-tested actually means.',
+  },
+  {
+    t: 'Connective',
+    d: 'We make systems, teams, and ideas work together. It’s in the name.',
+  },
+];
 ---
 
-<Layout metadata={metadata}>
-  <Hero tagline="About Codemyc">
-    <Fragment slot="bg">
-      <div class="absolute inset-0 codemyc-hero-bg"></div>
-    </Fragment>
-    <Fragment slot="title">
-      <span class="text-white">Built on expertise.</span><br />
-      <span class="text-cyan-400">Driven by outcomes.</span>
-    </Fragment>
-    <Fragment slot="subtitle">
-      <span class="text-slate-300">
-        Codemyc was founded on a belief that great technology outcomes require great people, not great headcount.
-        We are a boutique studio of senior professionals who take deep pride in the quality and impact of our work.
-      </span>
-    </Fragment>
-  </Hero>
+<SiteLayout metadata={metadata}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden border-b border-edge">
+    <MyceliumCanvas />
+    <div class="absolute inset-0 bg-gradient-to-b from-ink/40 via-transparent to-ink"></div>
+    <div class="container-site relative z-10 pt-40 pb-24">
+      <p class="label-mono" data-reveal>About</p>
+      <h1 class="heading-display mt-5 max-w-3xl text-4xl md:text-6xl" data-reveal>
+        The team your CTO friend <span class="text-spore">would recommend.</span>
+      </h1>
+    </div>
+  </section>
 
-  <!-- STATS -->
-  <Stats
-    title="Codemyc by the numbers"
-    stats={[
-      { title: "Projects Delivered", amount: "10+" },
-      { title: "Years of Experience", amount: "5+" },
-      { title: "Certified Staff", amount: "100%" },
-      { title: "Client Satisfaction", amount: "100%" },
-    ]}
-  />
-
-  <!-- STORY -->
-  <section class="py-16 md:py-20 px-4 sm:px-6 max-w-5xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div>
-        <p class="text-sm font-bold tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3">Our Story</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Why we built Codemyc</h2>
-        <div class="space-y-4 text-muted leading-relaxed">
-          <p>Codemyc was born out of a frustration shared by many: too many technology projects fail not because of missing technology, but because of missing expertise. Generic agencies with junior staff, offshore teams with thin accountability, and bloated consultancies with too many layers between the client and the work.</p>
-          <p>We built Codemyc to be the antidote. A studio where every professional is genuinely senior in their field. Where clients talk directly to the people doing the work. Where outcomes matter more than timesheets.</p>
-          <p>Starting with Orlando and a small, hand-picked group of specialists, we have grown deliberately, adding people only when we find professionals who share our standards, our ownership mindset, and our commitment to honest, high-quality work.</p>
-        </div>
+  <!-- Story -->
+  <section>
+    <div class="container-site grid gap-14 py-24 md:grid-cols-[3fr_2fr]">
+      <div class="space-y-6 text-lg leading-relaxed text-haze">
+        <p data-reveal>
+          Codemyc started with two engineers in Montevideo who kept seeing the same thing from opposite sides:
+          companies paying agency prices for junior work, and senior Latin American engineers doing world-class work
+          without their names on it.
+        </p>
+        <p data-reveal>
+          <span class="text-mist">Orlando</span> leads engineering — architecture, web, mobile, and the infrastructure
+          that keeps it honest. <span class="text-mist">Diana</span> owns institutional and government software — the
+          platforms where compliance and accessibility aren’t negotiable, proven across Uruguay’s national portal
+          network. Around them is a network of practicing specialists they’ve already shipped with.
+        </p>
+        <p data-reveal>
+          We stayed deliberately small. Every person on your project is someone whose name you know, whose work you
+          can see, and who answers when you write. That’s not a limitation we manage — it’s the product.
+        </p>
       </div>
-      <div class="rounded-2xl overflow-hidden shadow-2xl">
-        <img
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80"
-          alt="Codemyc team at work"
-          class="w-full h-full object-cover"
-        />
+      <MediaPlaceholder
+        brief="Candid photo of Orlando and Diana working together — laptops open, mid-conversation, natural light, informal setting (studio or café). Should feel real, not staged. Horizontal, minimum 1600×1200px."
+        label="Photo — the founders"
+        class="aspect-[4/5] md:aspect-auto"
+      />
+    </div>
+  </section>
+
+  <!-- Name story -->
+  <section class="border-t border-edge bg-deep bg-dotgrid">
+    <div class="container-site py-24 md:py-32">
+      <p class="label-mono" data-reveal>Why “Codemyc”</p>
+      <p class="heading-display mt-6 max-w-4xl text-3xl leading-snug md:text-5xl" data-reveal>
+        Code + <span class="text-spore">myc</span> — as in mycelium: the underground network that connects and
+        nourishes entire ecosystems.
+      </p>
+      <div class="mt-10 grid max-w-4xl gap-8 md:grid-cols-3" data-reveal-group>
+        <p class="text-sm leading-relaxed text-haze">
+          Mycelium doesn’t dominate the forest — <span class="text-mist">it makes the forest work.</span>
+        </p>
+        <p class="text-sm leading-relaxed text-haze">
+          It connects things that couldn’t talk to each other. <span class="text-mist">So do we.</span>
+        </p>
+        <p class="text-sm leading-relaxed text-haze">
+          It grows where it’s needed and scales with the ecosystem.
+          <span class="text-mist">Low ego, high connectivity, lasting impact.</span>
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- VALUES -->
-  <Steps2
-    title="What we stand for"
-    subtitle="These are not aspirational values posted on a wall. They are the operating principles that guide every decision, every conversation, and every line of code at Codemyc."
-    items={[
-      {
-        title: "Expertise is non-negotiable",
-        description: "We only take on work our team has genuine depth in. We will refer you elsewhere before we pretend to know something we do not.",
-        icon: "tabler:certificate",
-      },
-      {
-        title: "Radical transparency",
-        description: "We tell you the truth about timelines, complexity, and risk. No sugar-coating, no over-promising. You deserve an honest partner.",
-        icon: "tabler:eye",
-      },
-      {
-        title: "Ownership over excuses",
-        description: "When something does not go as planned, we take responsibility, communicate immediately, and fix it. We do not point fingers.",
-        icon: "tabler:shield-check",
-      },
-    ]}
-  />
+  <!-- Values -->
+  <section class="border-t border-edge">
+    <div class="container-site py-24">
+      <p class="label-mono" data-reveal>How we work</p>
+      <h2 class="heading-display mt-4 text-3xl md:text-5xl" data-reveal>Five traits, every engagement</h2>
+      <div class="mt-14 grid gap-px overflow-hidden rounded-2xl border border-edge bg-edge md:grid-cols-2 lg:grid-cols-5" data-reveal-group>
+        {
+          values.map(({ t, d }) => (
+            <div class="bg-moss p-7">
+              <h3 class="font-display text-base font-semibold text-spore">{t}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-haze">{d}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
 
-  <!-- ACHIEVEMENTS -->
-  <Steps2
-    title="What we have achieved"
-    subtitle="A small team, a high bar, and a track record of delivering where others have struggled."
-    isReversed
-    items={[
-      {
-        title: "Government-grade portals delivered on time",
-        description: "Multiple public sector web portals delivered meeting strict compliance, accessibility, and security standards, all on time and within budget.",
-        icon: "tabler:building-community",
-      },
-      {
-        title: "Mobile apps serving thousands of daily users",
-        description: "Mobile applications live on the App Store and Play Store with strong ratings, built by our senior mobile engineering team.",
-        icon: "tabler:device-mobile",
-      },
-      {
-        title: "Data projects that changed leadership decisions",
-        description: "Analytics and BI implementations that gave leadership teams real-time visibility and measurably improved their decision-making quality.",
-        icon: "tabler:chart-line",
-      },
-    ]}
-    callToAction={{
-      text: "See Our Services",
-      href: "/services",
-    }}
-  />
+  <!-- Nearshore -->
+  <section class="border-t border-edge bg-deep">
+    <div class="container-site grid gap-12 py-24 md:grid-cols-2">
+      <div>
+        <p class="label-mono" data-reveal>Nearshore, structurally</p>
+        <h2 class="heading-display mt-4 text-3xl md:text-4xl" data-reveal>
+          Montevideo, Uruguay. <span class="text-spore">Your time zone.</span>
+        </h2>
+        <p class="mt-6 leading-relaxed text-haze" data-reveal>
+          We work GMT−3 — overlapping the full business day of the Americas and most of the European afternoon. Every
+          member of the team holds C2-level English certification: meetings, documentation, code review, and contracts
+          happen in fluent English, with no relay and no translation layer.
+        </p>
+        <p class="mt-4 leading-relaxed text-haze" data-reveal>
+          The result is a simple equation: <span class="text-mist">US-agency capability, nearshore economics, zero
+          friction.</span>
+        </p>
+      </div>
+      <div class="grid grid-cols-2 gap-4" data-reveal-group>
+        <div class="card-moss p-7">
+          <p class="font-display text-3xl font-semibold text-spore">GMT−3</p>
+          <p class="label-mono mt-2">Same hours as the Americas</p>
+        </div>
+        <div class="card-moss p-7">
+          <p class="font-display text-3xl font-semibold text-spore">C2</p>
+          <p class="label-mono mt-2">Certified English, whole team</p>
+        </div>
+        <div class="card-moss p-7">
+          <p class="font-display text-3xl font-semibold text-spore">0</p>
+          <p class="label-mono mt-2">Account managers between us</p>
+        </div>
+        <div class="card-moss p-7">
+          <p class="font-display text-3xl font-semibold text-spore">100%</p>
+          <p class="label-mono mt-2">Senior, named, accountable</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- LOCATIONS / REMOTE -->
-  <Features2
-    title="Where we operate"
-    tagline="Reach"
-    subtitle="Codemyc operates as a distributed-first studio. Our professionals work remotely and collaborate across time zones, enabling us to serve clients anywhere."
-    columns={3}
-    items={[
-      {
-        title: "Latin America",
-        description: "Our founding team and core of technical professionals are based across Latin America, with deep roots in the regional tech ecosystem.",
-        icon: "tabler:map-pin",
-      },
-      {
-        title: "North America",
-        description: "We serve clients in the United States and Canada, with team members operating in aligned time zones for real-time collaboration.",
-        icon: "tabler:map-pin",
-      },
-      {
-        title: "Remote-first globally",
-        description: "We work asynchronously and synchronously as needed. No time zone is a barrier to a great working relationship.",
-        icon: "tabler:world",
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-slate-900/30"></div>
-    </Fragment>
-  </Features2>
-
-  <CallToAction
-    actions={[
-      { variant: "primary", text: "Work With Us", href: "/contact", icon: "tabler:send" },
-      { text: "Meet the Team", href: "/team" },
-    ]}
-  >
-    <Fragment slot="title">
-      We are more than a vendor.<br /><span class="text-cyan-500">We are your technical partners.</span>
-    </Fragment>
-    <Fragment slot="subtitle">
-      When you work with Codemyc, you get professionals who are invested in your success, not just your invoice.
-    </Fragment>
-    <Fragment slot="bg">
-      <div class="absolute inset-0 codemyc-hero-bg"></div>
-    </Fragment>
-  </CallToAction>
-</Layout>
+  <!-- CTA -->
+  <section class="border-t border-edge">
+    <div class="container-site py-24 text-center">
+      <h2 class="heading-display mx-auto max-w-2xl text-3xl md:text-5xl" data-reveal>
+        Meet the people behind the network
+      </h2>
+      <div class="mt-8 flex justify-center gap-4" data-reveal>
+        <a href="/team" class="btn-spore">The team</a>
+        <a href="/contact" class="btn-ghost">Start a project</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

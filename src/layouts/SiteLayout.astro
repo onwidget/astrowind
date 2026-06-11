@@ -1,0 +1,59 @@
+---
+import '~/assets/styles/brand.css';
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/inter';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+
+import { I18N } from 'astrowind:config';
+
+import CommonMeta from '~/components/common/CommonMeta.astro';
+import Favicons from '~/components/Favicons.astro';
+import Metadata from '~/components/common/Metadata.astro';
+import SiteVerification from '~/components/common/SiteVerification.astro';
+import SiteHeader from '~/components/site/SiteHeader.astro';
+import SiteFooter from '~/components/site/SiteFooter.astro';
+
+import { ClientRouter } from 'astro:transitions';
+
+import type { MetaData as MetaDataType } from '~/types';
+
+export interface Props {
+  metadata?: MetaDataType;
+}
+
+const { metadata = {} } = Astro.props;
+const { language, textDirection } = I18N;
+---
+
+<!doctype html>
+<html lang={language} dir={textDirection} class="dark scheme-dark">
+  <head>
+    <CommonMeta />
+    <Favicons />
+    <Metadata {...metadata} />
+    <SiteVerification />
+    <ClientRouter fallback="swap" />
+  </head>
+
+  <body class="bg-ink text-mist antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-spore focus:px-5 focus:py-2.5 focus:font-display focus:text-sm focus:font-semibold focus:text-ink"
+    >
+      Skip to content
+    </a>
+
+    <SiteHeader />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <SiteFooter />
+
+    <script>
+      import '~/scripts/motion';
+    </script>
+  </body>
+</html>

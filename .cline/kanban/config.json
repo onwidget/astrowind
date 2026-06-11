@@ -1,0 +1,9 @@
+{
+  "shortcuts": [
+    {
+      "label": "Run",
+      "command": "npm run dev",
+      "icon": "bug"
+    }
+  ]
+}

@@ -41,6 +41,7 @@ export default defineConfig({
           'business-contact',
           'database',
         ],
+        'logos': ['linkedin-icon'],
       },
     }),
 
@@ -51,7 +52,9 @@ export default defineConfig({
     ),
 
     compress({
-      CSS: true,
+      // csso can't parse Tailwind v4's range media queries (`width >= 48rem`)
+      // and silently drops every responsive variant; Vite already minifies CSS.
+      CSS: false,
       HTML: {
         'html-minifier-terser': {
           removeAttributeQuotes: false,

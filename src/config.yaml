@@ -9,9 +9,9 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: Codemyc — Elite Technology Professionals
+    default: Codemyc — Senior Software, Direct
     template: '%s — Codemyc'
-  description: 'Codemyc is a boutique technology studio of highly-capable professionals delivering institutional websites, mobile apps, software architecture, and data analytics solutions.'
+  description: 'Codemyc is a boutique nearshore software consultancy based in Latin America. Senior, certified, English-fluent engineers who assemble into the exact team your problem needs — in your time zone, at nearshore rates.'
   robots:
     index: true
     follow: true

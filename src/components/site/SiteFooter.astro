@@ -1,0 +1,71 @@
+---
+import Wordmark from './Wordmark.astro';
+import { coreTeam } from '~/data/team';
+---
+
+<footer class="border-t border-edge bg-deep">
+  <div class="container-site grid gap-12 py-16 md:grid-cols-[2fr_1fr_1fr_1fr]">
+    <div>
+      <a href="/" aria-label="Codemyc — home"><Wordmark /></a>
+      <p class="mt-5 max-w-sm text-sm leading-relaxed text-haze">
+        A boutique nearshore software consultancy based in Latin America. Senior, certified, English-fluent
+        professionals who assemble into the exact team your problem needs.
+      </p>
+      <p class="label-mono mt-6">Montevideo, Uruguay · GMT−3 · Your time zone</p>
+    </div>
+
+    <nav aria-label="Footer — explore">
+      <p class="label-mono mb-4 text-mist">Explore</p>
+      <ul class="space-y-2.5 text-sm">
+        <li><a href="/services" class="text-haze transition-colors hover:text-spore">Services</a></li>
+        <li><a href="/team" class="text-haze transition-colors hover:text-spore">The network</a></li>
+        <li><a href="/about" class="text-haze transition-colors hover:text-spore">About</a></li>
+        <li><a href="/contact" class="text-haze transition-colors hover:text-spore">Contact</a></li>
+      </ul>
+    </nav>
+
+    <nav aria-label="Footer — team">
+      <p class="label-mono mb-4 text-mist">Team</p>
+      <ul class="space-y-2.5 text-sm">
+        {
+          coreTeam.map((m) => (
+            <li>
+              <a href={`/${m.slug}`} class="text-haze transition-colors hover:text-spore">
+                {m.name.split(' ')[0]}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div>
+      <p class="label-mono mb-4 text-mist">Talk to us</p>
+      <ul class="space-y-2.5 text-sm">
+        <li>
+          <a href="mailto:hello@codemyc.com" class="text-haze transition-colors hover:text-spore"
+            >hello@codemyc.com</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/orlando-pantoja/"
+            target="_blank"
+            rel="noopener"
+            class="text-haze transition-colors hover:text-spore">LinkedIn</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-edge">
+    <div class="container-site flex flex-col gap-2 py-6 text-xs text-haze md:flex-row md:items-center md:justify-between">
+      <p>© {new Date().getFullYear()} Codemyc. Senior software, direct.</p>
+      <p class="flex gap-5">
+        <a href="/privacy" class="transition-colors hover:text-spore">Privacy</a>
+        <a href="/terms" class="transition-colors hover:text-spore">Terms</a>
+      </p>
+    </div>
+  </div>
+</footer>

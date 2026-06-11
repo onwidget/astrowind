@@ -1,0 +1,163 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/*
+  Codemyc design system — "Organic precision"
+  Dark ink-green base, one electric spore accent, mono technical labels.
+  See docs/brand-identity.md §8.
+*/
+
+@theme {
+  /* Color */
+  --color-ink: #070f0b; /* page background */
+  --color-deep: #0b1610; /* raised surface */
+  --color-moss: #101f17; /* cards */
+  --color-edge: #1d3327; /* hairline borders */
+  --color-spore: #b8f53d; /* the accent — CTAs and highlights only */
+  --color-spore-dim: #8dbf2e;
+  --color-mist: #eaf3ec; /* primary text */
+  --color-haze: #8fa89b; /* muted text */
+
+  /* Type */
+  --font-display: 'Space Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --animate-marquee: marquee 36s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-edge);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-mist);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-spore);
+    color: var(--color-ink);
+  }
+
+  /* Accessibility is brand: visible focus everywhere */
+  :focus-visible {
+    outline: 2px solid var(--color-spore);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@utility container-site {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 76rem;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* Mono technical label — section eyebrows, stats, badges */
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-haze);
+}
+
+@utility heading-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-mist);
+  text-wrap: balance;
+}
+
+@utility btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: 0.01em;
+  padding: 0.875rem 1.75rem;
+  border-radius: 9999px;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+@utility btn-spore {
+  @apply btn-base;
+  background-color: var(--color-spore);
+  color: var(--color-ink);
+  &:hover {
+    background-color: var(--color-mist);
+    transform: translateY(-1px);
+  }
+}
+
+@utility btn-ghost {
+  @apply btn-base;
+  border: 1px solid var(--color-edge);
+  color: var(--color-mist);
+  &:hover {
+    border-color: var(--color-spore);
+    color: var(--color-spore);
+  }
+}
+
+/* Hairline card */
+@utility card-moss {
+  background-color: var(--color-moss);
+  border: 1px solid var(--color-edge);
+  border-radius: 1rem;
+}
+
+/* Subtle dot-grid texture for section backgrounds */
+@utility bg-dotgrid {
+  background-image: radial-gradient(circle, rgb(143 168 155 / 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Reveal targets start hidden only when JS is available (set by motion.ts) */
+.js [data-reveal],
+.js [data-reveal-group] > * {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal],
+  .js [data-reveal-group] > * {
+    opacity: 1;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

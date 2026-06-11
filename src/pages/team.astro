@@ -1,215 +1,130 @@
-
 ---
-import Layout from "~/layouts/PageLayout.astro";
-import Hero from "~/components/widgets/Hero.astro";
-import CallToAction from "~/components/widgets/CallToAction.astro";
+import SiteLayout from '~/layouts/SiteLayout.astro';
+import MyceliumCanvas from '~/components/site/MyceliumCanvas.astro';
+import MediaPlaceholder from '~/components/site/MediaPlaceholder.astro';
+import MemberPhoto from '~/components/site/MemberPhoto.astro';
+import { coreTeam } from '~/data/team';
 
-const metadata = { title: "Our Team" };
+const metadata = {
+  title: 'The Network',
+  description:
+    'Codemyc is a network, not an org chart: a tight senior core plus trusted specialists who align into purpose-built teams per engagement.',
+};
 
-const team = [
-  {
-    initials: "OP",
-    name: "Orlando Pantoja",
-    role: "Technology Lead",
-    gradient: "from-cyan-400 to-indigo-600",
-    bio: "Orlando leads the technical vision and architecture strategy at Codemyc. With deep expertise in cloud-native systems, microservices, and DevOps engineering, he ensures every engagement is backed by sound architectural decisions. He has led software delivery across government, healthcare, and fintech sectors.",
-    skills: ["Software Architecture", "Cloud Infrastructure", "DevOps", "System Design", "Technical Leadership"],
-    tags: [
-      { label: "AWS", color: "bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300" },
-      { label: "Kubernetes", color: "bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300" },
-      { label: "Node.js", color: "bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300" },
-      { label: "Architecture", color: "bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300" },
-    ],
-    linkedin: "#",
-    border: "border-cyan-500/30 hover:border-cyan-500/70",
-  },
-  {
-    initials: "ML",
-    name: "Mobile Engineering Lead",
-    role: "Mobile Applications",
-    gradient: "from-teal-400 to-cyan-600",
-    bio: "Leads the full lifecycle of mobile product development from UX wireframes to App Store and Play Store deployment. Specializes in React Native and Flutter, building performant cross-platform apps that deliver native-quality experiences.",
-    skills: ["React Native", "Flutter", "iOS", "Android", "Mobile UX"],
-    tags: [
-      { label: "React Native", color: "bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300" },
-      { label: "Flutter", color: "bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300" },
-      { label: "iOS", color: "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300" },
-      { label: "Android", color: "bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300" },
-    ],
-    linkedin: "#",
-    border: "border-teal-500/30 hover:border-teal-500/70",
-  },
-  {
-    initials: "DA",
-    name: "Data Analytics Lead",
-    role: "Data Engineering",
-    gradient: "from-indigo-400 to-purple-600",
-    bio: "Transforms raw, siloed data into actionable business intelligence. Designs and builds end-to-end data pipelines, real-time dashboards, and predictive analytics models that empower leadership teams to move faster.",
-    skills: ["Data Engineering", "Business Intelligence", "Machine Learning", "SQL", "Python"],
-    tags: [
-      { label: "Python", color: "bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-300" },
-      { label: "SQL", color: "bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300" },
-      { label: "Power BI", color: "bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300" },
-      { label: "Apache Spark", color: "bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300" },
-    ],
-    linkedin: "#",
-    border: "border-indigo-500/30 hover:border-indigo-500/70",
-  },
-  {
-    initials: "WL",
-    name: "Web Engineering Lead",
-    role: "Institutional Web Portals",
-    gradient: "from-emerald-400 to-teal-600",
-    bio: "Specializes in institutional-grade web portals meeting rigorous standards for government, education, and healthcare clients. Expert in WCAG 2.1 AA accessibility, performance optimization, security hardening, and CMS architecture.",
-    skills: ["Next.js", "Accessibility", "CMS Architecture", "Performance", "Security"],
-    tags: [
-      { label: "Next.js", color: "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300" },
-      { label: "React", color: "bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300" },
-      { label: "WCAG", color: "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300" },
-      { label: "PostgreSQL", color: "bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300" },
-    ],
-    linkedin: "#",
-    border: "border-emerald-500/30 hover:border-emerald-500/70",
-  },
-  {
-    initials: "IL",
-    name: "Integration Lead",
-    role: "Systems Integration",
-    gradient: "from-violet-400 to-indigo-600",
-    bio: "Connects disparate enterprise systems into unified real-time ecosystems. Expert in API design, middleware architecture, and third-party integrations across ERP, CRM, payment gateways, and legacy systems.",
-    skills: ["API Design", "REST", "GraphQL", "Middleware", "Enterprise Integration"],
-    tags: [
-      { label: "REST APIs", color: "bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300" },
-      { label: "GraphQL", color: "bg-pink-100 dark:bg-pink-900/40 text-pink-700 dark:text-pink-300" },
-      { label: "Kafka", color: "bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300" },
-      { label: "MuleSoft", color: "bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300" },
-    ],
-    linkedin: "#",
-    border: "border-violet-500/30 hover:border-violet-500/70",
-  },
-  {
-    initials: "DL",
-    name: "DevOps Lead",
-    role: "Infrastructure and Reliability",
-    gradient: "from-rose-400 to-orange-500",
-    bio: "Ensures every product Codemyc delivers is production-ready from day one. Designs CI/CD pipelines, container orchestration, cloud infrastructure, and monitoring stacks that keep systems reliable and scalable.",
-    skills: ["CI/CD", "Docker", "Kubernetes", "Terraform", "Observability"],
-    tags: [
-      { label: "Docker", color: "bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300" },
-      { label: "Kubernetes", color: "bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300" },
-      { label: "Terraform", color: "bg-violet-100 dark:bg-violet-900/40 text-violet-700 dark:text-violet-300" },
-      { label: "GitHub Actions", color: "bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300" },
-    ],
-    linkedin: "#",
-    border: "border-rose-500/30 hover:border-rose-500/70",
-  },
+const extended = [
+  { role: 'Mobile engineering', note: 'Flutter & native specialists for product-grade releases.' },
+  { role: 'Data & analytics', note: 'Pipelines, dashboards, and decision-grade reporting.' },
+  { role: 'UX & product design', note: 'Interfaces that survive contact with real users.' },
+  { role: 'DevOps & cloud', note: 'Infrastructure, CI/CD, and observability at production standard.' },
 ];
 ---
 
-<Layout metadata={metadata}>
-  <Hero tagline="Our Team">
-    <Fragment slot="bg">
-      <div class="absolute inset-0 codemyc-hero-bg"></div>
-    </Fragment>
-    <Fragment slot="title">
-      <span class="text-white">Meet the professionals</span><br />
-      <span class="text-cyan-400">behind every delivery</span>
-    </Fragment>
-    <Fragment slot="subtitle">
-      <span class="text-slate-300">
-        Codemyc is built on a simple premise: pair great clients with genuinely exceptional professionals.
-        Every member of our team is a senior specialist in their field, with a track record of delivering
-        real outcomes in complex environments.
-      </span>
-    </Fragment>
-  </Hero>
-
-  <section class="py-16 md:py-24 px-4 sm:px-6 max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      {team.map((member) => (
-        <div class={`team-card rounded-2xl border bg-white dark:bg-slate-800/60 p-8 transition-all duration-300 ${member.border}`}>
-          <div class="flex items-start gap-5">
-            <div class={`w-16 h-16 rounded-xl bg-gradient-to-br ${member.gradient} flex items-center justify-center text-white text-xl font-bold flex-shrink-0 shadow-lg`}>
-              {member.initials}
-            </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white">{member.name}</h3>
-              <p class="text-cyan-600 dark:text-cyan-400 text-sm font-semibold mt-0.5">{member.role}</p>
-              <div class="flex gap-2 mt-3 flex-wrap">
-                {member.tags.map((tag) => (
-                  <span class={`px-2 py-1 text-xs rounded-full font-medium ${tag.color}`}>{tag.label}</span>
-                ))}
-              </div>
-            </div>
-            <a href={member.linkedin} class="flex-shrink-0 text-slate-400 hover:text-cyan-500 transition-colors" aria-label="LinkedIn">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-          </div>
-          <p class="mt-5 text-muted text-sm leading-relaxed">{member.bio}</p>
-          <div class="mt-5 pt-4 border-t border-gray-100 dark:border-slate-700">
-            <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-slate-400 mb-2">Core competencies</p>
-            <div class="flex flex-wrap gap-x-4 gap-y-1">
-              {member.skills.map((skill) => (
-                <span class="text-sm text-gray-700 dark:text-slate-300 flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 flex-shrink-0"></span>
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      ))}
+<SiteLayout metadata={metadata}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden border-b border-edge">
+    <MyceliumCanvas />
+    <div class="absolute inset-0 bg-gradient-to-b from-ink/40 via-transparent to-ink"></div>
+    <div class="container-site relative z-10 pt-40 pb-24">
+      <p class="label-mono" data-reveal>The network</p>
+      <h1 class="heading-display mt-5 max-w-3xl text-4xl md:text-6xl" data-reveal>
+        Not an org chart. <span class="text-spore">A roster.</span>
+      </h1>
+      <p class="mt-7 max-w-2xl text-lg leading-relaxed text-haze" data-reveal>
+        A tight core of partners plus actively practicing, top-of-their-field specialists who align into purpose-built
+        teams — formed fast, shipped, and dissolved when the job’s done. Every person on your project is someone whose
+        name you know, whose work you can see, and who answers when you write.
+      </p>
     </div>
   </section>
 
-  <section class="py-16 px-4 sm:px-6 bg-slate-50 dark:bg-slate-900/30 border-y border-gray-200 dark:border-slate-800">
-    <div class="max-w-4xl mx-auto text-center">
-      <p class="text-sm font-bold tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3">Our Culture</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">We hire for excellence, not headcount</h2>
-      <p class="text-lg text-muted max-w-2xl mx-auto mb-10">
-        Every Codemyc professional is chosen for their depth of expertise, their ownership mindset, and their track record
-        of delivering in high-stakes environments.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-        <div class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-slate-700">
-          <div class="w-10 h-10 rounded-lg bg-cyan-100 dark:bg-cyan-900/40 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          </div>
-          <h3 class="font-bold text-gray-900 dark:text-white mb-2">Certified and proven</h3>
-          <p class="text-sm text-muted">100% of our team holds relevant industry certifications with a documented track record of successful delivery.</p>
-        </div>
-        <div class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-slate-700">
-          <div class="w-10 h-10 rounded-lg bg-cyan-100 dark:bg-cyan-900/40 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-          </div>
-          <h3 class="font-bold text-gray-900 dark:text-white mb-2">Senior-only team</h3>
-          <p class="text-sm text-muted">No junior developers learning on client projects. Every professional has years of real-world experience.</p>
-        </div>
-        <div class="bg-white dark:bg-slate-800 rounded-xl p-6 border border-gray-200 dark:border-slate-700">
-          <div class="w-10 h-10 rounded-lg bg-cyan-100 dark:bg-cyan-900/40 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-          </div>
-          <h3 class="font-bold text-gray-900 dark:text-white mb-2">Outcome-oriented</h3>
-          <p class="text-sm text-muted">We measure success by business impact, not lines of code. Full ownership from kickoff through launch.</p>
-        </div>
+  <!-- Core -->
+  <section>
+    <div class="container-site py-24">
+      <p class="label-mono" data-reveal>The core</p>
+      <h2 class="heading-display mt-4 text-3xl md:text-5xl" data-reveal>Partners on every engagement</h2>
+
+      <div class="mt-14 space-y-10">
+        {
+          coreTeam.map((m, i) => (
+            <a
+              href={`/${m.slug}`}
+              class="card-moss group grid overflow-hidden transition-all hover:border-spore/40 md:grid-cols-[2fr_3fr]"
+              data-reveal
+            >
+              {m.photo.image
+                ? <MemberPhoto
+                    image={m.photo.image}
+                    alt={`Portrait of ${m.name}`}
+                    class:list={[
+                      'aspect-[4/3] rounded-none border-0 md:aspect-auto md:border-r',
+                      i % 2 === 1 && 'md:order-last md:border-l md:border-r-0',
+                    ]}
+                  />
+                : <MediaPlaceholder
+                    brief={m.photo.brief}
+                    label={`Photo — ${m.name}`}
+                    class:list={[
+                      'aspect-[4/3] rounded-none border-0 border-dashed border-edge md:aspect-auto md:border-r',
+                      i % 2 === 1 && 'md:order-last md:border-l md:border-r-0',
+                    ]}
+                  />
+              }
+              <div class="flex flex-col justify-center p-8 md:p-12">
+                <p class="label-mono text-spore">{m.role}</p>
+                <h3 class="font-display mt-2 text-3xl font-semibold text-mist">{m.name}</h3>
+                <p class="mt-4 leading-relaxed text-haze">{m.owns}</p>
+                <ul class="mt-6 flex flex-wrap gap-2">
+                  {m.focus.slice(0, 4).map((f) => (
+                    <li class="rounded-full border border-edge px-3 py-1 font-mono text-[11px] text-haze">{f}</li>
+                  ))}
+                </ul>
+                <span class="label-mono mt-8 text-mist transition-colors group-hover:text-spore">
+                  Full profile · /{m.slug} →
+                </span>
+              </div>
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <CallToAction
-    actions={[
-      { variant: "primary", text: "Start a Project", href: "/contact", icon: "tabler:send" },
-      { text: "View Our Services", href: "/services" },
-    ]}
-  >
-    <Fragment slot="title">
-      Work with the best,<br /><span class="text-cyan-500">get the best results.</span>
-    </Fragment>
-    <Fragment slot="subtitle">
-      Ready to bring senior expertise to your next project? Let us match the right professionals to your challenge.
-    </Fragment>
-    <Fragment slot="bg">
-      <div class="absolute inset-0 codemyc-hero-bg"></div>
-    </Fragment>
-  </CallToAction>
-</Layout>
+  <!-- Extended network -->
+  <section class="border-t border-edge bg-deep bg-dotgrid">
+    <div class="container-site py-24">
+      <p class="label-mono" data-reveal>The extended network</p>
+      <h2 class="heading-display mt-4 max-w-2xl text-3xl md:text-5xl" data-reveal>
+        Specialists we’ve shipped with before
+      </h2>
+      <p class="mt-6 max-w-2xl text-haze" data-reveal>
+        When a project needs more hands, we don’t hire strangers — we activate vetted professionals Orlando and Diana
+        have already delivered with. Each joins for exactly the part of the project where their craft matters.
+      </p>
+
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" data-reveal-group>
+        {
+          extended.map(({ role, note }) => (
+            <div class="card-moss p-7">
+              <h3 class="font-display text-base font-semibold text-mist">{role}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-haze">{note}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="label-mono mt-10" data-reveal>More member profiles coming to this page as we publish them.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="border-t border-edge">
+    <div class="container-site py-24 text-center">
+      <h2 class="heading-display mx-auto max-w-2xl text-3xl md:text-5xl" data-reveal>
+        Want this team on your problem?
+      </h2>
+      <div class="mt-8" data-reveal>
+        <a href="/contact" class="btn-spore">Start a project</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

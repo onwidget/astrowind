@@ -1,294 +1,304 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
-import Steps from '~/components/widgets/Steps.astro';
+import SiteLayout from '~/layouts/SiteLayout.astro';
+import MyceliumCanvas from '~/components/site/MyceliumCanvas.astro';
+import MediaPlaceholder from '~/components/site/MediaPlaceholder.astro';
+import { coreTeam } from '~/data/team';
 
 const metadata = {
-  title: 'Codemyc — Elite Technology Professionals',
+  title: 'Codemyc — Senior Software, Direct',
+  description:
+    'A boutique nearshore software consultancy in Latin America. Senior, certified, English-fluent engineers who assemble into the exact team your problem needs — in your time zone, at nearshore rates.',
   ignoreTitleTemplate: true,
 };
+
+const services = [
+  {
+    title: 'Institutional & government platforms',
+    desc: 'Public-sector portals built to survive auditors: WCAG accessibility, security, migrations, enterprise search.',
+    href: '/services#institutional',
+  },
+  {
+    title: 'Web applications',
+    desc: 'Bespoke products and platforms — from architecture to launch — built by the seniors you met on day one.',
+    href: '/services#web',
+  },
+  {
+    title: 'Mobile applications',
+    desc: 'Cross-platform apps with production architecture, real release pipelines, and crash-free track records.',
+    href: '/services#mobile',
+  },
+  {
+    title: 'AI integration',
+    desc: 'RAG, agents, and MCP integrations that do real work on your data — not demos that die in staging.',
+    href: '/services#ai',
+  },
+  {
+    title: 'Cloud, DevOps & observability',
+    desc: 'CI/CD, containerization, and telemetry your team can actually act on. Google Cloud certified.',
+    href: '/services#cloud',
+  },
+  {
+    title: 'System integration',
+    desc: 'Legacy systems, third-party APIs, EDI, SOAP-to-REST — we make things that couldn’t talk to each other, talk.',
+    href: '/services#integration',
+  },
+];
+
+const steps = [
+  {
+    n: '01',
+    title: 'You bring the problem',
+    desc: 'A call with the engineers — not a sales layer. We scope it honestly, including what could go wrong.',
+  },
+  {
+    n: '02',
+    title: 'We assemble the team',
+    desc: 'The exact mix of seniors your problem needs, hand-picked from the network. You never pay for roles you don’t need.',
+  },
+  {
+    n: '03',
+    title: 'We ship, you watch it happen',
+    desc: 'Working in your time zone, in fluent English, with direct access to every person building. Then we support what we launched.',
+  },
+];
 ---
 
-<Layout metadata={metadata}>
-  <!-- ====== HERO ====== -->
-  <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Meet Our Team',
-        href: '/team',
-        icon: 'tabler:users',
-      },
-      { text: 'Explore Services', href: '/services' },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 codemyc-hero-bg"></div>
-    </Fragment>
-    <Fragment slot="title">
-      <span class="text-white">Elite technology professionals,</span>
-      <br />
-      <span class="text-cyan-400">real business results.</span>
-    </Fragment>
-    <Fragment slot="subtitle">
-      <span class="text-slate-300">
-        Codemyc is a boutique technology studio built around exceptional individuals. We bring senior-level expertise in
-        institutional web portals, mobile applications, software architecture, and data analytics tailored precisely to
-        your business challenges.
-      </span>
-    </Fragment>
-    <Fragment slot="content">
-      <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto text-center border-t border-white/10 pt-8">
-        <div>
-          <div class="text-3xl font-bold text-cyan-400">10+</div>
-          <div class="text-sm text-slate-400 mt-1">Projects delivered</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-cyan-400">5+</div>
-          <div class="text-sm text-slate-400 mt-1">Years of experience</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-cyan-400">100%</div>
-          <div class="text-sm text-slate-400 mt-1">Certified staff</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-cyan-400">100%</div>
-          <div class="text-sm text-slate-400 mt-1">Client satisfaction</div>
-        </div>
-      </div>
-    </Fragment>
-  </Hero>
+<SiteLayout metadata={metadata}>
+  <!-- Hero -->
+  <section class="relative flex min-h-screen items-center overflow-hidden">
+    <MyceliumCanvas />
+    <div class="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-ink"></div>
 
-  <!-- VALUE STRIP -->
-  <div class="py-6 bg-cyan-500/10 dark:bg-cyan-500/5 border-y border-cyan-500/20">
-    <p class="text-center text-sm md:text-base font-semibold text-cyan-700 dark:text-cyan-300 tracking-wide uppercase">
-      Government &amp; Institutional Portals &nbsp;&middot;&nbsp; Mobile Applications &nbsp;&middot;&nbsp; Software Architecture &nbsp;&middot;&nbsp; Data Analytics &nbsp;&middot;&nbsp; System Integration
-    </p>
-  </div>
-
-  <!-- SERVICES OVERVIEW -->
-  <Features2
-    id="services"
-    title="What we do exceptionally well"
-    subtitle="Five core competencies backed by certified professionals with years of real-world delivery experience."
-    tagline="Our Expertise"
-    columns={3}
-    items={[
-      {
-        title: 'Institutional and Government Portals',
-        description: 'We design and build highly secure, accessible, and compliant web portals for government agencies, universities, hospitals, and public institutions. Rigorous standards met, every time.',
-        icon: 'tabler:building-community',
-      },
-      {
-        title: 'Mobile Application Development',
-        description: 'Cross-platform and native mobile apps that drive real engagement. From MVP to full-scale product, our mobile team handles iOS, Android, and hybrid solutions.',
-        icon: 'tabler:device-mobile',
-      },
-      {
-        title: 'Software Architecture and Engineering',
-        description: 'Scalable, maintainable systems designed for growth. We architect microservices, APIs, cloud infrastructure, and DevOps pipelines that your business can rely on.',
-        icon: 'tabler:sitemap',
-      },
-      {
-        title: 'Data Analytics and Intelligence',
-        description: 'Unlock the value hidden in your data. We build dashboards, pipelines, and predictive models that give your leadership team the insights to make faster, smarter decisions.',
-        icon: 'tabler:chart-bar',
-      },
-      {
-        title: 'Bespoke Web Applications',
-        description: 'Custom-crafted web platforms engineered to streamline operations, automate workflows, and create exceptional digital experiences that distinguish your brand.',
-        icon: 'tabler:browser',
-      },
-      {
-        title: 'Seamless System Integration',
-        description: 'We connect your disparate tools, APIs, and platforms into a unified ecosystem eliminating data silos and enabling real-time information flow across your organization.',
-        icon: 'tabler:plug-connected',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-slate-900/30"></div>
-    </Fragment>
-  </Features2>
-
-  <!-- TEAM TEASER -->
-  <section class="py-16 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto">
-    <div class="text-center mb-12">
-      <p class="text-sm font-bold tracking-widest uppercase text-cyan-600 dark:text-cyan-400 mb-3">The People Behind the Work</p>
-      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-        Senior professionals, <span class="text-cyan-500">not just developers</span>
-      </h2>
-      <p class="text-lg text-muted max-w-2xl mx-auto">
-        Every project is led by an expert who owns the outcome end-to-end. Dedicated leads, clear communication, zero hand-off chaos.
+    <div class="container-site relative z-10 pt-28 pb-20">
+      <p class="label-mono" data-reveal>Nearshore software consultancy · Latin America · GMT−3</p>
+      <h1 class="heading-display mt-6 max-w-4xl text-5xl leading-[1.05] md:text-7xl" data-reveal data-reveal-delay="0.1">
+        Senior software, <span class="text-spore">direct.</span>
+      </h1>
+      <p class="mt-7 max-w-2xl text-lg leading-relaxed text-haze md:text-xl" data-reveal data-reveal-delay="0.2">
+        A network of certified, battle-tested engineers who form the exact team your problem needs — web platforms,
+        mobile apps, data systems. Your time zone. Fluent English. Rates that make sense.
       </p>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-      <div class="team-card rounded-2xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 flex flex-col items-center text-center">
-        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-400 to-indigo-600 flex items-center justify-center text-white text-2xl font-bold mb-5 shadow-lg">OP</div>
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Orlando Pantoja</h3>
-        <p class="text-cyan-600 dark:text-cyan-400 text-sm font-semibold mt-1 mb-3">Technology Lead</p>
-        <p class="text-muted text-sm leading-relaxed">Drives technical strategy, architecture decisions, and delivery excellence across all Codemyc engagements. Specialized in scalable systems and cloud-native platforms.</p>
-        <div class="flex gap-2 mt-4 flex-wrap justify-center">
-          <span class="px-2 py-1 bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300 text-xs rounded-full">Architecture</span>
-          <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-xs rounded-full">Cloud</span>
-          <span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs rounded-full">DevOps</span>
-        </div>
+      <div class="mt-10 flex flex-wrap gap-4" data-reveal data-reveal-delay="0.3">
+        <a href="/contact" class="btn-spore">Start a project</a>
+        <a href="/team" class="btn-ghost">Meet the team</a>
       </div>
-      <div class="team-card rounded-2xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 flex flex-col items-center text-center">
-        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-teal-400 to-cyan-600 flex items-center justify-center text-white text-2xl font-bold mb-5 shadow-lg">ML</div>
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Mobile Lead</h3>
-        <p class="text-cyan-600 dark:text-cyan-400 text-sm font-semibold mt-1 mb-3">Mobile Engineering Lead</p>
-        <p class="text-muted text-sm leading-relaxed">Expert in cross-platform mobile development, delivering polished iOS and Android applications from concept through to App Store and Play Store deployment.</p>
-        <div class="flex gap-2 mt-4 flex-wrap justify-center">
-          <span class="px-2 py-1 bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300 text-xs rounded-full">React Native</span>
-          <span class="px-2 py-1 bg-cyan-100 dark:bg-cyan-900/40 text-cyan-700 dark:text-cyan-300 text-xs rounded-full">Flutter</span>
-          <span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs rounded-full">iOS / Android</span>
+
+      <dl class="mt-20 grid max-w-3xl grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-4" data-reveal-group>
+        <div>
+          <dt class="label-mono">English</dt>
+          <dd class="font-display mt-1 text-2xl font-semibold text-mist">C2 fluent</dd>
         </div>
-      </div>
-      <div class="team-card rounded-2xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 flex flex-col items-center text-center">
-        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center text-white text-2xl font-bold mb-5 shadow-lg">DA</div>
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Data Lead</h3>
-        <p class="text-cyan-600 dark:text-cyan-400 text-sm font-semibold mt-1 mb-3">Data Analytics Lead</p>
-        <p class="text-muted text-sm leading-relaxed">Transforms raw data into strategic business intelligence. Builds end-to-end pipelines, dashboards, and predictive models that enable data-driven decisions.</p>
-        <div class="flex gap-2 mt-4 flex-wrap justify-center">
-          <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-xs rounded-full">Python</span>
-          <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 text-xs rounded-full">SQL</span>
-          <span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs rounded-full">Power BI</span>
+        <div>
+          <dt class="label-mono">Certified by</dt>
+          <dd class="font-display mt-1 text-2xl font-semibold text-mist">Google · Acquia</dd>
         </div>
-      </div>
-    </div>
-    <div class="text-center">
-      <a href="/team" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-cyan-500 text-cyan-600 dark:text-cyan-400 font-semibold hover:bg-cyan-500 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-white transition-all duration-300">
-        Meet the full team
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-      </a>
+        <div>
+          <dt class="label-mono">Time zone gap</dt>
+          <dd class="font-display mt-1 text-2xl font-semibold text-mist">Zero</dd>
+        </div>
+        <div>
+          <dt class="label-mono">Seniority</dt>
+          <dd class="font-display mt-1 text-2xl font-semibold text-mist">Only</dd>
+        </div>
+      </dl>
     </div>
   </section>
 
-  <!-- HOW WE WORK -->
-  <Steps
-    title="How a Codemyc engagement works"
-    tagline="Our Process"
-    subtitle="Transparent, structured, and outcome-focused from day one."
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Discovery and Scoping</span>',
-        description: 'We invest time upfront to deeply understand your business context, technical landscape, and success criteria. No generic proposals, everything is tailored to your specific challenge.',
-        icon: 'tabler:search',
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Architecture and Planning</span>',
-        description: 'Our technical leads design a solution blueprint. Tech stack, timelines, team assignments, and milestones all defined and agreed before a single line of code is written.',
-        icon: 'tabler:map',
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Agile Delivery</span>',
-        description: 'We build in structured sprints with regular demos, transparent progress updates, and continuous feedback loops. You always know exactly where things stand.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Step 4: <span class="font-medium">Launch and Ongoing Support</span>',
-        description: 'We own the deployment process and provide post-launch support. Your success is our success, we stay engaged to ensure everything performs as designed.',
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Team collaboration',
-    }}
-  />
+  <!-- Statement -->
+  <section class="border-t border-edge bg-deep">
+    <div class="container-site py-24 md:py-32">
+      <p class="label-mono" data-reveal>Why “Codemyc”</p>
+      <p class="heading-display mt-6 max-w-4xl text-3xl leading-snug md:text-5xl" data-reveal>
+        <span class="text-spore">Myc</span>, as in mycelium — the quiet network that makes the forest work. We plug
+        into your business the same way: <span class="text-haze">low ego, high connectivity, lasting impact.</span>
+      </p>
+      <p class="mt-8 max-w-2xl text-haze" data-reveal>
+        Not an agency with account managers between you and the people doing the work. Not offshore roulette. A small
+        group of proven, actively practicing engineers — the ones a CTO friend would recommend.
+      </p>
+    </div>
+  </section>
 
-  <!-- WHY CODEMYC -->
-  <Features
-    id="why-codemyc"
-    tagline="Why Codemyc"
-    title="The boutique advantage"
-    subtitle="When you work with Codemyc, you work directly with the senior professionals doing the work, not layers of account management."
-    items={[
-      {
-        title: 'Senior-only professionals',
-        description: 'No juniors learning on your dime. Every role in every project is filled by a certified, experienced specialist who has solved this problem before.',
-        icon: 'tabler:certificate',
-      },
-      {
-        title: 'Deep domain expertise',
-        description: 'From government compliance requirements to mobile performance optimization, our team brings the specific domain knowledge your project demands.',
-        icon: 'tabler:brain',
-      },
-      {
-        title: 'Direct expert access',
-        description: 'You communicate directly with the engineers and architects building your product. Clear answers, fast decisions, no telephone games.',
-        icon: 'tabler:messages',
-      },
-      {
-        title: 'Ownership mentality',
-        description: 'We take full ownership of outcomes, not just deliverables, and we stay accountable through launch and beyond.',
-        icon: 'tabler:shield-check',
-      },
-      {
-        title: 'Proven delivery track record',
-        description: 'With 10+ projects delivered across industries including public sector, fintech, and healthcare, our track record speaks for itself.',
-        icon: 'tabler:trophy',
-      },
-      {
-        title: 'Transparent, honest engagement',
-        description: 'We tell you what is realistic. If something is a bad idea, we say so. Our reputation depends on your success.',
-        icon: 'tabler:eye-check',
-      },
-    ]}
-  />
+  <!-- Pillars -->
+  <section class="border-t border-edge">
+    <div class="container-site py-24 md:py-32">
+      <p class="label-mono" data-reveal>What you get</p>
+      <h2 class="heading-display mt-4 max-w-2xl text-3xl md:text-5xl" data-reveal>
+        Six claims. Each one with proof behind it.
+      </h2>
 
-  <!-- TESTIMONIALS -->
-  <Testimonials
-    title="What our clients say"
-    tagline="Client Stories"
-    subtitle="Real feedback from the businesses and institutions we have partnered with."
-    testimonials={[
-      {
-        testimonial: 'Codemyc did not just deliver a portal, they understood our institutional requirements inside and out. The level of technical depth and professionalism was outstanding. Compliance, security, accessibility, all handled flawlessly.',
-        name: 'Director of Digital Transformation',
-        job: 'Government Agency',
-        image: { src: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=930&q=80', alt: 'Client' },
-      },
-      {
-        testimonial: 'The mobile app they built for us was launched on time, on budget, and with zero critical bugs on day one. Their team communicated proactively throughout, refreshing to work with engineers who actually keep you in the loop.',
-        name: 'Chief Product Officer',
-        job: 'Fintech Startup',
-        image: { src: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80', alt: 'Client' },
-      },
-      {
-        testimonial: 'Our data was sitting in silos for years. Codemyc designed a pipeline and analytics layer that finally gave our leadership team real-time visibility. We made better decisions in the first month than we had in the previous year.',
-        name: 'VP of Operations',
-        job: 'Healthcare Organization',
-        image: { src: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80', alt: 'Client' },
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-slate-900/30"></div>
-    </Fragment>
-  </Testimonials>
+      <div
+        class="mt-14 grid gap-px overflow-hidden rounded-2xl border border-edge bg-edge md:grid-cols-2 lg:grid-cols-3"
+        data-reveal-group
+      >
+        {
+          [
+            {
+              t: 'Senior-only, by design',
+              d: 'Every project is led and built by named, experienced engineers. No bait-and-switch staffing.',
+            },
+            {
+              t: 'Battle-tested where it’s hardest',
+              d: 'Government platforms delivered under real compliance, accessibility, and security requirements.',
+            },
+            {
+              t: 'Certified, not just confident',
+              d: 'Google and Acquia certifications, named per member on their profile pages.',
+            },
+            {
+              t: 'You talk to the builders',
+              d: 'Full English fluency, direct channels, no relay. Decisions happen in one conversation, not three.',
+            },
+            {
+              t: 'Dynamic teams, per problem',
+              d: 'Active, top-of-their-field professionals composed into the exact mix you need — and nothing you don’t.',
+            },
+            {
+              t: 'Nearshore economics, zero friction',
+              d: 'Latin America–based, working your hours, at rates a US or EU agency can’t touch. Savings from geography, never from seniority.',
+            },
+          ].map(({ t, d }) => (
+            <div class="bg-moss p-8 transition-colors hover:bg-deep">
+              <h3 class="font-display text-lg font-semibold text-mist">{t}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-haze">{d}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="border-t border-edge bg-deep bg-dotgrid">
+    <div class="container-site py-24 md:py-32">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <div>
+          <p class="label-mono" data-reveal>Capabilities</p>
+          <h2 class="heading-display mt-4 text-3xl md:text-5xl" data-reveal>What we build</h2>
+        </div>
+        <a href="/services" class="btn-ghost" data-reveal>All services</a>
+      </div>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-reveal-group>
+        {
+          services.map(({ title, desc, href }) => (
+            <a href={href} class="card-moss group p-8 transition-all hover:-translate-y-1 hover:border-spore/40">
+              <h3 class="font-display text-lg font-semibold text-mist transition-colors group-hover:text-spore">
+                {title}
+              </h3>
+              <p class="mt-3 text-sm leading-relaxed text-haze">{desc}</p>
+              <span class="label-mono mt-6 inline-block text-spore opacity-0 transition-opacity group-hover:opacity-100">
+                Explore →
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic team model -->
+  <section class="border-t border-edge">
+    <div class="container-site py-24 md:py-32">
+      <p class="label-mono" data-reveal>How engagement works</p>
+      <h2 class="heading-display mt-4 max-w-3xl text-3xl md:text-5xl" data-reveal>
+        You don’t hire “Codemyc, twelve people.” You get the three seniors your problem actually needs.
+      </h2>
+
+      <div class="mt-16 grid gap-10 md:grid-cols-3" data-reveal-group>
+        {
+          steps.map(({ n, title, desc }) => (
+            <div class="relative border-l border-edge pl-8">
+              <span class="font-mono text-sm text-spore">{n}</span>
+              <h3 class="font-display mt-3 text-xl font-semibold text-mist">{title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-haze">{desc}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="mt-14 max-w-2xl text-haze" data-reveal>
+        Because members are practicing professionals — not bench inventory — every engagement gets people who are sharp
+        <em class="text-mist not-italic">right now</em>, and you never subsidize idle capacity. That’s a big part of
+        why the price is competitive.
+      </p>
+    </div>
+  </section>
+
+  <!-- Team preview -->
+  <section class="border-t border-edge bg-deep">
+    <div class="container-site py-24 md:py-32">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <div>
+          <p class="label-mono" data-reveal>The core</p>
+          <h2 class="heading-display mt-4 text-3xl md:text-5xl" data-reveal>The people whose names you’ll know</h2>
+        </div>
+        <a href="/team" class="btn-ghost" data-reveal>The whole network</a>
+      </div>
+
+      <div class="mt-14 grid gap-8 md:grid-cols-2" data-reveal-group>
+        {
+          coreTeam.map((m) => (
+            <a
+              href={`/${m.slug}`}
+              class="card-moss group overflow-hidden transition-all hover:-translate-y-1 hover:border-spore/40"
+            >
+              <MediaPlaceholder
+                brief={m.photo.brief}
+                label={`Photo — ${m.name}`}
+                class="aspect-[16/10] rounded-none border-0 border-b border-dashed border-edge"
+              />
+              <div class="p-8">
+                <p class="label-mono text-spore">{m.role}</p>
+                <h3 class="font-display mt-2 text-2xl font-semibold text-mist">{m.name}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-haze">{m.owns}</p>
+                <span class="label-mono mt-6 inline-block text-mist transition-colors group-hover:text-spore">
+                  /{m.slug} →
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Numbers -->
+  <section class="border-t border-edge">
+    <div class="container-site py-20">
+      <dl class="grid grid-cols-2 gap-10 md:grid-cols-4" data-reveal-group>
+        <div>
+          <dd class="font-display text-5xl font-semibold text-spore" data-count="9" data-count-suffix="+">0</dd>
+          <dt class="label-mono mt-2">Years shipping production software</dt>
+        </div>
+        <div>
+          <dd class="font-display text-5xl font-semibold text-spore" data-count="67" data-count-suffix="+">0</dd>
+          <dt class="label-mono mt-2">Government portals maintained</dt>
+        </div>
+        <div>
+          <dd class="font-display text-5xl font-semibold text-spore" data-count="8" data-count-suffix="+">0</dd>
+          <dt class="label-mono mt-2">Professional certifications</dt>
+        </div>
+        <div>
+          <dd class="font-display text-5xl font-semibold text-spore" data-count="0">0</dd>
+          <dt class="label-mono mt-2">Hours of time-zone gap with the Americas</dt>
+        </div>
+      </dl>
+    </div>
+  </section>
 
   <!-- CTA -->
-  <CallToAction
-    actions={[
-      { variant: 'primary', text: 'Start a Conversation', href: '/contact', icon: 'tabler:send' },
-      { text: 'View Our Services', href: '/services' },
-    ]}
-  >
-    <Fragment slot="title">
-      Ready to work with <span class="text-cyan-500">elite professionals</span>?
-    </Fragment>
-    <Fragment slot="subtitle">
-      No sales pitch, no templates. Just a real conversation about how Codemyc can deliver meaningful results for your business.
-    </Fragment>
-    <Fragment slot="bg">
-      <div class="absolute inset-0 codemyc-hero-bg"></div>
-    </Fragment>
-  </CallToAction>
-</Layout>
+  <section class="relative overflow-hidden border-t border-edge bg-deep">
+    <div class="container-site py-24 text-center md:py-32">
+      <h2 class="heading-display mx-auto max-w-3xl text-4xl md:text-6xl" data-reveal>
+        Tell us the problem. <span class="text-spore">We’ll bring the team.</span>
+      </h2>
+      <p class="mx-auto mt-6 max-w-xl text-haze" data-reveal>
+        First conversation is with the engineers. Scope, honest trade-offs, and a clear price — usually within days.
+      </p>
+      <div class="mt-10" data-reveal>
+        <a href="/contact" class="btn-spore">Start a project</a>
+      </div>
+    </div>
+  </section>
+</SiteLayout>
