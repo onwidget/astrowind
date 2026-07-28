@@ -1,6 +1,7 @@
 ---
 import Image from '~/components/common/Image.astro';
 import Button from '~/components/ui/Button.astro';
+import { Icon } from 'astro-icon/components';
 
 import type { Hero as Props } from '~/types';
 
@@ -13,13 +14,16 @@ const {
   actions = await Astro.slots.render('actions'),
   image = await Astro.slots.render('image'),
 
+  /** Optional four-quadrant entry cards rendered right under the trust list. */
+  quadrants = await Astro.slots.render('quadrants'),
+
   id,
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
 ---
 
-<section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
-  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+<section class="relative md:-mt-[76px] not-prose hero-nix" {...id ? { id } : {}}>
+  <div class="absolute inset-0 pointer-events-none hero-nix__bg" aria-hidden="true">
     <slot name="bg">
       {bg ? <Fragment set:html={bg} /> : null}
     </slot>
@@ -31,7 +35,7 @@ const {
         {
           tagline && (
             <p
-              class="accent-rule text-sm text-secondary dark:text-blue-200 font-bold tracking-wide uppercase inline-block intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+              class="hero-nix__eyebrow accent-rule text-sm text-secondary dark:text-blue-200 font-bold tracking-wide uppercase inline-block intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
               set:html={tagline}
             />
           )
@@ -39,7 +43,7 @@ const {
         {
           title && (
             <h1
-              class="text-hero font-heading dark:text-gray-200 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade mb-6"
+              class="hero-nix__title text-hero font-heading dark:text-gray-200 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade mb-6"
               set:html={title}
             />
           )
@@ -48,7 +52,7 @@ const {
           {
             subtitle && (
               <p
-                class="text-xl text-muted mb-6 dark:text-slate-300 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+                class="hero-nix__subtitle text-xl text-muted mb-6 dark:text-slate-300 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
                 set:html={subtitle}
               />
             )
@@ -70,12 +74,50 @@ const {
           }
         </div>
         {content && <Fragment set:html={content} />}
-      </div>
-      <div
-        class="intersect-once intersect-no-queue intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
-      >
+
         {
-          image && (
+          quadrants && (
+            <div class="hero-nix__quadrants mt-12 md:mt-16">
+              {Array.isArray(quadrants) ? (
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 text-left max-w-5xl mx-auto">
+                  {quadrants.map((q) => (
+                    <a
+                      href={q.href}
+                      class="hero-nix__card group intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+                      data-quadrant={q.key}
+                    >
+                      <div class="hero-nix__card-inner">
+                        <div class="hero-nix__card-icon">
+                          <Icon name={q.icon} class="w-6 h-6" />
+                        </div>
+                        <div class="hero-nix__card-body">
+                          <div class="hero-nix__card-meta">
+                            <span class="hero-nix__card-step">{q.step}</span>
+                            <span class="hero-nix__card-divider" aria-hidden="true">/</span>
+                            <span class="hero-nix__card-label">{q.label}</span>
+                          </div>
+                          <h3 class="hero-nix__card-title" set:html={q.title} />
+                          <p class="hero-nix__card-desc">{q.description}</p>
+                        </div>
+                        <span class="hero-nix__card-arrow" aria-hidden="true">
+                          <Icon name="tabler:arrow-up-right" class="w-5 h-5" />
+                        </span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <Fragment set:html={quadrants} />
+              )}
+            </div>
+          )
+        }
+      </div>
+      {
+        image && (
+          <div
+            class="intersect-once intersect-no-queue intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+          >
             <div class="relative m-auto max-w-5xl">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
@@ -93,9 +135,206 @@ const {
                 />
               )}
             </div>
-          )
-        }
-      </div>
+          </div>
+        )
+      }
     </div>
   </div>
 </section>
+
+<style>
+  /* -------- Hero card skin (n-ix-style four-quadrant hero) -------- */
+  .hero-nix {
+    --hero-nix-bg-from: #0b1437;
+    --hero-nix-bg-via: #112156;
+    --hero-nix-bg-to: #06112e;
+    --hero-nix-card-bg: rgba(255, 255, 255, 0.06);
+    --hero-nix-card-bg-hover: rgba(255, 255, 255, 0.1);
+    --hero-nix-card-border: rgba(255, 255, 255, 0.14);
+    --hero-nix-card-border-hover: rgba(120, 168, 255, 0.55);
+    --hero-nix-accent: #6ea8ff;
+    --hero-nix-text: #f5f7fb;
+    --hero-nix-text-muted: rgba(245, 247, 251, 0.72);
+  }
+
+  /* Override the hero text colors over the dark background */
+  .hero-nix .hero-nix__eyebrow {
+    color: #a9c2ff !important;
+  }
+  .hero-nix .hero-nix__title {
+    color: #ffffff;
+  }
+  .hero-nix .hero-nix__subtitle {
+    color: rgba(245, 247, 251, 0.78) !important;
+  }
+
+  /* Dark background with a subtle radial pattern + grid lines (n-ix home feel) */
+  .hero-nix__bg {
+    background:
+      radial-gradient(1000px 520px at 12% 18%, rgba(110, 168, 255, 0.18), transparent 60%),
+      radial-gradient(900px 480px at 88% 88%, rgba(109, 40, 217, 0.18), transparent 60%),
+      linear-gradient(180deg, var(--hero-nix-bg-from) 0%, var(--hero-nix-bg-via) 55%, var(--hero-nix-bg-to) 100%);
+  }
+  .hero-nix__bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent 78%);
+    -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent 78%);
+    pointer-events: none;
+  }
+  .hero-nix__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(closest-side at 20% 30%, rgba(110, 168, 255, 0.18), transparent 70%),
+      radial-gradient(closest-side at 80% 70%, rgba(109, 40, 217, 0.18), transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Trust items live inside the trust card — paint it on the dark surface */
+  .hero-nix :global(.hero-nix__trustlist) {
+    color: rgba(245, 247, 251, 0.82);
+  }
+  .hero-nix :global(.hero-nix__trustlist li) {
+    color: rgba(245, 247, 251, 0.82);
+  }
+  .hero-nix :global(.hero-nix__trust-eyebrow) {
+    color: #a9c2ff;
+  }
+
+  /* ---------- Quadrant cards ---------- */
+  .hero-nix__quadrants {
+    width: 100%;
+  }
+  .hero-nix__card {
+    display: block;
+    color: var(--hero-nix-text);
+    text-decoration: none;
+    border-radius: 14px;
+    background: var(--hero-nix-card-bg);
+    border: 1px solid var(--hero-nix-card-border);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: transform 220ms ease, background-color 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-nix__card:hover,
+  .hero-nix__card:focus-visible {
+    background: var(--hero-nix-card-bg-hover);
+    border-color: var(--hero-nix-card-border-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -18px rgba(110, 168, 255, 0.6);
+    outline: none;
+  }
+  .hero-nix__card:hover .hero-nix__card-arrow,
+  .hero-nix__card:focus-visible .hero-nix__card-arrow {
+    transform: translate(2px, -2px);
+    color: var(--hero-nix-accent);
+  }
+  .hero-nix__card:hover .hero-nix__card-icon,
+  .hero-nix__card:focus-visible .hero-nix__card-icon {
+    background: rgba(110, 168, 255, 0.18);
+    color: var(--hero-nix-accent);
+  }
+  .hero-nix__card-inner {
+    display: grid;
+    grid-template-columns: 44px 1fr 24px;
+    align-items: start;
+    gap: 14px;
+    padding: 18px 18px 18px 18px;
+  }
+  .hero-nix__card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #cfe0ff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color 220ms ease, color 220ms ease;
+  }
+  .hero-nix__card-body {
+    min-width: 0;
+  }
+  .hero-nix__card-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--aw-font-sans, 'Inter Variable', system-ui, sans-serif);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: #ffffff;
+    margin-bottom: 6px;
+  }
+  .hero-nix__card-step {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 6px;
+    background: rgba(110, 168, 255, 0.22);
+    color: #cfe0ff;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    font-family: var(--aw-font-serif, ui-monospace, SFMono-Regular, monospace);
+  }
+  .hero-nix__card-divider {
+    display: none;
+  }
+  .hero-nix__card-label {
+    color: #ffffff;
+    font-weight: 600;
+  }
+  .hero-nix__card-title {
+    color: #ffffff;
+    font-size: 1.0625rem;
+    line-height: 1.25;
+    font-weight: 700;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.01em;
+  }
+  .hero-nix__card-desc {
+    color: var(--hero-nix-text-muted);
+    font-size: 0.875rem;
+    line-height: 1.45;
+    margin: 0;
+  }
+  .hero-nix__card-arrow {
+    color: var(--hero-nix-text-muted);
+    transition: transform 220ms ease, color 220ms ease;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 480px) {
+    .hero-nix__card-inner {
+      grid-template-columns: 40px 1fr 22px;
+      gap: 12px;
+      padding: 16px 16px 16px 16px;
+    }
+    .hero-nix__card-icon {
+      width: 40px;
+      height: 40px;
+    }
+    .hero-nix__card-title {
+      font-size: 1rem;
+    }
+  }
+
+  /* Light mode fallback — keep the dark hero on light mode too so it doesn't
+     visibly clash with the rest of the page; only soften the nav region. */
+</style>

@@ -40,37 +40,108 @@ const nav = buildNavigation(locale);
      Color-mix is used (not hsl(alpha)) so the underlying CSS variable can be a hex
      color and the alpha is applied at composition time. */
 
-  /* ----- Typography ----- */
+  /* ----- Typography (UX-tuned 2026 scale)
+   * Target audience: senior B2B buyers at $1M+ ARR companies who skim a
+   * landing page in 5-7 seconds. The hero must invite, not dominate;
+   * section headings must feel authoritative without filling the screen.
+   *
+   * Mobile-first scale; tablet at 768px; desktop at 1024px; ultrawide at 1280px.
+   * Numbers derived from a 1.25 modular scale with -2.5% optical letter-spacing
+   * on display sizes to keep type crisp at large weights.
+   *
+   * Font roles (see CustomStyles.astro for the variable definitions):
+   *   .text-hero / .text-section / h1 / h2 → Geist Variable (display sans)
+   *   body / paragraphs / nav / CTAs       → Inter Variable
+   *   .text-mono / kbd / technical labels   → JetBrains Mono Variable
+   */
 
-  /* Hero: larger, tighter typography */
+  /* Hero h1: 44/56/64/72 across mobile → ultrawide.
+   * Was 48/68/88/96 — too dominant on desktop. Now uses the Geist display
+   * family for the "modern engineering" commercial signal. */
   .text-hero {
-    font-size: 3rem;
+    font-family: var(--aw-font-heading);
+    font-size: 2.75rem;
     line-height: 1.05;
-    letter-spacing: -0.04em;
-    font-weight: 800;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+    font-variation-settings: 'wght' 700;
+    font-feature-settings: 'ss01' on, 'cv11' on;
   }
   @media (min-width: 768px) {
-    .text-hero { font-size: 4.25rem; }
+    .text-hero { font-size: 3.5rem; }
   }
   @media (min-width: 1024px) {
-    .text-hero { font-size: 5.5rem; }
+    .text-hero { font-size: 4rem; }
   }
   @media (min-width: 1280px) {
-    .text-hero { font-size: 6rem; }
+    .text-hero { font-size: 4.5rem; letter-spacing: -0.04em; }
   }
 
-  /* Section headings: one notch bigger, still tight */
+  /* Section h2: 32/40/44/48.
+   * Was 36/48/56 — too screen-filling on desktop. Geist at 700 weight. */
   .text-section {
-    font-size: 2.25rem;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    font-weight: 800;
+    font-family: var(--aw-font-heading);
+    font-size: 2rem;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+    font-variation-settings: 'wght' 700;
+    font-feature-settings: 'ss01' on, 'cv11' on;
   }
   @media (min-width: 768px) {
-    .text-section { font-size: 3rem; }
+    .text-section { font-size: 2.5rem; }
   }
   @media (min-width: 1024px) {
-    .text-section { font-size: 3.5rem; }
+    .text-section { font-size: 2.75rem; letter-spacing: -0.03em; }
+  }
+
+  /* Body & supporting copy: keep the html root at 16px (WCAG baseline, respects
+   * browser zoom). Typography scales are applied via rem in the .text-* utilities. */
+  html {
+    font-size: 16px;
+  }
+
+  /* Eyebrow labels: keep tight, slightly bigger on desktop for scanability. */
+  .text-eyebrow {
+    font-family: var(--aw-font-sans);
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+  }
+  @media (min-width: 1024px) {
+    .text-eyebrow { font-size: 0.875rem; }
+  }
+
+  /* Mono utility: technical labels (01 / 04, tag IDs, code-like strings). */
+  .text-mono {
+    font-family: var(--aw-font-serif);
+    font-feature-settings: 'liga' 0, 'calt' 0; /* disable ligatures for mono alignment */
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Globally apply the Geist display family to all heading elements that
+   * fall back to the browser default (when widgets render <h1>/<h2>/<h3>
+   * without a Tailwind font class). Body / nav / CTAs keep Inter. */
+  h1,
+  h2,
+  h3,
+  .font-heading {
+    font-family: var(--aw-font-heading);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-feature-settings: 'ss01' on, 'cv11' on;
+  }
+
+  /* Body copy & nav: Inter Variable, with a 1.55 line-height for screen
+   * readability at 15–17px. */
+  body {
+    font-family: var(--aw-font-sans);
+    font-feature-settings: 'cv11' on, 'ss01' on;
+    line-height: 1.55;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* ----- Hero wash ----- */
@@ -171,6 +242,26 @@ const nav = buildNavigation(locale);
 
   .section-divider {
     border-top: 1px solid color-mix(in srgb, var(--color-border, #e2e8f0) 40%, transparent);
+  }
+
+  /* ----- Vertical rhythm -----
+   * Sections feel less sprawling on desktop without losing breathing room.
+   * py-12 sm:py-14 lg:py-16 is the new default vs the previous py-24 peak. */
+  .section-rhythm {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+  @media (min-width: 768px) {
+    .section-rhythm {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .section-rhythm {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
   }
 
   /* ----- Methodology tag ----- */

@@ -33,8 +33,20 @@ export const buildNavigation = (locale: Locale) => {
 
   const headerLinks: Array<{ text: string; href: string } | { text: string; links: Array<{ text: string; href: string }> }> = [
     {
-      text: 'Home',
-      href: getPermalink(lp || '/')
+      text: dict.nav.home,
+      href: lp ? `${lp}/` : '/'
+    },
+    {
+      text: dict.nav.services,
+      href: '#pillars'
+    },
+    {
+      text: dict.nav.whyChooseUs,
+      href: '#stats'
+    },
+    {
+      text: dict.nav.ourWork,
+      href: '#case-studies'
     }
   ];
 

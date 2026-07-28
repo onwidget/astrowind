@@ -121,7 +121,7 @@ const accentColors = [
                   aria-hidden="true"
                 />
                 <span class="absolute inset-0 bg-black/10" aria-hidden="true" />
-                <span class="absolute top-2 left-2 text-[10px] font-bold tracking-widest text-white sm:text-xs">
+                <span class="text-mono absolute top-2 left-2 text-[10px] font-bold tracking-widest text-white sm:text-xs">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <Icon
@@ -173,10 +173,10 @@ const accentColors = [
             </div>
 
             <div class="relative max-w-2xl">
-              <span class="mb-4 inline-flex rounded-full border border-white/30 bg-white/15 px-3 py-1 text-xs font-semibold tracking-widest uppercase backdrop-blur-sm">
+              <span class="text-mono mb-4 inline-flex rounded-full border border-white/30 bg-white/15 px-3 py-1 text-xs font-semibold tracking-widest uppercase backdrop-blur-sm">
                 {String(index + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}
               </span>
-              <h3 class="text-2xl leading-tight font-bold text-balance sm:text-4xl lg:text-5xl">
+              <h3 class="text-section text-balance text-white">
                 {item.title}
               </h3>
               <p class="mt-4 max-w-xl text-sm leading-relaxed text-white/85 sm:text-lg">
@@ -207,7 +207,7 @@ const accentColors = [
               )}
             </div>
 
-            <p class="absolute top-5 right-5 hidden text-xs font-medium tracking-widest text-white/65 uppercase sm:block">
+            <p class="text-mono absolute top-5 right-5 hidden text-xs font-medium tracking-widest text-white/65 uppercase sm:block">
               Scroll to explore
             </p>
           </article>

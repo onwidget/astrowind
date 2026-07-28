@@ -13,6 +13,8 @@ export type Translations = {
   nav: {
     home: string;
     services: string;
+    whyChooseUs: string;
+    ourWork: string;
     pillars: string;
     product: string;
     engagement: string;
@@ -28,6 +30,16 @@ export type Translations = {
     secondaryCta: string;
     trustEyebrow: string;
     trustItems: string[];
+    quadrantsTitle: string;
+    quadrants: Array<{
+      key: 'pillars' | 'services' | 'experience' | 'projects';
+      step: string;
+      label: string;
+      title: string;
+      description: string;
+      icon: string;
+      href: string;
+    }>;
   };
   intro: {
     title: string;
@@ -149,7 +161,9 @@ const en: Translations = {
   },
   nav: {
     home: 'Home',
-    services: 'Services',
+    services: 'What we do',
+    whyChooseUs: 'Why choose us',
+    ourWork: 'Our work',
     pillars: 'Practice areas',
     product: 'Product',
     engagement: 'Engagement',
@@ -170,6 +184,45 @@ const en: Translations = {
       'Co-build sessions with your engineers — runbooks, governance, and working code on the same day',
       'Training programs and cybersecurity assessments for engineering teams and executives',
       'AWS, GCP, Azure, sovereign EU clouds, or hybrid — senior-only delivery, fixed scope'
+    ],
+    quadrantsTitle: 'Skip to what matters',
+    quadrants: [
+      {
+        key: 'pillars',
+        step: '01',
+        label: 'Home',
+        title: 'Five practice pillars',
+        description: 'Intelligent automation, AI-driven delivery, cloud transformation, training, and data engineering — one click away.',
+        icon: 'tabler:layout-grid',
+        href: '#pillars'
+      },
+      {
+        key: 'services',
+        step: '02',
+        label: 'What we do',
+        title: 'Our services',
+        description: 'Browse the senior-led services we ship to production — automation, agile delivery, cloud, data, and security.',
+        icon: 'tabler:briefcase',
+        href: '#pillars'
+      },
+      {
+        key: 'experience',
+        step: '03',
+        label: 'Why choose us',
+        title: 'AI-driven solutions, 12+ years experience',
+        description: 'Three hyperscalers, sovereign EU clouds, and 100% senior-only delivery. The numbers, not the adjectives.',
+        icon: 'tabler:building-arch',
+        href: '#stats'
+      },
+      {
+        key: 'projects',
+        step: '04',
+        label: 'Our work',
+        title: 'Successful projects',
+        description: 'Three recent engagements — Globant, Scotiabank, Asylum Marketing — mapped to the seven packages.',
+        icon: 'tabler:rocket',
+        href: '#case-studies'
+      }
     ]
   },
   intro: {
@@ -615,7 +668,9 @@ const es: Translations = {
   },
   nav: {
     home: 'Inicio',
-    services: 'Servicios',
+    services: 'Qué hacemos',
+    whyChooseUs: 'Por qué elegirnos',
+    ourWork: 'Nuestro trabajo',
     pillars: 'Áreas de práctica',
     product: 'Producto',
     engagement: 'Engagement',
@@ -636,6 +691,45 @@ const es: Translations = {
       'Sesiones de co-build con tu equipo — runbooks, governance y código funcionando el mismo día',
       'Programas de formación y assessments de ciberseguridad para equipos de ingeniería y ejecutivos',
       'AWS, GCP, Azure, nubes soberanas UE o híbrido — entrega senior-only, alcance fijo'
+    ],
+    quadrantsTitle: 'Salta a lo que importa',
+    quadrants: [
+      {
+        key: 'pillars',
+        step: '01',
+        label: 'Inicio',
+        title: 'Cinco pilares de práctica',
+        description: 'Automatización inteligente, delivery AI-driven, cloud transformation, formación y data engineering — a un clic.',
+        icon: 'tabler:layout-grid',
+        href: '#pillars'
+      },
+      {
+        key: 'services',
+        step: '02',
+        label: 'Qué hacemos',
+        title: 'Nuestros servicios',
+        description: 'Recorre los servicios senior-led que entregamos a producción — automation, agile delivery, cloud, data y security.',
+        icon: 'tabler:briefcase',
+        href: '#pillars'
+      },
+      {
+        key: 'experience',
+        step: '03',
+        label: 'Por qué elegirnos',
+        title: 'Soluciones AI-driven, 12+ años de experiencia',
+        description: 'Tres hyperscalers, nubes soberanas UE y 100% entrega senior-only. Los números, no los adjetivos.',
+        icon: 'tabler:building-arch',
+        href: '#stats'
+      },
+      {
+        key: 'projects',
+        step: '04',
+        label: 'Nuestro trabajo',
+        title: 'Proyectos exitosos',
+        description: 'Tres engagements recientes — Globant, Scotiabank, Asylum Marketing — mapeados a los siete paquetes.',
+        icon: 'tabler:rocket',
+        href: '#case-studies'
+      }
     ]
   },
   intro: {

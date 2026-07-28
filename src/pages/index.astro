@@ -26,18 +26,18 @@ const metadata = {
       { variant: 'primary', text: dict.hero.primaryCta, href: '/contact', icon: 'tabler:calendar-event' },
       { text: dict.hero.secondaryCta, href: '#pillars', icon: 'tabler:chart-bar' }
     ]}
-    image={{ src: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', alt: 'Cafetatek — senior engineering team collaborating on cloud platform' }}
+    quadrants={dict.hero.quadrants}
   >
     <Fragment slot="title">{dict.hero.title}</Fragment>
     <Fragment slot="subtitle">{dict.hero.subtitle}</Fragment>
 
     <Fragment slot="content">
-      <p class="text-muted dark:text-slate-400 text-sm font-semibold tracking-widest uppercase mb-3">
+      <p class="hero-nix__trust-eyebrow text-sm font-semibold tracking-widest uppercase mb-3">
         {dict.hero.trustEyebrow}
       </p>
-      <ul class="mx-auto max-w-3xl grid grid-cols-1 gap-x-8 gap-y-2 text-left sm:grid-cols-2">
+      <ul class="hero-nix__trustlist mx-auto max-w-3xl grid grid-cols-1 gap-x-8 gap-y-2 text-left sm:grid-cols-2">
         {dict.hero.trustItems.map((item) => (
-          <li class="flex items-start gap-2 text-muted dark:text-slate-300 text-sm">
+          <li class="flex items-start gap-2 text-sm">
             <span class="text-primary mt-1 inline-block w-1.5 h-1.5 rounded-full bg-primary" />
             <span>{item}</span>
           </li>

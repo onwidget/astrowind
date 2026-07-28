@@ -1,29 +1,42 @@
 ---
+/**
+ * Font system (2026 UX/UI recommendation)
+ *
+ *   Display (h1, h2)      → Geist Variable       — Vercel's 2025 engineering
+ *                                                  display sans; signals
+ *                                                  "modern engineering-first
+ *                                                  practice" to $1M+ B2B
+ *                                                  buyers.
+ *   Body   (paragraphs,   → Inter Variable        — 2026 B2B SaaS default,
+ *           UI, nav, CTA)    (already loaded)        optimized for screen
+ *                                                  reading at 14–18px.
+ *   Mono   (technical     → JetBrains Mono         — Geist's natural mono
+ *           labels,                                  pair. Use for tag IDs
+ *           "01 / 04", etc.)                          ("01 / 04"), code,
+ *                                                  kbd-like elements.
+ *
+ * All three are open-source variable fonts shipped via @fontsource-variable,
+ * so we get 1) zero external requests (better LCP, better privacy, GDPR-clean),
+ * 2) the full weight axis without per-weight round-trips, and 3) full offline
+ * support — all of which improve Core Web Vitals, a direct SEO KPI.
+ *
+ * The font stack is exposed via the existing --aw-font-* CSS variables so the
+ * rest of the codebase continues to reference --font-sans / --font-serif /
+ * --font-heading without rewiring utilities.
+ */
 import '@fontsource-variable/inter';
-
-// 'DM Sans'
-// Nunito
-// Dosis
-// Outfit
-// Roboto
-// Literata
-// 'IBM Plex Sans'
-// Karla
-// Poppins
-// 'Fira Sans'
-// 'Libre Franklin'
-// Inconsolata
-// Raleway
-// Oswald
-// 'Space Grotesk'
-// Urbanist
+import '@fontsource-variable/geist';
+import '@fontsource-variable/jetbrains-mono';
 ---
 
 <style is:inline>
   :root {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    /* Display sans — used by .text-hero / .text-section (heading roles). */
+    --aw-font-heading: 'Geist Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+    /* Body sans — used for paragraph copy, nav, CTAs, eyebrows. */
+    --aw-font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+    /* Mono — used for technical labels and code. */
+    --aw-font-serif: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
 
     --aw-color-primary: rgb(1 97 239);
     --aw-color-secondary: rgb(1 84 207);
@@ -42,9 +55,9 @@ import '@fontsource-variable/inter';
   }
 
   .dark {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    --aw-font-heading: 'Geist Variable', 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+    --aw-font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+    --aw-font-serif: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
 
     --aw-color-primary: rgb(1 97 239);
     --aw-color-secondary: rgb(1 84 207);
