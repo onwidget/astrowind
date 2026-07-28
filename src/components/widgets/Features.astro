@@ -36,22 +36,21 @@ const columnsClass =
     items.length > 0 && (
       <div class:list={['grid mx-auto gap-8 md:gap-y-12', columnsClass]}>
         {items.map(({ title: itemTitle, description, icon, callToAction }) => (
-          <div class="intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-            <div class="flex flex-row max-w-md">
+          <div class="pillar-card card-hover group intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade p-6 sm:p-7 rounded-xl border border-border/40 bg-background">
+            <div class="flex flex-row max-w-none">
               {(icon || defaultIcon) && (
-                <div class="flex justify-center">
-                  <Icon
-                    name={icon || defaultIcon}
-                    class="w-7 h-7 mr-2 rtl:mr-0 rtl:ml-2 text-white bg-primary rounded-full md:w-12 md:h-12 md:p-3 p-2 mr-4 rtl:ml-4 rtl:mr-0"
-                  />
+                <div class="flex justify-center shrink-0 mr-4 rtl:mr-0 rtl:ml-4">
+                  <div class="pillar-icon flex items-center justify-center w-12 h-12 rounded-full">
+                    <Icon name={icon || defaultIcon} class="w-6 h-6" />
+                  </div>
                 </div>
               )}
               <div class="mt-0.5">
-                {itemTitle && <h3 class="text-xl md:text-[1.3rem] font-bold">{itemTitle}</h3>}
-                {description && <p class:list={[{ 'mt-3': itemTitle }, 'text-muted']} set:html={description} />}
+                {itemTitle && <h3 class="text-xl md:text-[1.3rem] font-bold leading-tight">{itemTitle}</h3>}
+                {description && <p class:list={[{ 'mt-3': itemTitle }, 'text-muted whitespace-pre-line text-[15px] leading-relaxed']} set:html={description} />}
                 {callToAction && (
-                  <div class:list={[{ 'mt-3': itemTitle || description }]}>
-                    <Button variant="link" {...callToAction} />
+                  <div class:list={[{ 'mt-4': itemTitle || description }]}>
+                    <Button variant="link" {...callToAction} class="text-primary font-semibold" />
                   </div>
                 )}
               </div>

@@ -8,7 +8,7 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 
 import { t, type Locale } from '~/utils/translations';
 
-const locale: Locale = 'en';
+const locale: Locale = 'es';
 const dict = t(locale);
 
 const metadata = {
@@ -23,10 +23,10 @@ const metadata = {
     id="home"
     tagline={dict.hero.eyebrow}
     actions={[
-      { variant: 'primary', text: dict.hero.primaryCta, href: '/contact', icon: 'tabler:calendar-event' },
+      { variant: 'primary', text: dict.hero.primaryCta, href: '/es/contact', icon: 'tabler:calendar-event' },
       { text: dict.hero.secondaryCta, href: '#pillars', icon: 'tabler:chart-bar' }
     ]}
-    image={{ src: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', alt: 'Cafetatek — senior engineering team collaborating on cloud platform' }}
+    image={{ src: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80', alt: 'Cafetatek — equipo senior de ingeniería colaborando en plataforma cloud' }}
   >
     <Fragment slot="title">{dict.hero.title}</Fragment>
     <Fragment slot="subtitle">{dict.hero.subtitle}</Fragment>
@@ -46,12 +46,12 @@ const metadata = {
     </Fragment>
   </Hero>
 
-  <!-- 1.5. Methodology carousel (right after hero, above stats) -->
+  <!-- 1.5. Carousel de metodología (debajo del hero, encima del stat bar) -->
   <MethodologyCarousel
     id="methodology"
-    eyebrow="How we deliver"
-    title="A repeatable, audit-friendly delivery model."
-    subtitle="The same way the platform engineering movement was supposed to. Senior engineers, structured phases, your team owns every step of the result."
+    eyebrow="Cómo entregamos"
+    title="Un modelo de entrega repetible y audit-friendly."
+    subtitle="Como se suponía que debía ser el movimiento de platform engineering. Ingenieros senior, fases estructuradas, tu equipo dueño de cada paso del resultado."
     steps={dict.methodology.steps}
     ctaText={dict.hero.primaryCta}
   />
@@ -95,7 +95,7 @@ const metadata = {
     </div>
   </section>
 
-  <!-- 4. Six service pillars (the brief's 6 core offerings) -->
+  <!-- 4. Six service pillars (los 6 servicios del brief) -->
   <Features
     id="pillars"
     tagline={dict.pillars.eyebrow}
@@ -106,7 +106,7 @@ const metadata = {
       title: it.title,
       description: `${it.description}\n\n${it.bullets.slice(0, 3).map((b) => `• ${b}`).join('\n')}`,
       icon: it.icon,
-      callToAction: { text: 'Discuss this pillar', href: '/contact' }
+      callToAction: { text: 'Discutir este pilar', href: '/es/contact' }
     }))}
   />
 
@@ -147,7 +147,7 @@ const metadata = {
   <CallToAction
     id="contact"
     actions={[
-      { variant: 'primary', text: dict.cta.primaryCta, href: '/contact', icon: 'tabler:calendar-event' },
+      { variant: 'primary', text: dict.cta.primaryCta, href: '/es/contact', icon: 'tabler:calendar-event' },
       { text: dict.cta.secondaryCta, href: 'mailto:hello@cafetatek.com?subject=Brief', icon: 'tabler:mail' }
     ]}
   >

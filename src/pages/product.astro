@@ -1,0 +1,77 @@
+---
+import CafetatekLayout from '~/layouts/CafetatekLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+import { t, type Locale } from '~/utils/translations';
+
+const locale: Locale = 'en';
+const dict = t(locale);
+
+const metadata = {
+  title: 'Elixa Multi-Migration Platform',
+};
+---
+
+<CafetatekLayout locale={locale} metadata={metadata}>
+  <Hero
+    id="product-hero"
+    tagline={dict.elixa.eyebrow}
+    actions={[
+      { variant: 'primary', text: dict.elixa.primaryCta, href: '/contact', icon: 'tabler:player-play' },
+      { text: dict.elixa.secondaryCta, href: '#how-it-works', icon: 'tabler:book' }
+    ]}
+  >
+    <Fragment slot="title">{dict.elixa.title}</Fragment>
+    <Fragment slot="subtitle">{dict.elixa.subtitle}</Fragment>
+  </Hero>
+
+  <div class="bg-muted/40 border-y">
+    <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
+      <p class="text-secondary text-sm font-bold tracking-wide uppercase mb-3">{dict.elixa.whyBuiltTitle}</p>
+      <p class="text-foreground text-lg leading-relaxed text-balance">{dict.elixa.whyBuiltBody}</p>
+    </div>
+  </div>
+
+  <Steps
+    id="how-it-works"
+    tagline="How Elixa works"
+    title="From a use case to a priced, orchestrated migration plan"
+    subtitle="Four steps, in parallel where it makes sense, with operational continuity baked in."
+    items={dict.elixa.steps.map((s, i) => ({
+      title: `Step ${i + 1}: <span class="font-medium">${s.title}</span>`,
+      description: s.description,
+      icon: ['tabler:clipboard-list', 'tabler:layout-grid', 'tabler:shield-check', 'tabler:check'][i] ?? 'tabler:check'
+    }))}
+  />
+
+  <Features2
+    id="features"
+    tagline={dict.elixa.eyebrow}
+    title={dict.elixa.featuresTitle}
+    items={dict.elixa.features.map((f) => ({
+      title: f,
+      description: '',
+      icon: 'tabler:circle-check-filled'
+    }))}
+  />
+
+  <CallToAction
+    id="contact"
+    actions={[
+      { variant: 'primary', text: dict.elixa.primaryCta, href: '/contact', icon: 'tabler:calendar-event' },
+      { text: dict.elixa.secondaryCta, href: 'mailto:hello@cafetatek.com?subject=Elixa%20brief', icon: 'tabler:mail' }
+    ]}
+  >
+    <Fragment slot="title">Request an Elixa demo</Fragment>
+    <Fragment slot="subtitle">
+      See Elixa in action on your use case, in your cloud, in your region. 30-min working session with the team that built it.
+      <br class="hidden md:inline" />
+      <span class="block mt-4 text-xs font-medium tracking-widest uppercase text-muted dark:text-slate-400">
+        {dict.cta.note}
+      </span>
+    </Fragment>
+  </CallToAction>
+</CafetatekLayout>

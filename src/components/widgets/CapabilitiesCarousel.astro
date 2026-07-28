@@ -1,0 +1,355 @@
+---
+/**
+ * CapabilitiesCarousel — vertical-slide carousel of pillar capabilities.
+ *
+ * Mirrors the React <CapabilitiesSection /> in cafetatek-landing-page:
+ *  - Left rail: up/down chevron buttons + N stacked thumbnail tabs
+ *    (index number + pillar icon, accent gradient + darken overlay).
+ *  - Right panel: active pillar rendered as a full-height gradient card
+ *    with eyebrow "01 / 04", title, description, points grid, and a
+ *    "Scroll to explore" label in the corner.
+ *  - Wheel scroll, vertical touch swipe, keyboard arrows, and tab clicks
+ *    all advance the slide.
+ *
+ * Interaction model:
+ *  - State lives in a single `_activeIndex` value attached to the root.
+ *  - On user action we toggle the `.is-active` class on the matching tab
+ *    and the matching slide panel; only the active slide is visible.
+ *  - Wheel and touch handlers are attached once (idempotent via flag) and
+ *    debounced so a single scroll gesture moves at most one slide.
+ *
+ * Props:
+ *  - eyebrow: string — short uppercase eyebrow text above the title.
+ *  - title: string — section title.
+ *  - subtitle: string — subtitle / supporting copy.
+ *  - items: Array<{ title, description, bullets, icon, duration? }> — the
+ *    pillars to render (5 in the current practice model).
+ *  - id: string — anchor id, defaults to "capabilities".
+ */
+
+import { Icon } from 'astro-icon/components';
+
+export interface PillarItem {
+  title: string;
+  description: string;
+  bullets: string[];
+  icon: string;
+  duration?: string;
+}
+
+export interface Props {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  items: PillarItem[];
+  id?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  subtitle,
+  items,
+  id = 'capabilities'
+} = Astro.props;
+
+// Match the React reference accent palette — blue/emerald/amber/violet, then repeat.
+const accentColors = [
+  'from-blue-600 to-indigo-500',
+  'from-emerald-600 to-teal-500',
+  'from-amber-500 to-orange-500',
+  'from-violet-600 to-purple-500',
+  'from-rose-500 to-pink-500'
+];
+---
+
+<section id={id} class="bg-muted/40 py-12 sm:py-16 lg:py-24 section-divider">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
+      <p class="accent-rule text-secondary text-base font-bold tracking-wide uppercase">
+        {eyebrow}
+      </p>
+      <h2 class="text-section mt-3 text-balance">{title}</h2>
+      <p class="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg sm:text-xl text-balance leading-relaxed">
+        {subtitle}
+      </p>
+    </div>
+
+    <div
+      class="capabilities-carousel bg-background mx-auto flex h-[34rem] max-w-5xl gap-3 overflow-hidden rounded-2xl border p-3 shadow-xl outline-none focus-visible:ring-2 focus-visible:ring-ring sm:h-[38rem] sm:gap-5 sm:p-5 lg:h-[42rem]"
+      data-step-count={items.length}
+      role="region"
+      aria-roledescription="carousel"
+      aria-label={title}
+      tabindex="0"
+    >
+      {/* Left rail */}
+      <div class="flex w-16 shrink-0 flex-col sm:w-24" role="tablist" aria-orientation="vertical">
+        <button
+          type="button"
+          class="capabilities-prev text-muted-foreground hover:bg-muted mb-2 hidden h-9 items-center justify-center rounded-lg transition-colors sm:flex"
+          aria-label="Previous slide"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </button>
+
+        <div class="flex min-h-0 flex-1 flex-col gap-2 sm:gap-3">
+          {
+            items.map((item, index) => (
+              <button
+                type="button"
+                class={`capabilities-tab group relative min-h-0 flex-1 overflow-hidden rounded-xl border-2 text-left transition-all duration-300 ${index === 0 ? 'border-foreground shadow-md' : 'border-transparent opacity-55 hover:opacity-90'}`}
+                data-slide-index={index}
+                role="tab"
+                aria-selected={index === 0 ? 'true' : 'false'}
+                aria-controls={`capability-slide-${index}`}
+              >
+                <span
+                  class={`absolute inset-0 bg-gradient-to-br ${accentColors[index % accentColors.length]}`}
+                  aria-hidden="true"
+                />
+                <span class="absolute inset-0 bg-black/10" aria-hidden="true" />
+                <span class="absolute top-2 left-2 text-[10px] font-bold tracking-widest text-white sm:text-xs">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <Icon
+                  name={item.icon}
+                  class="absolute right-2 bottom-2 h-4 w-4 text-white/90 sm:h-5 sm:w-5"
+                />
+                <span class="sr-only">{item.title}</span>
+              </button>
+            ))
+          }
+        </div>
+
+        <button
+          type="button"
+          class="capabilities-next text-muted-foreground hover:bg-muted mt-2 hidden h-9 items-center justify-center rounded-lg transition-colors sm:flex"
+          aria-label="Next slide"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      {/* Right panel: one slide per pillar. Only the active one is visible. */}
+      {
+        items.map((item, index) => (
+          <article
+            id={`capability-slide-${index}`}
+            role="tabpanel"
+            aria-labelledby={`capability-tab-${index}`}
+            aria-live="polite"
+            data-slide-index={index}
+            class={`capabilities-slide relative flex min-w-0 flex-1 flex-col justify-end overflow-hidden rounded-xl bg-gradient-to-br p-5 text-white sm:p-8 lg:p-12 ${accentColors[index % accentColors.length]} ${index === 0 ? 'is-active' : ''}`}
+          >
+            <div class="absolute inset-0 opacity-20" aria-hidden="true">
+              <div class="absolute -top-20 -right-20 size-72 rounded-full border-[40px] border-white/30" />
+              <div class="absolute top-1/4 right-1/4 size-36 rotate-45 border border-white/30" />
+              <div class="absolute -bottom-24 -left-16 size-72 rounded-full bg-black/25 blur-2xl" />
+            </div>
+
+            <div class="relative max-w-2xl">
+              <span class="mb-4 inline-flex rounded-full border border-white/30 bg-white/15 px-3 py-1 text-xs font-semibold tracking-widest uppercase backdrop-blur-sm">
+                {String(index + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}
+              </span>
+              <h3 class="text-2xl leading-tight font-bold text-balance sm:text-4xl lg:text-5xl">
+                {item.title}
+              </h3>
+              <p class="mt-4 max-w-xl text-sm leading-relaxed text-white/85 sm:text-lg">
+                {item.description}
+              </p>
+              {item.bullets?.length > 0 && (
+                <ul class="mt-5 grid gap-2 sm:mt-7 sm:grid-cols-2 sm:gap-3">
+                  {item.bullets.map((point) => (
+                    <li class="flex items-start gap-2 text-xs leading-relaxed text-white/90 sm:text-sm">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="mt-0.5 size-4 shrink-0"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="9 12 11 14 15 10" />
+                      </svg>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            <p class="absolute top-5 right-5 hidden text-xs font-medium tracking-widest text-white/65 uppercase sm:block">
+              Scroll to explore
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Only one slide is visible at a time. We keep all slides mounted for
+   * smooth transitions but flip them off-screen until they become active. */
+  .capabilities-slide {
+    display: none;
+    animation: capabilities-slide-in 480ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .capabilities-slide.is-active {
+    display: flex;
+  }
+  @keyframes capabilities-slide-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Focus ring on the carousel container matches the React reference. */
+  .capabilities-carousel:focus {
+    outline: none;
+  }
+  .capabilities-carousel:focus-visible {
+    outline: 2px solid var(--aw-color-primary, #1e88e5);
+    outline-offset: 4px;
+    border-radius: 1rem;
+  }
+</style>
+
+<script>
+  // Vertical-slide carousel — vanilla JS, no React runtime.
+  // Mirrors the React <CapabilitiesSection /> in cafetatek-landing-page:
+  // wheel + touch + keyboard + tab clicks all advance the active slide.
+
+  type CarouselEl = HTMLElement & { _carouselInited?: boolean };
+
+  const init = (root: CarouselEl) => {
+    if (root._carouselInited) return;
+    root._carouselInited = true;
+
+    const total = Number(root.dataset.stepCount ?? '0');
+    if (total <= 1) return;
+
+    const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('.capabilities-tab'));
+    const slides = Array.from(root.querySelectorAll<HTMLElement>('.capabilities-slide'));
+    const prevBtn = root.querySelector<HTMLButtonElement>('.capabilities-prev');
+    const nextBtn = root.querySelector<HTMLButtonElement>('.capabilities-next');
+
+    let active = 0;
+    let wheelLocked = false;
+
+    const setActive = (next: number) => {
+      const clamped = ((next % total) + total) % total;
+      if (clamped === active) return;
+      active = clamped;
+
+      tabs.forEach((tab, i) => {
+        const isActive = i === active;
+        tab.classList.toggle('border-foreground', isActive);
+        tab.classList.toggle('shadow-md', isActive);
+        tab.classList.toggle('border-transparent', !isActive);
+        tab.classList.toggle('opacity-55', !isActive);
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('is-active', i === active);
+        // Re-trigger the entrance animation on each new active slide.
+        if (i === active) {
+          slide.style.animation = 'none';
+          // Force reflow so the animation restarts.
+          void slide.offsetWidth;
+          slide.style.animation = '';
+        }
+      });
+    };
+
+    prevBtn?.addEventListener('click', () => setActive(active - 1));
+    nextBtn?.addEventListener('click', () => setActive(active + 1));
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => setActive(i));
+    });
+
+    root.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        setActive(active + 1);
+      } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+        event.preventDefault();
+        setActive(active - 1);
+      }
+    });
+
+    // Wheel scroll: one slide per gesture, debounced.
+    root.addEventListener(
+      'wheel',
+      (event) => {
+        if (Math.abs(event.deltaY) < 12 || wheelLocked) return;
+        event.preventDefault();
+        wheelLocked = true;
+        setActive(event.deltaY > 0 ? active + 1 : active - 1);
+        window.setTimeout(() => {
+          wheelLocked = false;
+        }, 450);
+      },
+      { passive: false }
+    );
+
+    // Vertical touch swipe: a 45px+ swipe advances the slide.
+    let touchStartY: number | null = null;
+    root.addEventListener(
+      'touchstart',
+      (event) => {
+        touchStartY = event.touches[0]?.clientY ?? null;
+      },
+      { passive: true }
+    );
+    root.addEventListener(
+      'touchend',
+      (event) => {
+        if (touchStartY === null) return;
+        const endY = event.changedTouches[0]?.clientY ?? touchStartY;
+        const distance = touchStartY - endY;
+        if (Math.abs(distance) > 45) setActive(distance > 0 ? active + 1 : active - 1);
+        touchStartY = null;
+      },
+      { passive: true }
+    );
+  };
+
+  document.querySelectorAll<CarouselEl>('.capabilities-carousel').forEach(init);
+</script>

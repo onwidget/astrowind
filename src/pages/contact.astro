@@ -1,79 +1,73 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
+import CafetatekLayout from '~/layouts/CafetatekLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
+import Contact from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+
+import { t, type Locale } from '~/utils/translations';
+
+const locale: Locale = 'en';
+const dict = t(locale);
 
 const metadata = {
   title: 'Contact',
 };
 ---
 
-<Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
+<CafetatekLayout locale={locale} metadata={metadata}>
+  <HeroText
+    tagline="Contact"
+    title="Let's turn your next technology challenge into a clear plan."
+  >
+    <Fragment slot="subtitle">
+      Share what you are building, improving, or exploring. Cafetatek is ready to listen and help you identify the next practical step.
+    </Fragment>
+  </HeroText>
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
-
-  <ContactUs
+  <Contact
     id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
+    title="Drop us a message"
+    subtitle="For quicker answers, our FAQ on the About page may already cover it. If not, our senior team responds within 1 business day."
     inputs={[
       {
         type: 'text',
         name: 'name',
-        label: 'Name',
+        label: 'Name'
       },
       {
         type: 'email',
         name: 'email',
-        label: 'Email',
-      },
+        label: 'Work email'
+      }
     ]}
     textarea={{
-      label: 'Message',
+      label: 'What is the situation?'
     }}
     disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+      label: 'By submitting this form, you agree to the collection of your contact information for the purpose of replying to your enquiry.'
     }}
-    description="Our support team typically responds within 24 business hours."
+    description="Replies within 1 business day · No sales pressure · Senior engineer on every call"
+    button="Send your message"
   />
-
-  <!-- Features2 Widget ************** -->
 
   <Features2
-    title="We are here to help!"
+    title="Other ways to reach us"
     items={[
       {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
+        title: 'For technical enquiries',
+        description: 'Email the senior team directly at hello@cafetatek.com. We triage every request within 1 business day.',
+        icon: 'tabler:mail'
       },
       {
-        title: 'Contact sales',
-        description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
+        title: 'For procurement and legal',
+        description: 'Same address. We can provide a signed DPA, security questionnaire answers, and standard MSA templates within 48 hours.',
+        icon: 'tabler:file-text'
       },
       {
-        title: 'Technical support',
-        description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
-      },
-      {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
-      },
-      {
-        title: 'Email',
-        description: 'contact@support.com',
-        icon: 'tabler:mail',
-      },
-      {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
-      },
+        title: 'For partners and integrators',
+        description: 'If you are a cloud provider, an agency, or an SI looking to co-deliver, get in touch. We work with a small, vetted partner network.',
+        icon: 'tabler:users-plus'
+      }
     ]}
   />
-</Layout>
+</CafetatekLayout>

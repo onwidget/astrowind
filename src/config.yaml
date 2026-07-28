@@ -1,35 +1,39 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Cafetatek
+  site: 'http://localhost:3001'
   base: '/'
   trailingSlash: false
 
-  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
+  googleSiteVerificationId: ''
 
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Cafetatek
+    template: '%s — Cafetatek'
+  description: 'Engineering boutique for B2B teams in EMEA. Cloud-agnostic platform engineering, data, software, and AI governance.'
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Cafetatek
     images:
       - url: '~/assets/images/default.png'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@arthelokyo'
-    site: '@arthelokyo'
+    handle: '@cafetatek'
+    site: '@cafetatek'
     cardType: summary_large_image
 
 i18n:
   language: en
   textDirection: ltr
+  defaultLocale: en
+  supportedLocales:
+    - en
+    - es
 
 apps:
   blog:

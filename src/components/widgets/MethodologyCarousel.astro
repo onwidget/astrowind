@@ -1,0 +1,190 @@
+---
+/**
+ * MethodologyCarousel — vertical stack of fruit-card steps with scroll-triggered
+ * animation, matching the React <ScrollTriggered /> pattern from
+ * https://examples.motion.dev/react/scroll-triggered.
+ *
+ * Each card mirrors the React reference: a colored gradient "splash" sits
+ * behind a white card that springs up + tilts into place when it scrolls
+ * into the viewport. The emoji on the card is paired with the methodology
+ * step content (title + description) so the pattern reads as a delivery
+ * model rather than a literal fruit picker.
+ *
+ * Interaction model:
+ *  - Vertical stack of cards, each with -120px overlap so the splash peeks above.
+ *  - Each card springs from `y: 300 → 50, rotate: 0 → -10` when 80% in view.
+ *  - Vanilla JS via Motion's `inView` + `animate` (no React runtime).
+ *
+ * Props:
+ *  - eyebrow: string — short uppercase eyebrow text rendered above the title.
+ *  - title: string — section title.
+ *  - subtitle: string — subtitle / supporting copy.
+ *  - steps: Array<{ title: string; description: string }> — exactly 4 step cards.
+ *  - ctaText: string — optional CTA below the cards.
+ *  - id: string — anchor id, defaults to "methodology".
+ */
+
+export interface CarouselStep {
+  title: string;
+  description: string;
+}
+
+export interface Props {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  steps: CarouselStep[];
+  ctaText?: string;
+  id?: string;
+}
+
+// Fruit → gradient hue pairs, lifted verbatim from the React ScrollTriggered example
+// so the visual rhythm matches https://examples.motion.dev/react/scroll-triggered.
+const fruits: Array<[string, number, number]> = [
+  ['🍅', 340, 10],
+  ['🍊', 20, 40],
+  ['🍋', 60, 90],
+  ['🍐', 80, 120]
+];
+
+const hue = (h: number) => `hsl(${h}, 100%, 50%)`;
+
+// Splash clipPath, identical to the React reference.
+const splashClipPath =
+  'path("M 0 303.5 C 0 292.454 8.995 285.101 20 283.5 L 460 219.5 C 470.085 218.033 480 228.454 480 239.5 L 500 430 C 500 441.046 491.046 450 480 450 L 20 450 C 8.954 450 0 441.046 0 430 Z")';
+
+const {
+  eyebrow,
+  title,
+  subtitle,
+  steps,
+  ctaText = 'Talk to a senior engineer',
+  id = 'methodology'
+} = Astro.props;
+---
+
+<section id={id} class="bg-background py-12 sm:py-16 lg:py-20">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center mb-10 sm:mb-12">
+      <p class="accent-rule text-secondary text-sm font-bold tracking-wide uppercase inline-block mb-3">
+        {eyebrow}
+      </p>
+      <h2 class="text-section text-balance">
+        {title}
+      </h2>
+      <p class="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg sm:text-xl">
+        {subtitle}
+      </p>
+    </div>
+
+    <div
+      class="methodology-stack mx-auto w-full max-w-[500px] pb-24"
+      data-step-count={steps.length}
+      aria-label={title}
+    >
+      {
+        steps.map((step, i) => {
+          // Cycle through the fruit palette so any number of steps gets a color.
+          const fruit = fruits[i % fruits.length]!;
+          const [emoji, hueA, hueB] = fruit;
+          const background = `linear-gradient(306deg, ${hue(hueA)}, ${hue(hueB)})`;
+          return (
+            <div
+              class={`card-container-${i} relative flex items-center justify-center overflow-hidden pt-5 -mb-[120px] last:mb-0`}
+              data-methodology-index={i}
+            >
+              <div
+                class="methodology-splash absolute inset-0"
+                style={`background: ${background}; clip-path: ${splashClipPath};`}
+                aria-hidden="true"
+              />
+              <div
+                class="methodology-card card flex flex-col h-[430px] w-[300px] items-center justify-center rounded-[20px] bg-white text-foreground shadow-[0_0_1px_hsl(0deg_0%_0%/0.075),0_0_2px_hsl(0deg_0%_0%/0.075),0_0_4px_hsl(0deg_0%_0%/0.075),0_0_8px_hsl(0deg_0%_0%/0.075),0_0_16px_hsl(0deg_0%_0%/0.075)]"
+                style="transform-origin: 10% 60%;"
+              >
+                <span class="text-[100px] leading-none" aria-hidden="true">
+                  {emoji}
+                </span>
+                <h3 class="mt-4 px-6 text-center text-lg font-bold leading-tight" set:html={step.title} />
+                <p class="mt-2 px-6 pb-6 text-center text-muted-foreground text-xs leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <div class="mt-6 text-center">
+      <a
+        href="/contact?source=methodology"
+        class="inline-flex items-center gap-2 text-primary font-semibold hover:underline"
+      >
+        <span>{ctaText}</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-4 h-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Each inner .methodology-card starts off-screen in the same shape the React example defines.
+   * The outer [data-methodology-index] element stays static and is only used as the viewport
+   * detector (matches the React reference where the outer .card-container-N has no variants). */
+  .methodology-card {
+    opacity: 0;
+    transform: translateY(300px) rotate(0deg);
+    will-change: transform, opacity;
+  }
+</style>
+
+<script>
+  // Vertical scroll-triggered card stack — vanilla JS, no React runtime.
+  // The outer [data-methodology-index] detects viewport entry; the inner .methodology-card
+  // springs from y: 300 → 50 with rotate: 0 → -10 the first time it enters the viewport,
+  // matching the React <ScrollTriggered /> pattern at
+  // https://examples.motion.dev/react/scroll-triggered.
+
+  import { animate, inView } from 'motion';
+
+  type StackEl = HTMLElement & { _carouselInited?: boolean };
+
+  const init = (root: StackEl) => {
+    if (root._carouselInited) return;
+    root._carouselInited = true;
+
+    const containers = Array.from(root.querySelectorAll<HTMLElement>('[data-methodology-index]'));
+    if (!containers.length) return;
+
+    containers.forEach((container) => {
+      const card = container.querySelector<HTMLElement>('.methodology-card');
+      if (!card) return;
+      const stop = inView(
+        container,
+        () => {
+          animate(
+            card,
+            { opacity: [0, 1], y: [300, 50], rotate: [0, -10] },
+            { type: 'spring', bounce: 0.4, duration: 0.8 }
+          );
+          stop();
+        },
+        { amount: 0.8 }
+      );
+    });
+  };
+
+  document.querySelectorAll<StackEl>('.methodology-stack').forEach(init);
+</script>

@@ -8,7 +8,7 @@ import { Icon } from 'astro-icon/components';
 
 import { t, type Locale } from '~/utils/translations';
 
-const locale: Locale = 'en';
+const locale: Locale = 'es';
 const dict = t(locale);
 
 const pillars = dict.pillars.items;
@@ -26,15 +26,15 @@ const metadata = {
     id="services-hero"
     tagline={dict.pillars.eyebrow}
     actions={[
-      { variant: 'primary', text: dict.cta.primaryCta, href: '/contact', icon: 'tabler:calendar-event' },
-      { text: 'Jump to a pillar', href: '#pillars-overview', icon: 'tabler:list' }
+      { variant: 'primary', text: dict.cta.primaryCta, href: '/es/contact', icon: 'tabler:calendar-event' },
+      { text: 'Saltar a un pilar', href: '#pillars-overview', icon: 'tabler:list' }
     ]}
   >
     <Fragment slot="title">{dict.pillars.title}</Fragment>
     <Fragment slot="subtitle">{dict.pillars.subtitle}</Fragment>
   </Hero>
 
-  <!-- Capabilities carousel — vertical slides that mirror the React <CapabilitiesSection /> -->
+  <!-- Carrusel de capacidades — slides verticales que reflejan <CapabilitiesSection /> -->
   <CapabilitiesCarousel
     eyebrow={dict.pillars.eyebrow}
     title={dict.pillars.title}
@@ -48,10 +48,10 @@ const metadata = {
     }))}
   />
 
-  <!-- Overview: index of the 5 pillars -->
+  <!-- Vista general: índice de los 5 pilares -->
   <Features
     id="pillars-overview"
-    tagline="Five pillars"
+    tagline="Cinco pilares"
     title={dict.pillars.title}
     subtitle={dict.pillars.subtitle}
     columns={3}
@@ -59,11 +59,11 @@ const metadata = {
       title: `0${i + 1}. ${it.title}`,
       description: it.description,
       icon: it.icon,
-      callToAction: { text: `See pillar 0${i + 1}`, href: `#${pillarAnchors[i]}` }
+      callToAction: { text: `Ver pilar 0${i + 1}`, href: `#${pillarAnchors[i]}` }
     }))}
   />
 
-  <!-- Deep-dive: each pillar in full -->
+  <!-- Profundización: cada pilar en detalle -->
   {pillars.map((pillar, i) => (
     <section id={pillarAnchors[i]} class:list={[
       'py-12 sm:py-16 lg:py-24',
@@ -71,11 +71,11 @@ const metadata = {
       i > 0 ? 'section-divider' : ''
     ]}>
       <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <!-- Pillar header -->
+        <!-- Cabecera del pilar -->
         <div class="mx-auto max-w-3xl text-center mb-10 sm:mb-14">
           <div class="inline-flex items-center gap-3 mb-4">
             <span class="methodology-tag rounded-full px-3 py-1 text-xs font-semibold tracking-widest uppercase">
-              Pillar 0{i + 1}
+              Pilar 0{i + 1}
             </span>
             <span class="text-muted-foreground text-xs font-semibold tracking-widest uppercase">
               · {pillar.duration}
@@ -92,11 +92,11 @@ const metadata = {
           </p>
         </div>
 
-        <!-- Boring-task callout + price band -->
+        <!-- Call-out de tarea aburrida + precio -->
         <div class="mx-auto max-w-4xl mb-10 sm:mb-14">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="card-hover bg-muted/60 border border-border/40 rounded-xl p-6">
-              <p class="accent-rule text-secondary text-xs font-bold tracking-wide uppercase inline-block mb-2">Boring task we automate</p>
+              <p class="accent-rule text-secondary text-xs font-bold tracking-wide uppercase inline-block mb-2">Tarea aburrida que automatizamos</p>
               <p class="text-foreground text-base leading-relaxed">{pillar.boringTask}</p>
             </div>
             <div class="card-hover bg-muted/60 border border-border/40 rounded-xl p-6">
@@ -105,15 +105,15 @@ const metadata = {
                 <strong class="text-primary">{pillar.duration}</strong>
                 <span class="text-muted-foreground"> · </span>
                 <strong class="text-primary">{pillar.priceBand}</strong>
-                <span class="text-muted-foreground text-sm block mt-1">Fixed scope · outcome-priced · 30-day warranty</span>
+                <span class="text-muted-foreground text-sm block mt-1">Alcance fijo · precio por outcome · garantía de 30 días</span>
               </p>
             </div>
           </div>
         </div>
 
-        <!-- Sub-services -->
+        <!-- Sub-servicios -->
         <div class="mx-auto max-w-5xl mb-10 sm:mb-14">
-          <p class="accent-rule text-secondary text-sm font-bold tracking-wide uppercase inline-block mb-6">What is inside</p>
+          <p class="accent-rule text-secondary text-sm font-bold tracking-wide uppercase inline-block mb-6">Qué incluye</p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             {pillar.subServices.map((ss) => (
               <article class="pillar-card card-hover group bg-background border border-border/40 rounded-xl p-6">
@@ -133,7 +133,7 @@ const metadata = {
 
         <!-- Deliverables -->
         <div class="mx-auto max-w-4xl">
-          <p class="accent-rule text-secondary text-sm font-bold tracking-wide uppercase inline-block mb-4">Deliverables</p>
+          <p class="accent-rule text-secondary text-sm font-bold tracking-wide uppercase inline-block mb-4">Qué entregas</p>
           <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
             {pillar.deliverables.map((d) => (
               <li class="flex items-start gap-2 text-muted-foreground text-sm">
@@ -144,10 +144,10 @@ const metadata = {
           </ul>
           <div class="mt-8 text-center">
             <a
-              href={`/contact?pillar=0${i + 1}`}
+              href={`/es/contact?pillar=0${i + 1}`}
               class="inline-flex items-center gap-2 text-primary font-semibold hover:underline"
             >
-              <span>Discuss pillar 0{i + 1}</span>
+              <span>Conversar sobre el pilar 0{i + 1}</span>
               <Icon name="tabler:arrow-right" class="w-4 h-4" />
             </a>
           </div>
@@ -159,8 +159,8 @@ const metadata = {
   <CallToAction
     id="contact"
     actions={[
-      { variant: 'primary', text: dict.cta.primaryCta, href: '/contact', icon: 'tabler:calendar-event' },
-      { text: dict.cta.secondaryCta, href: 'mailto:hello@cafetatek.com?subject=Pillars%20brief', icon: 'tabler:mail' }
+      { variant: 'primary', text: dict.cta.primaryCta, href: '/es/contact', icon: 'tabler:calendar-event' },
+      { text: dict.cta.secondaryCta, href: 'mailto:hello@cafetatek.com?subject=Pilares%20brief', icon: 'tabler:mail' }
     ]}
   >
     <Fragment slot="title">{dict.cta.title}</Fragment>
