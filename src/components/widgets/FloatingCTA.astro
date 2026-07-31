@@ -1,0 +1,89 @@
+---
+import { Icon } from 'astro-icon/components';
+import { t, type Locale } from '~/utils/translations';
+
+export interface Props {
+  locale?: Locale;
+  href?: string;
+  class?: string;
+}
+
+const { locale = 'en', href, class: className = '' } = Astro.props;
+const dict = t(locale);
+const target = href || dict.cta.primaryCtaHref || '/contact';
+const ariaLabel = dict.cta.primaryCta;
+---
+
+<a
+  href={target}
+  class={`floating-cta group inline-flex items-center overflow-hidden rounded-full bg-primary text-white font-semibold shadow-lg shadow-primary/30 hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300 ease-out ${className}`}
+  aria-label={ariaLabel}
+  title={ariaLabel}
+>
+  <span class="floating-cta__icon">
+    <Icon name="tabler:calendar-event" class="w-5 h-5" />
+  </span>
+  <span class="floating-cta__label" aria-hidden="true">{ariaLabel}</span>
+</a>
+
+<style>
+  .floating-cta {
+    position: fixed;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    z-index: 50;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition:
+      padding 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      background-color 220ms ease,
+      box-shadow 220ms ease,
+      transform 220ms ease;
+  }
+  .floating-cta__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+  }
+  .floating-cta__label {
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    white-space: nowrap;
+    transition:
+      max-width 320ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 240ms ease,
+      margin-left 240ms ease;
+    margin-left: 0;
+  }
+  .floating-cta:hover,
+  .floating-cta:focus-visible {
+    padding: 0.75rem 1.25rem;
+  }
+  .floating-cta:hover .floating-cta__label,
+  .floating-cta:focus-visible .floating-cta__label {
+    max-width: 240px;
+    opacity: 1;
+    margin-left: 0.5rem;
+  }
+
+  /* On small screens use a smaller circular FAB — no label expansion */
+  @media (max-width: 639px) {
+    .floating-cta {
+      padding: 0.75rem;
+    }
+    .floating-cta:hover,
+    .floating-cta:focus-visible {
+      padding: 0.875rem;
+    }
+    .floating-cta__label {
+      display: none;
+    }
+  }
+</style>

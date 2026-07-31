@@ -38,13 +38,15 @@ export interface Props {
   id?: string;
 }
 
-// Fruit → gradient hue pairs, lifted verbatim from the React ScrollTriggered example
-// so the visual rhythm matches https://examples.motion.dev/react/scroll-triggered.
+// Emoji + gradient hue pairs for the methodology stack. Each step gets a hue
+// band that reads as a delivery phase, not as a literal fruit picker — the
+// emoji is the visual anchor, the gradient is the splash behind the card.
 const fruits: Array<[string, number, number]> = [
-  ['🍅', 340, 10],
-  ['🍊', 20, 40],
-  ['🍋', 60, 90],
-  ['🍐', 80, 120]
+  ['🤝', 340, 10], // 1. Compatibility check — warm handshake
+  ['🗺️', 20, 40], // 2. Discover workspaces — orange/map
+  ['🎨', 60, 90], // 3. Rapid design — yellow palette
+  ['🛠️', 80, 120], // 4. Build — green/sage construction
+  ['📈', 160, 200] // 5. Operate — teal/cyan operations
 ];
 
 const hue = (h: number) => `hsl(${h}, 100%, 50%)`;
@@ -65,14 +67,14 @@ const {
 
 <section id={id} class="bg-background py-12 sm:py-16 lg:py-20">
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-3xl text-center mb-10 sm:mb-12">
-      <p class="accent-rule text-secondary text-sm font-bold tracking-wide uppercase inline-block mb-3">
+    <div class="mx-auto max-w-3xl text-center mb-10 sm:mb-12 methodology-header">
+      <p class="accent-rule text-secondary text-sm font-bold tracking-wide uppercase inline-block mb-3 methodology-fade" style="--mf-delay: 0ms;">
         {eyebrow}
       </p>
-      <h2 class="text-section text-balance">
+      <h2 class="text-section text-balance methodology-fade" style="--mf-delay: 80ms;">
         {title}
       </h2>
-      <p class="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg sm:text-xl">
+      <p class="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg sm:text-xl methodology-fade" style="--mf-delay: 160ms;">
         {subtitle}
       </p>
     </div>
@@ -92,6 +94,7 @@ const {
             <div
               class={`card-container-${i} relative flex items-center justify-center overflow-hidden pt-5 -mb-[120px] last:mb-0`}
               data-methodology-index={i}
+              style={`--mc-delay: ${i * 120}ms;`}
             >
               <div
                 class="methodology-splash absolute inset-0"
@@ -148,6 +151,28 @@ const {
     transform: translateY(300px) rotate(0deg);
     will-change: transform, opacity;
   }
+
+  /* Header text fades in sequentially as the section enters the viewport. */
+  .methodology-fade {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1) var(--mf-delay, 0ms),
+      transform 600ms cubic-bezier(0.22, 1, 0.36, 1) var(--mf-delay, 0ms);
+  }
+  .methodology-header.is-visible .methodology-fade {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Respect reduced motion: snap everything in without movement. */
+  @media (prefers-reduced-motion: reduce) {
+    .methodology-fade,
+    .methodology-card {
+      transition: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
 </style>
 
 <script>
@@ -165,6 +190,22 @@ const {
     if (root._carouselInited) return;
     root._carouselInited = true;
 
+    const header = root.parentElement?.querySelector<HTMLElement>('.methodology-header');
+    if (header && !header.classList.contains('is-visible')) {
+      const headerObserver = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              header.classList.add('is-visible');
+              headerObserver.unobserve(header);
+            }
+          }
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -10% 0px' }
+      );
+      headerObserver.observe(header);
+    }
+
     const containers = Array.from(root.querySelectorAll<HTMLElement>('[data-methodology-index]'));
     if (!containers.length) return;
 
@@ -177,11 +218,11 @@ const {
           animate(
             card,
             { opacity: [0, 1], y: [300, 50], rotate: [0, -10] },
-            { type: 'spring', bounce: 0.4, duration: 0.8 }
+            { type: 'spring', bounce: 0.4, duration: 0.8, delay: Number((container.getAttribute('style') || '').match(/--mc-delay:\s*(\d+)ms/)?.[1] || 0) / 1000 }
           );
           stop();
         },
-        { amount: 0.8 }
+        { amount: 'some', margin: '0px 0px -100px 0px' }
       );
     });
   };

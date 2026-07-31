@@ -2,7 +2,7 @@
 import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
-import Announcement from '~/components/widgets/Announcement.astro';
+import FloatingCTA from '~/components/widgets/FloatingCTA.astro';
 
 import { buildNavigation } from '~/utils/navigation-i18n';
 import type { Locale } from '~/utils/translations';
@@ -18,11 +18,8 @@ const nav = buildNavigation(locale);
 ---
 
 <Layout metadata={metadata}>
-  <slot name="announcement">
-    <Announcement />
-  </slot>
   <slot name="header">
-    <Header {...nav.header} isSticky showToggleTheme />
+    <Header {...nav.header} isSticky />
   </slot>
   <main>
     <slot />
@@ -30,7 +27,20 @@ const nav = buildNavigation(locale);
   <slot name="footer">
     <Footer {...nav.footer} />
   </slot>
+  <FloatingCTA locale={locale} />
 </Layout>
+
+<script>
+  // Preline UI: load the dropdown plugin (powers the "What we do" mega-menu).
+  // The bundle registers its own `window.load` autoInit handler, but Astro's
+  // view-transition swaps don't fire `load` again — so we re-init on
+  // `astro:after-swap` to keep the menu wired up after client-side navigation.
+  import('preline/plugins/dropdown');
+  document.addEventListener('astro:after-swap', () => {
+    const Preline = (window as unknown as { HSDropdown?: { autoInit?: () => void } }).HSDropdown;
+    Preline?.autoInit?.();
+  });
+</script>
 
 <style is:global>
   /* Cafetatek aesthetic refresh — applied globally to all pages using this layout.
@@ -271,5 +281,86 @@ const nav = buildNavigation(locale);
       color-mix(in srgb, var(--aw-color-primary, #1e88e5) 10%, transparent),
       color-mix(in srgb, var(--aw-color-primary, #1e88e5) 4%, transparent));
     color: var(--aw-color-primary, #1e88e5);
+  }
+
+  /* ----- Header on dark hero -----
+   * The Cafetatek hero is a dark gradient. To keep the header readable on
+   * top of the hero (and on every other page below the hero), the header
+   * is always rendered with a light frosted surface and dark text.
+   * The light frosted look is the unified theme across all sections — the
+   * sticky bar visually separates the nav from the brand surface below it.
+   *
+   * Pixel-perfect layout: the header sits at the top with a soft white
+   * background and a subtle bottom border. The :has() selector scopes
+   * these rules to pages that render the dark hero (so other pages keep
+   * their default theme). */
+  body:has(> header + main .hero-nix) header {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  }
+  body:has(> header + main .hero-nix) header,
+  body:has(> header + main .hero-nix) header a,
+  body:has(> header + main .hero-nix) header button,
+  body:has(> header + main .hero-nix) header nav,
+  body:has(> header + main .hero-nix) header nav a,
+  body:has(> header + main .hero-nix) header nav button {
+    color: rgb(16, 16, 16);
+  }
+  body:has(> header + main .hero-nix) header a:hover,
+  body:has(> header + main .hero-nix) header button:hover {
+    color: rgb(1 97 239);
+  }
+  body:has(> header + main .hero-nix) header span {
+    color: rgb(16, 16, 16) !important;
+  }
+  /* Dropdown menu on light header */
+  body:has(> header + main .hero-nix) header .dropdown-menu {
+    background-color: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+  }
+  body:has(> header + main .hero-nix) header .dropdown-menu li a {
+    color: rgb(16, 16, 16) !important;
+  }
+  body:has(> header + main .hero-nix) header .dropdown-menu li a:hover {
+    background-color: rgba(15, 23, 42, 0.04);
+    color: rgb(1 97 239) !important;
+  }
+
+  /* ----- Header compact mode on tablet -----
+   * At 768–1023px the full nav (Home / What we do / Why choose us / Our work /
+   * Pages / Blog / Contact) doesn't fit. Hide the secondary links (Pages,
+   * Blog) on tablet so the primary 4 sections + Contact stay visible.
+   * Restore them on lg+ where there is room. */
+  @media (min-width: 768px) and (max-width: 1023.98px) {
+    body:has(> header + main .hero-nix) header nav ul > li:nth-last-child(3),
+    body:has(> header + main .hero-nix) header nav ul > li:nth-last-child(2) {
+      display: none;
+    }
+    /* On tablet, shrink the Cafetatek wordmark so the first nav link
+       doesn't squeeze against it. */
+    body:has(> header + main .hero-nix) header > div > div > a > span {
+      font-size: 1.125rem;
+    }
+  }
+
+  /* ----- Hero button theming -----
+   * The hero is dark; the `btn-secondary` (outlined) and `btn-primary` (filled)
+   * inherit dark text by default. On the dark hero we need:
+   *   - btn-primary: white text on accent fill (already correct, leave alone)
+   *   - btn-secondary: white text on a translucent surface, white border */
+  body:has(> header + main .hero-nix) .hero-nix .btn-secondary {
+    color: rgba(255, 255, 255, 0.95);
+    border-color: rgba(255, 255, 255, 0.35);
+    background-color: rgba(255, 255, 255, 0.06);
+  }
+  body:has(> header + main .hero-nix) .hero-nix .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #ffffff;
+  }
+  body:has(> header + main .hero-nix) .hero-nix .btn-primary {
+    color: #ffffff;
   }
 </style>

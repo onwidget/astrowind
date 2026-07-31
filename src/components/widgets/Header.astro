@@ -17,6 +17,11 @@ interface Link {
 }
 
 interface MenuLink extends Link {
+  icon?: string;
+  description?: string;
+  mega?: boolean;
+  megaIntro?: { title: string; description: string };
+  megaFooter?: { linkText: string; href: string; ctaText: string; ctaHref: string };
   links?: Array<MenuLink>;
 }
 
@@ -45,6 +50,15 @@ const {
 } = Astro.props;
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+
+// Build a flat map of mega-menu entries (services pillars + footer) for the
+// Preline `hs-dropdown` panel. We render only the first mega=true entry here;
+// the rest of the nav uses the legacy dropdown.
+const megaEntry = links.find((l) => l.mega);
+const megaPillars = megaEntry?.links ?? [];
+const megaIntro = megaEntry?.megaIntro;
+const megaFooter = megaEntry?.megaFooter;
+const megaId = 'hs-mega-what-we-do';
 ---
 
 <header
@@ -58,12 +72,12 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
   <div class="absolute inset-0"></div>
   <div
     class:list={[
-      'relative text-default py-3 px-3 md:px-6 mx-auto w-full',
+      'relative text-default py-3 px-3 md:px-6 mx-auto w-full flex flex-wrap items-center gap-y-2',
       {
-        'md:flex md:justify-between': position !== 'center',
+        'md:flex md:flex-nowrap md:justify-between': position !== 'center',
       },
       {
-        'md:grid md:grid-cols-3 md:items-center': position === 'center',
+        'md:grid md:grid-cols-[auto_1fr_auto] md:items-center md:gap-4': position === 'center',
       },
       {
         'max-w-7xl': !isFullWidth,
@@ -79,40 +93,177 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       </div>
     </div>
     <nav
-      class="items-center w-full md:w-auto hidden md:flex md:mx-5 text-default overflow-y-auto overflow-x-hidden md:overflow-visible md:justify-self-center"
+      class="items-center w-full md:w-auto hidden md:flex md:mx-5 text-default overflow-y-auto overflow-x-hidden md:overflow-visible md:justify-self-center min-w-0"
       aria-label="Main navigation"
     >
       <ul
-        class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center"
+        class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-xl md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center min-w-0"
       >
         {
-          links.map(({ text, href, links }) => (
-            <li class={links?.length ? 'dropdown' : ''}>
+          links.map(({ text, href, links, mega, megaIntro: _mi, megaFooter: _mf, icon: _icon, description: _desc }) => (
+            <li class={(links?.length ? 'dropdown ' : '') + 'min-w-0 shrink-0 ' + (mega ? 'relative' : '')}>
               {links?.length ? (
-                <>
-                  <button
-                    type="button"
-                    class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap"
-                  >
-                    {text}{' '}
-                    <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
-                  </button>
-                  <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
-                    {links.map(({ text: text2, href: href2 }) => (
-                      <li>
-                        <a
-                          class:list={[
-                            'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
-                            { 'aw-link-active': href2 === currentPath },
-                          ]}
-                          href={href2}
-                        >
-                          {text2}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </>
+                mega ? (
+                  /* ------------------ Preline mega-menu ------------------
+                   * Uses Preline UI's Dropdown plugin (hs-dropdown family).
+                   * Floating UI auto-positions the menu. The trigger keeps
+                   * its href so click-to-navigate to /services still works. */
+                  <div class="hs-dropdown group/dropdown [--placement:bottom-left] [--auto-close:inside] relative inline-flex min-w-0">
+                    <a
+                      id={`${megaId}-toggle`}
+                      href={href ?? '#'}
+                      class:list={[
+                        'hs-dropdown-toggle hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 rounded',
+                        { 'aw-link-active': href === currentPath },
+                      ]}
+                      aria-haspopup="menu"
+                      aria-expanded="false"
+                      aria-label={text}
+                    >
+                      {text}{' '}
+                      <Icon
+                        name="tabler:chevron-down"
+                        class="hs-dropdown-open:rotate-180 w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 transition-transform duration-200"
+                      />
+                    </a>
+
+                    <div
+                      id={megaId}
+                      role="menu"
+                      aria-labelledby={`${megaId}-toggle`}
+                      aria-label={text}
+                      class="hs-dropdown-menu transition-[opacity,margin] duration-200 opacity-0 hidden z-50 mt-3 w-[min(1100px,calc(100vw-32px))] max-w-[min(1100px,calc(100vw-32px))] bg-white rounded-xl border border-slate-200 shadow-[0_12px_40px_-8px_rgba(15,23,42,0.18)] transition-[opacity,transform] duration-200 ease-out p-6 lg:p-7 dark:bg-slate-900 dark:border-slate-700 dark:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.6)] before:absolute before:-top-3 before:left-0 before:right-0 before:h-3 before:content-['']"
+                    >
+                      <div class="flex flex-col gap-5">
+                        {(megaIntro?.title || megaIntro?.description) && (
+                          <div class="flex flex-col gap-1 pb-4 border-b border-slate-200 dark:border-slate-700">
+                            {megaIntro?.title && (
+                              <p class="m-0 text-xs font-semibold uppercase tracking-[0.08em] text-slate-500 dark:text-slate-400">
+                                {megaIntro.title}
+                              </p>
+                            )}
+                            {megaIntro?.description && (
+                              <p class="m-0 text-sm leading-relaxed text-slate-600 dark:text-slate-300 max-w-3xl">
+                                {megaIntro.description}
+                              </p>
+                            )}
+                          </div>
+                        )}
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2">
+                          {megaPillars.map(({ text: pillar, href: pillarHref, icon: pillarIcon, description: pillarDesc, children: pillarChildren }) => (
+                            <div class="min-w-0 flex flex-col gap-1.5 p-3.5 rounded-lg text-slate-900 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-150">
+                              <a
+                                href={pillarHref ?? '#'}
+                                role="menuitem"
+                                class="flex items-center gap-2.5 font-semibold text-[0.9375rem] leading-tight min-w-0 focus:outline-none"
+                              >
+                                {pillarIcon && (
+                                  <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary shrink-0">
+                                    <Icon name={pillarIcon} class="w-5 h-5" />
+                                  </span>
+                                )}
+                                <span class="flex-1 min-w-0 break-words">{pillar}</span>
+                              </a>
+                              {pillarDesc && (
+                                <p class="m-0 text-[0.8125rem] leading-snug text-slate-600 dark:text-slate-400 line-clamp-2">
+                                  {pillarDesc}
+                                </p>
+                              )}
+                              {pillarChildren?.length ? (
+                                <ul class="mt-1 flex flex-col gap-0.5 list-none p-0 m-0">
+                                  {pillarChildren.map(({ text: subText, href: subHref }) => (
+                                    <li>
+                                      <a
+                                        href={subHref ?? '#'}
+                                        role="menuitem"
+                                        class="block py-0.5 text-[0.8125rem] text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary focus-visible:text-primary focus:outline-none rounded"
+                                      >
+                                        {subText}
+                                      </a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              ) : null}
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Footer removed per design feedback — the mega-menu
+                         * focuses purely on the 5 service pillars so users can
+                         * scan offerings without competing CTAs. The main
+                         * "Talk to a senior engineer" CTA in the hero and the
+                         * floating FAB in the bottom-right remain. */}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  /* ------------------ Legacy nested dropdown ------------------ */
+                  <>
+                    {href ? (
+                      <a
+                        href={href}
+                        class:list={[
+                          'hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap',
+                          { 'aw-link-active': href === currentPath },
+                        ]}
+                      >
+                        {text}{' '}
+                        <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap"
+                      >
+                        {text}{' '}
+                        <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
+                      </button>
+                    )}
+                    <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[220px] drop-shadow-xl">
+                      {links.map(({ text: text2, href: href2, children: children2 }) => (
+                        <li class={children2?.length ? 'dropdown dropdown-sub' : ''}>
+                          {children2?.length ? (
+                            <>
+                              <button
+                                type="button"
+                                class="w-full text-left first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 flex items-center justify-between whitespace-no-wrap"
+                              >
+                                <span>{text2}</span>
+                                <Icon name="tabler:chevron-right" class="w-3.5 h-3.5 ml-2 rtl:ml-0 rtl:mr-2 hidden md:inline" />
+                              </button>
+                              <ul class="dropdown-menu dropdown-sub-menu md:backdrop-blur-md dark:md:bg-dark md:absolute md:hidden rounded md:min-w-[240px] md:bg-white/95 font-medium drop-shadow-xl pl-4 md:pl-0">
+                                {children2.map(({ text: text3, href: href3 }) => (
+                                  <li>
+                                    <a
+                                      class:list={[
+                                        'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
+                                        { 'aw-link-active': href3 === currentPath },
+                                      ]}
+                                      href={href3}
+                                    >
+                                      {text3}
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
+                            </>
+                          ) : (
+                            <a
+                              class:list={[
+                                'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
+                                { 'aw-link-active': href2 === currentPath },
+                              ]}
+                              href={href2}
+                            >
+                              {text2}
+                            </a>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )
               ) : (
                 <a
                   class:list={[
@@ -165,3 +316,107 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     </div>
   </div>
 </header>
+
+<style>
+  /* Preline mega-menu customisations
+   * --------------------------------------------------------------------------
+   * The Preline Dropdown plugin uses Floating UI to position the menu under
+   * the trigger. We override two things:
+   *
+   * 1) Default left-anchor aligns the menu to the trigger's left edge, which
+   *    clips the rightmost pillar on narrow laptops. We re-anchor so the menu
+   *    hugs the header container instead.
+   * 2) Tighten the surface so it sits comfortably over the always-frosted
+   *    header (light surface) and stays legible over the dark hero too.
+   *
+   * Dark mode is handled inline on each utility (dark:bg-slate-900 ...) — no
+   * body:has() override is needed because the menu is always opaque.
+   *
+   * Mobile fallback: Preline renders the panel at desktop+lg width only. On
+   * <lg we hide the panel entirely and rely on the legacy mobile drawer for
+   * navigation. The trigger link still navigates to /services on tap.
+   */
+  #hs-mega-what-we-do {
+    transform-origin: top left;
+  }
+
+  /* CSS-only hover fallback for the mega-menu. Preline's JS-driven hover
+   * trigger doesn't fire reliably with synthetic events (Playwright, screen
+   * readers, certain touch devices), so we ALSO drive visibility from CSS
+   * hover/focus-within. Preline still positions the menu with Floating UI
+   * and handles auto-close; this is a parallel open path. */
+  @media (min-width: 1024px) {
+    /* The mega-menu sits 19px below the trigger (header is 70px, trigger
+     * ends at 57px). Without a hover bridge, the mouse loses hover state
+     * while crossing that gap and the menu closes. We add an invisible
+     * ::after on the LI to extend the hover area down to the menu top. */
+    nav > ul > li.dropdown.min-w-0:has(.hs-dropdown > #hs-mega-what-we-do)::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 24px;
+      pointer-events: auto;
+    }
+
+    /* Anchor to the viewport center so the menu never overflows the sides
+     * regardless of which nav item triggers it. Fixed positioning would
+     * detach it from the header flow, so we use `position: fixed` only
+     * for the menu itself (not the trigger's inline styles). */
+    .hs-dropdown:has(> #hs-mega-what-we-do) > #hs-mega-what-we-do {
+      position: fixed;
+      top: 76px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1100px, calc(100vw - 32px));
+      margin-top: 0;
+      display: block;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition:
+        opacity 180ms cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0s linear 180ms,
+        transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+    }
+    /* Drive visibility from the parent LI so the hover bridge works. The
+     * LI has the hover bridge ::after that extends the hoverable area down
+     * to the menu, and we keep `:focus-within` on the dropdown too for
+     * keyboard users. */
+    li.dropdown:has(> .hs-dropdown > #hs-mega-what-we-do):hover > .hs-dropdown > #hs-mega-what-we-do,
+    li.dropdown:has(> .hs-dropdown > #hs-mega-what-we-do):focus-within > .hs-dropdown > #hs-mega-what-we-do,
+    .hs-dropdown:has(> #hs-mega-what-we-do).hs-dropdown-open > #hs-mega-what-we-do {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+      transition:
+        opacity 180ms cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0s linear 0s,
+        transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+  }
+
+  /* When the header sits over the dark hero, the menu stays on its own opaque
+   * white surface so pillars remain legible. The header itself becomes
+   * semi-frosted in CafetatekLayout.astro — no change needed here. */
+
+  /* Mobile: collapse the mega-menu into nothing (the legacy hamburger drawer
+   * carries the nav on mobile). The Preline `[--trigger:hover]` would otherwise
+   * fight the page scroll on touch devices. */
+  @media (max-width: 1023.98px) {
+    .hs-dropdown:has(> #hs-mega-what-we-do) > #hs-mega-what-we-do {
+      display: none !important;
+    }
+  }
+
+  /* When the dark hero is in front of the header, force the mega-menu surface
+   * to keep its own opaque background. The existing body:has() rules above
+   * already retune the trigger text colour, so no further override is needed. */
+
+  /* Focus ring is part of the trigger's `focus-visible:ring-2` utility, so the
+   * keyboard outline remains visible against any surface. */
+</style>

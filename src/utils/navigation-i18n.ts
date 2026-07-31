@@ -1,4 +1,5 @@
 import { getPermalink } from './permalinks';
+import slugify from 'limax';
 import { t, type Locale } from './translations';
 
 const localePrefix = (locale: Locale) => (locale === 'en' ? '' : `/${locale}`);
@@ -31,14 +32,51 @@ export const buildNavigation = (locale: Locale) => {
   const lp = localePrefix(locale);
   const has = existingPages(locale);
 
-  const headerLinks: Array<{ text: string; href: string } | { text: string; links: Array<{ text: string; href: string }> }> = [
+  const headerLinks: Array<
+    | { text: string; href: string }
+    | {
+        text: string;
+        href?: string;
+        mega?: boolean;
+        megaIntro?: { title: string; description: string };
+        megaFooter?: { linkText: string; href: string; ctaText: string; ctaHref: string };
+        links: Array<{
+          text: string;
+          href: string;
+          icon?: string;
+          description?: string;
+          children?: Array<{ text: string; href: string }>;
+        }>;
+      }
+  > = [
     {
       text: dict.nav.home,
       href: lp ? `${lp}/` : '/'
     },
     {
       text: dict.nav.services,
-      href: '#pillars'
+      href: `${lp}/services`,
+      mega: true,
+      megaIntro: {
+        title: dict.nav.services,
+        description: dict.hero.quadrants.find((q) => q.key === 'services')?.description ?? ''
+      },
+      megaFooter: {
+        linkText: dict.nav.methodology ?? 'Methodology',
+        href: '#methodology',
+        ctaText: dict.hero.primaryCta,
+        ctaHref: `${lp}/contact`
+      },
+      links: dict.pillars.items.map((p) => ({
+        text: p.title,
+        href: `${lp}/services`,
+        icon: p.icon,
+        description: p.description,
+        children: p.subServices.map((s) => ({
+          text: s.title,
+          href: `${lp}/services#${slugify(p.title)}`
+        }))
+      }))
     },
     {
       text: dict.nav.whyChooseUs,
@@ -79,9 +117,7 @@ export const buildNavigation = (locale: Locale) => {
   return {
     header: {
       links: headerLinks,
-      actions: [
-        { text: dict.cta.primaryCta, href: `${lp}/contact`, variant: 'primary' as const }
-      ]
+      actions: []
     },
     footer: {
       links: [

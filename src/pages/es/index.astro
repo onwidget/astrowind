@@ -21,7 +21,6 @@ const metadata = {
   <!-- 1. Hero -->
   <Hero
     id="home"
-    tagline={dict.hero.eyebrow}
     actions={[
       { variant: 'primary', text: dict.hero.primaryCta, href: '/es/contact', icon: 'tabler:calendar-event' },
       { text: dict.hero.secondaryCta, href: '#pillars', icon: 'tabler:chart-bar' }
@@ -30,20 +29,6 @@ const metadata = {
   >
     <Fragment slot="title">{dict.hero.title}</Fragment>
     <Fragment slot="subtitle">{dict.hero.subtitle}</Fragment>
-
-    <Fragment slot="content">
-      <p class="text-muted dark:text-slate-400 text-sm font-semibold tracking-widest uppercase mb-3">
-        {dict.hero.trustEyebrow}
-      </p>
-      <ul class="mx-auto max-w-3xl grid grid-cols-1 gap-x-8 gap-y-2 text-left sm:grid-cols-2">
-        {dict.hero.trustItems.map((item) => (
-          <li class="flex items-start gap-2 text-muted dark:text-slate-300 text-sm">
-            <span class="text-primary mt-1 inline-block w-1.5 h-1.5 rounded-full bg-primary" />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </Fragment>
   </Hero>
 
   <!-- 1.5. Carousel de metodología (debajo del hero, encima del stat bar) -->

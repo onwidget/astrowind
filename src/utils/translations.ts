@@ -23,13 +23,10 @@ export type Translations = {
     contact: string;
   };
   hero: {
-    eyebrow: string;
     title: string;
     subtitle: string;
     primaryCta: string;
     secondaryCta: string;
-    trustEyebrow: string;
-    trustItems: string[];
     quadrantsTitle: string;
     quadrants: Array<{
       key: 'pillars' | 'services' | 'experience' | 'projects';
@@ -155,9 +152,9 @@ export type Translations = {
 const en: Translations = {
   site: {
     name: 'Cafetatek',
-    tagline: 'Engineering boutique for B2B teams in EMEA',
+    tagline: 'Senior platform engineering for EMEA scale-ups in regulated industries',
     description:
-      'Cafetatek is a senior-only engineering boutique helping B2B teams in EMEA ship modern software, modern data, and governed AI — with cloud-agnostic platform engineering and FinOps unit economics baked in.'
+      'Cafetatek is a senior-only engineering boutique that gives EMEA scale-ups in regulated industries — banking, fintech, healthcare, aviation, global marketing — direct access to senior platform, data, and AI engineers. We ship modern software, governed AI, and FinOps unit economics — without the overhead of a 10-engineer team.'
   },
   nav: {
     home: 'Home',
@@ -172,27 +169,19 @@ const en: Translations = {
     contact: 'Contact'
   },
   hero: {
-    eyebrow: 'Automation Process · APIs · Governance · CI/CD · Data · Digital · Agentic',
-    title: 'Make your cloud stack autonomous. We engineer it with you — and hand it back.',
+    title: 'Move at enterprise speed, with a boutique budget.',
     subtitle:
-      'Senior-led delivery for cloud, data, and AI engineering teams. We wire AI-driven autonomy into your stack — pipelines, agents, governance — and hand the keys back, the same way the platform engineering movement was supposed to.',
+      'For EMEA scale-ups in banking, fintech, healthcare, aviation, and global marketing that need to ship regulated, AI-enabled products without slowing down — and without building a 10-engineer platform team to do it. Senior-led delivery for cloud, data, and AI: we wire the autonomy, governance, and unit economics into your stack, then hand the keys back to your team.',
     primaryCta: 'Talk to a senior engineer',
     secondaryCta: 'See how we work',
-    trustEyebrow: 'What you walk away with',
-    trustItems: [
-      '5 service pillars anchored on cloud + automation, with an automation-first delivery process from migration to platform to data',
-      'Co-build sessions with your engineers — runbooks, governance, and working code on the same day',
-      'Training programs and cybersecurity assessments for engineering teams and executives',
-      'AWS, GCP, Azure, sovereign EU clouds, or hybrid — senior-only delivery, fixed scope'
-    ],
     quadrantsTitle: 'Skip to what matters',
     quadrants: [
       {
         key: 'pillars',
         step: '01',
         label: 'Home',
-        title: 'Five practice pillars',
-        description: 'Intelligent automation, AI-driven delivery, cloud transformation, training, and data engineering — one click away.',
+        title: 'Six practice pillars',
+        description: 'Intelligent automation, AI-driven delivery, cloud transformation, training, data engineering, and security — one click away.',
         icon: 'tabler:layout-grid',
         href: '#pillars'
       },
@@ -201,7 +190,7 @@ const en: Translations = {
         step: '02',
         label: 'What we do',
         title: 'Our services',
-        description: 'Browse the senior-led services we ship to production — automation, agile delivery, cloud, data, and security.',
+        description: 'Browse the senior-led services we ship to production — automation, agile delivery, cloud, data, security, and AI governance.',
         icon: 'tabler:briefcase',
         href: '#pillars'
       },
@@ -210,7 +199,7 @@ const en: Translations = {
         step: '03',
         label: 'Why choose us',
         title: 'AI-driven solutions, 12+ years experience',
-        description: 'Three hyperscalers, sovereign EU clouds, and 100% senior-only delivery. The numbers, not the adjectives.',
+        description: 'Three hyperscalers, sovereign EU clouds, and 100% senior-only delivery. Verified metrics, not adjectives.',
         icon: 'tabler:building-arch',
         href: '#stats'
       },
@@ -218,28 +207,28 @@ const en: Translations = {
         key: 'projects',
         step: '04',
         label: 'Our work',
-        title: 'Successful projects',
-        description: 'Three recent engagements — Globant, Scotiabank, Asylum Marketing — mapped to the seven packages.',
+        title: 'Successful projects in regulated industries',
+        description: 'Banking, fintech, healthcare, aviation, global marketing — Globant, Scotiabank, British Airways, Asylum Marketing.',
         icon: 'tabler:rocket',
         href: '#case-studies'
       }
     ]
   },
   intro: {
-    title: 'Seven packages anchored on cloud + automation.',
+    title: 'Six pillars, one cloud + automation practice for regulated industries.',
     description:
-      'Cafetatek was built to give EMEA engineering leaders direct access to senior platform, data, and AI engineers — without the overhead of a large consultancy. Three of our seven packages are anchored on cloud + automation: cross-platform + migration consulting, cloud + platform engineering, and AI-driven FinOps powered by Elixa. The other four — DevSecOps hardening, AI ChatOps + Agentic RPA migration, training programs, and cybersecurity assessments — extend the same practice into security, operations, and team enablement. You talk to the people who build. You ship in weeks, not quarters. You walk away with code, runbooks, and an engineering culture that keeps compounding.'
+      'At Cafetatek, we help companies accelerate AI-driven adoption through a proprietary, automation-first delivery framework. From migrating infrastructure from ClickOps to developer self-service, to DevSecOps hardening, AI ChatOps, and intelligent process automation, we support your engineering journey at every stage. Our structured training programs enable your teams to master next-generation IT workflows without losing time on market research or unproven trends.'
   },
   pillars: {
-    eyebrow: 'Five service pillars',
-    title: 'The Cafetatek practice, in five pillars',
+    eyebrow: 'Six service pillars',
+    title: 'The Cafetatek practice, in six pillars',
     subtitle:
-      'Each pillar is a senior-led delivery capability with two to four sub-services underneath. Most engagements combine pillars — and every engagement ships to production. No slideware, no advisory-only handoffs.',
+      'Each pillar is a senior-led delivery capability with two to four sub-services underneath. Most engagements combine pillars — and every engagement ships to production. No slideware, no advisory-only handoffs. Built for EMEA scale-ups in regulated industries that need to move fast without breaking compliance.',
     items: [
       {
         title: 'Intelligent Automation',
         description:
-          'Replace brittle RPA bots and console-driven workflows with autonomous agents that take decisions in context, handle exceptions themselves, and operate across data, documents, and operational tooling — without round-the-clock supervision.',
+          'Replace brittle bots and console-driven workflows with autonomous agents that take decisions in context, handle exceptions themselves, and operate across data, documents, and operational tooling — without round-the-clock supervision.',
         bullets: [
           'ChatOps and AI-driven workflows wired to Slack and Microsoft Teams',
           'End-to-end intelligent automation across IT operations',
@@ -281,10 +270,11 @@ const en: Translations = {
       {
         title: 'AI-driven Agile Software Development',
         description:
-          'Ship new product ideas in weeks, not quarters — with senior engineers, modern delivery practices, and AI assistants embedded in the toolchain. Quality is non-negotiable; the work lands in production.',
+          'Ship new product ideas in weeks, not quarters — with senior engineers, modern delivery practices, and AI assistants embedded in the toolchain. Quality is non-negotiable; the work lands in production. For regulated products, we layer AI Governance and MCP Gateway integration on top so every AI workflow ships audit-ready.',
         bullets: [
           'Quality assurance built into delivery, not bolted on at the end',
-          'Software development as a service — outcome-priced, fixed scope'
+          'Software development as a service — outcome-priced, fixed scope',
+          'AI Governance + MCP Gateway baked in for regulated industries'
         ],
         icon: 'tabler:rocket',
         subServices: [
@@ -299,10 +289,16 @@ const en: Translations = {
             title: 'Software development as a service',
             description:
               'Outcome-priced squads that validate ideas, ship to production, and hand over — no retainers, no advisory-only hand-offs.'
+          },
+          {
+            letter: 'C',
+            title: 'AI Governance + MCP Gateway',
+            description:
+              'For products that consume AI inside regulated workflows (banking, fintech, healthcare): policy-enforced AI workloads, MCP servers on Kong + IBM Context Forge, audit-ready observability on agent tool-calls. EU AI Act (enforcement 2 Aug 2026), NIST AI RMF, ISO/IEC 42001 readiness baked into delivery — not bolted on at the end.'
           }
         ],
-        duration: '4-12 weeks per product slice',
-        priceBand: '20-55k EUR per product slice',
+        duration: '4-12 weeks per product slice · 6-10 weeks for AI Governance workstreams',
+        priceBand: '20-55k EUR per product slice · 28-60k EUR per AI Governance workstream',
         boringTask:
           'Two-week sprint reviews that produce a 50-slide deck nobody reads → trunk-based delivery with diffs visible the same day',
         deliverables: [
@@ -310,7 +306,9 @@ const en: Translations = {
           'Modern delivery: trunk-based, contract tests, IaC by default',
           'AI-assisted engineering embedded in the DevOps toolchain',
           'Ship to production with quality gates and a 30-day warranty',
-          'Co-build sessions with your engineers so the codebase stays yours'
+          'Co-build sessions with your engineers so the codebase stays yours',
+          'AI Governance integration layer with auditable, policy-enforced controls',
+          'MCP Gateway (Kong + IBM Context Forge) with routing, observability, and policy enforcement on agent tool-calls'
         ]
       },
       {
@@ -436,9 +434,9 @@ const en: Translations = {
   },
   packages: {
     eyebrow: 'Service portfolio',
-    title: 'Seven packages, one cloud + automation practice',
+    title: 'Six pillars, one cloud + automation practice',
     subtitle:
-      'Pick one package or combine two. Three are anchored on cloud + automation. All of them ship to production — no slideware, no advisory-only handoffs.',
+      'Pick one pillar or combine two. All six are anchored on cloud + automation. All of them ship to production — no slideware, no advisory-only handoffs.',
     anchorBadge: 'Anchor',
     moreBadge: 'Also available',
     boringTasksTitle: 'Boring tasks we automate',
@@ -449,17 +447,17 @@ const en: Translations = {
     eyebrow: 'Product · Elixa Multi-Migration Platform',
     title: 'Run multiple SAP and cloud migrations in parallel — without losing operational continuity.',
     subtitle:
-      'Elixa is our in-house migration orchestration platform. It started as a way to make SAP modernisation less painful — fewer outages, cleaner data, faster migration waves. Today it coordinates multiple ERP and cloud migrations in parallel while keeping the live service running.',
+      'Elixa is our in-house migration orchestration platform. It started as a way to make SAP modernisation less painful — fewer outages, cleaner data, faster migration waves. Today it coordinates multiple ERP and cloud migrations in parallel while keeping the live service running. Built for scale-ups in regulated industries that need a migration that does not take the platform down.',
     primaryCta: 'Request Elixa demo',
     secondaryCta: 'Read the docs',
     whyBuiltTitle: 'Why we built it',
     whyBuiltBody:
-      'Elixa was born out of operational pain: SAP and ERP modernisation projects fail because they are run as a single big-bang effort, with no orchestration across waves, no continuity checks, and no clear handoff between phases. Elixa turns that into a workload-by-workload decision tree — pick the right migration strategy per workload, run the waves in parallel, keep the live service running, and report on operational continuity in real time.',
+      'Elixa was born out of operational pain: SAP and ERP modernisation projects fail because they are run as a single big-bang effort, with no orchestration across waves, no continuity checks, and no clear handoff between phases. Elixa turns that into a workload-by-workload decision tree — pick the right migration strategy per workload, run the waves in parallel, keep the live service running, and report on operational continuity in real time. The same engine produces the cost projection your procurement team signs off on, so finance and delivery see the same numbers from day one.',
     steps: [
       {
         title: 'Capture the use case',
         description:
-          'Sales engineers run the Elixa questionnaire. The platform maps every answer to a vendor-priced SKU, a migration strategy, and an operational continuity score — across the cloud and ERP of your choice.'
+          'Sales engineers run the Elixa questionnaire. The platform maps every answer to a vendor-priced SKU, a migration strategy, and an operational continuity score — across the cloud and ERP of your choice, in your region, at your real discount tier.'
       },
       {
         title: 'Orchestrate the migration waves',
@@ -469,12 +467,12 @@ const en: Translations = {
       {
         title: 'Keep the live service running',
         description:
-          'Operational continuity checks monitor the live service through every wave. Outage risk is surfaced before the wave, not after.'
+          'Operational continuity checks monitor the live service through every wave. Outage risk is surfaced before the wave, not after — critical for regulated workloads where an outage is a reporting event.'
       },
       {
         title: 'Govern the delivery',
         description:
-          'Once the platform is live, Elixa unit-economics guardrails keep FinOps, security, and AI governance aligned with the original migration plan — no drift, no surprises.'
+          'Once the platform is live, Elixa cost guardrails keep cloud spend, security baselines, and migration deliverables aligned with the original plan — no drift, no surprises.'
       }
     ],
     featuresTitle: 'What ships with Elixa',
@@ -493,59 +491,64 @@ const en: Translations = {
     eyebrow: 'Engagement models',
     title: 'Four ways to work with us',
     subtitle:
-      'Pick the model that matches your stage and risk profile. Every engagement ships with a published scope, a fixed price, and a 30-day warranty.',
+      'Pick the model that matches your stage and risk profile. Built for scale-ups in regulated industries that need to ship in weeks — without locking into a 10-engineer team. Every engagement ships with a published scope, a fixed price, and a 30-day warranty.',
     items: [
       {
         title: 'Discovery Sprint',
         description:
-          'Two-week diagnostic that delivers an audit-ready findings brief: current-state architecture, top three risks, and a prioritised remediation plan with effort, impact, and timeline.',
+          'Two-week diagnostic that delivers an audit-ready findings brief: current-state architecture, top three risks, and a prioritised remediation plan with effort, impact, and timeline. The fastest way for a non-TI-heavy scale-up to know what to fix first.',
         duration: '2 weeks · fixed fee'
       },
       {
         title: 'Foundation Build',
         description:
-          'A 4–8 week engagement to land the first production-grade slice of your platform, data, or AI workflow — the wedge that proves the model and unlocks the next investment.',
+          'A 4–8 week engagement to land the first production-grade slice of your platform, data, AI governance, or AI workflow — the wedge that proves the model and unlocks the next investment. Outcome-priced, fixed scope, no advisory-only hand-offs.',
         duration: '4–8 weeks · fixed scope'
       },
       {
         title: 'Embedded Pod',
         description:
-          'A senior two-to-four-engineer pod embedded with your team for one or two quarters. We own a measurable KPI (DORA metrics, run-rate cost, time-to-first-AI-agent) and we exit with a handover plan.',
+          'A senior two-to-four-engineer pod embedded with your team for one or two quarters. We own a measurable KPI (DORA metrics, run-rate cost, time-to-first-AI-agent, audit-pass rate) and we exit with a handover plan to your in-house team.',
         duration: '1–2 quarters · monthly retainer'
       },
       {
         title: 'Retainer Care',
         description:
-          'Ongoing fractional senior engineering: FinOps care, SRE on-call coverage, AI governance reviews, quarterly platform health audits. Cancel with 30 days notice.',
+          'Ongoing fractional senior engineering for scale-ups that cannot justify a full-time hire: FinOps care, SRE on-call coverage, AI governance reviews, quarterly platform health audits. Cancel with 30 days notice.',
         duration: 'Ongoing · monthly retainer'
       }
     ]
   },
   methodology: {
     eyebrow: 'How we deliver',
-    title: 'A repeatable, audit-friendly delivery model',
+    title: 'A clear framework — adapted to your size, not the playbook.',
     subtitle:
-      'Every engagement runs the same four steps — adapted to the size of the slice, not the playbook.',
+      'Every engagement runs the same five steps — adapted to the size of the slice, not to the size of the slide deck. The framework is the same on a 2-week discovery and on a 6-month embedded pod.',
     steps: [
       {
-        title: 'Step 1: Discover',
+        title: 'Step 1: Compatibility check',
         description:
-          'Two weeks of structured interviews, code and infra review, and risk mapping. Output: a published findings brief and a fixed-scope statement of work.'
+          'One week. We look at your team, your regulator, your runway, and your current stack. We tell you in writing whether Cafetatek is the right fit — and we say no if it is not. No sales motion, no discovery invoice.'
       },
       {
-        title: 'Step 2: Design',
+        title: 'Step 2: Discover workspaces',
         description:
-          'Architecture, IaC plan, and a written runbook. We do not start coding until the runbook is signed and the security checklist is green.'
+          'We map every workspace: repos, pipelines, data, identity, on-call, compliance. The output is a written map of what is solid, what is brittle, and what is missing — and which parts we can standardise vs. which we have to build.'
       },
       {
-        title: 'Step 3: Build',
+        title: 'Step 3: Rapid design',
         description:
-          'Trunk-based delivery, contract tests, canary and blue-green deploys, peer review on every change. You see the diff in the same day the engineer writes it.'
+          'Short, structured sessions with your engineers and your decision-maker. We use fast-decision techniques to converge on architecture, IaC plan, and runbook. You sign the runbook before we write a single line of code.'
       },
       {
-        title: 'Step 4: Operate',
+        title: 'Step 4: Build',
         description:
-          'Runbooks, dashboards, on-call rotation, a 30-day warranty, and a knowledge-transfer plan. We hand over — we do not lock you in.'
+          'Trunk-based delivery, contract tests, canary and blue-green deploys, peer review on every change. You see the diff the same day the engineer writes it. Quality gates are the default, not the escape hatch.'
+      },
+      {
+        title: 'Step 5: Operate',
+        description:
+          'Runbooks, dashboards, on-call rotation, a 30-day warranty, and a knowledge-transfer plan. We hand over — we do not lock you in. If you cannot staff the on-call, we stay on retainer until you can.'
       }
     ]
   },
@@ -553,20 +556,24 @@ const en: Translations = {
     items: [
       { amount: '12+', title: 'Years of practice' },
       { amount: '40+', title: 'B2B deliveries shipped' },
-      { amount: '3', title: 'Hyperscalers + sovereign' },
-      { amount: '100%', title: 'Senior-only delivery' }
+      { amount: '200+', title: 'Microservices in production' },
+      { amount: '350%', title: 'Self-service delivery effectiveness' },
+      { amount: '80%', title: 'Support SLA reduction' },
+      { amount: '25%', title: 'Team capacity freed' },
+      { amount: '35%', title: 'Operational time reduction' },
+      { amount: '20%', title: 'Global artefact throughput uplift' }
     ]
   },
   faq: {
     eyebrow: 'Frequently asked',
     title: 'Questions B2B buyers ask before we sign',
     subtitle:
-      'The most common questions from engineering leaders, CTOs, and procurement teams evaluating a Cafetatek engagement.',
+      'The most common questions from engineering leaders, CTOs, and procurement teams in regulated industries — banking, fintech, healthcare, aviation, and global marketing.',
     items: [
       {
         question: 'Are you really cloud-agnostic?',
         answer:
-          'Yes. We have shipped production workloads on AWS, GCP, Azure, OpenShift, Scaleway, OVHcloud, and on-prem Kubernetes. We do not earn a referral fee from any cloud provider. We recommend the platform that matches your team, your data residency constraints, and your cost envelope — not the one we are incentivised to push.'
+          'Yes. We have shipped production workloads on AWS, GCP, Azure, OpenShift, Scaleway, OVHcloud, and on-prem Kubernetes — for clients in banking, fintech, healthcare, aviation, and global marketing. We do not earn a referral fee from any cloud provider. We recommend the platform that matches your team, your data residency constraints, and your cost envelope — not the one we are incentivised to push.'
       },
       {
         question: 'How does Elixa fit into a sales motion?',
@@ -576,22 +583,27 @@ const en: Translations = {
       {
         question: 'Do you work on regulated workloads?',
         answer:
-          'Yes. We have shipped on PCI, GDPR, DORA, and EU AI Act-adjacent environments. We produce audit-ready runbooks, data-flow maps, and risk registers; we work with your DPO and CISO from day one; we do not cut corners on access control, encryption, or logging.'
+          'Yes. We have shipped on PCI, GDPR, DORA, and EU AI Act-adjacent environments — for clients in banking (Scotiabank CoE), aviation (British Airways marketing operations), and global marketing. We produce audit-ready runbooks, data-flow maps, and risk registers; we work with your DPO and CISO from day one; we do not cut corners on access control, encryption, or logging.'
       },
       {
         question: 'What size of company do you work with?',
         answer:
-          'EMEA scale-ups, growth-stage SaaS, and mid-market companies between 50 and 2,000 employees. We are at our best when there is one engineering leader who owns the decision and a real product problem to solve.'
+          'EMEA scale-ups and growth-stage companies in regulated industries — typically between 10 and 500 employees. We are at our best with teams that cannot justify a 10-engineer platform function but still need to ship regulated, AI-enabled products without slowing down. If there is one engineering leader who owns the decision and a real product problem to solve, we are the right fit.'
+      },
+      {
+        question: 'Can you help us with AI Governance and the EU AI Act?',
+        answer:
+          'Yes — that is one of our flagship workstreams. We build an AI Governance integration layer with auditable, policy-enforced controls, plus MCP Gateway plumbing on Kong + IBM Context Forge (routing, observability, and policy enforcement on agent tool-calls). The framing is built around EU AI Act readiness (enforcement 2 Aug 2026), NIST AI RMF, and ISO/IEC 42001. We ship a 6–10 week workstream that gives your auditors evidence at every commit — not a slide deck.'
       },
       {
         question: 'How is pricing structured?',
         answer:
-          'Discovery Sprints are a fixed fee. Foundation Builds and Embedded Pods are fixed-scope or monthly retainers, with a published SOW and a 30-day warranty. Cloud costs are shown separately via Elixa, so you always see the service fee and the cloud spend as two distinct line items.'
+          'Discovery Sprints are a fixed fee. Foundation Builds and Embedded Pods are fixed-scope or monthly retainers, with a published SOW and a 30-day warranty. Cloud costs are shown separately via Elixa, so you always see the service fee and the cloud spend as two distinct line items — important for scale-ups that need to defend the budget to a board or a CFO.'
       },
       {
         question: 'What happens after the first engagement?',
         answer:
-          'Most clients move to a Retainer Care model for ongoing FinOps, SRE, and AI governance coverage. We do quarterly reviews against the original KPI. If you outgrow us, we hand over the runbooks, the dashboards, and the on-call rotation — no lock-in.'
+          'Most clients move to a Retainer Care model for ongoing FinOps, SRE, and AI governance coverage. We do quarterly reviews against the original KPI. If you outgrow us, we hand over the runbooks, the dashboards, and the on-call rotation — no lock-in. If you do not yet need a full retainer, we can hand the work back to your in-house team after a Foundation Build and stay on call for a 30-day warranty.'
       }
     ]
   },
@@ -607,32 +619,32 @@ const en: Translations = {
   homepage: {
     stats: {
       eyebrow: 'By the numbers',
-      title: 'Twelve years of practice, three clouds, one boutique.'
+      title: 'Twelve years of practice, three clouds, one boutique — verified in regulated industries.'
     },
     problem: {
       eyebrow: 'The current state',
-      title: 'Cloud, Kubernetes, and AI are now table stakes — but the delivery metrics have not moved.',
+      title: 'Your growth is now waiting on the platform.',
       cto: {
-        role: 'For CTOs',
-        text: 'Your engineers are faster on AI tools. Your sprints are not. The pipeline still queues at the cloud, security, and FinOps layer.'
+        role: 'What your engineering team sees',
+        text: 'Every release has to clear cloud, security, cost, and governance before it reaches customers. That is the wrong operating model for a scale-up: engineers lose momentum, AI initiatives stay stuck in review, and the roadmap slips. Cafetatek builds the delivery foundation and the audit evidence together, then hands a governed platform back to your team.'
       },
       ciso: {
-        role: 'For CISOs',
-        text: 'AI governance, EU AI Act, GDPR, ISO 42001 — your buyers now require audit-ready evidence at every commit. Most teams do not have it.'
+        role: 'What your board and your auditors see',
+        text: 'Every release has to clear cloud, security, cost, and governance before it reaches customers. That is the wrong operating model for a scale-up: enterprise buyers block the deal, regulators open the file, and the next AI feature waits another quarter. Cafetatek ships the evidence with the code, so compliance becomes a byproduct of shipping, not a project that competes with it.'
       }
     },
     caseStudies: {
       eyebrow: 'Verified delivery',
-      title: 'What the practice has shipped in regulated environments.',
-      subtitle: 'Three recent engagements that map to the 7 packages. Numbers are pulled from the CV — not marketing copy.',
+      title: 'What the practice has shipped in regulated industries.',
+      subtitle: 'Four recent engagements in banking, aviation, enterprise SaaS, and global marketing. Numbers are pulled from delivery records — not marketing copy.',
       items: [
         {
           client: 'Globant',
           period: 'Feb 2024 – Jul 2025',
-          industry: 'Enterprise SaaS',
+          industry: 'Enterprise SaaS · regulated delivery platform',
           service: 'Package 04 · DevSecOps Hardening',
           title: 'Self-service Terraform framework cut deploy time 12%',
-          outcome: 'Reduced support SLA by 80%, increased team capacity 25%, deployed Terraform modules adopted across multiple teams for security compliance.'
+          outcome: 'Reduced support SLA by 80%, increased team capacity 25%, deployed Terraform modules adopted across multiple teams for security compliance across a 200+ microservice platform.'
         },
         {
           client: 'Scotiabank Technology',
@@ -640,12 +652,20 @@ const en: Translations = {
           industry: 'Banking (regulated)',
           service: 'Package 02 · Cloud + Platform Engineering',
           title: 'Cloud and DevOps automation for a global bank',
-          outcome: 'Delivered shared CI/CD pipelines, automated framework, Java test template adopted globally by QA teams in a regulated banking environment.'
+          outcome: 'Delivered shared CI/CD pipelines, automated framework, Java test template adopted globally by QA teams across LATAM, USA, and EMEA in a regulated banking environment.'
+        },
+        {
+          client: 'British Airways',
+          period: '2022 – 2024',
+          industry: 'Aviation · global marketing operations',
+          service: 'Package 03 · DevOps Automation',
+          title: 'DevOps automation supporting global marketing operations',
+          outcome: 'Designed and operated DevOps automation supporting marketing and operational processes at scale for one of Europe’s largest airlines — reliable pipelines, faster campaign release cycles, audit-ready delivery records.'
         },
         {
           client: 'Asylum Marketing',
           period: 'Jan 2023 – Jan 2024',
-          industry: 'Marketing',
+          industry: 'Global marketing',
           service: 'Package 01 · Cross-Platform + Migration',
           title: 'Lead engineer for cloud migration + WCAG AA compliance',
           outcome: 'Migrated on-prem automation environment to cloud. Implemented accessibility improvements compliant with WCAG AA standards. Optimised Jira workflow for real-time stakeholder visibility.'
@@ -662,9 +682,9 @@ const en: Translations = {
 const es: Translations = {
   site: {
     name: 'Cafetatek',
-    tagline: 'Boutique de ingeniería para equipos B2B en EMEA',
+    tagline: 'Platform engineering senior para scale-ups de EMEA en industrias reguladas',
     description:
-      'Cafetatek es una boutique de ingeniería senior que ayuda a equipos B2B en EMEA a entregar software moderno, datos modernos e IA gobernada — con ingeniería de plataformas agnóstica a la nube y unit economics FinOps incluidos.'
+      'Cafetatek es una boutique de ingeniería senior que da a scale-ups de EMEA en industrias reguladas — banca, fintech, salud, aviación, marketing global — acceso directo a ingenieros senior de plataforma, datos e IA. Entregamos software moderno, IA gobernada y unit economics FinOps — sin la sobrecarga de un equipo de 10 ingenieros.'
   },
   nav: {
     home: 'Inicio',
@@ -679,27 +699,19 @@ const es: Translations = {
     contact: 'Contacto'
   },
   hero: {
-    eyebrow: 'Proceso de Automation · APIs · Governance · CI/CD · Data · Digital · Agentic',
-    title: 'Convierte tu stack cloud en autónomo. Lo construimos contigo — y te lo entregamos.',
+    title: 'Muévete a velocidad enterprise, con presupuesto de boutique.',
     subtitle:
-      'Delivery senior para equipos de cloud, datos e IA. Cableamos autonomía AI-driven en tu stack — pipelines, agentes, gobernanza — y te devolvemos las llaves, como se suponía que debía ser el movimiento de platform engineering.',
+      'Para scale-ups de EMEA en banca, fintech, salud, aviación y marketing global que necesitan entregar productos regulados y AI-enabled sin frenar — y sin montar un equipo de plataforma de 10 ingenieros para hacerlo. Delivery senior para cloud, datos e IA: cableamos la autonomía, la gobernanza y las unit economics en tu stack, y luego devolvemos las llaves a tu equipo.',
     primaryCta: 'Habla con un ingeniero senior',
     secondaryCta: 'Conoce cómo trabajamos',
-    trustEyebrow: 'Lo que te llevas',
-    trustItems: [
-      '5 pilares de servicio anclados en cloud + automation, con un proceso de delivery automation-first de migración a plataforma a dato',
-      'Sesiones de co-build con tu equipo — runbooks, governance y código funcionando el mismo día',
-      'Programas de formación y assessments de ciberseguridad para equipos de ingeniería y ejecutivos',
-      'AWS, GCP, Azure, nubes soberanas UE o híbrido — entrega senior-only, alcance fijo'
-    ],
     quadrantsTitle: 'Salta a lo que importa',
     quadrants: [
       {
         key: 'pillars',
         step: '01',
         label: 'Inicio',
-        title: 'Cinco pilares de práctica',
-        description: 'Automatización inteligente, delivery AI-driven, cloud transformation, formación y data engineering — a un clic.',
+        title: 'Seis pilares de práctica',
+        description: 'Automatización inteligente, delivery AI-driven, cloud transformation, formación, data engineering y security — a un clic.',
         icon: 'tabler:layout-grid',
         href: '#pillars'
       },
@@ -708,7 +720,7 @@ const es: Translations = {
         step: '02',
         label: 'Qué hacemos',
         title: 'Nuestros servicios',
-        description: 'Recorre los servicios senior-led que entregamos a producción — automation, agile delivery, cloud, data y security.',
+        description: 'Recorre los servicios senior-led que entregamos a producción — automation, agile delivery, cloud, data, security y AI governance.',
         icon: 'tabler:briefcase',
         href: '#pillars'
       },
@@ -717,7 +729,7 @@ const es: Translations = {
         step: '03',
         label: 'Por qué elegirnos',
         title: 'Soluciones AI-driven, 12+ años de experiencia',
-        description: 'Tres hyperscalers, nubes soberanas UE y 100% entrega senior-only. Los números, no los adjetivos.',
+        description: 'Tres hyperscalers, nubes soberanas UE y 100% entrega senior-only. Métricas verificadas, no adjetivos.',
         icon: 'tabler:building-arch',
         href: '#stats'
       },
@@ -725,28 +737,28 @@ const es: Translations = {
         key: 'projects',
         step: '04',
         label: 'Nuestro trabajo',
-        title: 'Proyectos exitosos',
-        description: 'Tres engagements recientes — Globant, Scotiabank, Asylum Marketing — mapeados a los siete paquetes.',
+        title: 'Proyectos exitosos en industrias reguladas',
+        description: 'Banca, fintech, salud, aviación, marketing global — Globant, Scotiabank, British Airways, Asylum Marketing.',
         icon: 'tabler:rocket',
         href: '#case-studies'
       }
     ]
   },
   intro: {
-    title: 'Siete paquetes anclados en cloud + automation.',
+    title: 'Seis pilares, una práctica cloud + automation para industrias reguladas.',
     description:
-      'Cafetatek nació para dar a los líderes de ingeniería en EMEA acceso directo a ingenieros senior de plataforma, datos e IA — sin la sobrecarga de una consultora grande. Tres de nuestros siete paquetes están anclados en cloud + automation: cross-platform + migración, cloud + platform engineering, y FinOps con IA powered by Elixa. Los otros cuatro — hardening DevSecOps, migración ChatOps + Agentic RPA, programas de formación y assessments de ciberseguridad — extienden la misma práctica a seguridad, operaciones y team enablement. Hablas con la gente que construye. Entregas en semanas, no trimestres. Te quedas con código, runbooks y una cultura de ingeniería que sigue compounding.'
+      'En Cafetatek ayudamos a las empresas a acelerar la adopción AI-driven mediante un framework de entrega propietario y automation-first. Desde migrar la infraestructura de ClickOps a developer self-service, pasando por hardening DevSecOps, AI ChatOps e intelligent process automation, acompañamos tu journey de ingeniería en cada etapa. Nuestros programas de formación estructurada permiten a tus equipos dominar los workflows de TI de nueva generación sin perder tiempo en investigación de mercado ni en tendencias no probadas.'
   },
   pillars: {
-    eyebrow: 'Cinco pilares de servicio',
-    title: 'La práctica Cafetatek, en cinco pilares',
+    eyebrow: 'Seis pilares de servicio',
+    title: 'La práctica Cafetatek, en seis pilares',
     subtitle:
-      'Cada pilar es una capacidad de entrega liderada por senior y respaldada por dos a cuatro sub-servicios. La mayoría de los engagements combinan pilares — y todos llegan a producción. Sin slideware, sin hand-offs puramente advisory.',
+      'Cada pilar es una capacidad de entrega liderada por senior y respaldada por dos a cuatro sub-servicios. La mayoría de los engagements combinan pilares — y todos llegan a producción. Sin slideware, sin hand-offs puramente advisory. Diseñado para scale-ups de EMEA en industrias reguladas que necesitan moverse rápido sin romper compliance.',
     items: [
       {
         title: 'Automatización Inteligente',
         description:
-          'Sustituimos los bots rígidos de RPA y los workflows por consola por agentes autónomos que deciden en contexto, gestionan sus excepciones y operan sobre datos, documentos y herramientas operacionales — sin necesidad de supervisión 24/7.',
+          'Sustituimos los bots rígidos y los workflows por consola por agentes autónomos que deciden en contexto, gestionan sus excepciones y operan sobre datos, documentos y herramientas operacionales — sin necesidad de supervisión 24/7.',
         bullets: [
           'ChatOps y workflows AI-driven cableados a Slack y Microsoft Teams',
           'Automatización inteligente end-to-end para operaciones de TI',
@@ -788,10 +800,11 @@ const es: Translations = {
       {
         title: 'Desarrollo Ágil de Software AI-driven',
         description:
-          'Lleva nuevas ideas de producto a producción en semanas, no en trimestres — con ingenieros senior, prácticas modernas de delivery y asistentes de IA embebidos en la toolchain. La calidad es no negociable: el trabajo llega a producción.',
+          'Lleva nuevas ideas de producto a producción en semanas, no en trimestres — con ingenieros senior, prácticas modernas de delivery y asistentes de IA embebidos en la toolchain. La calidad es no negociable: el trabajo llega a producción. Para productos regulados, añadimos AI Governance e integración MCP Gateway encima, para que cada workflow AI salga audit-ready.',
         bullets: [
           'Quality assurance integrado en el delivery, no añadido al final',
-          'Software development as a service — precio por outcome, alcance fijo'
+          'Software development as a service — precio por outcome, alcance fijo',
+          'AI Governance + MCP Gateway integrado para industrias reguladas'
         ],
         icon: 'tabler:rocket',
         subServices: [
@@ -806,10 +819,16 @@ const es: Translations = {
             title: 'Software development as a service',
             description:
               'Squads con precio por outcome que validan ideas, entregan a producción y hacen hand-off — sin retainers, sin hand-offs puramente advisory.'
+          },
+          {
+            letter: 'C',
+            title: 'AI Governance + MCP Gateway',
+            description:
+              'Para productos que consumen IA dentro de workflows regulados (banca, fintech, salud): AI workloads con controles policy-enforced, servidores MCP sobre Kong + IBM Context Forge, observabilidad audit-ready sobre tool-calls de agentes. EU AI Act (enforcement 2 Ago 2026), NIST AI RMF, ISO/IEC 42001 readiness integrado en el delivery — no añadido al final.'
           }
         ],
-        duration: '4-12 semanas por producto',
-        priceBand: '20-55k EUR por producto',
+        duration: '4-12 semanas por producto · 6-10 semanas por workstream de AI Governance',
+        priceBand: '20-55k EUR por producto · 28-60k EUR por workstream de AI Governance',
         boringTask:
           'Sprint reviews de dos semanas que producen un deck de 50 slides que nadie lee → delivery trunk-based con diffs visibles el mismo día',
         deliverables: [
@@ -817,7 +836,9 @@ const es: Translations = {
           'Delivery moderno: trunk-based, contract tests, IaC por defecto',
           'Delivery AI-assisted embebido en la toolchain DevOps',
           'A producción con quality gates y garantía de 30 días',
-          'Sesiones de co-build con tu equipo para que el código se quede contigo'
+          'Sesiones de co-build con tu equipo para que el código se quede contigo',
+          'Capa de integración AI Governance con controles auditable y policy-enforced',
+          'MCP Gateway (Kong + IBM Context Forge) con routing, observability y policy enforcement sobre tool-calls de agentes'
         ]
       },
       {
@@ -945,17 +966,17 @@ const es: Translations = {
     eyebrow: 'Producto · Elixa Multi-Migration Platform',
     title: 'Cubre múltiples migraciones de SAP y cloud en paralelo — sin perder continuidad operacional.',
     subtitle:
-      'Elixa es nuestra plataforma interna de orquestación de migraciones. Nació como una forma de hacer la modernización de SAP menos dolorosa — menos outages, datos más limpios, olas de migración más rápidas. Hoy coordina múltiples migraciones de ERP y cloud en paralelo mientras mantiene el servicio vivo.',
+      'Elixa es nuestra plataforma interna de orquestación de migraciones. Nació como una forma de hacer la modernización de SAP menos dolorosa — menos outages, datos más limpios, olas de migración más rápidas. Hoy coordina múltiples migraciones de ERP y cloud en paralelo mientras mantiene el servicio vivo. Construida para scale-ups en industrias reguladas que necesitan una migración que no tumbe la plataforma.',
     primaryCta: 'Solicitar demo de Elixa',
     secondaryCta: 'Leer la documentación',
     whyBuiltTitle: 'Por qué lo construimos',
     whyBuiltBody:
-      'Elixa nació de un dolor operacional: los proyectos de modernización de SAP y ERP fallan porque se corren como un único esfuerzo big-bang, sin orquestación entre olas, sin checks de continuidad y sin handoff claro entre fases. Elixa convierte eso en un decision tree carga por carga — elige la estrategia de migración correcta por carga, corre las olas en paralelo, mantiene el servicio vivo y reporta continuidad operacional en tiempo real.',
+      'Elixa nació de un dolor operacional: los proyectos de modernización de SAP y ERP fallan porque se corren como un único esfuerzo big-bang, sin orquestación entre olas, sin checks de continuidad y sin handoff claro entre fases. Elixa convierte eso en un decision tree carga por carga — elige la estrategia de migración correcta por carga, corre las olas en paralelo, mantiene el servicio vivo y reporta continuidad operacional en tiempo real. El mismo motor produce la proyección de coste que tu equipo de procurement firma, así finance y delivery ven los mismos números desde el día uno.',
     steps: [
       {
         title: 'Capturar el caso de uso',
         description:
-          'Los preventas ejecutan el cuestionario de Elixa. La plataforma mapea cada respuesta a un SKU con precio real, una estrategia de migración y un score de continuidad operacional — sobre el cloud y ERP que elijas.'
+          'Los preventas ejecutan el cuestionario de Elixa. La plataforma mapea cada respuesta a un SKU con precio real, una estrategia de migración y un score de continuidad operacional — sobre el cloud y ERP que elijas, en tu región, con tu tier de descuento real.'
       },
       {
         title: 'Orquestar las olas de migración',
@@ -965,12 +986,12 @@ const es: Translations = {
       {
         title: 'Mantener el servicio vivo',
         description:
-          'Los checks de continuidad operacional monitorizan el servicio vivo durante cada ola. El riesgo de outage se surface antes de la ola, no después.'
+          'Los checks de continuidad operacional monitorizan el servicio vivo durante cada ola. El riesgo de outage se surface antes de la ola, no después — crítico para cargas reguladas donde un outage es un evento reportable.'
       },
       {
         title: 'Gobernar la entrega',
         description:
-          'Cuando la plataforma está en producción, los guardrails de unit-economics de Elixa mantienen FinOps, seguridad y gobierno de IA alineados con el plan de migración original — sin drift, sin sorpresas.'
+          'Cuando la plataforma está en producción, los guardrails de coste de Elixa mantienen el gasto cloud, las baselines de seguridad y los deliverables de migración alineados con el plan original — sin drift, sin sorpresas.'
       }
     ],
     featuresTitle: 'Qué incluye Elixa',
@@ -987,9 +1008,9 @@ const es: Translations = {
   },
   packages: {
     eyebrow: 'Portafolio de servicios',
-    title: 'Siete paquetes, una práctica de cloud + automation',
+    title: 'Seis pilares, una práctica de cloud + automation',
     subtitle:
-      'Elige un paquete o combina dos. Tres están anclados en cloud + automation. Todos llegan a producción — sin slideware, sin hand-offs puramente advisory.',
+      'Elige un pilar o combina dos. Los seis están anclados en cloud + automation. Todos llegan a producción — sin slideware, sin hand-offs puramente advisory.',
     anchorBadge: 'Anchor',
     moreBadge: 'También disponible',
     boringTasksTitle: 'Tareas aburridas que automatizamos',
@@ -1000,59 +1021,64 @@ const es: Translations = {
     eyebrow: 'Modelos de engagement',
     title: 'Cuatro formas de trabajar con nosotros',
     subtitle:
-      'Elige el modelo que encaje con tu etapa y tu perfil de riesgo. Cada engagement entrega alcance publicado, precio fijo y garantía de 30 días.',
+      'Elige el modelo que encaje con tu etapa y tu perfil de riesgo. Diseñado para scale-ups en industrias reguladas que necesitan entregar en semanas — sin lockearse en un equipo de 10 ingenieros. Cada engagement entrega alcance publicado, precio fijo y garantía de 30 días.',
     items: [
       {
         title: 'Discovery Sprint',
         description:
-          'Diagnóstico de dos semanas que entrega un findings brief audit-ready: arquitectura actual, top tres riesgos, y un plan de remediación priorizado con effort, impact y timeline.',
+          'Diagnóstico de dos semanas que entrega un findings brief audit-ready: arquitectura actual, top tres riesgos, y un plan de remediación priorizado con effort, impact y timeline. La forma más rápida para un scale-up sin equipo TI grande de saber qué arreglar primero.',
         duration: '2 semanas · fee fijo'
       },
       {
         title: 'Foundation Build',
         description:
-          'Engagement de 4–8 semanas para aterrizar el primer slice production-grade de tu plataforma, datos o workflow de IA — la cuña que prueba el modelo y desbloquea la siguiente inversión.',
+          'Engagement de 4–8 semanas para aterrizar el primer slice production-grade de tu plataforma, datos, AI governance o workflow de IA — la cuña que prueba el modelo y desbloquea la siguiente inversión. Precio por outcome, alcance fijo, sin hand-offs puramente advisory.',
         duration: '4–8 semanas · alcance fijo'
       },
       {
         title: 'Embedded Pod',
         description:
-          'Un pod senior de dos a cuatro ingenieros embebido con tu equipo durante uno o dos trimestres. Somos owners de un KPI medible (DORA metrics, run-rate cost, time-to-first-AI-agent) y salimos con un handover plan.',
+          'Un pod senior de dos a cuatro ingenieros embebido con tu equipo durante uno o dos trimestres. Somos owners de un KPI medible (DORA metrics, run-rate cost, time-to-first-AI-agent, audit-pass rate) y salimos con un handover plan a tu equipo interno.',
         duration: '1–2 trimestres · retainer mensual'
       },
       {
         title: 'Retainer Care',
         description:
-          'Ingeniería senior fraccional continua: FinOps care, SRE on-call, AI governance reviews, auditorías trimestrales de salud de plataforma. Cancela con 30 días de aviso.',
+          'Ingeniería senior fraccional continua para scale-ups que no pueden justificar una hire full-time: FinOps care, SRE on-call, AI governance reviews, auditorías trimestrales de salud de plataforma. Cancela con 30 días de aviso.',
         duration: 'Continuo · retainer mensual'
       }
     ]
   },
   methodology: {
     eyebrow: 'Cómo entregamos',
-    title: 'Un modelo de entrega repetible y audit-friendly',
+    title: 'Un framework claro — adaptado a tu tamaño, no al playbook.',
     subtitle:
-      'Cada engagement corre los mismos cuatro pasos — adaptados al tamaño del slice, no al playbook.',
+      'Cada engagement corre los mismos cinco pasos — adaptados al tamaño del slice, no al tamaño del deck. El framework es el mismo en un discovery de 2 semanas y en un pod embebido de 6 meses.',
     steps: [
       {
-        title: 'Paso 1: Discover',
+        title: 'Paso 1: Compatibility check',
         description:
-          'Dos semanas de entrevistas estructuradas, revisión de código e infra, y mapeo de riesgos. Output: findings brief publicado y statement of work de alcance fijo.'
+          'Una semana. Miramos tu equipo, tu regulador, tu runway y tu stack actual. Te decimos por escrito si Cafetatek encaja — y decimos no si no encaja. Sin motion de ventas, sin factura de discovery.'
       },
       {
-        title: 'Paso 2: Design',
+        title: 'Paso 2: Discover workspaces',
         description:
-          'Arquitectura, plan de IaC, y un runbook escrito. No empezamos a programar hasta que el runbook está firmado y el security checklist está en verde.'
+          'Mapeamos cada workspace: repos, pipelines, datos, identidad, on-call, compliance. Output: un mapa escrito de lo que está sólido, lo que es frágil y lo que falta — y qué partes podemos estandarizar vs. qué hay que construir.'
       },
       {
-        title: 'Paso 3: Build',
+        title: 'Paso 3: Rapid design',
         description:
-          'Trunk-based delivery, contract tests, canary y blue-green, peer review en cada cambio. Ves el diff el mismo día que el ingeniero lo escribe.'
+          'Sesiones cortas y estructuradas con tu equipo y tu decision-maker. Usamos técnicas de decisión rápida para convergir en arquitectura, plan de IaC y runbook. Firmas el runbook antes de que escribamos una sola línea de código.'
       },
       {
-        title: 'Paso 4: Operate',
+        title: 'Paso 4: Build',
         description:
-          'Runbooks, dashboards, on-call rotation, garantía de 30 días y un plan de knowledge-transfer. Hacemos hand-over — no te lockeamos.'
+          'Trunk-based delivery, contract tests, canary y blue-green, peer review en cada cambio. Ves el diff el mismo día que el ingeniero lo escribe. Quality gates por defecto, no como excepción.'
+      },
+      {
+        title: 'Paso 5: Operate',
+        description:
+          'Runbooks, dashboards, on-call rotation, garantía de 30 días y un plan de knowledge-transfer. Hacemos hand-over — no te lockeamos. Si no puedes cubrir el on-call, nos quedamos en retainer hasta que puedas.'
       }
     ]
   },
@@ -1060,45 +1086,54 @@ const es: Translations = {
     items: [
       { amount: '12+', title: 'Años de práctica' },
       { amount: '40+', title: 'Entregas B2B shipped' },
-      { amount: '3', title: 'Hyperscalers + soberano' },
-      { amount: '100%', title: 'Entrega senior-only' }
+      { amount: '200+', title: 'Microservicios en producción' },
+      { amount: '350%', title: 'Effectiveness de delivery self-service' },
+      { amount: '80%', title: 'Reducción de SLA de soporte' },
+      { amount: '25%', title: 'Capacidad de equipo liberada' },
+      { amount: '35%', title: 'Reducción de tiempo operacional' },
+      { amount: '20%', title: 'Uplift de throughput de artefactos' }
     ]
   },
   faq: {
     eyebrow: 'Preguntas frecuentes',
     title: 'Lo que los compradores B2B preguntan antes de firmar',
     subtitle:
-      'Las preguntas más habituales de engineering leaders, CTOs y equipos de procurement que evalúan un engagement con Cafetatek.',
+      'Las preguntas más habituales de engineering leaders, CTOs y equipos de procurement en industrias reguladas — banca, fintech, salud, aviación y marketing global.',
     items: [
       {
         question: '¿De verdad son agnósticos a la nube?',
         answer:
-          'Sí. Hemos entregado cargas en producción sobre AWS, GCP, Azure, OpenShift, Scaleway, OVHcloud y Kubernetes on-prem. No cobramos referral fee de ningún cloud provider. Recomendamos la plataforma que encaje con tu equipo, tus restricciones de data residency y tu envelope de coste — no la que nos incentivan a empujar.'
+          'Sí. Hemos entregado cargas en producción sobre AWS, GCP, Azure, OpenShift, Scaleway, OVHcloud y Kubernetes on-prem — para clientes en banca, fintech, salud, aviación y marketing global. No cobramos referral fee de ningún cloud provider. Recomendamos la plataforma que encaje con tu equipo, tus restricciones de data residency y tu envelope de coste — no la que nos incentivan a empujar.'
       },
       {
         question: '¿Cómo encaja Elixa en el motion de preventa?',
         answer:
-          'Elixa es nuestra herramienta interna de cost-engineering. Cuando nos pasas un brief, usamos Elixa para generar una proyección de costes a 3 años sobre tu proveedor preferido, en tu región, con tu tier de descuento real. El output es un PDF / CSV listo para que procurement y finance firmen. Después de la entrega, los guardrails de unit-economics de Elixa mantienen el coste alineado con la cotización original.'
+          'Elixa es nuestra herramienta interna de cost-engineering. Cuando nos pasas un brief, usamos Elixa para generar una proyección de costes a 3 años sobre tu proveedor preferido, en tu región, con tu tier de descuento real. El output es un PDF / CSV listo para que procurement y finance firmen. Después de la entrega, los guardrails de coste de Elixa mantienen el gasto alineado con la cotización original.'
       },
       {
         question: '¿Trabajan en cargas reguladas?',
         answer:
-          'Sí. Hemos entregado en entornos PCI, GDPR, DORA y adyacentes a EU AI Act. Producimos runbooks audit-ready, data-flow maps y risk registers; trabajamos con tu DPO y CISO desde el día uno; no recortamos en access control, encryption o logging.'
+          'Sí. Hemos entregado en entornos PCI, GDPR, DORA y adyacentes a EU AI Act — para clientes en banca (Scotiabank CoE), aviación (operaciones de marketing de British Airways) y marketing global. Producimos runbooks audit-ready, data-flow maps y risk registers; trabajamos con tu DPO y CISO desde el día uno; no recortamos en access control, encryption o logging.'
       },
       {
         question: '¿Con qué tamaño de empresa trabajan?',
         answer:
-          'Scale-ups en EMEA, SaaS growth-stage y mid-market entre 50 y 2,000 empleados. Estamos en mejor forma cuando hay un engineering leader que owns la decisión y un problema de producto real que resolver.'
+          'Scale-ups de EMEA y growth-stage en industrias reguladas — típicamente entre 10 y 500 empleados. Estamos en mejor forma con equipos que no pueden justificar una función de plataforma de 10 ingenieros pero necesitan entregar productos regulados y AI-enabled sin frenar. Si hay un engineering leader que owns la decisión y un problema de producto real que resolver, encajamos.'
+      },
+      {
+        question: '¿Pueden ayudarnos con AI Governance y el EU AI Act?',
+        answer:
+          'Sí — es uno de nuestros workstreams flagship. Construimos una capa de integración AI Governance con controles auditable y policy-enforced, más plumbing MCP Gateway sobre Kong + IBM Context Forge (routing, observability y policy enforcement sobre tool-calls de agentes). El framing está construido alrededor de EU AI Act readiness (enforcement 2 Ago 2026), NIST AI RMF e ISO/IEC 42001. Entregamos un workstream de 6–10 semanas que da a tus auditores evidencia en cada commit — no un deck de slides.'
       },
       {
         question: '¿Cómo se estructura el pricing?',
         answer:
-          'Los Discovery Sprints son fee fijo. Los Foundation Builds y Embedded Pods son alcance fijo o retainer mensual, con un SOW publicado y garantía de 30 días. Los costes cloud se muestran por separado vía Elixa, así siempre ves el service fee y el cloud spend como dos line items distintos.'
+          'Los Discovery Sprints son fee fijo. Los Foundation Builds y Embedded Pods son alcance fijo o retainer mensual, con un SOW publicado y garantía de 30 días. Los costes cloud se muestran por separado vía Elixa, así siempre ves el service fee y el cloud spend como dos line items distintos — clave para scale-ups que necesitan defender el presupuesto ante un board o un CFO.'
       },
       {
         question: '¿Qué pasa después del primer engagement?',
         answer:
-          'La mayoría de los clientes pasan a un Retainer Care para cobertura continua de FinOps, SRE y AI governance. Hacemos reviews trimestrales contra el KPI original. Si te nos quedas grande, te entregamos los runbooks, los dashboards y la on-call rotation — sin lock-in.'
+          'La mayoría de los clientes pasan a un Retainer Care para cobertura continua de FinOps, SRE y AI governance. Hacemos reviews trimestrales contra el KPI original. Si te nos quedas grande, te entregamos los runbooks, los dashboards y la on-call rotation — sin lock-in. Si aún no necesitas un retainer completo, podemos devolver el trabajo a tu equipo interno después de un Foundation Build y quedarnos on-call con la garantía de 30 días.'
       }
     ]
   },
@@ -1114,32 +1149,32 @@ const es: Translations = {
   homepage: {
     stats: {
       eyebrow: 'En números',
-      title: 'Doce años de práctica, tres clouds, una boutique.'
+      title: 'Doce años de práctica, tres clouds, una boutique — verificada en industrias reguladas.'
     },
     problem: {
       eyebrow: 'El estado actual',
-      title: 'Cloud, Kubernetes e IA ya son mesa de juego — pero las métricas de entrega no se han movido.',
+      title: 'Tu crecimiento ahora está esperando a la plataforma.',
       cto: {
-        role: 'Para CTOs',
-        text: 'Tus ingenieros son más rápidos con herramientas de IA. Tus sprints, no. El pipeline sigue haciendo cola en cloud, seguridad y FinOps.'
+        role: 'Lo que ve tu equipo de ingeniería',
+        text: 'Cada release tiene que superar cloud, seguridad, costes y gobernanza antes de llegar a los clientes. Es el modelo operativo equivocado para un scale-up: los ingenieros pierden ritmo, las iniciativas de IA se quedan atascadas en revisión y el roadmap se retrasa. Cafetatek construye a la vez la base de delivery y la evidencia de auditoría, y después devuelve una plataforma gobernada a tu equipo.'
       },
       ciso: {
-        role: 'Para CISOs',
-        text: 'Gobierno de IA, EU AI Act, GDPR, ISO 42001 — tus compradores ya piden evidencia audit-ready en cada commit. La mayoría de los equipos no la tienen.'
+        role: 'Lo que ven tu consejo y tus auditores',
+        text: 'Cada release tiene que superar cloud, seguridad, costes y gobernanza antes de llegar a los clientes. Es el modelo operativo equivocado para un scale-up: los compradores enterprise bloquean el contrato, los reguladores abren el expediente y la próxima feature de IA espera otro trimestre. Cafetatek entrega la evidencia con el código, para que compliance sea un subproducto de enviar, no un proyecto que compite con enviar.'
       }
     },
     caseStudies: {
       eyebrow: 'Entrega verificada',
-      title: 'Lo que la práctica ha entregado en entornos regulados.',
-      subtitle: 'Tres engagements recientes que mapean a los 7 paquetes. Los números vienen del CV — no son copy de marketing.',
+      title: 'Lo que la práctica ha entregado en industrias reguladas.',
+      subtitle: 'Cuatro engagements recientes en banca, aviación, enterprise SaaS y marketing global. Los números vienen de los registros de entrega — no son copy de marketing.',
       items: [
         {
           client: 'Globant',
           period: 'Feb 2024 – Jul 2025',
-          industry: 'Enterprise SaaS',
+          industry: 'Enterprise SaaS · plataforma de delivery regulada',
           service: 'Package 04 · DevSecOps Hardening',
           title: 'Framework Terraform self-service redujo el tiempo de deploy un 12%',
-          outcome: 'Redujo el SLA de soporte en 80%, aumentó la capacidad del equipo en 25%, desplegó módulos Terraform adoptados por múltiples equipos para compliance de seguridad.'
+          outcome: 'Redujo el SLA de soporte en 80%, aumentó la capacidad del equipo en 25%, desplegó módulos Terraform adoptados por múltiples equipos para compliance de seguridad sobre una plataforma de 200+ microservicios.'
         },
         {
           client: 'Scotiabank Technology',
@@ -1147,12 +1182,20 @@ const es: Translations = {
           industry: 'Banca (regulada)',
           service: 'Package 02 · Cloud + Platform Engineering',
           title: 'Cloud y DevOps automation para un banco global',
-          outcome: 'Pipelines compartidos de CI/CD, framework automatizado, template de tests Java adoptado globalmente por equipos de QA en un entorno bancario regulado.'
+          outcome: 'Pipelines compartidos de CI/CD, framework automatizado, template de tests Java adoptado globalmente por equipos de QA en LATAM, USA y EMEA en un entorno bancario regulado.'
+        },
+        {
+          client: 'British Airways',
+          period: '2022 – 2024',
+          industry: 'Aviación · operaciones de marketing global',
+          service: 'Package 03 · DevOps Automation',
+          title: 'DevOps automation apoyando operaciones de marketing global',
+          outcome: 'Diseño y operación de DevOps automation apoyando procesos de marketing y operativos a escala para una de las mayores aerolíneas europeas — pipelines confiables, ciclos de release de campañas más rápidos, registros de entrega audit-ready.'
         },
         {
           client: 'Asylum Marketing',
           period: 'Ene 2023 – Ene 2024',
-          industry: 'Marketing',
+          industry: 'Marketing global',
           service: 'Package 01 · Cross-Platform + Migration',
           title: 'Lead engineer para migración cloud + compliance WCAG AA',
           outcome: 'Migración del entorno de automatización on-prem a cloud. Implementación de mejoras de accesibilidad conformes con WCAG AA. Optimización del workflow de Jira para visibilidad en tiempo real de stakeholders.'

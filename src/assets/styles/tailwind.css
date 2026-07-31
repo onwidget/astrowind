@@ -2,6 +2,31 @@
 
 @plugin "@tailwindcss/typography";
 
+/* Preline UI — scan plugin sources so Tailwind generates utilities used by
+ * Preline's JS-driven dropdown/mega-menu markup. */
+@source "../../../node_modules/preline/dist/*.js";
+
+/* Preline runtime open-state styles (JS toggles .hs-dropdown-open).
+ * Defined explicitly so the menu becomes visible when Preline opens it
+ * regardless of Tailwind's class detection. */
+@layer utilities {
+  .hs-dropdown-open.hs-dropdown-open\:opacity-100 {
+    opacity: 1;
+  }
+  .hs-dropdown-open.hs-dropdown-open\:scale-100 {
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+  .hs-dropdown-open.hs-dropdown-open\:visible {
+    visibility: visible;
+  }
+  .hs-dropdown-open.hs-dropdown-open\:rotate-180 {
+    --tw-rotate: 180deg;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+}
+
 @variant dark (&:where(.dark, .dark *));
 
 @custom-variant intersect (&:not([no-intersect]));

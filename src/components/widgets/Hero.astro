@@ -143,6 +143,35 @@ const {
 </section>
 
 <style>
+  /* -------- Hero entrance choreography --------
+   * Sequential reveal reads as: eyebrow → title → subtitle → CTAs → cards.
+   * Each step is delayed via --hf-delay so the order feels intentional
+   * rather than racing in unison. Cards stagger further so they fan in. */
+  .hero-nix .hero-nix__eyebrow,
+  .hero-nix .hero-nix__title,
+  .hero-nix .hero-nix__subtitle,
+  .hero-nix .hero-nix__quadrants > .grid > .hero-nix__card {
+    animation-delay: var(--hf-delay, 0ms);
+  }
+  .hero-nix .hero-nix__eyebrow { --hf-delay: 60ms; }
+  .hero-nix .hero-nix__title { --hf-delay: 180ms; }
+  .hero-nix .hero-nix__subtitle { --hf-delay: 320ms; }
+  .hero-nix .hero-nix__quadrants > .grid > .hero-nix__card:nth-child(1) { --hf-delay: 460ms; }
+  .hero-nix .hero-nix__quadrants > .grid > .hero-nix__card:nth-child(2) { --hf-delay: 560ms; }
+  .hero-nix .hero-nix__quadrants > .grid > .hero-nix__card:nth-child(3) { --hf-delay: 660ms; }
+  .hero-nix .hero-nix__quadrants > .grid > .hero-nix__card:nth-child(4) { --hf-delay: 760ms; }
+
+  /* Reduce motion: snap everything in. */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-nix .hero-nix__eyebrow,
+    .hero-nix .hero-nix__title,
+    .hero-nix .hero-nix__subtitle,
+    .hero-nix .hero-nix__quadrants > .grid > .hero-nix__card {
+      animation: none !important;
+      animation-delay: 0ms !important;
+    }
+  }
+
   /* -------- Hero card skin (n-ix-style four-quadrant hero) -------- */
   .hero-nix {
     --hero-nix-bg-from: #0b1437;
@@ -195,17 +224,6 @@ const {
       radial-gradient(closest-side at 20% 30%, rgba(110, 168, 255, 0.18), transparent 70%),
       radial-gradient(closest-side at 80% 70%, rgba(109, 40, 217, 0.18), transparent 70%);
     pointer-events: none;
-  }
-
-  /* Trust items live inside the trust card — paint it on the dark surface */
-  .hero-nix :global(.hero-nix__trustlist) {
-    color: rgba(245, 247, 251, 0.82);
-  }
-  .hero-nix :global(.hero-nix__trustlist li) {
-    color: rgba(245, 247, 251, 0.82);
-  }
-  .hero-nix :global(.hero-nix__trust-eyebrow) {
-    color: #a9c2ff;
   }
 
   /* ---------- Quadrant cards ---------- */
@@ -338,3 +356,33 @@ const {
   /* Light mode fallback — keep the dark hero on light mode too so it doesn't
      visibly clash with the rest of the page; only soften the nav region. */
 </style>
+
+<script>
+  // Toggle the header's .scrolled class once the dark hero is no longer
+  // fully behind the sticky nav. This lets the CSS :has() rule above
+  // switch the header back to its default light theme.
+  (() => {
+    const header = document.querySelector('header');
+    const hero = document.querySelector('.hero-nix');
+    if (!header || !hero) return;
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const heroBottom = hero.getBoundingClientRect().bottom;
+      const headerH = header.getBoundingClientRect().height || 76;
+      const scrolled = heroBottom < headerH + 8;
+      header.classList.toggle('scrolled', scrolled);
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  })();
+</script>
