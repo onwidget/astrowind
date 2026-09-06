@@ -7,7 +7,7 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 
 import { t, type Locale } from '~/utils/translations';
 
-const locale: Locale = 'en';
+const locale: Locale = 'es';
 const dict = t(locale);
 const sap = dict.elixa.sapFoundation;
 
@@ -22,7 +22,7 @@ const metadata = {
     id="product-hero"
     tagline={dict.elixa.eyebrow}
     actions={[
-      { variant: 'primary', text: dict.elixa.primaryCta, href: '/contact', icon: 'tabler:player-play' },
+      { variant: 'primary', text: dict.elixa.primaryCta, href: '/es/contact', icon: 'tabler:player-play' },
       { text: dict.elixa.secondaryCta, href: '#sap-model', icon: 'tabler:book' },
     ]}
   >
@@ -37,7 +37,6 @@ const metadata = {
     </div>
   </div>
 
-  <!-- SAP integration foundation — Elixa starting point (see ELIXA.md) -->
   <section id="sap-model" class="py-16 sm:py-20 lg:py-24" aria-labelledby="sap-model-title">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
       <p class="text-secondary text-sm font-bold tracking-wide uppercase mb-3">{sap.eyebrow}</p>
@@ -88,7 +87,7 @@ const metadata = {
     title={dict.elixa.howItWorksTitle}
     subtitle={dict.elixa.howItWorksSubtitle}
     items={dict.elixa.steps.map((s, i) => ({
-      title: `Step ${i + 1}: <span class="font-medium">${s.title}</span>`,
+      title: `Paso ${i + 1}: <span class="font-medium">${s.title}</span>`,
       description: s.description,
       icon: ['tabler:clipboard-list', 'tabler:layout-grid', 'tabler:shield-check', 'tabler:check'][i] ?? 'tabler:check',
     }))}
@@ -108,7 +107,7 @@ const metadata = {
   <CallToAction
     id="contact"
     actions={[
-      { variant: 'primary', text: dict.elixa.primaryCta, href: '/contact', icon: 'tabler:calendar-event' },
+      { variant: 'primary', text: dict.elixa.primaryCta, href: '/es/contact', icon: 'tabler:calendar-event' },
       { text: dict.elixa.secondaryCta, href: '#sap-model', icon: 'tabler:mail' },
     ]}
   >

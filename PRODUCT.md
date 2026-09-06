@@ -79,7 +79,7 @@ Open / undecided facts:
 - Real pillars: 5 in `src/utils/translations.ts` under `pillars.items`, with sub-services, deliverables, duration bands, EUR price bands, and "boring task" callouts per pillar.
 - Real case studies: 4 anonymized engagements in `dict.homepage.caseStudies.items` (banking, aviation, enterprise SaaS, global marketing) with client name + period + industry + service + title + outcome. Industry and service are real; client names need final approval before public launch.
 - Internal numbers (stats): under `dict.stats.items` — disclose as Cafetatek practice metrics, never personal CV metrics.
-- Reference products: Elixa (FinOps, owned by Cafetatek, under pillar 03 sub-service FinOps).
+- Reference products: Elixa (FinOps + multi-migration orchestration, owned by Cafetatek, under pillar 03 sub-service FinOps). **SAP integration foundation** (ODP / OData / CDS / Cortex) is the product starting point — see [`ELIXA.md`](./ELIXA.md).
 - Audit frameworks: EU AI Act, NIST AI RMF, ISO/IEC 42001.
 
 Absent (must not be fabricated):

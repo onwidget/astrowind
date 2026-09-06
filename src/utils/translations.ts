@@ -75,12 +75,32 @@ export type Translations = {
     secondaryCta: string;
     whyBuiltTitle: string;
     whyBuiltBody: string;
+    sapFoundation: {
+      eyebrow: string;
+      title: string;
+      subtitle: string;
+      painTitle: string;
+      painBody: string;
+      adaptersTitle: string;
+      adaptersSubtitle: string;
+      adapters: Array<{ title: string; description: string }>;
+      engineTitle: string;
+      engineBody: string;
+      closeTitle: string;
+      closeSubtitle: string;
+      closeItems: Array<{ title: string; description: string }>;
+    };
+    howItWorksTagline: string;
+    howItWorksTitle: string;
+    howItWorksSubtitle: string;
     steps: Array<{
       title: string;
       description: string;
     }>;
     featuresTitle: string;
     features: string[];
+    demoTitle: string;
+    demoSubtitle: string;
   };
   engagement: {
     eyebrow: string;
@@ -447,12 +467,65 @@ const en: Translations = {
     eyebrow: 'Product · Elixa Multi-Migration Platform',
     title: 'Run multiple SAP and cloud migrations in parallel — without losing operational continuity.',
     subtitle:
-      'Elixa is our in-house migration orchestration platform. It started as a way to make SAP modernisation less painful — fewer outages, cleaner data, faster migration waves. Today it coordinates multiple ERP and cloud migrations in parallel while keeping the live service running. Built for scale-ups in regulated industries that need a migration that does not take the platform down.',
+      'Elixa is our in-house migration orchestration platform. It started by connecting SAP to a modern data warehouse without custom ABAP — then grew into coordinating ERP and cloud migration waves while keeping the live service running. Built for scale-ups in regulated industries that need a migration that does not take the platform down.',
     primaryCta: 'Request Elixa demo',
-    secondaryCta: 'Read the docs',
+    secondaryCta: 'See the SAP model',
     whyBuiltTitle: 'Why we built it',
     whyBuiltBody:
       'Elixa was born out of operational pain: SAP and ERP modernisation projects fail because they are run as a single big-bang effort, with no orchestration across waves, no continuity checks, and no clear handoff between phases. Elixa turns that into a workload-by-workload decision tree — pick the right migration strategy per workload, run the waves in parallel, keep the live service running, and report on operational continuity in real time. The same engine produces the cost projection your procurement team signs off on, so finance and delivery see the same numbers from day one.',
+    sapFoundation: {
+      eyebrow: 'Elixa starting point · SAP integration',
+      title: 'Connect SAP to your data warehouse without custom ABAP.',
+      subtitle:
+        'We use the semantic layers and APIs SAP already ships. Match the adapter to the customer version, expose deltas through ODP, land business-ready tables in BigQuery via Cortex.',
+      painTitle: 'The market pain',
+      painBody:
+        'Connecting SAP to a Data Warehouse has historically meant months of work because it depends on the customer Basis / ABAP team hand-building custom extractors. That creates corporate friction, delays projects, and scares IT directors who fear saturating ERP performance.',
+      adaptersTitle: 'How we skip greenfield ABAP',
+      adaptersSubtitle: 'One playbook, three adapters — chosen by the SAP version the customer runs today.',
+      adapters: [
+        {
+          title: 'SAP S/4HANA',
+          description:
+            'Ideal path. We use CDS Views — SAP’s pre-optimised semantic layer — and publish them to the internet as a REST API over OData.'
+        },
+        {
+          title: 'SAP ECC (legacy)',
+          description:
+            'Same pattern, pointed at the classic extractors the customer already used for SAP BW. No greenfield extractor rewrite.'
+        },
+        {
+          title: 'SAP Business One',
+          description:
+            'For smaller estates we skip CDS and classic extractors and connect to the native Service Layer API.'
+        }
+      ],
+      engineTitle: 'The engine: ODP + incremental loads (CDC)',
+      engineBody:
+        'For S/4HANA and ECC we do not use OData as a full-table scan. Exposure must go through SAP’s ODP (Operational Data Provisioning) framework. ODP keeps bookmarks inside SAP. When Airbyte requests data, SAP returns only the deltas — invoices, customers, and other records created or changed since the last call. Extra CPU and network load on the ERP drops to near zero.',
+      closeTitle: 'Why this closes C-level deals',
+      closeSubtitle: 'Three arguments buyers can take into a steering committee without rewriting them.',
+      closeItems: [
+        {
+          title: 'Deploy in minutes',
+          description:
+            'We do not ask the customer to write code. We hand them a pre-built script. Their team enables ODP in about 30 minutes and returns a secure URL.'
+        },
+        {
+          title: 'No extra Digital Access cost',
+          description:
+            'A strictly read-only technical user over standard APIs. The customer does not owe SAP additional indirect-access licences for this path.'
+        },
+        {
+          title: 'Immediate business language (Cortex)',
+          description:
+            'Raw OData lands in BigQuery. Google Cloud Cortex Framework maps opaque German table names (VBAK, MARA, …) into business language for the Elixa web UI.'
+        }
+      ]
+    },
+    howItWorksTagline: 'How Elixa works',
+    howItWorksTitle: 'From a use case to a priced, orchestrated migration plan',
+    howItWorksSubtitle: 'Four steps, in parallel where it makes sense, with operational continuity baked in.',
     steps: [
       {
         title: 'Capture the use case',
@@ -477,15 +550,19 @@ const en: Translations = {
     ],
     featuresTitle: 'What ships with Elixa',
     features: [
+      'SAP → warehouse foundation (CDS / classic extractors / Service Layer + ODP deltas)',
       'Multi-migration wave orchestration (run SAP + cloud + data migrations in parallel)',
-      'Cortex Framework decision layer (picks the right migration strategy per workload)',
+      'Cortex Framework decision layer (business language on BigQuery + migration strategy per workload)',
       'Operational continuity checks (keep the live service running through migration waves)',
       'SAP modernisation playbook (the original operational inspiration)',
       'Oracle / Microsoft / custom legacy ERP support',
       'Pre-flight data integrity + post-migration validation',
       'Vendor-priced SKUs across AWS, GCP, Azure, sovereign EU providers',
       'PDF and CSV outputs styled for buyer-side procurement'
-    ]
+    ],
+    demoTitle: 'Request an Elixa demo',
+    demoSubtitle:
+      'See the SAP model and the migration orchestrator on your use case, in your cloud, in your region. 30-min working session with the team that built it.'
   },
   engagement: {
     eyebrow: 'Engagement models',
@@ -966,12 +1043,65 @@ const es: Translations = {
     eyebrow: 'Producto · Elixa Multi-Migration Platform',
     title: 'Cubre múltiples migraciones de SAP y cloud en paralelo — sin perder continuidad operacional.',
     subtitle:
-      'Elixa es nuestra plataforma interna de orquestación de migraciones. Nació como una forma de hacer la modernización de SAP menos dolorosa — menos outages, datos más limpios, olas de migración más rápidas. Hoy coordina múltiples migraciones de ERP y cloud en paralelo mientras mantiene el servicio vivo. Construida para scale-ups en industrias reguladas que necesitan una migración que no tumbe la plataforma.',
+      'Elixa es nuestra plataforma interna de orquestación de migraciones. Nació conectando SAP a un data warehouse moderno sin ABAP a medida — y creció hasta coordinar olas de migración de ERP y cloud mientras mantiene el servicio vivo. Construida para scale-ups en industrias reguladas que necesitan una migración que no tumbe la plataforma.',
     primaryCta: 'Solicitar demo de Elixa',
-    secondaryCta: 'Leer la documentación',
+    secondaryCta: 'Ver el modelo SAP',
     whyBuiltTitle: 'Por qué lo construimos',
     whyBuiltBody:
       'Elixa nació de un dolor operacional: los proyectos de modernización de SAP y ERP fallan porque se corren como un único esfuerzo big-bang, sin orquestación entre olas, sin checks de continuidad y sin handoff claro entre fases. Elixa convierte eso en un decision tree carga por carga — elige la estrategia de migración correcta por carga, corre las olas en paralelo, mantiene el servicio vivo y reporta continuidad operacional en tiempo real. El mismo motor produce la proyección de coste que tu equipo de procurement firma, así finance y delivery ven los mismos números desde el día uno.',
+    sapFoundation: {
+      eyebrow: 'Punto de partida de Elixa · Integración SAP',
+      title: 'Conecta SAP a tu data warehouse sin ABAP a medida.',
+      subtitle:
+        'Usamos las capas semánticas y las APIs que SAP ya trae. Elegimos el adaptador según la versión del cliente, exponemos deltas vía ODP y aterrizamos tablas listas para negocio en BigQuery con Cortex.',
+      painTitle: 'El dolor del mercado',
+      painBody:
+        'Conectar SAP a un Data Warehouse ha significado históricamente meses de trabajo porque depende de que el equipo Basis / ABAP del cliente programe extractores a mano. Eso genera fricción corporativa, retrasa proyectos y asusta a los directores de TI por el riesgo de saturar el rendimiento del ERP.',
+      adaptersTitle: 'Cómo evitamos el desarrollo ABAP desde cero',
+      adaptersSubtitle: 'Un playbook, tres adaptadores — según la versión de SAP que el cliente corre hoy.',
+      adapters: [
+        {
+          title: 'SAP S/4HANA',
+          description:
+            'Escenario ideal. Usamos CDS Views — la capa semántica pre-optimizada de SAP — y las publicamos a internet como API REST con OData.'
+        },
+        {
+          title: 'SAP ECC (legacy)',
+          description:
+            'El mismo patrón, apuntando a los extractores clásicos que el cliente ya usaba para SAP BW. Sin reescribir extractores desde cero.'
+        },
+        {
+          title: 'SAP Business One',
+          description:
+            'En pymes nos saltamos CDS y extractores clásicos y nos conectamos a la API nativa Service Layer.'
+        }
+      ],
+      engineTitle: 'El motor: ODP + cargas incrementales (CDC)',
+      engineBody:
+        'En S/4HANA y ECC no usamos OData como un full-scan de tablas. La exposición debe pasar por el framework ODP (Operational Data Provisioning) de SAP. ODP guarda marcadores dentro de SAP. Cuando Airbyte pide datos, SAP solo entrega los deltas — facturas, clientes y otros registros creados o modificados desde la última llamada. El impacto extra en CPU y red del ERP cae a casi cero.',
+      closeTitle: 'Por qué esto cierra deals C-level',
+      closeSubtitle: 'Tres argumentos que el comprador puede llevar a un comité sin reescribirlos.',
+      closeItems: [
+        {
+          title: 'Despliegue en minutos',
+          description:
+            'No pedimos al cliente que desarrolle código. Entregamos un script prefabricado. Su equipo habilita ODP en unos 30 minutos y nos entrega una URL segura.'
+        },
+        {
+          title: 'Sin coste extra de Digital Access',
+          description:
+            'Usuario técnico estrictamente de lectura sobre APIs estándar. El cliente no debe a SAP licencias adicionales de acceso indirecto por este camino.'
+        },
+        {
+          title: 'Idioma de negocio inmediato (Cortex)',
+          description:
+            'El OData crudo aterriza en BigQuery. Google Cloud Cortex Framework traduce tablas alemanas opacas (VBAK, MARA, …) al idioma de negocio de la interfaz web de Elixa.'
+        }
+      ]
+    },
+    howItWorksTagline: 'Cómo funciona Elixa',
+    howItWorksTitle: 'De un caso de uso a un plan de migración con precio y orquestado',
+    howItWorksSubtitle: 'Cuatro pasos, en paralelo donde tiene sentido, con continuidad operacional incluida.',
     steps: [
       {
         title: 'Capturar el caso de uso',
@@ -996,15 +1126,19 @@ const es: Translations = {
     ],
     featuresTitle: 'Qué incluye Elixa',
     features: [
+      'Fundamento SAP → warehouse (CDS / extractores clásicos / Service Layer + deltas ODP)',
       'Orquestación de múltiples olas de migración (SAP + cloud + datos en paralelo)',
-      'Capa de decisión con Cortex Framework (elige la estrategia de migración correcta por carga)',
+      'Capa de decisión con Cortex Framework (idioma de negocio en BigQuery + estrategia por carga)',
       'Checks de continuidad operacional (mantén el servicio vivo durante las olas)',
       'Playbook de modernización de SAP (la inspiración operacional original)',
       'Soporte para Oracle / Microsoft / ERP legacy custom',
       'Integridad de datos pre-vuelo + validación post-migración',
       'SKUs con precio real en AWS, GCP, Azure y nubes soberanas UE',
       'Salidas PDF y CSV listas para procurement del comprador'
-    ]
+    ],
+    demoTitle: 'Solicitar una demo de Elixa',
+    demoSubtitle:
+      'Mira el modelo SAP y el orquestador de migraciones sobre tu caso de uso, en tu cloud, en tu región. Sesión de trabajo de 30 minutos con el equipo que lo construyó.'
   },
   packages: {
     eyebrow: 'Portafolio de servicios',
