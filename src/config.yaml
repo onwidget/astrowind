@@ -4,9 +4,12 @@ site:
   base: '/'
   trailingSlash: false
 
-  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
+  # From Google Search Console → Settings → Ownership verification → HTML tag.
+  # Left empty until the property is claimed; no tag is rendered while it is.
+  googleSiteVerificationId: ''
 
-# Default SEO metadata
+# Default SEO metadata. Pages override title/description via their own
+# `metadata` object; everything else falls through to these values.
 metadata:
   title:
     default: Codemyc — Senior Software, Direct
@@ -18,55 +21,14 @@ metadata:
   openGraph:
     site_name: Codemyc
     images:
-      - url: '~/assets/images/default.png'
+      - url: '~/assets/images/og-codemyc.png'
         width: 1200
-        height: 628
+        height: 630
+        alt: 'Codemyc — senior software, direct. Boutique nearshore software consultancy in Montevideo, Uruguay.'
     type: website
   twitter:
-    handle: '@codemyc'
-    site: '@codemyc'
     cardType: summary_large_image
 
 i18n:
   language: en
   textDirection: ltr
-
-apps:
-  blog:
-    isEnabled: false
-    postsPerPage: 6
-
-    post:
-      isEnabled: false
-      permalink: '/%slug%'
-      robots:
-        index: true
-
-    list:
-      isEnabled: false
-      pathname: 'blog'
-      robots:
-        index: true
-
-    category:
-      isEnabled: false
-      pathname: 'category'
-      robots:
-        index: true
-
-    tag:
-      isEnabled: false
-      pathname: 'tag'
-      robots:
-        index: false
-
-    isRelatedPostsEnabled: false
-    relatedPostsCount: 4
-
-analytics:
-  vendors:
-    googleAnalytics:
-      id: null
-
-ui:
-  theme: 'system'

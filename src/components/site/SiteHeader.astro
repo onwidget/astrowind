@@ -1,12 +1,7 @@
 ---
 import Wordmark from './Wordmark.astro';
+import { mainNav as links, primaryCta } from '~/navigation';
 
-const links = [
-  { text: 'Services', href: '/services' },
-  { text: 'Team', href: '/team' },
-  { text: 'About', href: '/about' },
-  { text: 'Contact', href: '/contact' },
-];
 const current = Astro.url.pathname.replace(/\/$/, '');
 ---
 
@@ -31,7 +26,7 @@ const current = Astro.url.pathname.replace(/\/$/, '');
           </a>
         ))
       }
-      <a href="/contact" class="btn-spore !py-2.5 !px-5 text-sm">Start a project</a>
+      <a href={primaryCta.href} class="btn-spore !py-2.5 !px-5 text-sm">{primaryCta.text}</a>
     </nav>
 
     <button
@@ -43,7 +38,8 @@ const current = Astro.url.pathname.replace(/\/$/, '');
     >
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
         <path class="menu-bar-top" d="M2 5h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
-        <path class="menu-bar-bottom" d="M2 12h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+        <path class="menu-bar-bottom" d="M2 12h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+        ></path>
       </svg>
     </button>
   </div>
@@ -57,7 +53,7 @@ const current = Astro.url.pathname.replace(/\/$/, '');
           </a>
         ))
       }
-      <a href="/contact" class="btn-spore mt-4 self-start">Start a project</a>
+      <a href={primaryCta.href} class="btn-spore mt-4 self-start">{primaryCta.text}</a>
     </nav>
   </div>
 </header>

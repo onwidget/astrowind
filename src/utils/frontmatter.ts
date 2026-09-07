@@ -1,19 +1,7 @@
-import getReadingTime from 'reading-time';
-import { toString } from 'mdast-util-to-string';
 import { visit } from 'unist-util-visit';
-import type { RehypePlugin, RemarkPlugin } from '@astrojs/markdown-remark';
+import type { RehypePlugin } from '@astrojs/markdown-remark';
 
-export const readingTimeRemarkPlugin: RemarkPlugin = () => {
-  return function (tree, file) {
-    const textOnPage = toString(tree);
-    const readingTime = Math.ceil(getReadingTime(textOnPage).minutes);
-
-    if (typeof file?.data?.astro?.frontmatter !== 'undefined') {
-      file.data.astro.frontmatter.readingTime = readingTime;
-    }
-  };
-};
-
+/** Wrap markdown tables so wide ones scroll instead of blowing out the layout. */
 export const responsiveTablesRehypePlugin: RehypePlugin = () => {
   return function (tree) {
     if (!tree.children) return;
@@ -37,6 +25,7 @@ export const responsiveTablesRehypePlugin: RehypePlugin = () => {
   };
 };
 
+/** Markdown images are below the fold by definition — never block first paint. */
 export const lazyImagesRehypePlugin: RehypePlugin = () => {
   return function (tree) {
     if (!tree.children) return;

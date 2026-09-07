@@ -5,24 +5,29 @@ import '@fontsource-variable/inter';
 import '@fontsource/jetbrains-mono/400.css';
 import '@fontsource/jetbrains-mono/500.css';
 
-import { I18N } from 'astrowind:config';
+import { I18N } from 'codemyc:config';
 
 import CommonMeta from '~/components/common/CommonMeta.astro';
 import Favicons from '~/components/Favicons.astro';
 import Metadata from '~/components/common/Metadata.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
+import StructuredData from '~/components/common/StructuredData.astro';
 import SiteHeader from '~/components/site/SiteHeader.astro';
 import SiteFooter from '~/components/site/SiteFooter.astro';
 
 import { ClientRouter } from 'astro:transitions';
 
+import { team } from '~/data/team';
+import { organizationSchema, websiteSchema } from '~/utils/schema';
 import type { MetaData as MetaDataType } from '~/types';
 
 export interface Props {
   metadata?: MetaDataType;
+  /** Page-specific JSON-LD, added to the site-wide organization graph. */
+  schemas?: Record<string, unknown>[];
 }
 
-const { metadata = {} } = Astro.props;
+const { metadata = {}, schemas = [] } = Astro.props;
 const { language, textDirection } = I18N;
 ---
 
@@ -33,6 +38,7 @@ const { language, textDirection } = I18N;
     <Favicons />
     <Metadata {...metadata} />
     <SiteVerification />
+    <StructuredData schemas={[organizationSchema(team), websiteSchema(), ...schemas]} />
     <ClientRouter fallback="swap" />
   </head>
 

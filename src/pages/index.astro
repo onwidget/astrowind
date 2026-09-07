@@ -1,7 +1,8 @@
 ---
 import SiteLayout from '~/layouts/SiteLayout.astro';
 import MyceliumCanvas from '~/components/site/MyceliumCanvas.astro';
-import MediaPlaceholder from '~/components/site/MediaPlaceholder.astro';
+import MemberGlyph from '~/components/site/MemberGlyph.astro';
+import MemberPhoto from '~/components/site/MemberPhoto.astro';
 import { coreTeam } from '~/data/team';
 
 const metadata = {
@@ -71,7 +72,11 @@ const steps = [
 
     <div class="container-site relative z-10 pt-28 pb-20">
       <p class="label-mono" data-reveal>Nearshore software consultancy · Latin America · GMT−3</p>
-      <h1 class="heading-display mt-6 max-w-4xl text-5xl leading-[1.05] md:text-7xl" data-reveal data-reveal-delay="0.1">
+      <h1
+        class="heading-display mt-6 max-w-4xl text-5xl leading-[1.05] md:text-7xl"
+        data-reveal
+        data-reveal-delay="0.1"
+      >
         Senior software, <span class="text-spore">direct.</span>
       </h1>
       <p class="mt-7 max-w-2xl text-lg leading-relaxed text-haze md:text-xl" data-reveal data-reveal-delay="0.2">
@@ -109,8 +114,8 @@ const steps = [
     <div class="container-site py-24 md:py-32">
       <p class="label-mono" data-reveal>Why “Codemyc”</p>
       <p class="heading-display mt-6 max-w-4xl text-3xl leading-snug md:text-5xl" data-reveal>
-        <span class="text-spore">Myc</span>, as in mycelium — the quiet network that makes the forest work. We plug
-        into your business the same way: <span class="text-haze">low ego, high connectivity, lasting impact.</span>
+        <span class="text-spore">Myc</span>, as in mycelium — the quiet network that makes the forest work. We plug into
+        your business the same way: <span class="text-haze">low ego, high connectivity, lasting impact.</span>
       </p>
       <p class="mt-8 max-w-2xl text-haze" data-reveal>
         Not an agency with account managers between you and the people doing the work. Not offshore roulette. A small
@@ -219,8 +224,8 @@ const steps = [
 
       <p class="mt-14 max-w-2xl text-haze" data-reveal>
         Because members are practicing professionals — not bench inventory — every engagement gets people who are sharp
-        <em class="text-mist not-italic">right now</em>, and you never subsidize idle capacity. That’s a big part of
-        why the price is competitive.
+        <em class="text-mist not-italic">right now</em>, and you never subsidize idle capacity. That’s a big part of why
+        the price is competitive.
       </p>
     </div>
   </section>
@@ -243,11 +248,21 @@ const steps = [
               href={`/${m.slug}`}
               class="card-moss group overflow-hidden transition-all hover:-translate-y-1 hover:border-spore/40"
             >
-              <MediaPlaceholder
-                brief={m.photo.brief}
-                label={`Photo — ${m.name}`}
-                class="aspect-[16/10] rounded-none border-0 border-b border-dashed border-edge"
-              />
+              {/* Portrait slot — swaps in automatically once `photo.image` is set in src/data/team.ts */}
+              {m.photo.image ? (
+                <MemberPhoto
+                  image={m.photo.image}
+                  alt={`Portrait of ${m.name}`}
+                  focalPosition={m.photo.focalPosition}
+                  class="aspect-[16/10] rounded-none border-0 border-b border-edge"
+                />
+              ) : (
+                <MemberGlyph
+                  name={m.name}
+                  slug={m.slug}
+                  class="aspect-[16/10] rounded-none border-0 border-b border-edge"
+                />
+              )}
               <div class="p-8">
                 <p class="label-mono text-spore">{m.role}</p>
                 <h3 class="font-display mt-2 text-2xl font-semibold text-mist">{m.name}</h3>
@@ -268,15 +283,15 @@ const steps = [
     <div class="container-site py-20">
       <dl class="grid grid-cols-2 gap-10 md:grid-cols-4" data-reveal-group>
         <div>
-          <dd class="font-display text-5xl font-semibold text-spore" data-count="9" data-count-suffix="+">0</dd>
+          <dd class="font-display text-5xl font-semibold text-spore" data-count="9" data-count-suffix="+">9+</dd>
           <dt class="label-mono mt-2">Years shipping production software</dt>
         </div>
         <div>
-          <dd class="font-display text-5xl font-semibold text-spore" data-count="67" data-count-suffix="+">0</dd>
+          <dd class="font-display text-5xl font-semibold text-spore" data-count="67" data-count-suffix="+">67+</dd>
           <dt class="label-mono mt-2">Government portals maintained</dt>
         </div>
         <div>
-          <dd class="font-display text-5xl font-semibold text-spore" data-count="8" data-count-suffix="+">0</dd>
+          <dd class="font-display text-5xl font-semibold text-spore" data-count="8" data-count-suffix="+">8+</dd>
           <dt class="label-mono mt-2">Professional certifications</dt>
         </div>
         <div>

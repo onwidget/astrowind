@@ -4,10 +4,12 @@
  * To publish a new member space, add an entry to src/data/team.ts; this
  * route picks it up automatically.
  */
+import { getImage } from 'astro:assets';
 import SiteLayout from '~/layouts/SiteLayout.astro';
-import MediaPlaceholder from '~/components/site/MediaPlaceholder.astro';
+import MemberGlyph from '~/components/site/MemberGlyph.astro';
 import MemberPhoto from '~/components/site/MemberPhoto.astro';
 import { team, type TeamMember } from '~/data/team';
+import { personSchema } from '~/utils/schema';
 
 export function getStaticPaths() {
   return team.map((member) => ({ params: { member: member.slug }, props: { member } }));
@@ -25,9 +27,13 @@ const metadata = {
 
 const index = team.findIndex((m) => m.slug === member.slug);
 const next = team[(index + 1) % team.length];
+
+// Portrait for the Person JSON-LD — optimized, absolute, and only when we have one.
+const portrait = member.photo.image ? await getImage({ src: member.photo.image, width: 800 }) : undefined;
+const portraitUrl = portrait ? new URL(portrait.src, Astro.site).toString() : undefined;
 ---
 
-<SiteLayout metadata={metadata}>
+<SiteLayout metadata={metadata} schemas={[personSchema(member, portraitUrl)]}>
   <!-- Profile hero -->
   <section class="border-b border-edge bg-deep bg-dotgrid">
     <div class="container-site grid items-center gap-12 pt-36 pb-20 md:grid-cols-[3fr_2fr]">
@@ -63,9 +69,19 @@ const next = team[(index + 1) % team.length];
         </dl>
       </div>
 
-      {member.photo.image
-        ? <MemberPhoto image={member.photo.image} alt={`Portrait of ${member.name}`} class="aspect-[4/5]" />
-        : <MediaPlaceholder brief={member.photo.brief} label={`Photo — ${member.name}`} class="aspect-[4/5]" />
+      {/* Portrait slot — set `photo.image` in src/data/team.ts and the real photo replaces the glyph */}
+      {
+        member.photo.image ? (
+          <MemberPhoto
+            image={member.photo.image}
+            alt={`Portrait of ${member.name}`}
+            focalPosition={member.photo.focalPosition}
+            loading="eager"
+            class="aspect-[4/5]"
+          />
+        ) : (
+          <MemberGlyph name={member.name} slug={member.slug} class="aspect-[4/5]" />
+        )
       }
     </div>
   </section>

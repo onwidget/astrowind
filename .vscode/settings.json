@@ -1,5 +1,4 @@
 {
-  "css.customData": ["./vscode.tailwind.json"],
   "eslint.validate": ["javascript", "javascriptreact", "astro", "typescript", "typescriptreact"],
   "files.associations": {
     "*.mdx": "markdown"
@@ -9,7 +8,7 @@
     "editor.defaultFormatter": "astro-build.astro-vscode"
   },
   "yaml.schemas": {
-    "./.vscode/astrowind/config-schema.json": "/src/config.yaml"
+    "./.vscode/codemyc/config-schema.json": "/src/config.yaml"
   },
   "eslint.useFlatConfig": true
 }

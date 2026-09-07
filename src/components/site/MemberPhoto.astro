@@ -1,24 +1,44 @@
 ---
+/**
+ * Member portrait. Served through astro:assets so every card gets a
+ * responsive, re-encoded srcset instead of the multi-hundred-KB original.
+ */
+import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
   image: ImageMetadata;
   alt: string;
   class?: string;
+  /** CSS object-position for the crop, e.g. 'center 30%'. */
+  focalPosition?: string;
+  /** Eager only for portraits above the fold. */
+  loading?: 'lazy' | 'eager';
+  /** Widths to generate; wide layout slots want the larger set. */
+  widths?: number[];
+  sizes?: string;
 }
 
-const { image, alt, class: className = '' } = Astro.props;
+const {
+  image,
+  alt,
+  class: className = '',
+  focalPosition,
+  loading = 'lazy',
+  widths = [400, 640, 900],
+  sizes = '(min-width: 768px) 45vw, 100vw',
+} = Astro.props;
 ---
 
 <figure class:list={['relative overflow-hidden rounded-2xl border border-edge', className]}>
-  <img
-    src={image.src}
+  <Image
+    src={image}
     alt={alt}
-    width={image.width}
-    height={image.height}
+    widths={widths}
+    sizes={sizes}
     class="h-full w-full object-cover object-top"
-    style="filter: brightness(0.87) contrast(1.06) saturate(0.72);"
-    loading="eager"
+    style={`filter: brightness(0.87) contrast(1.06) saturate(0.72);${focalPosition ? ` object-position: ${focalPosition};` : ''}`}
+    loading={loading}
     decoding="async"
   />
   <!-- Dark-green wash to blend with site palette -->

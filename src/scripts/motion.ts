@@ -6,12 +6,41 @@ gsap.registerPlugin(ScrollTrigger);
 const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /**
+ * Counters. The markup ships the final value, so this only has to animate up to
+ * it; with `animate` false (reduced motion) the value is simply left in place.
+ */
+function countUp(animate: boolean) {
+  document.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => {
+    const target = parseFloat(el.dataset.count ?? '0');
+    const suffix = el.dataset.countSuffix ?? '';
+    const render = (value: number) => {
+      el.textContent = `${Math.round(value)}${suffix}`;
+    };
+
+    render(target);
+    if (!animate) return;
+
+    const counter = { value: 0 };
+    render(0);
+    gsap.to(counter, {
+      value: target,
+      duration: 1.6,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+      onUpdate: () => render(counter.value),
+      onComplete: () => render(target),
+    });
+  });
+}
+
+/**
  * Scroll choreography for the whole site.
  *
  * Markup contract:
  *  - [data-reveal]            fades/slides in when scrolled into view
  *  - [data-reveal-group]      staggers its direct children
- *  - [data-count="42"]        counts up from 0 when visible (suffix kept from text)
+ *  - [data-count="42"]        counts up to 42 when visible; markup already holds
+ *                             the final value, so no-JS and reduced-motion keep it
  *  - #site-header             gets .scrolled past 40px
  */
 function init() {
@@ -29,6 +58,7 @@ function init() {
 
   if (prefersReducedMotion()) {
     gsap.set('[data-reveal], [data-reveal-group] > *', { opacity: 1 });
+    countUp(false);
     return;
   }
 
@@ -62,20 +92,7 @@ function init() {
     );
   });
 
-  document.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => {
-    const target = parseFloat(el.dataset.count ?? '0');
-    const suffix = el.dataset.countSuffix ?? '';
-    const counter = { value: 0 };
-    gsap.to(counter, {
-      value: target,
-      duration: 1.6,
-      ease: 'power2.out',
-      scrollTrigger: { trigger: el, start: 'top 90%', once: true },
-      onUpdate: () => {
-        el.textContent = `${Math.round(counter.value)}${suffix}`;
-      },
-    });
-  });
+  countUp(true);
 }
 
 document.addEventListener('astro:page-load', init);

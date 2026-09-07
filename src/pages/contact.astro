@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '~/layouts/SiteLayout.astro';
+import { site } from '~/data/site';
 
 const metadata = {
   title: 'Start a project',
@@ -9,8 +10,16 @@ const metadata = {
 
 const next = [
   { n: '01', t: 'We read it — personally', d: 'Your message lands with Orlando and Diana, not a CRM queue.' },
-  { n: '02', t: 'A call with the engineers', d: 'Usually within two business days. Bring the problem as it actually is.' },
-  { n: '03', t: 'Scope and a clear price', d: 'What we’d build, who from the network would build it, honest trade-offs, and what it costs.' },
+  {
+    n: '02',
+    t: 'A call with the engineers',
+    d: 'Usually within two business days. Bring the problem as it actually is.',
+  },
+  {
+    n: '03',
+    t: 'Scope and a clear price',
+    d: 'What we’d build, who from the network would build it, honest trade-offs, and what it costs.',
+  },
 ];
 ---
 
@@ -80,7 +89,8 @@ const next = [
             rows="6"
             required
             class="w-full rounded-xl border border-edge bg-moss px-5 py-3.5 text-sm text-mist placeholder:text-haze/60"
-            placeholder="As it actually is — messy is fine. What's broken, what's slow, what you wish existed."></textarea>
+            placeholder="As it actually is — messy is fine. What's broken, what's slow, what you wish existed."
+          ></textarea>
         </div>
         <button type="submit" class="btn-spore">Send it to the engineers</button>
       </form>
@@ -88,9 +98,18 @@ const next = [
       <aside class="space-y-10">
         <div data-reveal>
           <p class="label-mono mb-3">Prefer email?</p>
-          <a href="mailto:hello@codemyc.com" class="font-display text-2xl font-semibold text-spore hover:underline">
-            hello@codemyc.com
+          <a href={`mailto:${site.email}`} class="font-display text-2xl font-semibold text-spore hover:underline">
+            {site.email}
           </a>
+          <p class="mt-4 text-sm text-haze">
+            Or find us on <a
+              href={site.linkedin}
+              target="_blank"
+              rel="noopener"
+              class="text-mist underline decoration-edge underline-offset-4 transition-colors hover:text-spore"
+              >LinkedIn</a
+            >.
+          </p>
         </div>
 
         <div data-reveal>

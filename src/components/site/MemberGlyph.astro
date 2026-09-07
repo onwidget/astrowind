@@ -1,0 +1,72 @@
+---
+/**
+ * Brand-native stand-in for a member portrait: a monogram sitting inside a
+ * mycelium network generated deterministically from the member's slug, so
+ * every person gets their own network and it never changes between builds.
+ *
+ * Used wherever a member has no photo yet (see docs/photo-slots.md). Drop an
+ * `image` into that member's `photo` in src/data/team.ts and the real portrait
+ * replaces this automatically — no markup changes needed.
+ */
+import { buildGlyph } from '~/utils/glyph';
+
+interface Props {
+  name: string;
+  slug: string;
+  class?: string;
+}
+
+const { name, slug, class: className = 'aspect-[4/5]' } = Astro.props;
+
+const initials = name
+  .split(/\s+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((word) => word[0]?.toUpperCase() ?? '')
+  .join('');
+
+const { nodes, edges } = buildGlyph(slug);
+---
+
+<figure
+  class:list={[
+    'relative flex items-center justify-center overflow-hidden bg-moss border border-edge rounded-2xl',
+    className,
+  ]}
+>
+  <svg
+    class="absolute inset-0 h-full w-full"
+    viewBox="0 0 100 100"
+    preserveAspectRatio="xMidYMid slice"
+    fill="none"
+    aria-hidden="true"
+  >
+    {
+      edges.map((e) => (
+        <line x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2} stroke="#8fa89b" stroke-opacity={e.opacity} stroke-width="0.22" />
+      ))
+    }
+    {
+      nodes.map((n) => (
+        <circle cx={n.x} cy={n.y} r={n.r} fill={n.hub ? '#b8f53d' : '#eaf3ec'} fill-opacity={n.hub ? 0.85 : 0.4} />
+      ))
+    }
+  </svg>
+
+  <!-- Vignette: keeps the network from fighting the monogram -->
+  <div
+    class="pointer-events-none absolute inset-0"
+    style="background: radial-gradient(closest-side at 50% 48%, rgb(16 31 23 / 0.96) 35%, rgb(16 31 23 / 0.55) 62%, transparent 100%);"
+    aria-hidden="true"
+  >
+  </div>
+
+  <figcaption class="relative z-10 flex flex-col items-center px-6 text-center">
+    <span
+      class="font-display flex h-24 w-24 items-center justify-center rounded-full border border-spore/25 bg-ink/60 text-3xl font-semibold tracking-tight text-mist shadow-[0_0_40px_rgb(184_245_61/0.1)] md:h-28 md:w-28 md:text-4xl"
+    >
+      {initials}
+    </span>
+    <span class="label-mono mt-5 text-spore">/{slug}</span>
+  </figcaption>
+</figure>

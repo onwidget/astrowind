@@ -2,3 +2,8 @@ dist
 node_modules
 .github
 .changeset
+
+# Reference material and tool state — not source we format.
+docs
+.cline
+.astro

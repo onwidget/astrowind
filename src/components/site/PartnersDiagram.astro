@@ -1,0 +1,127 @@
+---
+/**
+ * The founders, drawn as what they actually are: two connected hubs inside a
+ * larger network. Stands in the column on /about where a candid photo of
+ * Orlando and Diana will eventually go (see docs/photo-slots.md).
+ *
+ * Background strands come from the shared mycelium generator; the two hubs and
+ * the strand between them are placed deliberately, in a viewBox that maps 1:1
+ * to percentages so the HTML labels sit exactly on the SVG nodes.
+ */
+import { buildGlyph } from '~/utils/glyph';
+
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+
+const { nodes, edges } = buildGlyph('codemyc-core', { count: 26, minDistance: 13, linkDistance: 30 });
+
+/** Hub positions, in both the strand viewBox and CSS percentages. */
+const hubs = [
+  { initials: 'OP', name: 'Orlando Pantoja', owns: 'Engineering & architecture', x: 26, y: 30 },
+  { initials: 'DA', name: 'Diana Alfonso', owns: 'GovTech & compliance', x: 67, y: 60 },
+];
+const [orlando, diana] = hubs;
+
+/** Satellites each hub reaches into — the extended network. */
+const satellites = [
+  { x: 8, y: 12 },
+  { x: 50, y: 8 },
+  { x: 92, y: 26 },
+  { x: 12, y: 62 },
+  { x: 44, y: 86 },
+  { x: 88, y: 90 },
+];
+---
+
+<figure class:list={['card-moss relative flex flex-col overflow-hidden', className]}>
+  <div class="relative min-h-[20rem] flex-1">
+    <!-- Ambient network -->
+    <svg
+      class="absolute inset-0 h-full w-full"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="xMidYMid slice"
+      fill="none"
+      aria-hidden="true"
+    >
+      {
+        edges.map((e) => (
+          <line
+            x1={e.x1}
+            y1={e.y1}
+            x2={e.x2}
+            y2={e.y2}
+            stroke="#8fa89b"
+            stroke-opacity={e.opacity * 0.7}
+            stroke-width="0.2"
+          />
+        ))
+      }
+      {nodes.map((n) => <circle cx={n.x} cy={n.y} r={n.r * 0.8} fill="#eaf3ec" fill-opacity="0.28" />)}
+    </svg>
+
+    <!-- Deliberate strands: hub ↔ hub, hubs → satellites. Non-uniform scaling
+         keeps these aligned with the percentage-positioned labels below. -->
+    <svg
+      class="absolute inset-0 h-full w-full"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      fill="none"
+      aria-hidden="true"
+    >
+      {
+        satellites.map((s, i) => {
+          const hub = i % 2 === 0 ? orlando : diana;
+          return (
+            <line x1={hub.x} y1={hub.y} x2={s.x} y2={s.y} stroke="#8fa89b" stroke-opacity="0.28" stroke-width="0.35" />
+          );
+        })
+      }
+      {satellites.map((s) => <circle cx={s.x} cy={s.y} r="0.9" fill="#eaf3ec" fill-opacity="0.45" />)}
+      <path
+        d={`M ${orlando.x} ${orlando.y} Q 50 38 ${diana.x} ${diana.y}`}
+        stroke="#b8f53d"
+        stroke-opacity="0.55"
+        stroke-width="0.6"
+        fill="none"></path>
+    </svg>
+
+    <!-- Hubs -->
+    {
+      hubs.map((hub) => (
+        <div
+          class="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center"
+          style={`left: ${hub.x}%; top: ${hub.y}%;`}
+        >
+          <span class="font-display flex h-14 w-14 items-center justify-center rounded-full border border-spore/40 bg-ink text-sm font-semibold text-spore shadow-[0_0_28px_rgb(184_245_61/0.18)]">
+            {hub.initials}
+          </span>
+          <span class="label-mono mt-3 max-w-[7rem] text-center leading-relaxed text-mist sm:max-w-none sm:whitespace-nowrap">
+            {hub.name}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+
+  <figcaption class="border-t border-edge bg-ink/30 p-6">
+    <p class="label-mono text-spore">The core, and everything it reaches</p>
+    <ul class="mt-4 space-y-2.5">
+      {
+        hubs.map((hub) => (
+          <li class="flex gap-3 text-sm text-haze">
+            <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-spore" aria-hidden="true" />
+            <span>
+              <span class="text-mist">{hub.name}</span> — {hub.owns}
+            </span>
+          </li>
+        ))
+      }
+      <li class="flex gap-3 text-sm text-haze">
+        <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-haze/50" aria-hidden="true"></span>
+        <span><span class="text-mist">Extended network</span> — specialists activated per engagement</span>
+      </li>
+    </ul>
+  </figcaption>
+</figure>

@@ -1,0 +1,19 @@
+---
+/**
+ * Renders one JSON-LD graph per page. Pass the schema objects built by
+ * src/utils/schema.ts; they are linked by @id, so search engines read the
+ * organization, the site, and any person on the page as one connected graph.
+ */
+interface Props {
+  schemas: Record<string, unknown>[];
+}
+
+const { schemas } = Astro.props;
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': schemas,
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(graph)} />

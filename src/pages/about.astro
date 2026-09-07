@@ -1,7 +1,7 @@
 ---
 import SiteLayout from '~/layouts/SiteLayout.astro';
 import MyceliumCanvas from '~/components/site/MyceliumCanvas.astro';
-import MediaPlaceholder from '~/components/site/MediaPlaceholder.astro';
+import PartnersDiagram from '~/components/site/PartnersDiagram.astro';
 
 const metadata = {
   title: 'About',
@@ -51,26 +51,23 @@ const values = [
     <div class="container-site grid gap-14 py-24 md:grid-cols-[3fr_2fr]">
       <div class="space-y-6 text-lg leading-relaxed text-haze">
         <p data-reveal>
-          Codemyc started with two engineers in Montevideo who kept seeing the same thing from opposite sides:
-          companies paying agency prices for junior work, and senior Latin American engineers doing world-class work
-          without their names on it.
+          Codemyc started with two engineers in Montevideo who kept seeing the same thing from opposite sides: companies
+          paying agency prices for junior work, and senior Latin American engineers doing world-class work without their
+          names on it.
         </p>
         <p data-reveal>
-          <span class="text-mist">Orlando</span> leads engineering — architecture, web, mobile, and the infrastructure
-          that keeps it honest. <span class="text-mist">Diana</span> owns institutional and government software — the
-          platforms where compliance and accessibility aren’t negotiable, proven across Uruguay’s national portal
-          network. Around them is a network of practicing specialists they’ve already shipped with.
+          <span class="text-mist">Orlando</span> leads engineering — architecture, web, mobile, and the infrastructure that
+          keeps it honest. <span class="text-mist">Diana</span> owns institutional and government software — the platforms
+          where compliance and accessibility aren’t negotiable, proven across Uruguay’s national portal network. Around them
+          is a network of practicing specialists they’ve already shipped with.
         </p>
         <p data-reveal>
-          We stayed deliberately small. Every person on your project is someone whose name you know, whose work you
-          can see, and who answers when you write. That’s not a limitation we manage — it’s the product.
+          We stayed deliberately small. Every person on your project is someone whose name you know, whose work you can
+          see, and who answers when you write. That’s not a limitation we manage — it’s the product.
         </p>
       </div>
-      <MediaPlaceholder
-        brief="Candid photo of Orlando and Diana working together — laptops open, mid-conversation, natural light, informal setting (studio or café). Should feel real, not staged. Horizontal, minimum 1600×1200px."
-        label="Photo — the founders"
-        class="aspect-[4/5] md:aspect-auto"
-      />
+      {/* Founders slot — a candid photo of Orlando and Diana goes here when we have one (docs/photo-slots.md) */}
+      <PartnersDiagram />
     </div>
   </section>
 
@@ -79,8 +76,8 @@ const values = [
     <div class="container-site py-24 md:py-32">
       <p class="label-mono" data-reveal>Why “Codemyc”</p>
       <p class="heading-display mt-6 max-w-4xl text-3xl leading-snug md:text-5xl" data-reveal>
-        Code + <span class="text-spore">myc</span> — as in mycelium: the underground network that connects and
-        nourishes entire ecosystems.
+        Code + <span class="text-spore">myc</span> — as in mycelium: the underground network that connects and nourishes
+        entire ecosystems.
       </p>
       <div class="mt-10 grid max-w-4xl gap-8 md:grid-cols-3" data-reveal-group>
         <p class="text-sm leading-relaxed text-haze">
@@ -102,7 +99,10 @@ const values = [
     <div class="container-site py-24">
       <p class="label-mono" data-reveal>How we work</p>
       <h2 class="heading-display mt-4 text-3xl md:text-5xl" data-reveal>Five traits, every engagement</h2>
-      <div class="mt-14 grid gap-px overflow-hidden rounded-2xl border border-edge bg-edge md:grid-cols-2 lg:grid-cols-5" data-reveal-group>
+      <div
+        class="mt-14 grid gap-px overflow-hidden rounded-2xl border border-edge bg-edge md:grid-cols-2 lg:grid-cols-5"
+        data-reveal-group
+      >
         {
           values.map(({ t, d }) => (
             <div class="bg-moss p-7">
@@ -129,8 +129,9 @@ const values = [
           happen in fluent English, with no relay and no translation layer.
         </p>
         <p class="mt-4 leading-relaxed text-haze" data-reveal>
-          The result is a simple equation: <span class="text-mist">US-agency capability, nearshore economics, zero
-          friction.</span>
+          The result is a simple equation: <span class="text-mist"
+            >US-agency capability, nearshore economics, zero friction.</span
+          >
         </p>
       </div>
       <div class="grid grid-cols-2 gap-4" data-reveal-group>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Codemyc">
+  <!-- Codemyc mark: independent nodes connecting into structure (mycelium). -->
+  <rect width="32" height="32" rx="7" fill="#070f0b"/>
+  <g transform="translate(16 16) scale(1) translate(-16 -16)">
+  <g stroke="#7d9a8a" stroke-width="1.7" stroke-linecap="round" fill="none">
+    <path d="M7.5 24 16 7.5M16 7.5 25.5 14M25.5 14 13 17.5M13 17.5 7.5 24M13 17.5 22 25.5"/>
+  </g>
+  <circle cx="16" cy="7.5" r="3.6" fill="#b8f53d"/>
+  <circle cx="7.5" cy="24" r="3" fill="#b8f53d"/>
+  <circle cx="25.5" cy="14" r="2.7" fill="#eaf3ec"/>
+  <circle cx="13" cy="17.5" r="2.3" fill="#eaf3ec"/>
+  <circle cx="22" cy="25.5" r="2.1" fill="#8fa89b"/>
+  </g>
+</svg>

@@ -8,6 +8,7 @@
  */
 import type { ImageMetadata } from 'astro';
 import orlandoPhoto from '~/assets/images/orlando.webp';
+import dianaPhoto from '~/assets/images/diana.webp';
 
 export interface ShippedWork {
   title: string;
@@ -40,10 +41,22 @@ export interface TeamMember {
   workingWith: string;
   languages: string[];
   photo: {
-    /** Description of the real photo to drop in later. */
+    /**
+     * Art direction for the portrait we still owe this member. Not rendered:
+     * it's the note we shoot from later (see docs/photo-slots.md).
+     */
     brief: string;
-    /** Imported asset — present once the real photo is available. */
+    /**
+     * Imported asset. Present = the real portrait renders everywhere;
+     * absent = MemberGlyph draws the member's mycelium monogram instead.
+     */
     image?: ImageMetadata;
+    /**
+     * CSS object-position for the portrait crop (e.g. 'center 30%').
+     * Defaults to 'center top' when omitted — set this when a wide crop
+     * (like the landing-page card) cuts the subject off-center.
+     */
+    focalPosition?: string;
   };
   links?: { label: string; href: string }[];
 }
@@ -64,7 +77,7 @@ export const team: TeamMember[] = [
       'Mobile (Flutter · Firebase)',
       'Cloud & DevOps (GCP · AWS · Docker · CI/CD)',
       'Observability (OpenTelemetry · Grafana stack)',
-      'AI integration (RAG · MCP · agents)',
+      'AI-native engineering (agentic coding · RAG · MCP · multi-agent orchestration)',
     ],
     stats: [
       { value: '9+', label: 'years shipping production software' },
@@ -117,6 +130,7 @@ export const team: TeamMember[] = [
       { name: 'Certified Drupal 10 Site Builder', issuer: 'Acquia', year: '2025' },
       { name: 'Expert in Drupal 10 — Backend', issuer: 'Forcontu', year: '2024' },
       { name: 'EF SET English Certificate — C2 Proficient', issuer: 'EF SET', year: '2023' },
+      { name: 'Google AI Leader', issuer: 'Google', year: '2026' },
     ],
     workingWith:
       'Orlando answers fast and says the uncomfortable thing early — if a deadline is at risk or a spec doesn’t hold up, you hear it in the first conversation, not the retro. He tests across environments before anything ships, writes code the whole team can read, and has a habit of quietly absorbing the unglamorous work (weekend deploys, legacy systems, mid-project spec changes) that keeps projects on track.',
@@ -125,6 +139,7 @@ export const team: TeamMember[] = [
       brief:
         'Half-body portrait of Orlando, candid and relaxed — dark or neutral background, soft natural side light, looking at camera with a slight smile. No suit; a plain dark shirt. Minimum 1200×1500px, vertical.',
       image: orlandoPhoto,
+      focalPosition: 'center 40%',
     },
     links: [{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/orlando-pantoja/' }],
   },
@@ -144,6 +159,7 @@ export const team: TeamMember[] = [
       'WCAG 2.1 accessibility compliance',
       'Enterprise search (Apache Solr)',
       'PHP 8 · Symfony · API integrations',
+      'AI-assisted delivery (agentic coding · prompt engineering · automated audits)',
     ],
     stats: [
       { value: '7+', label: 'years architecting GovTech platforms' },
@@ -197,6 +213,7 @@ export const team: TeamMember[] = [
       { name: 'Certified Site Builder — Drupal 10', issuer: 'Acquia', year: '2024' },
       { name: 'Drupal Backend Specialist', issuer: 'Forcontu', year: '2022' },
       { name: 'AI Development Fundamentals', issuer: 'BIG School', year: '2026' },
+      { name: 'Google AI Leader', issuer: 'Google', year: '2026' },
     ],
     workingWith:
       'Diana is the person who reads the compliance annex nobody else reads — and then quietly redesigns the data model so it passes. She translates technical trade-offs into language stakeholders and procurement officers actually understand, documents as she goes, and mentors the people around her. Teams that work with her ship calmer.',
@@ -204,6 +221,8 @@ export const team: TeamMember[] = [
     photo: {
       brief:
         'Half-body portrait of Diana, confident and approachable — dark or neutral background, soft natural side light, looking at camera. Plain professional top, no corporate stiffness. Minimum 1200×1500px, vertical.',
+      image: dianaPhoto,
+      focalPosition: 'center 30%',
     },
     links: [],
   },

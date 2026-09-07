@@ -1,4 +1,6 @@
-This folder will become an integration for **AstroWind**.
+This folder holds the small build-time integration that turns `src/config.yaml`
+into the `codemyc:config` virtual module, and points `robots.txt` at the
+generated sitemap after a build.
 
-We are working to allow updates to template instances.
-These are changes on the way to new **AstroWind v2**
+It started life as the AstroWind theme integration; what remains is only what
+this site uses. See `astro.config.ts` for how it is wired in.

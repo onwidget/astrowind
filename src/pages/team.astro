@@ -1,7 +1,7 @@
 ---
 import SiteLayout from '~/layouts/SiteLayout.astro';
 import MyceliumCanvas from '~/components/site/MyceliumCanvas.astro';
-import MediaPlaceholder from '~/components/site/MediaPlaceholder.astro';
+import MemberGlyph from '~/components/site/MemberGlyph.astro';
 import MemberPhoto from '~/components/site/MemberPhoto.astro';
 import { coreTeam } from '~/data/team';
 
@@ -51,24 +51,27 @@ const extended = [
               class="card-moss group grid overflow-hidden transition-all hover:border-spore/40 md:grid-cols-[2fr_3fr]"
               data-reveal
             >
-              {m.photo.image
-                ? <MemberPhoto
-                    image={m.photo.image}
-                    alt={`Portrait of ${m.name}`}
-                    class:list={[
-                      'aspect-[4/3] rounded-none border-0 md:aspect-auto md:border-r',
-                      i % 2 === 1 && 'md:order-last md:border-l md:border-r-0',
-                    ]}
-                  />
-                : <MediaPlaceholder
-                    brief={m.photo.brief}
-                    label={`Photo — ${m.name}`}
-                    class:list={[
-                      'aspect-[4/3] rounded-none border-0 border-dashed border-edge md:aspect-auto md:border-r',
-                      i % 2 === 1 && 'md:order-last md:border-l md:border-r-0',
-                    ]}
-                  />
-              }
+              {/* Portrait slot — set `photo.image` in src/data/team.ts and the real photo replaces the glyph */}
+              {m.photo.image ? (
+                <MemberPhoto
+                  image={m.photo.image}
+                  alt={`Portrait of ${m.name}`}
+                  focalPosition={m.photo.focalPosition}
+                  class:list={[
+                    'aspect-[4/3] rounded-none border-0 md:aspect-auto md:border-r',
+                    i % 2 === 1 && 'md:order-last md:border-l md:border-r-0',
+                  ]}
+                />
+              ) : (
+                <MemberGlyph
+                  name={m.name}
+                  slug={m.slug}
+                  class:list={[
+                    'aspect-[4/3] rounded-none border-0 border-edge md:aspect-auto md:border-r',
+                    i % 2 === 1 && 'md:order-last md:border-l md:border-r-0',
+                  ]}
+                />
+              )}
               <div class="flex flex-col justify-center p-8 md:p-12">
                 <p class="label-mono text-spore">{m.role}</p>
                 <h3 class="font-display mt-2 text-3xl font-semibold text-mist">{m.name}</h3>
