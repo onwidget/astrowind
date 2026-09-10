@@ -54,7 +54,7 @@
     "eslint": "^10.8.1",
     "eslint-plugin-astro": "^3.1.0",
     "globals": "^17.9.0",
-    "js-yaml": "^4.1.1",
+    "js-yaml": "^4.3.2",
     "mdast-util-to-string": "^4.0.0",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
@@ -69,7 +69,7 @@
     "yaml": ">=2.8.3",
     "astro-compress": {
       "sharp": "^0.35.3",
-      "svgo": "^4.0.2"
+      "svgo": "^4.1.0"
     },
     "postcss": {
       "nanoid": "^3.3.18"
