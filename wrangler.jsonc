@@ -1,0 +1,13 @@
+// Cloudflare Workers configuration for the "Deploy to Cloudflare" button in the
+// README. The site is fully static, so the
+// Worker only serves the `dist/` folder as assets; no adapter is needed.
+// Docs: https://developers.cloudflare.com/workers/static-assets/
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "astrowind",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+  },
+}

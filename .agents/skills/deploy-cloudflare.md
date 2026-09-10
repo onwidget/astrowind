@@ -4,8 +4,10 @@ The template is fully static (`output: 'static'`), so it can be uploaded to Clou
 
 ## Option A — static assets (simplest)
 
-1. `npm run build`
-2. Upload `dist/` (Cloudflare Pages "direct upload", or a Worker with `[assets] directory = "./dist"` in `wrangler.toml`). No adapter needed.
+The repo ships `wrangler.jsonc` with `assets.directory: "./dist"` and `not_found_handling: "404-page"`, so:
+
+1. Use the "Deploy to Cloudflare" button in the README, or run `npm run build && npx wrangler deploy` (the first run asks you to log in).
+2. Alternatively upload `dist/` by hand (Cloudflare Pages "direct upload"). No adapter needed either way.
 
 ## Option B — `@astrojs/cloudflare` adapter
 

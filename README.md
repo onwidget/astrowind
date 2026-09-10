@@ -24,7 +24,7 @@
 
 ![AstroWind Theme Screenshot](https://raw.githubusercontent.com/arthelokyo/.github/main/resources/astrowind/screenshot-astrowind-readme-def-v1.png)
 
-[![arthelokyo](https://custom-icon-badges.demolab.com/badge/made%20by%20-arthelokyo-556bf2?style=flat-square&logo=arthelokyo&logoColor=white&labelColor=101827)](https://github.com/arthelokyo)
+[![arthelokyo](https://custom-icon-badges.demolab.com/badge/made%20by%20-arthelokyo-556bf2?style=flat-square&logo=arthelokyo&logoColor=white&labelColor=101827)](https://arthelokyo.com)
 [![License](https://img.shields.io/github/license/arthelokyo/astrowind?style=flat-square&color=dddddd&labelColor=000000)](https://github.com/arthelokyo/astrowind/blob/main/LICENSE.md)
 [![Maintained](https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/arthelokyo)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/arthelokyo/astrowind#contributing)
@@ -273,11 +273,11 @@ Clone this repository on your own GitHub account and deploy to Vercel:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farthelokyo%2Fastrowind)
 
-#### Deploy to PandaStack
+#### Deploy to Cloudflare
 
-Clone this repository on your own GitHub account and deploy to PandaStack:
+Clone this repository on your own GitHub account and deploy it to Cloudflare Workers (static assets, no adapter needed; the `wrangler.jsonc` in the repo points Cloudflare at `dist/`):
 
-[![Deploy to PandaStack](https://dashboard.pandastack.io/deploy-button.svg)](https://dashboard.pandastack.io/deploy?repo=arthelokyo/astrowind&type=static&buildCmd=npm+run+build&outputDir=dist)
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/arthelokyo/astrowind)
 
 <br>
 
@@ -310,7 +310,7 @@ That would be very useful for all of us and we would be happy to listen and take
 
 ## Acknowledgements
 
-Initially created by **Arthelokyo** and maintained by a community of [contributors](https://github.com/arthelokyo/astrowind/graphs/contributors).
+Initially created by [**Arthelokyo**](https://arthelokyo.com) and maintained by a community of [contributors](https://github.com/arthelokyo/astrowind/graphs/contributors).
 
 ## License
 
