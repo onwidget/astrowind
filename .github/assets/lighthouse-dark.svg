@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="218" height="780" viewBox="0 0 218 780" role="img" aria-label="Lighthouse scores: Performance 100, Accessibility 100, Best Practices 100, SEO 100">
+<style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}.n{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:34px;font-weight:600}.l{font-size:17px}</style>
+<circle cx="109" cy="98" r="52" fill="#0f2a1c"/>
+<circle cx="109" cy="98" r="52" fill="none" stroke="#0cce6b" stroke-width="8"/>
+<text x="109" y="110" text-anchor="middle" class="n" fill="#0cce6b">100</text>
+<text x="109" y="190" text-anchor="middle" class="l" fill="#c9d1d9">Performance</text>
+<circle cx="109" cy="288" r="52" fill="#0f2a1c"/>
+<circle cx="109" cy="288" r="52" fill="none" stroke="#0cce6b" stroke-width="8"/>
+<text x="109" y="300" text-anchor="middle" class="n" fill="#0cce6b">100</text>
+<text x="109" y="380" text-anchor="middle" class="l" fill="#c9d1d9">Accessibility</text>
+<circle cx="109" cy="478" r="52" fill="#0f2a1c"/>
+<circle cx="109" cy="478" r="52" fill="none" stroke="#0cce6b" stroke-width="8"/>
+<text x="109" y="490" text-anchor="middle" class="n" fill="#0cce6b">100</text>
+<text x="109" y="570" text-anchor="middle" class="l" fill="#c9d1d9">Best Practices</text>
+<circle cx="109" cy="668" r="52" fill="#0f2a1c"/>
+<circle cx="109" cy="668" r="52" fill="none" stroke="#0cce6b" stroke-width="8"/>
+<text x="109" y="680" text-anchor="middle" class="n" fill="#0cce6b">100</text>
+<text x="109" y="760" text-anchor="middle" class="l" fill="#c9d1d9">SEO</text>
+</svg>

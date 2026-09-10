@@ -1,7 +1,9 @@
 # 🚀 AstroWind
 
-<img src="https://raw.githubusercontent.com/arthelokyo/.github/main/resources/astrowind/lighthouse-score.png" align="right"
-     alt="AstroWind Lighthouse Score" width="100" height="358">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/lighthouse-dark.svg">
+  <img src=".github/assets/lighthouse-light.svg" align="right" alt="Lighthouse scores: Performance 100, Accessibility 100, Best Practices 100, SEO 100" width="100" height="358">
+</picture>
 
 🌟 _Most *starred* & *forked* Astro theme in 2022, 2023, 2024 & 2025_. 🌟
 
