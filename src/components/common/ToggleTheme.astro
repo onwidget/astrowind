@@ -7,7 +7,10 @@ export interface Props {
   label?: string;
   class?: string;
   iconClass?: string;
+  /** Icon shown in light mode (it invites to switch to dark). */
   iconName?: string;
+  /** Icon shown in dark mode. */
+  iconNameDark?: string;
 }
 
 const {
@@ -15,7 +18,8 @@ const {
   class:
     className = 'text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center',
   iconClass = 'w-6 h-6',
-  iconName = 'tabler:sun',
+  iconName = 'tabler:moon',
+  iconNameDark = 'tabler:sun',
 } = Astro.props;
 ---
 
@@ -23,7 +27,16 @@ const {
   !(UI.theme && UI.theme.endsWith(':only')) && (
     <aw-theme-toggle>
       <button type="button" class={className} aria-label={label} data-aw-toggle-color-scheme>
-        <Icon name={iconName} class={iconClass} />
+        <span class:list={['relative block', iconClass]}>
+          <Icon
+            name={iconName}
+            class="absolute inset-0 h-full w-full transition-[opacity,transform] duration-200 motion-reduce:transition-none [html.dark_&]:-rotate-90 [html.dark_&]:scale-0 [html.dark_&]:opacity-0"
+          />
+          <Icon
+            name={iconNameDark}
+            class="absolute inset-0 h-full w-full rotate-90 scale-0 opacity-0 transition-[opacity,transform] duration-200 motion-reduce:transition-none [html.dark_&]:rotate-0 [html.dark_&]:scale-100 [html.dark_&]:opacity-100"
+          />
+        </span>
       </button>
     </aw-theme-toggle>
   )
