@@ -279,6 +279,12 @@ Clone this repository on your own GitHub account and deploy it to Cloudflare Wor
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/arthelokyo/astrowind)
 
+#### Deploy to ZopDay
+
+Deploy the `Dockerfile` in this repository — Astro built, then served by nginx on port 8080 — to ZopCloud or to an AWS, GCP or Azure account you already own:
+
+[![Deploy to ZopDay](https://zop.dev/deploytozopday-ink.svg)](https://zop.dev/zopday/app/deploy?repo=https://github.com/arthelokyo/astrowind&port=8080)
+
 <br>
 
 ## FAQ
