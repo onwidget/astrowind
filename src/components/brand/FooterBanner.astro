@@ -2,18 +2,20 @@
 /*
  * The panorama strip that closes every page, sitting directly above the footer.
  *
- * The supplied source is 1224x352 after cropping off the bar that had the
- * domain and email burned into it; the footer carries both already. That width
- * is modest for a full-bleed band, so the image is anchored to the centre and
- * cropped by the viewport rather than stretched: on a wide display the edges
- * are trimmed instead of the whole picture going soft.
+ * The source is a 1224x352 SVG that wraps a single JPEG. That width is modest
+ * for a full-bleed band, so the image is anchored to the centre and cropped by
+ * the viewport rather than stretched: on a wide display the edges are trimmed
+ * instead of the whole picture going soft.
+ *
+ * Astro does not resize SVGs, so there is no `widths` srcset: it would only
+ * emit identical copies of the same file.
  *
  * A gold hairline above and the navy ground below tie it into the page's
  * band rhythm, and the gradient at the bottom hands off to the footer without
  * a hard edge.
  */
 import { Image } from 'astro:assets';
-import banner from '~/assets/images/banner.webp';
+import banner from '~/assets/images/banner.svg';
 
 interface Props {
   alt?: string;
@@ -27,8 +29,6 @@ const { alt = '', class: className = '' } = Astro.props;
   <Image
     src={banner}
     alt={alt}
-    widths={[612, 1224]}
-    sizes="100vw"
     loading="lazy"
     decoding="async"
     class="h-40 w-full object-cover object-center md:h-56 lg:h-64"
