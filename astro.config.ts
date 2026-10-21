@@ -75,7 +75,9 @@ export default defineConfig({
   ],
 
   integrations: [
-    sitemap(),
+    // The client requirements form is sent to clients as a link and is
+    // deliberately unlisted, so it stays out of the sitemap.
+    sitemap({ filter: (page) => !new URL(page).pathname.startsWith('/ihtiyac-formu') }),
     mdx(),
     icon({
       include: {

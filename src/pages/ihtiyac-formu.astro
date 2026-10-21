@@ -1,0 +1,425 @@
+---
+/*
+ * Household worker client requirements form, sent to clients as a link.
+ *
+ * Deliberately unlisted: nothing on the site links here, the sitemap filter
+ * in astro.config.ts leaves it out, and the page asks search engines not to
+ * index it. Anyone who has the URL can still open it and submit.
+ *
+ * Questions come from src/data/clientForm.ts. Submissions go to a Google Apps
+ * Script web app that appends a row to a Google Sheet and emails the answers;
+ * see docs/client-form/SETUP.md.
+ */
+import Layout from '~/layouts/PageLayout.astro';
+
+import BandBg from '~/components/brand/BandBg.astro';
+import SeamMedallion from '~/components/brand/SeamMedallion.astro';
+import Hero from '~/components/widgets/Hero.astro';
+
+import { clientForm as f, CLIENT_FORM_ENDPOINT, TURNSTILE_SITE_KEY } from '~/data/clientForm';
+import type { Bilingual } from '~/data/clientForm';
+
+const metadata = { ...f.meta, robots: { index: false, follow: false } };
+
+// " · " rather than " / ", which many of the labels already contain.
+const both = (t: Bilingual) => (t.en === t.tr ? t.en : `${t.en} · ${t.tr}`);
+
+const control =
+  'block border border-gold/40 bg-white/70 px-4 py-3 text-base text-default transition placeholder:text-muted/70 focus:border-gold focus:ring-2 focus:ring-gold/30 focus:outline-none disabled:opacity-40';
+const choice = 'size-4 shrink-0 cursor-pointer accent-[var(--color-gold-600)]';
+---
+
+<Layout metadata={metadata} lang="tr">
+  <!-- Title — NAVY (first band, no seam above) ************************ -->
+
+  <div class="dark">
+    <Hero tagline="EFKA Consulting">
+      <Fragment slot="bg">
+        <BandBg tone="navy" seam={false} />
+      </Fragment>
+
+      <Fragment slot="title">
+        <span class="text-heading block">{f.title.tr}</span>
+        <span lang="en" class="mt-3 block text-2xl font-normal text-gold-400 md:text-3xl">{f.title.en}</span>
+      </Fragment>
+
+      <Fragment slot="subtitle">
+        <span class="block">{f.intro.tr}</span>
+        <span lang="en" class="mt-4 block text-base text-slate-400">{f.intro.en}</span>
+      </Fragment>
+
+      <Fragment slot="content">
+        <hr class="brand-rule mx-auto mt-14 w-40 opacity-70" />
+      </Fragment>
+    </Hero>
+  </div>
+
+  <SeamMedallion tone="navy" />
+
+  <!-- The form — IVORY ************************************************ -->
+
+  <section class="relative">
+    <BandBg tone="ivory" />
+
+    <div class="relative mx-auto max-w-3xl px-4 py-16 sm:px-6 md:py-20">
+      <form id="client-form" data-endpoint={CLIENT_FORM_ENDPOINT} class="text-default">
+        {
+          f.sections.map((section) => (
+            <fieldset class="mb-14 border-0 p-0">
+              <legend class="mb-8 w-full border-b border-gold/40 pb-3">
+                <span class="font-heading block text-2xl md:text-3xl">{section.tr}</span>
+                <span lang="en" class="text-muted mt-1 block text-sm tracking-wide uppercase">
+                  {section.en}
+                </span>
+              </legend>
+
+              <div class="grid gap-x-6 gap-y-8 md:grid-cols-2">
+                {section.fields.map((field) => {
+                  const shared = {
+                    'data-field': '',
+                    'data-key': field.key,
+                    'data-type': field.type,
+                    // Turkish only: these become the sheet's column headers and the email's labels.
+                    'data-label': field.tr,
+                    'data-section': section.tr,
+                    class: field.wide ? 'md:col-span-2' : '',
+                  };
+                  const caption = (
+                    <>
+                      <span class="block font-medium">
+                        {field.tr}
+                        {'required' in field && field.required && (
+                          <span class="text-gold-600" title={both(f.required)}>
+                            {' '}
+                            *
+                          </span>
+                        )}
+                      </span>
+                      <span lang="en" class="text-muted block text-sm">
+                        {field.en}
+                      </span>
+                    </>
+                  );
+
+                  if (field.type === 'radio' || field.type === 'checkbox') {
+                    return (
+                      <fieldset {...shared} class:list={[shared.class, 'border-0 p-0']}>
+                        <legend class="mb-3">{caption}</legend>
+                        <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-x-6">
+                          {field.options.map((option) => (
+                            <div class="flex flex-col gap-2">
+                              <label class="inline-flex cursor-pointer items-center gap-2.5">
+                                <input
+                                  type={field.type}
+                                  name={field.key}
+                                  value={option.value}
+                                  data-label={both(option)}
+                                  class={choice}
+                                />
+                                <span>
+                                  {option.tr}
+                                  {option.tr !== option.en && (
+                                    <span lang="en" class="text-muted text-sm">
+                                      {' '}
+                                      · {option.en}
+                                    </span>
+                                  )}
+                                </span>
+                              </label>
+                              {option.detail && (
+                                <input
+                                  type="text"
+                                  name={`${field.key}__${option.value}`}
+                                  data-detail-for={option.value}
+                                  aria-label={`${both(option)}: ${both(option.detail)}`}
+                                  placeholder={`${option.detail.tr} · ${option.detail.en}`}
+                                  disabled
+                                  class:list={[control, 'w-full py-2 text-sm sm:w-64']}
+                                />
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </fieldset>
+                    );
+                  }
+
+                  if (field.type === 'range') {
+                    return (
+                      <fieldset {...shared} class:list={[shared.class, 'border-0 p-0']}>
+                        <legend class="mb-3">{caption}</legend>
+                        <div class="flex items-center gap-3">
+                          <input
+                            type="number"
+                            name={`${field.key}Min`}
+                            min="18"
+                            max="70"
+                            inputmode="numeric"
+                            aria-label={`${both(field)}: min`}
+                            class:list={[control, 'w-24']}
+                          />
+                          <span class="text-muted">–</span>
+                          <input
+                            type="number"
+                            name={`${field.key}Max`}
+                            min="18"
+                            max="70"
+                            inputmode="numeric"
+                            aria-label={`${both(field)}: max`}
+                            class:list={[control, 'w-24']}
+                          />
+                          <span class="text-muted">
+                            {field.unit.tr} · <span lang="en">{field.unit.en}</span>
+                          </span>
+                        </div>
+                      </fieldset>
+                    );
+                  }
+
+                  const id = `f-${field.key}`;
+                  // Only text-like fields reach here; Astro's checker loses that narrowing inside the JSX.
+                  const { required, autocomplete } = field as { required?: boolean; autocomplete?: string };
+                  return (
+                    <div {...shared}>
+                      <label for={id} class="mb-2 block">
+                        {caption}
+                      </label>
+                      {field.type === 'textarea' ? (
+                        <textarea id={id} name={field.key} rows="4" maxlength="3000" class:list={[control, 'w-full']} />
+                      ) : (
+                        <input
+                          id={id}
+                          type={field.type}
+                          name={field.key}
+                          required={required}
+                          autocomplete={autocomplete ?? 'off'}
+                          maxlength="300"
+                          {...(field.type === 'number' ? { min: '0', inputmode: 'numeric' } : {})}
+                          class:list={[control, 'w-full']}
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </fieldset>
+          ))
+        }
+
+        <!-- Bots fill in every field; people never see this one. -->
+        <div class="absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true">
+          <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+        </div>
+
+        <div class="border-t border-gold/40 pt-10">
+          <label class="flex cursor-pointer items-start gap-3">
+            <input type="checkbox" name="consent" required class:list={[choice, 'mt-1']} />
+            <span>
+              <span class="block">
+                {f.consent.tr}
+                <a href={f.consent.href} target="_blank" rel="noopener" class="text-gold-600 underline">
+                  {f.consent.linkText.tr}</a
+                >
+                <span class="text-gold-600"> *</span>
+              </span>
+              <span lang="en" class="text-muted mt-2 block text-sm">{f.consent.en}</span>
+            </span>
+          </label>
+
+          <p class="text-muted mt-8 text-sm leading-relaxed">
+            {f.disclaimer.tr}
+            <span lang="en" class="mt-2 block">{f.disclaimer.en}</span>
+          </p>
+
+          <div class="mt-10 flex flex-col items-center gap-4">
+            <!-- Cloudflare Turnstile bot check. Usually invisible; it only shows a
+                 checkbox when Cloudflare wants the visitor to confirm. -->
+            <div data-turnstile data-sitekey={TURNSTILE_SITE_KEY}></div>
+            <button
+              type="submit"
+              class="btn-primary w-full sm:w-80"
+              data-idle={`${f.submit.tr} · ${f.submit.en}`}
+              data-busy={`${f.sending.tr} · ${f.sending.en}`}
+            >
+              {f.submit.tr} · {f.submit.en}
+            </button>
+            <p data-status-verifying hidden role="status" class="text-muted text-center text-sm">
+              {f.verifying.tr}
+              <span lang="en" class="mt-1 block">{f.verifying.en}</span>
+            </p>
+            <p data-status-error hidden role="alert" class="text-center text-sm text-red-700">
+              {f.error.tr}
+              <a class="underline" href={`mailto:${f.errorEmail}`}>{f.errorEmail}</a>
+              <span lang="en" class="mt-1 block">
+                {f.error.en}
+                <a class="underline" href={`mailto:${f.errorEmail}`}>{f.errorEmail}</a>
+              </span>
+            </p>
+          </div>
+        </div>
+      </form>
+
+      <div
+        data-status-success
+        hidden
+        role="status"
+        tabindex="-1"
+        class="brand-frame scroll-mt-32 px-6 py-14 text-center"
+      >
+        <p class="font-heading text-2xl md:text-3xl">{f.success.tr}</p>
+        <p lang="en" class="text-muted mt-4">{f.success.en}</p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<!-- Turnstile loads in explicit mode and announces itself, so the form script
+     can render the widget whichever of the two finishes first. -->
+<script is:inline>
+  window.onTurnstileLoad = () => window.dispatchEvent(new Event('turnstile-ready'));
+</script>
+<script
+  is:inline
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoad"
+  async
+  defer></script>
+
+<script>
+  interface Turnstile {
+    render(container: HTMLElement, options: Record<string, string>): string;
+    getResponse(widgetId: string): string | undefined;
+    reset(widgetId: string): void;
+  }
+
+  interface Answer {
+    key: string;
+    label: string;
+    section: string;
+    value: string;
+  }
+
+  const collect = (form: HTMLFormElement): Answer[] =>
+    Array.from(form.querySelectorAll<HTMLElement>('[data-field]')).map((el) => {
+      const { key = '', type, label = '', section = '' } = el.dataset;
+      let value: string;
+
+      if (type === 'radio' || type === 'checkbox') {
+        value = Array.from(el.querySelectorAll<HTMLInputElement>(`input[name="${key}"]:checked`))
+          .map((input) => {
+            const detail = el.querySelector<HTMLInputElement>(`input[name="${key}__${input.value}"]`)?.value.trim();
+            return detail ? `${input.dataset.label}: ${detail}` : (input.dataset.label ?? input.value);
+          })
+          .join(', ');
+      } else if (type === 'range') {
+        const min = el.querySelector<HTMLInputElement>(`input[name="${key}Min"]`)?.value.trim();
+        const max = el.querySelector<HTMLInputElement>(`input[name="${key}Max"]`)?.value.trim();
+        value = min || max ? `${min || '?'} – ${max || '?'}` : '';
+      } else {
+        value = el.querySelector<HTMLInputElement | HTMLTextAreaElement>('input, textarea')?.value.trim() ?? '';
+      }
+
+      return { key, label, section, value };
+    });
+
+  const init = () => {
+    const form = document.querySelector<HTMLFormElement>('#client-form');
+    if (!form || form.dataset.ready) return;
+    form.dataset.ready = 'true';
+
+    const startedAt = Date.now();
+    const endpoint = form.dataset.endpoint ?? '';
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const error = form.querySelector<HTMLElement>('[data-status-error]')!;
+    const verifying = form.querySelector<HTMLElement>('[data-status-verifying]')!;
+    const success = document.querySelector<HTMLElement>('[data-status-success]')!;
+
+    const turnstile = () => (window as unknown as { turnstile?: Turnstile }).turnstile;
+    const box = form.querySelector<HTMLElement>('[data-turnstile]')!;
+    const sitekey = box.dataset.sitekey ?? '';
+    let widgetId: string | undefined;
+    if (sitekey) {
+      const render = () => {
+        widgetId = turnstile()!.render(box, {
+          sitekey,
+          language: 'tr',
+          theme: 'light',
+          appearance: 'interaction-only',
+        });
+      };
+      if (turnstile()) render();
+      else window.addEventListener('turnstile-ready', render, { once: true });
+    }
+
+    // A detail box ("Other: ____") is only usable while its option is chosen.
+    const syncDetails = () => {
+      form.querySelectorAll<HTMLInputElement>('input[data-detail-for]').forEach((detail) => {
+        const group = detail.closest<HTMLElement>('[data-field]')!;
+        const option = group.querySelector<HTMLInputElement>(
+          `input[name="${group.dataset.key}"][value="${detail.dataset.detailFor}"]`
+        );
+        detail.disabled = !option?.checked;
+      });
+    };
+    form.addEventListener('change', syncDetails);
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      error.hidden = true;
+      verifying.hidden = true;
+
+      // Without a site key there is no widget, and the script will refuse the
+      // submission; the error message below then tells the visitor to email.
+      const token = widgetId ? turnstile()?.getResponse(widgetId) : '';
+      if (sitekey && !token) {
+        verifying.hidden = false;
+        return;
+      }
+
+      const consent = form.querySelector<HTMLInputElement>('input[name="consent"]')!;
+      const fields = [
+        ...collect(form),
+        {
+          key: 'consent',
+          label: 'KVKK açık rıza',
+          section: '',
+          value: consent.checked ? 'Yes · Evet' : '',
+        },
+      ];
+
+      button.disabled = true;
+      button.textContent = button.dataset.busy ?? '';
+
+      try {
+        if (!endpoint) throw new Error('No CLIENT_FORM_ENDPOINT configured');
+        // text/plain keeps this a "simple" request, so the browser sends it
+        // without a CORS preflight, which Apps Script does not answer.
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            fields,
+            website: form.querySelector<HTMLInputElement>('input[name="website"]')?.value ?? '',
+            elapsedMs: Date.now() - startedAt,
+            turnstileToken: token,
+          }),
+        });
+        const result = await response.json();
+        if (!result.ok) throw new Error(result.error ?? 'Submission rejected');
+
+        form.hidden = true;
+        success.hidden = false;
+        success.focus();
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (cause) {
+        console.error(cause);
+        error.hidden = false;
+        // A token can be used only once, so get a fresh one for the next try.
+        if (widgetId) turnstile()?.reset(widgetId);
+        button.disabled = false;
+        button.textContent = button.dataset.idle ?? '';
+      }
+    });
+  };
+
+  document.addEventListener('astro:page-load', init);
+</script>
