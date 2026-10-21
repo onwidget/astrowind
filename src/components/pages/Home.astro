@@ -17,6 +17,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import BandBg from '~/components/brand/BandBg.astro';
 import SeamMedallion from '~/components/brand/SeamMedallion.astro';
 
+import Button from '~/components/ui/Button.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
@@ -40,7 +41,7 @@ const t = c.home;
   <!-- Hero — NAVY (first band, so no seam above it) ******************** -->
 
   <div class="dark">
-    <Hero tagline={t.hero.tagline} actions={t.hero.actions}>
+    <Hero tagline={t.hero.tagline}>
       <Fragment slot="bg">
         <BandBg tone="navy" seam={false} />
       </Fragment>
@@ -53,7 +54,18 @@ const t = c.home;
         <span set:html={t.hero.subtitle} />
       </Fragment>
 
+      <!-- The buttons go here rather than in Hero's actions, whose row is too
+           narrow for these labels and wraps them onto two lines. -->
       <Fragment slot="content">
+        <div
+          class="mx-auto mt-10 flex max-w-sm flex-col gap-4 md:max-w-none md:flex-row md:justify-center intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+        >
+          {
+            t.hero.actions.map((action) => (
+              <Button {...action} icon="tabler:arrow-right" class="w-full whitespace-nowrap md:w-[22rem]" />
+            ))
+          }
+        </div>
         <hr class="brand-rule mx-auto mt-14 w-40 opacity-70" />
       </Fragment>
     </Hero>

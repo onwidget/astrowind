@@ -1,5 +1,7 @@
 /*
- * Turkish copy, transcribed verbatim from EFKA_Web_Sitesi_Metinleri_Guncel.docx.
+ * Turkish copy. It began as a transcription of EFKA_Web_Sitesi_Metinleri_Guncel.docx
+ * and was rewritten on 2026-10-21, at the site owner's request, so it reads as
+ * natural Turkish rather than a translation. The facts are the document's.
  *
  * Turkish is the default locale, and this object is the shape the English
  * dictionary must match: `src/data/en/index.ts` is typed `typeof tr`, so a
@@ -16,9 +18,8 @@ const p = (key: Parameters<typeof localePath>[0]) => localePath(key, 'tr');
 
 export const tr = {
   /** Short description of the company, from the document's cover table. */
-  company: `Filipinler’den uygun çalışanların bulunması, değerlendirilmesi ve Türkiye’de yasal
-    olarak istihdam edilmesine yönelik süreci aileler ve işletmeler için tek merkezden yöneten
-    iş gücü danışmanlığı.`,
+  company: `Filipinli bakıcı ya da personel arayan ailelere ve işletmelere, adayı bulmaktan
+    Türkiye’de yasal olarak işe başlamasına kadar tek elden destek veren danışmanlık firması.`,
 
   nav: {
     links: [
@@ -26,29 +27,28 @@ export const tr = {
         text: 'Hizmetlerimiz',
         href: p('services'),
         links: [
-          { text: 'Aileniz İçin', href: `${p('services')}#aileniz-icin` },
-          { text: 'Kurumsal Çözümler', href: `${p('services')}#kurumsal-cozumler` },
+          { text: 'Ev ve Bakım Personeli', href: `${p('services')}#aileniz-icin` },
+          { text: 'Kurumsal İş Gücü Çözümleri', href: `${p('services')}#kurumsal-cozumler` },
         ],
       },
-      { text: 'Neden Filipinli Bakıcı?', href: p('whyFilipino') },
       { text: 'Sürecimiz', href: p('process') },
       { text: 'Hakkımızda', href: p('about') },
       { text: 'SSS', href: p('faq') },
     ],
-    actions: [{ variant: 'primary' as const, text: 'Görüşme Talep Edin', href: p('contact') }],
+    actions: [{ variant: 'primary' as const, text: 'Bize Ulaşın', href: p('contact') }],
   },
 
   footer: {
-    description: `EFKA Consulting, Filipinler’den ev hizmetleri, bakım ve kurumsal iş gücü
-      ihtiyaçlarına uygun çalışanların bulunması ve Türkiye’de yasal istihdam süreçlerinin
-      koordinasyonu konusunda danışmanlık sağlar.`,
+    description: `EFKA Consulting, evine bakıcı ya da işletmesine personel arayanlara
+      Filipinler’den uygun adayları buluyor; çalışma izninden işe başlangıca kadar bütün süreci
+      takip ediyor.`,
     columns: [
       {
         title: 'Hizmetlerimiz',
         links: [
           { text: 'Uluslararası İş Gücü', href: p('services') },
-          { text: 'Aileniz İçin', href: `${p('services')}#aileniz-icin` },
-          { text: 'Kurumsal Çözümler', href: `${p('services')}#kurumsal-cozumler` },
+          { text: 'Ev ve Bakım Personeli', href: `${p('services')}#aileniz-icin` },
+          { text: 'Kurumsal İş Gücü Çözümleri', href: `${p('services')}#kurumsal-cozumler` },
           { text: 'Neden Filipinli Bakıcı?', href: p('whyFilipino') },
         ],
       },
@@ -62,83 +62,81 @@ export const tr = {
         ],
       },
     ],
-    // Empty on purpose. The only legal text in the repo was the AstroWind
-    // demo notice, which named a fictional company and said so, and no real
-    // KVKK or privacy copy has been supplied. When it arrives it becomes one
-    // combined notice, in English for both locales, linked from here.
-    secondaryLinks: [] as Array<{ text: string; href: string }>,
+    // The KVKK notice exists only in Turkish, so both locales link to the
+    // one page at /kvkk.
+    secondaryLinks: [{ text: 'KVKK Aydınlatma Metni', href: '/kvkk' }] as Array<{ text: string; href: string }>,
     socialLabels: { instagram: 'Instagram', linkedin: 'LinkedIn', email: 'E-posta' },
     footNote: 'consulting · Tüm hakları saklıdır.',
   },
 
   home: {
     meta: {
-      title: 'efka consulting — Filipinler Odaklı İş Gücü Danışmanlığı',
-      description: `Filipinler’den uygun çalışanların bulunması, değerlendirilmesi ve Türkiye’de
-        yasal olarak istihdam edilmesine yönelik süreci aileler ve işletmeler için tek merkezden
-        yöneten iş gücü danışmanlığı.`,
+      title: 'efka consulting — Filipinli Bakıcı ve Personel Danışmanlığı',
+      description: `Evinize Filipinli bakıcı ya da işletmenize personel mi arıyorsunuz? Uygun
+        adayı buluyor, çalışma izninden işe başlangıca kadar bütün süreci sizin yerinize takip
+        ediyoruz.`,
     },
     hero: {
-      tagline: 'Filipinler Odaklı İş Gücü Danışmanlığı',
-      title: 'Doğru çalışan,<br />güvenle yönetilen bir süreç.',
-      subtitle: `Türkiye’nin her yerindeki ailelerin ve işletmelerin ihtiyaçlarına uygun Filipinli
-        çalışanların bulunması, değerlendirilmesi ve yasal olarak istihdam edilmesine yönelik
-        süreci baştan sona koordine ediyoruz.`,
+      tagline: 'Filipinli Bakıcı ve Personel Danışmanlığı',
+      title: 'Doğru kişiyi birlikte bulalım,<br />gerisini bize bırakın.',
+      subtitle: `Evinize bakıcı ya da işletmenize personel mi arıyorsunuz? İhtiyacınıza uygun
+        Filipinli adayları buluyor, sizinle tanıştırıyoruz. Çalışma izninden işe başladıkları güne
+        kadar bütün işlemleri de biz takip ediyoruz.`,
+      // No contact button here: the header's own button already leads there.
       actions: [
-        { variant: 'primary' as const, text: 'İhtiyacınızı Paylaşın', href: p('contact') },
-        { text: 'Süreci İnceleyin', href: p('process') },
+        { variant: 'primary' as const, text: 'Süreç Nasıl İşliyor?', href: p('process') },
+        { text: 'Neden Filipinli Bakıcı?', href: p('whyFilipino') },
       ],
     },
     pillars: [
       {
-        title: 'İhtiyaca uygun eşleşme',
-        description: `Adayları yalnızca özgeçmişlerine göre değil; deneyim, beklenti ve çalışma
-          düzeni uyumu bakımından değerlendiriyoruz.`,
+        title: 'İhtiyacınıza göre aday',
+        description: `Adaylara yalnızca öz geçmişlerinden bakmıyoruz; deneyimlerini,
+          beklentilerini ve sizin çalışma düzeninize uyup uymayacaklarını da tartıyoruz.`,
         icon: 'tabler:users-group',
       },
       {
-        title: 'Düzenli süreç yönetimi',
-        description: `Aday seçiminden gerekli resmî işlemlere ve Türkiye’ye geliş planına kadar
-          her aşamayı takip ediyoruz.`,
+        title: 'Adım adım takip',
+        description: `Aday seçiminden resmî işlemlere, Türkiye’ye geliş planına kadar her adımı
+          biz takip ediyoruz.`,
         icon: 'tabler:list-check',
       },
       {
         title: 'Tek muhatap',
-        description: `Türkiye’de süreç boyunca iletişiminizi EFKA ile yürütür, farklı taraflar
-          arasındaki koordinasyonu sizin adınıza sağlarız.`,
+        description: `Süreç boyunca yalnızca bizimle görüşürsünüz. Diğer taraflarla bütün
+          yazışmaları ve koordinasyonu sizin adınıza biz yürütürüz.`,
         icon: 'tabler:messages',
       },
     ],
     solutions: {
-      title: 'İhtiyacınıza uygun iş gücü çözümleri',
-      subtitle: `Evde bakım ve destek ihtiyaçlarından turizm, konaklama ve üretim işletmelerinin
-        personel taleplerine kadar farklı çalışma alanları için uygun adayların belirlenmesine ve
-        sürecin planlanmasına destek oluyoruz.`,
-      readMore: 'Hizmetlerimizi inceleyin',
+      title: 'Evinize de işletmenize de uygun çalışan',
+      subtitle: `Çocuk, yaşlı ya da hasta bakımı için evinize; turizm, konaklama ya da üretim
+        alanında işletmenize uygun çalışanı birlikte belirliyor, süreci baştan planlıyoruz.`,
+      readMore: 'Hizmetlerimize göz atın',
     },
     whyEfka: {
       title: 'Neden EFKA?',
       items: [
         {
-          title: 'İhtiyaca göre değerlendirme',
-          description: `Her aile ve işletmenin ihtiyacını ayrı değerlendiriyor, aday profilini
-            görev kapsamına ve beklentilere göre belirliyoruz.`,
+          title: 'Her ihtiyaca ayrı bakıyoruz',
+          description: `Hiçbir aileyi ya da işletmeyi bir diğerine benzetmiyoruz. Aradığınız
+            kişinin profilini, yapacağı işe ve sizin beklentilerinize göre birlikte çıkarıyoruz.`,
         },
         {
-          title: 'Tek merkezden süreç yönetimi',
-          description: `Adayların belirlenmesinden görüşmelere, belge hazırlığından Türkiye’ye
-            geliş planlamasına kadar sürecin farklı aşamalarını tek merkezden koordine ediyoruz.`,
+          title: 'Her şey tek elden',
+          description: `Aday aramaktan görüşmelere, evrak hazırlığından Türkiye’ye geliş planına
+            kadar bütün işleri tek elden yürütüyoruz.`,
         },
         {
-          title: 'Profesyonel çalışma disiplini',
-          description: `Kurucumuzun altı yıllık hukuk müşavirliği deneyimi; belge, sözleşme ve
-            süreç takibine dayanan çalışma anlayışımıza yön verir.`,
+          title: 'Hukuk geçmişinden gelen titizlik',
+          description: `Kurucumuz altı yıl hukuk müşaviri olarak çalıştı. Evrakta, sözleşmede ve
+            takipte titiz olmamız o yıllardan geliyor.`,
         },
         {
-          title: 'Uzun vadeli uyum',
-          description: `Amacımız hızlı bir eşleşmeden çok, işveren ile çalışan arasında
-            beklentilerin açıkça konuşulduğu ve sürdürülebilir bir çalışma ilişkisinin
-            kurulmasıdır.`,
+          title: 'Uzun soluklu bir ilişki',
+          description: `Birini hızlıca yerleştirip geçmek istemiyoruz. Bizim için önemli olan,
+            beklentilerin baştan açıkça konuşulduğu ve yıllarca sürebilecek bir çalışma
+            ilişkisi.`,
         },
       ],
     },
@@ -147,58 +145,55 @@ export const tr = {
   services: {
     meta: {
       title: 'Hizmetlerimiz',
-      description: `Filipinler odaklı uluslararası iş gücü çözümleri: aileler için bakım
-        personeli, işletmeler için turizm, konaklama, üretim ve sanayi alanlarında çalışan temini.`,
+      description: `Ailelere bebek, çocuk, yaşlı ve hasta bakımı için; işletmelere turizm,
+        konaklama, üretim ve sanayi alanlarında Filipinli çalışan buluyoruz.`,
     },
     hero: {
       tagline: 'Hizmetlerimiz',
       title: 'Uluslararası İş Gücü',
       paragraphs: [
-        `EFKA Consulting, Türkiye genelinde Filipinler odaklı uluslararası iş gücü çözümleri
-          sunarak ailelerin ve işletmelerin ihtiyaçlarına uygun çalışanların bulunması,
-          değerlendirilmesi ve yasal olarak istihdam edilmesine ilişkin süreci bütüncül bir
-          yaklaşımla yönetir.`,
-        `Aday seçiminden çalışma izni ve ilgili resmî işlemlerin takibine kadar her aşamada açık
-          iletişim, doğru eşleştirme ve yasal uyum esas alınır. Filipinler’deki yetkili iş
-          ortaklarımız aracılığıyla nitelikli Filipinli çalışanların Türkiye’deki aileler ve
-          işletmelerle buluşturulmasına odaklanıyoruz.`,
+        `Türkiye’nin her yerindeki ailelere ve işletmelere Filipinler’den çalışan buluyoruz.
+          Adayı bulmaktan Türkiye’de yasal olarak işe başlamasına kadar bütün süreçle biz
+          ilgileniyoruz.`,
+        `Filipinler’de yetkili iş ortaklarımızla birlikte çalışıyoruz. Aday seçiminden çalışma
+          iznine kadar her adımda ne yaptığımızı size açıkça anlatıyor, her işi mevzuata uygun
+          yürütüyoruz.`,
       ],
     },
     family: {
       id: 'aileniz-icin',
-      title: 'Aileniz İçin',
+      title: 'Ev ve Bakım Personeli',
       paragraphs: [
-        `Evinize katılacak kişinin yalnızca mesleki deneyiminin değil; aile düzeninize,
-          beklentilerinize ve bakım ihtiyacınıza uygunluğunun da önemli olduğuna inanıyoruz.`,
-        `Bebek ve çocuk bakımı, yaşlı refakati ile hasta veya engelli bireylerin günlük bakımına
-          destek olabilecek Filipinli adaylar arasından ihtiyacınıza uygun profilleri belirliyor,
-          seçtiğiniz adaylarla görüntülü görüşmeler düzenliyoruz.`,
-        `Adayların deneyim, eğitim, referans ve adli sicil belgeleri değerlendirilir; gerekli
-          sağlık kontrolleri ve resmî işlemler ilgili süreç kapsamında tamamlanır. Çalışanın
-          Türkiye’ye gelişi, çalışma izni ve istihdam süreci yürürlükteki mevzuata ve ilgili
-          ülkelerin düzenlemelerine uygun şekilde koordine edilir.`,
-        `Amacımız yalnızca bir çalışan bulmak değil; ailenizin kendini güvende hissedebileceği,
-          karşılıklı beklentilerin açıkça konuşulduğu ve uzun vadeli uyumun gözetildiği bir
-          çalışma ilişkisi kurulmasına yardımcı olmaktır.`,
+        `Evinize girecek kişinin işini bilmesi yetmez; aile düzeninize ayak uydurabilmesi ve
+          beklentilerinizi karşılayabilmesi de gerekir.`,
+        `Bebek ve çocuk bakımı, yaşlı refakati ya da hasta veya engelli bir yakınınızın günlük
+          bakımı için uygun Filipinli adayları belirliyor, beğendiğiniz adaylarla görüntülü
+          görüşme ayarlıyoruz.`,
+        `Adayların deneyimini, eğitimini, referanslarını ve adli sicil kaydını inceliyoruz.
+          Sağlık kontrolleri ve resmî işlemler de süreç içinde tamamlanıyor. Çalışanın Türkiye’ye
+          gelişi, çalışma izni ve işe başlaması hem Türkiye’nin hem de Filipinler’in kurallarına
+          uygun şekilde ilerliyor.`,
+        `Amacımız sadece birini bulmak değil. Ailenizin kendini güvende hissettiği, beklentilerin
+          baştan konuşulduğu ve uzun süre devam edecek bir çalışma ilişkisi kurmanıza yardımcı
+          olmak istiyoruz.`,
       ],
       items: [
         {
           title: 'Bebek ve Çocuk Bakımı',
-          description: `Çocuğunuzun günlük bakımına, yaşına uygun düzeninin sürdürülmesine ve
-            gelişiminin desteklenmesine yardımcı olabilecek deneyimli bakıcı ve dadı adayları.`,
+          description: `Çocuğunuzun günlük bakımını üstlenecek, yaşına uygun düzenini koruyacak
+            ve gelişimine destek olacak deneyimli bakıcı ve dadı adayları.`,
           icon: 'tabler:baby-carriage',
         },
         {
           title: 'Yaşlı Bakımı ve Refakat',
-          description: `Yaşlı aile bireylerinin günlük yaşamına destek olabilecek, ihtiyaçlarının
-            karşılanmasına yardımcı olacak ve güvenli biçimde refakat edebilecek uygun adaylar.`,
+          description: `Aile büyüklerinizin gündelik ihtiyaçlarında yanlarında olacak, onlara
+            güvenle eşlik edecek adaylar.`,
           icon: 'tabler:heart-handshake',
         },
         {
-          title: 'Hasta ve Engelli Bireylerin Bakımı',
-          description: `Hasta veya engelli bireylerin evdeki günlük bakımına ve refakatine destek
-            olabilecek, ihtiyacın niteliğine göre deneyim ve yeterlilikleri değerlendirilen
-            çalışanlar.`,
+          title: 'Hasta ve Engelli Bakımı',
+          description: `Hasta ya da engelli yakınınızın evdeki bakımına yardım edecek, deneyimi
+            ve yetkinliği ihtiyacın türüne göre değerlendirilmiş çalışanlar.`,
           icon: 'tabler:stethoscope',
         },
       ],
@@ -206,36 +201,36 @@ export const tr = {
     },
     corporate: {
       id: 'kurumsal-cozumler',
-      title: 'Kurumsal Çözümler',
+      title: 'Kurumsal İş Gücü Çözümleri',
       paragraphs: [
-        `Turizm, konaklama, üretim ve sanayi işletmelerinin uluslararası iş gücü ihtiyaçlarına
-          yönelik seçme, değerlendirme ve süreç yönetimi hizmetleri sunuyoruz.`,
-        `İşletmenin faaliyet alanını, pozisyonun gerekliliklerini ve çalışma koşullarını analiz
-          ederek uygun aday profilini belirliyor; Filipinler’deki yetkili iş ortaklarımızla
-          birlikte aday araştırma ve ön değerlendirme sürecini yürütüyoruz. Seçilen çalışanların
-          Türkiye’de yasal olarak istihdam edilebilmesi için gerekli çalışma izni ve ilgili resmî
-          işlemleri planlı ve takip edilebilir bir süreç içinde koordine ediyoruz.`,
+        `Turizm, konaklama, üretim ve sanayi alanındaki işletmelerin yurt dışından personel
+          arayışında yanlarındayız: adayları seçiyor, değerlendiriyor ve bütün süreci
+          yönetiyoruz.`,
+        `Önce işletmenizi, aradığınız pozisyonu ve çalışma koşullarını tanıyor, nasıl bir adaya
+          ihtiyacınız olduğunu birlikte belirliyoruz. Ardından Filipinler’deki yetkili iş
+          ortaklarımızla aday arayıp ilk elemeyi yapıyoruz. Seçtiğiniz çalışanların Türkiye’de
+          yasal olarak çalışabilmesi için gereken çalışma iznini ve diğer resmî işlemleri de
+          planlı şekilde, her adımını görebileceğiniz biçimde yürütüyoruz.`,
       ],
       items: [
         {
           title: 'Turizm ve Konaklama',
-          description: `Otel, butik otel, restoran ve diğer turizm işletmeleri için kat
-            hizmetleri, mutfak, servis, misafir ilişkileri ve diğer operasyonel görevlerde
-            çalışabilecek adaylar.`,
+          description: `Otel, butik otel, restoran ve diğer turizm işletmelerinde kat
+            hizmetleri, mutfak, servis ve misafir ilişkileri gibi görevlerde çalışabilecek
+            adaylar.`,
           icon: 'tabler:bell-ringing',
         },
         {
           title: 'Üretim ve Sanayi',
-          description: `Fabrikalar ve üretim tesisleri için üretim, paketleme, depo, sevkiyat ve
-            benzeri alanlarda görev alabilecek vasıflı, yarı vasıflı veya yetiştirilebilir
-            çalışanlar.`,
+          description: `Fabrika ve üretim tesislerinde üretim, paketleme, depo ve sevkiyat gibi
+            işlerde çalışabilecek vasıflı, yarı vasıflı ya da işi öğrenmeye açık personel.`,
           icon: 'tabler:building-factory-2',
         },
         {
-          title: 'Toplu İşe Alım Çözümleri',
-          description: `Birden fazla çalışan ihtiyacı bulunan işletmeler için pozisyonların
-            belirlenmesi, adayların ön değerlendirilmesi, görüşmelerin düzenlenmesi ve seçilen
-            çalışanların yasal süreçlerinin planlanması.`,
+          title: 'Toplu İşe Alım',
+          description: `Aynı anda birden fazla kişiye ihtiyacınız varsa pozisyonları birlikte
+            belirliyor, adayların ilk değerlendirmesini yapıyor, görüşmeleri ayarlıyor ve seçilen
+            çalışanların yasal sürecini planlıyoruz.`,
           icon: 'tabler:users-plus',
         },
       ],
@@ -247,61 +242,60 @@ export const tr = {
   whyFilipino: {
     meta: {
       title: 'Neden Filipinli Bakıcı?',
-      description: `Filipinli bakıcılar; uluslararası bakım deneyimi, İngilizce iletişim
-        becerileri ve özenli çalışma anlayışları nedeniyle dünyanın birçok ülkesinde aileler
-        tarafından tercih edilmektedir.`,
+      description: `Filipinli bakıcıları dünyanın birçok ülkesinde aileler sıkça tercih ediyor.
+        Başlıca nedenleri bakım alanındaki deneyimleri, iyi İngilizceleri ve işlerine gösterdikleri
+        özen.`,
     },
     hero: {
       tagline: 'Neden Filipinli Bakıcı?',
       title: 'Neden Filipinli Bakıcı?',
       paragraphs: [
-        `Bir bakıcı seçmek, ailenizin günlük yaşamına ve en değer verdiğiniz kişilerin bakımına
-          dâhil olacak birini seçmektir. Bu nedenle doğru adayın yalnızca deneyimli olması değil;
-          güven veren, sorumluluk sahibi ve aile düzeninize uyum sağlayabilecek bir yaklaşıma
-          sahip olması da önemlidir.`,
-        `Filipinli bakıcılar, uluslararası bakım alanındaki deneyimleri, İngilizce iletişim
-          becerileri ve özenli çalışma anlayışları nedeniyle dünyanın birçok ülkesinde aileler
-          tarafından tercih edilmektedir.`,
+        `Bakıcı seçmek, evinizin günlük hayatına ve en çok değer verdiğiniz insanların bakımına
+          ortak olacak birini seçmek demek. Bu yüzden deneyim tek başına yetmez; güven veren,
+          sorumluluk sahibi ve ailenize uyum sağlayabilecek biri olması da gerekir.`,
+        `Filipinli bakıcıları dünyanın birçok ülkesinde aileler sıkça tercih ediyor. Bunun
+          başlıca nedenleri bakım alanındaki uluslararası deneyimleri, iyi İngilizceleri ve
+          işlerine gösterdikleri özen.`,
       ],
       imageAlt: 'Filipinli bir bakıcı, bir çocukla birlikte resimli kitap okuyor',
     },
     blocks: [
       {
-        title: 'İngilizce İletişim Ortamı',
+        title: 'Gündelik Hayatta İngilizce',
         paragraphs: [
-          `İngilizce konuşabilen bir bakıcı, özellikle küçük yaşlardaki çocukların dili günlük
-            yaşamın doğal akışı içinde duymasına ve İngilizceye aşinalık kazanmasına katkı
-            sağlayabilir.`,
+          `İngilizce konuşan bir bakıcıyla büyüyen çocuk, dili gündelik hayatın içinde
+            kendiliğinden duyar. Bu da özellikle küçük yaşta İngilizceye alışmasına yardımcı
+            olabilir.`,
         ],
         icon: 'tabler:message-language',
       },
       {
-        title: 'Deneyim ve Sorumluluk Bilinci',
+        title: 'Deneyimli ve Sorumlu Adaylar',
         paragraphs: [
-          `Adaylar; bakım deneyimleri, eğitimleri, referansları ve görev beklentileri dikkate
-            alınarak değerlendirilir. Ailenizin ihtiyaçlarına uygun bulunan profiller sizinle
-            paylaşılır ve seçtiğiniz adaylarla görüntülü görüşmeler düzenlenir.`,
+          `Adayları bakım deneyimlerine, eğitimlerine, referanslarına ve işten beklentilerine
+            bakarak değerlendiriyoruz. Ailenize uygun bulduğumuz adayları sizinle paylaşıyor,
+            beğendiklerinizle görüntülü görüşme ayarlıyoruz.`,
         ],
         icon: 'tabler:certificate',
       },
       {
         title: 'Aile Düzenine Uyum',
         paragraphs: [
-          `Her ailenin yaşam biçimi, öncelikleri ve beklentileri farklıdır. Bu nedenle aday
-            seçiminde yalnızca öz geçmişe değil; iletişim biçimine, görev anlayışına ve aileyle
-            uzun vadeli uyum ihtimaline de önem verilir.`,
+          `Her ailenin yaşam tarzı, öncelikleri ve beklentileri farklı. Bu yüzden aday seçerken
+            öz geçmişle yetinmiyor; adayın nasıl iletişim kurduğuna, işe nasıl yaklaştığına ve
+            ailenizle uzun vadede anlaşıp anlaşamayacağına da bakıyoruz.`,
         ],
         icon: 'tabler:home-heart',
       },
       {
         title: 'Güvenli ve Yasal Süreç',
         paragraphs: [
-          `Filipinli ev hizmetleri çalışanlarının yurt dışında istihdamı, hem Türkiye’deki hem de
-            Filipinler’deki düzenlemelere tabidir. Süreç; yetkili kurumlar ve Filipinler’deki
-            yetkili iş ortaklarıyla koordinasyon içinde, gerekli sözleşmeler, çalışma izni
-            başvurusu, belge kontrolleri ve resmî onaylar tamamlanarak yürütülür.`,
-          `EFKA Consulting, süreç boyunca ailenizin Türkiye’deki muhatabı olarak her aşamanın
-            düzenli, şeffaf ve takip edilebilir biçimde ilerlemesini sağlar.`,
+          `Filipinli ev çalışanlarının yurt dışında çalışması hem Türkiye’nin hem de
+            Filipinler’in kurallarına tabi. Bu yüzden süreci yetkili kurumlarla ve Filipinler’deki
+            yetkili iş ortaklarımızla birlikte yürütüyoruz: sözleşmeler hazırlanıyor, çalışma izni
+            başvurusu yapılıyor, belgeler kontrol ediliyor ve gerekli resmî onaylar alınıyor.`,
+          `Bu süre boyunca Türkiye’deki muhatabınız biziz. Her adımın düzenli ilerlemesini takip
+            ediyor, sürecin neresinde olduğunuzu size her zaman açıkça söylüyoruz.`,
         ],
         icon: 'tabler:shield-check',
       },
@@ -311,33 +305,33 @@ export const tr = {
   about: {
     meta: {
       title: 'Hakkımızda',
-      description: `EFKA Consulting, ailelerin ve işletmelerin güvenilir çalışanlara ulaşırken
-        ihtiyaç duyduğu profesyonel desteği tek merkezden sunmak amacıyla kuruldu.`,
+      description: `EFKA Consulting’i, güvenilir bir çalışan arayan ailelerin ve işletmelerin
+        ihtiyaç duyduğu desteği tek elden verebilmek için kurduk.`,
     },
     hero: {
       tagline: 'Hakkımızda',
       title: 'Hakkımızda',
       paragraphs: [
-        `EFKA Consulting, ailelerin ve işletmelerin güvenilir çalışanlara ulaşırken ihtiyaç
-          duyduğu profesyonel desteği tek merkezden sunmak amacıyla kuruldu.`,
-        `Kurucumuzun altı yıllık hukuk müşavirliği deneyimi; belge, sözleşme ve süreç takibine
-          dayanan çalışma disiplinimizin temelini oluşturur.`,
-        `Filipinler odaklı çalışan EFKA; ev hizmetleri ve bakım personelinin yanı sıra turizm,
-          konaklama, üretim ve sanayi işletmelerinin iş gücü ihtiyaçları için uygun adayların
-          belirlenmesine ve yasal istihdam sürecinin koordinasyonuna destek sağlar.`,
+        `EFKA Consulting’i, güvenilir bir çalışan arayan ailelerin ve işletmelerin ihtiyaç
+          duyduğu desteği tek elden verebilmek için kurduk.`,
+        `Kurucumuz altı yıl hukuk müşaviri olarak çalıştı. Evrakta, sözleşmede ve süreç
+          takibinde gösterdiğimiz titizliğin temeli o yıllara dayanıyor.`,
+        `Filipinler’e odaklanarak çalışıyoruz. Ev ve bakım personelinin yanı sıra turizm,
+          konaklama, üretim ve sanayi işletmeleri için de uygun adayları buluyor, yasal olarak
+          işe başlamalarına kadar süreci yürütüyoruz.`,
       ],
     },
     mission: {
       title: 'Misyonumuz',
-      description: `İşverenlerin ihtiyaçlarına uygun çalışanlara güvenli, açık ve düzenli bir
-        süreçle ulaşmasını; çalışanların ise görev tanımı ve çalışma koşulları baştan
-        netleştirilmiş iş ilişkilerine yerleşmesini sağlamak.`,
+      description: `İşverenlerin aradıkları çalışana güvenli, açık ve düzenli bir yoldan
+        ulaşmasını; çalışanların da işi ve çalışma koşulları baştan netleşmiş bir iş ilişkisiyle
+        başlamasını sağlamak.`,
       icon: 'tabler:target-arrow',
     },
     vision: {
       title: 'Vizyonumuz',
-      description: `Ev hizmetlerinden kurumsal iş gücü çözümlerine uzanan, uluslararası çalışan
-        istihdamında güvenilir ve uzun vadeli bir danışmanlık markası olmak.`,
+      description: `Evde bakımdan kurumsal iş gücüne kadar, yurt dışından çalışan
+        istihdamında güvenilir ve uzun soluklu bir danışmanlık firması olmak.`,
       icon: 'tabler:telescope',
     },
   },
@@ -345,59 +339,59 @@ export const tr = {
   process: {
     meta: {
       title: 'Sürecimiz',
-      description: `İhtiyacın belirlenmesinden çalışanın Türkiye’ye gelişine kadar altı aşamalı,
-        takip edilebilir bir süreç.`,
+      description: `İhtiyacınızı konuştuğumuz ilk görüşmeden çalışanın Türkiye’ye gelişine
+        kadar altı adımda ilerleyen, her aşamasını takip edebileceğiniz bir süreç.`,
     },
     hero: {
       tagline: 'Sürecimiz',
       title: 'Sürecimiz',
-      subtitle: `Her ihtiyaç farklıdır. Süreci standart bir aday listesi sunmak yerine, işverenin
-        beklentilerini ve çalışma koşullarını anlayarak başlatırız.`,
+      subtitle: `Her ihtiyaç farklı. Bu yüzden işe size hazır bir aday listesi göndererek
+        başlamıyoruz; önce ne aradığınızı ve çalışma koşullarını dinliyoruz.`,
     },
     steps: [
       {
-        title: 'İhtiyacın belirlenmesi',
-        description: 'Aranan görev, bakım veya iş gücü ihtiyacı ve temel beklentiler görüşülür.',
+        title: 'İhtiyacınızı konuşuyoruz',
+        description: 'Nasıl birini aradığınızı, işin ne olduğunu ve beklentilerinizi birlikte konuşuyoruz.',
         icon: 'tabler:message-circle-search',
       },
       {
-        title: 'Ön değerlendirme',
-        description: `İşverenin ve pozisyonun ilgili süreç bakımından uygunluğu değerlendirilir;
-          izlenecek yol açıklanır.`,
+        title: 'Ön değerlendirme yapıyoruz',
+        description: `Sizin ve pozisyonun bu süreç için uygun olup olmadığına bakıyor, nasıl bir
+          yol izleyeceğimizi anlatıyoruz.`,
         icon: 'tabler:clipboard-check',
       },
       {
-        title: 'Adayların belirlenmesi',
-        description: 'İhtiyaca uygun bulunan adaylar seçilerek işverene sunulur.',
+        title: 'Adayları seçiyoruz',
+        description: 'İhtiyacınıza uyan adayları seçip size sunuyoruz.',
         icon: 'tabler:user-search',
       },
       {
-        title: 'Görüşme ve seçim',
-        description: `İşveren adaylarla çevrim içi görüşmeler yapar; ihtiyaç hâlinde ek görüşmeler
-          düzenlenir.`,
+        title: 'Görüşüp karar veriyorsunuz',
+        description: `Adaylarla çevrim içi görüşüyorsunuz; isterseniz ek görüşmeler de
+          ayarlıyoruz.`,
         icon: 'tabler:video',
       },
       {
-        title: 'Belge ve onay süreci',
-        description: `Seçilen aday ve işverene ilişkin gerekli belgeler hazırlanır; ilgili kurum
-          ve taraflar arasındaki süreç koordine edilir.`,
+        title: 'Belgeleri hazırlıyoruz',
+        description: `Seçtiğiniz aday ve sizin için gereken belgeleri hazırlıyor, kurumlarla ve
+          diğer taraflarla bütün yazışmaları biz yürütüyoruz.`,
         icon: 'tabler:file-check',
       },
       {
-        title: 'Türkiye’ye geliş ve başlangıç',
-        description: `Uçuş planlaması tamamlanır; çalışanın Türkiye’ye gelişi ve göreve başlangıç
-          sonrasındaki temel işlemler konusunda işveren bilgilendirilir.`,
+        title: 'Çalışan Türkiye’ye geliyor',
+        description: `Uçuşu planlıyoruz. Çalışan gelip işe başladıktan sonra yapmanız gereken
+          temel işlemleri de size anlatıyoruz.`,
         icon: 'tabler:plane-arrival',
       },
     ],
-    cta: { variant: 'primary' as const, text: 'Süreç Hakkında Görüşün', href: p('contact') },
+    cta: { variant: 'primary' as const, text: 'Bize Ulaşın', href: p('contact') },
   },
 
   faq: {
     meta: {
       title: 'Sık Sorulan Sorular',
-      description: `Hizmet alanları, sürecin ortalama süresi, aday seçimi ve aracı kurum
-        gerekliliği hakkında sık sorulan sorular.`,
+      description: `Hangi alanlarda çalışan bulduğumuz, sürecin ne kadar sürdüğü, adayların
+        nasıl seçildiği ve aracı kurum gerekip gerekmediği gibi sık sorulan sorular.`,
     },
     hero: {
       tagline: 'Sık Sorulan Sorular',
@@ -405,28 +399,27 @@ export const tr = {
     },
     items: [
       {
-        title: 'Hangi alanlarda çalışan temin ediyorsunuz?',
-        description: `Bebek ve çocuk bakımı, yaşlı bakımı ve refakat, hasta veya engelli
-          bireylerin evde bakımı ile turizm, konaklama, üretim ve sanayi alanlarında Filipinli
-          çalışanlara yönelik danışmanlık sağlıyoruz.`,
+        title: 'Hangi alanlarda çalışan buluyorsunuz?',
+        description: `Evler için bebek ve çocuk bakımı, yaşlı bakımı ve refakat, hasta ya da
+          engelli bakımı; işletmeler için turizm, konaklama, üretim ve sanayi alanlarında Filipinli
+          çalışan buluyoruz.`,
       },
       {
-        title: 'Süreç ortalama ne kadar sürer?',
-        description: `Adayın seçilmesinden Türkiye’ye gelişine kadar olan süreç ortalama yaklaşık
-          iki ay sürer. Evrakların hazırlanması, resmî onaylar ve uçuş planına göre süre
-          değişebilir.`,
+        title: 'Süreç ne kadar sürüyor?',
+        description: `Adayı seçtiğiniz andan Türkiye’ye gelişine kadar ortalama iki ay. Evrakların
+          hazırlanmasına, resmî onaylara ve uçuş planına göre bu süre biraz uzayıp kısalabilir.`,
       },
       {
-        title: 'Aday seçim süreci nasıl ilerler?',
-        description: `İhtiyacınıza uygun; deneyimli, eğitimli ve referanslı adaylardan oluşan
-          havuzumuz içerisinden size özel bir ön seçim yaparız. Seçtiğimiz adayların profillerini
-          sizinle paylaşır, görüşmek istediklerinizle çevrim içi görüntülü görüşmeler düzenleriz.`,
+        title: 'Adaylar nasıl seçiliyor?',
+        description: `Deneyimli, eğitimli ve referanslı adaylardan oluşan havuzumuzdan size uygun
+          olanları önceden seçiyoruz. Profillerini sizinle paylaşıyor, görüşmek istediğiniz
+          adaylarla görüntülü görüşme ayarlıyoruz.`,
       },
       {
-        title: 'Filipinli bir çalışanı aracı kurum olmadan getirmek mümkün müdür?',
-        description: `Filipinler’in yurt dışı istihdam kuralları gereği ev hizmetleri
-          çalışanlarında doğrudan işe alım yalnızca çok sınırlı istisnalarda mümkündür. Genel
-          uygulamada Filipinler’de ve Türkiye’de yetkili iki partner kuruluş üzerinden ilerlenir.`,
+        title: 'Filipinli bir çalışanı aracı kurum olmadan getirebilir miyim?',
+        description: `Filipinler’in yurt dışında çalışma kuralları gereği, ev çalışanlarının
+          aracısız işe alınması yalnızca çok az sayıda istisnai durumda mümkün. Genellikle biri
+          Filipinler’de, biri Türkiye’de olmak üzere iki yetkili kurum üzerinden ilerlenir.`,
       },
     ],
   },
@@ -434,17 +427,16 @@ export const tr = {
   contact: {
     meta: {
       title: 'İletişim',
-      description: `Aileniz veya işletmeniz için aradığınız çalışan profilini bizimle paylaşın.
-        İlk görüşmede ihtiyacınızı dinleyip size açık bir yol haritası sunalım.`,
+      description: `Aileniz ya da işletmeniz için nasıl bir çalışan aradığınızı bize yazın. İlk
+        görüşmede sizi dinliyor, sürecin sizin için nasıl işleyeceğini açıkça anlatıyoruz.`,
     },
     hero: {
       tagline: 'İletişim',
-      title: 'İhtiyacınızı birlikte değerlendirelim.',
-      subtitle: `Aileniz veya işletmeniz için aradığınız çalışan profilini bizimle paylaşın. İlk
-        görüşmede ihtiyacınızı dinleyelim, uygunluk ve izlenebilecek süreç hakkında size açık bir
-        yol haritası sunalım.`,
+      title: 'Size nasıl yardımcı olabiliriz?',
+      subtitle: `Aileniz ya da işletmeniz için nasıl bir çalışan aradığınızı bize yazın. İlk
+        görüşmede sizi dinliyor, sürecin sizin için nasıl işleyeceğini açıkça anlatıyoruz.`,
     },
-    cta: { variant: 'primary' as const, text: 'Görüşme Talep Edin', href: 'mailto:info@efka-consulting.com' },
+    cta: { variant: 'primary' as const, text: 'Bize Yazın', href: 'mailto:info@efka-consulting.com' },
     details: [
       { title: 'E-posta', description: 'info@efka-consulting.com', icon: 'tabler:mail' },
       {
@@ -456,5 +448,5 @@ export const tr = {
   },
 
   /** Alt text for the panorama above the footer. */
-  bannerAlt: 'İstanbul ve Kapadokya manzarasının birleştiği panoramik görsel',
+  bannerAlt: 'İstanbul ve Kapadokya’yı bir arada gösteren panoramik görsel',
 };

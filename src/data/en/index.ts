@@ -26,7 +26,6 @@ export const en: typeof tr = {
           { text: 'Corporate Solutions', href: `${p('services')}#corporate-solutions` },
         ],
       },
-      { text: 'Why a Filipino Caregiver?', href: p('whyFilipino') },
       { text: 'Our Process', href: p('process') },
       { text: 'About Us', href: p('about') },
       { text: 'FAQ', href: p('faq') },
@@ -58,11 +57,9 @@ export const en: typeof tr = {
         ],
       },
     ],
-    // Empty on purpose. The only legal text in the repo was the AstroWind
-    // demo notice, which named a fictional company and said so, and no real
-    // KVKK or privacy copy has been supplied. When it arrives it becomes one
-    // combined notice, in English for both locales, linked from here.
-    secondaryLinks: [] as Array<{ text: string; href: string }>,
+    // The KVKK notice exists only in Turkish, so both locales link to the
+    // one page at /kvkk.
+    secondaryLinks: [{ text: 'KVKK Notice (Turkish)', href: '/kvkk' }] as Array<{ text: string; href: string }>,
     socialLabels: { instagram: 'Instagram', linkedin: 'LinkedIn', email: 'Email' },
     footNote: 'consulting · All rights reserved.',
   },
@@ -80,9 +77,10 @@ export const en: typeof tr = {
       subtitle: `We serve families and businesses throughout Türkiye, coordinating the end-to-end
         process of identifying and assessing suitable Filipino candidates and supporting their
         lawful employment.`,
+      // No contact button here: the header's own button already leads there.
       actions: [
-        { variant: 'primary' as const, text: 'Tell Us What You Need', href: p('contact') },
-        { text: 'Explore the Process', href: p('process') },
+        { variant: 'primary' as const, text: 'Explore the Process', href: p('process') },
+        { text: 'Why a Filipino Caregiver?', href: p('whyFilipino') },
       ],
     },
     pillars: [
