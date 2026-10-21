@@ -117,10 +117,23 @@ const metadata = {
   <!-- Program showcase widget ******* -->
   <ProgramShowcase tagline="Programas Destacados" columns={2} items={featuredPrograms}>
     <Fragment slot="bg">
+      <!-- Fondo modo claro -->
       <div
-        class="absolute inset-0 bg-repeat opacity-70 dark:opacity-50"
-        style="background-image: url('/images/fvi_grey_background.jpg');"
+        class="absolute inset-0 -z-10 h-full w-full dark:hidden bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"
       >
+        <div
+          class="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#c6e8e6,transparent)]"
+        >
+        </div>
+      </div>
+      <!-- Fondo modo oscuro -->
+      <div
+        class="absolute inset-0 -z-10 h-full w-full hidden dark:block bg-slate-900 bg-[linear-gradient(to_right,#1e3535_1px,transparent_1px),linear-gradient(to_bottom,#1e3535_1px,transparent_1px)] bg-[size:6rem_4rem]"
+      >
+        <div
+          class="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#042f2e,transparent)]"
+        >
+        </div>
       </div>
     </Fragment>
   </ProgramShowcase>
