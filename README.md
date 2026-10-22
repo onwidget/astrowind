@@ -273,6 +273,12 @@ Clone this repository on your own GitHub account and deploy to Vercel:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farthelokyo%2Fastrowind)
 
+#### Deploy to Wasmer
+
+[![Deploy to Wasmer](https://img.shields.io/badge/Deploy%20to-Wasmer-171717?logo=wasmer&logoColor=white)](https://wasmer.io/apps/create?github=arthelokyo%2Fastrowind)
+
+[Wasmer Edge](https://docs.wasmer.io/edge/) is a cloud platform for hosting websites and applications. Build AstroWind with `npm run build` and serve the generated `dist` directory. The button opens the public template's import page; review the build settings before deploying. To publish your own content and redeploy changes, fork this repository and import your fork instead.
+
 #### Deploy to Cloudflare
 
 Clone this repository on your own GitHub account and deploy it to Cloudflare Workers (static assets, no adapter needed; the `wrangler.jsonc` in the repo points Cloudflare at `dist/`):
